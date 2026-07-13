@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type BookingStatus = 'pending' | 'accepted' | 'declined' | 'active' | 'completed' | 'cancelled';
+export type BookingStatus = 'pending' | 'accepted' | 'declined' | 'countered' | 'active' | 'completed' | 'cancelled';
 
 export interface Booking {
   id: string;
