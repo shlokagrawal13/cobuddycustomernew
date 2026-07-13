@@ -1,12 +1,28 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { BookingActivitySelectScreen } from '../screens/BookingActivitySelectScreen';
+import { BookingVenueSelectScreen } from '../screens/BookingVenueSelectScreen';
+import { BookingTimeSelectScreen } from '../screens/BookingTimeSelectScreen';
+import { BookingSummaryScreen } from '../screens/BookingSummaryScreen';
+import { BookingRequestSentScreen } from '../screens/BookingRequestSentScreen';
+import { BookingAcceptedScreen } from '../screens/BookingAcceptedScreen';
+import { BookingDeclinedScreen } from '../screens/BookingDeclinedScreen';
+import { BookingCounterOfferScreen } from '../screens/BookingCounterOfferScreen';
+
 const Stack = createNativeStackNavigator();
 
 export const BookingFlowStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* To be wired with specific screens */}
+      <Stack.Screen name="BookingActivitySelectScreen" component={BookingActivitySelectScreen} />
+      <Stack.Screen name="BookingVenueSelectScreen" component={BookingVenueSelectScreen} />
+      <Stack.Screen name="BookingTimeSelectScreen" component={BookingTimeSelectScreen} />
+      <Stack.Screen name="BookingSummaryScreen" component={BookingSummaryScreen} />
+      <Stack.Screen name="BookingRequestSentScreen" component={BookingRequestSentScreen} />
+      <Stack.Screen name="BookingAcceptedScreen" component={BookingAcceptedScreen} />
+      <Stack.Screen name="BookingDeclinedScreen" component={BookingDeclinedScreen} />
+      <Stack.Screen name="BookingCounterOfferScreen" component={BookingCounterOfferScreen} />
     </Stack.Navigator>
   );
 };
