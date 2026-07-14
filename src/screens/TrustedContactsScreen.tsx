@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   cardTitle: {
-    fontSize: theme.typography.sizes.h4,
+    fontSize: theme.typography.sizes.h3,
     color: theme.colors.textPrimary,
     fontWeight: 'bold',
     marginBottom: theme.spacing.sm,

@@ -6,7 +6,7 @@ export const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.logoText}>CoBuddy</Text>
-      <ActivityIndicator size="large" color={theme.colors.secondary} style={styles.loader} />
+      <ActivityIndicator size="large" color={theme.colors.primary} style={styles.loader} />
     </View>
   );
 };
@@ -14,12 +14,12 @@ export const SplashScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.primary, // Navy Blue
+    backgroundColor: theme.colors.background,
     justifyContent: 'center',
     alignItems: 'center',
   },
   logoText: {
-    color: theme.colors.secondary, // Gold
+    color: theme.colors.primary,
     fontSize: 48,
     fontWeight: 'bold',
     letterSpacing: 1.5,
