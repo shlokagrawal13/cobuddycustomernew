@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SplashScreen } from '../screens/SplashScreen';
 import { ForceUpdateScreen } from '../screens/ForceUpdateScreen';
@@ -14,19 +14,38 @@ import { KYCStack } from './KYCStack';
 import { LiveSessionStack } from './LiveSessionStack';
 import { SafetySupportStack } from './SafetySupportStack';
 
+import { useAuthStore } from '../store/slices/authStore';
 
 const Stack = createNativeStackNavigator();
 
 export const RootNavigator = () => {
+  const { isAuthenticated, isOnboardingComplete } = useAuthStore();
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    // Artificial delay to show the Splash Screen for 1.5s as requested
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      {!isReady ? (
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      ) : !isAuthenticated ? (
+        <Stack.Screen name="AuthStack" component={AuthStack} />
+      ) : !isOnboardingComplete ? (
+        <Stack.Screen name="OnboardingStack" component={OnboardingStack} />
+      ) : (
+        <Stack.Screen name="MainTabNavigator" component={MainTabNavigator} />
+      )}
+      
+      {/* System state and modal screens can be pushed here or kept detached if needed */}
       <Stack.Screen name="ForceUpdateScreen" component={ForceUpdateScreen} />
       <Stack.Screen name="MaintenanceModeScreen" component={MaintenanceModeScreen} />
       <Stack.Screen name="NetworkErrorScreen" component={NetworkErrorScreen} />
-      <Stack.Screen name="AuthStack" component={AuthStack} />
-      <Stack.Screen name="OnboardingStack" component={OnboardingStack} />
-      <Stack.Screen name="MainTabNavigator" component={MainTabNavigator} />
       <Stack.Screen name="SystemStateStack" component={SystemStateStack} />
       <Stack.Screen name="BookingFlowStack" component={BookingFlowStack} />
       <Stack.Screen name="KYCStack" component={KYCStack} />

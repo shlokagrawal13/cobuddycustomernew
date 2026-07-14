@@ -8,11 +8,8 @@ import { useAuthStore } from '../store/slices/authStore';
 export const LegalConsentScreen = ({ navigation }: any) => {
   const { t } = useTranslation(['onboarding']);
   const [agreed, setAgreed] = useState(false);
-  const completeOnboarding = useAuthStore((state) => state.completeOnboarding);
-
   const handleAccept = () => {
-    completeOnboarding();
-    // After completeOnboarding, the RootNavigator re-renders and takes user to MainTabNavigator if authenticated.
+    navigation.navigate('LocationPermissionScreen');
   };
 
   return (

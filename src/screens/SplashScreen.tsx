@@ -1,23 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { theme } from '../theme';
-import { useAuthStore } from '../store/slices/authStore';
 
-export const SplashScreen = ({ navigation }: any) => {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (isAuthenticated) {
-        navigation.replace('MainTabNavigator');
-      } else {
-        navigation.replace('AuthStack');
-      }
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, [isAuthenticated, navigation]);
-
+export const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.logoText}>CoBuddy</Text>

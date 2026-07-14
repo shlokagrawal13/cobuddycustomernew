@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { LegalConsentScreen } from '../screens/LegalConsentScreen';
 import { LocationPermissionScreen } from '../screens/LocationPermissionScreen';
 import { NotificationPermissionScreen } from '../screens/NotificationPermissionScreen';
 import { BasicProfileSetupScreen } from '../screens/BasicProfileSetupScreen';
@@ -12,7 +13,8 @@ const Stack = createNativeStackNavigator();
 
 export const OnboardingStack = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="LegalConsentScreen">
+      <Stack.Screen name="LegalConsentScreen" component={LegalConsentScreen} />
       <Stack.Screen name="LocationPermissionScreen" component={LocationPermissionScreen} />
       <Stack.Screen name="NotificationPermissionScreen" component={NotificationPermissionScreen} />
       <Stack.Screen name="BasicProfileSetupScreen" component={BasicProfileSetupScreen} />

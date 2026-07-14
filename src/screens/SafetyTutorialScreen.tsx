@@ -29,7 +29,7 @@ export const SafetyTutorialScreen = ({ navigation }: any) => {
       <View style={styles.footer}>
         <Button 
           title={t('understood', 'I Understand')} 
-          onPress={() => navigation.goBack()} 
+          onPress={() => navigation.navigate('TrustedContactsScreen')} 
         />
       </View>
     </View>
