@@ -8,29 +8,29 @@
   "slides": {
     "verified": {
       "title": "Verified Members",
-      "body": "Our community is built on trust. Every member undergoes a rigorous identity verification process to ensure a secure, elite environment."
+      "body": "Our community is built on trust. Every member undergoes a rigorous identity verification process to ensure a secure and friendly environment for everyone."
     },
     "public": {
-      "title": "Public-Only Experiences",
-      "body": "All first-time sessions are hosted exclusively in curated, high-traffic venues including boutique lounges and luxury hotel lobbies."
+      "title": "Public-Only Meetups",
+      "body": "For your safety, all meetups must take place in public places such as Cafes, Restaurants, Malls, or Parks. Meetups at hotels or private residences are strictly prohibited."
     },
     "live": {
-      "title": "Live Safety Protection",
-      "body": "Our concierge team monitors active sessions in real-time, providing a discreet layer of protection and instant assistance if needed."
+      "title": "Safety Features",
+      "body": "Use our in-app safety tools to share your live location and meetup details with trusted friends or family members while you hang out."
     },
     "community": {
       "title": "Respectful Community",
-      "body": "CoBuddy operates on mutual respect and hospitality. Our strict community standards ensure every interaction is refined and professional."
+      "body": "CoBuddy operates on mutual respect. Our strict community guidelines ensure every interaction is polite, friendly, and comfortable for all."
     }
   },
   "modal": {
-    "title": "Safety Ecosystem",
+    "title": "Safety Guidelines",
     "btn_understood": "UNDERSTOOD",
-    "identity_label": "IDENTITY ASSURANCE",
-    "identity_text": "All members are required to upload government-issued identification which is cross-referenced with global security databases.",
+    "identity_label": "IDENTITY VERIFICATION",
+    "identity_text": "All members are required to complete a profile verification step to keep our platform authentic and secure.",
     "contacts_label": "TRUSTED CONTACTS",
-    "contacts_text": "Optionally share your session details and live location with your personal emergency contacts through the app's Guardian feature.",
-    "verified_label": "VERIFIED DESTINATIONS",
-    "verified_text": "Our concierge team personally vets every venue in our catalog to ensure they meet our criteria for visibility, professional staffing, and atmosphere."
+    "contacts_text": "You can easily share your session details and live location with your personal emergency contacts directly through the app.",
+    "verified_label": "PUBLIC DESTINATIONS",
+    "verified_text": "We strictly enforce a public-places-only rule. Meetups must always happen in visible, high-traffic areas like cafes or malls to ensure everyone's comfort."
   }
 }

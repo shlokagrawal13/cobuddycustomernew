@@ -13,6 +13,16 @@ import onboardingInterests from './locales/en/onboarding/interests.json';
 import onboardingSafety from './locales/en/onboarding/safety.json';
 import onboardingContacts from './locales/en/onboarding/contacts.json';
 
+// Main App Namespaces
+import home from './locales/en/home.json';
+import discover from './locales/en/discover.json';
+import companionProfile from './locales/en/companionProfile.json';
+import booking from './locales/en/booking.json';
+import chat from './locales/en/chat.json';
+import safety from './locales/en/safety.json';
+import profile from './locales/en/profile.json';
+import systemStates from './locales/en/systemStates.json';
+
 const resources = {
   en: {
     common,
@@ -29,7 +39,15 @@ const resources = {
       interests: onboardingInterests,
       safety: onboardingSafety,
       contacts: onboardingContacts
-    }
+    },
+    home,
+    discover,
+    companionProfile,
+    booking,
+    chat,
+    safety,
+    profile,
+    systemStates
   }
 };
 
