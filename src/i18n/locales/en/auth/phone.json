@@ -1,0 +1,11 @@
+{
+  "title": "Enter Your\nPhone Number",
+  "subtitle": "We'll send a one-time code to verify your identity securely.",
+  "label_mobile": "MOBILE NUMBER",
+  "placeholder": "000 000 0000",
+  "trust_note": "Your number is encrypted and never shared with third parties.",
+  "btn_send": "Send Verification Code",
+  "error_invalid": "Please enter a valid phone number for this country.",
+  "header": "Secure Access",
+  "overline": "IDENTITY VERIFICATION"
+}

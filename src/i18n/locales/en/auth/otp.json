@@ -1,0 +1,14 @@
+{
+  "title": "Enter Your Code",
+  "subtitle": "A 6-digit code was sent to\n",
+  "resend_in": "Resend in ",
+  "resend_btn": "Resend verification code",
+  "resend_active": "Sending...",
+  "trust_note": "This code expires in 10 minutes and can only be used once.",
+  "dev_hint": "Dev mode: Use code 123456 to proceed",
+  "btn_verify": "Verify Code",
+  "btn_change": "Change phone number",
+  "header": "Verify Identity",
+  "overline": "SECURE HANDSHAKE",
+  "error_invalid": "Invalid OTP code. Please try again."
+}

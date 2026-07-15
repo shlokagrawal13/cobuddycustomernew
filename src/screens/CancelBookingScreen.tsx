@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../theme';
 
 export const CancelBookingScreen = () => {
-  const { t } = useTranslation(['common']);
+  const { t } = useTranslation(['onboarding']);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{t('CancelBookingScreen', 'CancelBookingScreen Placeholder')}</Text>

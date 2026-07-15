@@ -15,11 +15,9 @@ import { RootNavigator } from './src/navigation/RootNavigator';
 import './src/i18n';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
-
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
       <NavigationContainer>
         <RootNavigator />
       </NavigationContainer>

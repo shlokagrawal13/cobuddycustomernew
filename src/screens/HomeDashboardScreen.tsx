@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../theme';
 
 export const HomeDashboardScreen = () => {
-  const { t } = useTranslation(['common']);
+  const { t } = useTranslation(['onboarding']);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{t('HomeDashboardScreen', 'HomeDashboardScreen Placeholder')}</Text>

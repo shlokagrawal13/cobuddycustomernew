@@ -1,102 +1,188 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { useTranslation } from 'react-i18next';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import { theme } from '../theme';
 import { Button } from '../components/ui/Button';
+import { BottomActionBar } from '../components/ui/BottomActionBar';
+import { OnboardingHeader } from '../components/onboarding/OnboardingHeader';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import { useTranslation } from 'react-i18next';
 
 const INTERESTS = [
-  'Movies', 'Music', 'Travel', 'Sports', 'Gaming',
-  'Food', 'Art', 'Reading', 'Photography', 'Fitness',
-  'Technology', 'Fashion', 'History', 'Nature'
+  { id: 'cafe', label: 'Cafe Meetup', icon: 'coffee-outline' },
+  { id: 'movie', label: 'Movie Companion', icon: 'movie-open-outline' },
+  { id: 'tour', label: 'Local Tour', icon: 'map-marker-path' },
+  { id: 'event', label: 'Event Partner', icon: 'ticket-confirmation-outline' },
+  { id: 'gym', label: 'Gym Buddy', icon: 'weight-lifter' },
+  { id: 'shopping', label: 'Shopping Assistant', icon: 'shopping-outline' },
+  { id: 'dining', label: 'Fine Dining', icon: 'silverware-fork-knife' },
+  { id: 'art', label: 'Art Gallery', icon: 'palette-outline' },
+  { id: 'network', label: 'Networking', icon: 'handshake-outline' },
+  { id: 'wellness', label: 'Yoga & Wellness', icon: 'yoga' },
+  { id: 'language', label: 'Language Exchange', icon: 'earth' },
+  { id: 'music', label: 'Live Concerts', icon: 'music-note-outline' },
 ];
 
-export const InterestSelectionScreen = ({ navigation }: any) => {
-  const { t } = useTranslation(['onboarding']);
-  const [selected, setSelected] = useState<string[]>([]);
+const MIN_SELECT = 3;
+const MAX_SELECT = 10;
 
-  const toggleInterest = (interest: string) => {
-    setSelected(prev => 
-      prev.includes(interest) ? prev.filter(i => i !== interest) : [...prev, interest]
-    );
+export const InterestSelectionScreen = () => {
+  const navigation = useNavigation<any>();
+  const { t } = useTranslation(['onboarding']);
+  const [selected, setSelected] = useState<Set<string>>(new Set(['coffee', 'art', 'wellness']));
+
+  const toggle = (id: string) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) { next.delete(id); }
+      else if (next.size < MAX_SELECT) { next.add(id); }
+      return next;
+    });
   };
 
+  const count = selected.size;
+  const isValid = count >= MIN_SELECT;
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{t('selectInterests', 'What are your interests?')}</Text>
-      <Text style={styles.subtitle}>{t('selectInterestsSub', 'Choose at least 3 to find better matches.')}</Text>
-      
-      <ScrollView contentContainerStyle={styles.grid}>
-        {INTERESTS.map(interest => {
-          const isSelected = selected.includes(interest);
-          return (
-            <TouchableOpacity 
-              key={interest} 
-              style={[styles.chip, isSelected && styles.chipSelected]}
-              onPress={() => toggleInterest(interest)}
-            >
-              <Text style={[styles.chipText, isSelected && styles.chipTextSelected]}>
-                {interest}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+    <SafeAreaView style={styles.container} edges={['top', 'bottom', 'left', 'right']}>
+      <OnboardingHeader
+        showBack={navigation.canGoBack()}
+        onBack={() => navigation.goBack()}
+        centerLabel={t('interests.header')}
+        showProgress
+        currentStep={3}
+        totalSteps={5}
+      />
+
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}>
+
+        {/* Headline */}
+        <Text style={styles.headline}>{t('interests.title')}</Text>
+        <Text style={styles.subheadline}>
+          {t('interests.subtitle')}
+        </Text>
+
+        {/* Interest grid — 2 columns */}
+        <View style={styles.grid}>
+          {INTERESTS.map(item => {
+            const active = selected.has(item.id);
+            return (
+              <TouchableOpacity
+                key={item.id}
+                style={[styles.tile, active && styles.tileActive]}
+                onPress={() => toggle(item.id)}
+                activeOpacity={0.8}>
+                <View style={[styles.tileIconWrap, active && styles.tileIconWrapActive]}>
+                  <Icon name={item.icon} size={22} color={active ? theme.colors.primary : theme.colors.textSecondary} />
+                </View>
+                <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>
+                  {item.label}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+
+        {/* Footer counter */}
+        <View style={styles.footer}>
+          <View style={styles.footerInfo}>
+            <Icon name="information-outline" size={16} color={theme.colors.primary} />
+            <Text style={styles.footerInfoText}>
+              {t('interests.footer_info', { min: MIN_SELECT, count: count })}
+            </Text>
+          </View>
+          <Text style={styles.footerMax}>{t('interests.footer_max', { max: MAX_SELECT })}</Text>
+        </View>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <Button 
-          title={t('continue', 'Continue')} 
-          disabled={selected.length < 3}
-          onPress={() => navigation.navigate('SafetyTutorialScreen')} 
+      <BottomActionBar>
+        <Button
+          title={t('interests.btn_continue')}
+          onPress={() => {
+            navigation.navigate('SafetyTutorialScreen');
+          }}
+          disabled={!isValid}
         />
-      </View>
-    </View>
+      </BottomActionBar>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.colors.background,
-    padding: theme.spacing.md,
-  },
-  title: {
-    fontSize: theme.typography.sizes.h2,
+  container: { flex: 1, backgroundColor: theme.colors.background },
+  scroll: { flex: 1 },
+  scrollContent: { paddingHorizontal: 20, paddingTop: 24, paddingBottom: 20 },
+
+  headline: {
+    fontSize: 28,
     color: theme.colors.textPrimary,
+    lineHeight: 36,
+    letterSpacing: -0.3,
+    textAlign: 'center',
+    marginBottom: 10,
     fontWeight: 'bold',
-    marginBottom: theme.spacing.xs,
   },
-  subtitle: {
-    fontSize: theme.typography.sizes.body,
+  subheadline: {
+    fontSize: 16,
     color: theme.colors.textSecondary,
-    marginBottom: theme.spacing.lg,
+    lineHeight: 25,
+    textAlign: 'center',
+    marginBottom: 24,
   },
-  grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: theme.spacing.sm,
-  },
-  chip: {
-    paddingVertical: theme.spacing.sm,
-    paddingHorizontal: theme.spacing.md,
-    borderRadius: theme.borders.radius.full,
+
+  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 14, marginBottom: 20 },
+  tile: {
+    width: '47%',
+    backgroundColor: theme.colors.surface,
+    borderRadius: 24,
     borderWidth: 1,
     borderColor: theme.colors.border,
-    backgroundColor: theme.colors.surface,
+    padding: 20,
+    alignItems: 'center',
+    gap: 10,
   },
-  chipSelected: {
-    backgroundColor: theme.colors.primary,
-    borderColor: theme.colors.primary,
+  tileActive: {
+    borderColor: 'rgba(212,175,55,0.8)',
+    backgroundColor: 'rgba(212,175,55,0.08)',
   },
-  chipText: {
-    color: theme.colors.textPrimary,
-    fontSize: theme.typography.sizes.body,
+  tileIconWrap: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  chipTextSelected: {
-    color: theme.colors.surface,
-    fontWeight: 'bold',
+  tileIconWrapActive: {},
+  tileLabel: {
+    fontSize: 11,
+    letterSpacing: 1.5,
+    color: theme.colors.textSecondary,
+    fontWeight: '600',
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
-  footer: {
-    marginTop: 'auto',
-    paddingVertical: theme.spacing.md,
-  }
+  tileLabelActive: { color: theme.colors.primary },
+
+  footer: { alignItems: 'center', gap: 6, marginBottom: 14 },
+  footerInfo: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  footerInfoText: { fontSize: 14, color: theme.colors.textSecondary },
+  footerMax: {
+    fontSize: 10,
+    letterSpacing: 2,
+    color: theme.colors.textSecondary,
+    opacity: 0.4,
+    textTransform: 'uppercase',
+  },
 });

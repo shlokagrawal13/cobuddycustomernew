@@ -1,0 +1,11 @@
+{
+  "header": "Your Preferences",
+  "step": "STEP 2 OF 4",
+  "title": "What Do You Enjoy?",
+  "subtitle": "Select the activities you'd love to share with a companion or explore through a concierge.",
+  "search": "Search interests...",
+  "footer_info": "Choose at least {{min}} interests. ({{count}} selected)",
+  "footer_max": "MAXIMUM {{max}} SELECTIONS ALLOWED",
+  "cue": "Your preferences help personalize trusted experiences and recommendations.",
+  "btn_continue": "CONTINUE"
+}

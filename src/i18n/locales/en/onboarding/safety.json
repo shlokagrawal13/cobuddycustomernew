@@ -1,0 +1,36 @@
+{
+  "header": "Safety Check",
+  "step": "STEP 3 OF 4",
+  "btn_skip": "SKIP",
+  "btn_finish": "FINISH TUTORIAL",
+  "btn_next": "NEXT",
+  "btn_learn_more": "LEARN MORE",
+  "slides": {
+    "verified": {
+      "title": "Verified Members",
+      "body": "Our community is built on trust. Every member undergoes a rigorous identity verification process to ensure a secure, elite environment."
+    },
+    "public": {
+      "title": "Public-Only Experiences",
+      "body": "All first-time sessions are hosted exclusively in curated, high-traffic venues including boutique lounges and luxury hotel lobbies."
+    },
+    "live": {
+      "title": "Live Safety Protection",
+      "body": "Our concierge team monitors active sessions in real-time, providing a discreet layer of protection and instant assistance if needed."
+    },
+    "community": {
+      "title": "Respectful Community",
+      "body": "CoBuddy operates on mutual respect and hospitality. Our strict community standards ensure every interaction is refined and professional."
+    }
+  },
+  "modal": {
+    "title": "Safety Ecosystem",
+    "btn_understood": "UNDERSTOOD",
+    "identity_label": "IDENTITY ASSURANCE",
+    "identity_text": "All members are required to upload government-issued identification which is cross-referenced with global security databases.",
+    "contacts_label": "TRUSTED CONTACTS",
+    "contacts_text": "Optionally share your session details and live location with your personal emergency contacts through the app's Guardian feature.",
+    "verified_label": "VERIFIED DESTINATIONS",
+    "verified_text": "Our concierge team personally vets every venue in our catalog to ensure they meet our criteria for visibility, professional staffing, and atmosphere."
+  }
+}

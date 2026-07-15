@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../theme';
 
 export const NetworkErrorScreen = () => {
-  const { t } = useTranslation(['common']);
+  const { t } = useTranslation(['onboarding']);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{t('NetworkErrorScreen', 'NetworkErrorScreen Placeholder')}</Text>

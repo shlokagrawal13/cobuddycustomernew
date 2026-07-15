@@ -1,0 +1,18 @@
+{
+  "header": "Trusted Contacts",
+  "btn_skip": "Skip",
+  "title": "Safety Guardian",
+  "subtitle": "Add someone you trust. They'll receive an SMS with your live location if you trigger an SOS.",
+  "btn_add": "Add Another Contact",
+  "privacy": "Contacts are only notified during an active emergency.",
+  "btn_complete": "Complete Setup",
+  "sheet_title": "Add Trusted Contact",
+  "label_name": "Full Name",
+  "placeholder_name": "e.g. Aman",
+  "label_phone": "Phone Number",
+  "placeholder_phone": "e.g. 98765 43210",
+  "label_rel": "Relationship",
+  "btn_save": "Save Contact",
+  "error_name": "Please enter a valid name (min 2 chars).",
+  "error_phone": "Please enter a valid phone number."
+}
