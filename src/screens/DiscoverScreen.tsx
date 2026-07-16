@@ -13,24 +13,30 @@ const DUMMY_COMPANIONS = [
     id: 'c1',
     name: 'Sarah',
     photoUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
-    specialty: 'Conversation & Local Tours',
+    activities: ['Coffee', 'City Tours', 'Conversation'],
     trustScore: 98,
+    distance: '2.5 km away',
+    availability: 'Available Today',
     category: 'conversation',
   },
   {
     id: 'c2',
     name: 'Michael',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
-    specialty: 'Movie Buff & Events',
+    activities: ['Movies', 'Events', 'Study'],
     trustScore: 95,
+    distance: '4.0 km away',
+    availability: 'Available Tomorrow',
     category: 'movie',
   },
   {
     id: 'c3',
     name: 'Priya',
     photoUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400',
-    specialty: 'Coffee Meetups & Study',
+    activities: ['Coffee', 'Study Buddy'],
     trustScore: 99,
+    distance: '1.2 km away',
+    availability: 'Available Now',
     category: 'coffee',
   },
 ];
@@ -64,7 +70,7 @@ export const DiscoverScreen = () => {
 
   const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
     const matchesSearch = c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          c.specialty.toLowerCase().includes(searchQuery.toLowerCase());
+                          c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesCategory = activeCategory ? c.category === activeCategory : true;
     return matchesSearch && matchesCategory;
   });
