@@ -1,3 +1,14 @@
 {
-  "bookNow": "Book Now"
+  "sections": {
+    "about": "About Me",
+    "activities": "Activities Offered",
+    "reviews": "Reviews"
+  },
+  "badges": {
+    "id_verified": "ID Verified",
+    "background_checked": "Background Checked"
+  },
+  "trust_score": "Trust Score",
+  "trust_score_info": "This score is based on ID verification, user reviews, and successful public meetups.",
+  "btn_request": "Request Booking"
 }

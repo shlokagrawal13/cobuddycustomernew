@@ -1,4 +1,17 @@
 {
-  "greeting": "Welcome to CoBuddy",
-  "emptyCategories": "No activities currently available in your city."
+  "greeting": "Hi, {{name}}!",
+  "greeting_fallback": "Good Morning!",
+  "sections": {
+    "activities": "Explore Activities",
+    "featured": "Featured Companions"
+  },
+  "activities": {
+    "coffee": "Coffee Meetup",
+    "movie": "Movie Companion",
+    "study": "Study Buddy",
+    "event": "Event Partner",
+    "city": "City Exploration",
+    "conversation": "Conversation Session"
+  },
+  "empty_featured": "We are looking for great companions near you. Check back soon!"
 }

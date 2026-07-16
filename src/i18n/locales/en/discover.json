@@ -1,4 +1,14 @@
 {
-  "searchPlaceholder": "Search for companions...",
-  "emptyList": "No companions found matching these exact filters. Try broadening your search."
+  "header": "Discover",
+  "search_placeholder": "Search by name or specialty...",
+  "filters": {
+    "activity": "Activity Type",
+    "distance": "Distance",
+    "language": "Language"
+  },
+  "empty_state": {
+    "title": "No Matches Found",
+    "message": "We couldn't find any companions matching your current filters. Try adjusting your search to see more results.",
+    "btn_clear": "CLEAR FILTERS"
+  }
 }
