@@ -56,6 +56,19 @@ i18n.use(initReactI18next).init({
   lng: 'en',
   fallbackLng: 'en',
   defaultNS: 'common',
+  ns: [
+    'common',
+    'auth',
+    'onboarding',
+    'home',
+    'discover',
+    'companionProfile',
+    'booking',
+    'chat',
+    'safety',
+    'profile',
+    'systemStates'
+  ],
   interpolation: {
     escapeValue: false
   }
