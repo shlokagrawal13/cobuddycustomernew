@@ -66,38 +66,50 @@ const MODAL_CATEGORIES = [
   { id: 'city', label: 'City Walk' },
 ];
 const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
-const RATING_OPTIONS = ['Any', '4.0+', '4.5+'];
-const DISTANCE_OPTIONS = ['Any', '< 5 km', '< 10 km'];
+const RATING_PILLS = [3.0, 4.0, 4.5, 5.0];
+const PRICE_PILLS = [500, 1000, 1500, 2000];
+const DISTANCE_PILLS = [5, 10, 20, 50];
 
 // --- Custom Slider Component ---
-const CustomSlider = ({ value, onValueChange, min, max, step }: any) => {
+const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffix = '' }: any) => {
   const [width, setWidth] = useState(1);
+  const [localVal, setLocalVal] = useState(value);
 
-  const updateValue = (e: any) => {
+  // Sync with parent when value changes via pills
+  useEffect(() => {
+    setLocalVal(value);
+  }, [value]);
+
+  const updateValue = (e: any, isRelease = false) => {
     const x = e.nativeEvent.locationX;
     let percent = x / width;
     if (percent < 0) percent = 0;
     if (percent > 1) percent = 1;
     const rawVal = min + percent * (max - min);
     const stepped = Math.round(rawVal / step) * step;
-    onValueChange(stepped);
+    
+    setLocalVal(stepped);
+    
+    if (isRelease) {
+      onValueChange(stepped);
+    }
   };
 
-  const percentage = (value - min) / (max - min);
+  const percentage = (localVal - min) / (max - min);
 
   return (
     <View style={styles.sliderContainer}>
       <View style={styles.sliderLabelsRow}>
-        <Text style={styles.sliderLabelMinMax}>₹{min}</Text>
-        <Text style={styles.sliderLabelValue}>Up to ₹{value} /hr</Text>
-        <Text style={styles.sliderLabelMinMax}>₹{max}</Text>
+        <Text style={styles.sliderLabelMinMax}>{prefix}{min}{suffix}</Text>
+        <Text style={styles.sliderLabelValue}>Up to {prefix}{localVal}{suffix}</Text>
+        <Text style={styles.sliderLabelMinMax}>{prefix}{max}{suffix}</Text>
       </View>
       <View 
         style={styles.sliderTrackContainer} 
         onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
         onStartShouldSetResponder={() => true}
-        onResponderMove={updateValue}
-        onResponderGrant={updateValue}
+        onResponderMove={(e) => updateValue(e, false)}
+        onResponderRelease={(e) => updateValue(e, true)}
       >
         <View pointerEvents="none" style={styles.sliderTrack} />
         <View pointerEvents="none" style={[styles.sliderTrackActive, { width: `${percentage * 100}%` }]} />
@@ -119,9 +131,9 @@ export const DiscoverScreen = () => {
   // Advanced Filters State
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filterGender, setFilterGender] = useState('Any');
-  const [filterRating, setFilterRating] = useState('Any');
+  const [filterRating, setFilterRating] = useState(4.0);
   const [filterMaxPrice, setFilterMaxPrice] = useState(2000);
-  const [filterDistance, setFilterDistance] = useState('Any');
+  const [filterDistance, setFilterDistance] = useState(50);
   
   const [loading, setLoading] = useState(true);
 
@@ -167,8 +179,7 @@ export const DiscoverScreen = () => {
     if (filterGender !== 'Any') matchesGender = c.gender === filterGender;
     
     let matchesRating = true;
-    if (filterRating === '4.0+') matchesRating = c.rating >= 4.0;
-    if (filterRating === '4.5+') matchesRating = c.rating >= 4.5;
+    matchesRating = c.rating >= filterRating;
 
     let matchesPrice = true;
     const rateValue = parseInt(c.rate.replace(/\D/g, ''), 10);
@@ -176,8 +187,7 @@ export const DiscoverScreen = () => {
 
     let matchesDistance = true;
     const distValue = parseFloat(c.distance);
-    if (filterDistance === '< 5 km') matchesDistance = distValue < 5.0;
-    if (filterDistance === '< 10 km') matchesDistance = distValue < 10.0;
+    matchesDistance = distValue <= filterDistance;
     
     return matchesSearch && matchesStatus && matchesGender && matchesRating && matchesPrice && matchesDistance;
   });
@@ -185,9 +195,9 @@ export const DiscoverScreen = () => {
   const clearAllFilters = () => {
     setSearchQuery('');
     setFilterGender('Any');
-    setFilterRating('Any');
+    setFilterRating(3.0);
     setFilterMaxPrice(2000);
-    setFilterDistance('Any');
+    setFilterDistance(50);
     setActiveStatus('All');
     setIsFilterVisible(false);
   };
@@ -202,7 +212,7 @@ export const DiscoverScreen = () => {
           <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
-            {(filterGender !== 'Any' || filterRating !== 'Any' || filterMaxPrice < 2000 || filterDistance !== 'Any') && (
+            {(filterGender !== 'Any' || filterRating > 4.0 || filterMaxPrice < 2000 || filterDistance < 50) && (
               <View style={styles.filterBadge} />
             )}
           </TouchableOpacity>
@@ -345,55 +355,76 @@ export const DiscoverScreen = () => {
 
               {/* Price Range Slider */}
               <Text style={styles.modalSectionTitle}>Maximum Hourly Rate</Text>
+              <View style={styles.modalOptionsGrid}>
+                {PRICE_PILLS.map((p) => (
+                  <TouchableOpacity 
+                    key={p} 
+                    style={[styles.modalOptionBtn, filterMaxPrice === p && styles.modalOptionBtnActive]}
+                    onPress={() => setFilterMaxPrice(p)}
+                  >
+                    <Text style={[styles.modalOptionText, filterMaxPrice === p && styles.modalOptionTextActive]}>
+                      ₹{p}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
               <CustomSlider 
                 value={filterMaxPrice} 
                 onValueChange={setFilterMaxPrice} 
                 min={200} 
                 max={2000} 
                 step={50} 
+                prefix="₹"
+                suffix=" /hr"
               />
 
-              {/* Rating */}
+              {/* Rating Slider */}
               <Text style={styles.modalSectionTitle}>Minimum Rating</Text>
               <View style={styles.modalOptionsGrid}>
-                {RATING_OPTIONS.map((r) => (
+                {RATING_PILLS.map((r) => (
                   <TouchableOpacity 
                     key={r} 
-                    style={[
-                      styles.modalOptionBtn,
-                      filterRating === r && styles.modalOptionBtnActive
-                    ]}
+                    style={[styles.modalOptionBtn, filterRating === r && styles.modalOptionBtnActive]}
                     onPress={() => setFilterRating(r)}
                   >
-                    <Text style={[
-                      styles.modalOptionText,
-                      filterRating === r && styles.modalOptionTextActive
-                    ]}>
-                      {r} {r !== 'Any' && <Icon name="star" size={14} color={filterRating === r ? theme.colors.primary : theme.colors.textSecondary} />}
+                    <Text style={[styles.modalOptionText, filterRating === r && styles.modalOptionTextActive]}>
+                      {r}+ ⭐
                     </Text>
                   </TouchableOpacity>
                 ))}
               </View>
+              <CustomSlider 
+                value={filterRating} 
+                onValueChange={setFilterRating} 
+                min={1.0} 
+                max={5.0} 
+                step={0.1}
+                suffix=" ⭐" 
+              />
 
-              {/* Distance */}
-              <Text style={styles.modalSectionTitle}>Distance</Text>
+              {/* Distance Slider */}
+              <Text style={styles.modalSectionTitle}>Maximum Distance</Text>
               <View style={styles.modalOptionsGrid}>
-                {DISTANCE_OPTIONS.map((d) => (
+                {DISTANCE_PILLS.map((d) => (
                   <TouchableOpacity 
                     key={d} 
-                    style={[
-                      styles.modalOptionBtn,
-                      filterDistance === d && styles.modalOptionBtnActive
-                    ]}
+                    style={[styles.modalOptionBtn, filterDistance === d && styles.modalOptionBtnActive]}
                     onPress={() => setFilterDistance(d)}
                   >
-                    <Text style={[
-                      styles.modalOptionText,
-                      filterDistance === d && styles.modalOptionTextActive
-                    ]}>{d}</Text>
+                    <Text style={[styles.modalOptionText, filterDistance === d && styles.modalOptionTextActive]}>
+                      {d} km
+                    </Text>
                   </TouchableOpacity>
                 ))}
               </View>
+              <CustomSlider 
+                value={filterDistance} 
+                onValueChange={setFilterDistance} 
+                min={1} 
+                max={50} 
+                step={1} 
+                suffix=" km"
+              />
             </ScrollView>
 
             {/* Bottom Actions */}
