@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Modal, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
 import { CompanionCard } from '../components/ui/CompanionCard';
-import { SkeletonLoader } from '../components/ui/SkeletonLoader';
 
 const DUMMY_COMPANIONS = [
   {
@@ -56,19 +55,35 @@ const DUMMY_COMPANIONS = [
   },
 ];
 
+const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
+const MODAL_CATEGORIES = [
+  { id: 'coffee', label: 'Coffee Meetups' },
+  { id: 'movie', label: 'Movie Buffs' },
+  { id: 'study', label: 'Study Buddy' },
+  { id: 'city', label: 'City Walk' },
+];
+
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   
-  const initialCategory = route.params?.category || null;
-  const [activeCategory, setActiveCategory] = useState<string | null>(initialCategory);
+  const [activeStatus, setActiveStatus] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
 
+  // Sync navigation params to search bar
   useEffect(() => {
-    if (route.params?.category) {
-      setActiveCategory(route.params.category);
+    const initialCategory = route.params?.category;
+    if (initialCategory) {
+      // Find the label for the category ID to put in the search bar
+      const cat = MODAL_CATEGORIES.find(c => c.id === initialCategory);
+      if (cat) {
+        setSearchQuery(cat.label);
+      } else {
+        setSearchQuery(initialCategory);
+      }
     }
   }, [route.params?.category]);
 
@@ -78,14 +93,26 @@ export const DiscoverScreen = () => {
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, [activeCategory, searchQuery]);
+  }, [activeStatus, searchQuery]);
 
   const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
-    const matchesSearch = c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = searchQuery === '' || 
+                          c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesCategory = activeCategory ? c.category === activeCategory : true;
-    return matchesSearch && matchesCategory;
+    
+    // Simple mock logic for status filters
+    let matchesStatus = true;
+    if (activeStatus === 'Available Today') matchesStatus = c.isOnline === true;
+    if (activeStatus === 'Top Rated') matchesStatus = c.rating >= 4.95;
+    // Nearby would normally check distance logic
+    
+    return matchesSearch && matchesStatus;
   });
+
+  const handleSelectCategory = (label: string) => {
+    setSearchQuery(label);
+    setIsFilterVisible(false);
+  };
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -94,7 +121,7 @@ export const DiscoverScreen = () => {
       <View style={styles.header}>
         <View style={styles.headerTop}>
           <Text style={styles.headerTitle}>Discover</Text>
-          <TouchableOpacity style={styles.filterBtn}>
+          <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
         </View>
@@ -116,69 +143,110 @@ export const DiscoverScreen = () => {
           )}
         </View>
 
-        {/* Status Indicator */}
+        {/* Quick Status Filters */}
         <View style={styles.statusRow}>
           <View style={styles.statusDot} />
-          <Text style={styles.statusText}>{t('status', { count: filteredCompanions.length })}</Text>
+          <Text style={styles.statusText}>
+            {filteredCompanions.length} companions available now
+          </Text>
+        </View>
+
+        <View style={styles.filtersWrapper}>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={FILTER_STATUS}
+            keyExtractor={item => item}
+            contentContainerStyle={styles.filtersList}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={[
+                  styles.filterPill,
+                  activeStatus === item && styles.filterPillActive
+                ]}
+                onPress={() => setActiveStatus(item)}
+              >
+                <Text
+                  style={[
+                    styles.filterPillText,
+                    activeStatus === item && styles.filterPillTextActive
+                  ]}
+                >
+                  {item}
+                </Text>
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+        <View style={styles.infoBar}>
+          <Text style={styles.infoBarText}>
+            Filter: {activeStatus} | Showing: {filteredCompanions.length} of {DUMMY_COMPANIONS.length}
+          </Text>
         </View>
       </View>
 
-      {/* Filter Pills (Solid Design) */}
-      <View style={styles.filtersWrapper}>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.filtersScroll}>
-          <TouchableOpacity 
-            style={[styles.pillBtn, !activeCategory && styles.pillBtnActive]}
-            onPress={() => setActiveCategory(null)}
-          >
-            <Text style={[styles.pillBtnText, !activeCategory && styles.pillBtnTextActive]}>
-              {t('filters.all')}
-            </Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.pillBtn}>
-            <Text style={styles.pillBtnText}>{t('filters.available')}</Text>
-          </TouchableOpacity>
+      {/* Content */}
+      <FlatList
+        data={filteredCompanions}
+        keyExtractor={item => item.id}
+        contentContainerStyle={styles.listContent}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => (
+          <CompanionCard
+            {...item}
+            onPress={(id) => navigation.navigate('CompanionProfileScreen', { id })}
+          />
+        )}
+        ListEmptyComponent={() => (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>{t('no_results')}</Text>
+          </View>
+        )}
+      />
 
-          <TouchableOpacity style={styles.pillBtn}>
-            <Text style={styles.pillBtnText}>{t('filters.top_rated')}</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.pillBtn}>
-            <Text style={styles.pillBtnText}>{t('filters.nearby')}</Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </View>
+      {/* Filter Modal */}
+      <Modal
+        visible={isFilterVisible}
+        transparent={true}
+        animationType="slide"
+        onRequestClose={() => setIsFilterVisible(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <Pressable style={styles.modalBackdrop} onPress={() => setIsFilterVisible(false)} />
+          <View style={styles.modalContent}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Filters</Text>
+              <TouchableOpacity onPress={() => setIsFilterVisible(false)}>
+                <Icon name="close" size={24} color={theme.colors.textPrimary} />
+              </TouchableOpacity>
+            </View>
+            
+            <Text style={styles.modalSectionTitle}>Activity Types</Text>
+            <View style={styles.modalCategories}>
+              {MODAL_CATEGORIES.map((cat) => (
+                <TouchableOpacity 
+                  key={cat.id} 
+                  style={[
+                    styles.modalCatBtn,
+                    searchQuery === cat.label && styles.modalCatBtnActive
+                  ]}
+                  onPress={() => handleSelectCategory(cat.label)}
+                >
+                  <Text style={[
+                    styles.modalCatText,
+                    searchQuery === cat.label && styles.modalCatTextActive
+                  ]}>{cat.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
 
-      {/* Info Bar */}
-      <View style={styles.infoBar}>
-        <Text style={styles.infoBarText}>
-          {t('list_info', { filter: activeCategory ? activeCategory.toUpperCase() : 'ALL', count: filteredCompanions.length, total: DUMMY_COMPANIONS.length })}
-        </Text>
-      </View>
+            {/* Placeholder for future filters */}
+            <Text style={styles.modalSectionTitle}>Price Range (Hourly)</Text>
+            <Text style={styles.modalPlaceholderText}>Pricing filters coming soon...</Text>
+          </View>
+        </View>
+      </Modal>
 
-      {/* Results List */}
-      {loading ? (
-        <ScrollView contentContainerStyle={styles.listContent}>
-          <SkeletonLoader height={200} borderRadius={16} style={{ marginBottom: 16 }} />
-          <SkeletonLoader height={200} borderRadius={16} style={{ marginBottom: 16 }} />
-        </ScrollView>
-      ) : (
-        <FlatList
-          data={filteredCompanions}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.listContent}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <CompanionCard
-              {...item}
-              onPress={(id) => navigation.navigate('DiscoverTab', {
-                screen: 'CompanionProfileScreen',
-                params: { id }
-              })}
-            />
-          )}
-        />
-      )}
     </SafeAreaView>
   );
 };
@@ -189,23 +257,17 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.background,
   },
   header: {
-    paddingHorizontal: 20,
-    paddingTop: 10,
-    paddingBottom: 16,
+    paddingHorizontal: 16,
+    paddingTop: 12,
+    backgroundColor: theme.colors.background,
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.border,
   },
   headerTop: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 16,
-  },
-  backBtn: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: theme.colors.surface,
-    justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 16,
   },
   headerTitle: {
     fontSize: 28,
@@ -242,56 +304,140 @@ const styles = StyleSheet.create({
   statusRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    marginBottom: 16,
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 8,
+    alignSelf: 'flex-start',
   },
   statusDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
     backgroundColor: theme.colors.success,
+    marginRight: 8,
   },
   statusText: {
-    fontSize: 15,
+    fontSize: 12,
     color: theme.colors.success,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
   filtersWrapper: {
-    marginBottom: 16,
+    marginBottom: 12,
   },
-  filtersScroll: {
-    paddingHorizontal: 20,
-    gap: 12,
+  filtersList: {
+    paddingRight: 16,
+    gap: 8,
   },
-  pillBtn: {
+  filterPill: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
     backgroundColor: theme.colors.surface,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
   },
-  pillBtnActive: {
+  filterPillActive: {
     backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.primary,
   },
-  pillBtnText: {
-    color: theme.colors.textSecondary,
+  filterPillText: {
     fontSize: 14,
+    color: theme.colors.textSecondary,
+    fontWeight: '500',
+  },
+  filterPillTextActive: {
+    color: theme.colors.background,
     fontWeight: 'bold',
   },
-  pillBtnTextActive: {
-    color: theme.colors.background,
-  },
   infoBar: {
-    paddingHorizontal: 20,
-    marginBottom: 16,
+    paddingVertical: 12,
+    borderTopWidth: 1,
+    borderTopColor: theme.colors.border,
   },
   infoBarText: {
     fontSize: 12,
-    color: theme.colors.primary,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
+    color: theme.colors.textSecondary,
   },
   listContent: {
-    paddingHorizontal: 20,
-    paddingBottom: 40,
-    flexGrow: 1,
+    padding: 16,
   },
+  emptyContainer: {
+    padding: 40,
+    alignItems: 'center',
+  },
+  emptyText: {
+    color: theme.colors.textSecondary,
+    fontSize: 16,
+  },
+  
+  // Modal Styles
+  modalOverlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  modalBackdrop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContent: {
+    backgroundColor: theme.colors.surface,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 24,
+    minHeight: '40%',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
+  modalSectionTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+    marginBottom: 16,
+    marginTop: 8,
+  },
+  modalCategories: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  modalCatBtn: {
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 12,
+    backgroundColor: theme.colors.background,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+  },
+  modalCatBtnActive: {
+    backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.primary,
+  },
+  modalCatText: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+  },
+  modalCatTextActive: {
+    color: theme.colors.background,
+    fontWeight: 'bold',
+  },
+  modalPlaceholderText: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+    fontStyle: 'italic',
+  }
 });

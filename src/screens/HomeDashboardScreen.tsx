@@ -39,10 +39,10 @@ const DUMMY_FEATURED = [
 ];
 
 const EXPLORE_CATEGORIES = [
-  { id: 'cat1', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
-  { id: 'cat2', title: 'Movie Buffs', icon: 'movie', color: '#E11D48' },
-  { id: 'cat3', title: 'City Walk', icon: 'map-marker', color: '#10B981' },
-  { id: 'cat4', title: 'Study Buddy', icon: 'book', color: '#3B82F6' },
+  { id: 'coffee', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
+  { id: 'movie', title: 'Movie Buffs', icon: 'movie', color: '#E11D48' },
+  { id: 'city', title: 'City Walk', icon: 'map-marker', color: '#10B981' },
+  { id: 'study', title: 'Study Buddy', icon: 'book', color: '#3B82F6' },
 ];
 
 export const HomeDashboardScreen = () => {
@@ -160,7 +160,7 @@ export const HomeDashboardScreen = () => {
                 <TouchableOpacity 
                   key={cat.id} 
                   style={styles.exploreCard}
-                  onPress={() => navigation.navigate('DiscoverTab')}
+                  onPress={() => navigation.navigate('DiscoverTab', { category: cat.id })}
                 >
                   <View style={[styles.exploreIconBox, { backgroundColor: `${cat.color}20` }]}>
                     <Icon name={cat.icon} size={28} color={cat.color} />
@@ -181,22 +181,30 @@ export const HomeDashboardScreen = () => {
               style={styles.gridItem}
               onPress={() => navigation.navigate('DiscoverTab')}
             >
-              <Icon name="account-search" size={24} color={theme.colors.primary} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="account-search" size={24} color={theme.colors.primary} />
+              </View>
               <Text style={styles.gridText}>{t('quick_access.find')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
+              </View>
               <Text style={styles.gridText}>{t('quick_access.bookings')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="shield-check" size={24} color={theme.colors.primary} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="shield-check" size={24} color={theme.colors.primary} />
+              </View>
               <Text style={styles.gridText}>{t('quick_access.safety')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <Icon name="account-outline" size={24} color={theme.colors.primary} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="account-outline" size={24} color={theme.colors.primary} />
+              </View>
               <Text style={styles.gridText}>{t('quick_access.profile')}</Text>
             </TouchableOpacity>
 
@@ -212,16 +220,19 @@ export const HomeDashboardScreen = () => {
             </TouchableOpacity>
           </View>
           
-          {DUMMY_FEATURED.map((item) => (
-            <CompanionCard
-              key={item.id}
-              {...item}
-              onPress={(id) => navigation.navigate('DiscoverTab', {
-                screen: 'CompanionProfileScreen',
-                params: { id }
-              })}
-            />
-          ))}
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.featuredScroll}>
+            {DUMMY_FEATURED.map((item) => (
+              <View key={item.id} style={styles.featuredCardWrapper}>
+                <CompanionCard
+                  {...item}
+                  onPress={(id) => navigation.navigate('DiscoverTab', {
+                    screen: 'CompanionProfileScreen',
+                    params: { id }
+                  })}
+                />
+              </View>
+            ))}
+          </ScrollView>
         </View>
 
       </ScrollView>
@@ -529,14 +540,15 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     alignItems: 'center',
-    justifyContent: 'center',
     width: '23%',
-    height: 84,
-    backgroundColor: theme.colors.surface,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.3)',
-    gap: 8,
+  },
+  gridIconCircle: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
   },
   gridText: {
     fontSize: 11,
@@ -546,6 +558,13 @@ const styles = StyleSheet.create({
   },
   featuredSection: {
     marginTop: 32,
+  },
+  featuredScroll: {
+    paddingHorizontal: 20,
+    gap: 16,
+  },
+  featuredCardWrapper: {
+    width: 320,
   },
   viewAllText: {
     fontSize: 14,
