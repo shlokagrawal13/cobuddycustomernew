@@ -87,11 +87,12 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
     if (percent > 1) percent = 1;
     const rawVal = min + percent * (max - min);
     const stepped = Math.round(rawVal / step) * step;
+    const finalVal = parseFloat(stepped.toFixed(1));
     
-    setLocalVal(stepped);
+    setLocalVal(finalVal);
     
     if (isRelease) {
-      onValueChange(stepped);
+      onValueChange(finalVal);
     }
   };
 
@@ -355,6 +356,15 @@ export const DiscoverScreen = () => {
 
               {/* Price Range Slider */}
               <Text style={styles.modalSectionTitle}>Maximum Hourly Rate</Text>
+              <CustomSlider 
+                value={filterMaxPrice} 
+                onValueChange={setFilterMaxPrice} 
+                min={200} 
+                max={2000} 
+                step={50} 
+                prefix="₹"
+                suffix=" /hr"
+              />
               <View style={styles.modalOptionsGrid}>
                 {PRICE_PILLS.map((p) => (
                   <TouchableOpacity 
@@ -368,18 +378,17 @@ export const DiscoverScreen = () => {
                   </TouchableOpacity>
                 ))}
               </View>
-              <CustomSlider 
-                value={filterMaxPrice} 
-                onValueChange={setFilterMaxPrice} 
-                min={200} 
-                max={2000} 
-                step={50} 
-                prefix="₹"
-                suffix=" /hr"
-              />
 
               {/* Rating Slider */}
               <Text style={styles.modalSectionTitle}>Minimum Rating</Text>
+              <CustomSlider 
+                value={filterRating} 
+                onValueChange={setFilterRating} 
+                min={1.0} 
+                max={5.0} 
+                step={0.1}
+                suffix=" ⭐" 
+              />
               <View style={styles.modalOptionsGrid}>
                 {RATING_PILLS.map((r) => (
                   <TouchableOpacity 
@@ -393,17 +402,17 @@ export const DiscoverScreen = () => {
                   </TouchableOpacity>
                 ))}
               </View>
-              <CustomSlider 
-                value={filterRating} 
-                onValueChange={setFilterRating} 
-                min={1.0} 
-                max={5.0} 
-                step={0.1}
-                suffix=" ⭐" 
-              />
 
               {/* Distance Slider */}
               <Text style={styles.modalSectionTitle}>Maximum Distance</Text>
+              <CustomSlider 
+                value={filterDistance} 
+                onValueChange={setFilterDistance} 
+                min={1} 
+                max={50} 
+                step={1} 
+                suffix=" km"
+              />
               <View style={styles.modalOptionsGrid}>
                 {DISTANCE_PILLS.map((d) => (
                   <TouchableOpacity 
@@ -417,14 +426,6 @@ export const DiscoverScreen = () => {
                   </TouchableOpacity>
                 ))}
               </View>
-              <CustomSlider 
-                value={filterDistance} 
-                onValueChange={setFilterDistance} 
-                min={1} 
-                max={50} 
-                step={1} 
-                suffix=" km"
-              />
             </ScrollView>
 
             {/* Bottom Actions */}
