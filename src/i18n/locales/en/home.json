@@ -1,17 +1,26 @@
 {
-  "greeting": "Hi, {{name}}!",
-  "greeting_fallback": "Good Morning!",
-  "sections": {
-    "activities": "Explore Activities",
-    "featured": "Featured Companions"
+  "greeting": "Welcome Back,",
+  "greeting_fallback": "Welcome Back,",
+  "subtitle": "Your trusted companion network is ready for today.",
+  "upcoming": {
+    "title": "ACTIVE MEETUP",
+    "meetup_title": "Coffee with Sarah",
+    "time": "Starts in 2 hours",
+    "status": "Verified Booking"
   },
-  "activities": {
-    "coffee": "Coffee Meetup",
-    "movie": "Movie Companion",
-    "study": "Study Buddy",
-    "event": "Event Partner",
-    "city": "City Exploration",
-    "conversation": "Conversation Session"
+  "itinerary": {
+    "title": "Today's Itinerary",
+    "view_full": "VIEW FULL ITINERARY",
+    "start": "Meetup Starts",
+    "start_desc": "Central Park Cafe",
+    "end": "Session Ends",
+    "end_desc": "Duration completed"
   },
-  "empty_featured": "We are looking for great companions near you. Check back soon!"
+  "quick_access": {
+    "title": "QUICK ACCESS",
+    "find": "Find\nCompanion",
+    "bookings": "My\nBookings",
+    "safety": "Safety\nToolkit",
+    "profile": "My\nProfile"
+  }
 }

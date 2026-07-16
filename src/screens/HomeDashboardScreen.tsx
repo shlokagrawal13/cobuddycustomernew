@@ -1,120 +1,147 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
-import { useAuthStore } from '../store/slices/authStore';
-import { CompanionCard } from '../components/ui/CompanionCard';
-import { SkeletonLoader } from '../components/ui/SkeletonLoader';
-
-const ACTIVITIES = [
-  { id: 'coffee', icon: 'coffee-outline' },
-  { id: 'movie', icon: 'movie-open-outline' },
-  { id: 'study', icon: 'book-open-variant' },
-  { id: 'event', icon: 'ticket-confirmation-outline' },
-  { id: 'city', icon: 'map-marker-path' },
-  { id: 'conversation', icon: 'forum-outline' },
-];
-
-const DUMMY_COMPANIONS = [
-  {
-    id: 'c1',
-    name: 'Sarah',
-    photoUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
-    activities: ['Coffee', 'City Tours', 'Conversation'],
-    trustScore: 98,
-    distance: '2.5 km away',
-    availability: 'Available Today',
-  },
-  {
-    id: 'c2',
-    name: 'Michael',
-    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
-    activities: ['Movies', 'Events', 'Study'],
-    trustScore: 95,
-    distance: '4.0 km away',
-    availability: 'Available Tomorrow',
-  },
-];
 
 export const HomeDashboardScreen = () => {
   const { t } = useTranslation(['home']);
   const navigation = useNavigation<any>();
-  const { user } = useAuthStore();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate network fetch
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const firstName = user?.name ? user.name.split(' ')[0] : '';
-  const greetingText = firstName ? t('greeting', { name: firstName }) : t('greeting_fallback');
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        
-        {/* Header Section */}
-        <View style={styles.header}>
-          <Text style={styles.greeting}>{greetingText}</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('ProfileTab')}>
-            <View style={styles.avatarPlaceholder}>
-              <Icon name="account-outline" size={24} color={theme.colors.textSecondary} />
-            </View>
+      
+      {/* Top Header */}
+      <View style={styles.topBar}>
+        <View style={styles.logoBadge}>
+          <Text style={styles.logoBadgeText}>C</Text>
+        </View>
+        <Text style={styles.logoText}>CoBuddy</Text>
+        <View style={styles.topRightIcons}>
+          <TouchableOpacity style={styles.iconBtn}>
+            <Icon name="magnify" size={24} color={theme.colors.textSecondary} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconBtn}>
+            <View style={styles.notifDot} />
+            <Icon name="bell-outline" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
         </View>
+      </View>
 
-        {/* Explore Activities Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{t('sections.activities')}</Text>
-          <View style={styles.activitiesGrid}>
-            {ACTIVITIES.map(activity => (
-              <TouchableOpacity
-                key={activity.id}
-                style={styles.activityCard}
-                onPress={() => navigation.navigate('DiscoverTab', {
-                  screen: 'DiscoverScreen',
-                  params: { category: activity.id }
-                })}
-              >
-                <View style={styles.activityIconWrap}>
-                  <Icon name={activity.icon} size={28} color={theme.colors.primary} />
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        
+        {/* Welcome Section */}
+        <View style={styles.welcomeSection}>
+          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>Shlok</Text></Text>
+          <Text style={styles.subtitleText}>{t('subtitle')}</Text>
+        </View>
+
+        {/* Active Meetup Card */}
+        <View style={styles.cardSection}>
+          <View style={styles.cardHeader}>
+            <Icon name="calendar-check" size={16} color={theme.colors.primary} />
+            <Text style={styles.cardSectionTitle}>{t('upcoming.title')}</Text>
+          </View>
+          
+          <View style={styles.activeCard}>
+            <View style={styles.activeCardTop}>
+              <View style={styles.badgeRow}>
+                <View style={styles.badgeSolid}>
+                  <Icon name="check" size={12} color={theme.colors.background} />
+                  <Text style={styles.badgeSolidText}>{t('upcoming.status')}</Text>
                 </View>
-                <Text style={styles.activityLabel}>{t(`activities.${activity.id}`)}</Text>
-              </TouchableOpacity>
-            ))}
+              </View>
+              <Text style={styles.activeMeetupTitle}>{t('upcoming.meetup_title')}</Text>
+              <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · ID Verified</Text>
+            </View>
+            <TouchableOpacity style={styles.arrowBtn}>
+              <Icon name="arrow-right" size={20} color={theme.colors.background} />
+            </TouchableOpacity>
           </View>
         </View>
 
-        {/* Featured Companions Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>{t('sections.featured')}</Text>
-          
-          {loading ? (
-            <View style={styles.skeletonContainer}>
-              <SkeletonLoader height={250} borderRadius={16} style={{ marginBottom: 16 }} />
-              <SkeletonLoader height={250} borderRadius={16} />
+        {/* Today's Itinerary Timeline */}
+        <View style={styles.itineraryCard}>
+          <View style={styles.itineraryHeaderRow}>
+            <Text style={styles.itineraryTitle}>{t('itinerary.title')}</Text>
+            <TouchableOpacity>
+              <Icon name="dots-horizontal" size={24} color={theme.colors.textSecondary} />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.timelineContainer}>
+            {/* Start Node */}
+            <View style={styles.timelineNode}>
+              <View style={styles.nodeIconContainer}>
+                <View style={styles.nodeDotActive} />
+              </View>
+              <View style={styles.nodeContent}>
+                <Text style={styles.nodeTime}>16:00 - 18:00</Text>
+                <Text style={styles.nodeTitle}>{t('itinerary.start')}</Text>
+                <Text style={styles.nodeDesc}>{t('itinerary.start_desc')}</Text>
+              </View>
             </View>
-          ) : (
-            <View style={styles.companionsList}>
-              {DUMMY_COMPANIONS.map(companion => (
-                <CompanionCard
-                  key={companion.id}
-                  {...companion}
-                  onPress={(id) => navigation.navigate('DiscoverTab', {
-                    screen: 'CompanionProfileScreen',
-                    params: { id }
-                  })}
-                />
-              ))}
+
+            {/* Line connecting nodes */}
+            <View style={styles.timelineLine} />
+
+            {/* End Node */}
+            <View style={styles.timelineNode}>
+              <View style={styles.nodeIconContainer}>
+                <View style={styles.nodeDotInactive} />
+              </View>
+              <View style={styles.nodeContent}>
+                <Text style={styles.nodeTimeMuted}>18:00</Text>
+                <Text style={styles.nodeTitleMuted}>{t('itinerary.end')}</Text>
+                <Text style={styles.nodeDescMuted}>{t('itinerary.end_desc')}</Text>
+              </View>
             </View>
-          )}
+          </View>
+
+          <TouchableOpacity style={styles.fullItineraryBtn}>
+            <Text style={styles.fullItineraryText}>{t('itinerary.view_full')}</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Quick Access Grid */}
+        <View style={styles.quickAccessSection}>
+          <Text style={styles.quickAccessTitle}>{t('quick_access.title')}</Text>
+          <View style={styles.gridRow}>
+            
+            <TouchableOpacity 
+              style={styles.gridItem}
+              onPress={() => navigation.navigate('DiscoverTab')}
+            >
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="account-search" size={24} color={theme.colors.primary} />
+              </View>
+              <Text style={styles.gridText}>{t('quick_access.find')}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.gridItem}>
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(255, 255, 255, 0.05)' }]}>
+                <Icon name="calendar-clock" size={24} color={theme.colors.textPrimary} />
+              </View>
+              <Text style={styles.gridText}>{t('quick_access.bookings')}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.gridItem}>
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
+                <Icon name="shield-check" size={24} color={theme.colors.error} />
+              </View>
+              <Text style={styles.gridText}>{t('quick_access.safety')}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.gridItem}>
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(255, 255, 255, 0.05)' }]}>
+                <Icon name="account-outline" size={24} color={theme.colors.textPrimary} />
+              </View>
+              <Text style={styles.gridText}>{t('quick_access.profile')}</Text>
+            </TouchableOpacity>
+
+          </View>
         </View>
 
       </ScrollView>
@@ -127,73 +154,269 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.background,
   },
-  scrollContent: {
-    padding: 20,
-    paddingBottom: 40,
-  },
-  header: {
+  topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 30,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
   },
-  greeting: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: theme.colors.textPrimary,
-  },
-  avatarPlaceholder: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: theme.colors.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: theme.colors.border,
-  },
-  section: {
-    marginBottom: 32,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: theme.colors.textPrimary,
-    marginBottom: 16,
-  },
-  activitiesGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 12,
-  },
-  activityCard: {
-    width: '48%',
-    backgroundColor: theme.colors.surface,
-    borderRadius: 16,
-    padding: 16,
-    borderWidth: 1,
-    borderColor: theme.colors.border,
-    alignItems: 'center',
-    gap: 12,
-  },
-  activityIconWrap: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
+  logoBadge: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
     backgroundColor: 'rgba(212, 175, 55, 0.1)',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderColor: theme.colors.primary,
   },
-  activityLabel: {
+  logoBadgeText: {
+    color: theme.colors.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  logoText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+  topRightIcons: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  iconBtn: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: theme.colors.surface,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notifDot: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: theme.colors.error,
+    zIndex: 1,
+  },
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 40,
+  },
+  welcomeSection: {
+    marginTop: 20,
+    marginBottom: 30,
+  },
+  welcomeText: {
+    fontSize: 24,
     color: theme.colors.textSecondary,
+    marginBottom: 8,
+  },
+  welcomeName: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+  subtitleText: {
+    fontSize: 16,
+    color: theme.colors.textSecondary,
+    lineHeight: 24,
+  },
+  cardSection: {
+    marginBottom: 20,
+  },
+  cardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+    gap: 8,
+  },
+  cardSectionTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: theme.colors.textSecondary,
+    letterSpacing: 1.5,
+  },
+  activeCard: {
+    backgroundColor: theme.colors.surface,
+    borderRadius: 24,
+    padding: 24,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
+  },
+  activeCardTop: {
+    flex: 1,
+  },
+  badgeRow: {
+    flexDirection: 'row',
+    marginBottom: 16,
+  },
+  badgeSolid: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: theme.colors.primary,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+    gap: 6,
+  },
+  badgeSolidText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: theme.colors.background,
+  },
+  activeMeetupTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+    marginBottom: 8,
+  },
+  activeMeetupTime: {
     fontSize: 14,
-    fontWeight: '500',
+    color: theme.colors.textSecondary,
+  },
+  arrowBtn: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: theme.colors.primary,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  itineraryCard: {
+    backgroundColor: theme.colors.surface,
+    borderRadius: 24,
+    padding: 24,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
+  },
+  itineraryHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  itineraryTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
+  timelineContainer: {
+    paddingLeft: 8,
+    marginBottom: 24,
+  },
+  timelineNode: {
+    flexDirection: 'row',
+  },
+  nodeIconContainer: {
+    width: 24,
+    alignItems: 'center',
+    marginRight: 16,
+  },
+  nodeDotActive: {
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: theme.colors.primary,
+    backgroundColor: theme.colors.surface,
+    marginTop: 4,
+  },
+  nodeDotInactive: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: theme.colors.textSecondary,
+    marginTop: 4,
+  },
+  timelineLine: {
+    width: 1,
+    height: 40,
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    marginLeft: 11,
+    marginVertical: -4,
+  },
+  nodeContent: {
+    flex: 1,
+  },
+  nodeTime: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: theme.colors.primary,
+    marginBottom: 4,
+  },
+  nodeTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+    marginBottom: 2,
+  },
+  nodeDesc: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+  },
+  nodeTimeMuted: {
+    fontSize: 12,
+    color: theme.colors.textSecondary,
+    marginBottom: 4,
+  },
+  nodeTitleMuted: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: theme.colors.textSecondary,
+    marginBottom: 2,
+  },
+  nodeDescMuted: {
+    fontSize: 14,
+    color: 'rgba(160, 164, 184, 0.5)',
+  },
+  fullItineraryBtn: {
+    alignItems: 'center',
+    paddingVertical: 12,
+  },
+  fullItineraryText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: theme.colors.textSecondary,
+    letterSpacing: 1.5,
+  },
+  quickAccessSection: {
+    marginTop: 10,
+  },
+  quickAccessTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: theme.colors.textSecondary,
+    letterSpacing: 1.5,
+    marginBottom: 16,
+  },
+  gridRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  gridItem: {
+    alignItems: 'center',
+    width: '22%',
+  },
+  gridIconCircle: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  gridText: {
+    fontSize: 12,
+    color: theme.colors.textSecondary,
     textAlign: 'center',
-  },
-  skeletonContainer: {
-    width: '100%',
-  },
-  companionsList: {
-    width: '100%',
   },
 });

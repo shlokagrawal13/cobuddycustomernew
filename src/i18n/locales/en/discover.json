@@ -1,11 +1,14 @@
 {
-  "header": "Discover",
+  "header": "Browse Companions",
+  "status": "{{count}} companions available now",
   "search_placeholder": "Search by name or specialty...",
   "filters": {
-    "activity": "Activity Type",
-    "distance": "Distance",
-    "language": "Language"
+    "all": "All",
+    "available": "Available Now",
+    "top_rated": "Top Rated",
+    "nearby": "Nearby"
   },
+  "list_info": "Filter: {{filter}} | Showing: {{count}} of {{total}}",
   "empty_state": {
     "title": "No Matches Found",
     "message": "We couldn't find any companions matching your current filters. Try adjusting your search to see more results.",

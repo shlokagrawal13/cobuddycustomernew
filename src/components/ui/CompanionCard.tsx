@@ -6,171 +6,239 @@ import { theme } from '../../theme';
 interface CompanionCardProps {
   id: string;
   name: string;
-  photoUrl: string;
+  initials: string;
+  photoUrl?: string; // Optional, fallback to initials if none
+  title: string; // The sub-line below name
   activities: string[];
   trustScore: number;
-  rating?: number;
-  distance?: string;
-  availability?: string;
-  isVerified?: boolean;
+  rating: number;
+  reviews: number;
+  sessions: number;
+  rate: string; // e.g. "$15 /hr"
+  isOnline?: boolean;
   onPress: (id: string) => void;
 }
 
 export const CompanionCard = ({
   id,
   name,
+  initials,
   photoUrl,
+  title,
   activities,
   trustScore,
-  rating = 4.9, // Default for now
-  distance = 'Nearby',
-  availability = 'Available Today',
-  isVerified = true,
+  rating,
+  reviews,
+  sessions,
+  rate,
+  isOnline = false,
   onPress,
 }: CompanionCardProps) => {
   return (
-    <TouchableOpacity
-      style={styles.card}
-      activeOpacity={0.8}
-      onPress={() => onPress(id)}>
+    <View style={styles.cardContainer}>
       
-      <Image
-        source={{ uri: photoUrl }}
-        style={styles.image}
-        resizeMode="cover"
-      />
-      
-      <View style={styles.content}>
+      {/* Top Section */}
+      <View style={styles.topSection}>
         
-        {/* Row 1: Name and Verified Badge */}
-        <View style={styles.headerRow}>
-          <Text style={styles.name} numberOfLines={1}>{name}</Text>
-          {isVerified && (
-            <View style={styles.verifiedBadge}>
-              <Icon name="check-decagram" size={14} color={theme.colors.success} />
-              <Text style={styles.verifiedText}>ID Verified</Text>
+        {/* Avatar */}
+        <View style={styles.avatarContainer}>
+          {photoUrl ? (
+            <Image source={{ uri: photoUrl }} style={styles.avatarImage} />
+          ) : (
+            <View style={styles.avatarPlaceholder}>
+              <Text style={styles.avatarInitials}>{initials}</Text>
             </View>
           )}
         </View>
-        
-        {/* Row 2: Trust & Rating Info */}
-        <View style={styles.statsRow}>
-          <Icon name="star" size={14} color={theme.colors.primary} />
-          <Text style={styles.statsText}>{rating} · {trustScore}% Trust</Text>
-        </View>
 
-        {/* Row 3: Utility Info (Distance / Availability) */}
-        <View style={styles.utilityRow}>
-          <Icon name="map-marker-outline" size={14} color={theme.colors.textSecondary} />
-          <Text style={styles.utilityText}>{distance}</Text>
-          <Text style={styles.dotSeparator}>·</Text>
-          <Icon name="clock-outline" size={14} color={theme.colors.textSecondary} />
-          <Text style={styles.utilityText}>{availability}</Text>
-        </View>
-
-        {/* Row 4: Activity Chips */}
-        <View style={styles.activitiesRow}>
-          {activities.slice(0, 3).map((act, idx) => (
-            <View key={idx} style={styles.activityChip}>
-              <Text style={styles.activityChipText}>{act}</Text>
+        {/* Info Column */}
+        <View style={styles.infoCol}>
+          
+          <View style={styles.nameRow}>
+            <Text style={styles.name} numberOfLines={1}>{name}</Text>
+            <View style={styles.trustBadge}>
+              <Icon name="shield-check" size={12} color={theme.colors.textPrimary} />
+              <Text style={styles.trustScore}>{trustScore}</Text>
             </View>
-          ))}
+            {isOnline && <View style={styles.onlineDot} />}
+          </View>
+
+          <Text style={styles.title} numberOfLines={1}>{title}</Text>
+
+          <View style={styles.statsRow}>
+            <Icon name="star" size={14} color={theme.colors.primary} />
+            <Text style={styles.statsText}>{rating} <Text style={styles.statsMuted}>· {reviews} reviews · {sessions} sessions</Text></Text>
+          </View>
+          
         </View>
-        
       </View>
-    </TouchableOpacity>
+
+      {/* Chips Section */}
+      <View style={styles.chipsRow}>
+        {activities.map((act, idx) => (
+          <View key={idx} style={styles.chip}>
+            <Text style={styles.chipText}>{act}</Text>
+          </View>
+        ))}
+      </View>
+
+      {/* Bottom Action Section */}
+      <View style={styles.bottomRow}>
+        <Text style={styles.rateLabel}>From <Text style={styles.rateValue}>{rate}</Text></Text>
+        
+        <TouchableOpacity
+          style={styles.actionBtn}
+          activeOpacity={0.8}
+          onPress={() => onPress(id)}>
+          <Text style={styles.actionBtnText}>View Profile</Text>
+          <Icon name="arrow-right" size={16} color={theme.colors.background} />
+        </TouchableOpacity>
+      </View>
+
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  card: {
+  cardContainer: {
     backgroundColor: theme.colors.surface,
     borderRadius: 16,
-    overflow: 'hidden',
+    padding: 16,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: 'rgba(255,255,255,0.05)',
+  },
+  topSection: {
     flexDirection: 'row',
-    padding: 12,
+    marginBottom: 16,
   },
-  image: {
-    width: 80,
-    height: 100,
-    borderRadius: 12,
-    backgroundColor: 'rgba(255,255,255,0.05)',
+  avatarContainer: {
+    marginRight: 16,
   },
-  content: {
+  avatarImage: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    borderWidth: 2,
+    borderColor: theme.colors.primary,
+  },
+  avatarPlaceholder: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    borderWidth: 2,
+    borderColor: theme.colors.primary,
+    backgroundColor: theme.colors.background,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  avatarInitials: {
+    fontSize: 24,
+    color: theme.colors.primary,
+    fontWeight: 'bold',
+  },
+  infoCol: {
     flex: 1,
-    marginLeft: 16,
     justifyContent: 'center',
   },
-  headerRow: {
+  nameRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 4,
-    gap: 8,
   },
   name: {
     fontSize: 18,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
+    flex: 1,
+    marginRight: 8,
   },
-  verifiedBadge: {
+  trustBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 6,
+    backgroundColor: 'rgba(212, 175, 55, 0.15)',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
     gap: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.3)',
   },
-  verifiedText: {
-    fontSize: 10,
-    color: theme.colors.success,
+  trustScore: {
+    fontSize: 12,
     fontWeight: 'bold',
+    color: theme.colors.primary,
+  },
+  onlineDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: theme.colors.success,
+    marginLeft: 8,
+  },
+  title: {
+    fontSize: 13,
+    color: theme.colors.textSecondary,
+    marginBottom: 6,
   },
   statsRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 4,
     gap: 4,
   },
   statsText: {
     fontSize: 13,
     color: theme.colors.textPrimary,
-    fontWeight: '500',
+    fontWeight: 'bold',
   },
-  utilityRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-    gap: 4,
-  },
-  utilityText: {
-    fontSize: 12,
+  statsMuted: {
     color: theme.colors.textSecondary,
+    fontWeight: 'normal',
   },
-  dotSeparator: {
-    fontSize: 12,
-    color: theme.colors.textSecondary,
-    marginHorizontal: 2,
-  },
-  activitiesRow: {
+  chipsRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 20,
+  },
+  chip: {
+    backgroundColor: 'rgba(255,255,255,0.03)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.1)',
+  },
+  chipText: {
+    fontSize: 12,
+    color: theme.colors.textSecondary,
+  },
+  bottomRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  rateLabel: {
+    fontSize: 13,
+    color: theme.colors.textSecondary,
+  },
+  rateValue: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
+  actionBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: theme.colors.primary,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 12,
     gap: 6,
   },
-  activityChip: {
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: theme.colors.border,
-  },
-  activityChipText: {
-    fontSize: 11,
-    color: theme.colors.textPrimary,
-    fontWeight: '500',
+  actionBtnText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: theme.colors.background,
   },
 });
