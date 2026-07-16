@@ -66,9 +66,9 @@ const MODAL_CATEGORIES = [
   { id: 'city', label: 'City Walk' },
 ];
 const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
-const RATING_PILLS = [3.0, 4.0, 4.5, 5.0];
-const PRICE_PILLS = [500, 1000, 1500, 2000];
-const DISTANCE_PILLS = [5, 10, 20, 50];
+const RATING_PILLS = [4.0, 4.5, 5.0];
+const PRICE_PILLS = [500, 1000, 2000];
+const DISTANCE_PILLS = [5, 15, 50];
 
 // --- Custom Slider Component ---
 const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffix = '' }: any) => {
