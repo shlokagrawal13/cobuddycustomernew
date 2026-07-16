@@ -5,6 +5,38 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
+import { CompanionCard } from '../components/ui/CompanionCard';
+
+const DUMMY_FEATURED = [
+  {
+    id: 'f1',
+    name: 'Elena Vasquez',
+    initials: 'EV',
+    title: 'City guide & local experiences expert',
+    activities: ['Fine Dining', 'Art & Culture'],
+    trustScore: 98,
+    rating: 4.97,
+    reviews: 124,
+    sessions: 312,
+    rate: '₹500 /session',
+    distance: '2.5 km away',
+    isOnline: true,
+  },
+  {
+    id: 'f2',
+    name: 'Marcus Chen',
+    initials: 'MC',
+    title: 'Art historian & cultural explorer',
+    activities: ['Art & Culture', 'Architecture'],
+    trustScore: 96,
+    rating: 4.92,
+    reviews: 89,
+    sessions: 205,
+    rate: '₹450 /session',
+    distance: '4.0 km away',
+    isOnline: true,
+  },
+];
 
 export const HomeDashboardScreen = () => {
   const { t } = useTranslation(['home']);
@@ -121,27 +153,48 @@ export const HomeDashboardScreen = () => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(255, 255, 255, 0.05)' }]}>
-                <Icon name="calendar-clock" size={24} color={theme.colors.textPrimary} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
               </View>
               <Text style={styles.gridText}>{t('quick_access.bookings')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
-                <Icon name="shield-check" size={24} color={theme.colors.error} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="shield-check" size={24} color={theme.colors.primary} />
               </View>
               <Text style={styles.gridText}>{t('quick_access.safety')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(255, 255, 255, 0.05)' }]}>
-                <Icon name="account-outline" size={24} color={theme.colors.textPrimary} />
+              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
+                <Icon name="account-outline" size={24} color={theme.colors.primary} />
               </View>
               <Text style={styles.gridText}>{t('quick_access.profile')}</Text>
             </TouchableOpacity>
 
           </View>
+        </View>
+
+        {/* Featured Companions Section */}
+        <View style={styles.featuredSection}>
+          <View style={styles.itineraryHeaderRow}>
+            <Text style={styles.itineraryTitle}>Featured Companions</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('DiscoverTab')}>
+              <Text style={styles.viewAllText}>View All</Text>
+            </TouchableOpacity>
+          </View>
+          
+          {DUMMY_FEATURED.map((item) => (
+            <CompanionCard
+              key={item.id}
+              {...item}
+              onPress={(id) => navigation.navigate('DiscoverTab', {
+                screen: 'CompanionProfileScreen',
+                params: { id }
+              })}
+            />
+          ))}
         </View>
 
       </ScrollView>
@@ -418,5 +471,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: theme.colors.textSecondary,
     textAlign: 'center',
+  },
+  featuredSection: {
+    marginTop: 32,
+  },
+  viewAllText: {
+    fontSize: 14,
+    color: theme.colors.primary,
+    fontWeight: 'bold',
   },
 });

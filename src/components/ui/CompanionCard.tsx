@@ -14,7 +14,8 @@ interface CompanionCardProps {
   rating: number;
   reviews: number;
   sessions: number;
-  rate: string; // e.g. "$15 /hr"
+  rate: string; // e.g. "₹500 /session"
+  distance?: string; // e.g. "2.5 km away"
   isOnline?: boolean;
   onPress: (id: string) => void;
 }
@@ -31,6 +32,7 @@ export const CompanionCard = ({
   reviews,
   sessions,
   rate,
+  distance,
   isOnline = false,
   onPress,
 }: CompanionCardProps) => {
@@ -70,6 +72,13 @@ export const CompanionCard = ({
             <Text style={styles.statsText}>{rating} <Text style={styles.statsMuted}>· {reviews} reviews · {sessions} sessions</Text></Text>
           </View>
           
+          {distance && (
+            <View style={[styles.statsRow, { marginTop: 4 }]}>
+              <Icon name="map-marker-outline" size={14} color={theme.colors.textSecondary} />
+              <Text style={styles.statsMuted}>{distance}</Text>
+            </View>
+          )}
+          
         </View>
       </View>
 
@@ -105,8 +114,12 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.05)',
+    // Subtle golden glow instead of hard borders
+    shadowColor: theme.colors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 12,
+    elevation: 5,
   },
   topSection: {
     flexDirection: 'row',

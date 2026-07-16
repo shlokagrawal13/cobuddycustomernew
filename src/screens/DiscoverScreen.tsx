@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -19,7 +19,8 @@ const DUMMY_COMPANIONS = [
     rating: 4.97,
     reviews: 124,
     sessions: 312,
-    rate: '$15 /hr',
+    rate: '₹500 /session',
+    distance: '2.5 km away',
     isOnline: true,
     category: 'conversation',
   },
@@ -33,7 +34,8 @@ const DUMMY_COMPANIONS = [
     rating: 4.92,
     reviews: 89,
     sessions: 205,
-    rate: '$12 /hr',
+    rate: '₹450 /session',
+    distance: '4.0 km away',
     isOnline: true,
     category: 'movie',
   },
@@ -47,7 +49,8 @@ const DUMMY_COMPANIONS = [
     rating: 4.99,
     reviews: 210,
     sessions: 512,
-    rate: '$20 /hr',
+    rate: '₹600 /session',
+    distance: '1.2 km away',
     isOnline: false,
     category: 'coffee',
   },
@@ -60,6 +63,7 @@ export const DiscoverScreen = () => {
   
   const initialCategory = route.params?.category || null;
   const [activeCategory, setActiveCategory] = useState<string | null>(initialCategory);
+  const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -74,10 +78,13 @@ export const DiscoverScreen = () => {
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, [activeCategory]);
+  }, [activeCategory, searchQuery]);
 
   const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
-    return activeCategory ? c.category === activeCategory : true;
+    const matchesSearch = c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesCategory = activeCategory ? c.category === activeCategory : true;
+    return matchesSearch && matchesCategory;
   });
 
   return (
@@ -86,13 +93,27 @@ export const DiscoverScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerTop}>
-          <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
-            <Icon name="arrow-left" size={24} color={theme.colors.textSecondary} />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>{t('header')}</Text>
+          <Text style={styles.headerTitle}>Discover</Text>
           <TouchableOpacity style={styles.filterBtn}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
+        </View>
+
+        {/* Search Bar */}
+        <View style={styles.searchContainer}>
+          <Icon name="magnify" size={20} color={theme.colors.textSecondary} style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder={t('search_placeholder')}
+            placeholderTextColor={theme.colors.textSecondary}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+          />
+          {searchQuery.length > 0 && (
+            <TouchableOpacity onPress={() => setSearchQuery('')}>
+              <Icon name="close-circle" size={20} color={theme.colors.textSecondary} />
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* Status Indicator */}
@@ -187,7 +208,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 28,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
   },
@@ -198,6 +219,25 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: theme.colors.surface,
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    height: 48,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    marginBottom: 16,
+  },
+  searchIcon: {
+    marginRight: 8,
+  },
+  searchInput: {
+    flex: 1,
+    color: theme.colors.textPrimary,
+    fontSize: 16,
   },
   statusRow: {
     flexDirection: 'row',
