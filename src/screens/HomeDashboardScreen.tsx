@@ -57,10 +57,12 @@ export const HomeDashboardScreen = () => {
       
       {/* Top Header */}
       <View style={styles.topBar}>
-        <View style={styles.logoBadge}>
-          <Text style={styles.logoBadgeText}>C</Text>
+        <View style={styles.topLeft}>
+          <View style={styles.logoBadge}>
+            <Text style={styles.logoBadgeText}>C</Text>
+          </View>
+          <Text style={styles.logoText}>CoBuddy</Text>
         </View>
-        <Text style={styles.logoText}>CoBuddy</Text>
         <View style={styles.topRightIcons}>
           <TouchableOpacity style={styles.iconBtn}>
             <Icon name="magnify" size={24} color={theme.colors.textSecondary} />
@@ -253,7 +255,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 12,
+    paddingVertical: 16,
+    backgroundColor: theme.colors.background,
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.border,
+  },
+  topLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
   },
   logoBadge: {
     width: 36,
