@@ -1,5 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { theme } from '../theme';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeDashboardScreen } from '../screens/HomeDashboardScreen';
 import { DiscoverScreen } from '../screens/DiscoverScreen';
@@ -85,12 +87,42 @@ const ProfileTabStack = () => (
 
 export const MainTabNavigator = () => {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="HomeTab" component={HomeTabStack} />
-      <Tab.Screen name="DiscoverTab" component={DiscoverTabStack} />
-      <Tab.Screen name="BookingsTab" component={BookingsTabStack} />
-      <Tab.Screen name="ChatTab" component={ChatTabStack} />
-      <Tab.Screen name="ProfileTab" component={ProfileTabStack} />
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: theme.colors.surface,
+          borderTopColor: theme.colors.border,
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: theme.colors.textSecondary,
+        tabBarIcon: ({ color, size }) => {
+          let iconName = 'help-circle-outline';
+
+          if (route.name === 'HomeTab') {
+            iconName = 'home-outline';
+          } else if (route.name === 'DiscoverTab') {
+            iconName = 'compass-outline';
+          } else if (route.name === 'BookingsTab') {
+            iconName = 'calendar-clock-outline';
+          } else if (route.name === 'ChatTab') {
+            iconName = 'message-outline';
+          } else if (route.name === 'ProfileTab') {
+            iconName = 'account-outline';
+          }
+
+          return <Icon name={iconName} size={size} color={color} />;
+        },
+      })}
+    >
+      <Tab.Screen name="HomeTab" component={HomeTabStack} options={{ title: 'Home' }} />
+      <Tab.Screen name="DiscoverTab" component={DiscoverTabStack} options={{ title: 'Discover' }} />
+      <Tab.Screen name="BookingsTab" component={BookingsTabStack} options={{ title: 'Bookings' }} />
+      <Tab.Screen name="ChatTab" component={ChatTabStack} options={{ title: 'Messages' }} />
+      <Tab.Screen name="ProfileTab" component={ProfileTabStack} options={{ title: 'Profile' }} />
     </Tab.Navigator>
   );
 };
