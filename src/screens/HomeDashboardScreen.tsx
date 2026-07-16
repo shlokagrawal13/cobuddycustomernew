@@ -160,7 +160,10 @@ export const HomeDashboardScreen = () => {
                 <TouchableOpacity 
                   key={cat.id} 
                   style={styles.exploreCard}
-                  onPress={() => navigation.navigate('DiscoverTab', { category: cat.id })}
+                  onPress={() => navigation.navigate('DiscoverTab', { 
+                    screen: 'DiscoverScreen', 
+                    params: { category: cat.id } 
+                  })}
                 >
                   <View style={[styles.exploreIconBox, { backgroundColor: `${cat.color}20` }]}>
                     <Icon name={cat.icon} size={28} color={cat.color} />

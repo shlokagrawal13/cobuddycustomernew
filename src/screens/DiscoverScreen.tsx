@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Modal, Pressable } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Modal, Pressable, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
 import { CompanionCard } from '../components/ui/CompanionCard';
@@ -22,6 +22,7 @@ const DUMMY_COMPANIONS = [
     distance: '2.5 km away',
     isOnline: true,
     category: 'conversation',
+    gender: 'Female',
   },
   {
     id: 'c2',
@@ -37,6 +38,7 @@ const DUMMY_COMPANIONS = [
     distance: '4.0 km away',
     isOnline: true,
     category: 'movie',
+    gender: 'Male',
   },
   {
     id: 'c3',
@@ -52,6 +54,7 @@ const DUMMY_COMPANIONS = [
     distance: '1.2 km away',
     isOnline: false,
     category: 'coffee',
+    gender: 'Female',
   },
 ];
 
@@ -62,6 +65,8 @@ const MODAL_CATEGORIES = [
   { id: 'study', label: 'Study Buddy' },
   { id: 'city', label: 'City Walk' },
 ];
+const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
+const RATING_OPTIONS = ['Any', '4.5+', '4.8+'];
 
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
@@ -70,22 +75,30 @@ export const DiscoverScreen = () => {
   
   const [activeStatus, setActiveStatus] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(true);
+  
+  // Advanced Filters State
   const [isFilterVisible, setIsFilterVisible] = useState(false);
+  const [filterGender, setFilterGender] = useState('Any');
+  const [filterRating, setFilterRating] = useState('Any');
+  
+  const [loading, setLoading] = useState(true);
 
-  // Sync navigation params to search bar
-  useEffect(() => {
-    const initialCategory = route.params?.category;
-    if (initialCategory) {
-      // Find the label for the category ID to put in the search bar
-      const cat = MODAL_CATEGORIES.find(c => c.id === initialCategory);
-      if (cat) {
-        setSearchQuery(cat.label);
-      } else {
-        setSearchQuery(initialCategory);
+  // Sync navigation params to search bar whenever screen comes into focus
+  useFocusEffect(
+    useCallback(() => {
+      const initialCategory = route.params?.category;
+      if (initialCategory) {
+        const cat = MODAL_CATEGORIES.find(c => c.id === initialCategory);
+        if (cat) {
+          setSearchQuery(cat.label);
+        } else {
+          setSearchQuery(initialCategory);
+        }
+        // Clear params so it doesn't get stuck if user clears search and re-focuses
+        navigation.setParams({ category: undefined });
       }
-    }
-  }, [route.params?.category]);
+    }, [route.params?.category])
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -93,24 +106,36 @@ export const DiscoverScreen = () => {
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, [activeStatus, searchQuery]);
+  }, [activeStatus, searchQuery, filterGender, filterRating]);
 
   const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
+    // Search match
     const matchesSearch = searchQuery === '' || 
                           c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase()));
+                          c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                          MODAL_CATEGORIES.find(m => m.label.toLowerCase() === searchQuery.toLowerCase())?.id === c.category;
     
-    // Simple mock logic for status filters
+    // Quick status filters
     let matchesStatus = true;
     if (activeStatus === 'Available Today') matchesStatus = c.isOnline === true;
     if (activeStatus === 'Top Rated') matchesStatus = c.rating >= 4.95;
-    // Nearby would normally check distance logic
     
-    return matchesSearch && matchesStatus;
+    // Advanced Filters
+    let matchesGender = true;
+    if (filterGender !== 'Any') matchesGender = c.gender === filterGender;
+    
+    let matchesRating = true;
+    if (filterRating === '4.5+') matchesRating = c.rating >= 4.5;
+    if (filterRating === '4.8+') matchesRating = c.rating >= 4.8;
+    
+    return matchesSearch && matchesStatus && matchesGender && matchesRating;
   });
 
-  const handleSelectCategory = (label: string) => {
-    setSearchQuery(label);
+  const clearAllFilters = () => {
+    setSearchQuery('');
+    setFilterGender('Any');
+    setFilterRating('Any');
+    setActiveStatus('All');
     setIsFilterVisible(false);
   };
 
@@ -123,6 +148,10 @@ export const DiscoverScreen = () => {
           <Text style={styles.headerTitle}>Discover</Text>
           <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
+            {/* Show badge if advanced filters are active */}
+            {(filterGender !== 'Any' || filterRating !== 'Any') && (
+              <View style={styles.filterBadge} />
+            )}
           </TouchableOpacity>
         </View>
 
@@ -137,20 +166,13 @@ export const DiscoverScreen = () => {
             onChangeText={setSearchQuery}
           />
           {searchQuery.length > 0 && (
-            <TouchableOpacity onPress={() => setSearchQuery('')}>
+            <TouchableOpacity onPress={() => setSearchQuery('')} style={styles.clearSearchBtn}>
               <Icon name="close-circle" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
           )}
         </View>
 
         {/* Quick Status Filters */}
-        <View style={styles.statusRow}>
-          <View style={styles.statusDot} />
-          <Text style={styles.statusText}>
-            {filteredCompanions.length} companions available now
-          </Text>
-        </View>
-
         <View style={styles.filtersWrapper}>
           <FlatList
             horizontal
@@ -180,7 +202,7 @@ export const DiscoverScreen = () => {
         </View>
         <View style={styles.infoBar}>
           <Text style={styles.infoBarText}>
-            Filter: {activeStatus} | Showing: {filteredCompanions.length} of {DUMMY_COMPANIONS.length}
+            Showing {filteredCompanions.length} companions
           </Text>
         </View>
       </View>
@@ -199,12 +221,16 @@ export const DiscoverScreen = () => {
         )}
         ListEmptyComponent={() => (
           <View style={styles.emptyContainer}>
-            <Text style={styles.emptyText}>{t('no_results')}</Text>
+            <Icon name="account-search-outline" size={48} color={theme.colors.border} />
+            <Text style={styles.emptyText}>No companions found</Text>
+            <TouchableOpacity onPress={clearAllFilters} style={styles.clearAllBtn}>
+              <Text style={styles.clearAllBtnText}>Clear Filters</Text>
+            </TouchableOpacity>
           </View>
         )}
       />
 
-      {/* Filter Modal */}
+      {/* Polished Filter Modal */}
       <Modal
         visible={isFilterVisible}
         transparent={true}
@@ -214,6 +240,7 @@ export const DiscoverScreen = () => {
         <View style={styles.modalOverlay}>
           <Pressable style={styles.modalBackdrop} onPress={() => setIsFilterVisible(false)} />
           <View style={styles.modalContent}>
+            
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>Filters</Text>
               <TouchableOpacity onPress={() => setIsFilterVisible(false)}>
@@ -221,28 +248,79 @@ export const DiscoverScreen = () => {
               </TouchableOpacity>
             </View>
             
-            <Text style={styles.modalSectionTitle}>Activity Types</Text>
-            <View style={styles.modalCategories}>
-              {MODAL_CATEGORIES.map((cat) => (
-                <TouchableOpacity 
-                  key={cat.id} 
-                  style={[
-                    styles.modalCatBtn,
-                    searchQuery === cat.label && styles.modalCatBtnActive
-                  ]}
-                  onPress={() => handleSelectCategory(cat.label)}
-                >
-                  <Text style={[
-                    styles.modalCatText,
-                    searchQuery === cat.label && styles.modalCatTextActive
-                  ]}>{cat.label}</Text>
-                </TouchableOpacity>
-              ))}
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.modalScroll}>
+              
+              {/* Categories */}
+              <Text style={styles.modalSectionTitle}>Activity Type</Text>
+              <View style={styles.modalOptionsGrid}>
+                {MODAL_CATEGORIES.map((cat) => (
+                  <TouchableOpacity 
+                    key={cat.id} 
+                    style={[
+                      styles.modalOptionBtn,
+                      searchQuery === cat.label && styles.modalOptionBtnActive
+                    ]}
+                    onPress={() => setSearchQuery(searchQuery === cat.label ? '' : cat.label)}
+                  >
+                    <Text style={[
+                      styles.modalOptionText,
+                      searchQuery === cat.label && styles.modalOptionTextActive
+                    ]}>{cat.label}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
+              {/* Gender */}
+              <Text style={styles.modalSectionTitle}>Gender</Text>
+              <View style={styles.modalOptionsGrid}>
+                {GENDER_OPTIONS.map((g) => (
+                  <TouchableOpacity 
+                    key={g} 
+                    style={[
+                      styles.modalOptionBtn,
+                      filterGender === g && styles.modalOptionBtnActive
+                    ]}
+                    onPress={() => setFilterGender(g)}
+                  >
+                    <Text style={[
+                      styles.modalOptionText,
+                      filterGender === g && styles.modalOptionTextActive
+                    ]}>{g}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
+              {/* Rating */}
+              <Text style={styles.modalSectionTitle}>Minimum Rating</Text>
+              <View style={styles.modalOptionsGrid}>
+                {RATING_OPTIONS.map((r) => (
+                  <TouchableOpacity 
+                    key={r} 
+                    style={[
+                      styles.modalOptionBtn,
+                      filterRating === r && styles.modalOptionBtnActive
+                    ]}
+                    onPress={() => setFilterRating(r)}
+                  >
+                    <Text style={[
+                      styles.modalOptionText,
+                      filterRating === r && styles.modalOptionTextActive
+                    ]}>{r}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+            </ScrollView>
+
+            {/* Bottom Actions */}
+            <View style={styles.modalFooter}>
+              <TouchableOpacity style={styles.modalClearBtn} onPress={clearAllFilters}>
+                <Text style={styles.modalClearBtnText}>Clear All</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.modalApplyBtn} onPress={() => setIsFilterVisible(false)}>
+                <Text style={styles.modalApplyBtnText}>Apply Filters</Text>
+              </TouchableOpacity>
             </View>
 
-            {/* Placeholder for future filters */}
-            <Text style={styles.modalSectionTitle}>Price Range (Hourly)</Text>
-            <Text style={styles.modalPlaceholderText}>Pricing filters coming soon...</Text>
           </View>
         </View>
       </Modal>
@@ -281,6 +359,16 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
+  },
+  filterBadge: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: theme.colors.primary,
   },
   searchContainer: {
     flexDirection: 'row',
@@ -301,27 +389,8 @@ const styles = StyleSheet.create({
     color: theme.colors.textPrimary,
     fontSize: 16,
   },
-  statusRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 8,
-    alignSelf: 'flex-start',
-  },
-  statusDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: theme.colors.success,
-    marginRight: 8,
-  },
-  statusText: {
-    fontSize: 12,
-    color: theme.colors.success,
-    fontWeight: '600',
+  clearSearchBtn: {
+    padding: 4,
   },
   filtersWrapper: {
     marginBottom: 12,
@@ -364,15 +433,30 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   emptyContainer: {
-    padding: 40,
+    padding: 60,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   emptyText: {
     color: theme.colors.textSecondary,
     fontSize: 16,
+    marginTop: 16,
+    marginBottom: 24,
+  },
+  clearAllBtn: {
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: theme.colors.primary,
+  },
+  clearAllBtnText: {
+    color: theme.colors.primary,
+    fontWeight: 'bold',
   },
   
-  // Modal Styles
+  // Polished Modal Styles
   modalOverlay: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -383,61 +467,97 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
   },
   modalContent: {
     backgroundColor: theme.colors.surface,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
-    padding: 24,
-    minHeight: '40%',
+    paddingTop: 24,
+    maxHeight: '80%',
   },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 24,
+    paddingHorizontal: 24,
+    marginBottom: 16,
   },
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
   },
+  modalScroll: {
+    paddingHorizontal: 24,
+    paddingBottom: 24,
+  },
   modalSectionTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
+    marginTop: 24,
     marginBottom: 16,
-    marginTop: 8,
   },
-  modalCategories: {
+  modalOptionsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 12,
   },
-  modalCatBtn: {
+  modalOptionBtn: {
     paddingHorizontal: 16,
     paddingVertical: 10,
-    borderRadius: 12,
+    borderRadius: 20,
     backgroundColor: theme.colors.background,
     borderWidth: 1,
     borderColor: theme.colors.border,
   },
-  modalCatBtnActive: {
-    backgroundColor: theme.colors.primary,
+  modalOptionBtnActive: {
+    backgroundColor: 'rgba(212, 175, 55, 0.1)',
     borderColor: theme.colors.primary,
   },
-  modalCatText: {
+  modalOptionText: {
     fontSize: 14,
     color: theme.colors.textSecondary,
+    fontWeight: '500',
   },
-  modalCatTextActive: {
-    color: theme.colors.background,
+  modalOptionTextActive: {
+    color: theme.colors.primary,
     fontWeight: 'bold',
   },
-  modalPlaceholderText: {
-    fontSize: 14,
-    color: theme.colors.textSecondary,
-    fontStyle: 'italic',
+  modalFooter: {
+    flexDirection: 'row',
+    padding: 24,
+    borderTopWidth: 1,
+    borderTopColor: theme.colors.border,
+    backgroundColor: theme.colors.surface,
+    gap: 16,
+  },
+  modalClearBtn: {
+    flex: 1,
+    paddingVertical: 14,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalClearBtnText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
+  modalApplyBtn: {
+    flex: 1,
+    paddingVertical: 14,
+    borderRadius: 12,
+    backgroundColor: theme.colors.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalApplyBtnText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: theme.colors.background,
   }
 });
