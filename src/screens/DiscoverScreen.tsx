@@ -67,8 +67,46 @@ const MODAL_CATEGORIES = [
 ];
 const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
 const RATING_OPTIONS = ['Any', '4.0+', '4.5+'];
-const PRICE_OPTIONS = ['Any', '< ₹500', '₹500-1000', '> ₹1000'];
 const DISTANCE_OPTIONS = ['Any', '< 5 km', '< 10 km'];
+
+// --- Custom Slider Component ---
+const CustomSlider = ({ value, onValueChange, min, max, step }: any) => {
+  const [width, setWidth] = useState(1);
+
+  const updateValue = (e: any) => {
+    const x = e.nativeEvent.locationX;
+    let percent = x / width;
+    if (percent < 0) percent = 0;
+    if (percent > 1) percent = 1;
+    const rawVal = min + percent * (max - min);
+    const stepped = Math.round(rawVal / step) * step;
+    onValueChange(stepped);
+  };
+
+  const percentage = (value - min) / (max - min);
+
+  return (
+    <View style={styles.sliderContainer}>
+      <View style={styles.sliderLabelsRow}>
+        <Text style={styles.sliderLabelMinMax}>₹{min}</Text>
+        <Text style={styles.sliderLabelValue}>Up to ₹{value} /hr</Text>
+        <Text style={styles.sliderLabelMinMax}>₹{max}</Text>
+      </View>
+      <View 
+        style={styles.sliderTrackContainer} 
+        onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
+        onStartShouldSetResponder={() => true}
+        onResponderMove={updateValue}
+        onResponderGrant={updateValue}
+      >
+        <View pointerEvents="none" style={styles.sliderTrack} />
+        <View pointerEvents="none" style={[styles.sliderTrackActive, { width: `${percentage * 100}%` }]} />
+        <View pointerEvents="none" style={[styles.sliderThumb, { left: `${percentage * 100}%` }]} />
+      </View>
+    </View>
+  );
+};
+// -------------------------------
 
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
@@ -82,7 +120,7 @@ export const DiscoverScreen = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filterGender, setFilterGender] = useState('Any');
   const [filterRating, setFilterRating] = useState('Any');
-  const [filterPrice, setFilterPrice] = useState('Any');
+  const [filterMaxPrice, setFilterMaxPrice] = useState(2000);
   const [filterDistance, setFilterDistance] = useState('Any');
   
   const [loading, setLoading] = useState(true);
@@ -110,7 +148,7 @@ export const DiscoverScreen = () => {
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, [activeStatus, searchQuery, filterGender, filterRating, filterPrice, filterDistance]);
+  }, [activeStatus, searchQuery, filterGender, filterRating, filterMaxPrice, filterDistance]);
 
   const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
     // Search match
@@ -134,9 +172,7 @@ export const DiscoverScreen = () => {
 
     let matchesPrice = true;
     const rateValue = parseInt(c.rate.replace(/\D/g, ''), 10);
-    if (filterPrice === '< ₹500') matchesPrice = rateValue < 500;
-    if (filterPrice === '₹500-1000') matchesPrice = rateValue >= 500 && rateValue <= 1000;
-    if (filterPrice === '> ₹1000') matchesPrice = rateValue > 1000;
+    matchesPrice = rateValue <= filterMaxPrice;
 
     let matchesDistance = true;
     const distValue = parseFloat(c.distance);
@@ -150,7 +186,7 @@ export const DiscoverScreen = () => {
     setSearchQuery('');
     setFilterGender('Any');
     setFilterRating('Any');
-    setFilterPrice('Any');
+    setFilterMaxPrice(2000);
     setFilterDistance('Any');
     setActiveStatus('All');
     setIsFilterVisible(false);
@@ -166,7 +202,7 @@ export const DiscoverScreen = () => {
           <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
-            {(filterGender !== 'Any' || filterRating !== 'Any' || filterPrice !== 'Any' || filterDistance !== 'Any') && (
+            {(filterGender !== 'Any' || filterRating !== 'Any' || filterMaxPrice < 2000 || filterDistance !== 'Any') && (
               <View style={styles.filterBadge} />
             )}
           </TouchableOpacity>
@@ -307,25 +343,15 @@ export const DiscoverScreen = () => {
                 ))}
               </View>
 
-              {/* Price */}
-              <Text style={styles.modalSectionTitle}>Price (Hourly)</Text>
-              <View style={styles.modalOptionsGrid}>
-                {PRICE_OPTIONS.map((p) => (
-                  <TouchableOpacity 
-                    key={p} 
-                    style={[
-                      styles.modalOptionBtn,
-                      filterPrice === p && styles.modalOptionBtnActive
-                    ]}
-                    onPress={() => setFilterPrice(p)}
-                  >
-                    <Text style={[
-                      styles.modalOptionText,
-                      filterPrice === p && styles.modalOptionTextActive
-                    ]}>{p}</Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
+              {/* Price Range Slider */}
+              <Text style={styles.modalSectionTitle}>Maximum Hourly Rate</Text>
+              <CustomSlider 
+                value={filterMaxPrice} 
+                onValueChange={setFilterMaxPrice} 
+                min={200} 
+                max={2000} 
+                step={50} 
+              />
 
               {/* Rating */}
               <Text style={styles.modalSectionTitle}>Minimum Rating</Text>
@@ -618,5 +644,56 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: theme.colors.background,
+  },
+  
+  // Custom Slider Styles
+  sliderContainer: {
+    marginVertical: 8,
+    paddingHorizontal: 8,
+  },
+  sliderLabelsRow: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginBottom: 12,
+  },
+  sliderLabelMinMax: {
+    color: theme.colors.textSecondary,
+    fontSize: 12,
+  },
+  sliderLabelValue: {
+    color: theme.colors.primary, 
+    fontWeight: 'bold',
+    fontSize: 14,
+  },
+  sliderTrackContainer: {
+    height: 40, 
+    justifyContent: 'center',
+  },
+  sliderTrack: {
+    height: 6, 
+    backgroundColor: theme.colors.border, 
+    borderRadius: 3,
+  },
+  sliderTrackActive: {
+    position: 'absolute', 
+    left: 0, 
+    height: 6, 
+    backgroundColor: theme.colors.primary, 
+    borderRadius: 3,
+  },
+  sliderThumb: {
+    position: 'absolute', 
+    marginLeft: -12, 
+    width: 24, 
+    height: 24, 
+    borderRadius: 12, 
+    backgroundColor: '#fff',
+    borderWidth: 2, 
+    borderColor: theme.colors.primary,
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 }, 
+    shadowOpacity: 0.3, 
+    shadowRadius: 3, 
+    elevation: 5,
   }
 });
