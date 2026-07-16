@@ -66,7 +66,9 @@ const MODAL_CATEGORIES = [
   { id: 'city', label: 'City Walk' },
 ];
 const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
-const RATING_OPTIONS = ['Any', '4.5+', '4.8+'];
+const RATING_OPTIONS = ['Any', '4.0+', '4.5+'];
+const PRICE_OPTIONS = ['Any', '< ₹500', '₹500-1000', '> ₹1000'];
+const DISTANCE_OPTIONS = ['Any', '< 5 km', '< 10 km'];
 
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
@@ -80,6 +82,8 @@ export const DiscoverScreen = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filterGender, setFilterGender] = useState('Any');
   const [filterRating, setFilterRating] = useState('Any');
+  const [filterPrice, setFilterPrice] = useState('Any');
+  const [filterDistance, setFilterDistance] = useState('Any');
   
   const [loading, setLoading] = useState(true);
 
@@ -106,7 +110,7 @@ export const DiscoverScreen = () => {
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, [activeStatus, searchQuery, filterGender, filterRating]);
+  }, [activeStatus, searchQuery, filterGender, filterRating, filterPrice, filterDistance]);
 
   const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
     // Search match
@@ -125,16 +129,29 @@ export const DiscoverScreen = () => {
     if (filterGender !== 'Any') matchesGender = c.gender === filterGender;
     
     let matchesRating = true;
+    if (filterRating === '4.0+') matchesRating = c.rating >= 4.0;
     if (filterRating === '4.5+') matchesRating = c.rating >= 4.5;
-    if (filterRating === '4.8+') matchesRating = c.rating >= 4.8;
+
+    let matchesPrice = true;
+    const rateValue = parseInt(c.rate.replace(/\D/g, ''), 10);
+    if (filterPrice === '< ₹500') matchesPrice = rateValue < 500;
+    if (filterPrice === '₹500-1000') matchesPrice = rateValue >= 500 && rateValue <= 1000;
+    if (filterPrice === '> ₹1000') matchesPrice = rateValue > 1000;
+
+    let matchesDistance = true;
+    const distValue = parseFloat(c.distance);
+    if (filterDistance === '< 5 km') matchesDistance = distValue < 5.0;
+    if (filterDistance === '< 10 km') matchesDistance = distValue < 10.0;
     
-    return matchesSearch && matchesStatus && matchesGender && matchesRating;
+    return matchesSearch && matchesStatus && matchesGender && matchesRating && matchesPrice && matchesDistance;
   });
 
   const clearAllFilters = () => {
     setSearchQuery('');
     setFilterGender('Any');
     setFilterRating('Any');
+    setFilterPrice('Any');
+    setFilterDistance('Any');
     setActiveStatus('All');
     setIsFilterVisible(false);
   };
@@ -149,7 +166,7 @@ export const DiscoverScreen = () => {
           <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
-            {(filterGender !== 'Any' || filterRating !== 'Any') && (
+            {(filterGender !== 'Any' || filterRating !== 'Any' || filterPrice !== 'Any' || filterDistance !== 'Any') && (
               <View style={styles.filterBadge} />
             )}
           </TouchableOpacity>
@@ -290,6 +307,26 @@ export const DiscoverScreen = () => {
                 ))}
               </View>
 
+              {/* Price */}
+              <Text style={styles.modalSectionTitle}>Price (Hourly)</Text>
+              <View style={styles.modalOptionsGrid}>
+                {PRICE_OPTIONS.map((p) => (
+                  <TouchableOpacity 
+                    key={p} 
+                    style={[
+                      styles.modalOptionBtn,
+                      filterPrice === p && styles.modalOptionBtnActive
+                    ]}
+                    onPress={() => setFilterPrice(p)}
+                  >
+                    <Text style={[
+                      styles.modalOptionText,
+                      filterPrice === p && styles.modalOptionTextActive
+                    ]}>{p}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
               {/* Rating */}
               <Text style={styles.modalSectionTitle}>Minimum Rating</Text>
               <View style={styles.modalOptionsGrid}>
@@ -305,7 +342,29 @@ export const DiscoverScreen = () => {
                     <Text style={[
                       styles.modalOptionText,
                       filterRating === r && styles.modalOptionTextActive
-                    ]}>{r}</Text>
+                    ]}>
+                      {r} {r !== 'Any' && <Icon name="star" size={14} color={filterRating === r ? theme.colors.primary : theme.colors.textSecondary} />}
+                    </Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
+              {/* Distance */}
+              <Text style={styles.modalSectionTitle}>Distance</Text>
+              <View style={styles.modalOptionsGrid}>
+                {DISTANCE_OPTIONS.map((d) => (
+                  <TouchableOpacity 
+                    key={d} 
+                    style={[
+                      styles.modalOptionBtn,
+                      filterDistance === d && styles.modalOptionBtnActive
+                    ]}
+                    onPress={() => setFilterDistance(d)}
+                  >
+                    <Text style={[
+                      styles.modalOptionText,
+                      filterDistance === d && styles.modalOptionTextActive
+                    ]}>{d}</Text>
                   </TouchableOpacity>
                 ))}
               </View>
