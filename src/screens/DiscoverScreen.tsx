@@ -6,6 +6,7 @@ import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/nativ
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
 import { CompanionCard } from '../components/ui/CompanionCard';
+import { CompanionCardSkeleton } from '../components/ui/CompanionCardSkeleton';
 
 const DUMMY_COMPANIONS = [
   {
@@ -272,27 +273,35 @@ export const DiscoverScreen = () => {
       </View>
 
       {/* Content */}
-      <FlatList
-        data={filteredCompanions}
-        keyExtractor={item => item.id}
-        contentContainerStyle={styles.listContent}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <CompanionCard
-            {...item}
-            onPress={(id) => navigation.navigate('CompanionProfileScreen', { id })}
-          />
-        )}
-        ListEmptyComponent={() => (
-          <View style={styles.emptyContainer}>
-            <Icon name="account-search-outline" size={48} color={theme.colors.border} />
-            <Text style={styles.emptyText}>No companions found</Text>
-            <TouchableOpacity onPress={clearAllFilters} style={styles.clearAllBtn}>
-              <Text style={styles.clearAllBtnText}>Clear Filters</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+      {loading ? (
+        <ScrollView contentContainerStyle={styles.listContent} showsVerticalScrollIndicator={false}>
+          <CompanionCardSkeleton />
+          <CompanionCardSkeleton />
+          <CompanionCardSkeleton />
+        </ScrollView>
+      ) : (
+        <FlatList
+          data={filteredCompanions}
+          keyExtractor={item => item.id}
+          contentContainerStyle={styles.listContent}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <CompanionCard
+              {...item}
+              onPress={(id) => navigation.navigate('CompanionProfileScreen', { id })}
+            />
+          )}
+          ListEmptyComponent={() => (
+            <View style={styles.emptyContainer}>
+              <Icon name="account-search-outline" size={48} color={theme.colors.border} />
+              <Text style={styles.emptyText}>No companions found</Text>
+              <TouchableOpacity onPress={clearAllFilters} style={styles.clearAllBtn}>
+                <Text style={styles.clearAllBtnText}>Clear Filters</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+      )}
 
       {/* Polished Filter Modal */}
       <Modal

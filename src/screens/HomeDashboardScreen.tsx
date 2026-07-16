@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
 import { CompanionCard } from '../components/ui/CompanionCard';
+import { CompanionCardSkeleton } from '../components/ui/CompanionCardSkeleton';
 
 const DUMMY_FEATURED = [
   {
@@ -48,9 +49,16 @@ const EXPLORE_CATEGORIES = [
 export const HomeDashboardScreen = () => {
   const { t } = useTranslation(['home']);
   const navigation = useNavigation<any>();
+  const [loading, setLoading] = useState(true);
 
   // In real app, this comes from global state or API
   const [hasActiveBooking, setHasActiveBooking] = useState(false);
+
+  useEffect(() => {
+    // Simulate data loading
+    const timer = setTimeout(() => setLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -226,17 +234,28 @@ export const HomeDashboardScreen = () => {
           </View>
           
           <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.featuredScroll}>
-            {DUMMY_FEATURED.map((item) => (
-              <View key={item.id} style={styles.featuredCardWrapper}>
-                <CompanionCard
-                  {...item}
-                  onPress={(id) => navigation.navigate('DiscoverTab', {
-                    screen: 'CompanionProfileScreen',
-                    params: { id }
-                  })}
-                />
-              </View>
-            ))}
+            {loading ? (
+              <>
+                <View style={[styles.featuredCardWrapper, { width: 320 }]}>
+                  <CompanionCardSkeleton />
+                </View>
+                <View style={[styles.featuredCardWrapper, { width: 320 }]}>
+                  <CompanionCardSkeleton />
+                </View>
+              </>
+            ) : (
+              DUMMY_FEATURED.map((item) => (
+                <View key={item.id} style={styles.featuredCardWrapper}>
+                  <CompanionCard
+                    {...item}
+                    onPress={(id) => navigation.navigate('DiscoverTab', {
+                      screen: 'CompanionProfileScreen',
+                      params: { id }
+                    })}
+                  />
+                </View>
+              ))
+            )}
           </ScrollView>
         </View>
 
