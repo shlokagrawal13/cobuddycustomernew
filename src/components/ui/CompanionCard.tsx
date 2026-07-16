@@ -14,7 +14,7 @@ interface CompanionCardProps {
   rating: number;
   reviews: number;
   sessions: number;
-  rate: string; // e.g. "₹500 /session"
+  rate: string; // e.g. "₹500 /hr"
   distance?: string; // e.g. "2.5 km away"
   isOnline?: boolean;
   onPress: (id: string) => void;
@@ -114,12 +114,8 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,
-    // Subtle golden glow instead of hard borders
-    shadowColor: theme.colors.primary,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.15,
-    shadowRadius: 12,
-    elevation: 5,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
   },
   topSection: {
     flexDirection: 'row',

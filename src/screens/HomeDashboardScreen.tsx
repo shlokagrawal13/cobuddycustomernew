@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const DUMMY_FEATURED = [
     rating: 4.97,
     reviews: 124,
     sessions: 312,
-    rate: '₹500 /session',
+    rate: '₹500 /hr',
     distance: '2.5 km away',
     isOnline: true,
   },
@@ -32,15 +32,25 @@ const DUMMY_FEATURED = [
     rating: 4.92,
     reviews: 89,
     sessions: 205,
-    rate: '₹450 /session',
+    rate: '₹450 /hr',
     distance: '4.0 km away',
     isOnline: true,
   },
 ];
 
+const EXPLORE_CATEGORIES = [
+  { id: 'cat1', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
+  { id: 'cat2', title: 'Movie Buffs', icon: 'movie', color: '#E11D48' },
+  { id: 'cat3', title: 'City Walk', icon: 'map-marker', color: '#10B981' },
+  { id: 'cat4', title: 'Study Buddy', icon: 'book', color: '#3B82F6' },
+];
+
 export const HomeDashboardScreen = () => {
   const { t } = useTranslation(['home']);
   const navigation = useNavigation<any>();
+
+  // In real app, this comes from global state or API
+  const [hasActiveBooking, setHasActiveBooking] = useState(false);
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -70,106 +80,123 @@ export const HomeDashboardScreen = () => {
           <Text style={styles.subtitleText}>{t('subtitle')}</Text>
         </View>
 
-        {/* Active Meetup Card */}
-        <View style={styles.cardSection}>
-          <View style={styles.cardHeader}>
-            <Icon name="calendar-check" size={16} color={theme.colors.primary} />
-            <Text style={styles.cardSectionTitle}>{t('upcoming.title')}</Text>
-          </View>
-          
-          <View style={styles.activeCard}>
-            <View style={styles.activeCardTop}>
-              <View style={styles.badgeRow}>
-                <View style={styles.badgeSolid}>
-                  <Icon name="check" size={12} color={theme.colors.background} />
-                  <Text style={styles.badgeSolidText}>{t('upcoming.status')}</Text>
+        {hasActiveBooking ? (
+          <>
+            {/* Active Meetup Card */}
+            <View style={styles.cardSection}>
+              <View style={styles.cardHeader}>
+                <Icon name="calendar-check" size={16} color={theme.colors.primary} />
+                <Text style={styles.cardSectionTitle}>{t('upcoming.title')}</Text>
+              </View>
+              
+              <View style={styles.activeCard}>
+                <View style={styles.activeCardTop}>
+                  <View style={styles.badgeRow}>
+                    <View style={styles.badgeSolid}>
+                      <Icon name="check" size={12} color={theme.colors.background} />
+                      <Text style={styles.badgeSolidText}>{t('upcoming.status')}</Text>
+                    </View>
+                  </View>
+                  <Text style={styles.activeMeetupTitle}>{t('upcoming.meetup_title')}</Text>
+                  <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · ID Verified</Text>
+                </View>
+                <TouchableOpacity style={styles.arrowBtn}>
+                  <Icon name="arrow-right" size={20} color={theme.colors.background} />
+                </TouchableOpacity>
+              </View>
+            </View>
+
+            {/* Today's Itinerary Timeline */}
+            <View style={styles.itineraryCard}>
+              <View style={styles.itineraryHeaderRow}>
+                <Text style={styles.itineraryTitle}>{t('itinerary.title')}</Text>
+                <TouchableOpacity>
+                  <Icon name="dots-horizontal" size={24} color={theme.colors.textSecondary} />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.timelineContainer}>
+                {/* Start Node */}
+                <View style={styles.timelineNode}>
+                  <View style={styles.nodeIconContainer}>
+                    <View style={styles.nodeDotActive} />
+                  </View>
+                  <View style={styles.nodeContent}>
+                    <Text style={styles.nodeTime}>16:00 - 18:00</Text>
+                    <Text style={styles.nodeTitle}>{t('itinerary.start')}</Text>
+                    <Text style={styles.nodeDesc}>{t('itinerary.start_desc')}</Text>
+                  </View>
+                </View>
+
+                {/* Line connecting nodes */}
+                <View style={styles.timelineLine} />
+
+                {/* End Node */}
+                <View style={styles.timelineNode}>
+                  <View style={styles.nodeIconContainer}>
+                    <View style={styles.nodeDotInactive} />
+                  </View>
+                  <View style={styles.nodeContent}>
+                    <Text style={styles.nodeTimeMuted}>18:00</Text>
+                    <Text style={styles.nodeTitleMuted}>{t('itinerary.end')}</Text>
+                    <Text style={styles.nodeDescMuted}>{t('itinerary.end_desc')}</Text>
+                  </View>
                 </View>
               </View>
-              <Text style={styles.activeMeetupTitle}>{t('upcoming.meetup_title')}</Text>
-              <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · ID Verified</Text>
+
+              <TouchableOpacity style={styles.fullItineraryBtn}>
+                <Text style={styles.fullItineraryText}>{t('itinerary.view_full')}</Text>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.arrowBtn}>
-              <Icon name="arrow-right" size={20} color={theme.colors.background} />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* Today's Itinerary Timeline */}
-        <View style={styles.itineraryCard}>
-          <View style={styles.itineraryHeaderRow}>
-            <Text style={styles.itineraryTitle}>{t('itinerary.title')}</Text>
-            <TouchableOpacity>
-              <Icon name="dots-horizontal" size={24} color={theme.colors.textSecondary} />
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.timelineContainer}>
-            {/* Start Node */}
-            <View style={styles.timelineNode}>
-              <View style={styles.nodeIconContainer}>
-                <View style={styles.nodeDotActive} />
-              </View>
-              <View style={styles.nodeContent}>
-                <Text style={styles.nodeTime}>16:00 - 18:00</Text>
-                <Text style={styles.nodeTitle}>{t('itinerary.start')}</Text>
-                <Text style={styles.nodeDesc}>{t('itinerary.start_desc')}</Text>
-              </View>
+          </>
+        ) : (
+          /* Explore Activities Section */
+          <View style={styles.exploreSection}>
+            <View style={styles.sectionHeaderRow}>
+              <Text style={styles.sectionTitle}>Explore Activities</Text>
             </View>
-
-            {/* Line connecting nodes */}
-            <View style={styles.timelineLine} />
-
-            {/* End Node */}
-            <View style={styles.timelineNode}>
-              <View style={styles.nodeIconContainer}>
-                <View style={styles.nodeDotInactive} />
-              </View>
-              <View style={styles.nodeContent}>
-                <Text style={styles.nodeTimeMuted}>18:00</Text>
-                <Text style={styles.nodeTitleMuted}>{t('itinerary.end')}</Text>
-                <Text style={styles.nodeDescMuted}>{t('itinerary.end_desc')}</Text>
-              </View>
-            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.exploreScroll}>
+              {EXPLORE_CATEGORIES.map(cat => (
+                <TouchableOpacity 
+                  key={cat.id} 
+                  style={styles.exploreCard}
+                  onPress={() => navigation.navigate('DiscoverTab')}
+                >
+                  <View style={[styles.exploreIconBox, { backgroundColor: `${cat.color}20` }]}>
+                    <Icon name={cat.icon} size={28} color={cat.color} />
+                  </View>
+                  <Text style={styles.exploreCardTitle}>{cat.title}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
           </View>
-
-          <TouchableOpacity style={styles.fullItineraryBtn}>
-            <Text style={styles.fullItineraryText}>{t('itinerary.view_full')}</Text>
-          </TouchableOpacity>
-        </View>
+        )}
 
         {/* Quick Access Grid */}
         <View style={styles.quickAccessSection}>
-          <Text style={styles.quickAccessTitle}>{t('quick_access.title')}</Text>
+          <Text style={styles.sectionTitleSmall}>{t('quick_access.title')}</Text>
           <View style={styles.gridRow}>
             
             <TouchableOpacity 
               style={styles.gridItem}
               onPress={() => navigation.navigate('DiscoverTab')}
             >
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
-                <Icon name="account-search" size={24} color={theme.colors.primary} />
-              </View>
+              <Icon name="account-search" size={24} color={theme.colors.primary} />
               <Text style={styles.gridText}>{t('quick_access.find')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
-                <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
-              </View>
+              <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
               <Text style={styles.gridText}>{t('quick_access.bookings')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
-                <Icon name="shield-check" size={24} color={theme.colors.primary} />
-              </View>
+              <Icon name="shield-check" size={24} color={theme.colors.primary} />
               <Text style={styles.gridText}>{t('quick_access.safety')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.gridItem}>
-              <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
-                <Icon name="account-outline" size={24} color={theme.colors.primary} />
-              </View>
+              <Icon name="account-outline" size={24} color={theme.colors.primary} />
               <Text style={styles.gridText}>{t('quick_access.profile')}</Text>
             </TouchableOpacity>
 
@@ -178,8 +205,8 @@ export const HomeDashboardScreen = () => {
 
         {/* Featured Companions Section */}
         <View style={styles.featuredSection}>
-          <View style={styles.itineraryHeaderRow}>
-            <Text style={styles.itineraryTitle}>Featured Companions</Text>
+          <View style={styles.sectionHeaderRow}>
+            <Text style={styles.sectionTitle}>Featured Companions</Text>
             <TouchableOpacity onPress={() => navigation.navigate('DiscoverTab')}>
               <Text style={styles.viewAllText}>View All</Text>
             </TouchableOpacity>
@@ -257,12 +284,12 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   scrollContent: {
-    paddingHorizontal: 20,
     paddingBottom: 40,
   },
   welcomeSection: {
     marginTop: 20,
     marginBottom: 30,
+    paddingHorizontal: 20,
   },
   welcomeText: {
     fontSize: 24,
@@ -279,8 +306,58 @@ const styles = StyleSheet.create({
     color: theme.colors.textSecondary,
     lineHeight: 24,
   },
+  sectionHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+    paddingHorizontal: 20,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
+  sectionTitleSmall: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: theme.colors.textSecondary,
+    letterSpacing: 1.5,
+    marginBottom: 16,
+    paddingHorizontal: 20,
+  },
+  exploreSection: {
+    marginBottom: 24,
+  },
+  exploreScroll: {
+    paddingHorizontal: 20,
+    gap: 12,
+  },
+  exploreCard: {
+    backgroundColor: theme.colors.surface,
+    width: 120,
+    height: 120,
+    borderRadius: 16,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
+    justifyContent: 'space-between',
+  },
+  exploreIconBox: {
+    width: 48,
+    height: 48,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  exploreCardTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
   cardSection: {
     marginBottom: 20,
+    paddingHorizontal: 20,
   },
   cardHeader: {
     flexDirection: 'row',
@@ -348,6 +425,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 24,
     marginBottom: 20,
+    marginHorizontal: 20,
     borderWidth: 1,
     borderColor: 'rgba(255,255,255,0.05)',
   },
@@ -444,33 +522,27 @@ const styles = StyleSheet.create({
   quickAccessSection: {
     marginTop: 10,
   },
-  quickAccessTitle: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: theme.colors.textSecondary,
-    letterSpacing: 1.5,
-    marginBottom: 16,
-  },
   gridRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: 20,
   },
   gridItem: {
     alignItems: 'center',
-    width: '22%',
-  },
-  gridIconCircle: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
     justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 8,
+    width: '23%',
+    height: 84,
+    backgroundColor: theme.colors.surface,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.3)',
+    gap: 8,
   },
   gridText: {
-    fontSize: 12,
+    fontSize: 11,
     color: theme.colors.textSecondary,
     textAlign: 'center',
+    fontWeight: '500',
   },
   featuredSection: {
     marginTop: 32,
