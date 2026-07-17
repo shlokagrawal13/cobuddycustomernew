@@ -46,7 +46,7 @@ export const BookingActivitySelectScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Step 1 of 4</Text>
-        <View style={{ width: 24 }} /> {/* Balance for back btn */}
+        <View style={{ width: 24 }} />
       </View>
       <View style={styles.progressContainer}>
         <View style={[styles.progressBar, { width: '25%' }]} />
