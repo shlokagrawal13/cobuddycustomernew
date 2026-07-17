@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Switch,
+  TextInput,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -18,10 +19,20 @@ export const BookingSummaryScreen = () => {
   const route = useRoute<any>();
   const { t } = useTranslation(['booking']);
   
-  const { activity, venue, date, time } = route.params || {};
+  const { activity, venue, date, time, duration = 1 } = route.params || {};
 
   // DEV MOCK: Toggle to test KYC interceptor
   const [isKycVerified, setIsKycVerified] = useState(false);
+  
+  // User Input State
+  const [specialInstructions, setSpecialInstructions] = useState('');
+  const [agreedToSafety, setAgreedToSafety] = useState(false);
+
+  // Pricing calculations (MOCK parsing)
+  const baseRate = parseInt(activity?.price?.replace(/[^0-9]/g, '') || '500', 10);
+  const baseTotal = baseRate * duration;
+  const serviceFee = 50;
+  const totalAmount = baseTotal + serviceFee;
 
   const handleSendRequest = () => {
     if (!isKycVerified) {
@@ -86,16 +97,54 @@ export const BookingSummaryScreen = () => {
             <View style={styles.summaryContent}>
               <Text style={styles.summaryLabel}>Date & Time</Text>
               <Text style={styles.summaryValue}>{date?.dayName}, {date?.dayNumber}</Text>
-              <Text style={styles.summarySubValue}>{time}</Text>
+              <Text style={styles.summarySubValue}>{time} ({duration} {duration === 1 ? 'hour' : 'hours'})</Text>
             </View>
           </View>
         </View>
 
-        <View style={styles.totalBox}>
-          <Text style={styles.totalLabel}>Estimated Total (1 hour)</Text>
-          <Text style={styles.totalValue}>{activity?.price || '₹500'}</Text>
+        <Text style={styles.sectionTitle}>Special Instructions</Text>
+        <TextInput
+          style={styles.instructionInput}
+          placeholder="How will the companion recognize you? Any special requests?"
+          placeholderTextColor={theme.colors.textSecondary}
+          multiline
+          numberOfLines={3}
+          value={specialInstructions}
+          onChangeText={setSpecialInstructions}
+        />
+
+        <Text style={[styles.sectionTitle, { marginTop: 24 }]}>Payment Summary</Text>
+        <View style={styles.pricingBox}>
+          <View style={styles.priceRow}>
+            <Text style={styles.priceLabel}>Base Fare (₹{baseRate} x {duration} hr)</Text>
+            <Text style={styles.priceAmount}>₹{baseTotal}</Text>
+          </View>
+          <View style={styles.priceRow}>
+            <Text style={styles.priceLabel}>Safety & Service Fee</Text>
+            <Text style={styles.priceAmount}>₹{serviceFee}</Text>
+          </View>
+          <View style={styles.divider} />
+          <View style={styles.priceRow}>
+            <Text style={styles.totalLabel}>Estimated Total</Text>
+            <Text style={styles.totalValue}>₹{totalAmount}</Text>
+          </View>
         </View>
         <Text style={styles.totalDisclaimer}>Payment is processed only after the companion accepts.</Text>
+
+        <TouchableOpacity 
+          style={styles.safetyAgreementRow} 
+          onPress={() => setAgreedToSafety(!agreedToSafety)}
+          activeOpacity={0.7}
+        >
+          <Icon 
+            name={agreedToSafety ? "checkbox-marked" : "checkbox-blank-outline"} 
+            size={24} 
+            color={agreedToSafety ? theme.colors.primary : theme.colors.textSecondary} 
+          />
+          <Text style={styles.safetyAgreementText}>
+            I agree to meet in a public place and strictly follow the CoBuddy safety guidelines.
+          </Text>
+        </TouchableOpacity>
 
         {/* DEV MOCK: KYC Toggle */}
         <View style={styles.devBox}>
@@ -117,12 +166,13 @@ export const BookingSummaryScreen = () => {
       {/* Bottom Action Bar */}
       <View style={styles.bottomBar}>
         <TouchableOpacity
-          style={styles.nextBtn}
+          style={[styles.nextBtn, !agreedToSafety && styles.nextBtnDisabled]}
+          disabled={!agreedToSafety}
           onPress={handleSendRequest}
           activeOpacity={0.8}
         >
-          <Text style={styles.nextBtnText}>Send Request</Text>
-          <Icon name="send-outline" size={20} color={theme.colors.background} />
+          <Text style={[styles.nextBtnText, !agreedToSafety && styles.nextBtnTextDisabled]}>Send Request</Text>
+          <Icon name="send-outline" size={20} color={agreedToSafety ? theme.colors.background : 'rgba(255,255,255,0.4)'} />
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -225,22 +275,55 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.05)',
     marginVertical: 20,
   },
-  totalBox: {
+  sectionTitle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: theme.colors.textSecondary,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    marginBottom: 12,
+    marginTop: 24,
+  },
+  instructionInput: {
+    backgroundColor: theme.colors.surface,
+    borderRadius: 16,
+    padding: 16,
+    color: theme.colors.textPrimary,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
+    textAlignVertical: 'top',
+    minHeight: 100,
+  },
+  pricingBox: {
+    backgroundColor: 'rgba(212, 175, 55, 0.05)',
+    padding: 20,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.1)',
+  },
+  priceRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgba(212, 175, 55, 0.1)',
-    padding: 20,
-    borderRadius: 16,
-    marginTop: 24,
+    marginBottom: 12,
   },
-  totalLabel: {
-    fontSize: 15,
+  priceLabel: {
+    fontSize: 14,
+    color: theme.colors.textSecondary,
+  },
+  priceAmount: {
+    fontSize: 14,
     color: theme.colors.textPrimary,
     fontWeight: '500',
   },
+  totalLabel: {
+    fontSize: 16,
+    color: theme.colors.textPrimary,
+    fontWeight: 'bold',
+  },
   totalValue: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: '900',
     color: theme.colors.primary,
   },
@@ -248,7 +331,25 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: theme.colors.textSecondary,
     textAlign: 'center',
+    marginTop: 16,
+    marginBottom: 16,
+  },
+  safetyAgreementRow: {
+    flexDirection: 'row',
+    backgroundColor: 'rgba(255, 59, 48, 0.05)',
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 59, 48, 0.2)',
+    alignItems: 'center',
     marginTop: 12,
+  },
+  safetyAgreementText: {
+    flex: 1,
+    marginLeft: 12,
+    fontSize: 13,
+    color: theme.colors.textPrimary,
+    lineHeight: 18,
   },
   devBox: {
     marginTop: 40,
@@ -292,10 +393,16 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     gap: 12,
   },
+  nextBtnDisabled: {
+    backgroundColor: 'rgba(255,255,255,0.1)',
+  },
   nextBtnText: {
     color: theme.colors.background,
     fontSize: 17,
     fontWeight: 'bold',
     letterSpacing: 0.5,
+  },
+  nextBtnTextDisabled: {
+    color: 'rgba(255,255,255,0.4)',
   },
 });

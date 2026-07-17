@@ -46,6 +46,7 @@ export const BookingTimeSelectScreen = () => {
 
   const [selectedDateId, setSelectedDateId] = useState<string>(DATES[0].id);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [duration, setDuration] = useState<number>(1); // Default 1 hour
 
   const handleNext = () => {
     if (!selectedTime) return;
@@ -57,6 +58,7 @@ export const BookingTimeSelectScreen = () => {
       venue,
       date: selectedDate,
       time: selectedTime,
+      duration,
     });
   };
 
@@ -109,6 +111,24 @@ export const BookingTimeSelectScreen = () => {
                 onPress={() => setSelectedTime(time)}
               >
                 <Text style={[styles.timeText, isSelected && styles.textSelected]}>{time}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+
+        <Text style={[styles.sectionTitle, { marginTop: 32 }]}>Duration</Text>
+        <View style={styles.durationRow}>
+          {[1, 2, 3, 4].map((hrs) => {
+            const isSelected = duration === hrs;
+            return (
+              <TouchableOpacity
+                key={hrs}
+                style={[styles.durationBtn, isSelected && styles.durationBtnSelected]}
+                onPress={() => setDuration(hrs)}
+              >
+                <Text style={[styles.durationText, isSelected && styles.textSelected]}>
+                  {hrs} {hrs === 1 ? 'hr' : 'hrs'}
+                </Text>
               </TouchableOpacity>
             );
           })}
@@ -240,6 +260,28 @@ const styles = StyleSheet.create({
     borderColor: theme.colors.primary,
   },
   timeText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: theme.colors.textPrimary,
+  },
+  durationRow: {
+    flexDirection: 'row',
+    gap: 12,
+  },
+  durationBtn: {
+    flex: 1,
+    paddingVertical: 14,
+    borderRadius: 12,
+    backgroundColor: theme.colors.surface,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.05)',
+    alignItems: 'center',
+  },
+  durationBtnSelected: {
+    backgroundColor: theme.colors.primary,
+    borderColor: theme.colors.primary,
+  },
+  durationText: {
     fontSize: 14,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
