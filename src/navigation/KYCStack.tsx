@@ -2,7 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { KYCIntroScreen } from '../screens/KYCIntroScreen';
-import { AadhaarUploadScreen } from '../screens/AadhaarUploadScreen';
+import { DocumentVerificationScreen } from '../screens/DocumentVerificationScreen';
 import { SelfieCaptureScreen } from '../screens/SelfieCaptureScreen';
 import { LivenessDetectionScreen } from '../screens/LivenessDetectionScreen';
 import { VerificationProcessingScreen } from '../screens/VerificationProcessingScreen';
@@ -15,7 +15,7 @@ export const KYCStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="KYCIntroScreen" component={KYCIntroScreen} />
-      <Stack.Screen name="AadhaarUploadScreen" component={AadhaarUploadScreen} />
+      <Stack.Screen name="DocumentVerificationScreen" component={DocumentVerificationScreen} />
       <Stack.Screen name="SelfieCaptureScreen" component={SelfieCaptureScreen} />
       <Stack.Screen name="LivenessDetectionScreen" component={LivenessDetectionScreen} />
       <Stack.Screen name="VerificationProcessingScreen" component={VerificationProcessingScreen} />
