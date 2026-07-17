@@ -1,45 +1,49 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useTranslation } from 'react-i18next';
 import { theme } from '../theme';
 
-type DocType = 'AADHAAR' | 'PAN' | 'DL' | 'PASSPORT';
+const DOC_TYPES = [
+  {id: 'AADHAAR',  icon: 'card-account-details-outline', label: 'Aadhaar'},
+  {id: 'PAN',      icon: 'card-account-details',         label: 'PAN Card'},
+  {id: 'PASSPORT', icon: 'book-open-page-variant',       label: 'Passport'},
+  {id: 'DL',       icon: 'car',                          label: 'Driving License'},
+] as const;
+type DocType = typeof DOC_TYPES[number]['id'];
+
+const UPLOAD_TIPS = [
+  {icon: 'white-balance-sunny', label: 'Use clear lighting'},
+  {icon: 'aspect-ratio',        label: 'Keep all corners visible'},
+  {icon: 'blur-off',            label: 'No blurry or cropped images'},
+];
+
+const CARD_BG = 'rgba(11,13,26,0.8)';
+const CARD_BORDER = 'rgba(255,255,255,0.08)';
+type UploadState = 'idle' | 'selected' | 'uploaded';
 
 export const DocumentVerificationScreen = () => {
   const navigation = useNavigation<any>();
-  const { t } = useTranslation(['onboarding']);
-  
   const [selectedDoc, setSelectedDoc] = useState<DocType>('AADHAAR');
   const [docNumber, setDocNumber] = useState('');
-  const [frontUploaded, setFrontUploaded] = useState(false);
-  const [backUploaded, setBackUploaded] = useState(false);
+  const [frontState, setFrontState] = useState<UploadState>('idle');
+  const [backState, setBackState]   = useState<UploadState>('idle');
 
-  const DOC_OPTIONS = [
-    { id: 'AADHAAR', label: 'Aadhaar' },
-    { id: 'PAN', label: 'PAN Card' },
-    { id: 'DL', label: 'Driving License' },
-    { id: 'PASSPORT', label: 'Passport' },
-  ];
-
-  // Auto format inputs based on type
   const formatDocNumber = (val: string, type: DocType) => {
     if (type === 'AADHAAR') {
       const cleaned = val.replace(/\D/g, '');
       const match = cleaned.match(/^(\d{0,4})(\d{0,4})(\d{0,4})$/);
       if (match) return [match[1], match[2], match[3]].filter(v => v).join(' ');
+      return cleaned; // Fallback while typing
     }
-    if (type === 'PAN') {
-      return val.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
-    }
+    if (type === 'PAN') return val.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
     return val.toUpperCase();
   };
 
   const getMaxLength = () => {
     switch (selectedDoc) {
-      case 'AADHAAR': return 14; // 12 + 2 spaces
+      case 'AADHAAR': return 14; 
       case 'PAN': return 10;
       default: return 20;
     }
@@ -54,62 +58,89 @@ export const DocumentVerificationScreen = () => {
     }
   };
 
-  const isFormValid = () => {
-    if (!frontUploaded) return false;
-    if (selectedDoc !== 'PAN' && selectedDoc !== 'PASSPORT' && !backUploaded) return false;
+  const canSubmit = () => {
+    if (frontState !== 'uploaded') return false;
+    if (selectedDoc !== 'PAN' && selectedDoc !== 'PASSPORT' && backState !== 'uploaded') return false;
     if (selectedDoc === 'AADHAAR' && docNumber.length < 14) return false;
     if (selectedDoc === 'PAN' && docNumber.length < 10) return false;
     if (docNumber.length < 5) return false;
     return true;
   };
 
-  const handleNext = () => {
-    navigation.navigate('SelfieCaptureScreen');
+  const handleMockUpload = (side: 'front' | 'back') => {
+    if (side === 'front') {
+      setFrontState('selected');
+      setTimeout(() => setFrontState('uploaded'), 600);
+    } else {
+      setBackState('selected');
+      setTimeout(() => setBackState('uploaded'), 600);
+    }
   };
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.surface} />
+
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
-          <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
+        <TouchableOpacity
+          style={styles.backBtn}
+          onPress={() => navigation.goBack()}
+          hitSlop={{top:10,bottom:10,left:10,right:10}}
+          activeOpacity={0.7}>
+          <Icon name="arrow-left" size={18} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 1 of 3</Text>
-        <View style={{ width: 24 }} />
+        <View style={styles.headerCenter}>
+          <Text style={styles.stepLabel}>VERIFICATION 1 OF 3</Text>
+          <Text style={styles.headerTitle}>Complete Identity Verification</Text>
+        </View>
+        <View style={styles.headerIconWrap}>
+          <Icon name="shield-check" size={20} color={theme.colors.primary} />
+        </View>
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-        <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-          <Text style={styles.title}>Government ID</Text>
-          <Text style={styles.subtitle}>Select an ID type and upload clear photos for verification.</Text>
+        <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+          
+          <Text style={styles.pageSub}>
+            Upload a valid government-issued identity document to unlock verified CoBuddy experiences.
+          </Text>
 
-          {/* Document Selector */}
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.docSelector}>
-            {DOC_OPTIONS.map((doc) => {
-              const isSelected = selectedDoc === doc.id;
-              return (
-                <TouchableOpacity
-                  key={doc.id}
-                  style={[styles.docChip, isSelected && styles.docChipSelected]}
-                  onPress={() => {
-                    setSelectedDoc(doc.id as DocType);
-                    setDocNumber('');
-                  }}
-                >
-                  <Text style={[styles.docChipText, isSelected && styles.docChipTextSelected]}>
-                    {doc.label}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
+          <View style={styles.card}>
+            <Text style={styles.sectionLabel}>SELECT DOCUMENT TYPE</Text>
+            <View style={styles.docTypeGrid}>
+              {DOC_TYPES.map(doc => {
+                const selected = selectedDoc === doc.id;
+                return (
+                  <TouchableOpacity
+                    key={doc.id}
+                    style={[styles.docTypeCard, selected && styles.docTypeCardSelected]}
+                    onPress={() => {
+                      setSelectedDoc(doc.id);
+                      setDocNumber('');
+                      setFrontState('idle');
+                      setBackState('idle');
+                    }}
+                    activeOpacity={0.75}>
+                    <Icon name={doc.icon} size={24} color={selected ? theme.colors.primary : theme.colors.textSecondary} />
+                    <Text style={[styles.docTypeLabel, selected && styles.docTypeLabelSelected]}>
+                      {doc.label}
+                    </Text>
+                    {selected && (
+                      <View style={styles.docTypeCheck}>
+                        <Icon name="check-circle" size={14} color={theme.colors.primary} />
+                      </View>
+                    )}
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
 
-          {/* Document Number Input */}
-          <View style={styles.inputContainer}>
-            <Text style={styles.inputLabel}>{DOC_OPTIONS.find(d => d.id === selectedDoc)?.label} Number</Text>
+            <View style={{height: 20}} />
+            <Text style={styles.sectionLabel}>DOCUMENT NUMBER</Text>
             <TextInput
               style={styles.input}
               placeholder={getPlaceholder()}
-              placeholderTextColor={theme.colors.textSecondary}
+              placeholderTextColor="rgba(255,255,255,0.2)"
               keyboardType={selectedDoc === 'AADHAAR' ? 'number-pad' : 'default'}
               maxLength={getMaxLength()}
               value={docNumber}
@@ -118,211 +149,193 @@ export const DocumentVerificationScreen = () => {
             />
           </View>
 
-          {/* Upload Sections */}
-          <Text style={styles.sectionTitle}>Upload Documents</Text>
-          <View style={styles.uploadGrid}>
-            <TouchableOpacity 
-              style={[styles.uploadBox, frontUploaded && styles.uploadBoxSuccess]} 
-              onPress={() => setFrontUploaded(!frontUploaded)}
-              activeOpacity={0.7}
-            >
-              <Icon 
-                name={frontUploaded ? "check-circle" : "camera-plus-outline"} 
-                size={32} 
-                color={frontUploaded ? theme.colors.success : theme.colors.primary} 
+          <View style={styles.card}>
+            <Text style={styles.sectionLabel}>UPLOAD DOCUMENT</Text>
+            <Text style={styles.uploadHint}>
+              Clear and readable images work best. Max 5MB (JPG, PNG).
+            </Text>
+
+            <TouchableOpacity
+              style={[styles.uploadSlot, frontState === 'uploaded' && styles.uploadSlotDone]}
+              onPress={() => handleMockUpload('front')}
+              activeOpacity={0.8}>
+              <Icon
+                name={frontState === 'uploaded' ? 'check-circle' : frontState === 'selected' ? 'timer-sand' : 'cloud-upload'}
+                size={28}
+                color={frontState === 'uploaded' ? theme.colors.success : theme.colors.primary}
               />
-              <Text style={[styles.uploadBoxText, frontUploaded && { color: theme.colors.success }]}>
-                {frontUploaded ? "Front Uploaded" : "Scan Front"}
-              </Text>
+              <View style={styles.uploadSlotMeta}>
+                <Text style={styles.uploadSlotTitle}>
+                  {frontState === 'uploaded' ? 'Front Side Uploaded' : frontState === 'selected' ? 'Processing...' : 'Upload Front Side'}
+                </Text>
+                <Text style={styles.uploadSlotSub}>
+                  {frontState === 'uploaded' ? 'Image accepted' : 'Tap to select image'}
+                </Text>
+              </View>
+              {frontState === 'idle' && (
+                <Icon name="plus-circle" size={20} color={theme.colors.primary} />
+              )}
             </TouchableOpacity>
 
             {(selectedDoc === 'AADHAAR' || selectedDoc === 'DL') && (
-              <TouchableOpacity 
-                style={[styles.uploadBox, backUploaded && styles.uploadBoxSuccess]} 
-                onPress={() => setBackUploaded(!backUploaded)}
-                activeOpacity={0.7}
-              >
-                <Icon 
-                  name={backUploaded ? "check-circle" : "camera-plus-outline"} 
-                  size={32} 
-                  color={backUploaded ? theme.colors.success : theme.colors.primary} 
-                />
-                <Text style={[styles.uploadBoxText, backUploaded && { color: theme.colors.success }]}>
-                  {backUploaded ? "Back Uploaded" : "Scan Back"}
-                </Text>
-              </TouchableOpacity>
+              <>
+                <View style={styles.uploadDivider} />
+                <TouchableOpacity
+                  style={[styles.uploadSlot, backState === 'uploaded' && styles.uploadSlotDone]}
+                  onPress={() => handleMockUpload('back')}
+                  activeOpacity={0.8}>
+                  <Icon
+                    name={backState === 'uploaded' ? 'check-circle' : backState === 'selected' ? 'timer-sand' : 'image'}
+                    size={28}
+                    color={backState === 'uploaded' ? theme.colors.success : theme.colors.textSecondary}
+                  />
+                  <View style={styles.uploadSlotMeta}>
+                    <Text style={styles.uploadSlotTitle}>
+                      {backState === 'uploaded' ? 'Back Side Uploaded' : backState === 'selected' ? 'Processing...' : 'Upload Back Side'}
+                    </Text>
+                    <Text style={styles.uploadSlotSub}>
+                      {backState === 'uploaded' ? 'Image accepted' : 'Tap to select image'}
+                    </Text>
+                  </View>
+                  {backState === 'idle' && (
+                    <Icon name="plus-circle" size={20} color={theme.colors.textSecondary} />
+                  )}
+                </TouchableOpacity>
+              </>
             )}
           </View>
-          <Text style={styles.helpText}>Ensure all text is clearly visible and there is no glare on the ID card.</Text>
 
-        </ScrollView>
+          <View style={styles.tipsCard}>
+            <Text style={styles.sectionLabel}>IMAGE REQUIREMENTS</Text>
+            {UPLOAD_TIPS.map((tip, i) => (
+              <View key={tip.icon} style={[styles.tipRow, i < UPLOAD_TIPS.length - 1 && styles.tipRowBorder]}>
+                <View style={styles.tipIconWrap}>
+                  <Icon name={tip.icon} size={16} color={theme.colors.primary} />
+                </View>
+                <Text style={styles.tipText}>{tip.label}</Text>
+                <Icon name="check" size={14} color={theme.colors.success} />
+              </View>
+            ))}
+          </View>
 
-        <View style={styles.bottomBar}>
           <TouchableOpacity
-            style={[styles.nextBtn, !isFormValid() && styles.nextBtnDisabled]}
-            disabled={!isFormValid()}
-            onPress={handleNext}
-            activeOpacity={0.8}
-          >
-            <Text style={[styles.nextBtnText, !isFormValid() && styles.nextBtnTextDisabled]}>Continue</Text>
-            <Icon name="arrow-right" size={20} color={isFormValid() ? theme.colors.background : 'rgba(255,255,255,0.4)'} />
+            style={[styles.ctaBtn, !canSubmit() && styles.ctaBtnDisabled]}
+            disabled={!canSubmit()}
+            onPress={() => navigation.navigate('SelfieCaptureScreen')}
+            activeOpacity={0.85}>
+            <Icon name="upload" size={18} color={theme.colors.background} />
+            <Text style={styles.ctaBtnText}>Continue Verification</Text>
           </TouchableOpacity>
-        </View>
+
+          <View style={styles.securityNote}>
+            <Icon name="lock" size={13} color={theme.colors.textSecondary} />
+            <Text style={styles.securityText}>
+              Your information is encrypted and securely protected. Documents are used only for verification.
+            </Text>
+          </View>
+
+          <View style={{height: 20}} />
+        </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: theme.colors.background,
-  },
+  root: {flex: 1, backgroundColor: theme.colors.background},
+  
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    height: 64, flexDirection: 'row', alignItems: 'center',
+    paddingHorizontal: 16, gap: 12,
+    backgroundColor: 'rgba(20,20,15,0.95)',
+    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: CARD_BORDER,
   },
   backBtn: {
-    padding: 8,
+    width: 40, height: 40, borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.05)',
+    borderWidth: 1, borderColor: CARD_BORDER,
+    alignItems: 'center', justifyContent: 'center',
   },
-  headerTitle: {
-    color: theme.colors.textSecondary,
-    fontSize: 14,
-    fontWeight: '600',
-    letterSpacing: 1,
-    textTransform: 'uppercase',
+  headerCenter: {flex: 1, alignItems: 'center'},
+  stepLabel: {fontWeight: '600', fontSize: 9, color: theme.colors.primary, letterSpacing: 2, marginBottom: 2},
+  headerTitle: {fontWeight: '600', fontSize: 16, color: theme.colors.textPrimary},
+  headerIconWrap: {width: 40, alignItems: 'flex-end'},
+
+  scroll: {flex: 1},
+  scrollContent: {paddingHorizontal: 20, paddingTop: 16, gap: 20},
+  pageSub: {fontSize: 13, color: theme.colors.textSecondary, lineHeight: 19},
+
+  card: {
+    backgroundColor: CARD_BG, borderRadius: 20,
+    borderWidth: 1, borderColor: CARD_BORDER, padding: 20,
   },
-  content: {
-    padding: 24,
-    paddingBottom: 40,
+  sectionLabel: {
+    fontWeight: '600', fontSize: 10,
+    color: theme.colors.textSecondary, letterSpacing: 1.5, marginBottom: 14,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: theme.colors.textPrimary,
-    marginBottom: 8,
+
+  docTypeGrid: {flexDirection: 'row', flexWrap: 'wrap', gap: 10},
+  docTypeCard: {
+    flex: 1, minWidth: '45%',
+    alignItems: 'center', gap: 8, padding: 16,
+    borderRadius: 16, borderWidth: 1, borderColor: CARD_BORDER,
+    backgroundColor: 'rgba(255,255,255,0.03)', position: 'relative',
   },
-  subtitle: {
-    fontSize: 15,
-    color: theme.colors.textSecondary,
-    lineHeight: 22,
-    marginBottom: 32,
-  },
-  docSelector: {
-    gap: 12,
-    marginBottom: 32,
-  },
-  docChip: {
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 24,
-    backgroundColor: theme.colors.surface,
-    borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.1)',
-  },
-  docChipSelected: {
-    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+  docTypeCardSelected: {
     borderColor: theme.colors.primary,
+    backgroundColor: 'rgba(212, 175, 55, 0.08)',
   },
-  docChipText: {
-    color: theme.colors.textSecondary,
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  docChipTextSelected: {
-    color: theme.colors.primary,
-  },
-  inputContainer: {
-    marginBottom: 40,
-  },
-  inputLabel: {
-    fontSize: 13,
-    color: theme.colors.textSecondary,
-    marginBottom: 12,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
-    fontWeight: '600',
-  },
+  docTypeLabel: {fontSize: 12, color: theme.colors.textSecondary, textAlign: 'center'},
+  docTypeLabelSelected: {color: theme.colors.primary, fontWeight: '500'},
+  docTypeCheck: {position: 'absolute', top: 8, right: 8},
+
   input: {
-    backgroundColor: theme.colors.surface,
-    borderWidth: 1,
-    borderColor: 'rgba(212, 175, 55, 0.2)',
-    borderRadius: 16,
-    paddingHorizontal: 16,
-    paddingVertical: 18,
-    color: theme.colors.primary,
-    fontSize: 20,
-    letterSpacing: 2,
-    fontWeight: 'bold',
+    backgroundColor: 'rgba(255,255,255,0.03)',
+    borderWidth: 1, borderColor: CARD_BORDER, borderRadius: 16,
+    paddingHorizontal: 16, paddingVertical: 14,
+    color: theme.colors.textPrimary, fontSize: 16, letterSpacing: 2, fontWeight: 'bold',
   },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: theme.colors.textPrimary,
-    marginBottom: 16,
+
+  uploadHint: {fontSize: 12, color: theme.colors.textSecondary, marginBottom: 16, lineHeight: 17},
+  uploadSlot: {
+    flexDirection: 'row', alignItems: 'center', gap: 14,
+    borderRadius: 14, borderWidth: 1, borderColor: CARD_BORDER,
+    borderStyle: 'dashed', padding: 16,
+    backgroundColor: 'rgba(255,255,255,0.03)',
   },
-  uploadGrid: {
-    flexDirection: 'row',
-    gap: 16,
-    marginBottom: 16,
-  },
-  uploadBox: {
-    flex: 1,
-    height: 120,
-    backgroundColor: 'rgba(212, 175, 55, 0.05)',
-    borderWidth: 2,
-    borderColor: 'rgba(212, 175, 55, 0.2)',
-    borderStyle: 'dashed',
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-  },
-  uploadBoxSuccess: {
-    borderColor: theme.colors.success,
-    backgroundColor: 'rgba(52, 199, 89, 0.05)',
+  uploadSlotDone: {
     borderStyle: 'solid',
+    borderColor: 'rgba(16, 185, 129, 0.3)',
+    backgroundColor: 'rgba(16, 185, 129, 0.06)',
   },
-  uploadBoxText: {
-    color: theme.colors.primary,
-    fontSize: 14,
-    fontWeight: '600',
-    marginTop: 12,
+  uploadSlotMeta: {flex: 1},
+  uploadSlotTitle: {fontWeight: '500', fontSize: 14, color: theme.colors.textPrimary},
+  uploadSlotSub: {fontSize: 11, color: theme.colors.textSecondary, marginTop: 2},
+  uploadDivider: {height: 10},
+
+  tipsCard: {
+    backgroundColor: CARD_BG, borderRadius: 20,
+    borderWidth: 1, borderColor: CARD_BORDER, padding: 20,
   },
-  helpText: {
-    color: theme.colors.textSecondary,
-    fontSize: 13,
-    lineHeight: 18,
-    textAlign: 'center',
+  tipRow: {flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10},
+  tipRowBorder: {borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: CARD_BORDER},
+  tipIconWrap: {
+    width: 32, height: 32, borderRadius: 16,
+    backgroundColor: 'rgba(212, 175, 55, 0.08)',
+    alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
-  bottomBar: {
-    padding: 24,
-    borderTopWidth: 1,
-    borderTopColor: 'rgba(255,255,255,0.05)',
-    backgroundColor: theme.colors.surface,
-  },
-  nextBtn: {
+  tipText: {flex: 1, fontSize: 13, color: theme.colors.textPrimary},
+
+  ctaBtn: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 10, paddingVertical: 17, borderRadius: 100,
     backgroundColor: theme.colors.primary,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 56,
-    borderRadius: 28,
-    gap: 8,
   },
-  nextBtnDisabled: {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-  },
-  nextBtnText: {
-    color: theme.colors.background,
-    fontSize: 17,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
-  },
-  nextBtnTextDisabled: {
-    color: 'rgba(255,255,255,0.4)',
+  ctaBtnDisabled: {opacity: 0.5},
+  ctaBtnText: {fontWeight: '600', fontSize: 16, color: theme.colors.background, letterSpacing: 0.3},
+
+  securityNote: {flexDirection: 'row', alignItems: 'flex-start', gap: 8, opacity: 0.6},
+  securityText: {
+    flex: 1, fontSize: 11, color: theme.colors.textSecondary, lineHeight: 16,
   },
 });
