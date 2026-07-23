@@ -18,15 +18,17 @@ import { OnboardingHeader } from '../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../components/ui/BottomActionBar';
 import { useAuthStore } from '../store/slices/authStore';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { validatePhone, validateName } from '../utils/validation';
 
 const RELATIONSHIPS = ['Family', 'Friend', 'Partner', 'Other'];
 
 export const TrustedContactsScreen = () => {
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const { t } = useTranslation(['onboarding']);
   const completeOnboarding = useAuthStore((state) => state.completeOnboarding);
+  const isFromSettings = route.params?.fromSettings;
   const [contacts, setContacts] = useState([{ name: 'Aman', phone: '9876543210', relationship: 'Family' }]);
   const [showAddSheet, setShowAddSheet] = useState(false);
   const [newName, setNewName] = useState('');
@@ -64,22 +66,32 @@ export const TrustedContactsScreen = () => {
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.flex}>
       <SafeAreaView style={styles.container} edges={['top', 'bottom', 'left', 'right']}>
         
-        <OnboardingHeader
-          showBack={navigation.canGoBack()}
-          onBack={() => navigation.goBack()}
-          centerLabel={t('contacts.header')}
-          showProgress
-          currentStep={5}
-          totalSteps={5}
-          rightNode={
-            <TouchableOpacity
-              onPress={() => completeOnboarding()}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              activeOpacity={0.7}>
-              <Text style={styles.skipText}>{t('contacts.btn_skip')}</Text>
+        {isFromSettings ? (
+          <View style={styles.settingsHeader}>
+            <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+              <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
-          }
-        />
+            <Text style={styles.settingsHeaderTitle}>Emergency Contacts</Text>
+            <View style={styles.backBtn} />
+          </View>
+        ) : (
+          <OnboardingHeader
+            showBack={navigation.canGoBack()}
+            onBack={() => navigation.goBack()}
+            centerLabel={t('contacts.header')}
+            showProgress
+            currentStep={5}
+            totalSteps={5}
+            rightNode={
+              <TouchableOpacity
+                onPress={() => completeOnboarding()}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                activeOpacity={0.7}>
+                <Text style={styles.skipText}>{t('contacts.btn_skip')}</Text>
+              </TouchableOpacity>
+            }
+          />
+        )}
 
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           {/* Editorial header */}
@@ -137,9 +149,9 @@ export const TrustedContactsScreen = () => {
 
         <BottomActionBar>
           <Button 
-            title={t('contacts.btn_complete')} 
+            title={isFromSettings ? 'Save Contacts' : t('contacts.btn_complete')} 
             disabled={!isValid}
-            onPress={completeOnboarding} 
+            onPress={() => isFromSettings ? navigation.goBack() : completeOnboarding()} 
           />
         </BottomActionBar>
 
@@ -194,6 +206,10 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: theme.colors.background },
   scrollContent: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: 24 },
   skipText: { fontSize: 14, color: theme.colors.textSecondary, fontWeight: '500' },
+  
+  settingsHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, height: 60, borderBottomWidth: 1, borderBottomColor: theme.colors.border },
+  backBtn: { width: 40, height: 40, justifyContent: 'center', alignItems: 'flex-start' },
+  settingsHeaderTitle: { fontSize: 18, fontWeight: 'bold', color: theme.colors.textPrimary },
 
   editorialHeader: { alignItems: 'center', marginBottom: 28 },
   iconHeroWrap: { alignItems: 'center', justifyContent: 'center', marginBottom: 16 },

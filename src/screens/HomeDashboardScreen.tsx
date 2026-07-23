@@ -72,10 +72,7 @@ export const HomeDashboardScreen = () => {
           <Text style={styles.logoText}>CoBuddy</Text>
         </View>
         <View style={styles.topRightIcons}>
-          <TouchableOpacity style={styles.iconBtn}>
-            <Icon name="magnify" size={24} color={theme.colors.textSecondary} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconBtn}>
+          <TouchableOpacity style={styles.iconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('NotificationsScreen')}>
             <View style={styles.notifDot} />
             <Icon name="bell-outline" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
@@ -88,6 +85,25 @@ export const HomeDashboardScreen = () => {
         <View style={styles.welcomeSection}>
           <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>Shlok</Text></Text>
           <Text style={styles.subtitleText}>{t('subtitle')}</Text>
+        </View>
+
+        {/* DEV TOOLS (Temporary) */}
+        <View style={{ marginHorizontal: 20, padding: 16, backgroundColor: 'rgba(212, 175, 55, 0.1)', borderRadius: 12, marginBottom: 20, borderWidth: 1, borderColor: theme.colors.primary }}>
+          <Text style={{ color: theme.colors.primary, fontWeight: 'bold', marginBottom: 12 }}>DEV: Test Booking Screens</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            <TouchableOpacity onPress={() => navigation.navigate('BookingFlowStack', { screen: 'BookingRequestSentScreen' })} style={{ paddingVertical: 8, paddingHorizontal: 12, backgroundColor: theme.colors.surface, borderRadius: 8 }}>
+              <Text style={{ color: 'white', fontSize: 12 }}>Request Sent</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('BookingFlowStack', { screen: 'BookingAcceptedScreen' })} style={{ paddingVertical: 8, paddingHorizontal: 12, backgroundColor: theme.colors.surface, borderRadius: 8 }}>
+              <Text style={{ color: 'white', fontSize: 12 }}>Accepted</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('BookingFlowStack', { screen: 'BookingDeclinedScreen' })} style={{ paddingVertical: 8, paddingHorizontal: 12, backgroundColor: theme.colors.surface, borderRadius: 8 }}>
+              <Text style={{ color: 'white', fontSize: 12 }}>Declined</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('BookingFlowStack', { screen: 'BookingCounterOfferScreen' })} style={{ paddingVertical: 8, paddingHorizontal: 12, backgroundColor: theme.colors.surface, borderRadius: 8 }}>
+              <Text style={{ color: 'white', fontSize: 12 }}>Counter Offer</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {hasActiveBooking ? (

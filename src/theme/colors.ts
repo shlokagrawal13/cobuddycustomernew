@@ -6,5 +6,6 @@ export const colors = {
   textSecondary: '#A0A4B8', // Light Gray
   error: '#EF4444',
   success: '#10B981',
+  warning: '#F59E0B',
   border: '#2A2D43',
 };

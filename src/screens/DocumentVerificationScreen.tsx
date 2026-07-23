@@ -19,14 +19,13 @@ const UPLOAD_TIPS = [
   {icon: 'blur-off',            label: 'No blurry or cropped images'},
 ];
 
-const CARD_BG = 'rgba(11,13,26,0.8)';
-const CARD_BORDER = 'rgba(255,255,255,0.08)';
 type UploadState = 'idle' | 'selected' | 'uploaded';
 
 export const DocumentVerificationScreen = () => {
   const navigation = useNavigation<any>();
   const [selectedDoc, setSelectedDoc] = useState<DocType>('AADHAAR');
   const [docNumber, setDocNumber] = useState('');
+  const [legalName, setLegalName] = useState('');
   const [frontState, setFrontState] = useState<UploadState>('idle');
   const [backState, setBackState]   = useState<UploadState>('idle');
 
@@ -64,6 +63,7 @@ export const DocumentVerificationScreen = () => {
     if (selectedDoc === 'AADHAAR' && docNumber.length < 14) return false;
     if (selectedDoc === 'PAN' && docNumber.length < 10) return false;
     if (docNumber.length < 5) return false;
+    if (legalName.trim().length < 3) return false;
     return true;
   };
 
@@ -79,28 +79,20 @@ export const DocumentVerificationScreen = () => {
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
-      <StatusBar barStyle="light-content" backgroundColor={theme.colors.surface} />
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backBtn}
-          onPress={() => navigation.goBack()}
-          hitSlop={{top:10,bottom:10,left:10,right:10}}
-          activeOpacity={0.7}>
-          <Icon name="arrow-left" size={18} color={theme.colors.textPrimary} />
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+          <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <View style={styles.headerCenter}>
-          <Text style={styles.stepLabel}>VERIFICATION 1 OF 3</Text>
-          <Text style={styles.headerTitle}>Complete Identity Verification</Text>
-        </View>
-        <View style={styles.headerIconWrap}>
-          <Icon name="shield-check" size={20} color={theme.colors.primary} />
-        </View>
+        <Text style={styles.headerTitle}>Step 1 of 3</Text>
+        <View style={{ width: 24 }} />
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           
+          <Text style={styles.title}>Complete Identity Verification</Text>
           <Text style={styles.pageSub}>
             Upload a valid government-issued identity document to unlock verified CoBuddy experiences.
           </Text>
@@ -140,12 +132,23 @@ export const DocumentVerificationScreen = () => {
             <TextInput
               style={styles.input}
               placeholder={getPlaceholder()}
-              placeholderTextColor="rgba(255,255,255,0.2)"
+              placeholderTextColor={theme.colors.textSecondary}
               keyboardType={selectedDoc === 'AADHAAR' ? 'number-pad' : 'default'}
               maxLength={getMaxLength()}
               value={docNumber}
               autoCapitalize="characters"
               onChangeText={(val) => setDocNumber(formatDocNumber(val, selectedDoc))}
+            />
+
+            <View style={{height: 20}} />
+            <Text style={styles.sectionLabel}>LEGAL NAME (AS PER ID)</Text>
+            <TextInput
+              style={[styles.input, { letterSpacing: 1, fontWeight: '500' }]}
+              placeholder="e.g. Shlok Sharma"
+              placeholderTextColor={theme.colors.textSecondary}
+              value={legalName}
+              autoCapitalize="words"
+              onChangeText={setLegalName}
             />
           </View>
 
@@ -245,29 +248,31 @@ const styles = StyleSheet.create({
   root: {flex: 1, backgroundColor: theme.colors.background},
   
   header: {
-    height: 64, flexDirection: 'row', alignItems: 'center',
-    paddingHorizontal: 16, gap: 12,
-    backgroundColor: 'rgba(20,20,15,0.95)',
-    borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: CARD_BORDER,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
   backBtn: {
-    width: 40, height: 40, borderRadius: 20,
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    borderWidth: 1, borderColor: CARD_BORDER,
-    alignItems: 'center', justifyContent: 'center',
+    padding: 8,
   },
-  headerCenter: {flex: 1, alignItems: 'center'},
-  stepLabel: {fontWeight: '600', fontSize: 9, color: theme.colors.primary, letterSpacing: 2, marginBottom: 2},
-  headerTitle: {fontWeight: '600', fontSize: 16, color: theme.colors.textPrimary},
-  headerIconWrap: {width: 40, alignItems: 'flex-end'},
+  headerTitle: {
+    color: theme.colors.textSecondary,
+    fontSize: 14,
+    fontWeight: '600',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
 
   scroll: {flex: 1},
   scrollContent: {paddingHorizontal: 20, paddingTop: 16, gap: 20},
+  title: {fontSize: 24, fontWeight: 'bold', color: theme.colors.textPrimary},
   pageSub: {fontSize: 13, color: theme.colors.textSecondary, lineHeight: 19},
 
   card: {
-    backgroundColor: CARD_BG, borderRadius: 20,
-    borderWidth: 1, borderColor: CARD_BORDER, padding: 20,
+    backgroundColor: theme.colors.surface, borderRadius: 20,
+    borderWidth: 1, borderColor: theme.colors.border, padding: 20,
   },
   sectionLabel: {
     fontWeight: '600', fontSize: 10,
@@ -278,20 +283,19 @@ const styles = StyleSheet.create({
   docTypeCard: {
     flex: 1, minWidth: '45%',
     alignItems: 'center', gap: 8, padding: 16,
-    borderRadius: 16, borderWidth: 1, borderColor: CARD_BORDER,
-    backgroundColor: 'rgba(255,255,255,0.03)', position: 'relative',
+    borderRadius: 16, borderWidth: 1, borderColor: theme.colors.border,
+    backgroundColor: theme.colors.background, position: 'relative',
   },
   docTypeCardSelected: {
     borderColor: theme.colors.primary,
-    backgroundColor: 'rgba(212, 175, 55, 0.08)',
   },
   docTypeLabel: {fontSize: 12, color: theme.colors.textSecondary, textAlign: 'center'},
   docTypeLabelSelected: {color: theme.colors.primary, fontWeight: '500'},
   docTypeCheck: {position: 'absolute', top: 8, right: 8},
 
   input: {
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    borderWidth: 1, borderColor: CARD_BORDER, borderRadius: 16,
+    backgroundColor: theme.colors.background,
+    borderWidth: 1, borderColor: theme.colors.border, borderRadius: 16,
     paddingHorizontal: 16, paddingVertical: 14,
     color: theme.colors.textPrimary, fontSize: 16, letterSpacing: 2, fontWeight: 'bold',
   },
@@ -299,14 +303,12 @@ const styles = StyleSheet.create({
   uploadHint: {fontSize: 12, color: theme.colors.textSecondary, marginBottom: 16, lineHeight: 17},
   uploadSlot: {
     flexDirection: 'row', alignItems: 'center', gap: 14,
-    borderRadius: 14, borderWidth: 1, borderColor: CARD_BORDER,
-    borderStyle: 'dashed', padding: 16,
-    backgroundColor: 'rgba(255,255,255,0.03)',
+    borderRadius: 14, borderWidth: 1, borderColor: theme.colors.border,
+    padding: 16,
+    backgroundColor: theme.colors.background,
   },
   uploadSlotDone: {
-    borderStyle: 'solid',
-    borderColor: 'rgba(16, 185, 129, 0.3)',
-    backgroundColor: 'rgba(16, 185, 129, 0.06)',
+    borderColor: theme.colors.success,
   },
   uploadSlotMeta: {flex: 1},
   uploadSlotTitle: {fontWeight: '500', fontSize: 14, color: theme.colors.textPrimary},
@@ -314,14 +316,14 @@ const styles = StyleSheet.create({
   uploadDivider: {height: 10},
 
   tipsCard: {
-    backgroundColor: CARD_BG, borderRadius: 20,
-    borderWidth: 1, borderColor: CARD_BORDER, padding: 20,
+    backgroundColor: theme.colors.surface, borderRadius: 20,
+    borderWidth: 1, borderColor: theme.colors.border, padding: 20,
   },
   tipRow: {flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10},
-  tipRowBorder: {borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: CARD_BORDER},
+  tipRowBorder: {borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.colors.border},
   tipIconWrap: {
     width: 32, height: 32, borderRadius: 16,
-    backgroundColor: 'rgba(212, 175, 55, 0.08)',
+    backgroundColor: theme.colors.background,
     alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
   tipText: {flex: 1, fontSize: 13, color: theme.colors.textPrimary},
@@ -331,7 +333,7 @@ const styles = StyleSheet.create({
     gap: 10, paddingVertical: 17, borderRadius: 100,
     backgroundColor: theme.colors.primary,
   },
-  ctaBtnDisabled: {opacity: 0.5},
+  ctaBtnDisabled: {opacity: 0.5, backgroundColor: theme.colors.border},
   ctaBtnText: {fontWeight: '600', fontSize: 16, color: theme.colors.background, letterSpacing: 0.3},
 
   securityNote: {flexDirection: 'row', alignItems: 'flex-start', gap: 8, opacity: 0.6},

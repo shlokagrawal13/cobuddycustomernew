@@ -21,23 +21,52 @@ import { ProfileScreen } from '../screens/ProfileScreen';
 import { EditProfileScreen } from '../screens/EditProfileScreen';
 import { MyReviewsScreen } from '../screens/MyReviewsScreen';
 import { WalletScreen } from '../screens/WalletScreen';
+import { TransactionHistoryScreen } from '../screens/TransactionHistoryScreen';
 import { TransactionDetailScreen } from '../screens/TransactionDetailScreen';
 import { PaymentMethodsScreen } from '../screens/PaymentMethodsScreen';
 import { AddPaymentMethodScreen } from '../screens/AddPaymentMethodScreen';
+import { AddMoneyScreen } from '../screens/AddMoneyScreen';
+import { WithdrawMoneyScreen } from '../screens/WithdrawMoneyScreen';
+import { WithdrawalMethodsScreen } from '../screens/WithdrawalMethodsScreen';
+import { AddBankAccountScreen } from '../screens/AddBankAccountScreen';
 import { SettingsHubScreen } from '../screens/SettingsHubScreen';
 import { NotificationPreferencesScreen } from '../screens/NotificationPreferencesScreen';
 import { LanguageSelectionScreen } from '../screens/LanguageSelectionScreen';
 import { AccountSettingsScreen } from '../screens/AccountSettingsScreen';
 import { DeleteAccountScreen } from '../screens/DeleteAccountScreen';
 import { LegalAgreementsScreen } from '../screens/LegalAgreementsScreen';
-
-
+import { InterestSelectionScreen } from '../screens/InterestSelectionScreen';
+import { SpokenLanguagesScreen } from '../screens/SpokenLanguagesScreen';
+import { LocationSelectionScreen } from '../screens/LocationSelectionScreen';
+import { AppPermissionsScreen } from '../screens/AppPermissionsScreen';
+import { AppLockScreen } from '../screens/AppLockScreen';
+import { BlockedUsersScreen } from '../screens/BlockedUsersScreen';
+import { SafetySettingsScreen } from '../screens/SafetySettingsScreen';
+import { DataCacheScreen } from '../screens/DataCacheScreen';
+import { HelpCenterScreen } from '../screens/HelpCenterScreen';
+import { SupportCenterScreen } from '../screens/SupportCenterScreen';
+import { CreateSupportTicketScreen } from '../screens/CreateSupportTicketScreen';
+import { SupportTicketDetailScreen } from '../screens/SupportTicketDetailScreen';
+import { PhoneLoginScreen } from '../screens/PhoneLoginScreen';
+import { OTPVerificationScreen } from '../screens/OTPVerificationScreen';
+import { DeactivateAccountScreen } from '../screens/DeactivateAccountScreen';
+import { ActiveSessionsScreen } from '../screens/ActiveSessionsScreen';
+import { SavedProfilesScreen } from '../screens/SavedProfilesScreen';
+import { TrustedContactsScreen } from '../screens/TrustedContactsScreen';
+import { AddTrustedContactScreen } from '../screens/AddTrustedContactScreen';
+import { ReferFriendScreen } from '../screens/ReferFriendScreen';
+import { SafetyHubScreen } from '../screens/SafetyHubScreen';
+import { IncidentReportScreen } from '../screens/IncidentReportScreen';
+import { SafetyGuidelinesScreen } from '../screens/SafetyGuidelinesScreen';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
+import { NotificationsScreen } from '../screens/NotificationsScreen';
 
 const HomeTabStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeDashboardScreen" component={HomeDashboardScreen} />
+      <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
   </Stack.Navigator>
 );
 
@@ -74,15 +103,45 @@ const ProfileTabStack = () => (
       <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <Stack.Screen name="MyReviewsScreen" component={MyReviewsScreen} />
       <Stack.Screen name="WalletScreen" component={WalletScreen} />
+      <Stack.Screen name="TransactionHistoryScreen" component={TransactionHistoryScreen} />
       <Stack.Screen name="TransactionDetailScreen" component={TransactionDetailScreen} />
       <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} />
       <Stack.Screen name="AddPaymentMethodScreen" component={AddPaymentMethodScreen} />
+      <Stack.Screen name="AddMoneyScreen" component={AddMoneyScreen} />
+      <Stack.Screen name="WithdrawMoneyScreen" component={WithdrawMoneyScreen} />
+      <Stack.Screen name="WithdrawalMethodsScreen" component={WithdrawalMethodsScreen} />
+      <Stack.Screen name="AddBankAccountScreen" component={AddBankAccountScreen} />
       <Stack.Screen name="SettingsHubScreen" component={SettingsHubScreen} />
       <Stack.Screen name="NotificationPreferencesScreen" component={NotificationPreferencesScreen} />
       <Stack.Screen name="LanguageSelectionScreen" component={LanguageSelectionScreen} />
       <Stack.Screen name="AccountSettingsScreen" component={AccountSettingsScreen} />
       <Stack.Screen name="DeleteAccountScreen" component={DeleteAccountScreen} />
       <Stack.Screen name="LegalAgreementsScreen" component={LegalAgreementsScreen} />
+      <Stack.Screen name="InterestSelectionScreen" component={InterestSelectionScreen} />
+      <Stack.Screen name="SpokenLanguagesScreen" component={SpokenLanguagesScreen} />
+      <Stack.Screen name="LocationSelectionScreen" component={LocationSelectionScreen} />
+      <Stack.Screen name="AppPermissionsScreen" component={AppPermissionsScreen} />
+      <Stack.Screen name="AppLockScreen" component={AppLockScreen} />
+      <Stack.Screen name="BlockedUsersScreen" component={BlockedUsersScreen} />
+      <Stack.Screen name="SafetySettingsScreen" component={SafetySettingsScreen} />
+      <Stack.Screen name="DataCacheScreen" component={DataCacheScreen} />
+      <Stack.Screen name="HelpCenterScreen" component={HelpCenterScreen} />
+      <Stack.Screen name="SupportCenterScreen" component={SupportCenterScreen} />
+      <Stack.Screen name="CreateSupportTicketScreen" component={CreateSupportTicketScreen} />
+      <Stack.Screen name="SupportTicketDetailScreen" component={SupportTicketDetailScreen} />
+      <Stack.Screen name="PhoneLoginScreen" component={PhoneLoginScreen} />
+      <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
+      <Stack.Screen name="DeactivateAccountScreen" component={DeactivateAccountScreen} />
+      <Stack.Screen name="ActiveSessionsScreen" component={ActiveSessionsScreen} />
+      <Stack.Screen name="SavedProfilesScreen" component={SavedProfilesScreen} />
+      <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
+      <Stack.Screen name="AddTrustedContactScreen" component={AddTrustedContactScreen} />
+      <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
+      <Stack.Screen name="ReferFriendScreen" component={ReferFriendScreen} />
+      <Stack.Screen name="SafetyHubScreen" component={SafetyHubScreen} />
+      <Stack.Screen name="IncidentReportScreen" component={IncidentReportScreen} />
+      <Stack.Screen name="SafetyGuidelinesScreen" component={SafetyGuidelinesScreen} />
+      <Stack.Screen name="ConciergeChatScreen" component={ConciergeChatScreen} />
   </Stack.Navigator>
 );
 

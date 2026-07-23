@@ -8,6 +8,7 @@ import { LivenessDetectionScreen } from '../screens/LivenessDetectionScreen';
 import { VerificationProcessingScreen } from '../screens/VerificationProcessingScreen';
 import { VerificationPendingScreen } from '../screens/VerificationPendingScreen';
 import { VerificationRejectedScreen } from '../screens/VerificationRejectedScreen';
+import { VerificationSuccessScreen } from '../screens/VerificationSuccessScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,7 @@ export const KYCStack = () => {
       <Stack.Screen name="VerificationProcessingScreen" component={VerificationProcessingScreen} />
       <Stack.Screen name="VerificationPendingScreen" component={VerificationPendingScreen} />
       <Stack.Screen name="VerificationRejectedScreen" component={VerificationRejectedScreen} />
+      <Stack.Screen name="VerificationSuccessScreen" component={VerificationSuccessScreen} />
     </Stack.Navigator>
   );
 };

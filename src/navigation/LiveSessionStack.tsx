@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import { SessionReminderScreen } from '../screens/SessionReminderScreen';
 import { ArrivalCheckInScreen } from '../screens/ArrivalCheckInScreen';
 import { ActiveSessionScreen } from '../screens/ActiveSessionScreen';
 import { SessionCompleteScreen } from '../screens/SessionCompleteScreen';
@@ -13,6 +14,7 @@ const Stack = createNativeStackNavigator();
 export const LiveSessionStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SessionReminderScreen" component={SessionReminderScreen} />
       <Stack.Screen name="ArrivalCheckInScreen" component={ArrivalCheckInScreen} />
       <Stack.Screen name="ActiveSessionScreen" component={ActiveSessionScreen} />
       <Stack.Screen name="SessionCompleteScreen" component={SessionCompleteScreen} />

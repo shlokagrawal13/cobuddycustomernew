@@ -18,7 +18,7 @@ import { AppBottomSheet } from '../components/ui/AppBottomSheet';
 import { OnboardingHeader } from '../components/onboarding/OnboardingHeader';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useAuthStore } from '../store/slices/authStore';
-import { validateName, validateAge } from '../utils/validation';
+import { validateName, validateDOB } from '../utils/validation';
 import { useTranslation } from 'react-i18next';
 
 const GENDER_OPTIONS = ['Man', 'Woman', 'Non-binary', 'Prefer not to say'];
@@ -33,13 +33,13 @@ const AVATAR_COLORS: Record<AvatarState, string> = {
 export const BasicProfileSetupScreen = () => {
   const navigation = useNavigation<any>();
   const [name, setName] = useState('');
-  const [age, setAge] = useState('');
+  const [dob, setDob] = useState('');
   const [gender, setGender] = useState('');
   const [city, setCity] = useState('');
   const [bio, setBio] = useState('');
   const [showGender, setShowGender] = useState(false);
   const [nameError, setNameError] = useState('');
-  const [ageError, setAgeError] = useState('');
+  const [dobError, setDobError] = useState('');
   const [cityError, setCityError] = useState('');
   const [bioError, setBioError] = useState('');
   const [avatarState, setAvatarState] = useState<AvatarState>('none');
@@ -47,17 +47,17 @@ export const BasicProfileSetupScreen = () => {
 
   const { t } = useTranslation(['onboarding']);
   
-  const isValid = validateName(name) && validateAge(age) && gender !== '' && city.trim().length >= 3 && bio.trim().length >= 10;
+  const isValid = validateName(name) && validateDOB(dob) && gender !== '' && city.trim().length >= 3 && bio.trim().length >= 10;
 
   const handleContinue = () => {
     let hasError = false;
     
     if (!validateName(name)) {
-      setNameError(t('profile.error_name'));
+      setNameError(t('profile.error_name', 'Invalid name'));
       hasError = true;
     }
-    if (!validateAge(age)) {
-      setAgeError(t('profile.error_age'));
+    if (!validateDOB(dob)) {
+      setDobError('Must be 18+ and format DD/MM/YYYY');
       hasError = true;
     }
     if (city.trim().length < 3) {
@@ -73,6 +73,20 @@ export const BasicProfileSetupScreen = () => {
 
     // User profiling data could be saved here in a global store.
     navigation.navigate('InterestSelectionScreen');
+  };
+
+  const handleDobChange = (text: string) => {
+    // Auto-format to DD/MM/YYYY
+    const cleaned = text.replace(/[^0-9]/g, '');
+    let formatted = cleaned;
+    if (cleaned.length >= 3) {
+      formatted = `${cleaned.slice(0, 2)}/${cleaned.slice(2)}`;
+    }
+    if (cleaned.length >= 5) {
+      formatted = `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}/${cleaned.slice(4, 8)}`;
+    }
+    setDob(formatted);
+    if (dobError) setDobError('');
   };
 
   const handleAvatarOption = (option: 'photo' | 'selfie' | 'skip') => {
@@ -185,22 +199,22 @@ export const BasicProfileSetupScreen = () => {
               {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
             </View>
 
-            {/* Age + Gender row */}
+            {/* DOB + Gender row */}
             <View style={styles.ageGenderRow}>
-              <View style={[styles.field, { flex: 1 }]}>
-                <Text style={styles.fieldLabel}>{t('profile.label_age')}</Text>
+              <View style={[styles.field, { flex: 1.1 }]}>
+                <Text style={styles.fieldLabel}>Date of Birth</Text>
                 <TextInput
-                  style={[styles.underlineInput, ageError ? styles.underlineInputError : null]}
-                  value={age}
-                  onChangeText={t => { setAge(t); if (ageError) setAgeError(''); }}
-                  placeholder={t('profile.placeholder_age')}
+                  style={[styles.underlineInput, dobError ? styles.underlineInputError : null]}
+                  value={dob}
+                  onChangeText={handleDobChange}
+                  placeholder="DD/MM/YYYY"
                   placeholderTextColor={theme.colors.textSecondary}
                   keyboardType="number-pad"
-                  maxLength={3}
+                  maxLength={10}
                   returnKeyType="next"
                 />
               </View>
-              <View style={[styles.field, { flex: 2 }]}>
+              <View style={[styles.field, { flex: 1 }]}>
                 <Text style={styles.fieldLabel}>{t('profile.label_gender')}</Text>
                 <TouchableOpacity
                   style={styles.underlineSelect}
@@ -226,8 +240,8 @@ export const BasicProfileSetupScreen = () => {
                 )}
               </View>
             </View>
-            {ageError ? <Text style={styles.errorText}>{ageError}</Text> : null}
-            <Text style={styles.ageHint}>{t('profile.hint_age')}</Text>
+            {dobError ? <Text style={styles.errorText}>{dobError}</Text> : null}
+            <Text style={styles.ageHint}>You must be 18+ to use CoBuddy.</Text>
 
             {/* City */}
             <View style={styles.field}>
@@ -455,7 +469,8 @@ const styles = StyleSheet.create({
   underlineInput: {
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.border,
-    paddingVertical: 10,
+    height: 44,
+    paddingVertical: 0,
     fontSize: 16,
     color: theme.colors.textPrimary,
   },
@@ -469,7 +484,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.border,
-    paddingVertical: 10,
+    height: 44,
   },
   selectValue: { fontSize: 16, color: theme.colors.textPrimary },
   selectPlaceholder: { fontSize: 16, color: theme.colors.textSecondary },

@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useTranslation } from 'react-i18next';
 import { theme } from '../theme';
+
+const { width } = Dimensions.get('window');
 
 export const SelfieCaptureScreen = () => {
   const navigation = useNavigation<any>();
-  const { t } = useTranslation(['onboarding']);
+  const [hasPermission, setHasPermission] = useState(false);
   const [photoCaptured, setPhotoCaptured] = useState(false);
+
+  useEffect(() => {
+    // Simulate camera permission check
+    const timer = setTimeout(() => {
+      setHasPermission(true);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleCapture = () => {
     setPhotoCaptured(true);
@@ -25,6 +34,8 @@ export const SelfieCaptureScreen = () => {
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
+
       <View style={styles.header}>
         <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
@@ -33,8 +44,8 @@ export const SelfieCaptureScreen = () => {
         <View style={{ width: 24 }} />
       </View>
 
-      <View style={styles.content}>
-        <Text style={styles.title}>Selfie Capture</Text>
+      <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        <Text style={styles.title}>Selfie Verification</Text>
         <Text style={styles.subtitle}>
           {photoCaptured 
             ? "Ensure your face is clearly visible and not blurry." 
@@ -42,9 +53,7 @@ export const SelfieCaptureScreen = () => {
         </Text>
 
         <View style={styles.cameraContainer}>
-          {/* MOCK: Camera Viewport */}
           <View style={[styles.cameraFrame, photoCaptured && styles.cameraFrameSuccess]}>
-            {/* Premium Corner Markers */}
             <View style={[styles.cornerMarker, styles.cornerTL]} />
             <View style={[styles.cornerMarker, styles.cornerTR]} />
             <View style={[styles.cornerMarker, styles.cornerBL]} />
@@ -64,25 +73,25 @@ export const SelfieCaptureScreen = () => {
             <Text style={styles.tipsText}>Face the camera directly and center your face in the oval.</Text>
           </View>
         )}
-      </View>
 
-      <View style={styles.bottomBar}>
-        {photoCaptured ? (
-          <View style={styles.actionRow}>
-            <TouchableOpacity style={styles.retakeBtn} onPress={handleRetake}>
-              <Text style={styles.retakeBtnText}>Retake</Text>
+        <View style={styles.bottomBar}>
+          {photoCaptured ? (
+            <View style={styles.actionRow}>
+              <TouchableOpacity style={styles.retakeBtn} onPress={handleRetake}>
+                <Text style={styles.retakeBtnText}>Retake</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.confirmBtn} onPress={handleNext}>
+                <Text style={styles.confirmBtnText}>Confirm</Text>
+                <Icon name="check" size={20} color={theme.colors.background} />
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8} disabled={!hasPermission}>
+              <View style={[styles.captureInnerBtn, !hasPermission && { backgroundColor: theme.colors.textSecondary }]} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.confirmBtn} onPress={handleNext}>
-              <Text style={styles.confirmBtnText}>Confirm</Text>
-              <Icon name="check" size={20} color={theme.colors.background} />
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8}>
-            <View style={styles.captureInnerBtn} />
-          </TouchableOpacity>
-        )}
-      </View>
+          )}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -90,7 +99,7 @@ export const SelfieCaptureScreen = () => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: '#000000', // Camera usually has black bg
+    backgroundColor: theme.colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -109,41 +118,44 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
-  content: {
+  scroll: {
     flex: 1,
+  },
+  scrollContent: {
     padding: 24,
     alignItems: 'center',
+    paddingBottom: 40,
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: 'bold',
     color: theme.colors.textPrimary,
     marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 15,
+    fontSize: 14,
     color: theme.colors.textSecondary,
-    lineHeight: 22,
+    lineHeight: 20,
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 30,
     paddingHorizontal: 10,
   },
   cameraContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    marginBottom: 20,
   },
   cameraFrame: {
-    width: 280,
-    height: 380,
-    borderRadius: 140, // Oval shape
+    width: width * 0.7,
+    height: width * 0.95,
+    borderRadius: 140, 
     borderWidth: 2,
-    borderColor: 'rgba(212, 175, 55, 0.4)', // Gold tint
+    borderColor: theme.colors.border, 
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#15182B',
+    backgroundColor: theme.colors.surface,
     position: 'relative',
   },
   cameraFrameSuccess: {
@@ -186,10 +198,13 @@ const styles = StyleSheet.create({
   tipsBox: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+    backgroundColor: theme.colors.surface,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
     padding: 16,
     borderRadius: 16,
     marginBottom: 20,
+    width: '100%',
   },
   tipsText: {
     color: theme.colors.primary,
@@ -199,8 +214,8 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   bottomBar: {
-    padding: 24,
-    paddingBottom: 40,
+    width: '100%',
+    paddingTop: 10,
     alignItems: 'center',
   },
   captureBtn: {
@@ -228,7 +243,9 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 56,
     borderRadius: 28,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: theme.colors.surface,
+    borderWidth: 1,
+    borderColor: theme.colors.border,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -1,93 +1,238 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
 
+const REVIEW_STEPS = [
+  {icon: 'check-circle',        label: 'Document Verification', status: 'Completed',    done: true},
+  {icon: 'check-circle',        label: 'Selfie & Liveness Check', status: 'Completed',    done: true},
+  {icon: 'timer-sand',          label: 'Profile Review',        status: 'Under Review', done: false},
+  {icon: 'clock-outline',       label: 'Booking Authorization', status: 'Pending',      done: false},
+];
+
 export const VerificationPendingScreen = () => {
   const navigation = useNavigation<any>();
 
-  const handleContinue = () => {
-    // Return to the main app flow
-    navigation.navigate('Main');
+  const handleGoToIdentity = () => {
+    // If KYC was opened from another flow (like Booking), return to it.
+    const parent = navigation.getParent();
+    if (parent && parent.canGoBack()) {
+      parent.goBack();
+    } else {
+      navigation.reset({ index: 0, routes: [{ name: 'MainTabNavigator' }] });
+    }
   };
 
+  const isFromFlow = navigation.getParent()?.canGoBack();
+
   return (
-    <SafeAreaView style={styles.root}>
-      <View style={styles.content}>
-        <View style={styles.iconContainer}>
-          <Icon name="shield-check" size={80} color={theme.colors.success} />
+    <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
+
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backBtn}
+          onPress={handleGoToIdentity}
+          hitSlop={{top:10,bottom:10,left:10,right:10}}
+          activeOpacity={0.7}>
+          <Icon name="close" size={24} color={theme.colors.textPrimary} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>Verification Status</Text>
+        <View style={styles.headerIconWrap}>
+          <Icon name="shield-check" size={24} color={theme.colors.primary} />
+        </View>
+      </View>
+
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}>
+
+        <View style={styles.heroCard}>
+          <View style={styles.heroGlow} pointerEvents="none" />
+          <View style={styles.heroIconRing}>
+            <View style={styles.heroIconInner}>
+              <Icon name="shield-account" size={44} color={theme.colors.primary} />
+            </View>
+          </View>
+
+          <Text style={styles.heroTitle}>Verification In Review</Text>
+
+          <View style={styles.statusBadge}>
+            <Icon name="clock-outline" size={14} color={theme.colors.warning} />
+            <Text style={styles.statusBadgeLabel}>STATUS</Text>
+            <View style={styles.statusBadgeDivider} />
+            <Text style={styles.statusBadgeValue}>Verification Pending</Text>
+          </View>
+
+          <View style={styles.etaRow}>
+            <Icon name="clock-outline" size={14} color={theme.colors.textSecondary} />
+            <Text style={styles.etaText}>
+              Estimated Time: Usually completed within 24 hours.
+            </Text>
+          </View>
         </View>
 
-        <Text style={styles.title}>You are Verified!</Text>
-        <Text style={styles.subtitle}>
-          Your identity has been successfully verified. You can now send booking requests and interact with companions.
-        </Text>
-      </View>
+        <View style={styles.card}>
+          <Text style={styles.sectionLabel}>VERIFICATION PROGRESS</Text>
+          {REVIEW_STEPS.map((step, i) => (
+            <View key={step.label} style={[styles.reviewRow, i < REVIEW_STEPS.length - 1 && styles.reviewRowBorder]}>
+              <View style={[styles.reviewIconWrap, step.done && styles.reviewIconWrapDone]}>
+                <Icon
+                  name={step.icon}
+                  size={16}
+                  color={step.done ? theme.colors.success : theme.colors.textSecondary}
+                />
+              </View>
+              <View style={styles.reviewMeta}>
+                <Text style={styles.reviewLabel}>{step.label}</Text>
+                <Text style={[styles.reviewStatus, step.done && styles.reviewStatusDone]}>
+                  {step.status}
+                </Text>
+              </View>
+              {step.done ? (
+                <Icon name="check-circle" size={18} color={theme.colors.success} />
+              ) : (
+                <Icon name="timer-sand" size={16} color={theme.colors.warning} />
+              )}
+            </View>
+          ))}
+        </View>
 
-      <View style={styles.bottomBar}>
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={handleContinue}
-          activeOpacity={0.8}
-        >
-          <Text style={styles.btnText}>Continue to App</Text>
+        <View style={styles.nextCard}>
+          <View style={styles.nextIconWrap}>
+            <Icon name="information" size={20} color={theme.colors.primary} />
+          </View>
+          <View style={styles.nextMeta}>
+            <Text style={styles.nextTitle}>Continue Setting Up Your Experience</Text>
+            <Text style={styles.nextSub}>
+              You can continue exploring the app while verification is reviewed.
+            </Text>
+          </View>
+        </View>
+
+        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85}>
+          <Text style={styles.ctaBtnText}>{isFromFlow ? 'Go Back' : 'Continue to App'}</Text>
+          <Icon name={isFromFlow ? "arrow-left" : "arrow-right"} size={18} color={theme.colors.background} />
         </TouchableOpacity>
-      </View>
+
+        <View style={styles.securityNote}>
+          <Icon name="lock" size={13} color={theme.colors.textSecondary} />
+          <Text style={styles.securityText}>
+            All verification data is protected with end-to-end encryption and never shared without consent.
+          </Text>
+        </View>
+
+        <View style={{height: 20}} />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
+  root: {flex: 1, backgroundColor: theme.colors.background},
+
+  header: {
+    flexDirection: 'row', alignItems: 'center',
+    paddingHorizontal: 16, paddingVertical: 12,
+  },
+  backBtn: {
+    width: 40, height: 40, borderRadius: 20,
+    backgroundColor: theme.colors.surface,
+    borderWidth: 1, borderColor: theme.colors.border,
+    alignItems: 'center', justifyContent: 'center',
+  },
+  headerTitle: {flex: 1, fontWeight: '600', fontSize: 17, color: theme.colors.textPrimary, letterSpacing: 0.2, textAlign: 'center'},
+  headerIconWrap: {width: 40, alignItems: 'flex-end'},
+
+  scroll: {flex: 1},
+  scrollContent: {paddingHorizontal: 20, paddingTop: 24, gap: 20, paddingBottom: 40},
+
+  heroCard: {
+    backgroundColor: theme.colors.surface, borderRadius: 28,
+    borderWidth: 1, borderColor: theme.colors.border,
+    padding: 28, alignItems: 'center', gap: 16,
+    position: 'relative', overflow: 'hidden',
+  },
+  heroGlow: {
+    position: 'absolute', top: -80, left: 0, right: 0,
+    height: 220, backgroundColor: 'rgba(212, 175, 55, 0.03)', borderRadius: 200,
+  },
+  heroIconRing: {
+    width: 100, height: 100, borderRadius: 50,
     backgroundColor: theme.colors.background,
+    borderWidth: 2, borderColor: theme.colors.border,
+    alignItems: 'center', justifyContent: 'center',
   },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 24,
+  heroIconInner: {
+    width: 76, height: 76, borderRadius: 38,
+    backgroundColor: theme.colors.surface,
+    borderWidth: 1, borderColor: theme.colors.primary,
+    alignItems: 'center', justifyContent: 'center',
   },
-  iconContainer: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    backgroundColor: 'rgba(52, 199, 89, 0.1)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 32,
+  heroTitle: {fontWeight: 'bold', fontSize: 26, color: theme.colors.textPrimary, textAlign: 'center'},
+
+  statusBadge: {
+    flexDirection: 'row', alignItems: 'center', gap: 8,
+    backgroundColor: theme.colors.background,
+    borderRadius: 100, borderWidth: 1, borderColor: theme.colors.border,
+    paddingHorizontal: 16, paddingVertical: 8,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: theme.colors.textPrimary,
-    marginBottom: 12,
-    textAlign: 'center',
+  statusBadgeLabel: {fontWeight: '600', fontSize: 10, color: theme.colors.textSecondary, letterSpacing: 1.5},
+  statusBadgeDivider: {width: 1, height: 12, backgroundColor: theme.colors.border},
+  statusBadgeValue: {fontWeight: '600', fontSize: 13, color: theme.colors.warning},
+
+  etaRow: {flexDirection: 'row', alignItems: 'center', gap: 8},
+  etaText: {fontSize: 12, color: theme.colors.textSecondary, flex: 1, lineHeight: 17},
+
+  card: {
+    backgroundColor: theme.colors.surface, borderRadius: 20,
+    borderWidth: 1, borderColor: theme.colors.border, padding: 20,
   },
-  subtitle: {
-    fontSize: 16,
-    color: theme.colors.textSecondary,
-    textAlign: 'center',
-    lineHeight: 24,
-    paddingHorizontal: 16,
+  sectionLabel: {
+    fontWeight: '600', fontSize: 10,
+    color: theme.colors.textSecondary, letterSpacing: 1.5, marginBottom: 14,
   },
-  bottomBar: {
-    padding: 24,
-    paddingBottom: 40,
+  reviewRow: {flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 12},
+  reviewRowBorder: {borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: theme.colors.border},
+  reviewIconWrap: {
+    width: 36, height: 36, borderRadius: 18,
+    backgroundColor: theme.colors.background,
+    borderWidth: 1, borderColor: theme.colors.border,
+    alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   },
-  btn: {
+  reviewIconWrapDone: {
+    borderColor: theme.colors.success,
+  },
+  reviewMeta: {flex: 1},
+  reviewLabel: {fontWeight: '500', fontSize: 14, color: theme.colors.textPrimary},
+  reviewStatus: {fontSize: 11, color: theme.colors.warning, marginTop: 2},
+  reviewStatusDone: {color: theme.colors.success},
+
+  nextCard: {
+    flexDirection: 'row', alignItems: 'flex-start', gap: 14,
+    backgroundColor: theme.colors.surface,
+    borderRadius: 16, borderWidth: 1, borderColor: theme.colors.border,
+    borderLeftWidth: 3, borderLeftColor: theme.colors.primary, padding: 16,
+  },
+  nextIconWrap: {
+    width: 40, height: 40, borderRadius: 20,
+    backgroundColor: theme.colors.background,
+    alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+  },
+  nextMeta: {flex: 1},
+  nextTitle: {fontWeight: '600', fontSize: 14, color: theme.colors.textPrimary, marginBottom: 6},
+  nextSub: {fontSize: 12, color: theme.colors.textSecondary, lineHeight: 17},
+
+  ctaBtn: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
+    gap: 10, paddingVertical: 17, borderRadius: 100,
     backgroundColor: theme.colors.primary,
-    height: 56,
-    borderRadius: 28,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
-  btnText: {
-    color: theme.colors.background,
-    fontSize: 17,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
-  },
+  ctaBtnText: {fontWeight: '600', fontSize: 16, color: theme.colors.background, letterSpacing: 0.3},
+
+  securityNote: {flexDirection: 'row', alignItems: 'flex-start', gap: 8, opacity: 0.6},
+  securityText: {flex: 1, fontSize: 11, color: theme.colors.textSecondary, lineHeight: 16},
 });

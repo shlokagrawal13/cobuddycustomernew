@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, Animated } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Dimensions, Animated, Alert } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../theme';
 import { SkeletonLoader } from '../components/ui/SkeletonLoader';
+import { AppBottomSheet } from '../components/ui/AppBottomSheet';
 
 const { width, height } = Dimensions.get('window');
 const HERO_HEIGHT = height * 0.55; 
@@ -68,6 +69,7 @@ export const CompanionProfileScreen = () => {
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
   const [activePhotoIndex, setActivePhotoIndex] = useState(0);
+  const [showMenuSheet, setShowMenuSheet] = useState(false);
 
   const scrollY = useRef(new Animated.Value(0)).current;
 
@@ -311,13 +313,8 @@ export const CompanionProfileScreen = () => {
               </View>
             ))}
           </View>
-
-          {/* Safety / Report Section */}
-          <TouchableOpacity style={styles.reportBtn}>
-            <Icon name="flag-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.reportBtnText}>{t('report_profile', 'Report this profile')}</Text>
-          </TouchableOpacity>
-
+          {/* Bottom spacer instead of ugly buttons */}
+          <View style={{ height: 40 }} />
         </View>
       </Animated.ScrollView>
 
@@ -333,11 +330,11 @@ export const CompanionProfileScreen = () => {
         </TouchableOpacity>
         
         <View style={{ flexDirection: 'row', gap: 12 }}>
-          <TouchableOpacity style={styles.iconCircle}>
-            <Icon name="share-variant" size={22} color={theme.colors.textPrimary} />
-          </TouchableOpacity>
           <TouchableOpacity style={styles.iconCircle} onPress={() => setIsFavorite(!isFavorite)}>
             <Icon name={isFavorite ? "heart" : "heart-outline"} size={22} color={isFavorite ? theme.colors.error : theme.colors.textPrimary} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.iconCircle} onPress={() => setShowMenuSheet(true)}>
+            <Icon name="dots-vertical" size={22} color={theme.colors.textPrimary} />
           </TouchableOpacity>
         </View>
       </View>
@@ -356,6 +353,61 @@ export const CompanionProfileScreen = () => {
           <Text style={styles.requestBtnText}>{t('btn_request', 'Request Booking')}</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Options Bottom Sheet */}
+      <AppBottomSheet
+        visible={showMenuSheet}
+        onClose={() => setShowMenuSheet(false)}
+        title="Options"
+      >
+        <View style={styles.sheetContent}>
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)}>
+            <View style={styles.sheetIconWrap}>
+              <Icon name="share-variant-outline" size={20} color={theme.colors.textPrimary} />
+            </View>
+            <Text style={styles.sheetRowText}>Share Profile</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)}>
+            <View style={styles.sheetIconWrap}>
+              <Icon name="flag-outline" size={20} color={theme.colors.textPrimary} />
+            </View>
+            <Text style={styles.sheetRowText}>Report {DUMMY_PROFILE.name}</Text>
+          </TouchableOpacity>
+
+          <View style={styles.sheetDivider} />
+
+          <TouchableOpacity 
+            style={styles.sheetRow} 
+            activeOpacity={0.7}
+            onPress={() => {
+              setShowMenuSheet(false);
+              setTimeout(() => {
+                  Alert.alert(
+                    "Block User",
+                    `Are you sure you want to block ${DUMMY_PROFILE.name}? You won't be able to request bookings or send messages to them.`,
+                    [
+                      { text: "Cancel", style: "cancel" },
+                      { 
+                        text: "Block", 
+                        style: "destructive",
+                        onPress: () => {
+                          Alert.alert("Blocked", `${DUMMY_PROFILE.name} has been blocked.`);
+                          navigation.goBack();
+                        }
+                      }
+                    ]
+                  );
+              }, 300);
+            }}
+          >
+            <View style={[styles.sheetIconWrap, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
+              <Icon name="block-helper" size={20} color={theme.colors.error} />
+            </View>
+            <Text style={[styles.sheetRowText, { color: theme.colors.error }]}>Block {DUMMY_PROFILE.name}</Text>
+          </TouchableOpacity>
+        </View>
+      </AppBottomSheet>
 
     </View>
   );
@@ -722,21 +774,36 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 22,
   },
-  reportBtn: {
+  
+  // Sheet Styles
+  sheetContent: {
+    paddingBottom: 24,
+  },
+  sheetRow: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: 14,
+  },
+  sheetIconWrap: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255,255,255,0.05)',
     justifyContent: 'center',
-    paddingVertical: 16,
-    gap: 8,
-    marginTop: 8,
-    marginBottom: 20,
+    alignItems: 'center',
+    marginRight: 16,
   },
-  reportBtnText: {
-    color: theme.colors.textSecondary,
-    fontSize: 15,
+  sheetRowText: {
+    fontSize: 16,
+    color: theme.colors.textPrimary,
     fontWeight: '500',
-    textDecorationLine: 'underline',
   },
+  sheetDivider: {
+    height: 1,
+    backgroundColor: theme.colors.border,
+    marginVertical: 8,
+  },
+
   stickyHeader: {
     position: 'absolute',
     top: 0,

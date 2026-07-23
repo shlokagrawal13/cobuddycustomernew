@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 
 const BENEFITS = [
-  { icon: 'face-agent', title: 'Concierge Alerts', sub: 'Instant updates from your personal concierge team' },
+  { icon: 'bell-outline', title: 'Booking Updates', sub: 'Instant updates on your booking requests' },
   { icon: 'calendar-clock-outline', title: 'Session Reminders', sub: 'Never miss a booking or pre-session briefing' },
   { icon: 'shield-alert-outline', title: 'Safety Pings', sub: 'Emergency alerts and safety check-ins during sessions' },
 ];
@@ -45,7 +45,7 @@ export const NotificationPermissionScreen = () => {
           {/* Notification chip floating */}
           <View style={styles.notifChip}>
             <View style={styles.notifDot} />
-            <Text style={styles.notifChipText}>New from Concierge</Text>
+            <Text style={styles.notifChipText}>Booking Confirmed!</Text>
           </View>
         </View>
 

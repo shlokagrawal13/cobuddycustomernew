@@ -16,8 +16,8 @@ import { useTranslation } from 'react-i18next';
 
 const BENEFITS = [
   { icon: 'shield-check-outline', title: 'Safety Monitoring', sub: 'Real-time location shared with trusted contacts during sessions' },
-  { icon: 'map-marker-outline', title: 'Venue Discovery', sub: 'Find verified luxury venues and experiences near you' },
-  { icon: 'navigation-variant-outline', title: 'Protected Routes', sub: 'Secure navigation and concierge-verified transit options' },
+  { icon: 'map-marker-outline', title: 'Venue Discovery', sub: 'Find safe public places and popular venues near you' },
+  { icon: 'navigation-variant-outline', title: 'Protected Routes', sub: 'Secure navigation and safe transit options' },
 ];
 
 export const LocationPermissionScreen = () => {
