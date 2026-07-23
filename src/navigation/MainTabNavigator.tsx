@@ -50,7 +50,7 @@ import { SupportTicketDetailScreen } from '../screens/support/SupportTicketDetai
 import { PhoneLoginScreen } from '../screens/auth/PhoneLoginScreen';
 import { OTPVerificationScreen } from '../screens/auth/OTPVerificationScreen';
 import { DeactivateAccountScreen } from '../screens/settings/DeactivateAccountScreen';
-import { ActiveSessionsScreen } from '../screens/session/ActiveSessionsScreen';
+import { ActiveSessionsScreen } from '../screens/settings/ActiveSessionsScreen';
 import { SavedProfilesScreen } from '../screens/profile/SavedProfilesScreen';
 import { TrustedContactsScreen } from '../screens/safety/TrustedContactsScreen';
 import { AddTrustedContactScreen } from '../screens/safety/AddTrustedContactScreen';
@@ -61,7 +61,7 @@ import { SafetyGuidelinesScreen } from '../screens/safety/SafetyGuidelinesScreen
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-import { NotificationsScreen } from '../screens/settings/NotificationsScreen';
+import { NotificationsScreen } from '../screens/home/NotificationsScreen';
 
 const HomeTabStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
