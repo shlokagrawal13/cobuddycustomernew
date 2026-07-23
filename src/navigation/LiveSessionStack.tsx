@@ -1,13 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SessionReminderScreen } from '../screens/SessionReminderScreen';
-import { ArrivalCheckInScreen } from '../screens/ArrivalCheckInScreen';
-import { ActiveSessionScreen } from '../screens/ActiveSessionScreen';
-import { SessionCompleteScreen } from '../screens/SessionCompleteScreen';
-import { PostSessionFeedbackScreen } from '../screens/PostSessionFeedbackScreen';
-import { CompanionReviewScreen } from '../screens/CompanionReviewScreen';
-import { TipGratuityScreen } from '../screens/TipGratuityScreen';
+import { SessionReminderScreen } from '../screens/session/SessionReminderScreen';
+import { ArrivalCheckInScreen } from '../screens/session/ArrivalCheckInScreen';
+import { ActiveSessionScreen } from '../screens/session/ActiveSessionScreen';
+import { SessionCompleteScreen } from '../screens/session/SessionCompleteScreen';
+import { PostSessionFeedbackScreen } from '../screens/session/PostSessionFeedbackScreen';
+import { CompanionReviewScreen } from '../screens/session/CompanionReviewScreen';
+import { TipGratuityScreen } from '../screens/session/TipGratuityScreen';
 
 const Stack = createNativeStackNavigator();
 

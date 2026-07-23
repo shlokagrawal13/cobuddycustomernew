@@ -1,14 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { KYCIntroScreen } from '../screens/KYCIntroScreen';
-import { DocumentVerificationScreen } from '../screens/DocumentVerificationScreen';
-import { SelfieCaptureScreen } from '../screens/SelfieCaptureScreen';
-import { LivenessDetectionScreen } from '../screens/LivenessDetectionScreen';
-import { VerificationProcessingScreen } from '../screens/VerificationProcessingScreen';
-import { VerificationPendingScreen } from '../screens/VerificationPendingScreen';
-import { VerificationRejectedScreen } from '../screens/VerificationRejectedScreen';
-import { VerificationSuccessScreen } from '../screens/VerificationSuccessScreen';
+import { KYCIntroScreen } from '../screens/verify/KYCIntroScreen';
+import { DocumentVerificationScreen } from '../screens/verify/DocumentVerificationScreen';
+import { SelfieCaptureScreen } from '../screens/verify/SelfieCaptureScreen';
+import { LivenessDetectionScreen } from '../screens/verify/LivenessDetectionScreen';
+import { VerificationProcessingScreen } from '../screens/verify/VerificationProcessingScreen';
+import { VerificationPendingScreen } from '../screens/verify/VerificationPendingScreen';
+import { VerificationRejectedScreen } from '../screens/verify/VerificationRejectedScreen';
+import { VerificationSuccessScreen } from '../screens/verify/VerificationSuccessScreen';
 
 const Stack = createNativeStackNavigator();
 

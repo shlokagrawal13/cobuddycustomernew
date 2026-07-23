@@ -1,0 +1,126 @@
+import React, { useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { theme } from '../../theme';
+
+const DEFAULT_MOCK_DATA = {
+  bookingId: 'CB-REQ-8829',
+  companionName: 'Natasha',
+  date: 'Fri, 24 Oct',
+  time: '7:00 PM - 9:00 PM',
+  venue: 'Blue Tokai Coffee Roasters',
+  amount: '₹3,000'
+};
+
+export const BookingRequestSentScreen = ({ route }: any) => {
+  const navigation = useNavigation<any>();
+  const pulseAnim = useRef(new Animated.Value(1)).current;
+  
+  // Backend Integration: Data will come from route.params
+  const bookingData = route?.params || DEFAULT_MOCK_DATA;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(pulseAnim, { toValue: 1.1, duration: 1000, useNativeDriver: true }),
+        Animated.timing(pulseAnim, { toValue: 1, duration: 1000, useNativeDriver: true })
+      ])
+    ).start();
+  }, [pulseAnim]);
+
+  const handleReturnHome = () => {
+    navigation.reset({ index: 0, routes: [{ name: 'MainTabNavigator' }] });
+  };
+
+  const handleViewDetails = () => {
+    navigation.navigate('MainTabNavigator', {
+      screen: 'BookingsTab',
+      params: {
+        screen: 'BookingDetailScreen',
+        params: { bookingId: bookingData.bookingId }
+      }
+    });
+  };
+
+  return (
+    <SafeAreaView style={styles.root}>
+      <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
+      
+      <View style={styles.content}>
+        <View style={styles.iconContainer}>
+          <Animated.View style={[styles.glow, { transform: [{ scale: pulseAnim }] }]} />
+          <Icon name="send-circle" size={90} color={theme.colors.primary} />
+        </View>
+
+        <Text style={styles.title}>Request Sent!</Text>
+        <Text style={styles.subtitle}>
+          We've notified {bookingData.companionName}. They have 24 hours to review your request, but companions usually respond within a few hours.
+        </Text>
+
+        <View style={styles.card}>
+          <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16}}>
+            <Text style={styles.cardHeader}>REQUEST SNAPSHOT</Text>
+            <Text style={styles.bookingId}>#{bookingData.bookingId}</Text>
+          </View>
+          
+          <View style={styles.detailRow}>
+            <Icon name="calendar-blank" size={18} color={theme.colors.textSecondary} />
+            <Text style={styles.detailText}>{bookingData.date}</Text>
+          </View>
+          <View style={styles.detailRow}>
+            <Icon name="clock-outline" size={18} color={theme.colors.textSecondary} />
+            <Text style={styles.detailText}>{bookingData.time}</Text>
+          </View>
+          <View style={styles.detailRow}>
+            <Icon name="map-marker-outline" size={18} color={theme.colors.textSecondary} />
+            <Text style={styles.detailText}>{bookingData.venue}</Text>
+          </View>
+          
+          <View style={styles.divider} />
+          
+          <View style={[styles.detailRow, { marginBottom: 0, justifyContent: 'space-between' }]}>
+            <Text style={styles.detailLabel}>Escrow Amount Held</Text>
+            <Text style={styles.amountText}>{bookingData.amount}</Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.bottomBar}>
+        <TouchableOpacity style={styles.primaryBtn} onPress={handleViewDetails} activeOpacity={0.85}>
+          <Text style={styles.primaryBtnText}>View Request Details</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.secondaryBtn} onPress={handleReturnHome} activeOpacity={0.85}>
+          <Text style={styles.secondaryBtnText}>Return to Home</Text>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: theme.colors.background },
+  content: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
+  
+  iconContainer: { alignItems: 'center', justifyContent: 'center', marginBottom: 32, position: 'relative' },
+  glow: { position: 'absolute', width: 120, height: 120, borderRadius: 60, backgroundColor: theme.colors.primary, opacity: 0.15 },
+  
+  title: { fontSize: 32, fontWeight: 'bold', color: theme.colors.textPrimary, marginBottom: 12, textAlign: 'center' },
+  subtitle: { fontSize: 15, color: theme.colors.textSecondary, textAlign: 'center', lineHeight: 24, marginBottom: 40, paddingHorizontal: 10 },
+  
+  card: { width: '100%', backgroundColor: theme.colors.surface, borderRadius: 16, padding: 20, borderWidth: 1, borderColor: theme.colors.border },
+  cardHeader: { fontSize: 11, fontWeight: 'bold', color: theme.colors.textSecondary, letterSpacing: 1.2 },
+  bookingId: { fontSize: 12, color: theme.colors.textSecondary, opacity: 0.7 },
+  detailRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 12 },
+  detailText: { fontSize: 15, color: theme.colors.textPrimary, fontWeight: '500' },
+  detailLabel: { fontSize: 14, color: theme.colors.textSecondary },
+  amountText: { fontSize: 16, color: theme.colors.primary, fontWeight: 'bold' },
+  divider: { height: 1, backgroundColor: theme.colors.border, marginVertical: 12 },
+  
+  bottomBar: { padding: 24, paddingBottom: 40, gap: 12 },
+  primaryBtn: { backgroundColor: theme.colors.primary, height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center' },
+  primaryBtnText: { color: theme.colors.background, fontSize: 16, fontWeight: 'bold' },
+  secondaryBtn: { height: 56, borderRadius: 28, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: theme.colors.border },
+  secondaryBtnText: { color: theme.colors.textPrimary, fontSize: 16, fontWeight: '600' },
+});

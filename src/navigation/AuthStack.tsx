@@ -1,9 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { WelcomeScreen } from '../screens/WelcomeScreen';
-import { PhoneLoginScreen } from '../screens/PhoneLoginScreen';
-import { OTPVerificationScreen } from '../screens/OTPVerificationScreen';
+import { WelcomeScreen } from '../screens/auth/WelcomeScreen';
+import { PhoneLoginScreen } from '../screens/auth/PhoneLoginScreen';
+import { OTPVerificationScreen } from '../screens/auth/OTPVerificationScreen';
 
 const Stack = createNativeStackNavigator();
 

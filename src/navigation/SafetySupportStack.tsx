@@ -1,15 +1,15 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SafetyHubScreen } from '../screens/SafetyHubScreen';
-import { TrustedContactsScreen } from '../screens/TrustedContactsScreen';
-import { AddTrustedContactScreen } from '../screens/AddTrustedContactScreen';
-import { IncidentReportScreen } from '../screens/IncidentReportScreen';
-import { IncidentSubmittedScreen } from '../screens/IncidentSubmittedScreen';
-import { SafetyGuidelinesScreen } from '../screens/SafetyGuidelinesScreen';
-import { SupportCenterScreen } from '../screens/SupportCenterScreen';
-import { CreateSupportTicketScreen } from '../screens/CreateSupportTicketScreen';
-import { SupportTicketDetailScreen } from '../screens/SupportTicketDetailScreen';
+import { SafetyHubScreen } from '../screens/safety/SafetyHubScreen';
+import { TrustedContactsScreen } from '../screens/safety/TrustedContactsScreen';
+import { AddTrustedContactScreen } from '../screens/safety/AddTrustedContactScreen';
+import { IncidentReportScreen } from '../screens/safety/IncidentReportScreen';
+import { IncidentSubmittedScreen } from '../screens/safety/IncidentSubmittedScreen';
+import { SafetyGuidelinesScreen } from '../screens/safety/SafetyGuidelinesScreen';
+import { SupportCenterScreen } from '../screens/support/SupportCenterScreen';
+import { CreateSupportTicketScreen } from '../screens/support/CreateSupportTicketScreen';
+import { SupportTicketDetailScreen } from '../screens/support/SupportTicketDetailScreen';
 
 const Stack = createNativeStackNavigator();
 

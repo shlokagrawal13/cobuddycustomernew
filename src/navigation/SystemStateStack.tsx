@@ -1,11 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { AccountSuspendedScreen } from '../screens/AccountSuspendedScreen';
-import { AccountUnderManualReviewScreen } from '../screens/AccountUnderManualReviewScreen';
-import { AccountReactivationRequestScreen } from '../screens/AccountReactivationRequestScreen';
-import { PolicyViolationNoticeScreen } from '../screens/PolicyViolationNoticeScreen';
-import { AccountDeactivatedScreen } from '../screens/AccountDeactivatedScreen';
+import { AccountSuspendedScreen } from '../screens/system/AccountSuspendedScreen';
+import { AccountUnderManualReviewScreen } from '../screens/system/AccountUnderManualReviewScreen';
+import { AccountReactivationRequestScreen } from '../screens/system/AccountReactivationRequestScreen';
+import { PolicyViolationNoticeScreen } from '../screens/system/PolicyViolationNoticeScreen';
+import { AccountDeactivatedScreen } from '../screens/system/AccountDeactivatedScreen';
 
 const Stack = createNativeStackNavigator();
 

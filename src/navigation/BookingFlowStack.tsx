@@ -1,14 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { BookingActivitySelectScreen } from '../screens/BookingActivitySelectScreen';
-import { BookingVenueSelectScreen } from '../screens/BookingVenueSelectScreen';
-import { BookingTimeSelectScreen } from '../screens/BookingTimeSelectScreen';
-import { BookingSummaryScreen } from '../screens/BookingSummaryScreen';
-import { BookingRequestSentScreen } from '../screens/BookingRequestSentScreen';
-import { BookingAcceptedScreen } from '../screens/BookingAcceptedScreen';
-import { BookingDeclinedScreen } from '../screens/BookingDeclinedScreen';
-import { BookingCounterOfferScreen } from '../screens/BookingCounterOfferScreen';
+import { BookingActivitySelectScreen } from '../screens/booking/BookingActivitySelectScreen';
+import { BookingVenueSelectScreen } from '../screens/booking/BookingVenueSelectScreen';
+import { BookingTimeSelectScreen } from '../screens/booking/BookingTimeSelectScreen';
+import { BookingSummaryScreen } from '../screens/booking/BookingSummaryScreen';
+import { BookingRequestSentScreen } from '../screens/booking/BookingRequestSentScreen';
+import { BookingAcceptedScreen } from '../screens/booking/BookingAcceptedScreen';
+import { BookingDeclinedScreen } from '../screens/booking/BookingDeclinedScreen';
+import { BookingCounterOfferScreen } from '../screens/booking/BookingCounterOfferScreen';
 
 const Stack = createNativeStackNavigator();
 

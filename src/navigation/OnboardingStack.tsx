@@ -1,13 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { LegalConsentScreen } from '../screens/LegalConsentScreen';
-import { LocationPermissionScreen } from '../screens/LocationPermissionScreen';
-import { NotificationPermissionScreen } from '../screens/NotificationPermissionScreen';
-import { BasicProfileSetupScreen } from '../screens/BasicProfileSetupScreen';
-import { InterestSelectionScreen } from '../screens/InterestSelectionScreen';
-import { SafetyTutorialScreen } from '../screens/SafetyTutorialScreen';
-import { TrustedContactsScreen } from '../screens/TrustedContactsScreen';
+import { LegalConsentScreen } from '../screens/onboarding/LegalConsentScreen';
+import { LocationPermissionScreen } from '../screens/auth/LocationPermissionScreen';
+import { NotificationPermissionScreen } from '../screens/auth/NotificationPermissionScreen';
+import { BasicProfileSetupScreen } from '../screens/onboarding/BasicProfileSetupScreen';
+import { InterestSelectionScreen } from '../screens/onboarding/InterestSelectionScreen';
+import { SafetyTutorialScreen } from '../screens/onboarding/SafetyTutorialScreen';
+import { TrustedContactsScreen } from '../screens/safety/TrustedContactsScreen';
 
 const Stack = createNativeStackNavigator();
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SplashScreen } from '../screens/SplashScreen';
-import { ForceUpdateScreen } from '../screens/ForceUpdateScreen';
-import { MaintenanceModeScreen } from '../screens/MaintenanceModeScreen';
-import { NetworkErrorScreen } from '../screens/NetworkErrorScreen';
+import { SplashScreen } from '../screens/auth/SplashScreen';
+import { ForceUpdateScreen } from '../screens/system/ForceUpdateScreen';
+import { MaintenanceModeScreen } from '../screens/system/MaintenanceModeScreen';
+import { NetworkErrorScreen } from '../screens/system/NetworkErrorScreen';
 
 import { AuthStack } from './AuthStack';
 import { OnboardingStack } from './OnboardingStack';
