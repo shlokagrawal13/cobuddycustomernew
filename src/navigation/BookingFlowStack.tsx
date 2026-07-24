@@ -5,10 +5,10 @@ import { BookingActivitySelectScreen } from '../screens/booking/BookingActivityS
 import { BookingVenueSelectScreen } from '../screens/booking/BookingVenueSelectScreen';
 import { BookingTimeSelectScreen } from '../screens/booking/BookingTimeSelectScreen';
 import { BookingSummaryScreen } from '../screens/booking/BookingSummaryScreen';
-import { BookingRequestSentScreen } from '../screens/booking/BookingRequestSentScreen';
-import { BookingAcceptedScreen } from '../screens/booking/BookingAcceptedScreen';
-import { BookingDeclinedScreen } from '../screens/booking/BookingDeclinedScreen';
-import { BookingCounterOfferScreen } from '../screens/booking/BookingCounterOfferScreen';
+import { BookingRequestSentScreen } from '../screens/booking/alerts/BookingRequestSentScreen';
+import { BookingAcceptedScreen } from '../screens/booking/alerts/BookingAcceptedScreen';
+import { BookingDeclinedScreen } from '../screens/booking/alerts/BookingDeclinedScreen';
+import { BookingCounterOfferScreen } from '../screens/booking/alerts/BookingCounterOfferScreen';
 
 const Stack = createNativeStackNavigator();
 

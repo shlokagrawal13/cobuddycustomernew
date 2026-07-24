@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated } from 'r
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { theme } from '../../theme';
+import { theme } from '../../../theme';
 
 const DEFAULT_MOCK_DATA = {
   bookingId: 'CB-REQ-8829',
