@@ -33,8 +33,32 @@ const MOCK_NOTIFICATIONS: NotificationItem[] = [
     isRead: false,
     icon: 'calendar-check',
     iconColor: theme.colors.success,
-    route: 'BookingDetailScreen',
-    stack: 'BookingsTab',
+    route: 'BookingAcceptedScreen',
+    stack: 'BookingFlowStack',
+  },
+  {
+    id: 'n1_declined',
+    category: 'Bookings',
+    title: 'Booking Declined',
+    description: 'Natasha is unavailable for Friday evening. Please check other companions.',
+    time: '15m ago',
+    isRead: false,
+    icon: 'calendar-remove',
+    iconColor: theme.colors.error,
+    route: 'BookingDeclinedScreen',
+    stack: 'BookingFlowStack',
+  },
+  {
+    id: 'n1_counter',
+    category: 'Bookings',
+    title: 'New Counter Offer',
+    description: 'Rahul has proposed a different time and price for your coffee meetup.',
+    time: '30m ago',
+    isRead: false,
+    icon: 'calendar-sync',
+    iconColor: theme.colors.warning,
+    route: 'BookingCounterOfferScreen',
+    stack: 'BookingFlowStack',
   },
   {
     id: 'n2',
@@ -93,8 +117,8 @@ const MOCK_NOTIFICATIONS: NotificationItem[] = [
     isRead: true,
     icon: 'check-decagram',
     iconColor: theme.colors.success,
-    route: 'ProfileScreen', // Route to Profile so they can see their badge
-    stack: 'ProfileTab',
+    route: 'VerificationSuccessScreen', // Route to Verification success popup
+    stack: 'KYCStack',
   },
 ];
 
