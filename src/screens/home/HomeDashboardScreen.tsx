@@ -199,21 +199,30 @@ export const HomeDashboardScreen = () => {
               <Text style={styles.gridText}>{t('quick_access.find')}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.gridItem}>
+            <TouchableOpacity 
+              style={styles.gridItem}
+              onPress={() => navigation.navigate('BookingsTab')}
+            >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
               </View>
               <Text style={styles.gridText}>{t('quick_access.bookings')}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.gridItem}>
+            <TouchableOpacity 
+              style={styles.gridItem}
+              onPress={() => navigation.navigate('ProfileTab', { screen: 'SafetyHubScreen' })}
+            >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="shield-check" size={24} color={theme.colors.primary} />
               </View>
               <Text style={styles.gridText}>{t('quick_access.safety')}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.gridItem}>
+            <TouchableOpacity 
+              style={styles.gridItem}
+              onPress={() => navigation.navigate('ProfileTab')}
+            >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="account-outline" size={24} color={theme.colors.primary} />
               </View>
