@@ -45,6 +45,17 @@ const DANGER_ZONE = [
   { id: 'delete', icon: 'delete-forever-outline', title: 'Delete Account', sub: 'Permanently remove all data', route: 'DeleteAccountScreen' },
 ];
 
+const DEV_TEST_SCREENS = [
+  { id: 'susp', title: 'Suspended Screen', route: 'AccountSuspendedScreen' },
+  { id: 'rev', title: 'Under Review Screen', route: 'AccountUnderManualReviewScreen' },
+  { id: 'react', title: 'Reactivation Request', route: 'AccountReactivationRequestScreen' },
+  { id: 'pol', title: 'Policy Violation', route: 'PolicyViolationNoticeScreen' },
+  { id: 'deact', title: 'Deactivated Screen', route: 'AccountDeactivatedScreen' },
+  { id: 'net', title: 'Network Error', route: 'NetworkErrorScreen' },
+  { id: 'force', title: 'Force Update', route: 'ForceUpdateScreen' },
+  { id: 'maint', title: 'Maintenance Mode', route: 'MaintenanceModeScreen' },
+];
+
 export const SettingsHubScreen = () => {
   const navigation = useNavigation<any>();
 
@@ -127,6 +138,38 @@ export const SettingsHubScreen = () => {
             </View>
           </View>
         ))}
+
+        {/* DEV ZONE FOR TESTING SYSTEM SCREENS */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, {color: theme.colors.warning}]}>DEV ZONE (TEMPORARY)</Text>
+          <View style={[styles.card, {borderColor: 'rgba(245, 158, 11, 0.2)'}]}>
+            {DEV_TEST_SCREENS.map((item, index) => (
+              <TouchableOpacity 
+                key={item.id} 
+                style={[styles.row, index !== DEV_TEST_SCREENS.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(245, 158, 11, 0.1)'}]}
+                activeOpacity={0.7}
+                onPress={() => {
+                  // Some screens are in SystemStateStack, others might be standalone. 
+                  // If it fails, we catch it or we just use nested navigation:
+                  if (item.route === 'NetworkErrorScreen' || item.route === 'ForceUpdateScreen' || item.route === 'MaintenanceModeScreen') {
+                     // Directly registered in RootNavigator usually? Wait, let's try pushing directly.
+                     navigation.navigate(item.route);
+                  } else {
+                     navigation.navigate('SystemStateStack', { screen: item.route });
+                  }
+                }}
+              >
+                <View style={[styles.iconWrap, {backgroundColor: 'rgba(245, 158, 11, 0.1)'}]}>
+                  <Icon name="test-tube" size={22} color={theme.colors.warning} />
+                </View>
+                <View style={styles.meta}>
+                  <Text style={[styles.title, {color: theme.colors.warning}]}>{item.title}</Text>
+                </View>
+                <Icon name="chevron-right" size={20} color={theme.colors.warning} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
 
         {/* Danger Zone */}
         <View style={styles.section}>
