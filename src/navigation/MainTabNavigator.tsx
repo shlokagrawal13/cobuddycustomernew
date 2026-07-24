@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { theme } from '../theme';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeDashboardScreen } from '../screens/home/HomeDashboardScreen';
 import { DiscoverScreen } from '../screens/home/DiscoverScreen';
@@ -148,18 +149,38 @@ const ProfileTabStack = () => (
 export const MainTabNavigator = () => {
   const insets = useSafeAreaInsets();
   
+  const getTabBarStyle = (route: any) => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    
+    // Root screens where the tab bar should be visible
+    const rootScreens = [
+      'HomeDashboardScreen',
+      'DiscoverScreen', 
+      'BookingsListScreen',
+      'ChatListScreen',
+      'ProfileScreen',
+      undefined // undefined means it's on the initial route of the stack
+    ];
+
+    if (!rootScreens.includes(routeName as string | undefined)) {
+      return { display: 'none' as const };
+    }
+    
+    return {
+      backgroundColor: theme.colors.surface,
+      borderTopColor: theme.colors.border,
+      height: 60 + insets.bottom,
+      paddingBottom: 8 + insets.bottom,
+      paddingTop: 8,
+    };
+  };
+
   return (
     <Tab.Navigator
       backBehavior="initialRoute"
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: theme.colors.surface,
-          borderTopColor: theme.colors.border,
-          height: 60 + insets.bottom,
-          paddingBottom: 8 + insets.bottom,
-          paddingTop: 8,
-        },
+        tabBarStyle: getTabBarStyle(route),
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.textSecondary,
         tabBarIcon: ({ color, size }) => {
