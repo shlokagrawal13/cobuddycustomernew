@@ -4,9 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const LivenessDetectionScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [step, setStep] = useState(0);
   
   // Animation for scanning line
@@ -50,7 +52,7 @@ export const LivenessDetectionScreen = () => {
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Step 3 of 3</Text>

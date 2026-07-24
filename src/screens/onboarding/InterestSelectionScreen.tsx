@@ -8,6 +8,7 @@ import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const INTERESTS_DATA = [
   { id: 'cafe', label: 'Cafe Meetup', icon: 'coffee-outline' },
@@ -29,6 +30,7 @@ const MAX_SELECT = 10;
 
 export const InterestSelectionScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const { t } = useTranslation(['onboarding']);
   
@@ -67,7 +69,7 @@ export const InterestSelectionScreen = () => {
     <SafeAreaView style={styles.container} edges={['top', 'bottom', 'left', 'right']}>
       <OnboardingHeader
         showBack={navigation.canGoBack()}
-        onBack={() => navigation.goBack()}
+        onBack={() => smartGoBack()}
         centerLabel={isEditMode ? 'Edit Interests' : t('interests.header')}
         showProgress={!isEditMode}
         currentStep={3}

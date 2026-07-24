@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const CATEGORIES = [
   'Companion No-Show',
@@ -14,13 +15,14 @@ const CATEGORIES = [
 
 export const DisputeRefundScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const bookingId = route.params?.bookingId || 'CB-HIS-9921';
   
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [description, setDescription] = useState('');
 
-  const handleBack = () => navigation.goBack();
+  const handleBack = () => smartGoBack();
   
   const handleSubmit = () => {
     // In a real app, send API request, then navigate

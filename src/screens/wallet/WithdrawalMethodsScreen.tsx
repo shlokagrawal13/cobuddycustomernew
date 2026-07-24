@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const INITIAL_METHODS = [
   { id: 'wm_bank1', type: 'bank', icon: 'bank', title: 'HDFC Bank', sub: 'Account ending in 4242', isVerified: true },
@@ -12,6 +13,7 @@ const INITIAL_METHODS = [
 
 export const WithdrawalMethodsScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const [methods, setMethods] = useState(INITIAL_METHODS);
   const [upiModalVisible, setUpiModalVisible] = useState(false);
@@ -69,7 +71,7 @@ export const WithdrawalMethodsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Select Withdrawal Method</Text>

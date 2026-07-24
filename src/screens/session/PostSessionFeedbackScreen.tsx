@@ -4,9 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const PostSessionFeedbackScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [sentiment, setSentiment] = useState<'up' | 'down' | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
@@ -22,7 +24,7 @@ export const PostSessionFeedbackScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.iconBtn}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Quick Feedback</Text>

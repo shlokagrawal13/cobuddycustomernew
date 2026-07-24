@@ -1,3 +1,4 @@
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +9,7 @@ import { theme } from '../../theme';
 export const PolicyViolationNoticeScreen = () => {
   const { t } = useTranslation(['system']);
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -50,7 +52,7 @@ export const PolicyViolationNoticeScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.goBack()}
+          onPress={() => smartGoBack()}
         >
           <Text style={styles.primaryButtonText}>I Understand</Text>
         </TouchableOpacity>

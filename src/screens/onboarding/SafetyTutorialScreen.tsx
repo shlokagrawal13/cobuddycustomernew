@@ -17,6 +17,7 @@ import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const { width: SW } = Dimensions.get('window');
 
@@ -113,6 +114,7 @@ function SlideVisual({ visual }: { visual: Slide['visual'] }) {
 
 export const SafetyTutorialScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const { t } = useTranslation(['onboarding']);
   const [current, setCurrent] = useState(0);
   const [showLearnMore, setShowLearnMore] = useState(false);
@@ -141,7 +143,7 @@ export const SafetyTutorialScreen = () => {
     <SafeAreaView style={styles.container} edges={['top', 'bottom', 'left', 'right']}>
       <OnboardingHeader
         showBack={navigation.canGoBack()}
-        onBack={() => navigation.goBack()}
+        onBack={() => smartGoBack()}
         centerLabel={t('safety.header')}
         showProgress
         currentStep={4}

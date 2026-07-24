@@ -5,6 +5,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { INTERESTS_DATA } from '../onboarding/InterestSelectionScreen'; // To map IDs to full objects
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const MOCK_PROFILE = {
     name: 'Shlok',
@@ -24,6 +25,7 @@ const MOCK_PROFILE = {
 
 export const EditProfileScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   
   const [form, setForm] = useState({
@@ -65,7 +67,7 @@ export const EditProfileScreen = () => {
           Alert.alert('Error', 'Display name cannot be empty.');
           return;
       }
-      Alert.alert('Success', 'Profile updated successfully!', [{ text: 'OK', onPress: () => navigation.goBack() }]);
+      Alert.alert('Success', 'Profile updated successfully!', [{ text: 'OK', onPress: () => smartGoBack() }]);
   };
 
   return (
@@ -73,7 +75,7 @@ export const EditProfileScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Edit Profile</Text>

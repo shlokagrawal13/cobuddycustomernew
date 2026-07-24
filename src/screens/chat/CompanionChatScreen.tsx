@@ -8,9 +8,11 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const CompanionChatScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const companionName = route.params?.companionName || 'Elena Vasquez';
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
@@ -74,7 +76,7 @@ export const CompanionChatScreen = () => {
       <SafeAreaView edges={['top']} style={styles.headerSafeArea}>
         <View style={styles.header}>
           <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <TouchableOpacity onPress={() => smartGoBack()} style={styles.backBtn}>
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
             <TouchableOpacity 

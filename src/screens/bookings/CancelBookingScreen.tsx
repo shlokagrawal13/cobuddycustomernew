@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const REASONS = [
   'Change of plans / Schedule conflict',
@@ -15,12 +16,13 @@ const REASONS = [
 
 export const CancelBookingScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
   
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
 
-  const handleBack = () => navigation.goBack();
+  const handleBack = () => smartGoBack();
   
   const handleConfirmCancel = () => {
     // In a real app, this would call an API, then go back to the root tab

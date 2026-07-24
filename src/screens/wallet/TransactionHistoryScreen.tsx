@@ -1,3 +1,4 @@
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -17,6 +18,7 @@ const FILTERS = ['All', 'Money Added', 'Spent', 'Refunds'];
 
 export const TransactionHistoryScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [activeFilter, setActiveFilter] = useState('All');
 
   const filtered = activeFilter === 'All'
@@ -28,7 +30,7 @@ export const TransactionHistoryScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Transaction History</Text>

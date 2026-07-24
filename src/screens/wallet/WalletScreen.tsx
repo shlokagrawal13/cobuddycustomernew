@@ -1,3 +1,4 @@
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import React from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TouchableOpacity, 
@@ -25,6 +26,7 @@ const TRANSACTIONS = [
 
 export const WalletScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
@@ -34,7 +36,7 @@ export const WalletScreen = () => {
       <View style={styles.header}>
         <TouchableOpacity 
           style={styles.backBtn} 
-          onPress={() => navigation.goBack()}
+          onPress={() => smartGoBack()}
           activeOpacity={0.7}
         >
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />

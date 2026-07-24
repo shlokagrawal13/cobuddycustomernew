@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
+import { useSmartNavigation } from '../../../hooks/useSmartNavigation';
 
 const DEFAULT_MOCK_DATA = {
   bookingId: 'CB-REQ-8830',
@@ -22,6 +23,7 @@ const DEFAULT_MOCK_DATA = {
 
 export const BookingCounterOfferScreen = ({ route }: any) => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const bookingData = { ...DEFAULT_MOCK_DATA, ...(route?.params || {}) };
 
   const handleAccept = () => {
@@ -38,7 +40,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
       
       {/* Luxury Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.iconBtn}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Counter Offer</Text>

@@ -22,6 +22,7 @@ import { useAuthStore } from '../../store/slices/authStore';
 import { validatePhone } from '../../utils/validation';
 
 import { useTranslation } from 'react-i18next';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const COUNTRY_CODES = [
   { flag: '🇮🇳', code: '+91', country: 'India', maxLength: 10 },
@@ -35,6 +36,7 @@ const COUNTRY_CODES = [
 
 export const PhoneLoginScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const { t } = useTranslation(['auth']);
   const [countryCode, setCountryCode] = useState(COUNTRY_CODES[0]);
   const [phone, setPhone] = useState('');
@@ -65,7 +67,7 @@ export const PhoneLoginScreen = () => {
       style={styles.flex}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-        <OnboardingHeader showBack onBack={() => navigation.goBack()} centerLabel={t('phone.header')} />
+        <OnboardingHeader showBack onBack={() => smartGoBack()} centerLabel={t('phone.header')} />
 
         <ScrollView
           style={styles.scroll}

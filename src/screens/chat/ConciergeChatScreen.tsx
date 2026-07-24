@@ -8,9 +8,11 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const ConciergeChatScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const scrollRef = useRef<ScrollView>(null);
 
   const QUICK_ACTIONS = [
@@ -61,7 +63,7 @@ export const ConciergeChatScreen = () => {
       <SafeAreaView edges={['top']} style={styles.headerSafeArea}>
         <View style={styles.header}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+            <TouchableOpacity onPress={() => smartGoBack()} style={styles.backBtn}>
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
             <View style={styles.avatarBox}>

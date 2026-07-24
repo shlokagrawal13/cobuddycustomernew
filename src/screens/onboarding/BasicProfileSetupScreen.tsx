@@ -20,6 +20,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useAuthStore } from '../../store/slices/authStore';
 import { validateName, validateDOB } from '../../utils/validation';
 import { useTranslation } from 'react-i18next';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const GENDER_OPTIONS = ['Man', 'Woman', 'Non-binary', 'Prefer not to say'];
 
@@ -32,6 +33,7 @@ const AVATAR_COLORS: Record<AvatarState, string> = {
 
 export const BasicProfileSetupScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');
   const [gender, setGender] = useState('');
@@ -103,7 +105,7 @@ export const BasicProfileSetupScreen = () => {
         
         <OnboardingHeader
           showBack={navigation.canGoBack()}
-          onBack={() => navigation.goBack()}
+          onBack={() => smartGoBack()}
           centerLabel={t('profile.header')}
           showProgress
           currentStep={2}

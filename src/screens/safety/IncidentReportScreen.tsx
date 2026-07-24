@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const INCIDENT_TYPES = [
   { id: 'harassment', label: 'Inappropriate Behavior or Harassment' },
@@ -14,6 +15,7 @@ const INCIDENT_TYPES = [
 
 export const IncidentReportScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [bookingRef, setBookingRef] = useState('');
@@ -29,7 +31,7 @@ export const IncidentReportScreen = () => {
     Alert.alert(
       'Report Submitted',
       'Your safety report has been escalated to our Trust & Safety team. We will review this immediately and contact you.',
-      [{ text: 'OK', onPress: () => navigation.goBack() }]
+      [{ text: 'OK', onPress: () => smartGoBack() }]
     );
   };
 
@@ -38,7 +40,7 @@ export const IncidentReportScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Report Incident</Text>

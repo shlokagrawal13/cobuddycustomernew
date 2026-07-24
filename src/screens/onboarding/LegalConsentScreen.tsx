@@ -31,9 +31,11 @@ interface LegalDoc {
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const LegalConsentScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const { t } = useTranslation(['onboarding']);
   const [checked, setChecked] = useState<Record<string, boolean>>({});
   const [activeDoc, setActiveDoc] = useState<LegalDoc | null>(null);
@@ -90,7 +92,7 @@ export const LegalConsentScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom', 'left', 'right']}>
       <OnboardingHeader
         showBack={navigation.canGoBack()}
-        onBack={() => navigation.goBack()}
+        onBack={() => smartGoBack()}
         centerLabel="Safety Agreement"
         showProgress
         currentStep={1}

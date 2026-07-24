@@ -11,6 +11,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 // MOCK: Replace with actual companion's services from Zustand/API
 const ACTIVITIES = [
@@ -22,6 +23,7 @@ const ACTIVITIES = [
 
 export const BookingActivitySelectScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const { t } = useTranslation(['booking']); // Use a booking namespace ideally
   
   // State for selected activity
@@ -42,7 +44,7 @@ export const BookingActivitySelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Step 1 of 4</Text>

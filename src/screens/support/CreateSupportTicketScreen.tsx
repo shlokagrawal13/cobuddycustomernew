@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const CATEGORIES = [
   { id: 'payment', label: 'Payment & Refunds', icon: 'credit-card-outline' },
@@ -14,6 +15,7 @@ const CATEGORIES = [
 
 export const CreateSupportTicketScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [subject, setSubject] = useState('');
   const [description, setDescription] = useState('');
@@ -26,7 +28,7 @@ export const CreateSupportTicketScreen = () => {
     }
     
     // Simulate submission
-    navigation.goBack();
+    smartGoBack();
     Alert.alert('Ticket Submitted', 'Our support team will get back to you within 24 hours.');
   };
 
@@ -35,7 +37,7 @@ export const CreateSupportTicketScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Create Ticket</Text>

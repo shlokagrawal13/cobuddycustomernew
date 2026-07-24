@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const MOCK_BLOCKED_USERS = [
   { id: '1', name: 'Rohan Sharma', date: 'Blocked on 12 Jan 2026' },
@@ -13,6 +14,7 @@ const MOCK_BLOCKED_USERS = [
 
 export const BlockedUsersScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [blockedUsers, setBlockedUsers] = useState(MOCK_BLOCKED_USERS);
 
   const handleUnblock = (user: typeof MOCK_BLOCKED_USERS[0]) => {
@@ -37,7 +39,7 @@ export const BlockedUsersScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Blocked Users</Text>

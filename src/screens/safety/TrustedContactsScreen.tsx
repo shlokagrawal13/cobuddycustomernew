@@ -20,11 +20,13 @@ import { useAuthStore } from '../../store/slices/authStore';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { validatePhone, validateName } from '../../utils/validation';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const RELATIONSHIPS = ['Family', 'Friend', 'Partner', 'Other'];
 
 export const TrustedContactsScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const { t } = useTranslation(['onboarding']);
   const completeOnboarding = useAuthStore((state) => state.completeOnboarding);
@@ -68,7 +70,7 @@ export const TrustedContactsScreen = () => {
         
         {isFromSettings ? (
           <View style={styles.settingsHeader}>
-            <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
+            <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
             <Text style={styles.settingsHeaderTitle}>Emergency Contacts</Text>
@@ -77,7 +79,7 @@ export const TrustedContactsScreen = () => {
         ) : (
           <OnboardingHeader
             showBack={navigation.canGoBack()}
-            onBack={() => navigation.goBack()}
+            onBack={() => smartGoBack()}
             centerLabel={t('contacts.header')}
             showProgress
             currentStep={5}
@@ -151,7 +153,7 @@ export const TrustedContactsScreen = () => {
           <Button 
             title={isFromSettings ? 'Save Contacts' : t('contacts.btn_complete')} 
             disabled={!isValid}
-            onPress={() => isFromSettings ? navigation.goBack() : completeOnboarding()} 
+            onPress={() => isFromSettings ? smartGoBack() : completeOnboarding()} 
           />
         </BottomActionBar>
 

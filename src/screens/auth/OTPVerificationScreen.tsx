@@ -12,11 +12,13 @@ import { useAuthStore } from '../../store/slices/authStore';
 import { validateOTP } from '../../utils/validation';
 
 import { useTranslation } from 'react-i18next';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const OTP_EXPIRY = 30;
 
 export const OTPVerificationScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const { t } = useTranslation(['auth']);
   const phone = route.params?.phone || '+91 0000000000';
@@ -80,7 +82,7 @@ export const OTPVerificationScreen = () => {
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'bottom', 'left', 'right']}>
-      <OnboardingHeader showBack onBack={() => navigation.goBack()} centerLabel={t('otp.header')} />
+      <OnboardingHeader showBack onBack={() => smartGoBack()} centerLabel={t('otp.header')} />
 
       <View style={styles.body}>
         <View style={styles.topCopy}>
@@ -137,7 +139,7 @@ export const OTPVerificationScreen = () => {
           onPress={handleVerify}
           disabled={!validateOTP(otp)}
         />
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.changeRow}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.changeRow}>
           <Text style={styles.changeText}>{t('otp.btn_change')}</Text>
         </TouchableOpacity>
       </BottomActionBar>

@@ -4,9 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const ModifyBookingScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
   
@@ -45,7 +47,7 @@ export const ModifyBookingScreen = () => {
     setDuration(prev => Math.max(1, Math.min(12, prev + amount)));
   };
 
-  const handleBack = () => navigation.goBack();
+  const handleBack = () => smartGoBack();
   
   const handleSendRequest = () => {
     navigation.navigate('MainTabNavigator', { screen: 'BookingsTab' });

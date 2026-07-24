@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const DOC_TYPES = [
   {id: 'AADHAAR',  icon: 'card-account-details-outline', label: 'Aadhaar'},
@@ -23,6 +24,7 @@ type UploadState = 'idle' | 'selected' | 'uploaded';
 
 export const DocumentVerificationScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const [selectedDoc, setSelectedDoc] = useState<DocType>('AADHAAR');
   const [docNumber, setDocNumber] = useState('');
   const [legalName, setLegalName] = useState('');
@@ -82,7 +84,7 @@ export const DocumentVerificationScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Step 1 of 3</Text>

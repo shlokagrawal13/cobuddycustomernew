@@ -4,9 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const VoiceCallScreen = () => {
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
   const companionName = route.params?.companionName || 'Elena Vasquez';
 
@@ -28,7 +30,7 @@ export const VoiceCallScreen = () => {
   };
 
   const handleEndCall = () => {
-    navigation.goBack();
+    smartGoBack();
   };
 
   return (
