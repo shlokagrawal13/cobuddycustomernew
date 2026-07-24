@@ -321,12 +321,12 @@ export const CompanionProfileScreen = ({ route }: any) => {
       </Animated.ScrollView>
 
       {/* Glassmorphism Sticky Header */}
-      <Animated.View style={[styles.stickyHeader, { paddingTop: insets.top, opacity: headerOpacity }]}>
+      <Animated.View style={[styles.stickyHeader, { height: insets.top + 56, paddingTop: insets.top, opacity: headerOpacity }]}>
         <Text style={styles.stickyHeaderTitle}>{DUMMY_PROFILE.name}</Text>
       </Animated.View>
 
       {/* Floating Header Actions */}
-      <View style={[styles.floatingActions, { top: insets.top + 8 }]}>
+      <View style={[styles.floatingActions, { top: Math.max(insets.top, 16) + 6 }]}>
         <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
@@ -342,7 +342,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
       </View>
 
       {/* Premium Bottom Action Bar */}
-      <View style={[styles.bottomBar, { paddingBottom: insets.bottom || 16 }]}>
+      <View style={[styles.bottomBar, { paddingBottom: Math.max(insets.bottom + 8, 24), paddingTop: 16 }]}>
         <View style={styles.bottomBarLeft}>
           <Text style={styles.bottomPriceLabel}>{t('starts_from', 'Starts from')}</Text>
           <Text style={styles.bottomPriceValue}>₹500 <Text style={styles.bottomPriceUnit}>/ hr</Text></Text>
@@ -812,17 +812,16 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     backgroundColor: theme.colors.surface,
-    height: 90,
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.border,
+    zIndex: 10,
   },
   stickyHeaderTitle: {
     color: theme.colors.textPrimary,
     fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 10,
   },
   floatingActions: {
     position: 'absolute',
@@ -830,6 +829,8 @@ const styles = StyleSheet.create({
     right: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    zIndex: 20,
   },
   iconCircle: {
     width: 44,
