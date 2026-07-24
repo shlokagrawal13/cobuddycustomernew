@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const MOCK_DETAILS = {
   id: 'CB-REQ-8829',
@@ -30,12 +31,13 @@ const MOCK_DETAILS = {
 export const BookingDetailScreen = () => {
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
+  const { smartGoBack } = useSmartNavigation();
   
   const bookingId = route.params?.bookingId || MOCK_DETAILS.id;
   const bookingStatus = route.params?.status || MOCK_DETAILS.status;
   const data = { ...MOCK_DETAILS, id: bookingId, status: bookingStatus };
 
-  const handleBack = () => navigation.goBack();
+  const handleBack = () => smartGoBack('BookingsTab');
 
   const handleMessage = () => {
     navigation.navigate('ChatTab', { 

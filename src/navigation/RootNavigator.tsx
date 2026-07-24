@@ -43,14 +43,14 @@ export const RootNavigator = () => {
       )}
       
       {/* System state and modal screens can be pushed here or kept detached if needed */}
-      <Stack.Screen name="ForceUpdateScreen" component={ForceUpdateScreen} />
-      <Stack.Screen name="MaintenanceModeScreen" component={MaintenanceModeScreen} />
-      <Stack.Screen name="NetworkErrorScreen" component={NetworkErrorScreen} />
-      <Stack.Screen name="SystemStateStack" component={SystemStateStack} />
-      <Stack.Screen name="BookingFlowStack" component={BookingFlowStack} />
-      <Stack.Screen name="KYCStack" component={KYCStack} />
-      <Stack.Screen name="LiveSessionStack" component={LiveSessionStack} />
-      <Stack.Screen name="SafetySupportStack" component={SafetySupportStack} />
+      <Stack.Screen name="ForceUpdateScreen" component={ForceUpdateScreen} options={{ presentation: 'fullScreenModal' }} />
+      <Stack.Screen name="MaintenanceModeScreen" component={MaintenanceModeScreen} options={{ presentation: 'fullScreenModal' }} />
+      <Stack.Screen name="NetworkErrorScreen" component={NetworkErrorScreen} options={{ presentation: 'fullScreenModal' }} />
+      <Stack.Screen name="SystemStateStack" component={SystemStateStack} options={{ presentation: 'modal' }} />
+      <Stack.Screen name="BookingFlowStack" component={BookingFlowStack} options={{ presentation: 'modal' }} />
+      <Stack.Screen name="KYCStack" component={KYCStack} options={{ presentation: 'modal' }} />
+      <Stack.Screen name="LiveSessionStack" component={LiveSessionStack} options={{ presentation: 'modal' }} />
+      <Stack.Screen name="SafetySupportStack" component={SafetySupportStack} options={{ presentation: 'modal' }} />
     </Stack.Navigator>
   );
 };

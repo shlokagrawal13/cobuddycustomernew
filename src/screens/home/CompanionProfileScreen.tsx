@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { SkeletonLoader } from '../../components/ui/SkeletonLoader';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 
@@ -62,9 +63,11 @@ const DUMMY_PROFILE = {
   }
 };
 
-export const CompanionProfileScreen = () => {
+export const CompanionProfileScreen = ({ route }: any) => {
+  const { id } = route?.params || {};
   const { t } = useTranslation(['companionProfile']);
   const navigation = useNavigation<any>();
+  const { smartGoBack } = useSmartNavigation();
   const insets = useSafeAreaInsets();
   const [loading, setLoading] = useState(true);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -100,7 +103,7 @@ export const CompanionProfileScreen = () => {
     return (
       <View style={[styles.container, { paddingTop: insets.top }]}>
         <View style={styles.headerBar}>
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
+          <TouchableOpacity onPress={() => smartGoBack('DiscoverTab')} style={styles.backBtn}>
             <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
           </TouchableOpacity>
         </View>
@@ -324,7 +327,7 @@ export const CompanionProfileScreen = () => {
 
       {/* Floating Header Actions */}
       <View style={[styles.floatingActions, { top: insets.top + 8 }]}>
-        <TouchableOpacity style={styles.iconCircle} onPress={() => navigation.goBack()}>
+        <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         
@@ -392,7 +395,7 @@ export const CompanionProfileScreen = () => {
                         style: "destructive",
                         onPress: () => {
                           Alert.alert("Blocked", `${DUMMY_PROFILE.name} has been blocked.`);
-                          navigation.goBack();
+                          smartGoBack('DiscoverTab');
                         }
                       }
                     ]

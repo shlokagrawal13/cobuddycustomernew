@@ -150,6 +150,7 @@ export const MainTabNavigator = () => {
   
   return (
     <Tab.Navigator
+      backBehavior="initialRoute"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: {

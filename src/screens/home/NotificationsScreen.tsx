@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { SmartHeader } from '../../components/ui/SmartHeader';
 
 type NotificationCategory = 'All' | 'Bookings' | 'Wallet' | 'Security' | 'Support';
 
@@ -151,20 +152,17 @@ export const NotificationsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()} activeOpacity={0.7}>
-            <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
-          </TouchableOpacity>
-          <Text style={styles.headerTitle}>Notifications</Text>
-        </View>
-        
-        {notifications.some(n => !n.isRead) && (
-          <TouchableOpacity onPress={handleMarkAllRead} activeOpacity={0.7}>
-            <Text style={styles.markReadText}>Mark all as read</Text>
-          </TouchableOpacity>
-        )}
-      </View>
+      <SmartHeader 
+        title="Notifications" 
+        fallbackTab="HomeTab"
+        rightAction={
+          notifications.some(n => !n.isRead) ? (
+            <TouchableOpacity onPress={handleMarkAllRead} activeOpacity={0.7}>
+              <Text style={styles.markReadText}>Mark all read</Text>
+            </TouchableOpacity>
+          ) : undefined
+        }
+      />
 
       {/* Categories Horizontal Scroll */}
       <View style={styles.categoriesWrapper}>
