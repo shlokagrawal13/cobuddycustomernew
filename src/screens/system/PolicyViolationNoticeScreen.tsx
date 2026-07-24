@@ -57,7 +57,7 @@ export const PolicyViolationNoticeScreen = () => {
         
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => navigation.navigate('SupportCenterScreen')}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
         >
           <Text style={styles.secondaryButtonText}>Submit Appeal</Text>
         </TouchableOpacity>

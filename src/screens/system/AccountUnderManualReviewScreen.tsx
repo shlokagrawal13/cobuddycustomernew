@@ -32,7 +32,7 @@ export const AccountUnderManualReviewScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('SupportCenterScreen')}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
         >
           <Text style={styles.primaryButtonText}>Contact Support</Text>
         </TouchableOpacity>
