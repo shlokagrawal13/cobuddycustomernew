@@ -25,5 +25,6 @@
     "shareProfileTitle":  "Share Profile",
     "comingSoonMessage":  "Coming soon!",
     "headerTitle":  "My Profile",
-    "cobuddyV100Build42":  "CoBuddy v1.0.0 (Build 42)"
+    "cobuddyV100Build42":  "CoBuddy v1.0.0 (Build 42)",
+    "errorTitle": "Error"
 }

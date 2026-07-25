@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
@@ -17,10 +17,11 @@ const INCIDENT_TYPES = [
 export const IncidentReportScreen = () => { 
   const { t } = useTranslation('safety.report');
   const navigation = useNavigation<any>();
+  const route = useRoute<any>();
   const { smartGoBack } = useSmartNavigation();
   
   const [selectedType, setSelectedType] = useState<string | null>(null);
-  const [bookingRef, setBookingRef] = useState('');
+  const [bookingRef, setBookingRef] = useState(route.params?.companionName || '');
   const [description, setDescription] = useState('');
   const [hasEvidence, setHasEvidence] = useState(false);
 
