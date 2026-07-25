@@ -305,7 +305,7 @@ export const BasicProfileSetupScreen = () => {
         <AppBottomSheet
           visible={showAvatarSheet}
           onClose={() => setShowAvatarSheet(false)}
-          title={t('title.ProfilePhoto', 'Profile Photo')}>
+          title={t('titleProfilePhoto', 'Profile Photo')}>
           <View style={picker.list}>
             {/* Upload Photo */}
             <TouchableOpacity

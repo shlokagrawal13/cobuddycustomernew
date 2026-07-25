@@ -7,7 +7,7 @@ export const AddTrustedContactScreen = () => {
   const { t } = useTranslation(['onboarding']);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{t('placeholder', 'AddTrustedContactScreen Placeholder')}</Text>
+      <Text style={styles.text}>{t('contacts.placeholder', 'Add Trusted Contact')}</Text>
     </View>
   );
 };

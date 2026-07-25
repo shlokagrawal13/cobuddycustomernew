@@ -145,7 +145,7 @@ export const PhoneLoginScreen = () => {
       <AppBottomSheet
         visible={pickerVisible}
         onClose={() => setPickerVisible(false)}
-        title={t('title.SelectCountry', 'Select Country')}>
+        title={t('titleSelectCountry', 'Select Country')}>
         <FlatList
           data={COUNTRY_CODES}
           keyExtractor={item => item.code}

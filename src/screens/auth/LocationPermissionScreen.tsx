@@ -83,7 +83,9 @@ export const LocationPermissionScreen = () => {
         <TouchableOpacity
           style={styles.ctaPrimary}
           onPress={() =>
-            Alert.alert(t('alertTitleLocationAccess', 'Location Access'), t('alertMsgLocationpermissionwi', 'Location permission will be requested on your device. This enables safety monitoring and venue discovery.'),
+            Alert.alert(
+              t('location.alertTitleLocationAccess', 'Location Access'),
+              t('location.alertMsgLocationpermissionwi', 'Location permission will be requested on your device. This enables safety monitoring and venue discovery.'),
               [
                 { text: 'Cancel', style: 'cancel' },
                 { text: 'Continue', onPress: () => navigation.navigate('NotificationPermissionScreen') },

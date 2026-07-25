@@ -1,9 +1,8 @@
 {
   "header": "Basic Profile",
   "step": "STEP 1 OF 4",
-  "title": {
-    "ProfilePhoto": "Profile Photo"
-  },
+  "title": "Create Your Identity",
+  "titleProfilePhoto": "Profile Photo",
   "subtitle": "Help us personalize your trusted CoBuddy experience.",
   "photo_add": "Add Profile Photo",
   "photo_added": "Photo Added",

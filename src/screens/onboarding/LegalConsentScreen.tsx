@@ -93,7 +93,7 @@ export const LegalConsentScreen = () => {
       <OnboardingHeader
         showBack={navigation.canGoBack()}
         onBack={() => smartGoBack()}
-        centerLabel={t('centerLabel.SafetyAgreement', 'Safety Agreement')}
+        centerLabel={t('consent.centerLabel.SafetyAgreement', 'Safety Agreement')}
         showProgress
         currentStep={1}
         totalSteps={5}
@@ -123,7 +123,7 @@ export const LegalConsentScreen = () => {
                 style={styles.readLink}
                 activeOpacity={0.7}
                 onPress={() => setActiveDoc(doc)}>
-                <Text style={styles.readText}>{t('read', 'READ  →')}</Text>
+                <Text style={styles.readText}>{t('consent.read', 'READ  →')}</Text>
               </TouchableOpacity>
             </View>
           ))}
@@ -150,7 +150,7 @@ export const LegalConsentScreen = () => {
           })}
         </View>
 
-        <Text style={styles.trustNote}>{t('cobuddyIsDesignedAroundTrust', 'CoBuddy is designed around trust, verification, and safety-first public experiences.')}</Text>
+        <Text style={styles.trustNote}>{t('consent.cobuddyIsDesignedAroundTrust', 'CoBuddy is designed around trust, verification, and safety-first public experiences.')}</Text>
       </ScrollView>
 
       <BottomActionBar>

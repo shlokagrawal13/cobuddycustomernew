@@ -1,7 +1,6 @@
 {
-  "title": {
-    "SelectCountry": "Select Country"
-  },
+  "title": "Enter Your\nPhone Number",
+  "titleSelectCountry": "Select Country",
   "subtitle": "We'll send a one-time code to verify your identity securely.",
   "label_mobile": "MOBILE NUMBER",
   "placeholder": "000 000 0000",

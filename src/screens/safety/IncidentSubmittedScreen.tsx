@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 
 export const IncidentSubmittedScreen = () => {
-  const { t } = useTranslation(['onboarding']);
+  const { t } = useTranslation('safety.report');
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{t('placeholder', 'IncidentSubmittedScreen Placeholder')}</Text>
+      <Text style={styles.text}>{t('incidentSubmitted', 'Incident Submitted')}</Text>
     </View>
   );
 };

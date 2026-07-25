@@ -44,7 +44,7 @@ export const InterestSelectionScreen = () => {
       const next = new Set(prev);
       if (next.has(id)) { next.delete(id); }
       else if (next.size < MAX_SELECT) { next.add(id); }
-      else { Alert.alert(t('limitReachedTitle', 'Limit Reached'), t('limitReachedMessage', 'You can select up to {{max}} interests.', { max: MAX_SELECT })); }
+      else { Alert.alert(t('interests.limitReachedTitle', 'Limit Reached'), t('interests.limitReachedMessage', 'You can select up to {{max}} interests.', { max: MAX_SELECT })); }
       return next;
     });
   };
