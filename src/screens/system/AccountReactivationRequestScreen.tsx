@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const AccountReactivationRequestScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.reactivationReq');
   const navigation = useNavigation<any>();
 
   return (
@@ -18,7 +18,7 @@ export const AccountReactivationRequestScreen = () => {
           <Icon name="account-clock-outline" size={72} color={theme.colors.success} />
         </View>
         
-        <Text style={styles.title}>Request Received</Text>
+        <Text style={styles.title}>{t('title', 'Request Received')}</Text>
         <Text style={styles.message}>
           Your request to reactivate your account has been submitted successfully. Our team will review it and notify you within 24 hours.
         </Text>
@@ -29,7 +29,7 @@ export const AccountReactivationRequestScreen = () => {
           style={styles.primaryButton}
           onPress={() => navigation.navigate('AuthStack')}
         >
-          <Text style={styles.primaryButtonText}>Return to Login</Text>
+          <Text style={styles.primaryButtonText}>{t('loginBtn', 'Return to Login')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

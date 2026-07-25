@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
@@ -16,7 +17,8 @@ const DEFAULT_MOCK_DATA = {
   amount: '₹3,000'
 };
 
-export const BookingAcceptedScreen = ({ route }: any) => {
+export const BookingAcceptedScreen = ({ route }: any) => { 
+  const { t } = useTranslation('booking.accepted');
   const navigation = useNavigation<any>();
   const scaleAnim = useRef(new Animated.Value(0)).current;
 
@@ -56,14 +58,14 @@ export const BookingAcceptedScreen = ({ route }: any) => {
           <Icon name="check-decagram" size={100} color={theme.colors.success} />
         </Animated.View>
 
-        <Text style={styles.title}>Booking Confirmed!</Text>
+        <Text style={styles.title}>{t('title', 'Booking Confirmed!')}</Text>
         <Text style={styles.subtitle}>
-          Get ready! <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{bookingData.companionName}</Text> has accepted your request. Your payment is securely held in escrow.
+          {t('acceptedMsg1', 'Get ready! ')}<Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{bookingData.companionName}</Text>{t('acceptedMsg2', ' has accepted your request. Your payment is securely held in escrow.')}
         </Text>
 
         <View style={styles.card}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20}}>
-            <Text style={styles.cardHeader}>CONFIRMED ITINERARY</Text>
+            <Text style={styles.cardHeader}>{t('cardHeader', 'CONFIRMED ITINERARY')}</Text>
             <Text style={styles.bookingId}>#{bookingData.bookingId}</Text>
           </View>
           
@@ -72,7 +74,7 @@ export const BookingAcceptedScreen = ({ route }: any) => {
               <Icon name="party-popper" size={18} color={theme.colors.primary} />
             </View>
             <View>
-              <Text style={styles.detailLabel}>Activity</Text>
+              <Text style={styles.detailLabel}>{t('detailLabelActivity', 'Activity')}</Text>
               <Text style={styles.detailText}>{bookingData.activity}</Text>
             </View>
           </View>
@@ -82,7 +84,7 @@ export const BookingAcceptedScreen = ({ route }: any) => {
               <Icon name="calendar-clock" size={18} color={theme.colors.primary} />
             </View>
             <View>
-              <Text style={styles.detailLabel}>Date & Time</Text>
+              <Text style={styles.detailLabel}>{t('detailLabelDate', 'Date & Time')}</Text>
               <Text style={styles.detailText}>{bookingData.date}</Text>
               <Text style={styles.subText}>{bookingData.time}</Text>
             </View>
@@ -93,7 +95,7 @@ export const BookingAcceptedScreen = ({ route }: any) => {
               <Icon name="map-marker-radius" size={18} color={theme.colors.primary} />
             </View>
             <View>
-              <Text style={styles.detailLabel}>Venue</Text>
+              <Text style={styles.detailLabel}>{t('detailLabelVenue', 'Venue')}</Text>
               <Text style={styles.detailText}>{bookingData.venue}</Text>
               <Text style={styles.subText}>{bookingData.address}</Text>
             </View>
@@ -103,8 +105,8 @@ export const BookingAcceptedScreen = ({ route }: any) => {
           
           <View style={[styles.detailRow, { marginBottom: 0, justifyContent: 'space-between', alignItems: 'center' }]}>
             <View>
-              <Text style={styles.detailLabel}>Total Secured</Text>
-              <Text style={styles.escrowNote}>Protected by Escrow</Text>
+              <Text style={styles.detailLabel}>{t('detailLabelTotal', 'Total Secured')}</Text>
+              <Text style={styles.escrowNote}>{t('escrowNote', 'Protected by Escrow')}</Text>
             </View>
             <Text style={styles.amountText}>{bookingData.amount}</Text>
           </View>
@@ -116,10 +118,10 @@ export const BookingAcceptedScreen = ({ route }: any) => {
         <View style={styles.bottomBarHandle} />
         <TouchableOpacity style={styles.primaryBtn} onPress={handleMessage} activeOpacity={0.85}>
           <Icon name="chat" size={20} color={theme.colors.background} />
-          <Text style={styles.primaryBtnText}>Message {bookingData.companionName}</Text>
+          <Text style={styles.primaryBtnText}>{t('messageCompanion', 'Message {{name}}', { name: bookingData.companionName })}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondaryBtn} onPress={handleViewItinerary} activeOpacity={0.85}>
-          <Text style={styles.secondaryBtnText}>View Booking Details</Text>
+          <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'View Booking Details')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

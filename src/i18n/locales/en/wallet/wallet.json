@@ -1,0 +1,15 @@
+{
+  "headerTitle": "My Wallet",
+  "availableBalance": "Available Balance",
+  "kycWarning": "Wallet restricted to ₹10,000 limit. Complete KYC to upgrade.",
+  "addMoney": "Add Money",
+  "autoReload": "Auto-Reload",
+  "withdraw": "Withdraw",
+  "paymentMethodsTitle": "Payment Methods",
+  "paymentMethodsSub": "Manage saved Cards & UPI",
+  "recentTransactions": "Recent Transactions",
+  "downloadStatement": "Download Statement",
+  "viewAll": "View All",
+  "escrowProtection": "Secured by CoBuddy Escrow Protection",
+  "escrowSubtext": "Your money is safely held and only released upon successful session completion."
+}

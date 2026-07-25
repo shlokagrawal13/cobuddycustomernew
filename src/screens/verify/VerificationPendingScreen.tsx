@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const REVIEW_STEPS = [
   {icon: 'clock-outline',       label: 'Booking Authorization', status: 'Pending',      done: false},
 ];
 
-export const VerificationPendingScreen = () => {
+export const VerificationPendingScreen = () => { 
+  const { t } = useTranslation('verify.pending');
   const navigation = useNavigation<any>();
 
   const handleGoToIdentity = () => {
@@ -39,7 +41,7 @@ export const VerificationPendingScreen = () => {
           activeOpacity={0.7}>
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Verification Status</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Verification Status')}</Text>
         <View style={styles.headerIconWrap}>
           <Icon name="shield-check" size={24} color={theme.colors.primary} />
         </View>
@@ -58,13 +60,13 @@ export const VerificationPendingScreen = () => {
             </View>
           </View>
 
-          <Text style={styles.heroTitle}>Verification In Review</Text>
+          <Text style={styles.heroTitle}>{t('heroTitle', 'Verification In Review')}</Text>
 
           <View style={styles.statusBadge}>
             <Icon name="clock-outline" size={14} color={theme.colors.warning} />
-            <Text style={styles.statusBadgeLabel}>STATUS</Text>
+            <Text style={styles.statusBadgeLabel}>{t('statusLabel', 'STATUS')}</Text>
             <View style={styles.statusBadgeDivider} />
-            <Text style={styles.statusBadgeValue}>Verification Pending</Text>
+            <Text style={styles.statusBadgeValue}>{t('statusValue', 'Verification Pending')}</Text>
           </View>
 
           <View style={styles.etaRow}>
@@ -76,7 +78,7 @@ export const VerificationPendingScreen = () => {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionLabel}>VERIFICATION PROGRESS</Text>
+          <Text style={styles.sectionLabel}>{t('progress', 'VERIFICATION PROGRESS')}</Text>
           {REVIEW_STEPS.map((step, i) => (
             <View key={step.label} style={[styles.reviewRow, i < REVIEW_STEPS.length - 1 && styles.reviewRowBorder]}>
               <View style={[styles.reviewIconWrap, step.done && styles.reviewIconWrapDone]}>
@@ -106,7 +108,7 @@ export const VerificationPendingScreen = () => {
             <Icon name="information" size={20} color={theme.colors.primary} />
           </View>
           <View style={styles.nextMeta}>
-            <Text style={styles.nextTitle}>Continue Setting Up Your Experience</Text>
+            <Text style={styles.nextTitle}>{t('continueSetup', 'Continue Setting Up Your Experience')}</Text>
             <Text style={styles.nextSub}>
               You can continue exploring the app while verification is reviewed.
             </Text>

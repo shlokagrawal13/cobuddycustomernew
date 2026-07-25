@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
@@ -24,7 +25,8 @@ const TRANSACTIONS = [
   { id: '4', type: 'add', title: 'Money Added', method: 'via Card ending in 4242', amount: '+ ₹2,000', date: 'Oct 10, 1:15 PM', positive: true },
 ];
 
-export const WalletScreen = () => {
+export const WalletScreen = () => { 
+  const { t } = useTranslation('wallet.wallet');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -41,7 +43,7 @@ export const WalletScreen = () => {
         >
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>My Wallet</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'My Wallet')}</Text>
         <View style={styles.backBtn} /> 
       </View>
 
@@ -50,7 +52,7 @@ export const WalletScreen = () => {
         
         <View style={styles.heroCard}>
           <View style={styles.heroGlow} />
-          <Text style={styles.heroSubtitle}>Available Balance</Text>
+          <Text style={styles.heroSubtitle}>{t('availableBalance', 'Available Balance')}</Text>
           <View style={styles.balanceRow}>
             <Text style={styles.currencySymbol}>₹</Text>
             <Text style={styles.balanceText}>{WALLET_DATA.balance.toLocaleString()}</Text>
@@ -74,7 +76,7 @@ export const WalletScreen = () => {
               onPress={() => navigation.navigate('KYCStack')}
             >
               <Icon name="alert-circle-outline" size={16} color={theme.colors.error} />
-              <Text style={styles.kycWarningText}>Wallet restricted to ₹10,000 limit. Complete KYC to upgrade.</Text>
+              <Text style={styles.kycWarningText}>{t('kycWarning', 'Wallet restricted to ₹10,000 limit. Complete KYC to upgrade.')}</Text>
               <Icon name="chevron-right" size={16} color={theme.colors.error} />
             </TouchableOpacity>
           )}
@@ -86,14 +88,14 @@ export const WalletScreen = () => {
             <View style={styles.actionIconBox}>
               <Icon name="plus" size={24} color={theme.colors.primary} />
             </View>
-            <Text style={styles.actionLabel}>Add Money</Text>
+            <Text style={styles.actionLabel}>{t('addMoney', 'Add Money')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={() => Alert.alert('Auto-Reload', 'This feature will be available in V2.')}>
             <View style={styles.actionIconBoxV2}>
               <Icon name="autorenew" size={24} color={theme.colors.textSecondary} />
             </View>
-            <Text style={styles.actionLabel}>Auto-Reload</Text>
+            <Text style={styles.actionLabel}>{t('autoReload', 'Auto-Reload')}</Text>
             <View style={styles.v2Badge}><Text style={styles.v2BadgeText}>V2</Text></View>
           </TouchableOpacity>
 
@@ -101,7 +103,7 @@ export const WalletScreen = () => {
               <View style={styles.actionIconBoxSecondary}>
                 <Icon name="bank-transfer" size={24} color={theme.colors.textPrimary} />
               </View>
-              <Text style={styles.actionLabel}>Withdraw</Text>
+              <Text style={styles.actionLabel}>{t('withdraw', 'Withdraw')}</Text>
             </TouchableOpacity>
         </View>
 
@@ -111,8 +113,8 @@ export const WalletScreen = () => {
             <Icon name="credit-card-outline" size={22} color={theme.colors.primary} />
           </View>
           <View style={styles.paymentMeta}>
-            <Text style={styles.paymentTitle}>Payment Methods</Text>
-            <Text style={styles.paymentSub}>Manage saved Cards & UPI</Text>
+            <Text style={styles.paymentTitle}>{t('paymentMethodsTitle', 'Payment Methods')}</Text>
+            <Text style={styles.paymentSub}>{t('paymentMethodsSub', 'Manage saved Cards & UPI')}</Text>
           </View>
           <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
         </TouchableOpacity>
@@ -121,14 +123,14 @@ export const WalletScreen = () => {
         <View style={styles.txCard}>
           <View style={styles.txHeader}>
             <View>
-              <Text style={styles.sectionTitle}>Recent Transactions</Text>
+              <Text style={styles.sectionTitle}>{t('recentTransactions', 'Recent Transactions')}</Text>
               <TouchableOpacity style={styles.downloadRow} onPress={() => Alert.alert('Download Statement', 'PDF statement has been generated and saved.')} activeOpacity={0.7}>
                 <Icon name="download" size={14} color={theme.colors.primary} />
-                <Text style={styles.downloadText}>Download Statement</Text>
+                <Text style={styles.downloadText}>{t('downloadStatement', 'Download Statement')}</Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={() => navigation.navigate('TransactionHistoryScreen')} activeOpacity={0.7}>
-              <Text style={styles.viewAllText}>View All</Text>
+              <Text style={styles.viewAllText}>{t('viewAll', 'View All')}</Text>
             </TouchableOpacity>
           </View>
 
@@ -155,9 +157,9 @@ export const WalletScreen = () => {
         
         <View style={styles.trustFooter}>
           <Icon name="shield-check" size={16} color={theme.colors.textSecondary} />
-          <Text style={styles.trustFooterText}>Secured by CoBuddy Escrow Protection</Text>
+          <Text style={styles.trustFooterText}>{t('escrowProtection', 'Secured by CoBuddy Escrow Protection')}</Text>
         </View>
-        <Text style={styles.trustSubtext}>Your money is safely held and only released upon successful session completion.</Text>
+        <Text style={styles.trustSubtext}>{t('escrowSubtext', 'Your money is safely held and only released upon successful session completion.')}</Text>
 
       </ScrollView>
     </SafeAreaView>

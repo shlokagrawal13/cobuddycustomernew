@@ -1,0 +1,13 @@
+{
+  "title": "Booking Confirmed!",
+  "acceptedMsg1": "Get ready! ",
+  "acceptedMsg2": " has accepted your request. Your payment is securely held in escrow.",
+  "cardHeader": "CONFIRMED ITINERARY",
+  "detailLabelActivity": "Activity",
+  "detailLabelDate": "Date & Time",
+  "detailLabelVenue": "Venue",
+  "detailLabelTotal": "Total Secured",
+  "escrowNote": "Protected by Escrow",
+  "messageCompanion": "Message {{name}}",
+  "secondaryBtnText": "View Booking Details"
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
@@ -12,7 +13,8 @@ const DEFAULT_MOCK_DATA = {
   reason: 'Schedule conflict',
 };
 
-export const BookingDeclinedScreen = ({ route }: any) => {
+export const BookingDeclinedScreen = ({ route }: any) => { 
+  const { t } = useTranslation('booking.declined');
   const navigation = useNavigation<any>();
   
   const bookingData = route?.params || DEFAULT_MOCK_DATA;
@@ -31,30 +33,30 @@ export const BookingDeclinedScreen = ({ route }: any) => {
           <Icon name="close-circle" size={90} color={theme.colors.error} />
         </View>
 
-        <Text style={styles.title}>Booking Declined</Text>
+        <Text style={styles.title}>{t('title', 'Booking Declined')}</Text>
         <Text style={styles.subtitle}>
           Unfortunately, {bookingData.companionName} is unavailable for {bookingData.date} at {bookingData.time}. Don't worry, there are many other great companions available!
         </Text>
         
         {bookingData.reason ? (
           <View style={styles.reasonCard}>
-            <Text style={styles.reasonLabel}>Reason given:</Text>
-            <Text style={styles.reasonText}>"{bookingData.reason}"</Text>
+            <Text style={styles.reasonLabel}>{t('reasonLabel', 'Reason given:')}</Text>
+            <Text style={styles.reasonText}>{t('reasonText', '"{{reason}}"', { reason: bookingData.reason })}</Text>
           </View>
         ) : null}
 
         <View style={styles.noteCard}>
           <Icon name="information-outline" size={20} color={theme.colors.textSecondary} />
-          <Text style={styles.noteText}>Any pre-authorized holds on your payment method have been released instantly.</Text>
+          <Text style={styles.noteText}>{t('noteText', 'Any pre-authorized holds on your payment method have been released instantly.')}</Text>
         </View>
       </View>
 
       <View style={styles.bottomBar}>
         <TouchableOpacity style={styles.primaryBtn} onPress={handleFindAnother} activeOpacity={0.85}>
-          <Text style={styles.primaryBtnText}>Find Another Companion</Text>
+          <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Find Another Companion')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondaryBtn} onPress={handleFindAnother} activeOpacity={0.85}>
-          <Text style={styles.secondaryBtnText}>Return to Home</Text>
+          <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'Return to Home')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

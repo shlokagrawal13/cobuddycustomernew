@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const ReferFriendScreen = () => {
+export const ReferFriendScreen = () => { 
+  const { t } = useTranslation('settings.referFriend');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -28,7 +30,7 @@ export const ReferFriendScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Refer a Friend</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Refer a Friend')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -40,7 +42,7 @@ export const ReferFriendScreen = () => {
             <View style={styles.heroGlow} />
             <Icon name="account-group" size={72} color={theme.colors.primary} />
           </View>
-          <Text style={styles.heroTitle}>Invite Friends</Text>
+          <Text style={styles.heroTitle}>{t('heroTitle', 'Invite Friends')}</Text>
           <Text style={styles.heroDesc}>
             Love using CoBuddy? Share the experience with your friends and help grow our trusted community!
           </Text>
@@ -48,27 +50,27 @@ export const ReferFriendScreen = () => {
 
         {/* Share Button Box */}
         <View style={styles.codeContainer}>
-          <Text style={styles.codeLabel}>SPREAD THE WORD</Text>
+          <Text style={styles.codeLabel}>{t('spreadWord', 'SPREAD THE WORD')}</Text>
           <Text style={styles.shareSubtext}>
             Tap below to share a direct download link with your friends via WhatsApp, SMS, or any social app.
           </Text>
           
           <TouchableOpacity style={styles.shareBtn} onPress={handleShare} activeOpacity={0.8}>
             <Icon name="share-variant" size={20} color={theme.colors.background} />
-            <Text style={styles.shareBtnText}>Share Invite Link</Text>
+            <Text style={styles.shareBtnText}>{t('shareBtn', 'Share Invite Link')}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Why Invite */}
-        <Text style={styles.sectionTitle}>WHY INVITE FRIENDS?</Text>
+        <Text style={styles.sectionTitle}>{t('whyInvite', 'WHY INVITE FRIENDS?')}</Text>
         <View style={styles.stepsContainer}>
           <View style={styles.stepItem}>
             <View style={styles.stepIconBox}>
               <Icon name="shield-check" size={18} color={theme.colors.primary} />
             </View>
             <View style={styles.stepContent}>
-              <Text style={styles.stepTitle}>Build a safer community</Text>
-              <Text style={styles.stepDesc}>Inviting people you trust helps keep our network safe and reliable.</Text>
+              <Text style={styles.stepTitle}>{t('buildSafer', 'Build a safer community')}</Text>
+              <Text style={styles.stepDesc}>{t('buildSaferSub', 'Inviting people you trust helps keep our network safe and reliable.')}</Text>
             </View>
           </View>
 
@@ -79,8 +81,8 @@ export const ReferFriendScreen = () => {
               <Icon name="star" size={18} color={theme.colors.primary} />
             </View>
             <View style={styles.stepContent}>
-              <Text style={styles.stepTitle}>Better experiences</Text>
-              <Text style={styles.stepDesc}>More users means more amazing companions to choose from in your city.</Text>
+              <Text style={styles.stepTitle}>{t('betterExperiences', 'Better experiences')}</Text>
+              <Text style={styles.stepDesc}>{t('betterExperiencesSub', 'More users means more amazing companions to choose from in your city.')}</Text>
             </View>
           </View>
         </View>

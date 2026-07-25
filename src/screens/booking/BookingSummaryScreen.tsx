@@ -15,11 +15,12 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const BookingSummaryScreen = () => {
+export const BookingSummaryScreen = () => { 
+  const { t } = useTranslation('booking.summary');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
-  const { t } = useTranslation(['booking']);
+
   
   const { activity, venue, date, time, duration = 1 } = route.params || {};
 
@@ -54,7 +55,7 @@ export const BookingSummaryScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 4 of 4</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Step 4 of 4')}</Text>
         <View style={{ width: 24 }} />
       </View>
       <View style={styles.progressContainer}>
@@ -62,8 +63,8 @@ export const BookingSummaryScreen = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Review your Request</Text>
-        <Text style={styles.subtitle}>Please confirm the details below before sending your request.</Text>
+        <Text style={styles.title}>{t('title', 'Review your Request')}</Text>
+        <Text style={styles.subtitle}>{t('subtitle', 'Please confirm the details below before sending your request.')}</Text>
 
         <View style={styles.summaryCard}>
           <View style={styles.summaryRow}>
@@ -71,10 +72,10 @@ export const BookingSummaryScreen = () => {
               <Icon name={activity?.icon || 'coffee'} size={24} color={theme.colors.primary} />
             </View>
             <View style={styles.summaryContent}>
-              <Text style={styles.summaryLabel}>Activity</Text>
-              <Text style={styles.summaryValue}>{activity?.title || 'Coffee Meetup'}</Text>
+              <Text style={styles.summaryLabel}>{t('summaryLabelActivity', 'Activity')}</Text>
+              <Text style={styles.summaryValue}>{activity?.title || t('defaultActivity', 'Coffee Meetup')}</Text>
             </View>
-            <Text style={styles.priceValue}>{activity?.price || '₹500/hr'}</Text>
+            <Text style={styles.priceValue}>{activity?.price || t('defaultPrice', '₹500/hr')}</Text>
           </View>
 
           <View style={styles.divider} />
@@ -84,8 +85,8 @@ export const BookingSummaryScreen = () => {
               <Icon name="map-marker-outline" size={24} color={theme.colors.primary} />
             </View>
             <View style={styles.summaryContent}>
-              <Text style={styles.summaryLabel}>Venue</Text>
-              <Text style={styles.summaryValue}>{venue?.name || 'Custom Venue'}</Text>
+              <Text style={styles.summaryLabel}>{t('summaryLabelVenue', 'Venue')}</Text>
+              <Text style={styles.summaryValue}>{venue?.name || t('defaultVenue', 'Custom Venue')}</Text>
               <Text style={styles.summarySubValue}>{venue?.address || ''}</Text>
             </View>
           </View>
@@ -97,17 +98,17 @@ export const BookingSummaryScreen = () => {
               <Icon name="calendar-clock-outline" size={24} color={theme.colors.primary} />
             </View>
             <View style={styles.summaryContent}>
-              <Text style={styles.summaryLabel}>Date & Time</Text>
+              <Text style={styles.summaryLabel}>{t('summaryLabelDate', 'Date & Time')}</Text>
               <Text style={styles.summaryValue}>{date?.dayName}, {date?.dayNumber}</Text>
-              <Text style={styles.summarySubValue}>{time} ({duration} {duration === 1 ? 'hour' : 'hours'})</Text>
+              <Text style={styles.summarySubValue}>{t('durationText', '{{time}} ({{duration}} {{hourText}})', { time, duration, hourText: duration === 1 ? 'hour' : 'hours' })}</Text>
             </View>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>Special Instructions</Text>
+        <Text style={styles.sectionTitle}>{t('specialInstructions', 'Special Instructions')}</Text>
         <TextInput
           style={styles.instructionInput}
-          placeholder="How will the companion recognize you? Any special requests?"
+          placeholder={t('placeholder.HowWillTheCompa', 'How will the companion recognize you? Any special requests?')}
           placeholderTextColor={theme.colors.textSecondary}
           multiline
           numberOfLines={3}
@@ -115,23 +116,23 @@ export const BookingSummaryScreen = () => {
           onChangeText={setSpecialInstructions}
         />
 
-        <Text style={[styles.sectionTitle, { marginTop: 24 }]}>Payment Summary</Text>
+        <Text style={[styles.sectionTitle, { marginTop: 24 }]}>{t('paymentSummary', 'Payment Summary')}</Text>
         <View style={styles.pricingBox}>
           <View style={styles.priceRow}>
-            <Text style={styles.priceLabel}>Base Fare (₹{baseRate} x {duration} hr)</Text>
+            <Text style={styles.priceLabel}>{t('baseFare', 'Base Fare (₹{{baseRate}} x {{duration}} hr)', { baseRate, duration })}</Text>
             <Text style={styles.priceAmount}>₹{baseTotal}</Text>
           </View>
           <View style={styles.priceRow}>
-            <Text style={styles.priceLabel}>Safety & Service Fee</Text>
+            <Text style={styles.priceLabel}>{t('serviceFee', 'Safety & Service Fee')}</Text>
             <Text style={styles.priceAmount}>₹{serviceFee}</Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.priceRow}>
-            <Text style={styles.totalLabel}>Estimated Total</Text>
+            <Text style={styles.totalLabel}>{t('estimatedTotal', 'Estimated Total')}</Text>
             <Text style={styles.totalValue}>₹{totalAmount}</Text>
           </View>
         </View>
-        <Text style={styles.totalDisclaimer}>Payment is processed only after the companion accepts.</Text>
+        <Text style={styles.totalDisclaimer}>{t('totalDisclaimer', 'Payment is processed only after the companion accepts.')}</Text>
 
         <TouchableOpacity 
           style={styles.safetyAgreementRow} 
@@ -150,9 +151,9 @@ export const BookingSummaryScreen = () => {
 
         {/* DEV MOCK: KYC Toggle */}
         <View style={styles.devBox}>
-          <Text style={styles.devTitle}>[Dev] Simulate KYC Status</Text>
+          <Text style={styles.devTitle}>{t('devTitle', '[Dev] Simulate KYC Status')}</Text>
           <View style={styles.devRow}>
-            <Text style={styles.devText}>KYC Verified?</Text>
+            <Text style={styles.devText}>{t('devText', 'KYC Verified?')}</Text>
             <Switch 
               value={isKycVerified} 
               onValueChange={setIsKycVerified}
@@ -173,7 +174,7 @@ export const BookingSummaryScreen = () => {
           onPress={handleSendRequest}
           activeOpacity={0.8}
         >
-          <Text style={[styles.nextBtnText, !agreedToSafety && styles.nextBtnTextDisabled]}>Send Request</Text>
+          <Text style={[styles.nextBtnText, !agreedToSafety && styles.nextBtnTextDisabled]}>{t('nextBtnText', 'Send Request')}</Text>
           <Icon name="send-outline" size={20} color={agreedToSafety ? theme.colors.background : 'rgba(255,255,255,0.4)'} />
         </TouchableOpacity>
       </View>

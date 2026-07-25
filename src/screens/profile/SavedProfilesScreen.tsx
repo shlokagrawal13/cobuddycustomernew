@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, StatusBar, Image, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -40,7 +41,8 @@ const MOCK_SAVED = [
   }
 ];
 
-export const SavedProfilesScreen = () => {
+export const SavedProfilesScreen = () => { 
+  const { t } = useTranslation('profile.saved');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [savedProfiles, setSavedProfiles] = useState(MOCK_SAVED);
@@ -62,14 +64,14 @@ export const SavedProfilesScreen = () => {
         <View style={styles.emptyIconBox}>
             <Icon name="bookmark-outline" size={48} color={theme.colors.primary} />
         </View>
-        <Text style={styles.emptyTitle}>No Saved Checklists</Text>
-        <Text style={styles.emptySub}>When you find a companion you like, tap the bookmark icon to save their profile here.</Text>
+        <Text style={styles.emptyTitle}>{t('emptyTitle', 'No Saved Checklists')}</Text>
+        <Text style={styles.emptySub}>{t('emptySub', 'When you find a companion you like, tap the bookmark icon to save their profile here.')}</Text>
         <TouchableOpacity 
             style={styles.exploreBtn} 
             activeOpacity={0.8}
             onPress={() => navigation.navigate('DiscoverTab')}
         >
-            <Text style={styles.exploreBtnText}>Explore Companions</Text>
+            <Text style={styles.exploreBtnText}>{t('exploreBtn', 'Explore Companions')}</Text>
         </TouchableOpacity>
     </View>
   );
@@ -127,7 +129,7 @@ export const SavedProfilesScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Saved Checklists</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Saved Checklists')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -143,7 +145,7 @@ export const SavedProfilesScreen = () => {
       <AppBottomSheet
         visible={showSheet}
         onClose={() => setShowSheet(false)}
-        title="Manage Saved Profile"
+        title={t('title.ManageSavedProf', 'Manage Saved Profile')}
       >
         <View style={styles.sheetContent}>
             <TouchableOpacity 
@@ -157,7 +159,7 @@ export const SavedProfilesScreen = () => {
                 <View style={styles.sheetIconBox}>
                     <Icon name="account-outline" size={20} color={theme.colors.textPrimary} />
                 </View>
-                <Text style={styles.sheetActionText}>View Full Profile</Text>
+                <Text style={styles.sheetActionText}>{t('viewProfile', 'View Full Profile')}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -170,7 +172,7 @@ export const SavedProfilesScreen = () => {
                 <View style={[styles.sheetIconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
                     <Icon name="bookmark-off-outline" size={20} color={theme.colors.error} />
                 </View>
-                <Text style={[styles.sheetActionText, { color: theme.colors.error }]}>Remove from Saved</Text>
+                <Text style={[styles.sheetActionText, { color: theme.colors.error }]}>{t('removeSaved', 'Remove from Saved')}</Text>
             </TouchableOpacity>
         </View>
       </AppBottomSheet>

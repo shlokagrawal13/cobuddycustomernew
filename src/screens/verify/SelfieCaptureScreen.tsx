@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -8,7 +9,8 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const { width } = Dimensions.get('window');
 
-export const SelfieCaptureScreen = () => {
+export const SelfieCaptureScreen = () => { 
+  const { t } = useTranslation('verify.selfie');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [hasPermission, setHasPermission] = useState(false);
@@ -42,12 +44,12 @@ export const SelfieCaptureScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 2 of 3</Text>
+        <Text style={styles.headerTitle}>{t('step2of3', 'Step 2 of 3')}</Text>
         <View style={{ width: 24 }} />
       </View>
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Selfie Verification</Text>
+        <Text style={styles.title}>{t('selfieVerify', 'Selfie Verification')}</Text>
         <Text style={styles.subtitle}>
           {photoCaptured 
             ? "Ensure your face is clearly visible and not blurry." 
@@ -72,7 +74,7 @@ export const SelfieCaptureScreen = () => {
         {!photoCaptured && (
           <View style={styles.tipsBox}>
             <Icon name="lightbulb-on-outline" size={20} color={theme.colors.primary} />
-            <Text style={styles.tipsText}>Face the camera directly and center your face in the oval.</Text>
+            <Text style={styles.tipsText}>{t('tipsText', 'Face the camera directly and center your face in the oval.')}</Text>
           </View>
         )}
 
@@ -80,10 +82,10 @@ export const SelfieCaptureScreen = () => {
           {photoCaptured ? (
             <View style={styles.actionRow}>
               <TouchableOpacity style={styles.retakeBtn} onPress={handleRetake}>
-                <Text style={styles.retakeBtnText}>Retake</Text>
+                <Text style={styles.retakeBtnText}>{t('retakeBtn', 'Retake')}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.confirmBtn} onPress={handleNext}>
-                <Text style={styles.confirmBtnText}>Confirm</Text>
+                <Text style={styles.confirmBtnText}>{t('confirmBtn', 'Confirm')}</Text>
                 <Icon name="check" size={20} color={theme.colors.background} />
               </TouchableOpacity>
             </View>

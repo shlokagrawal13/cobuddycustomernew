@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -34,7 +35,8 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
     );
 };
 
-export const SafetySettingsScreen = () => {
+export const SafetySettingsScreen = () => { 
+  const { t } = useTranslation('safety.settings');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -52,7 +54,7 @@ export const SafetySettingsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Safety Center</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Center')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -62,13 +64,13 @@ export const SafetySettingsScreen = () => {
             <View style={styles.iconWrap}>
                 <Icon name="shield-star" size={40} color={theme.colors.primary} />
             </View>
-            <Text style={styles.heroTitle}>Your Safety First</Text>
+            <Text style={styles.heroTitle}>{t('heroTitle', 'Your Safety First')}</Text>
             <Text style={styles.heroSub}>
                 Customize your privacy and safety preferences to ensure a secure and comfortable experience on CoBuddy.
             </Text>
         </View>
 
-        <Text style={styles.sectionTitle}>PROFILE VISIBILITY</Text>
+        <Text style={styles.sectionTitle}>{t('profileVisibility', 'PROFILE VISIBILITY')}</Text>
         
         <View style={styles.card}>
             <View style={styles.settingRow}>
@@ -76,14 +78,14 @@ export const SafetySettingsScreen = () => {
                     <Icon name="incognito" size={20} color={incognito ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Incognito Mode</Text>
-                    <Text style={styles.settingDesc}>Hide your profile from Discover. Only people you message can see you.</Text>
+                    <Text style={styles.settingTitle}>{t('incognitoMode', 'Incognito Mode')}</Text>
+                    <Text style={styles.settingDesc}>{t('incognitoModeSub', 'Hide your profile from Discover. Only people you message can see you.')}</Text>
                 </View>
                 <CustomSwitch value={incognito} onValueChange={setIncognito} />
             </View>
         </View>
 
-        <Text style={styles.sectionTitle}>INTERACTIONS & CHAT</Text>
+        <Text style={styles.sectionTitle}>{t('interactionsChat', 'INTERACTIONS & CHAT')}</Text>
         
         <View style={styles.card}>
             <View style={styles.settingRow}>
@@ -91,8 +93,8 @@ export const SafetySettingsScreen = () => {
                     <Icon name="message-alert-outline" size={20} color={safeChat ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Safe Chat Filter</Text>
-                    <Text style={styles.settingDesc}>Automatically blur explicit images and flag offensive words in messages.</Text>
+                    <Text style={styles.settingTitle}>{t('safeChat', 'Safe Chat Filter')}</Text>
+                    <Text style={styles.settingDesc}>{t('safeChatSub', 'Automatically blur explicit images and flag offensive words in messages.')}</Text>
                 </View>
                 <CustomSwitch value={safeChat} onValueChange={setSafeChat} />
             </View>
@@ -104,14 +106,14 @@ export const SafetySettingsScreen = () => {
                     <Icon name="check-decagram-outline" size={20} color={verifiedOnly ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Verified Users Only</Text>
-                    <Text style={styles.settingDesc}>Only allow users with KYC verified profiles to send you booking requests.</Text>
+                    <Text style={styles.settingTitle}>{t('verifiedUsers', 'Verified Users Only')}</Text>
+                    <Text style={styles.settingDesc}>{t('verifiedUsersSub', 'Only allow users with KYC verified profiles to send you booking requests.')}</Text>
                 </View>
                 <CustomSwitch value={verifiedOnly} onValueChange={setVerifiedOnly} />
             </View>
         </View>
 
-        <Text style={styles.sectionTitle}>EMERGENCY FEATURES</Text>
+        <Text style={styles.sectionTitle}>{t('emergencyFeatures', 'EMERGENCY FEATURES')}</Text>
 
         <View style={styles.card}>
             <TouchableOpacity 
@@ -123,14 +125,14 @@ export const SafetySettingsScreen = () => {
                     <Icon name="car-emergency" size={20} color={theme.colors.error} />
                 </View>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Emergency Contacts (SOS)</Text>
-                    <Text style={styles.settingDesc}>Add up to 3 trusted contacts. We'll share your live location with them if you trigger an SOS.</Text>
+                    <Text style={styles.settingTitle}>{t('emergencyContacts', 'Emergency Contacts (SOS)')}</Text>
+                    <Text style={styles.settingDesc}>{t('emergencyContactsSub', 'Add up to 3 trusted contacts. We\'ll share your live location with them if you trigger an SOS.')}</Text>
                 </View>
                 <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
         </View>
 
-        <Text style={styles.sectionTitle}>LIVE SAFETY MONITORING</Text>
+        <Text style={styles.sectionTitle}>{t('liveSafety', 'LIVE SAFETY MONITORING')}</Text>
 
         <View style={styles.card}>
             <View style={styles.settingRow}>
@@ -138,8 +140,8 @@ export const SafetySettingsScreen = () => {
                     <Icon name="share-variant-outline" size={20} color={contactShare ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Trusted Contact Sharing</Text>
-                    <Text style={styles.settingDesc}>Automatically share your active session details and live location with your trusted contacts.</Text>
+                    <Text style={styles.settingTitle}>{t('contactSharing', 'Trusted Contact Sharing')}</Text>
+                    <Text style={styles.settingDesc}>{t('contactSharingSub', 'Automatically share your active session details and live location with your trusted contacts.')}</Text>
                 </View>
                 <CustomSwitch value={contactShare} onValueChange={setContactShare} />
             </View>
@@ -151,8 +153,8 @@ export const SafetySettingsScreen = () => {
                     <Icon name="radar" size={20} color={liveMonitor ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Live Safety Monitoring</Text>
-                    <Text style={styles.settingDesc}>Enable active tracking and anomaly detection during your meetup sessions.</Text>
+                    <Text style={styles.settingTitle}>{t('liveMonitoring', 'Live Safety Monitoring')}</Text>
+                    <Text style={styles.settingDesc}>{t('liveMonitoringSub', 'Enable active tracking and anomaly detection during your meetup sessions.')}</Text>
                 </View>
                 <CustomSwitch value={liveMonitor} onValueChange={setLiveMonitor} />
             </View>
@@ -164,7 +166,7 @@ export const SafetySettingsScreen = () => {
             onPress={() => navigation.navigate('SafetyHubScreen')}
         >
             <Icon name="security" size={18} color={theme.colors.background} />
-            <Text style={styles.hubBtnText}>Open Safety Hub</Text>
+            <Text style={styles.hubBtnText}>{t('openSafetyHub', 'Open Safety Hub')}</Text>
             <Icon name="arrow-right" size={20} color={theme.colors.background} />
         </TouchableOpacity>
 

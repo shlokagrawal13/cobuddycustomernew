@@ -1,12 +1,14 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const AddBankAccountScreen = () => {
+export const AddBankAccountScreen = () => { 
+  const { t } = useTranslation('wallet.addBankAccount');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [accName, setAccName] = useState('');
@@ -52,7 +54,7 @@ export const AddBankAccountScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Add Bank Account</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Add Bank Account')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -63,32 +65,32 @@ export const AddBankAccountScreen = () => {
                 <View style={styles.securityIconWrap}>
                     <Icon name="bank-check" size={32} color={theme.colors.primary} />
                 </View>
-                <Text style={styles.securityTitle}>Secure Bank Linking</Text>
-                <Text style={styles.securitySub}>We'll deposit a small amount (like ₹1) to instantly verify your account before saving.</Text>
+                <Text style={styles.securityTitle}>{t('securityTitle', 'Secure Bank Linking')}</Text>
+                <Text style={styles.securitySub}>{t('securitySub', "We'll deposit a small amount (like ₹1) to instantly verify your account before saving.")}</Text>
             </View>
 
             <View style={styles.formSection}>
-                <Text style={styles.sectionTitle}>ACCOUNT DETAILS</Text>
+                <Text style={styles.sectionTitle}>{t('sectionTitle', 'ACCOUNT DETAILS')}</Text>
                 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Account Holder Name</Text>
+                    <Text style={styles.inputLabel}>{t('inputHolder', 'Account Holder Name')}</Text>
                     <TextInput 
                         style={styles.input}
                         value={accName}
                         onChangeText={setAccName}
-                        placeholder="As per bank records"
+                        placeholder={t('placeholder.AsPerBankRecord', 'As per bank records')}
                         placeholderTextColor={theme.colors.textSecondary}
                         autoCapitalize="words"
                     />
                 </View>
 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Account Number</Text>
+                    <Text style={styles.inputLabel}>{t('inputAccount', 'Account Number')}</Text>
                     <TextInput 
                         style={styles.input}
                         value={accNumber}
                         onChangeText={setAccNumber}
-                        placeholder="000000000000"
+                        placeholder={t('placeholder.000000000000', '000000000000')}
                         placeholderTextColor={theme.colors.textSecondary}
                         keyboardType="number-pad"
                         secureTextEntry
@@ -96,27 +98,27 @@ export const AddBankAccountScreen = () => {
                 </View>
 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Re-enter Account Number</Text>
+                    <Text style={styles.inputLabel}>{t('inputReAccount', 'Re-enter Account Number')}</Text>
                     <TextInput 
                         style={styles.input}
                         value={reAccNumber}
                         onChangeText={setReAccNumber}
-                        placeholder="000000000000"
+                        placeholder={t('placeholder.000000000000', '000000000000')}
                         placeholderTextColor={theme.colors.textSecondary}
                         keyboardType="number-pad"
                     />
                     {reAccNumber.length > 0 && accNumber !== reAccNumber && (
-                        <Text style={styles.errorText}>Account numbers do not match</Text>
+                        <Text style={styles.errorText}>{t('errorMismatch', 'Account numbers do not match')}</Text>
                     )}
                 </View>
 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>IFSC Code</Text>
+                    <Text style={styles.inputLabel}>{t('inputIfsc', 'IFSC Code')}</Text>
                     <TextInput 
                         style={styles.input}
                         value={ifsc}
                         onChangeText={v => setIfsc(v.toUpperCase())}
-                        placeholder="e.g. HDFC0001234"
+                        placeholder={t('placeholder.eGHDFC0001234', 'e.g. HDFC0001234')}
                         placeholderTextColor={theme.colors.textSecondary}
                         autoCapitalize="characters"
                         maxLength={11}
@@ -126,12 +128,12 @@ export const AddBankAccountScreen = () => {
 
             <View style={styles.pciNote}>
                 <Icon name="shield-check" size={16} color={theme.colors.success} />
-                <Text style={styles.pciNoteText}>Your details are encrypted and securely sent directly to our banking partner.</Text>
+                <Text style={styles.pciNoteText}>{t('pciNote', 'Your details are encrypted and securely sent directly to our banking partner.')}</Text>
             </View>
 
             <TouchableOpacity style={styles.saveBtn} activeOpacity={0.8} onPress={handleSave}>
                 <Icon name="check-decagram" size={20} color={theme.colors.surface} />
-                <Text style={styles.saveBtnText}>Verify & Save Account</Text>
+                <Text style={styles.saveBtnText}>{t('btnVerify', 'Verify & Save Account')}</Text>
             </TouchableOpacity>
 
         </ScrollView>

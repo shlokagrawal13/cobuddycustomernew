@@ -1,0 +1,106 @@
+{
+  "headerTitle": "Settings",
+  "privacyTitle": "Your Privacy, Our Priority",
+  "privacySub": "CoBuddy is built on a privacy-first architecture.",
+  "pillar1": "Data Sovereignty",
+  "pillar2": "Zero-Share",
+  "pillar3": "AES-256 Auth",
+  "devZone": "DEV ZONE (TEMPORARY)",
+  "dangerZone": "DANGER ZONE",
+  "logOut": "Log Out",
+  "brand": "CoBuddy",
+  "copyright": "© 2026 CoBuddy Technologies",
+  "version": "v1.0.0 (Build 42)",
+  "logOutAlert": {
+    "title": "Log Out",
+    "message": "Are you sure you want to log out of CoBuddy?"
+  },
+  "sections": {
+    "account": "ACCOUNT",
+    "privacy___safety": "PRIVACY & SAFETY",
+    "data___notifications": "DATA & NOTIFICATIONS",
+    "support": "SUPPORT"
+  },
+  "items": {
+    "acc": {
+      "title": "Account Settings",
+      "sub": "Phone, Email, Linked Accounts"
+    },
+    "perms": {
+      "title": "App Permissions",
+      "sub": "Camera, Location, Microphone"
+    },
+    "sessions": {
+      "title": "Active Sessions",
+      "sub": "Manage logged-in devices"
+    },
+    "applock": {
+      "title": "App Lock",
+      "sub": "FaceID & Biometrics"
+    },
+    "blocked": {
+      "title": "Blocked Users",
+      "sub": "Manage your blocked list"
+    },
+    "safety": {
+      "title": "Safety Settings",
+      "sub": "SOS & Trusted Contacts"
+    },
+    "notif": {
+      "title": "Notifications",
+      "sub": "Push & Email preferences"
+    },
+    "data": {
+      "title": "Data & Cache",
+      "sub": "Clear cache & consent manager"
+    },
+    "lang": {
+      "title": "App Language",
+      "sub": "English (US)"
+    },
+    "help": {
+      "title": "Help Center",
+      "sub": "FAQs & Guides"
+    },
+    "contact": {
+      "title": "Contact Support",
+      "sub": "24/7 Concierge Chat"
+    },
+    "report": {
+      "title": "Report a Problem",
+      "sub": "Flag an issue or bug"
+    },
+    "deactivate": {
+      "title": "Deactivate Account",
+      "sub": "Temporarily hide your profile"
+    },
+    "delete": {
+      "title": "Delete Account",
+      "sub": "Permanently remove all data"
+    },
+    "susp": {
+      "title": "Suspended Screen"
+    },
+    "rev": {
+      "title": "Under Review Screen"
+    },
+    "react": {
+      "title": "Reactivation Request"
+    },
+    "pol": {
+      "title": "Policy Violation"
+    },
+    "deact": {
+      "title": "Deactivated Screen"
+    },
+    "net": {
+      "title": "Network Error"
+    },
+    "force": {
+      "title": "Force Update"
+    },
+    "maint": {
+      "title": "Maintenance Mode"
+    }
+  }
+}

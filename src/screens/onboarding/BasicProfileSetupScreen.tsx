@@ -209,7 +209,7 @@ export const BasicProfileSetupScreen = () => {
                   style={[styles.underlineInput, dobError ? styles.underlineInputError : null]}
                   value={dob}
                   onChangeText={handleDobChange}
-                  placeholder="DD/MM/YYYY"
+                  placeholder={t('placeholder.DDMMYYYY', 'DD/MM/YYYY')}
                   placeholderTextColor={theme.colors.textSecondary}
                   keyboardType="number-pad"
                   maxLength={10}
@@ -305,7 +305,7 @@ export const BasicProfileSetupScreen = () => {
         <AppBottomSheet
           visible={showAvatarSheet}
           onClose={() => setShowAvatarSheet(false)}
-          title="Profile Photo">
+          title={t('title.ProfilePhoto', 'Profile Photo')}>
           <View style={picker.list}>
             {/* Upload Photo */}
             <TouchableOpacity

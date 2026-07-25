@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const KYCIntroScreen = () => {
+export const KYCIntroScreen = () => { 
+  const { t } = useTranslation(['verify.kycIntro', 'onboarding']);
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
-  const { t } = useTranslation(['onboarding']);
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
@@ -25,7 +25,7 @@ export const KYCIntroScreen = () => {
           <Icon name="shield-check" size={64} color={theme.colors.primary} />
         </View>
 
-        <Text style={styles.title}>Verify your Identity</Text>
+        <Text style={styles.title}>{t('verifyIdentity', 'Verify your Identity')}</Text>
         <Text style={styles.subtitle}>
           To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking.
         </Text>
@@ -34,16 +34,16 @@ export const KYCIntroScreen = () => {
           <View style={styles.featureRow}>
             <Icon name="card-account-details-outline" size={24} color={theme.colors.primary} />
             <View style={styles.featureTextWrap}>
-              <Text style={styles.featureTitle}>Government ID Verification</Text>
-              <Text style={styles.featureDesc}>Securely scan your Aadhaar, PAN, DL, or Passport.</Text>
+              <Text style={styles.featureTitle}>{t('govId', 'Government ID Verification')}</Text>
+              <Text style={styles.featureDesc}>{t('govIdDesc', 'Securely scan your Aadhaar, PAN, DL, or Passport.')}</Text>
             </View>
           </View>
 
           <View style={styles.featureRow}>
             <Icon name="face-recognition" size={24} color={theme.colors.primary} />
             <View style={styles.featureTextWrap}>
-              <Text style={styles.featureTitle}>Liveness Check</Text>
-              <Text style={styles.featureDesc}>A quick selfie to ensure you match your ID.</Text>
+              <Text style={styles.featureTitle}>{t('livenessCheck', 'Liveness Check')}</Text>
+              <Text style={styles.featureDesc}>{t('livenessDesc', 'A quick selfie to ensure you match your ID.')}</Text>
             </View>
           </View>
         </View>
@@ -58,7 +58,7 @@ export const KYCIntroScreen = () => {
           onPress={() => navigation.navigate('DocumentVerificationScreen')}
           activeOpacity={0.8}
         >
-          <Text style={styles.nextBtnText}>Start Verification</Text>
+          <Text style={styles.nextBtnText}>{t('startVerify', 'Start Verification')}</Text>
           <Icon name="arrow-right" size={20} color={theme.colors.background} />
         </TouchableOpacity>
       </View>

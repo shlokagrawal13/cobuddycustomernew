@@ -1,0 +1,9 @@
+{
+  "headerTitle": "Report Incident",
+  "whatHappened": "WHAT HAPPENED?",
+  "refLabel": "BOOKING REFERENCE OR USERNAME (OPTIONAL)",
+  "detailsLabel": "INCIDENT DETAILS (REQUIRED)",
+  "evidenceLabel": "EVIDENCE (OPTIONAL)",
+  "maxFile": "Max file size: 10MB",
+  "submitBtn": "Submit Confidential Report"
+}

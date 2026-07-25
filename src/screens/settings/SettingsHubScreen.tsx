@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -57,14 +58,15 @@ const DEV_TEST_SCREENS = [
   { id: 'maint', title: 'Maintenance Mode', route: 'MaintenanceModeScreen' },
 ];
 
-export const SettingsHubScreen = () => {
+export const SettingsHubScreen = () => { 
+  const { t } = useTranslation('settings.hub');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
   const handleLogout = () => {
     Alert.alert(
-      'Log Out',
-      'Are you sure you want to log out of CoBuddy?',
+      t('logOutAlert.title', 'Log Out'),
+      t('logOutAlert.message', 'Are you sure you want to log out of CoBuddy?'),
       [
         { text: 'Cancel', style: 'cancel' },
         { text: 'Log Out', style: 'destructive', onPress: () => {
@@ -82,7 +84,7 @@ export const SettingsHubScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Settings</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Settings')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -93,31 +95,31 @@ export const SettingsHubScreen = () => {
             <View style={styles.privacyHeader}>
                 <Icon name="shield-lock-outline" size={24} color={theme.colors.success} />
                 <View style={styles.privacyMeta}>
-                    <Text style={styles.privacyTitle}>Your Privacy, Our Priority</Text>
-                    <Text style={styles.privacySub}>CoBuddy is built on a privacy-first architecture.</Text>
+                    <Text style={styles.privacyTitle}>{t('privacyTitle', 'Your Privacy, Our Priority')}</Text>
+                    <Text style={styles.privacySub}>{t('privacySub', 'CoBuddy is built on a privacy-first architecture.')}</Text>
                 </View>
             </View>
             <View style={styles.privacyPillars}>
                 <View style={styles.pillar}>
                     <Icon name="database-lock-outline" size={16} color={theme.colors.primary} />
-                    <Text style={styles.pillarText}>Data Sovereignty</Text>
+                    <Text style={styles.pillarText}>{t('pillar1', 'Data Sovereignty')}</Text>
                 </View>
                 <View style={styles.pillarDivider} />
                 <View style={styles.pillar}>
                     <Icon name="incognito-circle-off" size={16} color={theme.colors.primary} />
-                    <Text style={styles.pillarText}>Zero-Share</Text>
+                    <Text style={styles.pillarText}>{t('pillar2', 'Zero-Share')}</Text>
                 </View>
                 <View style={styles.pillarDivider} />
                 <View style={styles.pillar}>
                     <Icon name="key-outline" size={16} color={theme.colors.primary} />
-                    <Text style={styles.pillarText}>AES-256 Auth</Text>
+                    <Text style={styles.pillarText}>{t('pillar3', 'AES-256 Auth')}</Text>
                 </View>
             </View>
         </View>
 
         {SETTING_SECTIONS.map((section) => (
           <View key={section.title} style={styles.section}>
-            <Text style={styles.sectionTitle}>{section.title}</Text>
+            <Text style={styles.sectionTitle}>{t(`sections.${section.title.toLowerCase().replace(/[^a-z0-9]/g, '_')}`, section.title)}</Text>
             <View style={styles.card}>
               {section.items.map((item, index) => (
                 <TouchableOpacity 
@@ -131,8 +133,8 @@ export const SettingsHubScreen = () => {
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />
                   </View>
                   <View style={styles.meta}>
-                    <Text style={styles.title}>{item.title}</Text>
-                    <Text style={styles.sub}>{item.sub}</Text>
+                    <Text style={styles.title}>{t(`items.${item.id}.title`, item.title)}</Text>
+                    <Text style={styles.sub}>{t(`items.${item.id}.sub`, item.sub)}</Text>
                   </View>
                   {item.route ? <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} /> : null}
                 </TouchableOpacity>
@@ -143,7 +145,7 @@ export const SettingsHubScreen = () => {
 
         {/* DEV ZONE FOR TESTING SYSTEM SCREENS */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, {color: theme.colors.warning}]}>DEV ZONE (TEMPORARY)</Text>
+          <Text style={[styles.sectionTitle, {color: theme.colors.warning}]}>{t('devZone', 'DEV ZONE (TEMPORARY)')}</Text>
           <View style={[styles.card, {borderColor: 'rgba(245, 158, 11, 0.2)'}]}>
             {DEV_TEST_SCREENS.map((item, index) => (
               <TouchableOpacity 
@@ -175,7 +177,7 @@ export const SettingsHubScreen = () => {
 
         {/* Danger Zone */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, {color: theme.colors.error}]}>DANGER ZONE</Text>
+          <Text style={[styles.sectionTitle, {color: theme.colors.error}]}>{t('dangerZone', 'DANGER ZONE')}</Text>
           <View style={[styles.card, {borderColor: 'rgba(239, 68, 68, 0.2)'}]}>
             {DANGER_ZONE.map((item, index) => (
               <TouchableOpacity 
@@ -199,13 +201,13 @@ export const SettingsHubScreen = () => {
 
         <TouchableOpacity style={styles.logoutBtn} activeOpacity={0.8} onPress={handleLogout}>
           <Icon name="logout-variant" size={20} color={theme.colors.error} />
-          <Text style={styles.logoutText}>Log Out</Text>
+          <Text style={styles.logoutText}>{t('logOut', 'Log Out')}</Text>
         </TouchableOpacity>
 
         <View style={styles.footerBrand}>
-            <Text style={styles.brandText}>CoBuddy</Text>
-            <Text style={styles.copyrightText}>© 2026 CoBuddy Technologies</Text>
-            <Text style={styles.versionText}>v1.0.0 (Build 42)</Text>
+            <Text style={styles.brandText}>{t('brand', 'CoBuddy')}</Text>
+            <Text style={styles.copyrightText}>{t('copyright', '© 2026 CoBuddy Technologies')}</Text>
+            <Text style={styles.versionText}>{t('version', 'v1.0.0 (Build 42)')}</Text>
         </View>
 
       </ScrollView>

@@ -1,4 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import { useTranslation } from 'react-i18next';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -9,7 +10,8 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 const PRESET_AMOUNTS = ['500', '1000', '2000', '5000'];
 const DEFAULT_PAYMENT = { id: 'pm_upi', icon: 'qrcode', title: 'UPI / GPay', sub: 'shlok@okicici' };
 
-export const AddMoneyScreen = () => {
+export const AddMoneyScreen = () => { 
+  const { t } = useTranslation('wallet.addMoney');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -36,7 +38,7 @@ export const AddMoneyScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Add Money</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Add Money')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -44,7 +46,7 @@ export const AddMoneyScreen = () => {
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
             
             <View style={styles.balanceInfoBox}>
-                <Text style={styles.balanceInfoLabel}>CURRENT BALANCE</Text>
+                <Text style={styles.balanceInfoLabel}>{t('balanceLabel', 'CURRENT BALANCE')}</Text>
                 <Text style={styles.balanceInfoValue}>₹4,500</Text>
             </View>
 
@@ -54,7 +56,7 @@ export const AddMoneyScreen = () => {
                     style={styles.amountInput}
                     value={amount}
                     onChangeText={setAmount}
-                    placeholder="0"
+                    placeholder={t('placeholder.0', '0')}
                     placeholderTextColor={theme.colors.textSecondary}
                     keyboardType="number-pad"
                     maxLength={5}
@@ -74,10 +76,10 @@ export const AddMoneyScreen = () => {
                     </TouchableOpacity>
                 ))}
             </View>
-            <Text style={styles.helperText}>Minimum top-up is ₹100. Max limit ₹10,000 per transaction.</Text>
+            <Text style={styles.helperText}>{t('helperText', 'Minimum top-up is ₹100. Max limit ₹10,000 per transaction.')}</Text>
 
             <View style={styles.paymentCard}>
-                <Text style={styles.sectionTitle}>PAYING FROM</Text>
+                <Text style={styles.sectionTitle}>{t('sectionTitle', 'PAYING FROM')}</Text>
                 
                 <View style={styles.paymentRow}>
                     <View style={styles.paymentIconWrap}>
@@ -92,15 +94,15 @@ export const AddMoneyScreen = () => {
                         activeOpacity={0.7}
                         onPress={() => navigation.navigate('PaymentMethodsScreen', { mode: 'select', currentId: selectedMethod.id })}
                     >
-                        <Text style={styles.changeText}>Change</Text>
+                        <Text style={styles.changeText}>{t('btnChange', 'Change')}</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.trustBanner}>
                     <Icon name="shield-check" size={16} color={theme.colors.success} />
                     <View>
-                        <Text style={styles.trustTitle}>100% Safe & Secure</Text>
-                        <Text style={styles.trustSub}>PCI-DSS compliant encrypted payments</Text>
+                        <Text style={styles.trustTitle}>{t('trustTitle', '100% Safe & Secure')}</Text>
+                        <Text style={styles.trustSub}>{t('trustSub', 'PCI-DSS compliant encrypted payments')}</Text>
                     </View>
                 </View>
             </View>
@@ -114,7 +116,7 @@ export const AddMoneyScreen = () => {
               activeOpacity={0.8}
               onPress={handleProceed}
           >
-              <Text style={styles.proceedText}>Proceed to Pay ₹{amount || '0'}</Text>
+              <Text style={styles.proceedText}>{t('proceedToPay', 'Proceed to Pay ₹{{amount}}', { amount: amount || '0' })}</Text>
           </TouchableOpacity>
       </View>
 

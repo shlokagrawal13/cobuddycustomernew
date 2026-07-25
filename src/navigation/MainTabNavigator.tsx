@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { theme } from '../theme';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { HomeDashboardScreen } from '../screens/home/HomeDashboardScreen';
 import { DiscoverScreen } from '../screens/home/DiscoverScreen';
 import { CompanionProfileScreen } from '../screens/home/CompanionProfileScreen';
@@ -60,7 +60,7 @@ import { SafetyHubScreen } from '../screens/safety/SafetyHubScreen';
 import { IncidentReportScreen } from '../screens/safety/IncidentReportScreen';
 import { SafetyGuidelinesScreen } from '../screens/safety/SafetyGuidelinesScreen';
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 import { NotificationsScreen } from '../screens/home/NotificationsScreen';
 
@@ -205,7 +205,7 @@ export const MainTabNavigator = () => {
       <Tab.Screen name="HomeTab" component={HomeTabStack} options={{ title: 'Home' }} />
       <Tab.Screen name="DiscoverTab" component={DiscoverTabStack} options={{ title: 'Discover' }} />
       <Tab.Screen name="BookingsTab" component={BookingsTabStack} options={{ title: 'Bookings' }} />
-      <Tab.Screen name="ChatTab" component={ChatTabStack} options={{ title: 'Messages' }} />
+      <Tab.Screen name="ChatTab" component={ChatTabStack} options={{ title: 'Messages', tabBarBadge: 2 }} />
       <Tab.Screen name="ProfileTab" component={ProfileTabStack} options={{ title: 'Profile' }} />
     </Tab.Navigator>
   );

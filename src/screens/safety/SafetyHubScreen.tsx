@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Easing, Dimensions, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -8,7 +9,8 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const { width } = Dimensions.get('window');
 
-export const SafetyHubScreen = () => {
+export const SafetyHubScreen = () => { 
+  const { t } = useTranslation('safety.hub');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -41,7 +43,7 @@ export const SafetyHubScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Safety Hub</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Hub')}</Text>
         <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('SafetySettingsScreen')}>
           <Icon name="cog-outline" size={24} color={theme.colors.textSecondary} />
         </TouchableOpacity>
@@ -53,7 +55,7 @@ export const SafetyHubScreen = () => {
         <View style={styles.statusWrapper}>
             <View style={styles.statusPill}>
                 <View style={styles.statusDot} />
-                <Text style={styles.statusText}>Live Protection Active</Text>
+                <Text style={styles.statusText}>{t('statusText', 'Live Protection Active')}</Text>
             </View>
         </View>
 
@@ -85,16 +87,16 @@ export const SafetyHubScreen = () => {
                 >
                     <View style={styles.sosButtonInner}>
                         <Icon name="shield-alert" size={42} color={theme.colors.background} />
-                        <Text style={styles.sosButtonText}>SOS</Text>
+                        <Text style={styles.sosButtonText}>{t('sosBtn', 'SOS')}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
-            <Text style={styles.sosSubtitle}>Press and hold in an emergency</Text>
+            <Text style={styles.sosSubtitle}>{t('sosSub', 'Press and hold in an emergency')}</Text>
         </View>
 
         {/* Quick Actions (Premium Wide Cards) */}
         <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>QUICK ACTIONS</Text>
+            <Text style={styles.sectionTitle}>{t('quickActions', 'QUICK ACTIONS')}</Text>
         </View>
 
         <TouchableOpacity 
@@ -106,8 +108,8 @@ export const SafetyHubScreen = () => {
                 <Icon name="account-group" size={24} color={theme.colors.primary} />
             </View>
             <View style={styles.cardTextContent}>
-                <Text style={styles.cardTitle}>Trusted Contacts</Text>
-                <Text style={styles.cardDesc}>Manage who receives your live location and emergency alerts.</Text>
+                <Text style={styles.cardTitle}>{t('trustedContacts', 'Trusted Contacts')}</Text>
+                <Text style={styles.cardDesc}>{t('trustedContactsSub', 'Manage who receives your live location and emergency alerts.')}</Text>
             </View>
             <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
         </TouchableOpacity>
@@ -121,15 +123,15 @@ export const SafetyHubScreen = () => {
                 <Icon name="alert-octagon" size={24} color={theme.colors.error} />
             </View>
             <View style={styles.cardTextContent}>
-                <Text style={styles.cardTitle}>Report an Incident</Text>
-                <Text style={styles.cardDesc}>Report inappropriate behavior, fake profiles, or no-shows.</Text>
+                <Text style={styles.cardTitle}>{t('reportIncident', 'Report an Incident')}</Text>
+                <Text style={styles.cardDesc}>{t('reportIncidentSub', 'Report inappropriate behavior, fake profiles, or no-shows.')}</Text>
             </View>
             <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
         </TouchableOpacity>
 
         {/* Resources Menu */}
         <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>RESOURCES</Text>
+            <Text style={styles.sectionTitle}>{t('resources', 'RESOURCES')}</Text>
         </View>
 
         <View style={styles.menuList}>
@@ -138,7 +140,7 @@ export const SafetyHubScreen = () => {
                     <Icon name="book-open-page-variant" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.menuTextContent}>
-                    <Text style={styles.menuTitle}>Safety Guidelines</Text>
+                    <Text style={styles.menuTitle}>{t('safetyGuidelines', 'Safety Guidelines')}</Text>
                 </View>
                 <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
@@ -150,7 +152,7 @@ export const SafetyHubScreen = () => {
                     <Icon name="headset" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.menuTextContent}>
-                    <Text style={styles.menuTitle}>24/7 Safety Support</Text>
+                    <Text style={styles.menuTitle}>{t('support247', '24/7 Safety Support')}</Text>
                 </View>
                 <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>

@@ -47,7 +47,7 @@ const EXPLORE_CATEGORIES = [
 ];
 
 export const HomeDashboardScreen = () => {
-  const { t } = useTranslation(['home']);
+  const { t } = useTranslation('home.dashboard');
   const navigation = useNavigation<any>();
   const [loading, setLoading] = useState(true);
 

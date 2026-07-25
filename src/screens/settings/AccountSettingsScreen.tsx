@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const AccountSettingsScreen = () => {
+export const AccountSettingsScreen = () => { 
+  const { t } = useTranslation('settings.accountSettings');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [email, setEmail] = useState('shlok.dev@example.com');
@@ -41,7 +43,7 @@ export const AccountSettingsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Account Settings</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Account Settings')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -50,28 +52,28 @@ export const AccountSettingsScreen = () => {
             
             {/* SECTION 1: CORE IDENTITY (Private) */}
             <View style={styles.section}>
-                <Text style={styles.sectionTitle}>CORE IDENTITY (PRIVATE)</Text>
+                <Text style={styles.sectionTitle}>{t('coreIdentity', 'CORE IDENTITY (PRIVATE)')}</Text>
                 <View style={styles.card}>
                     <View style={styles.infoBanner}>
                         <Icon name="shield-check" size={16} color={theme.colors.success} />
-                        <Text style={styles.infoBannerText}>Identity verified via KYC. Contact support to update.</Text>
+                        <Text style={styles.infoBannerText}>{t('identityVerified', 'Identity verified via KYC. Contact support to update.')}</Text>
                     </View>
 
                     <View style={styles.inputBlock}>
-                        <Text style={styles.inputLabel}>Legal Name</Text>
+                        <Text style={styles.inputLabel}>{t('legalName', 'Legal Name')}</Text>
                         <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect}>
-                            <Text style={styles.lockedText}>Shlok Sharma</Text>
+                            <Text style={styles.lockedText}>{t('mockName', 'Shlok Sharma')}</Text>
                             <Icon name={isKycVerified ? "lock" : "pencil"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
-                        <Text style={styles.helperText}>Matches your Government ID.</Text>
+                        <Text style={styles.helperText}>{t('matchesGovId', 'Matches your Government ID.')}</Text>
                     </View>
 
                     <View style={styles.divider} />
 
                     <View style={styles.inputBlock}>
-                        <Text style={styles.inputLabel}>Date of Birth</Text>
+                        <Text style={styles.inputLabel}>{t('dob', 'Date of Birth')}</Text>
                         <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect}>
-                            <Text style={styles.lockedText}>15 Aug 1998</Text>
+                            <Text style={styles.lockedText}>{t('mockDob', '15 Aug 1998')}</Text>
                             <Icon name={isKycVerified ? "lock" : "calendar-month"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
                     </View>
@@ -79,9 +81,9 @@ export const AccountSettingsScreen = () => {
                     <View style={styles.divider} />
 
                     <View style={styles.inputBlock}>
-                        <Text style={styles.inputLabel}>Gender Identity</Text>
+                        <Text style={styles.inputLabel}>{t('genderIdentity', 'Gender Identity')}</Text>
                         <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect}>
-                            <Text style={styles.lockedText}>Male</Text>
+                            <Text style={styles.lockedText}>{t('genderMale', 'Male')}</Text>
                             <Icon name={isKycVerified ? "lock" : "chevron-down"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
                     </View>
@@ -90,58 +92,58 @@ export const AccountSettingsScreen = () => {
 
             {/* SECTION 2: CONTACT & RECOVERY */}
             <View style={styles.section}>
-                <Text style={styles.sectionTitle}>CONTACT & RECOVERY</Text>
+                <Text style={styles.sectionTitle}>{t('contactRecovery', 'CONTACT & RECOVERY')}</Text>
                 <View style={styles.card}>
                     <View style={styles.inputBlock}>
-                        <Text style={styles.inputLabel}>Phone Number</Text>
+                        <Text style={styles.inputLabel}>{t('phone', 'Phone Number')}</Text>
                         <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate}>
                             <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
-                                <Text style={styles.lockedText}>+91 98****1234</Text>
+                                <Text style={styles.lockedText}>{t('mockPhone', '+91 98****1234')}</Text>
                                 <Icon name="check-decagram" size={16} color={theme.colors.primary} />
                             </View>
                             <Icon name="pencil" size={16} color={theme.colors.primary} />
                         </TouchableOpacity>
-                        <Text style={styles.helperText}>Verified. Change requires OTP.</Text>
+                        <Text style={styles.helperText}>{t('verifiedOtp', 'Verified. Change requires OTP.')}</Text>
                     </View>
 
                     <View style={styles.divider} />
 
                     <View style={styles.inputBlock}>
-                        <Text style={styles.inputLabel}>Email Address</Text>
+                        <Text style={styles.inputLabel}>{t('email', 'Email Address')}</Text>
                         <View style={{flexDirection: 'row', gap: 8}}>
                             <TextInput 
                                 style={styles.input}
                                 value={email}
                                 onChangeText={setEmail}
-                                placeholder="name@example.com"
+                                placeholder={t('placeholder.nameExampleCom', 'name@example.com')}
                                 placeholderTextColor={theme.colors.textSecondary}
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                             />
                             <TouchableOpacity style={styles.saveBtn} onPress={handleSaveEmail}>
-                                <Text style={styles.saveBtnText}>Save</Text>
+                                <Text style={styles.saveBtnText}>{t('save', 'Save')}</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text style={styles.helperText}>Used for booking receipts and support.</Text>
+                        <Text style={styles.helperText}>{t('emailHelper', 'Used for booking receipts and support.')}</Text>
                     </View>
 
                     <View style={styles.divider} />
 
                     <View style={styles.inputBlock}>
-                        <Text style={styles.inputLabel}>Linked Accounts</Text>
+                        <Text style={styles.inputLabel}>{t('linkedAccounts', 'Linked Accounts')}</Text>
                         
                         <View style={styles.linkedRow}>
                             <View style={{flexDirection: 'row', alignItems: 'center', gap: 12}}>
                                 <Icon name="google" size={24} color="#DB4437" />
-                                <Text style={styles.linkedText}>Google</Text>
+                                <Text style={styles.linkedText}>{t('google', 'Google')}</Text>
                             </View>
-                            <Text style={[styles.linkStatus, {color: theme.colors.success}]}>Connected</Text>
+                            <Text style={[styles.linkStatus, {color: theme.colors.success}]}>{t('connected', 'Connected')}</Text>
                         </View>
 
                         <View style={[styles.linkedRow, {borderBottomWidth: 0, paddingBottom: 0, marginTop: 16}]}>
                             <View style={{flexDirection: 'row', alignItems: 'center', gap: 12}}>
                                 <Icon name="apple" size={24} color={theme.colors.textPrimary} />
-                                <Text style={styles.linkedText}>Apple</Text>
+                                <Text style={styles.linkedText}>{t('apple', 'Apple')}</Text>
                             </View>
                             <TouchableOpacity onPress={toggleAppleConnect}>
                                 <Text style={[styles.linkStatus, {color: appleConnected ? theme.colors.success : theme.colors.primary}]}>
@@ -155,15 +157,15 @@ export const AccountSettingsScreen = () => {
 
             {/* SECTION 3: DATA & PORTABILITY */}
             <View style={styles.section}>
-                <Text style={styles.sectionTitle}>DATA & PRIVACY</Text>
+                <Text style={styles.sectionTitle}>{t('dataPrivacy', 'DATA & PRIVACY')}</Text>
                 <View style={styles.card}>
                     <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest}>
                         <View style={styles.iconBox}>
                             <Icon name="download-box-outline" size={24} color={theme.colors.textPrimary} />
                         </View>
                         <View style={{flex: 1, marginLeft: 16}}>
-                            <Text style={styles.downloadTitle}>Download Account Info</Text>
-                            <Text style={styles.downloadSub}>Request a copy of your CoBuddy data</Text>
+                            <Text style={styles.downloadTitle}>{t('downloadInfo', 'Download Account Info')}</Text>
+                            <Text style={styles.downloadSub}>{t('downloadSub', 'Request a copy of your CoBuddy data')}</Text>
                         </View>
                         <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                     </TouchableOpacity>

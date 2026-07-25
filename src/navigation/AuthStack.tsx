@@ -1,11 +1,11 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { WelcomeScreen } from '../screens/auth/WelcomeScreen';
 import { PhoneLoginScreen } from '../screens/auth/PhoneLoginScreen';
 import { OTPVerificationScreen } from '../screens/auth/OTPVerificationScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const AuthStack = () => {
   return (

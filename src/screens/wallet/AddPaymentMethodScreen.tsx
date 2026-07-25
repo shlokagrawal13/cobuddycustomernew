@@ -2,11 +2,13 @@
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform, Alert, Switch } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const AddPaymentMethodScreen = () => {
+export const AddPaymentMethodScreen = () => { 
+  const { t } = useTranslation('wallet.addPaymentMethod');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [cardHolder, setCardHolder] = useState('');
@@ -63,7 +65,7 @@ export const AddPaymentMethodScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Add New Card</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Add New Card')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -80,39 +82,39 @@ export const AddPaymentMethodScreen = () => {
                 </Text>
                 <View style={styles.cardPreviewBottom}>
                     <View>
-                        <Text style={styles.cardPreviewLabel}>CARDHOLDER</Text>
+                        <Text style={styles.cardPreviewLabel}>{t('cardholderUpper', 'CARDHOLDER')}</Text>
                         <Text style={styles.cardPreviewValue}>{cardHolder.trim() || 'YOUR NAME'}</Text>
                     </View>
                     <View>
-                        <Text style={styles.cardPreviewLabel}>EXPIRY</Text>
+                        <Text style={styles.cardPreviewLabel}>{t('expiryUpper', 'EXPIRY')}</Text>
                         <Text style={styles.cardPreviewValue}>{expiry || 'MM/YY'}</Text>
                     </View>
                 </View>
             </View>
 
             <View style={styles.formSection}>
-                <Text style={styles.sectionTitle}>CARD DETAILS</Text>
+                <Text style={styles.sectionTitle}>{t('sectionTitle', 'CARD DETAILS')}</Text>
                 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Cardholder Name</Text>
+                    <Text style={styles.inputLabel}>{t('cardholderName', 'Cardholder Name')}</Text>
                     <TextInput 
                         style={styles.input}
                         value={cardHolder}
                         onChangeText={setCardHolder}
-                        placeholder="Name as it appears on card"
+                        placeholder={t('placeholder.NameAsItAppears', 'Name as it appears on card')}
                         placeholderTextColor={theme.colors.textSecondary}
                         autoCapitalize="words"
                     />
                 </View>
 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Card Number</Text>
+                    <Text style={styles.inputLabel}>{t('inputCardNum', 'Card Number')}</Text>
                     <View style={styles.inputIconWrapper}>
                         <TextInput 
                             style={[styles.input, { paddingRight: 40 }]}
                             value={cardNumber}
                             onChangeText={v => setCardNumber(formatCard(v))}
-                            placeholder="0000 0000 0000 0000"
+                            placeholder={t('placeholder.000000000000000', '0000 0000 0000 0000')}
                             placeholderTextColor={theme.colors.textSecondary}
                             keyboardType="number-pad"
                             maxLength={19}
@@ -123,24 +125,24 @@ export const AddPaymentMethodScreen = () => {
 
                 <View style={styles.rowInputs}>
                     <View style={[styles.inputBlock, { flex: 1 }]}>
-                        <Text style={styles.inputLabel}>Expiry</Text>
+                        <Text style={styles.inputLabel}>{t('expiry', 'Expiry')}</Text>
                         <TextInput 
                             style={styles.input}
                             value={expiry}
                             onChangeText={v => setExpiry(formatExpiry(v))}
-                            placeholder="MM/YY"
+                            placeholder={t('placeholder.MMYY', 'MM/YY')}
                             placeholderTextColor={theme.colors.textSecondary}
                             keyboardType="number-pad"
                             maxLength={5}
                         />
                     </View>
                     <View style={[styles.inputBlock, { flex: 1 }]}>
-                        <Text style={styles.inputLabel}>CVV</Text>
+                        <Text style={styles.inputLabel}>{t('inputCvv', 'CVV')}</Text>
                         <TextInput 
                             style={styles.input}
                             value={cvv}
                             onChangeText={v => setCvv(v.replace(/\D/g, '').slice(0, 4))}
-                            placeholder="123"
+                            placeholder={t('placeholder.123', '123')}
                             placeholderTextColor={theme.colors.textSecondary}
                             keyboardType="number-pad"
                             secureTextEntry
@@ -153,8 +155,8 @@ export const AddPaymentMethodScreen = () => {
             <View style={styles.formSection}>
                 <View style={styles.defaultRow}>
                     <View style={styles.defaultMeta}>
-                        <Text style={styles.defaultTitle}>Set as Default Card</Text>
-                        <Text style={styles.defaultSub}>Use this card automatically for session bookings</Text>
+                        <Text style={styles.defaultTitle}>{t('setDefault', 'Set as Default Card')}</Text>
+                        <Text style={styles.defaultSub}>{t('setDefaultSub', 'Use this card automatically for session bookings')}</Text>
                     </View>
                     <Switch
                         value={isDefault}
@@ -167,12 +169,12 @@ export const AddPaymentMethodScreen = () => {
 
             <View style={styles.pciNote}>
                 <Icon name="security" size={16} color={theme.colors.primary} />
-                <Text style={styles.pciNoteText}>Card data is never stored on our servers. Information is tokenised by our PCI-DSS Level 1 payment partner.</Text>
+                <Text style={styles.pciNoteText}>{t('securityNote', 'Card data is never stored on our servers. Information is tokenised by our PCI-DSS Level 1 payment partner.')}</Text>
             </View>
 
             <TouchableOpacity style={styles.saveBtn} activeOpacity={0.8} onPress={handleSave}>
                 <Icon name="lock-check" size={20} color={theme.colors.surface} />
-                <Text style={styles.saveBtnText}>Save Card Securely</Text>
+                <Text style={styles.saveBtnText}>{t('saveCard', 'Save Card Securely')}</Text>
             </TouchableOpacity>
 
         </ScrollView>

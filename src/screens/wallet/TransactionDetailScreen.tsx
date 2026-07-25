@@ -1,4 +1,5 @@
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -27,7 +28,8 @@ const MOCK_DETAILS: Record<string, any> = {
   }
 };
 
-export const TransactionDetailScreen = () => {
+export const TransactionDetailScreen = () => { 
+  const { t } = useTranslation('wallet.transactionDetail');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -45,7 +47,7 @@ export const TransactionDetailScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Transaction Details</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Transaction Details')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -59,7 +61,7 @@ export const TransactionDetailScreen = () => {
                     <Icon name="receipt" size={28} color={theme.colors.primary} />
                 </View>
                 <View style={styles.refBlock}>
-                    <Text style={styles.refLabel}>TRANSACTION ID</Text>
+                    <Text style={styles.refLabel}>{t('refLabel', 'TRANSACTION ID')}</Text>
                     <Text style={styles.refValue}>{tx.refId}</Text>
                     <View style={styles.statusBadge}>
                         <Icon name="check-circle" size={12} color={theme.colors.success} />
@@ -73,15 +75,15 @@ export const TransactionDetailScreen = () => {
             <View style={styles.verifiedBanner}>
                 <Icon name="shield-check" size={16} color={theme.colors.success} />
                 <View style={styles.verifiedMeta}>
-                    <Text style={styles.verifiedTitle}>Secured Transaction</Text>
-                    <Text style={styles.verifiedSub}>Processed via CoBuddy Escrow</Text>
+                    <Text style={styles.verifiedTitle}>{t('verifiedTitle', 'Secured Transaction')}</Text>
+                    <Text style={styles.verifiedSub}>{t('verifiedSub', 'Processed via CoBuddy Escrow')}</Text>
                 </View>
             </View>
         </View>
 
         
         <View style={styles.card}>
-            <Text style={styles.sectionTitle}>TRANSACTION INFO</Text>
+            <Text style={styles.sectionTitle}>{t('infoTitle', 'TRANSACTION INFO')}</Text>
             {[
                 { icon: 'calendar', label: 'Date', value: tx.date },
                 { icon: 'clock-outline', label: 'Time', value: tx.time },
@@ -99,15 +101,15 @@ export const TransactionDetailScreen = () => {
         
         {tx.companion ? (
             <View style={styles.card}>
-                <Text style={styles.sectionTitle}>SESSION DETAILS</Text>
+                <Text style={styles.sectionTitle}>{t('sessionTitle', 'SESSION DETAILS')}</Text>
                 <View style={[styles.infoRow, styles.infoBorder]}>
                     <Icon name="account-outline" size={18} color={theme.colors.primary} />
-                    <Text style={styles.infoLabel}>Companion</Text>
+                    <Text style={styles.infoLabel}>{t('infoCompanion', 'Companion')}</Text>
                     <Text style={styles.infoValue}>{tx.companion}</Text>
                 </View>
                 <View style={styles.infoRow}>
                     <Icon name="timer-sand" size={18} color={theme.colors.primary} />
-                    <Text style={styles.infoLabel}>Duration</Text>
+                    <Text style={styles.infoLabel}>{t('infoDuration', 'Duration')}</Text>
                     <Text style={styles.infoValue}>{tx.duration}</Text>
                 </View>
             </View>
@@ -115,7 +117,7 @@ export const TransactionDetailScreen = () => {
 
         
         <View style={styles.card}>
-            <Text style={styles.sectionTitle}>PAYMENT BREAKDOWN</Text>
+            <Text style={styles.sectionTitle}>{t('breakdownTitle', 'PAYMENT BREAKDOWN')}</Text>
             {tx.breakdown.map((item: any, i: number) => (
                 <View key={item.label} style={[styles.summaryRow, i !== tx.breakdown.length - 1 && styles.summaryBorder]}>
                     <Text style={styles.summaryLabel}>{item.label}</Text>
@@ -123,7 +125,7 @@ export const TransactionDetailScreen = () => {
                 </View>
             ))}
             <View style={styles.totalRow}>
-                <Text style={styles.totalLabel}>TOTAL</Text>
+                <Text style={styles.totalLabel}>{t('totalLabel', 'TOTAL')}</Text>
                 <Text style={styles.totalValue}>{tx.amount.replace('-', '').replace('+', '')}</Text>
             </View>
         </View>
@@ -131,7 +133,7 @@ export const TransactionDetailScreen = () => {
         
         <TouchableOpacity style={styles.downloadBtn} activeOpacity={0.8} onPress={handleDownload}>
             <Icon name="download" size={20} color={theme.colors.surface} />
-            <Text style={styles.downloadBtnText}>Download Receipt</Text>
+            <Text style={styles.downloadBtnText}>{t('downloadBtn', 'Download Receipt')}</Text>
         </TouchableOpacity>
         
       </ScrollView>

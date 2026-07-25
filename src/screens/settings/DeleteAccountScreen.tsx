@@ -1,12 +1,14 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const DeleteAccountScreen = () => {
+export const DeleteAccountScreen = () => { 
+  const { t } = useTranslation('settings.deleteAccount');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [confirmText, setConfirmText] = useState('');
@@ -36,7 +38,7 @@ export const DeleteAccountScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Delete Account</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Delete Account')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -45,25 +47,25 @@ export const DeleteAccountScreen = () => {
             
             <View style={styles.warningCard}>
                 <Icon name="alert-circle-outline" size={48} color={theme.colors.error} style={{marginBottom: 16}} />
-                <Text style={styles.warningTitle}>Are you absolutely sure?</Text>
+                <Text style={styles.warningTitle}>{t('warningTitle', 'Are you absolutely sure?')}</Text>
                 <Text style={styles.warningDesc}>
                     Deleting your account is permanent. This action cannot be undone. You will immediately lose access to:
                 </Text>
                 <View style={styles.bulletList}>
-                    <Text style={styles.bulletItem}>• Your entire chat history</Text>
-                    <Text style={styles.bulletItem}>• Your booking history and reviews</Text>
-                    <Text style={styles.bulletItem}>• Any remaining wallet balance</Text>
-                    <Text style={styles.bulletItem}>• Your KYC verification status</Text>
+                    <Text style={styles.bulletItem}>{t('chatHistory', '• Your entire chat history')}</Text>
+                    <Text style={styles.bulletItem}>{t('bookingHistory', '• Your booking history and reviews')}</Text>
+                    <Text style={styles.bulletItem}>{t('walletBalance', '• Any remaining wallet balance')}</Text>
+                    <Text style={styles.bulletItem}>{t('kycStatus', '• Your KYC verification status')}</Text>
                 </View>
             </View>
 
             <View style={styles.confirmSection}>
-                <Text style={styles.confirmLabel}>To confirm, please type "DELETE" below:</Text>
+                <Text style={styles.confirmLabel}>{t('confirmLabel', 'To confirm, please type "DELETE" below:')}</Text>
                 <TextInput 
                     style={styles.input}
                     value={confirmText}
                     onChangeText={setConfirmText}
-                    placeholder="DELETE"
+                    placeholder={t('placeholder.DELETE', 'DELETE')}
                     placeholderTextColor={theme.colors.textSecondary}
                     autoCapitalize="characters"
                 />
@@ -75,7 +77,7 @@ export const DeleteAccountScreen = () => {
                 disabled={!isDeleteEnabled}
                 onPress={handleDelete}
             >
-                <Text style={[styles.deleteBtnText, !isDeleteEnabled && styles.deleteBtnTextDisabled]}>Permanently Delete My Account</Text>
+                <Text style={[styles.deleteBtnText, !isDeleteEnabled && styles.deleteBtnTextDisabled]}>{t('deleteBtn', 'Permanently Delete My Account')}</Text>
             </TouchableOpacity>
 
         </ScrollView>

@@ -1,0 +1,11 @@
+{
+  "title": "Policy Violation Notice",
+  "issuedOn": "Issued on: Oct 24, 2026",
+  "violationType": "Violation Type: Off-App Payment Attempt",
+  "whyMatters": "WHY THIS MATTERS",
+  "reason1": "Payments on the app are secure and protected against fraud.",
+  "reason2": "Off-app payments bypass our safety checks and dispute resolution systems.",
+  "nextSteps": "NEXT STEPS",
+  "understandBtn": "I Understand",
+  "appealBtn": "Submit Appeal"
+}

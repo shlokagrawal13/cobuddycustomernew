@@ -1,0 +1,15 @@
+{
+  "headerTitle": "Active Device Sessions",
+  "subTitle": "Manage where you're logged in.",
+  "currentDevice": "Current Device",
+  "logoutOther": "Log Out of All Other Devices",
+  "thisDeviceBadge": "THIS DEVICE",
+  "logOutDevice": "Log Out Device",
+  "activeSessions": "Active Sessions",
+  "manageDevices": "Manage Devices",
+  "currentSession": "CURRENT SESSION",
+  "otherDevices": "OTHER LOGGED-IN DEVICES",
+  "accountSecure": "Account Secure",
+  "accountSecureSub": "You are only logged in on this device.",
+  "securityTip": "Security Tip"
+}

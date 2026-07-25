@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -76,7 +77,8 @@ const MOCK_BOOKINGS = [
   },
 ];
 
-export const BookingsListScreen = () => {
+export const BookingsListScreen = () => { 
+  const { t } = useTranslation('bookings.list');
   const navigation = useNavigation<any>();
   const [activeTab, setActiveTab] = useState<TabType>('pending');
 
@@ -138,12 +140,16 @@ export const BookingsListScreen = () => {
       {/* Luxury Header */}
       <View style={styles.header}>
         <View style={styles.headerTitleRow}>
-          <Text style={styles.headerTitle}>My Bookings</Text>
-          <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.8}>
+          <Text style={styles.headerTitle}>{t('headerTitle', 'My Bookings')}</Text>
+          <TouchableOpacity 
+            style={styles.headerIconBtn} 
+            activeOpacity={0.8}
+            onPress={() => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' })}
+          >
              <Icon name="help-circle-outline" size={24} color={theme.colors.textPrimary} />
           </TouchableOpacity>
         </View>
-        <Text style={styles.headerSubtitle}>Manage your upcoming and past meetups.</Text>
+        <Text style={styles.headerSubtitle}>{t('headerSubtitle', 'Manage your upcoming and past meetups.')}</Text>
       </View>
 
       {/* Premium Segmented Tabs */}
@@ -172,10 +178,10 @@ export const BookingsListScreen = () => {
                 <Icon name="calendar-star" size={48} color={theme.colors.primary} />
               </View>
             </View>
-            <Text style={styles.emptyTitle}>No {activeTab} bookings</Text>
-            <Text style={styles.emptyDesc}>You don't have any experiences scheduled in this section right now.</Text>
+            <Text style={styles.emptyTitle}>{t('emptyTitle', 'No {{tab}} bookings', { tab: activeTab })}</Text>
+            <Text style={styles.emptyDesc}>{t('emptyDesc', 'You don\'t have any experiences scheduled in this section right now.')}</Text>
             <TouchableOpacity style={styles.primaryBtn} activeOpacity={0.8} onPress={() => navigation.navigate('DiscoverTab')}>
-              <Text style={styles.primaryBtnText}>Discover Companions</Text>
+              <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Discover Companions')}</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -216,14 +222,14 @@ export const BookingsListScreen = () => {
                 <View style={styles.gridItem}>
                   <Icon name="calendar-month-outline" size={18} color={theme.colors.primary} style={styles.gridIcon} />
                   <View>
-                    <Text style={styles.gridLabel}>Date</Text>
+                    <Text style={styles.gridLabel}>{t('gridLabelDate', 'Date')}</Text>
                     <Text style={styles.gridValue}>{booking.date}</Text>
                   </View>
                 </View>
                 <View style={styles.gridItem}>
                   <Icon name="clock-outline" size={18} color={theme.colors.primary} style={styles.gridIcon} />
                   <View>
-                    <Text style={styles.gridLabel}>Time ({booking.duration})</Text>
+                    <Text style={styles.gridLabel}>{t('gridLabelTime', 'Time ({{duration}})', { duration: booking.duration })}</Text>
                     <Text style={styles.gridValue}>{booking.time.split(' - ')[0]}</Text>
                   </View>
                 </View>

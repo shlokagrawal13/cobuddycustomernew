@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -22,7 +23,8 @@ const UPLOAD_TIPS = [
 
 type UploadState = 'idle' | 'selected' | 'uploaded';
 
-export const DocumentVerificationScreen = () => {
+export const DocumentVerificationScreen = () => { 
+  const { t } = useTranslation('verify.document');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedDoc, setSelectedDoc] = useState<DocType>('AADHAAR');
@@ -87,20 +89,20 @@ export const DocumentVerificationScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 1 of 3</Text>
+        <Text style={styles.headerTitle}>{t('step1of3', 'Step 1 of 3')}</Text>
         <View style={{ width: 24 }} />
       </View>
 
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           
-          <Text style={styles.title}>Complete Identity Verification</Text>
+          <Text style={styles.title}>{t('completeIdentity', 'Complete Identity Verification')}</Text>
           <Text style={styles.pageSub}>
             Upload a valid government-issued identity document to unlock verified CoBuddy experiences.
           </Text>
 
           <View style={styles.card}>
-            <Text style={styles.sectionLabel}>SELECT DOCUMENT TYPE</Text>
+            <Text style={styles.sectionLabel}>{t('selectDocType', 'SELECT DOCUMENT TYPE')}</Text>
             <View style={styles.docTypeGrid}>
               {DOC_TYPES.map(doc => {
                 const selected = selectedDoc === doc.id;
@@ -130,7 +132,7 @@ export const DocumentVerificationScreen = () => {
             </View>
 
             <View style={{height: 20}} />
-            <Text style={styles.sectionLabel}>DOCUMENT NUMBER</Text>
+            <Text style={styles.sectionLabel}>{t('docNumber', 'DOCUMENT NUMBER')}</Text>
             <TextInput
               style={styles.input}
               placeholder={getPlaceholder()}
@@ -143,10 +145,10 @@ export const DocumentVerificationScreen = () => {
             />
 
             <View style={{height: 20}} />
-            <Text style={styles.sectionLabel}>LEGAL NAME (AS PER ID)</Text>
+            <Text style={styles.sectionLabel}>{t('legalName', 'LEGAL NAME (AS PER ID)')}</Text>
             <TextInput
               style={[styles.input, { letterSpacing: 1, fontWeight: '500' }]}
-              placeholder="e.g. Shlok Sharma"
+              placeholder={t('placeholder.eGShlokSharma', 'e.g. Shlok Sharma')}
               placeholderTextColor={theme.colors.textSecondary}
               value={legalName}
               autoCapitalize="words"
@@ -155,7 +157,7 @@ export const DocumentVerificationScreen = () => {
           </View>
 
           <View style={styles.card}>
-            <Text style={styles.sectionLabel}>UPLOAD DOCUMENT</Text>
+            <Text style={styles.sectionLabel}>{t('uploadDoc', 'UPLOAD DOCUMENT')}</Text>
             <Text style={styles.uploadHint}>
               Clear and readable images work best. Max 5MB (JPG, PNG).
             </Text>
@@ -211,7 +213,7 @@ export const DocumentVerificationScreen = () => {
           </View>
 
           <View style={styles.tipsCard}>
-            <Text style={styles.sectionLabel}>IMAGE REQUIREMENTS</Text>
+            <Text style={styles.sectionLabel}>{t('imageReq', 'IMAGE REQUIREMENTS')}</Text>
             {UPLOAD_TIPS.map((tip, i) => (
               <View key={tip.icon} style={[styles.tipRow, i < UPLOAD_TIPS.length - 1 && styles.tipRowBorder]}>
                 <View style={styles.tipIconWrap}>
@@ -229,7 +231,7 @@ export const DocumentVerificationScreen = () => {
             onPress={() => navigation.navigate('SelfieCaptureScreen')}
             activeOpacity={0.85}>
             <Icon name="upload" size={18} color={theme.colors.background} />
-            <Text style={styles.ctaBtnText}>Continue Verification</Text>
+            <Text style={styles.ctaBtnText}>{t('continueVerify', 'Continue Verification')}</Text>
           </TouchableOpacity>
 
           <View style={styles.securityNote}>

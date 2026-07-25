@@ -1,0 +1,21 @@
+{
+  "headerTitle": "Safety Center",
+  "heroTitle": "Your Safety First",
+  "profileVisibility": "PROFILE VISIBILITY",
+  "incognitoMode": "Incognito Mode",
+  "incognitoModeSub": "Hide your profile from Discover. Only people you message can see you.",
+  "interactionsChat": "INTERACTIONS & CHAT",
+  "safeChat": "Safe Chat Filter",
+  "safeChatSub": "Automatically blur explicit images and flag offensive words in messages.",
+  "verifiedUsers": "Verified Users Only",
+  "verifiedUsersSub": "Only allow users with KYC verified profiles to send you booking requests.",
+  "emergencyFeatures": "EMERGENCY FEATURES",
+  "emergencyContacts": "Emergency Contacts (SOS)",
+  "emergencyContactsSub": "Add up to 3 trusted contacts. We'll share your live location with them if you trigger an SOS.",
+  "liveSafety": "LIVE SAFETY MONITORING",
+  "contactSharing": "Trusted Contact Sharing",
+  "contactSharingSub": "Automatically share your active session details and live location with your trusted contacts.",
+  "liveMonitoring": "Live Safety Monitoring",
+  "liveMonitoringSub": "Enable active tracking and anomaly detection during your meetup sessions.",
+  "openSafetyHub": "Open Safety Hub"
+}

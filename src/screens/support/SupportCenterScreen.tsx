@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const MOCK_TICKETS = [
   { id: 'TKT-7122', subject: 'How do I change my phone number?', status: 'Closed', date: '12 May, 2026', category: 'Account' }
 ];
 
-export const SupportCenterScreen = () => {
+export const SupportCenterScreen = () => { 
+  const { t } = useTranslation('support.supportCenter');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [activeTab, setActiveTab] = useState<'Active' | 'Closed'>('Active');
@@ -47,7 +49,7 @@ export const SupportCenterScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Support Tickets</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Support Tickets')}</Text>
         <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('HelpCenterScreen')}>
           <Icon name="help-circle-outline" size={24} color={theme.colors.primary} />
         </TouchableOpacity>
@@ -59,14 +61,14 @@ export const SupportCenterScreen = () => {
           onPress={() => setActiveTab('Active')}
           activeOpacity={0.8}
         >
-          <Text style={[styles.tabText, activeTab === 'Active' && styles.activeTabText]}>Active</Text>
+          <Text style={[styles.tabText, activeTab === 'Active' && styles.activeTabText]}>{t('activeTab', 'Active')}</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={[styles.tab, activeTab === 'Closed' && styles.activeTab]}
           onPress={() => setActiveTab('Closed')}
           activeOpacity={0.8}
         >
-          <Text style={[styles.tabText, activeTab === 'Closed' && styles.activeTabText]}>Closed</Text>
+          <Text style={[styles.tabText, activeTab === 'Closed' && styles.activeTabText]}>{t('closedTab', 'Closed')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -75,7 +77,7 @@ export const SupportCenterScreen = () => {
           <View style={styles.emptyState}>
             <Icon name="ticket-confirmation-outline" size={48} color={theme.colors.textSecondary} style={{opacity: 0.5, marginBottom: 16}} />
             <Text style={styles.emptyTitle}>No {activeTab.toLowerCase()} tickets</Text>
-            <Text style={styles.emptySub}>You don't have any support tickets in this category right now.</Text>
+            <Text style={styles.emptySub}>{t('emptySub', 'You don\'t have any support tickets in this category right now.')}</Text>
           </View>
         ) : (
           <View style={styles.ticketList}>
@@ -117,7 +119,7 @@ export const SupportCenterScreen = () => {
         onPress={() => navigation.navigate('CreateSupportTicketScreen')}
       >
         <Icon name="plus" size={24} color={theme.colors.background} />
-        <Text style={styles.fabText}>New Ticket</Text>
+        <Text style={styles.fabText}>{t('newTicket', 'New Ticket')}</Text>
       </TouchableOpacity>
 
     </SafeAreaView>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -14,7 +15,8 @@ const REASONS = [
   'Other'
 ];
 
-export const CancelBookingScreen = () => {
+export const CancelBookingScreen = () => { 
+  const { t } = useTranslation('bookings.cancel');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -38,7 +40,7 @@ export const CancelBookingScreen = () => {
         <TouchableOpacity onPress={handleBack} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Cancel Booking</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Cancel Booking')}</Text>
         <View style={{ width: 40 }} />
       </View>
 
@@ -46,7 +48,7 @@ export const CancelBookingScreen = () => {
         
         {/* Booking Summary */}
         <View style={styles.summaryCard}>
-          <Text style={styles.summaryTitle}>Cancelling Booking: {bookingId}</Text>
+          <Text style={styles.summaryTitle}>{t('summaryTitle', 'Cancelling Booking: {{id}}', { id: bookingId })}</Text>
           <View style={styles.summaryRow}>
             <Icon name="account" size={16} color={theme.colors.textSecondary} />
             <Text style={styles.summaryText}>Elena Vasquez</Text>
@@ -61,12 +63,12 @@ export const CancelBookingScreen = () => {
         <View style={styles.warningCard}>
           <Icon name="alert-circle-outline" size={24} color={theme.colors.error} />
           <View style={{ flex: 1, marginLeft: 12 }}>
-            <Text style={styles.warningTitle}>Cancellation Policy</Text>
-            <Text style={styles.warningDesc}>Since you are cancelling more than 48 hours in advance, you will receive a <Text style={{fontWeight: 'bold', color: theme.colors.error}}>100% full refund</Text>. The escrow hold will be released immediately.</Text>
+            <Text style={styles.warningTitle}>{t('warningTitle', 'Cancellation Policy')}</Text>
+            <Text style={styles.warningDesc}>{t('warningDesc1', 'Since you are cancelling more than 48 hours in advance, you will receive a ')}<Text style={{fontWeight: 'bold', color: theme.colors.error}}>{t('warningDesc2', '100% full refund')}</Text>{t('warningDesc3', '. The escrow hold will be released immediately.')}</Text>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>WHY ARE YOU CANCELLING?</Text>
+        <Text style={styles.sectionTitle}>{t('sectionTitle', 'WHY ARE YOU CANCELLING?')}</Text>
         
         <View style={styles.reasonsContainer}>
           {REASONS.map((reason) => (
@@ -98,11 +100,11 @@ export const CancelBookingScreen = () => {
             disabled={!selectedReason}
             onPress={handleConfirmCancel}
           >
-            <Text style={[styles.primaryBtnText, { color: selectedReason ? theme.colors.background : theme.colors.textSecondary }]}>Confirm Cancellation</Text>
+            <Text style={[styles.primaryBtnText, { color: selectedReason ? theme.colors.background : theme.colors.textSecondary }]}>{t('confirmBtn', 'Confirm Cancellation')}</Text>
           </TouchableOpacity>
           
           <TouchableOpacity style={styles.secondaryBtn} onPress={handleBack}>
-            <Text style={styles.secondaryBtnText}>No, Keep Booking</Text>
+            <Text style={styles.secondaryBtnText}>{t('keepBtn', 'No, Keep Booking')}</Text>
           </TouchableOpacity>
         </View>
       </View>

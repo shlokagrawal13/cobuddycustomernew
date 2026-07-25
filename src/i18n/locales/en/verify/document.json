@@ -1,0 +1,10 @@
+{
+  "step1of3": "Step 1 of 3",
+  "completeIdentity": "Complete Identity Verification",
+  "selectDocType": "SELECT DOCUMENT TYPE",
+  "docNumber": "DOCUMENT NUMBER",
+  "legalName": "LEGAL NAME (AS PER ID)",
+  "uploadDoc": "UPLOAD DOCUMENT",
+  "imageReq": "IMAGE REQUIREMENTS",
+  "continueVerify": "Continue Verification"
+}

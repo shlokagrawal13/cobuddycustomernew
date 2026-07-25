@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
@@ -14,7 +15,8 @@ const DEFAULT_MOCK_DATA = {
   amount: '₹3,000'
 };
 
-export const BookingRequestSentScreen = ({ route }: any) => {
+export const BookingRequestSentScreen = ({ route }: any) => { 
+  const { t } = useTranslation('booking.requestSent');
   const navigation = useNavigation<any>();
   const pulseAnim = useRef(new Animated.Value(1)).current;
   
@@ -54,14 +56,14 @@ export const BookingRequestSentScreen = ({ route }: any) => {
           <Icon name="send-circle" size={90} color={theme.colors.primary} />
         </View>
 
-        <Text style={styles.title}>Request Sent!</Text>
+        <Text style={styles.title}>{t('title', 'Request Sent!')}</Text>
         <Text style={styles.subtitle}>
           We've notified {bookingData.companionName}. They have 24 hours to review your request, but companions usually respond within a few hours.
         </Text>
 
         <View style={styles.card}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16}}>
-            <Text style={styles.cardHeader}>REQUEST SNAPSHOT</Text>
+            <Text style={styles.cardHeader}>{t('cardHeader', 'REQUEST SNAPSHOT')}</Text>
             <Text style={styles.bookingId}>#{bookingData.bookingId}</Text>
           </View>
           
@@ -81,7 +83,7 @@ export const BookingRequestSentScreen = ({ route }: any) => {
           <View style={styles.divider} />
           
           <View style={[styles.detailRow, { marginBottom: 0, justifyContent: 'space-between' }]}>
-            <Text style={styles.detailLabel}>Escrow Amount Held</Text>
+            <Text style={styles.detailLabel}>{t('detailLabel', 'Escrow Amount Held')}</Text>
             <Text style={styles.amountText}>{bookingData.amount}</Text>
           </View>
         </View>
@@ -89,10 +91,10 @@ export const BookingRequestSentScreen = ({ route }: any) => {
 
       <View style={styles.bottomBar}>
         <TouchableOpacity style={styles.primaryBtn} onPress={handleViewDetails} activeOpacity={0.85}>
-          <Text style={styles.primaryBtnText}>View Request Details</Text>
+          <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'View Request Details')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondaryBtn} onPress={handleReturnHome} activeOpacity={0.85}>
-          <Text style={styles.secondaryBtnText}>Return to Home</Text>
+          <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'Return to Home')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

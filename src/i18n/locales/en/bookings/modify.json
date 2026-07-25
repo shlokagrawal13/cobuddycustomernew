@@ -1,0 +1,18 @@
+{
+  "headerTitle": "Modify Booking",
+  "infoTitle": "Modification Policy",
+  "infoDesc": "Changes must be accepted by the companion. Your original booking remains active until they accept the new proposal.",
+  "sectionCurrent": "CURRENT DETAILS",
+  "sectionNew": "PROPOSE NEW DETAILS",
+  "inputDate": "New Date (DD/MM/YYYY)",
+  "inputTime": "Start Time (HH:MM)",
+  "inputAmPm": "AM/PM",
+  "am": "AM",
+  "pm": "PM",
+  "inputDuration": "Duration (Hours)",
+  "durationText": "{{duration}} {{hourText}}",
+  "inputVenue": "New Venue (Optional)",
+  "sendBtn": "Send Modification Request",
+  "cancelBtn": "Cancel",
+  "sheetTitle": "Select a Safe Venue"
+}

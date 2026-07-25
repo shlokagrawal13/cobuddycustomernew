@@ -1,0 +1,13 @@
+{
+  "headerTitle": "Transaction Details",
+  "refLabel": "TRANSACTION ID",
+  "verifiedTitle": "Secured Transaction",
+  "verifiedSub": "Processed via CoBuddy Escrow",
+  "infoTitle": "TRANSACTION INFO",
+  "sessionTitle": "SESSION DETAILS",
+  "infoCompanion": "Companion",
+  "infoDuration": "Duration",
+  "breakdownTitle": "PAYMENT BREAKDOWN",
+  "totalLabel": "TOTAL",
+  "downloadBtn": "Download Receipt"
+}

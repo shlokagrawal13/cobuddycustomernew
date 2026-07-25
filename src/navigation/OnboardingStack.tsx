@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { LegalConsentScreen } from '../screens/onboarding/LegalConsentScreen';
 import { LocationPermissionScreen } from '../screens/auth/LocationPermissionScreen';
@@ -9,7 +9,7 @@ import { InterestSelectionScreen } from '../screens/onboarding/InterestSelection
 import { SafetyTutorialScreen } from '../screens/onboarding/SafetyTutorialScreen';
 import { TrustedContactsScreen } from '../screens/safety/TrustedContactsScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const OnboardingStack = () => {
   return (

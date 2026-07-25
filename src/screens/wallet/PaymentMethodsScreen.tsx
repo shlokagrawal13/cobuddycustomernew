@@ -1,4 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import { useTranslation } from 'react-i18next';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Modal, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -11,7 +12,8 @@ const INITIAL_METHODS = [
   { id: 'pm_card1', icon: 'credit-card-outline', title: 'Visa ending in 4242', sub: 'Expires 12/26', isDefault: false },
 ];
 
-export const PaymentMethodsScreen = () => {
+export const PaymentMethodsScreen = () => { 
+  const { t } = useTranslation('wallet.paymentMethods');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -94,14 +96,14 @@ export const PaymentMethodsScreen = () => {
                     <Icon name="shield-lock-outline" size={24} color={theme.colors.primary} />
                 </View>
                 <View style={styles.securityMeta}>
-                    <Text style={styles.securityTitle}>Secure & Encrypted</Text>
-                    <Text style={styles.securitySub}>We don't store your full card details. All transactions are PCI-DSS compliant.</Text>
+                    <Text style={styles.securityTitle}>{t('secureTitle', 'Secure & Encrypted')}</Text>
+                    <Text style={styles.securitySub}>{t('secureDesc', 'We don\'t store your full card details. All transactions are PCI-DSS compliant.')}</Text>
                 </View>
             </View>
         ) : null}
 
         <View style={styles.card}>
-            <Text style={styles.sectionTitle}>SAVED PAYMENT METHODS</Text>
+            <Text style={styles.sectionTitle}>{t('sectionTitle', 'SAVED PAYMENT METHODS')}</Text>
             
             {methods.map((pm, index) => {
                 const isSelected = isSelectionMode ? route.params?.currentId === pm.id : pm.isDefault;
@@ -120,7 +122,7 @@ export const PaymentMethodsScreen = () => {
                                 <Text style={styles.methodTitle}>{pm.title}</Text>
                                 {pm.isDefault && !isSelectionMode ? (
                                     <View style={styles.defaultBadge}>
-                                        <Text style={styles.defaultBadgeText}>Default</Text>
+                                        <Text style={styles.defaultBadgeText}>{t('defaultBadge', 'Default')}</Text>
                                     </View>
                                 ) : null}
                             </View>
@@ -149,7 +151,7 @@ export const PaymentMethodsScreen = () => {
                     <View style={styles.addIconWrap}>
                         <Icon name="credit-card-plus-outline" size={22} color={theme.colors.primary} />
                     </View>
-                    <Text style={styles.addMethodText}>Add New Card</Text>
+                    <Text style={styles.addMethodText}>{t('addCard', 'Add New Card')}</Text>
                     <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
 
@@ -161,7 +163,7 @@ export const PaymentMethodsScreen = () => {
                     <View style={styles.addIconWrap}>
                         <Icon name="at" size={22} color={theme.colors.primary} />
                     </View>
-                    <Text style={styles.addMethodText}>Add UPI ID</Text>
+                    <Text style={styles.addMethodText}>{t('modalTitle', 'Add UPI ID')}</Text>
                     <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
             </View>
@@ -169,7 +171,7 @@ export const PaymentMethodsScreen = () => {
 
         <View style={styles.trustFooter}>
             <Icon name="lock" size={14} color={theme.colors.textSecondary} />
-            <Text style={styles.trustText}>End-to-end encrypted with AES-256</Text>
+            <Text style={styles.trustText}>{t('trustText', 'End-to-end encrypted with AES-256')}</Text>
         </View>
 
       </ScrollView>
@@ -178,17 +180,17 @@ export const PaymentMethodsScreen = () => {
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.modalOverlay}>
             <View style={styles.modalContent}>
                 <View style={styles.modalHeader}>
-                    <Text style={styles.modalTitle}>Add UPI ID</Text>
+                    <Text style={styles.modalTitle}>{t('modalTitle', 'Add UPI ID')}</Text>
                     <TouchableOpacity onPress={() => setUpiModalVisible(false)} hitSlop={{top:10, bottom:10, left:10, right:10}}>
                         <Icon name="close" size={24} color={theme.colors.textSecondary} />
                     </TouchableOpacity>
                 </View>
 
-                <Text style={styles.modalLabel}>Enter your UPI ID</Text>
+                <Text style={styles.modalLabel}>{t('modalLabel', 'Enter your UPI ID')}</Text>
                 <View style={styles.inputWrap}>
                     <TextInput 
                         style={styles.upiInput}
-                        placeholder="e.g. name@okhdfcbank"
+                        placeholder={t('placeholder.eGNameOkhdfcban', 'e.g. name@okhdfcbank')}
                         placeholderTextColor={theme.colors.textSecondary}
                         value={newUpiId}
                         onChangeText={setNewUpiId}
@@ -203,7 +205,7 @@ export const PaymentMethodsScreen = () => {
                     activeOpacity={0.8}
                     onPress={handleAddUpi}
                 >
-                    <Text style={styles.verifyBtnText}>Verify & Add</Text>
+                    <Text style={styles.verifyBtnText}>{t('modalVerify', 'Verify & Add')}</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>

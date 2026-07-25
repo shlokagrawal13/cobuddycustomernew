@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -34,7 +35,8 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
     );
 };
 
-export const NotificationPreferencesScreen = () => {
+export const NotificationPreferencesScreen = () => { 
+  const { t } = useTranslation('settings.notificationPreferences');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -60,7 +62,7 @@ export const NotificationPreferencesScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Notifications</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Notifications')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -70,86 +72,86 @@ export const NotificationPreferencesScreen = () => {
             <View style={styles.iconWrap}>
                 <Icon name="bell-ring-outline" size={40} color={theme.colors.primary} />
             </View>
-            <Text style={styles.heroTitle}>Stay Updated</Text>
+            <Text style={styles.heroTitle}>{t('heroTitle', 'Stay Updated')}</Text>
             <Text style={styles.heroSub}>
                 Control which notifications you receive and how you receive them.
             </Text>
         </View>
 
-        <Text style={styles.sectionTitle}>BOOKING UPDATES</Text>
+        <Text style={styles.sectionTitle}>{t('bookingUpdates', 'BOOKING UPDATES')}</Text>
         <View style={styles.card}>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Status Updates</Text>
-                    <Text style={styles.sub}>Requests accepted, companion arrivals</Text>
+                    <Text style={styles.title}>{t('statusUpdates', 'Status Updates')}</Text>
+                    <Text style={styles.sub}>{t('statusUpdatesSub', 'Requests accepted, companion arrivals')}</Text>
                 </View>
                 <CustomSwitch value={prefs.bookingPush} onValueChange={() => togglePref('bookingPush')} />
             </View>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Session Reminders</Text>
-                    <Text style={styles.sub}>"Your session starts in 1 hour"</Text>
+                    <Text style={styles.title}>{t('sessionReminders', 'Session Reminders')}</Text>
+                    <Text style={styles.sub}>{t('sessionRemindersSub', '"Your session starts in 1 hour"')}</Text>
                 </View>
                 <CustomSwitch value={prefs.bookingReminders} onValueChange={() => togglePref('bookingReminders')} />
             </View>
             <View style={styles.row}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Email Receipts</Text>
-                    <Text style={styles.sub}>Invoices and booking summaries</Text>
+                    <Text style={styles.title}>{t('emailReceipts', 'Email Receipts')}</Text>
+                    <Text style={styles.sub}>{t('emailReceiptsSub', 'Invoices and booking summaries')}</Text>
                 </View>
                 <CustomSwitch value={prefs.bookingEmail} onValueChange={() => togglePref('bookingEmail')} />
             </View>
         </View>
 
-        <Text style={styles.sectionTitle}>COMMUNICATION & WALLET</Text>
+        <Text style={styles.sectionTitle}>{t('commWallet', 'COMMUNICATION & WALLET')}</Text>
         <View style={styles.card}>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Chat Messages</Text>
-                    <Text style={styles.sub}>Direct messages from companions</Text>
+                    <Text style={styles.title}>{t('chatMessages', 'Chat Messages')}</Text>
+                    <Text style={styles.sub}>{t('chatMessagesSub', 'Direct messages from companions')}</Text>
                 </View>
                 <CustomSwitch value={prefs.chatPush} onValueChange={() => togglePref('chatPush')} />
             </View>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Wallet Alerts</Text>
-                    <Text style={styles.sub}>Money added, refunds processed</Text>
+                    <Text style={styles.title}>{t('walletAlerts', 'Wallet Alerts')}</Text>
+                    <Text style={styles.sub}>{t('walletAlertsSub', 'Money added, refunds processed')}</Text>
                 </View>
                 <CustomSwitch value={prefs.walletPush} onValueChange={() => togglePref('walletPush')} />
             </View>
             <View style={styles.row}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Review Requests</Text>
-                    <Text style={styles.sub}>"How was your session with Sarah?"</Text>
+                    <Text style={styles.title}>{t('reviewRequests', 'Review Requests')}</Text>
+                    <Text style={styles.sub}>{t('reviewRequestsSub', '"How was your session with Sarah?"')}</Text>
                 </View>
                 <CustomSwitch value={prefs.reviewPush} onValueChange={() => togglePref('reviewPush')} />
             </View>
         </View>
 
-        <Text style={styles.sectionTitle}>MARKETING</Text>
+        <Text style={styles.sectionTitle}>{t('marketing', 'MARKETING')}</Text>
         <View style={styles.card}>
             <View style={styles.row}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Promotions & Offers</Text>
-                    <Text style={styles.sub}>Discounts, new features, and news</Text>
+                    <Text style={styles.title}>{t('promotions', 'Promotions & Offers')}</Text>
+                    <Text style={styles.sub}>{t('promotionsSub', 'Discounts, new features, and news')}</Text>
                 </View>
                 <CustomSwitch value={prefs.promoPush} onValueChange={() => togglePref('promoPush')} />
             </View>
         </View>
 
-        <Text style={styles.sectionTitle}>SAFETY & SECURITY</Text>
+        <Text style={styles.sectionTitle}>{t('safetySecurity', 'SAFETY & SECURITY')}</Text>
         <View style={styles.card}>
             <View style={[styles.row, {opacity: 0.8}]}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>SOS & Security Alerts</Text>
-                    <Text style={styles.sub}>Critical account and safety notices</Text>
+                    <Text style={styles.title}>{t('sosAlerts', 'SOS & Security Alerts')}</Text>
+                    <Text style={styles.sub}>{t('sosAlertsSub', 'Critical account and safety notices')}</Text>
                 </View>
                 <CustomSwitch value={true} disabled={true} />
             </View>
         </View>
         <View style={styles.footerNote}>
             <Icon name="information-outline" size={14} color={theme.colors.textSecondary} />
-            <Text style={styles.helperText}>Security alerts cannot be disabled for your safety.</Text>
+            <Text style={styles.helperText}>{t('securityNote', 'Security alerts cannot be disabled for your safety.')}</Text>
         </View>
 
       </ScrollView>

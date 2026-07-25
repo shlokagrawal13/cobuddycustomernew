@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Animated, StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const STEPS = [
   {id: 4, icon: 'check-decagram',      label: 'Booking Authorization', status: 'PENDING'},
 ];
 
-export const VerificationProcessingScreen = () => {
+export const VerificationProcessingScreen = () => { 
+  const { t } = useTranslation('verify.processing');
   const navigation = useNavigation<any>();
   const pulseAnim = useRef(new Animated.Value(1)).current;
   const [activeStep, setActiveStep] = useState(2); // 0=none, 1=doc, 2=selfie, 3=profile, 4=done
@@ -70,7 +72,7 @@ export const VerificationProcessingScreen = () => {
         <View style={styles.headerIconWrap}>
           <Icon name="lock" size={18} color={theme.colors.primary} />
         </View>
-        <Text style={styles.headerTitle}>Secure Verification</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Secure Verification')}</Text>
         <View style={styles.headerIconWrap}>
           <Icon name="shield-check" size={18} color={theme.colors.primary} />
         </View>
@@ -146,7 +148,7 @@ export const VerificationProcessingScreen = () => {
         <View style={styles.trustBanner}>
           <Icon name="lock" size={16} color={theme.colors.primary} />
           <View style={styles.trustMeta}>
-            <Text style={styles.trustTitle}>Your Information Is Protected</Text>
+            <Text style={styles.trustTitle}>{t('protectedInfo', 'Your Information Is Protected')}</Text>
             <Text style={styles.trustSub}>
               We use military-grade end-to-end encryption to secure your identity data.
               Your documents are strictly used for verification purposes and are never shared.

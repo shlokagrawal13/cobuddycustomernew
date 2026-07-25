@@ -1,0 +1,16 @@
+{
+  "headerTitle": "Device Permissions",
+  "subTitle": "Manage how CoBuddy interacts with your device.",
+  "location": "Location Services",
+  "locationDesc": "Required for finding nearby companions and SOS features.",
+  "camera": "Camera & Photos",
+  "cameraDesc": "Required for KYC selfies and sharing incident evidence.",
+  "mic": "Microphone",
+  "micDesc": "Required for secure voice calls.",
+  "requiredBadge": "REQUIRED",
+  "appPermissions": "App Permissions",
+  "privacyControl": "Privacy Control",
+  "corePermissions": "CORE PERMISSIONS",
+  "mediaComm": "MEDIA & COMMUNICATION",
+  "optional": "OPTIONAL"
+}

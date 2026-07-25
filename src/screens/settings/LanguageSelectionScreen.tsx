@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -14,7 +15,8 @@ const LANGUAGES = [
     { id: 'bn', name: 'Bengali (বাংলা)', sub: 'West Bengal, India' },
 ];
 
-export const LanguageSelectionScreen = () => {
+export const LanguageSelectionScreen = () => { 
+  const { t } = useTranslation('settings.languageSelection');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedLang, setSelectedLang] = useState('en');
@@ -27,7 +29,7 @@ export const LanguageSelectionScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Language</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Language')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -35,7 +37,7 @@ export const LanguageSelectionScreen = () => {
         
         <View style={styles.infoBanner}>
             <Icon name="translate" size={24} color={theme.colors.primary} style={{marginBottom: 8}} />
-            <Text style={styles.infoText}>Select your preferred language. This will change the text across the CoBuddy app.</Text>
+            <Text style={styles.infoText}>{t('infoText', 'Select your preferred language. This will change the text across the CoBuddy app.')}</Text>
         </View>
 
         <View style={styles.card}>

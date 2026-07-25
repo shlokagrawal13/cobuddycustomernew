@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -36,6 +37,7 @@ export const CompanionCard = ({
   isOnline = false,
   onPress,
 }: CompanionCardProps) => {
+  const { t } = useTranslation('common');
   return (
     <View style={styles.cardContainer}>
       
@@ -99,7 +101,7 @@ export const CompanionCard = ({
           style={styles.actionBtn}
           activeOpacity={0.8}
           onPress={() => onPress(id)}>
-          <Text style={styles.actionBtnText}>View Profile</Text>
+          <Text style={styles.actionBtnText}>{t('companionCard.viewProfile', 'View Profile')}</Text>
           <Icon name="arrow-right" size={16} color={theme.colors.background} />
         </TouchableOpacity>
       </View>

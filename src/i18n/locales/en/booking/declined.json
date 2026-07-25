@@ -1,0 +1,8 @@
+{
+  "title": "Booking Declined",
+  "reasonLabel": "Reason given:",
+  "reasonText": "\"{reason}\"",
+  "noteText": "Any pre-authorized holds on your payment method have been released instantly.",
+  "primaryBtnText": "Find Another Companion",
+  "secondaryBtnText": "Return to Home"
+}

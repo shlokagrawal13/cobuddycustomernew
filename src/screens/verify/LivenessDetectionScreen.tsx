@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Animated, Easing, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const LivenessDetectionScreen = () => {
+export const LivenessDetectionScreen = () => { 
+  const { t } = useTranslation('verify.liveness');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [step, setStep] = useState(0);
@@ -55,12 +57,12 @@ export const LivenessDetectionScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 3 of 3</Text>
+        <Text style={styles.headerTitle}>{t('step3of3', 'Step 3 of 3')}</Text>
         <View style={{ width: 24 }} />
       </View>
 
       <View style={styles.content}>
-        <Text style={styles.title}>Liveness Check</Text>
+        <Text style={styles.title}>{t('livenessCheck', 'Liveness Check')}</Text>
         <Text style={styles.subtitle}>
           {step === 0 ? "Please hold your phone still..." : "Now, blink your eyes slowly."}
         </Text>
@@ -78,7 +80,7 @@ export const LivenessDetectionScreen = () => {
         </View>
 
         <View style={styles.progressWrap}>
-          <Text style={styles.progressText}>Analyzing facial features...</Text>
+          <Text style={styles.progressText}>{t('analyzing', 'Analyzing facial features...')}</Text>
           <View style={styles.progressBarBg}>
             <View style={[styles.progressBarFill, { width: step === 0 ? '50%' : '90%' }]} />
           </View>

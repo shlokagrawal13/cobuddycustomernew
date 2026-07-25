@@ -73,7 +73,7 @@ export const TrustedContactsScreen = () => {
             <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
-            <Text style={styles.settingsHeaderTitle}>Emergency Contacts</Text>
+            <Text style={styles.settingsHeaderTitle}>{t('contacts.headerTitle', 'Emergency Contacts')}</Text>
             <View style={styles.backBtn} />
           </View>
         ) : (

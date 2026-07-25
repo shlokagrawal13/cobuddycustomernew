@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { SessionReminderScreen } from '../screens/session/SessionReminderScreen';
 import { ArrivalCheckInScreen } from '../screens/session/ArrivalCheckInScreen';
@@ -9,7 +9,7 @@ import { PostSessionFeedbackScreen } from '../screens/session/PostSessionFeedbac
 import { CompanionReviewScreen } from '../screens/session/CompanionReviewScreen';
 import { TipGratuityScreen } from '../screens/session/TipGratuityScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const LiveSessionStack = () => {
   return (

@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const AccountSuspendedScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.suspended');
   const navigation = useNavigation<any>();
 
   return (
@@ -18,7 +18,7 @@ export const AccountSuspendedScreen = () => {
           <Icon name="shield-alert-outline" size={72} color={theme.colors.error} />
         </View>
         
-        <Text style={styles.title}>Account Suspended</Text>
+        <Text style={styles.title}>{t('title', 'Account Suspended')}</Text>
         <Text style={styles.message}>
           Your account has been suspended due to violations of our Community Guidelines. You cannot accept bookings or messages at this time.
         </Text>
@@ -29,14 +29,14 @@ export const AccountSuspendedScreen = () => {
           style={styles.primaryButton}
           onPress={() => navigation.navigate('PolicyViolationNoticeScreen')}
         >
-          <Text style={styles.primaryButtonText}>View Violation Details</Text>
+          <Text style={styles.primaryButtonText}>{t('viewDetails', 'View Violation Details')}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.secondaryButton}
           onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
         >
-          <Text style={styles.secondaryButtonText}>Submit Appeal</Text>
+          <Text style={styles.secondaryButtonText}>{t('appealBtn', 'Submit Appeal')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

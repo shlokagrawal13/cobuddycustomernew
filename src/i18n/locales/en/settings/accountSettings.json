@@ -1,0 +1,22 @@
+{
+  "headerTitle": "Account Settings",
+  "personalInfo": "Personal Information",
+  "fullName": "Full Name",
+  "email": "Email Address",
+  "phone": "Phone Number",
+  "linkedAccounts": "Linked Accounts",
+  "google": "Google",
+  "connected": "Connected",
+  "apple": "Apple",
+  "notConnected": "Not Connected",
+  "saveChanges": "Save Changes",
+  "genderMale": "Male",
+  "contactRecovery": "CONTACT & RECOVERY",
+  "mockPhone": "+91 98****1234",
+  "verifiedOtp": "Verified. Change requires OTP.",
+  "save": "Save",
+  "emailHelper": "Used for booking receipts and support.",
+  "dataPrivacy": "DATA & PRIVACY",
+  "downloadInfo": "Download Account Info",
+  "downloadSub": "Request a copy of your CoBuddy data"
+}

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
-export const CompanionReviewScreen = () => {
+export const CompanionReviewScreen = () => { 
+  const { t } = useTranslation('session.companionReview');
   const navigation = useNavigation<any>();
   const [rating, setRating] = useState(0);
   const [publicReview, setPublicReview] = useState('');
@@ -27,7 +29,7 @@ export const CompanionReviewScreen = () => {
       
       <View style={styles.header}>
         <View style={styles.iconBtnPlaceholder} />
-        <Text style={styles.headerTitle}>Leave a Review</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Leave a Review')}</Text>
         <View style={styles.iconBtnPlaceholder} />
       </View>
 
@@ -42,7 +44,7 @@ export const CompanionReviewScreen = () => {
           <View style={styles.avatarPlaceholder}>
             <Text style={styles.avatarInitials}>{COMPANION_NAME.charAt(0)}</Text>
           </View>
-          <Text style={styles.question}>Rate your time with {COMPANION_NAME}</Text>
+          <Text style={styles.question}>{t('questionRate', 'Rate your time with {{name}}', { name: COMPANION_NAME })}</Text>
           
           <View style={styles.starsRow}>
             {[1, 2, 3, 4, 5].map(star => (
@@ -61,12 +63,12 @@ export const CompanionReviewScreen = () => {
         <View style={styles.inputCard}>
           <View style={styles.inputHeader}>
             <Icon name="comment-text-outline" size={20} color={theme.colors.primary} />
-            <Text style={styles.inputTitle}>Public Review</Text>
+            <Text style={styles.inputTitle}>{t('inputPublicTitle', 'Public Review')}</Text>
           </View>
-          <Text style={styles.inputDesc}>This will appear on {COMPANION_NAME}'s profile.</Text>
+          <Text style={styles.inputDesc}>{t('inputPublicDesc', "This will appear on {{name}}'s profile.", { name: COMPANION_NAME })}</Text>
           <TextInput
             style={styles.textInput}
-            placeholder="What did you enjoy the most?"
+            placeholder={t('placeholder.WhatDidYouEnjoy', 'What did you enjoy the most?')}
             placeholderTextColor={theme.colors.textSecondary}
             multiline
             numberOfLines={4}
@@ -80,12 +82,12 @@ export const CompanionReviewScreen = () => {
         <View style={styles.inputCard}>
           <View style={styles.inputHeader}>
             <Icon name="lock-outline" size={20} color={theme.colors.error} />
-            <Text style={styles.inputTitle}>Private Feedback (Optional)</Text>
+            <Text style={styles.inputTitle}>{t('inputPrivateTitle', 'Private Feedback (Optional)')}</Text>
           </View>
-          <Text style={styles.inputDesc}>Share anything with the CoBuddy Safety Team. The companion will NOT see this.</Text>
+          <Text style={styles.inputDesc}>{t('inputPrivateDesc', 'Share anything with the CoBuddy Safety Team. The companion will NOT see this.')}</Text>
           <TextInput
             style={[styles.textInput, { borderColor: 'rgba(239, 68, 68, 0.2)' }]}
-            placeholder="Any concerns or private notes?"
+            placeholder={t('placeholder.AnyConcernsOrPr', 'Any concerns or private notes?')}
             placeholderTextColor={theme.colors.textSecondary}
             multiline
             numberOfLines={4}
@@ -104,7 +106,7 @@ export const CompanionReviewScreen = () => {
           disabled={rating === 0}
           onPress={handleFinish}
         >
-          <Text style={styles.primaryBtnText}>Submit & Finish</Text>
+          <Text style={styles.primaryBtnText}>{t('submitBtn', 'Submit & Finish')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

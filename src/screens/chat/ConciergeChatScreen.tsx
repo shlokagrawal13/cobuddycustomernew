@@ -4,13 +4,15 @@ import {
   StatusBar, KeyboardAvoidingView, Platform
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const ConciergeChatScreen = () => {
+export const ConciergeChatScreen = () => { 
+  const { t } = useTranslation('chat.concierge');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const scrollRef = useRef<ScrollView>(null);
@@ -70,10 +72,10 @@ export const ConciergeChatScreen = () => {
               <Icon name="shield-star" size={20} color={theme.colors.background} />
             </View>
             <View style={{ marginLeft: 12 }}>
-              <Text style={styles.headerTitle}>CoBuddy Concierge</Text>
+              <Text style={styles.headerTitle}>{t('headerTitle', 'CoBuddy Concierge')}</Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, marginTop: 2 }}>
                 <View style={styles.onlineDot} />
-                <Text style={styles.onlineText}>Typically replies in 2 mins</Text>
+                <Text style={styles.onlineText}>{t('onlineText', 'Typically replies in 2 mins')}</Text>
               </View>
             </View>
           </View>
@@ -95,7 +97,7 @@ export const ConciergeChatScreen = () => {
         onContentSizeChange={() => scrollRef.current?.scrollToEnd({ animated: false })}
       >
         <View style={styles.dateChip}>
-          <Text style={styles.dateText}>TODAY</Text>
+          <Text style={styles.dateText}>{t('dateText', 'TODAY')}</Text>
         </View>
 
         {messages.map((msg) => {

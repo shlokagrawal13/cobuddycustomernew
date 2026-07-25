@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -13,7 +14,8 @@ const LEGAL_DOCS = [
     { id: 'refund', title: 'Refund Policy', sub: 'Cancellation and escrow rules', icon: 'cash-refund' },
 ];
 
-export const LegalAgreementsScreen = () => {
+export const LegalAgreementsScreen = () => { 
+  const { t } = useTranslation('settings.legalAgreements');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -25,7 +27,7 @@ export const LegalAgreementsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Legal & Agreements</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Legal & Agreements')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -52,8 +54,8 @@ export const LegalAgreementsScreen = () => {
 
         <View style={styles.footerBrand}>
             <Icon name="scale-balance" size={32} color={theme.colors.textSecondary} style={{opacity: 0.3, marginBottom: 12}} />
-            <Text style={styles.brandText}>CoBuddy Technologies</Text>
-            <Text style={styles.copyrightText}>All rights reserved.</Text>
+            <Text style={styles.brandText}>{t('brandText', 'CoBuddy Technologies')}</Text>
+            <Text style={styles.copyrightText}>{t('copyrightText', 'All rights reserved.')}</Text>
         </View>
 
       </ScrollView>

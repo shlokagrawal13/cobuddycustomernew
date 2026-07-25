@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const PolicyViolationNoticeScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.policyViolation');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -17,32 +17,32 @@ export const PolicyViolationNoticeScreen = () => {
       
       <View style={styles.header}>
         <Icon name="alert-circle-outline" size={32} color={theme.colors.warning} />
-        <Text style={styles.headerTitle}>Policy Violation Notice</Text>
+        <Text style={styles.headerTitle}>{t('title', 'Policy Violation Notice')}</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <Text style={styles.dateText}>Issued on: Oct 24, 2026</Text>
+        <Text style={styles.dateText}>{t('issuedOn', 'Issued on: Oct 24, 2026')}</Text>
         
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Violation Type: Off-App Payment Attempt</Text>
+          <Text style={styles.cardTitle}>{t('violationType', 'Violation Type: Off-App Payment Attempt')}</Text>
           <Text style={styles.cardMessage}>
             Our system detected an attempt to negotiate or request payments outside of the CoBuddy platform. This violates our Community Guidelines and compromises the safety and security of our ecosystem.
           </Text>
         </View>
 
-        <Text style={styles.sectionTitle}>WHY THIS MATTERS</Text>
+        <Text style={styles.sectionTitle}>{t('whyMatters', 'WHY THIS MATTERS')}</Text>
         <View style={styles.list}>
           <View style={styles.listItem}>
             <Icon name="shield-check" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.listText}>Payments on the app are secure and protected against fraud.</Text>
+            <Text style={styles.listText}>{t('reason1', 'Payments on the app are secure and protected against fraud.')}</Text>
           </View>
           <View style={styles.listItem}>
             <Icon name="gavel" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.listText}>Off-app payments bypass our safety checks and dispute resolution systems.</Text>
+            <Text style={styles.listText}>{t('reason2', 'Off-app payments bypass our safety checks and dispute resolution systems.')}</Text>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>NEXT STEPS</Text>
+        <Text style={styles.sectionTitle}>{t('nextSteps', 'NEXT STEPS')}</Text>
         <Text style={styles.paragraph}>
           This is a formal warning. Please review our Community Guidelines. Repeated violations will result in permanent account suspension.
         </Text>
@@ -54,14 +54,14 @@ export const PolicyViolationNoticeScreen = () => {
           style={styles.primaryButton}
           onPress={() => smartGoBack()}
         >
-          <Text style={styles.primaryButtonText}>I Understand</Text>
+          <Text style={styles.primaryButtonText}>{t('understandBtn', 'I Understand')}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.secondaryButton}
           onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
         >
-          <Text style={styles.secondaryButtonText}>Submit Appeal</Text>
+          <Text style={styles.secondaryButtonText}>{t('appealBtn', 'Submit Appeal')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

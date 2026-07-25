@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -13,7 +14,8 @@ const CATEGORIES = [
   { id: 'account', label: 'Account & Tech Support', icon: 'account-cog-outline' }
 ];
 
-export const CreateSupportTicketScreen = () => {
+export const CreateSupportTicketScreen = () => { 
+  const { t } = useTranslation('support.createTicket');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -40,14 +42,14 @@ export const CreateSupportTicketScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Create Ticket</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Create Ticket')}</Text>
         <View style={styles.backBtn} />
       </View>
 
       <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           
-          <Text style={styles.sectionTitle}>WHAT DO YOU NEED HELP WITH?</Text>
+          <Text style={styles.sectionTitle}>{t('whatDoYouNeedHelpWith', 'WHAT DO YOU NEED HELP WITH?')}</Text>
           <View style={styles.categoriesContainer}>
             {CATEGORIES.map(cat => (
               <TouchableOpacity 
@@ -74,11 +76,11 @@ export const CreateSupportTicketScreen = () => {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.inputLabel}>SUBJECT</Text>
+            <Text style={styles.inputLabel}>{t('subject', 'SUBJECT')}</Text>
             <View style={styles.inputContainer}>
               <TextInput 
                 style={styles.input}
-                placeholder="Briefly describe the issue"
+                placeholder={t('placeholder.BrieflyDescribe', 'Briefly describe the issue')}
                 placeholderTextColor={theme.colors.textSecondary}
                 value={subject}
                 onChangeText={setSubject}
@@ -87,11 +89,11 @@ export const CreateSupportTicketScreen = () => {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.inputLabel}>DESCRIPTION</Text>
+            <Text style={styles.inputLabel}>{t('description', 'DESCRIPTION')}</Text>
             <View style={[styles.inputContainer, styles.textAreaContainer]}>
               <TextInput 
                 style={styles.textArea}
-                placeholder="Provide as many details as possible so we can help you faster..."
+                placeholder={t('placeholder.ProvideAsManyDe', 'Provide as many details as possible so we can help you faster...')}
                 placeholderTextColor={theme.colors.textSecondary}
                 value={description}
                 onChangeText={setDescription}
@@ -102,7 +104,7 @@ export const CreateSupportTicketScreen = () => {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.inputLabel}>ATTACHMENTS (OPTIONAL)</Text>
+            <Text style={styles.inputLabel}>{t('attachmentsOptional', 'ATTACHMENTS (OPTIONAL)')}</Text>
             <TouchableOpacity 
               style={[styles.attachmentBtn, hasAttachment && styles.attachmentBtnActive]}
               onPress={() => setHasAttachment(!hasAttachment)}
@@ -128,7 +130,7 @@ export const CreateSupportTicketScreen = () => {
           onPress={handleSubmit}
           activeOpacity={0.8}
         >
-          <Text style={styles.submitBtnText}>Submit Ticket</Text>
+          <Text style={styles.submitBtnText}>{t('submitTicket', 'Submit Ticket')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

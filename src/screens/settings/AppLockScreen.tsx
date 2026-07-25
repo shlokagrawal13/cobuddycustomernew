@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -41,7 +42,8 @@ const TIMEOUT_OPTIONS = [
     { id: '15min', label: 'After 15 minutes' },
 ];
 
-export const AppLockScreen = () => {
+export const AppLockScreen = () => { 
+  const { t } = useTranslation('settings.appLock');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -60,7 +62,7 @@ export const AppLockScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>App Lock</Text>
+        <Text style={styles.headerTitle}>{t('appLock', 'App Lock')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -70,19 +72,19 @@ export const AppLockScreen = () => {
             <View style={styles.iconWrap}>
                 <Icon name={biometricIcon} size={40} color={theme.colors.primary} />
             </View>
-            <Text style={styles.heroTitle}>Enhanced Security</Text>
+            <Text style={styles.heroTitle}>{t('enhancedSec', 'Enhanced Security')}</Text>
             <Text style={styles.heroSub}>
                 Protect your chats and bookings. When enabled, you'll need to use your device's biometric lock to open CoBuddy.
             </Text>
         </View>
 
-        <Text style={styles.sectionTitle}>APP ACCESS</Text>
+        <Text style={styles.sectionTitle}>{t('appAccess', 'APP ACCESS')}</Text>
         
         <View style={styles.card}>
             <View style={styles.settingRow}>
                 <View style={styles.settingTextContent}>
                     <Text style={styles.settingTitle}>Require {biometricName}</Text>
-                    <Text style={styles.settingDesc}>Use your device credentials to unlock the app.</Text>
+                    <Text style={styles.settingDesc}>{t('appAccessDesc', 'Use your device credentials to unlock the app.')}</Text>
                 </View>
                 <CustomSwitch value={appLockEnabled} onValueChange={setAppLockEnabled} />
             </View>
@@ -90,7 +92,7 @@ export const AppLockScreen = () => {
 
         {appLockEnabled && (
             <>
-                <Text style={styles.sectionTitle}>AUTO-LOCK TIME</Text>
+                <Text style={styles.sectionTitle}>{t('autoLockTime', 'AUTO-LOCK TIME')}</Text>
                 <View style={styles.card}>
                     {TIMEOUT_OPTIONS.map((option, index) => {
                         const isSelected = timeoutSelected === option.id;
@@ -112,13 +114,13 @@ export const AppLockScreen = () => {
             </>
         )}
 
-        <Text style={styles.sectionTitle}>PRIVACY</Text>
+        <Text style={styles.sectionTitle}>{t('privacy', 'PRIVACY')}</Text>
         
         <View style={styles.card}>
             <View style={styles.settingRow}>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Hide Screen in App Switcher</Text>
-                    <Text style={styles.settingDesc}>Blur the app content when viewing recent apps to prevent shoulder surfing.</Text>
+                    <Text style={styles.settingTitle}>{t('hideScreen', 'Hide Screen in App Switcher')}</Text>
+                    <Text style={styles.settingDesc}>{t('hideScreenDesc', 'Blur the app content when viewing recent apps to prevent shoulder surfing.')}</Text>
                 </View>
                 <CustomSwitch value={hideScreenEnabled} onValueChange={setHideScreenEnabled} />
             </View>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const MOCK_THREAD = [
   { id: '3', sender: 'support', text: 'Please allow 3-5 business days for the amount to reflect in your bank account.', time: '1 hour ago' },
 ];
 
-export const SupportTicketDetailScreen = () => {
+export const SupportTicketDetailScreen = () => { 
+  const { t } = useTranslation('support.ticketDetail');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -46,7 +48,7 @@ export const SupportTicketDetailScreen = () => {
           <Text style={styles.headerTitle}>{ticketId}</Text>
           <View style={styles.statusBadge}>
             <View style={styles.statusDot} />
-            <Text style={styles.statusText}>Open</Text>
+            <Text style={styles.statusText}>{t('statusOpen', 'Open')}</Text>
           </View>
         </View>
         <View style={styles.backBtn} />
@@ -56,8 +58,8 @@ export const SupportTicketDetailScreen = () => {
         
         {/* Ticket Original Context */}
         <View style={styles.contextCard}>
-          <Text style={styles.contextLabel}>Refund Request for Booking #4412</Text>
-          <Text style={styles.contextMeta}>Category: Payment  ·  Created 2 hours ago</Text>
+          <Text style={styles.contextLabel}>{t('contextLabel', 'Refund Request for Booking #4412')}</Text>
+          <Text style={styles.contextMeta}>{t('ticketMeta', 'Category: Payment • Created 2 hours ago')}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.chatScroll} showsVerticalScrollIndicator={false}>
@@ -87,7 +89,7 @@ export const SupportTicketDetailScreen = () => {
             </TouchableOpacity>
             <TextInput
               style={styles.replyInput}
-              placeholder="Write a reply..."
+              placeholder={t('placeholder.WriteAReply', 'Write a reply...')}
               placeholderTextColor={theme.colors.textSecondary}
               value={replyText}
               onChangeText={setReplyText}
@@ -104,7 +106,7 @@ export const SupportTicketDetailScreen = () => {
         ) : (
           <View style={styles.closedBanner}>
             <Icon name="lock-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.closedText}>This ticket has been marked as closed.</Text>
+            <Text style={styles.closedText}>{t('closedText', 'This ticket has been marked as closed.')}</Text>
           </View>
         )}
 

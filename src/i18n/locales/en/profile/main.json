@@ -1,0 +1,17 @@
+{
+  "activeSessionTitle": "Active Session Ongoing",
+  "activeSessionSub": "Tap to return to your live meetup.",
+  "kycVerified": "Identity Verified",
+  "trustScoreTitle": "Trust Score",
+  "sessionCompletion": "Session Completion",
+  "safetyRating": "Safety Rating",
+  "identityContactTitle": "Identity & Contact",
+  "profileCompleteness": "Profile Completeness",
+  "phoneNumber": "Phone Number",
+  "govId": "Government ID",
+  "liveSelfie": "Live Selfie",
+  "walletActivityTitle": "Wallet & Activity",
+  "safetySettingsTitle": "Safety Settings",
+  "openSafetyHub": "Open Safety Hub",
+  "prefsLegalTitle": "Preferences & Legal"
+}

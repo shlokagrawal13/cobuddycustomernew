@@ -1,0 +1,13 @@
+{
+  "headerTitle": "App Lock & Security",
+  "biometricDesc": "Require biometric authentication (Face ID / Fingerprint) to open CoBuddy.",
+  "paymentLockDesc": "Require PIN / Biometric when making payments or releasing escrow.",
+  "appLock": "App Lock",
+  "enhancedSec": "Enhanced Security",
+  "appAccess": "APP ACCESS",
+  "appAccessDesc": "Use your device credentials to unlock the app.",
+  "autoLockTime": "AUTO-LOCK TIME",
+  "privacy": "PRIVACY",
+  "hideScreen": "Hide Screen in App Switcher",
+  "hideScreenDesc": "Blur the app content when viewing recent apps to prevent shoulder surfing."
+}

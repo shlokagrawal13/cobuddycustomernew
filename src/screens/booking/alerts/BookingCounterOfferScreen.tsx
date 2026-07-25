@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
@@ -21,7 +22,8 @@ const DEFAULT_MOCK_DATA = {
   message: "Hi! I have another engagement that runs late. Can we shift by 1 hour? Also due to weekend peak rates, I have slightly adjusted the price. Let me know if this works!",
 };
 
-export const BookingCounterOfferScreen = ({ route }: any) => {
+export const BookingCounterOfferScreen = ({ route }: any) => { 
+  const { t } = useTranslation('booking.counterOffer');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const bookingData = { ...DEFAULT_MOCK_DATA, ...(route?.params || {}) };
@@ -34,6 +36,10 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
     navigation.reset({ index: 0, routes: [{ name: 'MainTabNavigator' }] });
   };
 
+  const handleMessageBack = () => {
+    navigation.navigate('CompanionChatScreen');
+  };
+
   return (
     <SafeAreaView style={styles.root} edges={['top', 'left', 'right']}>
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
@@ -43,7 +49,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
         <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Counter Offer</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Counter Offer')}</Text>
         <View style={{ width: 40 }} />
       </View>
 
@@ -55,9 +61,9 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
             <View style={styles.glow} />
             <Icon name="swap-horizontal-circle" size={80} color={theme.colors.warning} />
           </View>
-          <Text style={styles.title}>Action Required</Text>
+          <Text style={styles.title}>{t('title', 'Action Required')}</Text>
           <Text style={styles.subtitle}>
-            <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{bookingData.companionName}</Text> proposed an adjustment to your {bookingData.activity} booking.
+            <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{bookingData.companionName}</Text> {t('proposedAdjustment', ' proposed an adjustment to your {{activity}} booking.', { activity: bookingData.activity })}
           </Text>
         </View>
 
@@ -65,22 +71,22 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
         <View style={styles.messageCard}>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12, gap: 8 }}>
             <Icon name="message-text-outline" size={20} color={theme.colors.primary} />
-            <Text style={styles.messageTitle}>Message from Companion</Text>
+            <Text style={styles.messageTitle}>{t('messageTitle', 'Message from Companion')}</Text>
           </View>
-          <Text style={styles.messageText}>"{bookingData.message}"</Text>
+          <Text style={styles.messageText}>{t('messageText', '"{{msg}}"', { msg: bookingData.message })}</Text>
         </View>
 
         {/* Changes Card */}
         <View style={styles.sectionCard}>
           <View style={styles.cardHeaderRow}>
-            <Text style={styles.sectionTitle}>PROPOSED CHANGES</Text>
+            <Text style={styles.sectionTitle}>{t('sectionTitle', 'PROPOSED CHANGES')}</Text>
             <Text style={styles.bookingId}>#{bookingData.bookingId}</Text>
           </View>
           
           <View style={styles.detailRowFixed}>
             <Icon name="calendar-blank" size={20} color={theme.colors.textSecondary} style={styles.detailIcon} />
             <View>
-              <Text style={styles.detailLabel}>Date</Text>
+              <Text style={styles.detailLabel}>{t('detailLabelDate', 'Date')}</Text>
               <Text style={styles.detailValueFixed}>{bookingData.date}</Text>
             </View>
           </View>
@@ -88,7 +94,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
           <View style={styles.detailRowFixed}>
             <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} style={styles.detailIcon} />
             <View>
-              <Text style={styles.detailLabel}>Venue</Text>
+              <Text style={styles.detailLabel}>{t('detailLabelVenue', 'Venue')}</Text>
               <Text style={styles.detailValueFixed}>{bookingData.venue}</Text>
             </View>
           </View>
@@ -102,7 +108,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
                 <View style={styles.diffIconBox}>
                   <Icon name="clock-outline" size={18} color={theme.colors.warning} />
                 </View>
-                <Text style={styles.changeLabel}>Time</Text>
+                <Text style={styles.changeLabel}>{t('changeLabelTime', 'Time')}</Text>
               </View>
               <View style={styles.changeValuesBox}>
                 <Text style={styles.oldText}>{bookingData.originalTime}</Text>
@@ -118,7 +124,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
                 <View style={styles.diffIconBox}>
                   <Icon name="cash" size={18} color={theme.colors.warning} />
                 </View>
-                <Text style={styles.changeLabel}>Rate</Text>
+                <Text style={styles.changeLabel}>{t('changeLabelRate', 'Rate')}</Text>
               </View>
               <View style={styles.changeValuesBox}>
                 <Text style={styles.oldText}>{bookingData.originalAmount}</Text>
@@ -133,7 +139,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
         {/* Escrow Note */}
         <View style={styles.escrowNote}>
           <Icon name="shield-check" size={16} color={theme.colors.success} />
-          <Text style={styles.escrowNoteText}>If accepted, your Escrow hold will be updated securely.</Text>
+          <Text style={styles.escrowNoteText}>{t('escrowNoteText', 'If accepted, your Escrow hold will be updated securely.')}</Text>
         </View>
 
       </ScrollView>
@@ -143,15 +149,15 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
         <View style={styles.bottomBarHandle} />
         <TouchableOpacity style={styles.primaryBtn} onPress={handleAccept} activeOpacity={0.85}>
           <Icon name="check-circle" size={20} color={theme.colors.background} />
-          <Text style={styles.primaryBtnText}>Accept New Offer</Text>
+          <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Accept New Offer')}</Text>
         </TouchableOpacity>
         
         <View style={styles.splitBtns}>
-          <TouchableOpacity style={styles.secondaryBtn} onPress={handleDecline} activeOpacity={0.85}>
-            <Text style={styles.secondaryBtnText}>Message Back</Text>
+          <TouchableOpacity style={styles.secondaryBtn} onPress={handleMessageBack} activeOpacity={0.85}>
+            <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'Message Back')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.ghostBtn} onPress={handleDecline} activeOpacity={0.85}>
-            <Text style={styles.ghostBtnText}>Decline Booking</Text>
+            <Text style={styles.ghostBtnText}>{t('ghostBtnText', 'Decline Booking')}</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -8,7 +9,8 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 const { width } = Dimensions.get('window');
 
-export const IncomingCallScreen = () => {
+export const IncomingCallScreen = () => { 
+  const { t } = useTranslation('chat.incomingCall');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -39,9 +41,9 @@ export const IncomingCallScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor="#000" />
       
       <View style={styles.topSection}>
-        <Text style={styles.incomingText}>CoBuddy Voice Call</Text>
+        <Text style={styles.incomingText}>{t('incomingText', 'CoBuddy Voice Call')}</Text>
         <Text style={styles.callerName}>{callerName}</Text>
-        <Text style={styles.statusText}>Ringing...</Text>
+        <Text style={styles.statusText}>{t('statusText', 'Ringing...')}</Text>
       </View>
 
       <View style={styles.middleSection}>

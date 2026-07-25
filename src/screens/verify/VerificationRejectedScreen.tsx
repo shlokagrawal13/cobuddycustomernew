@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const REVIEW_STEPS = [
   {icon: 'clock-outline',       label: 'Booking Authorization', status: 'Blocked',      done: false},
 ];
 
-export const VerificationRejectedScreen = () => {
+export const VerificationRejectedScreen = () => { 
+  const { t } = useTranslation('verify.rejected');
   const navigation = useNavigation<any>();
 
   const handleRetry = () => {
@@ -45,7 +47,7 @@ export const VerificationRejectedScreen = () => {
           activeOpacity={0.7}>
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Verification Status</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Verification Status')}</Text>
         <View style={styles.headerIconWrap}>
           <Icon name="shield-alert" size={24} color={theme.colors.error} />
         </View>
@@ -64,13 +66,13 @@ export const VerificationRejectedScreen = () => {
             </View>
           </View>
 
-          <Text style={styles.heroTitle}>Verification Failed</Text>
+          <Text style={styles.heroTitle}>{t('heroTitle', 'Verification Failed')}</Text>
 
           <View style={styles.statusBadge}>
             <Icon name="alert-circle" size={14} color={theme.colors.error} />
-            <Text style={styles.statusBadgeLabel}>STATUS</Text>
+            <Text style={styles.statusBadgeLabel}>{t('statusLabel', 'STATUS')}</Text>
             <View style={styles.statusBadgeDivider} />
-            <Text style={[styles.statusBadgeValue, { color: theme.colors.error }]}>Action Required</Text>
+            <Text style={[styles.statusBadgeValue, { color: theme.colors.error }]}>{t('actionRequired', 'Action Required')}</Text>
           </View>
 
           <View style={styles.etaRow}>
@@ -82,7 +84,7 @@ export const VerificationRejectedScreen = () => {
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.sectionLabel}>VERIFICATION PROGRESS</Text>
+          <Text style={styles.sectionLabel}>{t('progress', 'VERIFICATION PROGRESS')}</Text>
           {REVIEW_STEPS.map((step, i) => (
             <View key={step.label} style={[styles.reviewRow, i < REVIEW_STEPS.length - 1 && styles.reviewRowBorder]}>
               <View style={[
@@ -122,7 +124,7 @@ export const VerificationRejectedScreen = () => {
             <Icon name="camera-retake" size={20} color={theme.colors.error} />
           </View>
           <View style={styles.nextMeta}>
-            <Text style={styles.nextTitle}>Please Try Again</Text>
+            <Text style={styles.nextTitle}>{t('tryAgain', 'Please Try Again')}</Text>
             <Text style={styles.nextSub}>
               Ensure your document is clearly visible, not expired, and matches your selfie exactly.
             </Text>
@@ -131,7 +133,7 @@ export const VerificationRejectedScreen = () => {
 
         <TouchableOpacity style={styles.ctaBtn} onPress={handleRetry} activeOpacity={0.85}>
           <Icon name="refresh" size={18} color={theme.colors.background} />
-          <Text style={styles.ctaBtnText}>Retry Verification</Text>
+          <Text style={styles.ctaBtnText}>{t('retryBtn', 'Retry Verification')}</Text>
         </TouchableOpacity>
 
         <View style={styles.securityNote}>

@@ -1,0 +1,9 @@
+{
+  "headerTitle": "Verification Status",
+  "heroTitle": "Verification Failed",
+  "statusLabel": "STATUS",
+  "actionRequired": "Action Required",
+  "progress": "VERIFICATION PROGRESS",
+  "tryAgain": "Please Try Again",
+  "retryBtn": "Retry Verification"
+}

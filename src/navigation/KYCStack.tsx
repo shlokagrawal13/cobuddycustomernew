@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { KYCIntroScreen } from '../screens/verify/KYCIntroScreen';
 import { DocumentVerificationScreen } from '../screens/verify/DocumentVerificationScreen';
@@ -10,7 +10,7 @@ import { VerificationPendingScreen } from '../screens/verify/VerificationPending
 import { VerificationRejectedScreen } from '../screens/verify/VerificationRejectedScreen';
 import { VerificationSuccessScreen } from '../screens/verify/VerificationSuccessScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const KYCStack = () => {
   return (

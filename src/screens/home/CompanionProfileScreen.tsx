@@ -101,18 +101,80 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
   if (loading) {
     return (
-      <View style={[styles.container, { paddingTop: insets.top }]}>
-        <View style={styles.headerBar}>
-          <TouchableOpacity onPress={() => smartGoBack('DiscoverTab')} style={styles.backBtn}>
+      <View style={styles.container}>
+        {/* Edge-to-Edge Hero Skeleton */}
+        <View style={styles.heroContainer}>
+          <SkeletonLoader width={width} height={HERO_HEIGHT} borderRadius={0} />
+          {/* Dark Overlay Skeleton details */}
+          <View style={styles.heroOverlay}>
+            <View style={styles.heroDetails}>
+              <SkeletonLoader width="60%" height={38} borderRadius={8} style={{ marginBottom: 12 }} />
+              <SkeletonLoader width="40%" height={18} borderRadius={6} style={{ marginBottom: 16 }} />
+              <SkeletonLoader width="30%" height={16} borderRadius={6} />
+            </View>
+          </View>
+        </View>
+
+        {/* Content Body */}
+        <View style={styles.contentBody}>
+          {/* Quick Stats Row Skeleton */}
+          <View style={styles.statsRow}>
+            <View style={styles.statItem}>
+              <SkeletonLoader width={28} height={28} borderRadius={14} style={{ marginBottom: 8 }} />
+              <SkeletonLoader width={40} height={16} borderRadius={4} style={{ marginBottom: 4 }} />
+              <SkeletonLoader width={60} height={12} borderRadius={4} />
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <SkeletonLoader width={28} height={28} borderRadius={14} style={{ marginBottom: 8 }} />
+              <SkeletonLoader width={40} height={16} borderRadius={4} style={{ marginBottom: 4 }} />
+              <SkeletonLoader width={60} height={12} borderRadius={4} />
+            </View>
+            <View style={styles.statDivider} />
+            <View style={styles.statItem}>
+              <SkeletonLoader width={28} height={28} borderRadius={14} style={{ marginBottom: 8 }} />
+              <SkeletonLoader width={40} height={16} borderRadius={4} style={{ marginBottom: 4 }} />
+              <SkeletonLoader width={60} height={12} borderRadius={4} />
+            </View>
+          </View>
+
+          {/* About Card Skeleton */}
+          <View style={styles.card}>
+            <SkeletonLoader width="50%" height={24} borderRadius={6} style={{ marginBottom: 16 }} />
+            <SkeletonLoader width="100%" height={16} borderRadius={4} style={{ marginBottom: 8 }} />
+            <SkeletonLoader width="90%" height={16} borderRadius={4} style={{ marginBottom: 8 }} />
+            <SkeletonLoader width="70%" height={16} borderRadius={4} style={{ marginBottom: 20 }} />
+            
+            <View style={styles.tagsContainer}>
+              <SkeletonLoader width={80} height={32} borderRadius={16} />
+              <SkeletonLoader width={100} height={32} borderRadius={16} />
+              <SkeletonLoader width={90} height={32} borderRadius={16} />
+            </View>
+          </View>
+        </View>
+
+        {/* Floating Header Actions (static over skeleton) */}
+        <View style={[styles.floatingActions, { top: Math.max(insets.top, 16) + 6 }]}>
+          <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')}>
             <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
           </TouchableOpacity>
+          <View style={{ flexDirection: 'row', gap: 12 }}>
+            <View style={styles.iconCircle}>
+              <Icon name="heart-outline" size={22} color={theme.colors.textPrimary} />
+            </View>
+            <View style={styles.iconCircle}>
+              <Icon name="dots-vertical" size={22} color={theme.colors.textPrimary} />
+            </View>
+          </View>
         </View>
-        <View style={{ padding: 20 }}>
-          <SkeletonLoader height={300} borderRadius={16} style={{ marginBottom: 24 }} />
-          <SkeletonLoader height={32} width="50%" style={{ marginBottom: 16 }} />
-          <SkeletonLoader height={20} width="30%" style={{ marginBottom: 24 }} />
-          <SkeletonLoader height={120} borderRadius={16} style={{ marginBottom: 24 }} />
-          <SkeletonLoader height={120} borderRadius={16} style={{ marginBottom: 24 }} />
+
+        {/* Premium Bottom Action Bar Skeleton */}
+        <View style={[styles.bottomBar, { paddingBottom: Math.max(insets.bottom + 8, 24), paddingTop: 16, position: 'absolute', bottom: 0, left: 0, right: 0 }]}>
+          <View style={styles.bottomBarLeft}>
+            <SkeletonLoader width={80} height={14} borderRadius={4} style={{ marginBottom: 6 }} />
+            <SkeletonLoader width={120} height={24} borderRadius={6} />
+          </View>
+          <SkeletonLoader width={160} height={48} borderRadius={24} />
         </View>
       </View>
     );
@@ -360,7 +422,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
       <AppBottomSheet
         visible={showMenuSheet}
         onClose={() => setShowMenuSheet(false)}
-        title="Options"
+        title={t('title.Options', 'Options')}
       >
         <View style={styles.sheetContent}>
           <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)}>

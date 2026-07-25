@@ -1,0 +1,10 @@
+{
+  "headerTitle": "Add Money",
+  "balanceLabel": "CURRENT BALANCE",
+  "helperText": "Minimum top-up is ₹100. Max limit ₹10,000 per transaction.",
+  "sectionTitle": "PAYING FROM",
+  "btnChange": "Change",
+  "trustTitle": "100% Safe & Secure",
+  "trustSub": "PCI-DSS compliant encrypted payments",
+  "proceedToPay": "Proceed to Pay ₹{{amount}}"
+}

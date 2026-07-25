@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -31,7 +32,8 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
     );
 };
 
-export const DataCacheScreen = () => {
+export const DataCacheScreen = () => { 
+  const { t } = useTranslation('settings.dataCache');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -71,7 +73,7 @@ export const DataCacheScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Data & Storage</Text>
+        <Text style={styles.headerTitle}>{t('dataStorage', 'Data & Storage')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -79,7 +81,7 @@ export const DataCacheScreen = () => {
         
         {/* Storage Visualizer Section */}
         <View style={styles.storageCard}>
-            <Text style={styles.storageCardTitle}>Storage Usage</Text>
+            <Text style={styles.storageCardTitle}>{t('storageUsage', 'Storage Usage')}</Text>
             
             <View style={styles.barContainer}>
                 <View style={[styles.barSegment, { flex: 0.15, backgroundColor: theme.colors.primary }]} />
@@ -91,37 +93,37 @@ export const DataCacheScreen = () => {
                 <View style={styles.legendItem}>
                     <View style={[styles.legendDot, { backgroundColor: theme.colors.primary }]} />
                     <View>
-                        <Text style={styles.legendLabel}>Cache</Text>
+                        <Text style={styles.legendLabel}>{t('cacheLegend', 'Cache')}</Text>
                         <Text style={styles.legendValue}>{cacheSize}</Text>
                     </View>
                 </View>
                 <View style={styles.legendItem}>
                     <View style={[styles.legendDot, { backgroundColor: theme.colors.warning }]} />
                     <View>
-                        <Text style={styles.legendLabel}>Media</Text>
+                        <Text style={styles.legendLabel}>{t('mediaLegend', 'Media')}</Text>
                         <Text style={styles.legendValue}>{mediaSize}</Text>
                     </View>
                 </View>
                 <View style={styles.legendItem}>
                     <View style={[styles.legendDot, { backgroundColor: 'rgba(255,255,255,0.1)' }]} />
                     <View>
-                        <Text style={styles.legendLabel}>Free</Text>
-                        <Text style={styles.legendValue}>2.4 GB</Text>
+                        <Text style={styles.legendLabel}>{t('freeLegend', 'Free')}</Text>
+                        <Text style={styles.legendValue}>{t('mockFreeSpace', '2.4 GB')}</Text>
                     </View>
                 </View>
             </View>
         </View>
 
         {/* Storage Management */}
-        <Text style={styles.sectionTitle}>MANAGE STORAGE</Text>
+        <Text style={styles.sectionTitle}>{t('manageStorage', 'MANAGE STORAGE')}</Text>
         <View style={styles.card}>
             <TouchableOpacity style={[styles.row, styles.borderBottom]} activeOpacity={0.7} onPress={handleClearCache}>
                 <View style={styles.iconBox}>
                     <Icon name="broom" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Clear Cache</Text>
-                    <Text style={styles.sub}>Free up space by removing temp files</Text>
+                    <Text style={styles.title}>{t('clearCache', 'Clear Cache')}</Text>
+                    <Text style={styles.sub}>{t('clearCacheSub', 'Free up space by removing temp files')}</Text>
                 </View>
                 <Text style={styles.sizeText}>{cacheSize}</Text>
             </TouchableOpacity>
@@ -131,28 +133,28 @@ export const DataCacheScreen = () => {
                     <Icon name="image-multiple-outline" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Clear Downloaded Media</Text>
-                    <Text style={styles.sub}>Remove saved photos and chat files</Text>
+                    <Text style={styles.title}>{t('clearMedia', 'Clear Downloaded Media')}</Text>
+                    <Text style={styles.sub}>{t('clearMediaSub', 'Remove saved photos and chat files')}</Text>
                 </View>
                 <Text style={styles.sizeText}>{mediaSize}</Text>
             </TouchableOpacity>
         </View>
 
         {/* Media & Quality Preferences */}
-        <Text style={styles.sectionTitle}>MEDIA PREFERENCES</Text>
+        <Text style={styles.sectionTitle}>{t('mediaPrefs', 'MEDIA PREFERENCES')}</Text>
         <View style={styles.card}>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Auto-Download Media</Text>
-                    <Text style={styles.sub}>Automatically download photos on Wi-Fi</Text>
+                    <Text style={styles.title}>{t('autoDownload', 'Auto-Download Media')}</Text>
+                    <Text style={styles.sub}>{t('autoDownloadSub', 'Automatically download photos on Wi-Fi')}</Text>
                 </View>
                 <CustomSwitch value={autoDownload} onValueChange={setAutoDownload} />
             </View>
 
             <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)}>
                 <View style={styles.meta}>
-                    <Text style={styles.title}>Photo Upload Quality</Text>
-                    <Text style={styles.sub}>Adjust quality for profile & chat uploads</Text>
+                    <Text style={styles.title}>{t('uploadQuality', 'Photo Upload Quality')}</Text>
+                    <Text style={styles.sub}>{t('uploadQualitySub', 'Adjust quality for profile & chat uploads')}</Text>
                 </View>
                 <View style={styles.rightAction}>
                     <Text style={styles.actionText}>{uploadQuality}</Text>
@@ -167,7 +169,7 @@ export const DataCacheScreen = () => {
       <AppBottomSheet
         visible={showQualitySheet}
         onClose={() => setShowQualitySheet(false)}
-        title="Upload Quality"
+        title={t('title.UploadQuality', 'Upload Quality')}
       >
         <View style={styles.sheetContent}>
             {['Data Saver', 'Standard', 'High Quality'].map((quality, index) => (
@@ -186,7 +188,7 @@ export const DataCacheScreen = () => {
                     {uploadQuality === quality && <Icon name="check" size={20} color={theme.colors.primary} />}
                 </TouchableOpacity>
             ))}
-            <Text style={styles.sheetHelper}>High Quality uses more mobile data and storage.</Text>
+            <Text style={styles.sheetHelper}>{t('qualityHelper', 'High Quality uses more mobile data and storage.')}</Text>
         </View>
       </AppBottomSheet>
 

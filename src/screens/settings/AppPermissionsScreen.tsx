@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -43,7 +44,9 @@ interface PermissionItemProps {
     isRequired?: boolean;
 }
 
-const PermissionItem: React.FC<PermissionItemProps> = ({ icon, title, description, isGranted, onToggle, isRequired }) => (
+const PermissionItem: React.FC<PermissionItemProps> = ({ icon, title, description, isGranted, onToggle, isRequired }) => {
+    const { t } = useTranslation('settings.appPermissions');
+    return (
     <View style={styles.permissionCard}>
         <View style={styles.permissionHeader}>
             <View style={[styles.iconWrap, { backgroundColor: isGranted ? 'rgba(16, 185, 129, 0.1)' : 'rgba(255,255,255,0.05)' }]}>
@@ -52,16 +55,17 @@ const PermissionItem: React.FC<PermissionItemProps> = ({ icon, title, descriptio
             <View style={styles.permissionTextContent}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                     <Text style={styles.permissionTitle}>{title}</Text>
-                    {isRequired && <Text style={styles.requiredBadge}>REQUIRED</Text>}
+                    {isRequired && <Text style={styles.requiredBadge}>{t('requiredBadge', 'REQUIRED')}</Text>}
                 </View>
                 <Text style={styles.permissionDesc}>{description}</Text>
             </View>
             <CustomSwitch value={isGranted} onValueChange={onToggle} />
         </View>
     </View>
-);
+)};
 
-export const AppPermissionsScreen = () => {
+export const AppPermissionsScreen = () => { 
+  const { t } = useTranslation('settings.appPermissions');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -102,7 +106,7 @@ export const AppPermissionsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>App Permissions</Text>
+        <Text style={styles.headerTitle}>{t('appPermissions', 'App Permissions')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -112,17 +116,17 @@ export const AppPermissionsScreen = () => {
             <View style={styles.shieldIconWrap}>
                 <Icon name="shield-lock-outline" size={32} color={theme.colors.primary} />
             </View>
-            <Text style={styles.heroTitle}>Privacy Control</Text>
+            <Text style={styles.heroTitle}>{t('privacyControl', 'Privacy Control')}</Text>
             <Text style={styles.heroSub}>
                 Manage what data CoBuddy can access. We only ask for permissions that are essential to providing you a safe and seamless experience.
             </Text>
         </View>
 
-        <Text style={styles.sectionTitle}>CORE PERMISSIONS</Text>
+        <Text style={styles.sectionTitle}>{t('corePermissions', 'CORE PERMISSIONS')}</Text>
         
         <PermissionItem 
             icon="map-marker-outline"
-            title="Location Access"
+            title={t('title.LocationAccess', 'Location Access')}
             description="Used to find nearby buddies and track active sessions for safety."
             isGranted={permissions.location}
             isRequired={true}
@@ -131,18 +135,18 @@ export const AppPermissionsScreen = () => {
 
         <PermissionItem 
             icon="bell-outline"
-            title="Push Notifications"
+            title={t('title.PushNotificatio', 'Push Notifications')}
             description="Get instantly notified about booking requests and messages."
             isGranted={permissions.notifications}
             isRequired={true}
             onToggle={(val) => handleToggle('notifications', val)}
         />
 
-        <Text style={styles.sectionTitle}>MEDIA & COMMUNICATION</Text>
+        <Text style={styles.sectionTitle}>{t('mediaComm', 'MEDIA & COMMUNICATION')}</Text>
 
         <PermissionItem 
             icon="camera-outline"
-            title="Camera"
+            title={t('title.Camera', 'Camera')}
             description="Required for KYC verification and taking profile pictures."
             isGranted={permissions.camera}
             onToggle={(val) => handleToggle('camera', val)}
@@ -150,7 +154,7 @@ export const AppPermissionsScreen = () => {
 
         <PermissionItem 
             icon="image-outline"
-            title="Photo Library"
+            title={t('title.PhotoLibrary', 'Photo Library')}
             description="Allows you to upload ID documents and send photos in chat."
             isGranted={permissions.photos}
             onToggle={(val) => handleToggle('photos', val)}
@@ -158,17 +162,17 @@ export const AppPermissionsScreen = () => {
 
         <PermissionItem 
             icon="microphone-outline"
-            title="Microphone"
+            title={t('title.Microphone', 'Microphone')}
             description="Used for voice calls and sending voice notes in chat."
             isGranted={permissions.microphone}
             onToggle={(val) => handleToggle('microphone', val)}
         />
 
-        <Text style={styles.sectionTitle}>OPTIONAL</Text>
+        <Text style={styles.sectionTitle}>{t('optional', 'OPTIONAL')}</Text>
 
         <PermissionItem 
             icon="calendar-sync-outline"
-            title="Calendar Sync"
+            title={t('title.CalendarSync', 'Calendar Sync')}
             description="Automatically add your upcoming CoBuddy sessions to your calendar."
             isGranted={permissions.calendar}
             onToggle={(val) => handleToggle('calendar', val)}
@@ -176,7 +180,7 @@ export const AppPermissionsScreen = () => {
 
         <PermissionItem 
             icon="contacts-outline"
-            title="Contacts"
+            title={t('title.Contacts', 'Contacts')}
             description="Find friends who are already using CoBuddy."
             isGranted={permissions.contacts}
             onToggle={(val) => handleToggle('contacts', val)}

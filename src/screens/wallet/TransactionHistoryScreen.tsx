@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
@@ -16,7 +17,8 @@ const ALL_TRANSACTIONS = [
 
 const FILTERS = ['All', 'Money Added', 'Spent', 'Refunds'];
 
-export const TransactionHistoryScreen = () => {
+export const TransactionHistoryScreen = () => { 
+  const { t } = useTranslation('wallet.transactionHistory');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [activeFilter, setActiveFilter] = useState('All');
@@ -33,7 +35,7 @@ export const TransactionHistoryScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Transaction History</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Transaction History')}</Text>
         <TouchableOpacity style={styles.backBtn} activeOpacity={0.7}>
             <Icon name="download" size={22} color={theme.colors.primary} />
         </TouchableOpacity>
@@ -58,7 +60,7 @@ export const TransactionHistoryScreen = () => {
         {filtered.length === 0 ? (
            <View style={styles.emptyState}>
              <Icon name="receipt" size={48} color={theme.colors.textSecondary} />
-             <Text style={styles.emptyText}>No transactions found.</Text>
+             <Text style={styles.emptyText}>{t('emptyText', 'No transactions found.')}</Text>
            </View>
         ) : (
           filtered.map((tx, index) => (

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -35,7 +36,8 @@ const FAQS = [
   { id: 'f12', categoryId: '4', question: 'How do I delete my account?', answer: 'You can delete your account from Profile > Settings Hub > Account Settings > Delete Account. Please note this action is permanent.' },
 ];
 
-export const HelpCenterScreen = () => {
+export const HelpCenterScreen = () => { 
+  const { t } = useTranslation('support.helpCenter');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,7 +60,7 @@ export const HelpCenterScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Help Center</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Help Center')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -67,12 +69,12 @@ export const HelpCenterScreen = () => {
             
             {/* Search Banner */}
             <View style={styles.searchSection}>
-                <Text style={styles.greeting}>Hi there, how can we help?</Text>
+                <Text style={styles.greeting}>{t('greeting', 'Hi there, how can we help?')}</Text>
                 <View style={styles.searchBox}>
                     <Icon name="magnify" size={22} color={theme.colors.textSecondary} />
                     <TextInput 
                         style={styles.searchInput}
-                        placeholder="Search for help, FAQs..."
+                        placeholder={t('placeholder.SearchForHelpFA', 'Search for help, FAQs...')}
                         placeholderTextColor={theme.colors.textSecondary}
                         value={searchQuery}
                         onChangeText={(text) => {
@@ -89,7 +91,7 @@ export const HelpCenterScreen = () => {
             </View>
 
             {/* Categories Grid */}
-            <Text style={styles.sectionTitle}>BROWSE TOPICS</Text>
+            <Text style={styles.sectionTitle}>{t('browseTopics', 'BROWSE TOPICS')}</Text>
             <View style={styles.grid}>
                 {CATEGORIES.map(cat => {
                     const isSelected = selectedCategory === cat.id;
@@ -121,7 +123,7 @@ export const HelpCenterScreen = () => {
                 {filteredFaqs.length === 0 ? (
                     <View style={styles.emptyState}>
                         <Icon name="file-question-outline" size={32} color={theme.colors.textSecondary} />
-                        <Text style={styles.emptyStateText}>No FAQs found for this topic.</Text>
+                        <Text style={styles.emptyStateText}>{t('noFaqs', 'No FAQs found for this topic.')}</Text>
                     </View>
                 ) : (
                     filteredFaqs.map((faq, index) => {
@@ -150,8 +152,8 @@ export const HelpCenterScreen = () => {
             {/* Contact Support */}
             <View style={styles.contactCard}>
                 <View style={styles.contactMeta}>
-                    <Text style={styles.contactTitle}>Still need help?</Text>
-                    <Text style={styles.contactSub}>Our 24/7 concierge team is here for you.</Text>
+                    <Text style={styles.contactTitle}>{t('stillNeedHelp', 'Still need help?')}</Text>
+                    <Text style={styles.contactSub}>{t('contactSub', 'Our 24/7 concierge team is here for you.')}</Text>
                 </View>
                 <TouchableOpacity 
                     style={styles.chatBtn}
@@ -159,7 +161,7 @@ export const HelpCenterScreen = () => {
                     onPress={() => navigation.navigate('ConciergeChatScreen')}
                 >
                     <Icon name="message-text-outline" size={20} color={theme.colors.background} />
-                    <Text style={styles.chatBtnText}>Chat Now</Text>
+                    <Text style={styles.chatBtnText}>{t('chatNow', 'Chat Now')}</Text>
                 </TouchableOpacity>
             </View>
 

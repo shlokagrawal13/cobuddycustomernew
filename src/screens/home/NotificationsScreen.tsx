@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -123,7 +124,8 @@ const MOCK_NOTIFICATIONS: NotificationItem[] = [
   },
 ];
 
-export const NotificationsScreen = () => {
+export const NotificationsScreen = () => { 
+  const { t } = useTranslation('home.notifications');
   const navigation = useNavigation<any>();
   const [activeCategory, setActiveCategory] = useState<NotificationCategory>('All');
   const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS);
@@ -153,12 +155,12 @@ export const NotificationsScreen = () => {
 
       {/* Header */}
       <SmartHeader 
-        title="Notifications" 
+        title={t('title.Notifications', 'Notifications')} 
         fallbackTab="HomeTab"
         rightAction={
           notifications.some(n => !n.isRead) ? (
             <TouchableOpacity onPress={handleMarkAllRead} activeOpacity={0.7}>
-              <Text style={styles.markReadText}>Mark all read</Text>
+              <Text style={styles.markReadText}>{t('markAllRead', 'Mark all read')}</Text>
             </TouchableOpacity>
           ) : undefined
         }
@@ -203,8 +205,8 @@ export const NotificationsScreen = () => {
         {filteredNotifications.length === 0 ? (
           <View style={styles.emptyState}>
             <Icon name="bell-sleep-outline" size={64} color="rgba(255,255,255,0.1)" />
-            <Text style={styles.emptyTitle}>All Caught Up!</Text>
-            <Text style={styles.emptySub}>You have no notifications in this category right now.</Text>
+            <Text style={styles.emptyTitle}>{t('emptyTitle', 'All Caught Up!')}</Text>
+            <Text style={styles.emptySub}>{t('emptySub', 'You have no notifications in this category right now.')}</Text>
           </View>
         ) : (
           filteredNotifications.map((notif, index) => (

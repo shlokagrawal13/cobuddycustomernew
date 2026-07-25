@@ -1,4 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import { useTranslation } from 'react-i18next';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, Platform, KeyboardAvoidingView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -14,7 +15,8 @@ const DEFAULT_PAYOUT = {
     icon: 'bank'
 };
 
-export const WithdrawMoneyScreen = () => {
+export const WithdrawMoneyScreen = () => { 
+  const { t } = useTranslation('wallet.withdrawMoney');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -58,7 +60,7 @@ export const WithdrawMoneyScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Withdraw Money</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Withdraw Money')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -66,7 +68,7 @@ export const WithdrawMoneyScreen = () => {
         <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
             
             <View style={styles.balanceInfoBox}>
-                <Text style={styles.balanceInfoLabel}>WITHDRAWABLE BALANCE</Text>
+                <Text style={styles.balanceInfoLabel}>{t('balanceLabel', 'WITHDRAWABLE BALANCE')}</Text>
                 <Text style={styles.balanceInfoValue}>₹4,500</Text>
             </View>
 
@@ -76,7 +78,7 @@ export const WithdrawMoneyScreen = () => {
                     style={styles.amountInput}
                     value={amount}
                     onChangeText={setAmount}
-                    placeholder="0"
+                    placeholder={t('placeholder.0', '0')}
                     placeholderTextColor={theme.colors.textSecondary}
                     keyboardType="number-pad"
                     maxLength={5}
@@ -86,14 +88,14 @@ export const WithdrawMoneyScreen = () => {
 
             <View style={styles.quickSelect}>
                 <TouchableOpacity style={styles.maxBtn} onPress={() => setAmount(MAX_WITHDRAWABLE.toString())}>
-                    <Text style={styles.maxBtnText}>Withdraw Max (₹{MAX_WITHDRAWABLE})</Text>
+                    <Text style={styles.maxBtnText}>{t('maxBtn', 'Withdraw Max (₹{{max}})', { max: MAX_WITHDRAWABLE })}</Text>
                 </TouchableOpacity>
             </View>
 
-            <Text style={styles.helperText}>Minimum withdrawal is ₹100. No processing fees apply.</Text>
+            <Text style={styles.helperText}>{t('helperText', 'Minimum withdrawal is ₹100. No processing fees apply.')}</Text>
 
             <View style={styles.paymentCard}>
-                <Text style={styles.sectionTitle}>TRANSFER TO</Text>
+                <Text style={styles.sectionTitle}>{t('sectionTitle', 'TRANSFER TO')}</Text>
                 
                 <View style={styles.paymentRow}>
                     <View style={styles.paymentIconWrap}>
@@ -108,14 +110,14 @@ export const WithdrawMoneyScreen = () => {
                         activeOpacity={0.7}
                         onPress={() => navigation.navigate('WithdrawalMethodsScreen', { currentId: selectedMethod.id })}
                     >
-                        <Text style={styles.changeText}>Change</Text>
+                        <Text style={styles.changeText}>{t('btnChange', 'Change')}</Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.infoBanner}>
                     <Icon name="clock-outline" size={16} color={theme.colors.primary} />
                     <View style={{flex: 1}}>
-                        <Text style={styles.infoTitle}>Processing Time</Text>
+                        <Text style={styles.infoTitle}>{t('infoTitle', 'Processing Time')}</Text>
                         <Text style={styles.infoSub}>{selectedMethod.type === 'upi' ? 'UPI transfers are usually instant, but can take up to 2 hours.' : 'Standard IMPS/NEFT transfer takes up to 2-3 business days.'}</Text>
                     </View>
                 </View>
@@ -130,7 +132,7 @@ export const WithdrawMoneyScreen = () => {
               activeOpacity={0.8}
               onPress={handleWithdraw}
           >
-              <Text style={styles.proceedText}>Withdraw ₹{amount || '0'}</Text>
+              <Text style={styles.proceedText}>{t('proceedToPay', 'Withdraw ₹{{amount}}', { amount: amount || '0' })}</Text>
           </TouchableOpacity>
       </View>
 

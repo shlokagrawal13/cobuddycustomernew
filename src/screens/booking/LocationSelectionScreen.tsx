@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, Alert, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const RECENT_LOCATIONS = [
     { id: '3', mainText: 'Andheri East', subText: 'Mumbai, MH', icon: 'history' },
 ];
 
-export const LocationSelectionScreen = () => {
+export const LocationSelectionScreen = () => { 
+  const { t } = useTranslation('booking.locationSelection');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,7 +54,7 @@ export const LocationSelectionScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Select Location</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Select Location')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -61,7 +63,7 @@ export const LocationSelectionScreen = () => {
               <Icon name="magnify" size={22} color={theme.colors.textSecondary} style={styles.searchIcon} />
               <TextInput 
                   style={styles.searchInput}
-                  placeholder="Search city, area, or landmark"
+                  placeholder={t('placeholder.SearchCityAreaO', 'Search city, area, or landmark')}
                   placeholderTextColor={theme.colors.textSecondary}
                   value={searchQuery}
                   onChangeText={setSearchQuery}
@@ -90,8 +92,8 @@ export const LocationSelectionScreen = () => {
                     <Icon name="crosshairs-gps" size={22} color={theme.colors.primary} />
                 )}
                 <View style={styles.gpsMeta}>
-                    <Text style={styles.gpsTitle}>Use Current Location</Text>
-                    <Text style={styles.gpsSub}>Enable GPS for accurate meetups</Text>
+                    <Text style={styles.gpsTitle}>{t('gpsTitle', 'Use Current Location')}</Text>
+                    <Text style={styles.gpsSub}>{t('gpsSub', 'Enable GPS for accurate meetups')}</Text>
                 </View>
                 <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
@@ -99,7 +101,7 @@ export const LocationSelectionScreen = () => {
 
         {searchQuery.length === 0 && (
             <View style={styles.section}>
-                <Text style={styles.sectionTitle}>RECENT & SAVED</Text>
+                <Text style={styles.sectionTitle}>{t('sectionTitle', 'RECENT & SAVED')}</Text>
                 <View style={styles.card}>
                     {RECENT_LOCATIONS.map((loc, index) => (
                         <TouchableOpacity 
@@ -130,7 +132,7 @@ export const LocationSelectionScreen = () => {
                         </View>
                         <View style={styles.meta}>
                             <Text style={styles.title}>{searchQuery}</Text>
-                            <Text style={styles.sub}>Tap to select this location</Text>
+                            <Text style={styles.sub}>{t('tapToSelect', 'Tap to select this location')}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

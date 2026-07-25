@@ -1,0 +1,13 @@
+{
+  "headerTitle": "Meetup Reminder",
+  "alertPrefix": "Your session with ",
+  "alertMid": " starts in ",
+  "alertHours": "2 hours",
+  "alertSuffix": ".",
+  "cardTitle": "Meetup Details",
+  "mapPlaceholder": "Map View Placeholder",
+  "getDirections": "Get Directions",
+  "safetyTitle": "Safety Checklist",
+  "bottomHint": "Only confirm arrival when you are physically at the venue.",
+  "primaryBtnText": "Simulate Arrival at Venue"
+}

@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const TipGratuityScreen = () => {
+export const TipGratuityScreen = () => { 
+  const { t } = useTranslation('session.tip');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedTip, setSelectedTip] = useState<number | null>(null);
@@ -45,9 +47,9 @@ export const TipGratuityScreen = () => {
         <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Add a Tip</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Add a Tip')}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('CompanionReviewScreen')}>
-          <Text style={styles.skipBtn}>Skip</Text>
+          <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -58,8 +60,8 @@ export const TipGratuityScreen = () => {
             <Icon name="gift-outline" size={48} color={theme.colors.primary} />
           </View>
           
-          <Text style={styles.title}>Show your appreciation</Text>
-          <Text style={styles.subtitle}>Did Elena go above and beyond? A small tip can make their day.</Text>
+          <Text style={styles.title}>{t('title', 'Show your appreciation')}</Text>
+          <Text style={styles.subtitle}>{t('subtitle', 'Did Elena go above and beyond? A small tip can make their day.')}</Text>
 
           <View style={styles.tipGrid}>
             {TIPS.map(amount => (
@@ -89,20 +91,20 @@ export const TipGratuityScreen = () => {
                     keyboardType="numeric"
                     value={customTip}
                     onChangeText={setCustomTip}
-                    placeholder="0"
+                    placeholder={t('placeholder.0', '0')}
                     placeholderTextColor="rgba(212,175,55,0.5)"
                     maxLength={5}
                   />
                 </View>
               ) : (
-                <Text style={[styles.tipAmount, selectedTip === -1 && styles.tipAmountSelected]}>Custom</Text>
+                <Text style={[styles.tipAmount, selectedTip === -1 && styles.tipAmountSelected]}>{t('customTip', 'Custom')}</Text>
               )}
             </TouchableOpacity>
           </View>
 
           <View style={styles.trustBanner}>
             <Icon name="shield-check" size={20} color={theme.colors.success} />
-            <Text style={styles.trustText}>100% of your tip goes directly to the companion. CoBuddy takes zero commission.</Text>
+            <Text style={styles.trustText}>{t('trustText', '100% of your tip goes directly to the companion. CoBuddy takes zero commission.')}</Text>
           </View>
 
         </ScrollView>

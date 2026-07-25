@@ -1,0 +1,14 @@
+{
+  "headerTitle": "Delete Account",
+  "warningTitle": "Are you absolutely sure?",
+  "point1": "  Your entire chat history",
+  "point2": "  Your booking history and reviews",
+  "point3": "  Any remaining wallet balance",
+  "point4": "  Your KYC verification status",
+  "confirmLabel": "To confirm, please type \"DELETE\" below:",
+  "deleteBtn": "Permanently Delete My Account",
+  "chatHistory": "  Your entire chat history",
+  "bookingHistory": "  Your booking history and reviews",
+  "walletBalance": "  Any remaining wallet balance",
+  "kycStatus": "  Your KYC verification status"
+}

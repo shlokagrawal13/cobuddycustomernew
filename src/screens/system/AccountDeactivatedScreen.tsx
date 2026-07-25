@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const AccountDeactivatedScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.deactivated');
   const navigation = useNavigation<any>();
 
   return (
@@ -18,7 +18,7 @@ export const AccountDeactivatedScreen = () => {
           <Icon name="account-off-outline" size={72} color={theme.colors.textSecondary} />
         </View>
         
-        <Text style={styles.title}>Account Deactivated</Text>
+        <Text style={styles.title}>{t('title', 'Account Deactivated')}</Text>
         <Text style={styles.message}>
           Your account is currently deactivated. Your profile is hidden, and you won't receive new booking requests or messages.
         </Text>
@@ -29,14 +29,14 @@ export const AccountDeactivatedScreen = () => {
           style={styles.primaryButton}
           onPress={() => navigation.navigate('AccountReactivationRequestScreen')}
         >
-          <Text style={styles.primaryButtonText}>Reactivate Account</Text>
+          <Text style={styles.primaryButtonText}>{t('reactivateBtn', 'Reactivate Account')}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.secondaryButton}
           onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
         >
-          <Text style={styles.secondaryButtonText}>Contact Support</Text>
+          <Text style={styles.secondaryButtonText}>{t('supportBtn', 'Contact Support')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

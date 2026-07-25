@@ -1,0 +1,21 @@
+{
+  "headerTitle": "Step 4 of 4",
+  "title": "Review your Request",
+  "subtitle": "Please confirm the details below before sending your request.",
+  "summaryLabelActivity": "Activity",
+  "defaultActivity": "Coffee Meetup",
+  "defaultPrice": "₹500/hr",
+  "summaryLabelVenue": "Venue",
+  "defaultVenue": "Custom Venue",
+  "summaryLabelDate": "Date & Time",
+  "durationText": "{{time}} ({{duration}} {{hourText}})",
+  "specialInstructions": "Special Instructions",
+  "paymentSummary": "Payment Summary",
+  "baseFare": "Base Fare (₹{{baseRate}} x {{duration}} hr)",
+  "serviceFee": "Safety & Service Fee",
+  "estimatedTotal": "Estimated Total",
+  "totalDisclaimer": "Payment is processed only after the companion accepts.",
+  "devTitle": "[Dev] Simulate KYC Status",
+  "devText": "KYC Verified?",
+  "nextBtnText": "Send Request"
+}

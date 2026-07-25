@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
-export const SessionCompleteScreen = () => {
+export const SessionCompleteScreen = () => { 
+  const { t } = useTranslation('session.complete');
   const navigation = useNavigation<any>();
   const [fadeAnim] = useState(new Animated.Value(0));
 
@@ -28,31 +30,31 @@ export const SessionCompleteScreen = () => {
             <Icon name="check-decagram" size={64} color={theme.colors.success} />
           </View>
 
-          <Text style={styles.title}>Session Complete!</Text>
-          <Text style={styles.subtitle}>We hope you had a fantastic time with Elena.</Text>
+          <Text style={styles.title}>{t('title', 'Session Complete!')}</Text>
+          <Text style={styles.subtitle}>{t('subtitle', 'We hope you had a fantastic time with Elena.')}</Text>
 
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>FINAL RECEIPT</Text>
+            <Text style={styles.cardTitle}>{t('cardTitle', 'FINAL RECEIPT')}</Text>
             
             <View style={styles.row}>
-              <Text style={styles.label}>Base Session (2 Hrs)</Text>
+              <Text style={styles.label}>{t('labelBase', 'Base Session (2 Hrs)')}</Text>
               <Text style={styles.value}>₹3,000</Text>
             </View>
             
             <View style={styles.row}>
-              <Text style={styles.label}>Platform Fee (5%)</Text>
+              <Text style={styles.label}>{t('labelPlatform', 'Platform Fee (5%)')}</Text>
               <Text style={styles.value}>₹150</Text>
             </View>
 
             <View style={styles.row}>
-              <Text style={styles.label}>Taxes (18% GST)</Text>
+              <Text style={styles.label}>{t('labelTaxes', 'Taxes (18% GST)')}</Text>
               <Text style={styles.value}>₹54</Text>
             </View>
             
             <View style={styles.divider} />
             
             <View style={styles.row}>
-              <Text style={[styles.label, { color: theme.colors.textPrimary, fontWeight: 'bold' }]}>Escrow Released</Text>
+              <Text style={[styles.label, { color: theme.colors.textPrimary, fontWeight: 'bold' }]}>{t('labelEscrow', 'Escrow Released')}</Text>
               <Text style={[styles.value, { color: theme.colors.success }]}>₹3,204</Text>
             </View>
 
@@ -67,7 +69,7 @@ export const SessionCompleteScreen = () => {
             style={styles.primaryBtn} 
             onPress={() => navigation.navigate('PostSessionFeedbackScreen')}
           >
-            <Text style={styles.primaryBtnText}>Continue to Feedback</Text>
+            <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Continue to Feedback')}</Text>
           </TouchableOpacity>
         </View>
 

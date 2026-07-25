@@ -7,10 +7,12 @@
 
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { RootNavigator } from './src/navigation/RootNavigator';
 import { theme } from './src/theme';
+import { useHardwareBackLock } from './src/hooks/useSmartNavigation';
 
 // Initialize i18n
 import './src/i18n';
@@ -24,13 +26,18 @@ const navTheme = {
 };
 
 function App() {
+  // Global lock against double hardware back presses that corrupt react-native-screens
+  useHardwareBackLock();
+
   return (
-    <SafeAreaProvider>
-      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
-      <NavigationContainer theme={navTheme}>
-        <RootNavigator />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
+        <NavigationContainer theme={navTheme}>
+          <RootNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 

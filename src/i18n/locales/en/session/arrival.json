@@ -1,0 +1,17 @@
+{
+  "headerTitle": "Meetup Day",
+  "venuePrefix": "Meeting at ",
+  "venueName": "Starbucks, Connaught Place",
+  "gpsActive": "GPS Tracking Active",
+  "otpTitle1": "Are you at the venue?",
+  "otpDesc1": "Please confirm you have physically arrived at the meeting location to unlock your Escrow OTP.",
+  "checkInBtn": "I'm at the Venue (Check-In)",
+  "otpTitle2": "Escrow Unlock OTP",
+  "otpSharePrefix": "Share this 4-digit code with ",
+  "otpShareSuffix": " to start the session.",
+  "commTitle": "Can't find your companion?",
+  "commCall": "Call Securely",
+  "commMessage": "Message",
+  "reportText": "Companion didn't show up or looks different? Report Issue",
+  "mockOtp": "[MOCK] Companion entered OTP"
+}

@@ -1,4 +1,5 @@
-import React from 'react';
+import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  Modal,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
@@ -24,8 +26,15 @@ const Colors = {
   goldDim: 'rgba(212,175,55,0.1)',
 };
 
-export const ChatListScreen = () => {
+export const ChatListScreen = () => { 
+  const { t } = useTranslation('chat.list');
   const navigation = useNavigation<any>();
+
+  const [showNewMessageModal, setShowNewMessageModal] = useState(false);
+  const activeBookings = [
+    { id: 'CB-REQ-8830', name: 'Kabir Singh', role: 'Event Companion', online: true },
+    { id: 'CB-REQ-9912', name: 'Sneha Verma', role: 'Local Guide', online: false },
+  ];
 
   const MOCK_CHATS = [
     {
@@ -66,10 +75,11 @@ export const ChatListScreen = () => {
 
       {/* ── Polished Theme Header ── */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Messages</Text>
-        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7}>
-          <Icon name="bell-outline" size={24} color={Colors.textPrimary} />
-          <View style={styles.headerNotifDot} />
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Messages')}</Text>
+        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => setShowNewMessageModal(true)}>
+          <Icon name="square-edit-outline" size={24} color={Colors.textPrimary} />
+          {/* Ye dot tab dikhega jab koi naya notification/message compose action pending ho, ya isko hata bhi sakte hain */}
+          {/* <View style={styles.headerNotifDot} /> */}
         </TouchableOpacity>
       </View>
 
@@ -89,11 +99,11 @@ export const ChatListScreen = () => {
               </View>
               <View style={styles.liveBadge}>
                 <View style={styles.liveDot} />
-                <Text style={styles.liveBadgeText}>Online Now</Text>
+                <Text style={styles.liveBadgeText}>{t('liveBadgeText', 'Online Now')}</Text>
               </View>
             </View>
 
-            <Text style={styles.liveCardTitle}>CoBuddy Concierge</Text>
+            <Text style={styles.liveCardTitle}>{t('liveCardTitle', 'CoBuddy Concierge')}</Text>
             <Text style={styles.liveCardSub}>
               Connect with a dedicated specialist for immediate 24/7 assistance.
             </Text>
@@ -103,7 +113,7 @@ export const ChatListScreen = () => {
               onPress={() => navigation.navigate('ConciergeChatScreen')}
               activeOpacity={0.8}>
               <Icon name="message-text" size={18} color={Colors.background} />
-              <Text style={styles.startBtnText}>Start Conversation</Text>
+              <Text style={styles.startBtnText}>{t('startBtnText', 'Start Conversation')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -112,7 +122,7 @@ export const ChatListScreen = () => {
 
         {/* ── Active Conversations List ── */}
         <View style={styles.convoHeader}>
-          <Text style={styles.convoHeaderLabel}>ACTIVE CONVERSATIONS</Text>
+          <Text style={styles.convoHeaderLabel}>{t('convoHeaderLabel', 'ACTIVE CONVERSATIONS')}</Text>
         </View>
 
         {MOCK_CHATS.map((chat, index) => (
@@ -146,7 +156,7 @@ export const ChatListScreen = () => {
                     )}
                     
                     {chat.isTyping ? (
-                      <Text style={[styles.convoPreview, {color: Colors.primary, fontStyle: 'italic'}]}>typing...</Text>
+                      <Text style={[styles.convoPreview, {color: Colors.primary, fontStyle: 'italic'}]}>{t('typing', 'typing...')}</Text>
                     ) : (
                       <Text style={[styles.convoPreview, chat.unread > 0 && {color: Colors.textPrimary, opacity: 1, fontWeight: '500'}]} numberOfLines={1}>
                         {chat.lastMessage}
@@ -171,13 +181,51 @@ export const ChatListScreen = () => {
         {MOCK_CHATS.length === 0 && (
           <View style={styles.emptyState}>
             <Icon name="message-text-outline" size={48} color={Colors.border} />
-            <Text style={styles.emptyTitle}>No active chats</Text>
-            <Text style={styles.emptyDesc}>Once your booking is accepted, you can securely chat with your companion here.</Text>
+            <Text style={styles.emptyTitle}>{t('emptyTitle', 'No active chats')}</Text>
+            <Text style={styles.emptyDesc}>{t('emptyDesc', 'Once your booking is accepted, you can securely chat with your companion here.')}</Text>
           </View>
         )}
 
         <View style={{height: 32}} />
       </ScrollView>
+
+      {/* ── New Message Modal ── */}
+      <Modal
+        visible={showNewMessageModal}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setShowNewMessageModal(false)}
+      >
+        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setShowNewMessageModal(false)}>
+          <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
+            <View style={styles.modalHandle} />
+            <Text style={styles.modalTitle}>{t('newMessageTitle', 'New Message')}</Text>
+            <Text style={styles.modalSub}>{t('newMessageSub', 'Select an active booking to start a conversation.')}</Text>
+            
+            {activeBookings.map(bk => (
+              <TouchableOpacity 
+                key={bk.id} 
+                style={styles.newChatOption}
+                activeOpacity={0.8}
+                onPress={() => {
+                  setShowNewMessageModal(false);
+                  navigation.navigate('CompanionChatScreen', { companionName: bk.name, bookingId: bk.id });
+                }}
+              >
+                <View style={styles.newChatAvatar}>
+                   <Text style={styles.newChatAvatarText}>{bk.name.charAt(0)}</Text>
+                   {bk.online && <View style={styles.newChatOnlineDot} />}
+                </View>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.newChatName}>{bk.name}</Text>
+                  <Text style={styles.newChatRole}>{bk.role}</Text>
+                </View>
+                <Icon name="chevron-right" size={20} color={Colors.textSecondary} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -352,7 +400,86 @@ const styles = StyleSheet.create({
     width: 20, height: 20, borderRadius: 10,
     justifyContent: 'center', alignItems: 'center'
   },
-  unreadText: {color: Colors.background, fontSize: 10, fontWeight: 'bold'},
+  unreadText: {
+    color: Colors.background,
+    fontSize: 10,
+    fontWeight: 'bold',
+  },
+
+  // ── Modal Styles ──
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: Colors.surface,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 24,
+    paddingBottom: 40,
+  },
+  modalHandle: {
+    width: 40,
+    height: 4,
+    backgroundColor: Colors.border,
+    borderRadius: 2,
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: Colors.textPrimary,
+    marginBottom: 8,
+  },
+  modalSub: {
+    fontSize: 14,
+    color: Colors.textSecondary,
+    marginBottom: 24,
+  },
+  newChatOption: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: Colors.border,
+  },
+  newChatAvatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(212,175,55,0.15)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16,
+  },
+  newChatAvatarText: {
+    color: Colors.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  newChatOnlineDot: {
+    position: 'absolute',
+    bottom: 2,
+    right: 2,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: Colors.success,
+    borderWidth: 2,
+    borderColor: Colors.surface,
+  },
+  newChatName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: Colors.textPrimary,
+    marginBottom: 4,
+  },
+  newChatRole: {
+    fontSize: 13,
+    color: Colors.textSecondary,
+  },
 
   emptyState: {alignItems: 'center', justifyContent: 'center', paddingVertical: 32},
   emptyTitle: {fontSize: 16, fontWeight: 'bold', color: Colors.textPrimary, marginTop: 12, marginBottom: 4},

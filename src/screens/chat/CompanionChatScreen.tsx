@@ -4,13 +4,15 @@ import {
   StatusBar, KeyboardAvoidingView, Platform, Modal, Alert
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const CompanionChatScreen = () => {
+export const CompanionChatScreen = () => { 
+  const { t } = useTranslation('chat.companion');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -89,7 +91,7 @@ export const CompanionChatScreen = () => {
             <View style={{ marginLeft: 12, flexShrink: 1 }}>
               <Text style={styles.headerTitle} numberOfLines={1}>{companionName}</Text>
               <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', params: { bookingId } })}>
-                <Text style={styles.viewBookingText}>View Booking</Text>
+                <Text style={styles.viewBookingText}>{t('viewBookingText', 'View Booking')}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -119,7 +121,7 @@ export const CompanionChatScreen = () => {
         onContentSizeChange={() => scrollRef.current?.scrollToEnd({ animated: false })}
       >
         <View style={styles.dateChip}>
-          <Text style={styles.dateText}>TODAY</Text>
+          <Text style={styles.dateText}>{t('dateText', 'TODAY')}</Text>
         </View>
 
         {messages.map((msg) => {
@@ -161,7 +163,7 @@ export const CompanionChatScreen = () => {
         >
           <View style={styles.optionsSheet}>
             <View style={styles.sheetHandle} />
-            <Text style={styles.sheetTitle}>Chat Options</Text>
+            <Text style={styles.sheetTitle}>{t('sheetTitle', 'Chat Options')}</Text>
             
             <View style={styles.optionsList}>
               <TouchableOpacity 
@@ -172,7 +174,7 @@ export const CompanionChatScreen = () => {
                 }}
               >
                 <Icon name="account-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
-                <Text style={styles.optionText}>View Profile</Text>
+                <Text style={styles.optionText}>{t('optionProfile', 'View Profile')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity 
@@ -183,7 +185,7 @@ export const CompanionChatScreen = () => {
                 }}
               >
                 <Icon name="bell-off-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
-                <Text style={styles.optionText}>Mute Notifications</Text>
+                <Text style={styles.optionText}>{t('optionMute', 'Mute Notifications')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity 
@@ -194,7 +196,7 @@ export const CompanionChatScreen = () => {
                 }}
               >
                 <Icon name="delete-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
-                <Text style={styles.optionText}>Clear Chat</Text>
+                <Text style={styles.optionText}>{t('optionClear', 'Clear Chat')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity 
@@ -206,7 +208,7 @@ export const CompanionChatScreen = () => {
                 }}
               >
                 <Icon name="shield-alert-outline" size={24} color={theme.colors.error} style={styles.optionIcon} />
-                <Text style={[styles.optionText, { color: theme.colors.error, fontWeight: 'bold' }]}>Report Safety Issue</Text>
+                <Text style={[styles.optionText, { color: theme.colors.error, fontWeight: 'bold' }]}>{t('optionReport', 'Report Safety Issue')}</Text>
               </TouchableOpacity>
             </View>
           </View>

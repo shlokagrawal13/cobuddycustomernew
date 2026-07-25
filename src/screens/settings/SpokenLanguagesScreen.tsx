@@ -1,6 +1,7 @@
 ﻿import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -22,7 +23,8 @@ const SPOKEN_LANGUAGES = [
     { id: 'es', label: 'Spanish', native: 'Español' },
 ];
 
-export const SpokenLanguagesScreen = () => {
+export const SpokenLanguagesScreen = () => { 
+  const { t } = useTranslation('settings.spokenLanguages');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -63,9 +65,9 @@ export const SpokenLanguagesScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Spoken Languages</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Spoken Languages')}</Text>
         <TouchableOpacity style={styles.saveHeaderBtn} onPress={handleSave}>
-            <Text style={styles.saveHeaderBtnText}>Done</Text>
+            <Text style={styles.saveHeaderBtnText}>{t('doneBtn', 'Done')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -73,7 +75,7 @@ export const SpokenLanguagesScreen = () => {
         
         <View style={styles.infoBanner}>
             <Icon name="earth" size={24} color={theme.colors.primary} style={{marginBottom: 8}} />
-            <Text style={styles.infoText}>Select up to 5 languages you can fluently converse in during a meetup.</Text>
+            <Text style={styles.infoText}>{t('infoText', 'Select up to 5 languages you can fluently converse in during a meetup.')}</Text>
             <Text style={styles.countText}>{selected.size}/5 selected</Text>
         </View>
 

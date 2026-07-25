@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -13,7 +14,8 @@ const INCIDENT_TYPES = [
   { id: 'other', label: 'Other Safety Concern' }
 ];
 
-export const IncidentReportScreen = () => {
+export const IncidentReportScreen = () => { 
+  const { t } = useTranslation('safety.report');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   
@@ -43,7 +45,7 @@ export const IncidentReportScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Report Incident</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Report Incident')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -57,7 +59,7 @@ export const IncidentReportScreen = () => {
             </Text>
           </View>
 
-          <Text style={styles.sectionTitle}>WHAT HAPPENED?</Text>
+          <Text style={styles.sectionTitle}>{t('whatHappened', 'WHAT HAPPENED?')}</Text>
           <View style={styles.typeContainer}>
             {INCIDENT_TYPES.map(type => (
               <TouchableOpacity 
@@ -77,11 +79,11 @@ export const IncidentReportScreen = () => {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.inputLabel}>BOOKING REFERENCE OR USERNAME (OPTIONAL)</Text>
+            <Text style={styles.inputLabel}>{t('refLabel', 'BOOKING REFERENCE OR USERNAME (OPTIONAL)')}</Text>
             <View style={styles.inputContainer}>
               <TextInput 
                 style={styles.input}
-                placeholder="e.g., Booking #4412 or Companion name"
+                placeholder={t('placeholder.eGBooking4412Or', 'e.g., Booking #4412 or Companion name')}
                 placeholderTextColor={theme.colors.textSecondary}
                 value={bookingRef}
                 onChangeText={setBookingRef}
@@ -90,11 +92,11 @@ export const IncidentReportScreen = () => {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.inputLabel}>INCIDENT DETAILS (REQUIRED)</Text>
+            <Text style={styles.inputLabel}>{t('detailsLabel', 'INCIDENT DETAILS (REQUIRED)')}</Text>
             <View style={[styles.inputContainer, styles.textAreaContainer]}>
               <TextInput 
                 style={styles.textArea}
-                placeholder="Please describe exactly what happened..."
+                placeholder={t('placeholder.PleaseDescribeE', 'Please describe exactly what happened...')}
                 placeholderTextColor={theme.colors.textSecondary}
                 value={description}
                 onChangeText={setDescription}
@@ -105,7 +107,7 @@ export const IncidentReportScreen = () => {
           </View>
 
           <View style={styles.formGroup}>
-            <Text style={styles.inputLabel}>EVIDENCE (OPTIONAL)</Text>
+            <Text style={styles.inputLabel}>{t('evidenceLabel', 'EVIDENCE (OPTIONAL)')}</Text>
             <TouchableOpacity 
               style={[styles.attachmentBtn, hasEvidence && styles.attachmentBtnActive]}
               onPress={() => setHasEvidence(!hasEvidence)}
@@ -120,7 +122,7 @@ export const IncidentReportScreen = () => {
                 {hasEvidence ? 'Evidence Attached (Tap to remove)' : 'Upload Screenshots or Audio'}
               </Text>
             </TouchableOpacity>
-            <Text style={styles.helperText}>Max file size: 10MB</Text>
+            <Text style={styles.helperText}>{t('maxFile', 'Max file size: 10MB')}</Text>
           </View>
 
         </ScrollView>
@@ -133,7 +135,7 @@ export const IncidentReportScreen = () => {
           activeOpacity={0.8}
         >
           <Icon name="alert-octagon" size={20} color={theme.colors.background} />
-          <Text style={styles.submitBtnText}>Submit Confidential Report</Text>
+          <Text style={styles.submitBtnText}>{t('submitBtn', 'Submit Confidential Report')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const ForceUpdateScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.forceUpdate');
 
   const handleUpdate = () => {
     // Platform specific store URL
@@ -22,7 +22,7 @@ export const ForceUpdateScreen = () => {
           <Icon name="cellphone-arrow-down" size={72} color={theme.colors.primary} />
         </View>
         
-        <Text style={styles.title}>Update Required</Text>
+        <Text style={styles.title}>{t('title', 'Update Required')}</Text>
         <Text style={styles.message}>
           A crucial update is available for CoBuddy. Please update the app to the latest version to continue using our services and enjoy new features.
         </Text>
@@ -33,7 +33,7 @@ export const ForceUpdateScreen = () => {
           style={styles.primaryButton}
           onPress={handleUpdate}
         >
-          <Text style={styles.primaryButtonText}>Update Now</Text>
+          <Text style={styles.primaryButtonText}>{t('updateBtn', 'Update Now')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

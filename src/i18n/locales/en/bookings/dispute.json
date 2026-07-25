@@ -1,0 +1,11 @@
+{
+  "headerTitle": "Raise a Dispute",
+  "summaryTitle": "Disputing Booking: {{id}}",
+  "infoTitle": "Escrow Frozen",
+  "infoDesc": "Submitting a dispute will freeze the escrow payment. Our safety team will review your claim within 24 hours.",
+  "sectionCategory": "ISSUE CATEGORY",
+  "sectionDesc": "DETAILED DESCRIPTION",
+  "sectionProof": "UPLOAD PROOF (OPTIONAL)",
+  "uploadText": "Tap to upload screenshots or photos",
+  "submitBtn": "Submit Dispute"
+}

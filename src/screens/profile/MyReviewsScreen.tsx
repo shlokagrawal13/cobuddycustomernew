@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const MOCK_REVIEWS = [
     { id: '3', companionName: 'Rohan (Guide)', rating: 5, date: '1 month ago', comment: 'Great client, arrived on time and was very friendly.' }
 ];
 
-export const MyReviewsScreen = () => {
+export const MyReviewsScreen = () => { 
+  const { t } = useTranslation('profile.reviews');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -24,7 +26,7 @@ export const MyReviewsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>My Trust Profile</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'My Trust Profile')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -32,7 +34,7 @@ export const MyReviewsScreen = () => {
         
         <View style={styles.heroCard}>
             <View style={styles.heroGlow} />
-            <Text style={styles.heroSubtitle}>OVERALL TRUST SCORE</Text>
+            <Text style={styles.heroSubtitle}>{t('overallScore', 'OVERALL TRUST SCORE')}</Text>
             <View style={styles.scoreRow}>
                 <Icon name="star" size={32} color={theme.colors.primary} />
                 <Text style={styles.scoreText}>4.8</Text>
@@ -43,16 +45,16 @@ export const MyReviewsScreen = () => {
 
         <View style={styles.trustBanner}>
             <Icon name="shield-star" size={20} color={theme.colors.success} />
-            <Text style={styles.trustBannerText}>A high trust score makes it 3x more likely for your booking requests to be accepted!</Text>
+            <Text style={styles.trustBannerText}>{t('trustBanner', 'A high trust score makes it 3x more likely for your booking requests to be accepted!')}</Text>
         </View>
 
-        <Text style={styles.sectionTitle}>RECENT REVIEWS</Text>
+        <Text style={styles.sectionTitle}>{t('recentReviews', 'RECENT REVIEWS')}</Text>
 
         {MOCK_REVIEWS.length === 0 ? (
             <View style={styles.emptyState}>
                 <Icon name="star-outline" size={48} color={theme.colors.textSecondary} style={{opacity: 0.5, marginBottom: 16}} />
-                <Text style={styles.emptyTitle}>No reviews yet</Text>
-                <Text style={styles.emptySub}>Book a meetup with a companion. After your session, their review will appear here.</Text>
+                <Text style={styles.emptyTitle}>{t('emptyTitle', 'No reviews yet')}</Text>
+                <Text style={styles.emptySub}>{t('emptySub', 'Book a meetup with a companion. After your session, their review will appear here.')}</Text>
             </View>
         ) : (
             <View style={styles.reviewsList}>

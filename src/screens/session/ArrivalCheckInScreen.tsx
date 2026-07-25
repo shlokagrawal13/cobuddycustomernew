@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const ArrivalCheckInScreen = () => {
+export const ArrivalCheckInScreen = () => { 
+  const { t } = useTranslation('session.arrival');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [hasArrived, setHasArrived] = useState(false);
@@ -32,7 +34,7 @@ export const ArrivalCheckInScreen = () => {
         <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Meetup Day</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Meetup Day')}</Text>
         <View style={{ width: 40 }} />
       </View>
 
@@ -40,7 +42,7 @@ export const ArrivalCheckInScreen = () => {
         
         <View style={styles.venueInfo}>
           <Icon name="map-marker" size={16} color={theme.colors.textSecondary} />
-          <Text style={styles.venueText}>Meeting at <Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>Starbucks, Connaught Place</Text></Text>
+          <Text style={styles.venueText}>{t('venuePrefix', 'Meeting at ')}<Text style={{ color: theme.colors.primary, fontWeight: 'bold' }}>{t('venueName', 'Starbucks, Connaught Place')}</Text></Text>
         </View>
 
         {!hasArrived ? (
@@ -48,10 +50,10 @@ export const ArrivalCheckInScreen = () => {
           <View style={styles.preArrivalCard}>
             <View style={styles.mapPlaceholder}>
               <Icon name="map-marker-radius" size={48} color={theme.colors.primary} />
-              <Text style={{color: theme.colors.textSecondary, marginTop: 12}}>GPS Tracking Active</Text>
+              <Text style={{color: theme.colors.textSecondary, marginTop: 12}}>{t('gpsActive', 'GPS Tracking Active')}</Text>
             </View>
-            <Text style={styles.otpTitle}>Are you at the venue?</Text>
-            <Text style={styles.otpDesc}>Please confirm you have physically arrived at the meeting location to unlock your Escrow OTP.</Text>
+            <Text style={styles.otpTitle}>{t('otpTitle1', 'Are you at the venue?')}</Text>
+            <Text style={styles.otpDesc}>{t('otpDesc1', 'Please confirm you have physically arrived at the meeting location to unlock your Escrow OTP.')}</Text>
             
             <TouchableOpacity 
               style={[styles.primaryBtn, { width: '100%' }, isLocating && { opacity: 0.7 }]} 
@@ -61,7 +63,7 @@ export const ArrivalCheckInScreen = () => {
               {isLocating ? (
                 <ActivityIndicator color={theme.colors.background} />
               ) : (
-                <Text style={styles.primaryBtnText}>I'm at the Venue (Check-In)</Text>
+                <Text style={styles.primaryBtnText}>{t('checkInBtn', 'I\'m at the Venue (Check-In)')}</Text>
               )}
             </TouchableOpacity>
           </View>
@@ -71,8 +73,8 @@ export const ArrivalCheckInScreen = () => {
             <View style={styles.iconCircle}>
               <Icon name="shield-check" size={32} color={theme.colors.primary} />
             </View>
-            <Text style={styles.otpTitle}>Escrow Unlock OTP</Text>
-            <Text style={styles.otpDesc}>Share this 4-digit code with <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{COMPANION_NAME}</Text> to start the session.</Text>
+            <Text style={styles.otpTitle}>{t('otpTitle2', 'Escrow Unlock OTP')}</Text>
+            <Text style={styles.otpDesc}>{t('otpSharePrefix', 'Share this 4-digit code with ')}<Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{COMPANION_NAME}</Text>{t('otpShareSuffix', ' to start the session.')}</Text>
             
             <View style={styles.codeBox}>
               {MOCK_OTP.split('').map((digit, index) => (
@@ -91,15 +93,15 @@ export const ArrivalCheckInScreen = () => {
 
         {/* Quick Communication */}
         <View style={styles.commCard}>
-          <Text style={styles.commTitle}>Can't find your companion?</Text>
+          <Text style={styles.commTitle}>{t('commTitle', 'Can\'t find your companion?')}</Text>
           <View style={styles.commRow}>
             <TouchableOpacity style={styles.commBtn} onPress={() => {}}>
               <Icon name="phone" size={20} color={theme.colors.primary} />
-              <Text style={styles.commBtnText}>Call Securely</Text>
+              <Text style={styles.commBtnText}>{t('commCall', 'Call Securely')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.commBtn} onPress={() => {}}>
               <Icon name="chat" size={20} color={theme.colors.primary} />
-              <Text style={styles.commBtnText}>Message</Text>
+              <Text style={styles.commBtnText}>{t('commMessage', 'Message')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -110,7 +112,7 @@ export const ArrivalCheckInScreen = () => {
           onPress={() => navigation.navigate('SafetySupportStack', { screen: 'ReportUserScreen' })}
         >
           <Icon name="alert-circle-outline" size={16} color={theme.colors.error} />
-          <Text style={styles.reportText}>Companion didn't show up or looks different? Report Issue</Text>
+          <Text style={styles.reportText}>{t('reportText', 'Companion didn\'t show up or looks different? Report Issue')}</Text>
         </TouchableOpacity>
 
       </ScrollView>
@@ -121,7 +123,7 @@ export const ArrivalCheckInScreen = () => {
             style={styles.primaryBtn} 
             onPress={() => navigation.navigate('ActiveSessionScreen')}
           >
-            <Text style={styles.primaryBtnText}>[MOCK] Companion entered OTP</Text>
+            <Text style={styles.primaryBtnText}>{t('mockOtp', '[MOCK] Companion entered OTP')}</Text>
           </TouchableOpacity>
         </View>
       )}

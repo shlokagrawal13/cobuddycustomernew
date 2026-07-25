@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const AccountUnderManualReviewScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.manualReview');
   const navigation = useNavigation<any>();
 
   return (
@@ -18,14 +18,14 @@ export const AccountUnderManualReviewScreen = () => {
           <Icon name="clipboard-search-outline" size={72} color={theme.colors.primary} />
         </View>
         
-        <Text style={styles.title}>Under Review</Text>
+        <Text style={styles.title}>{t('title', 'Under Review')}</Text>
         <Text style={styles.message}>
           Your account is currently under manual review by our Trust & Safety team to ensure a secure environment for everyone.
         </Text>
         
         <View style={styles.infoBox}>
           <Icon name="clock-outline" size={20} color={theme.colors.textSecondary} />
-          <Text style={styles.infoText}>This process usually takes 24-48 hours.</Text>
+          <Text style={styles.infoText}>{t('info', 'This process usually takes 24-48 hours.')}</Text>
         </View>
       </View>
 
@@ -34,13 +34,13 @@ export const AccountUnderManualReviewScreen = () => {
           style={styles.primaryButton}
           onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
         >
-          <Text style={styles.primaryButtonText}>Contact Support</Text>
+          <Text style={styles.primaryButtonText}>{t('supportBtn', 'Contact Support')}</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.secondaryButton}
           onPress={() => navigation.navigate('AuthStack')}
         >
-          <Text style={styles.secondaryButtonText}>Return to Login</Text>
+          <Text style={styles.secondaryButtonText}>{t('loginBtn', 'Return to Login')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

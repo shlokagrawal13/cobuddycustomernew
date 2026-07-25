@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const DeactivateAccountScreen = () => {
+export const DeactivateAccountScreen = () => { 
+  const { t } = useTranslation('settings.deactivateAccount');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -31,7 +33,7 @@ export const DeactivateAccountScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Deactivate Account</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Deactivate Account')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -41,7 +43,7 @@ export const DeactivateAccountScreen = () => {
             <Icon name="account-off-outline" size={64} color={theme.colors.primary} />
         </View>
 
-        <Text style={styles.title}>Take a break from CoBuddy</Text>
+        <Text style={styles.title}>{t('breakTitle', 'Take a break from CoBuddy')}</Text>
         <Text style={styles.subtitle}>
             Deactivating your account is temporary. Your profile, photos, and reviews will be hidden from other users.
         </Text>
@@ -52,8 +54,8 @@ export const DeactivateAccountScreen = () => {
                     <Icon name="eye-off-outline" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.meta}>
-                    <Text style={styles.rowTitle}>Profile hidden</Text>
-                    <Text style={styles.rowSub}>No one will be able to see your profile or book you.</Text>
+                    <Text style={styles.rowTitle}>{t('profileHidden', 'Profile hidden')}</Text>
+                    <Text style={styles.rowSub}>{t('profileHiddenSub', 'No one will be able to see your profile or book you.')}</Text>
                 </View>
             </View>
             
@@ -64,8 +66,8 @@ export const DeactivateAccountScreen = () => {
                     <Icon name="calendar-clock-outline" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.meta}>
-                    <Text style={styles.rowTitle}>Pending bookings</Text>
-                    <Text style={styles.rowSub}>Any active or upcoming bookings will remain active. You must complete or cancel them.</Text>
+                    <Text style={styles.rowTitle}>{t('pendingBookings', 'Pending bookings')}</Text>
+                    <Text style={styles.rowSub}>{t('pendingBookingsSub', 'Any active or upcoming bookings will remain active. You must complete or cancel them.')}</Text>
                 </View>
             </View>
 
@@ -76,8 +78,8 @@ export const DeactivateAccountScreen = () => {
                     <Icon name="login-variant" size={20} color={theme.colors.textPrimary} />
                 </View>
                 <View style={styles.meta}>
-                    <Text style={styles.rowTitle}>Easy reactivation</Text>
-                    <Text style={styles.rowSub}>Simply log back in at any time to automatically reactivate your account.</Text>
+                    <Text style={styles.rowTitle}>{t('easyReactivation', 'Easy reactivation')}</Text>
+                    <Text style={styles.rowSub}>{t('easyReactivationSub', 'Simply log back in at any time to automatically reactivate your account.')}</Text>
                 </View>
             </View>
         </View>
@@ -86,7 +88,7 @@ export const DeactivateAccountScreen = () => {
 
       <View style={styles.footer}>
           <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={handleDeactivate}>
-              <Text style={styles.actionBtnText}>Deactivate My Account</Text>
+              <Text style={styles.actionBtnText}>{t('deactivateBtn', 'Deactivate My Account')}</Text>
           </TouchableOpacity>
       </View>
 

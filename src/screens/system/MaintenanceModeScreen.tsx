@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const MaintenanceModeScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.maintenance');
 
   const handleStatusCheck = () => {
     Linking.openURL('https://status.cobuddy.com');
@@ -20,14 +20,14 @@ export const MaintenanceModeScreen = () => {
           <Icon name="hammer-wrench" size={72} color={theme.colors.warning} />
         </View>
         
-        <Text style={styles.title}>Under Maintenance</Text>
+        <Text style={styles.title}>{t('title', 'Under Maintenance')}</Text>
         <Text style={styles.message}>
           We're currently undergoing scheduled maintenance to improve your experience. Our team is working hard to bring the app back online shortly.
         </Text>
         
         <View style={styles.timeBox}>
-          <Text style={styles.timeLabel}>Expected completion:</Text>
-          <Text style={styles.timeValue}>~ 2 Hours</Text>
+          <Text style={styles.timeLabel}>{t('expectedLabel', 'Expected completion:')}</Text>
+          <Text style={styles.timeValue}>{t('expectedValue', '~ 2 Hours')}</Text>
         </View>
       </View>
 
@@ -36,7 +36,7 @@ export const MaintenanceModeScreen = () => {
           style={styles.secondaryButton}
           onPress={handleStatusCheck}
         >
-          <Text style={styles.secondaryButtonText}>Check System Status</Text>
+          <Text style={styles.secondaryButtonText}>{t('statusBtn', 'Check System Status')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

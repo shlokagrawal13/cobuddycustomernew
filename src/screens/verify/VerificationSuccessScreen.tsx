@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
-export const VerificationSuccessScreen = () => {
+export const VerificationSuccessScreen = () => { 
+  const { t } = useTranslation('verify.success');
   const navigation = useNavigation<any>();
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
@@ -55,7 +57,7 @@ export const VerificationSuccessScreen = () => {
         </Animated.View>
 
         <Animated.View style={{ opacity: opacityAnim, alignItems: 'center' }}>
-          <Text style={styles.title}>You are Verified!</Text>
+          <Text style={styles.title}>{t('verified', 'You are Verified!')}</Text>
           <Text style={styles.subtitle}>
             Your identity has been successfully verified. You now have full access to CoBuddy and can start booking companions immediately.
           </Text>
@@ -63,11 +65,11 @@ export const VerificationSuccessScreen = () => {
           <View style={styles.badgeRow}>
             <View style={styles.perkBadge}>
               <Icon name="star-circle" size={16} color={theme.colors.primary} />
-              <Text style={styles.perkText}>Trusted Profile</Text>
+              <Text style={styles.perkText}>{t('trustedProfile', 'Trusted Profile')}</Text>
             </View>
             <View style={styles.perkBadge}>
               <Icon name="shield-check" size={16} color={theme.colors.primary} />
-              <Text style={styles.perkText}>Booking Access</Text>
+              <Text style={styles.perkText}>{t('bookingAccess', 'Booking Access')}</Text>
             </View>
           </View>
         </Animated.View>

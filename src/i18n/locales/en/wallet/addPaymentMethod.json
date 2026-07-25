@@ -1,0 +1,20 @@
+{
+  "headerTitle": "Add New Card",
+  "securityTitle": "Secure Payments",
+  "securitySub": "We'll charge a refundable ₹2 to verify this card.",
+  "sectionTitle": "CARD DETAILS",
+  "inputName": "Name on Card",
+  "inputCardNum": "Card Number",
+  "inputExpiry": "Expiry Date (MM/YY)",
+  "inputCvv": "CVV",
+  "pciNote": "We do not store your full card details. All transactions are PCI-DSS compliant.",
+  "btnVerify": "Verify & Save Card",
+  "cardholderUpper": "CARDHOLDER",
+  "expiryUpper": "EXPIRY",
+  "cardholderName": "Cardholder Name",
+  "expiry": "Expiry",
+  "setDefault": "Set as Default Card",
+  "setDefaultSub": "Use this card automatically for session bookings",
+  "securityNote": "Card data is never stored on our servers. Information is tokenised by our PCI-DSS Level 1 payment partner.",
+  "saveCard": "Save Card Securely"
+}

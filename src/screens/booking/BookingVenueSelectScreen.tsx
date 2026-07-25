@@ -22,11 +22,12 @@ const SAFE_VENUES = [
   { id: 'v4', name: 'PVR Cinemas', address: 'Juhu', icon: 'popcorn' },
 ];
 
-export const BookingVenueSelectScreen = () => {
+export const BookingVenueSelectScreen = () => { 
+  const { t } = useTranslation('booking.venueSelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
-  const { t } = useTranslation(['booking']);
+
   
   const { activity } = route.params || {};
 
@@ -51,7 +52,7 @@ export const BookingVenueSelectScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 2 of 4</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Step 2 of 4')}</Text>
         <View style={{ width: 24 }} />
       </View>
       <View style={styles.progressContainer}>
@@ -59,21 +60,21 @@ export const BookingVenueSelectScreen = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Where do you want to meet?</Text>
-        <Text style={styles.subtitle}>Select a safe public venue for {activity?.title || 'this session'}.</Text>
+        <Text style={styles.title}>{t('title', 'Where do you want to meet?')}</Text>
+        <Text style={styles.subtitle}>{t('subtitle', 'Select a safe public venue for {{activity}}.', { activity: activity?.title || 'this session' })}</Text>
 
         <View style={styles.searchContainer}>
           <Icon name="magnify" size={24} color={theme.colors.textSecondary} />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search public venues..."
+            placeholder={t('placeholder.SearchPublicVen', 'Search public venues...')}
             placeholderTextColor={theme.colors.textSecondary}
             value={searchQuery}
             onChangeText={setSearchQuery}
           />
         </View>
 
-        <Text style={styles.sectionTitle}>Curated Safe Venues</Text>
+        <Text style={styles.sectionTitle}>{t('sectionTitle', 'Curated Safe Venues')}</Text>
 
         <View style={styles.listContainer}>
           {SAFE_VENUES.map((venue) => {

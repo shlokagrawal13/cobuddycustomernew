@@ -93,7 +93,7 @@ export const LegalConsentScreen = () => {
       <OnboardingHeader
         showBack={navigation.canGoBack()}
         onBack={() => smartGoBack()}
-        centerLabel="Safety Agreement"
+        centerLabel={t('centerLabel.SafetyAgreement', 'Safety Agreement')}
         showProgress
         currentStep={1}
         totalSteps={5}

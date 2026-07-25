@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -39,7 +40,8 @@ const GUIDELINES = [
   }
 ];
 
-export const SafetyGuidelinesScreen = () => {
+export const SafetyGuidelinesScreen = () => { 
+  const { t } = useTranslation('safety.guidelines');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -51,7 +53,7 @@ export const SafetyGuidelinesScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Safety Guidelines</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Guidelines')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -61,7 +63,7 @@ export const SafetyGuidelinesScreen = () => {
           <View style={styles.heroIconWrap}>
             <Icon name="shield-check" size={48} color={theme.colors.background} />
           </View>
-          <Text style={styles.heroTitle}>Your Safety is our Priority</Text>
+          <Text style={styles.heroTitle}>{t('heroTitle', 'Your Safety is our Priority')}</Text>
           <Text style={styles.heroDesc}>
             We've built CoBuddy to be a safe community, but personal safety starts with you. Please follow these essential guidelines.
           </Text>
@@ -87,7 +89,7 @@ export const SafetyGuidelinesScreen = () => {
           onPress={() => navigation.navigate('ConciergeChatScreen')}
         >
           <Icon name="headset" size={20} color={theme.colors.background} />
-          <Text style={styles.contactBtnText}>Contact Trust & Safety Team</Text>
+          <Text style={styles.contactBtnText}>{t('contactBtn', 'Contact Trust & Safety Team')}</Text>
         </TouchableOpacity>
 
       </ScrollView>

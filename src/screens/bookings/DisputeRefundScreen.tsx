@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -13,7 +14,8 @@ const CATEGORIES = [
   'Other'
 ];
 
-export const DisputeRefundScreen = () => {
+export const DisputeRefundScreen = () => { 
+  const { t } = useTranslation('bookings.dispute');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -40,7 +42,7 @@ export const DisputeRefundScreen = () => {
         <TouchableOpacity onPress={handleBack} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Raise a Dispute</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Raise a Dispute')}</Text>
         <View style={{ width: 40 }} />
       </View>
 
@@ -48,7 +50,7 @@ export const DisputeRefundScreen = () => {
         
         {/* Booking Reference */}
         <View style={styles.summaryCard}>
-          <Text style={styles.summaryTitle}>Disputing Booking: {bookingId}</Text>
+          <Text style={styles.summaryTitle}>{t('summaryTitle', 'Disputing Booking: {{id}}', { id: bookingId })}</Text>
           <View style={styles.summaryRow}>
             <Icon name="account" size={16} color={theme.colors.textSecondary} />
             <Text style={styles.summaryText}>Companion: Elena Vasquez</Text>
@@ -63,12 +65,12 @@ export const DisputeRefundScreen = () => {
         <View style={styles.infoCard}>
           <Icon name="shield-alert-outline" size={24} color={theme.colors.warning} />
           <View style={{ flex: 1, marginLeft: 12 }}>
-            <Text style={styles.infoTitle}>Escrow Frozen</Text>
-            <Text style={styles.infoDesc}>Submitting a dispute will freeze the escrow payment. Our safety team will review your claim within 24 hours.</Text>
+            <Text style={styles.infoTitle}>{t('infoTitle', 'Escrow Frozen')}</Text>
+            <Text style={styles.infoDesc}>{t('infoDesc', 'Submitting a dispute will freeze the escrow payment. Our safety team will review your claim within 24 hours.')}</Text>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>ISSUE CATEGORY</Text>
+        <Text style={styles.sectionTitle}>{t('sectionCategory', 'ISSUE CATEGORY')}</Text>
         
         <View style={styles.reasonsContainer}>
           {CATEGORIES.map((category) => (
@@ -86,10 +88,10 @@ export const DisputeRefundScreen = () => {
           ))}
         </View>
 
-        <Text style={styles.sectionTitle}>DETAILED DESCRIPTION</Text>
+        <Text style={styles.sectionTitle}>{t('sectionDesc', 'DETAILED DESCRIPTION')}</Text>
         <TextInput
           style={styles.textArea}
-          placeholder="Please describe what happened in detail (min 10 chars)..."
+          placeholder={t('placeholder.PleaseDescribeW', 'Please describe what happened in detail (min 10 chars)...')}
           placeholderTextColor={theme.colors.textSecondary}
           multiline={true}
           numberOfLines={6}
@@ -98,10 +100,10 @@ export const DisputeRefundScreen = () => {
           onChangeText={setDescription}
         />
         
-        <Text style={styles.sectionTitle}>UPLOAD PROOF (OPTIONAL)</Text>
+        <Text style={styles.sectionTitle}>{t('sectionProof', 'UPLOAD PROOF (OPTIONAL)')}</Text>
         <TouchableOpacity style={styles.uploadBox}>
           <Icon name="camera-plus" size={32} color={theme.colors.primary} />
-          <Text style={styles.uploadText}>Tap to upload screenshots or photos</Text>
+          <Text style={styles.uploadText}>{t('uploadText', 'Tap to upload screenshots or photos')}</Text>
         </TouchableOpacity>
         
       </ScrollView>
@@ -115,7 +117,7 @@ export const DisputeRefundScreen = () => {
             disabled={!isFormValid}
             onPress={handleSubmit}
           >
-            <Text style={styles.primaryBtnText}>Submit Dispute</Text>
+            <Text style={styles.primaryBtnText}>{t('submitBtn', 'Submit Dispute')}</Text>
           </TouchableOpacity>
         </View>
       </View>

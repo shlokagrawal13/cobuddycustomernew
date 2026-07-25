@@ -38,11 +38,12 @@ const TIME_SLOTS = [
   '06:00 PM', '07:00 PM', '08:00 PM', '09:00 PM'
 ];
 
-export const BookingTimeSelectScreen = () => {
+export const BookingTimeSelectScreen = () => { 
+  const { t } = useTranslation('booking.timeSelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
-  const { t } = useTranslation(['booking']);
+
   
   const { activity, venue } = route.params || {};
 
@@ -71,7 +72,7 @@ export const BookingTimeSelectScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 3 of 4</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Step 3 of 4')}</Text>
         <View style={{ width: 24 }} />
       </View>
       <View style={styles.progressContainer}>
@@ -79,10 +80,10 @@ export const BookingTimeSelectScreen = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>When do you want to meet?</Text>
-        <Text style={styles.subtitle}>Select a date and time for your booking.</Text>
+        <Text style={styles.title}>{t('title', 'When do you want to meet?')}</Text>
+        <Text style={styles.subtitle}>{t('subtitle', 'Select a date and time for your booking.')}</Text>
 
-        <Text style={styles.sectionTitle}>Select Date</Text>
+        <Text style={styles.sectionTitle}>{t('sectionTitleDate', 'Select Date')}</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.dateList}>
           {DATES.map((d) => {
             const isSelected = selectedDateId === d.id;
@@ -102,7 +103,7 @@ export const BookingTimeSelectScreen = () => {
           })}
         </ScrollView>
 
-        <Text style={[styles.sectionTitle, { marginTop: 32 }]}>Select Time</Text>
+        <Text style={[styles.sectionTitle, { marginTop: 32 }]}>{t('sectionTitleTime', 'Select Time')}</Text>
         <View style={styles.timeGrid}>
           {TIME_SLOTS.map((time) => {
             const isSelected = selectedTime === time;
@@ -118,7 +119,7 @@ export const BookingTimeSelectScreen = () => {
           })}
         </View>
 
-        <Text style={[styles.sectionTitle, { marginTop: 32 }]}>Duration</Text>
+        <Text style={[styles.sectionTitle, { marginTop: 32 }]}>{t('sectionTitleDuration', 'Duration')}</Text>
         <View style={styles.durationRow}>
           {[1, 2, 3, 4].map((hrs) => {
             const isSelected = duration === hrs;

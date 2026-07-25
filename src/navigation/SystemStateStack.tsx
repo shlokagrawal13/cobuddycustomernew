@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { AccountSuspendedScreen } from '../screens/system/AccountSuspendedScreen';
 import { AccountUnderManualReviewScreen } from '../screens/system/AccountUnderManualReviewScreen';
@@ -7,7 +7,7 @@ import { AccountReactivationRequestScreen } from '../screens/system/AccountReact
 import { PolicyViolationNoticeScreen } from '../screens/system/PolicyViolationNoticeScreen';
 import { AccountDeactivatedScreen } from '../screens/system/AccountDeactivatedScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const SystemStateStack = () => {
   return (

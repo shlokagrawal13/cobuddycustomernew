@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const VoiceCallScreen = () => {
+export const VoiceCallScreen = () => { 
+  const { t } = useTranslation('chat.voiceCall');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -40,7 +42,7 @@ export const VoiceCallScreen = () => {
       <View style={styles.topSection}>
         <View style={styles.secureBadge}>
           <Icon name="shield-lock" size={12} color={theme.colors.success} />
-          <Text style={styles.secureText}>End-to-End Encrypted</Text>
+          <Text style={styles.secureText}>{t('secureText', 'End-to-End Encrypted')}</Text>
         </View>
         <Text style={styles.callerName}>{companionName}</Text>
         <Text style={styles.durationText}>{formatDuration(callDuration)}</Text>
@@ -60,12 +62,12 @@ export const VoiceCallScreen = () => {
             onPress={() => setIsMuted(!isMuted)}
           >
             <Icon name={isMuted ? "microphone-off" : "microphone"} size={28} color={isMuted ? theme.colors.background : theme.colors.textPrimary} />
-            <Text style={[styles.controlLabel, isMuted && { color: theme.colors.background }]}>Mute</Text>
+            <Text style={[styles.controlLabel, isMuted && { color: theme.colors.background }]}>{t('controlMute', 'Mute')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.controlBtn}>
             <Icon name="dialpad" size={28} color={theme.colors.textPrimary} />
-            <Text style={styles.controlLabel}>Keypad</Text>
+            <Text style={styles.controlLabel}>{t('controlKeypad', 'Keypad')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
@@ -73,7 +75,7 @@ export const VoiceCallScreen = () => {
             onPress={() => setIsSpeaker(!isSpeaker)}
           >
             <Icon name={isSpeaker ? "volume-high" : "volume-medium"} size={28} color={isSpeaker ? theme.colors.background : theme.colors.textPrimary} />
-            <Text style={[styles.controlLabel, isSpeaker && { color: theme.colors.background }]}>Speaker</Text>
+            <Text style={[styles.controlLabel, isSpeaker && { color: theme.colors.background }]}>{t('controlSpeaker', 'Speaker')}</Text>
           </TouchableOpacity>
 
         </View>

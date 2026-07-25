@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, ImageBackground } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -28,7 +29,8 @@ const MOCK_DETAILS = {
   declineReason: 'I am so sorry, but I just got booked for a full-day event on this date.',
 };
 
-export const BookingDetailScreen = () => {
+export const BookingDetailScreen = () => { 
+  const { t } = useTranslation('bookings.detail');
   const navigation = useNavigation<any>();
   const route = useRoute<any>();
   const { smartGoBack } = useSmartNavigation();
@@ -52,10 +54,10 @@ export const BookingDetailScreen = () => {
         <View style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: theme.colors.error, marginTop: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8, gap: 8 }}>
             <Icon name="alert-circle-outline" size={20} color={theme.colors.error} />
-            <Text style={{ fontSize: 14, fontWeight: 'bold', color: theme.colors.error }}>Booking Declined</Text>
+            <Text style={{ fontSize: 14, fontWeight: 'bold', color: theme.colors.error }}>{t('statusDeclined', 'Booking Declined')}</Text>
           </View>
           <Text style={{ fontSize: 13, color: theme.colors.textPrimary, lineHeight: 20 }}>
-            <Text style={{ fontStyle: 'italic' }}>"{data.declineReason}"</Text>
+            <Text style={{ fontStyle: 'italic' }}>{t('declineReason', '"{{reason}}"', { reason: data.declineReason })}</Text>
           </Text>
         </View>
       );
@@ -105,10 +107,10 @@ export const BookingDetailScreen = () => {
       return (
         <View style={styles.actionRow}>
           <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })}>
-            <Text style={styles.secondaryBtnText}>Cancel Request</Text>
+            <Text style={styles.secondaryBtnText}>{t('cancelRequest', 'Cancel Request')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.primaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('ModifyBookingScreen', { bookingId: data.id })}>
-            <Text style={styles.primaryBtnText}>Modify</Text>
+            <Text style={styles.primaryBtnText}>{t('modify', 'Modify')}</Text>
           </TouchableOpacity>
         </View>
       );
@@ -124,7 +126,7 @@ export const BookingDetailScreen = () => {
               onPress={() => navigation.navigate('LiveSessionStack')}
             >
               <Icon name="key" size={18} color={theme.colors.background} />
-              <Text style={styles.primaryBtnText}>View Upcoming Meetup</Text>
+              <Text style={styles.primaryBtnText}>{t('viewUpcoming', 'View Upcoming Meetup')}</Text>
             </TouchableOpacity>
             <Text style={{ fontSize: 11, color: theme.colors.textSecondary, textAlign: 'center', marginTop: 8 }}>
               Unlocked! Share this with your companion upon meeting.
@@ -134,10 +136,10 @@ export const BookingDetailScreen = () => {
           <View style={styles.actionRow}>
             <TouchableOpacity style={[styles.secondaryBtn, { flex: 1, backgroundColor: 'rgba(212, 175, 55, 0.1)', borderColor: theme.colors.primary }]} onPress={handleMessage}>
               <Icon name="chat" size={18} color={theme.colors.primary} />
-              <Text style={[styles.secondaryBtnText, { color: theme.colors.primary, marginLeft: 4 }]}>Message</Text>
+              <Text style={[styles.secondaryBtnText, { color: theme.colors.primary, marginLeft: 4 }]}>{t('message', 'Message')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })}>
-              <Text style={[styles.secondaryBtnText, { color: theme.colors.error }]}>Cancel</Text>
+              <Text style={[styles.secondaryBtnText, { color: theme.colors.error }]}>{t('cancel', 'Cancel')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -148,7 +150,7 @@ export const BookingDetailScreen = () => {
       return (
         <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('DiscoverTab')}>
           <Icon name="account-search" size={20} color={theme.colors.background} />
-          <Text style={styles.primaryBtnText}>Find Another Companion</Text>
+          <Text style={styles.primaryBtnText}>{t('findAnother', 'Find Another Companion')}</Text>
         </TouchableOpacity>
       );
     }
@@ -157,10 +159,10 @@ export const BookingDetailScreen = () => {
       return (
         <View style={styles.actionCol}>
           <TouchableOpacity style={styles.primaryBtn} onPress={() => {}}>
-            <Text style={styles.primaryBtnText}>Leave a Review</Text>
+            <Text style={styles.primaryBtnText}>{t('leaveReview', 'Leave a Review')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.ghostBtn} onPress={() => navigation.navigate('DisputeRefundScreen', { bookingId: data.id })}>
-            <Text style={[styles.ghostBtnText, { color: theme.colors.warning }]}>Raise a Dispute</Text>
+            <Text style={[styles.ghostBtnText, { color: theme.colors.warning }]}>{t('raiseDispute', 'Raise a Dispute')}</Text>
           </TouchableOpacity>
         </View>
       );
@@ -178,10 +180,10 @@ export const BookingDetailScreen = () => {
         <TouchableOpacity onPress={handleBack} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Booking ID: {data.id}</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Booking ID: {{id}}', { id: data.id })}</Text>
         <TouchableOpacity style={styles.helpBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })}>
           <Icon name="shield-half-full" size={16} color={theme.colors.background} />
-          <Text style={styles.helpBtnText}>SOS</Text>
+          <Text style={styles.helpBtnText}>{t('sos', 'SOS')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -189,7 +191,7 @@ export const BookingDetailScreen = () => {
         
         {/* Status Timeline */}
         <View style={styles.sectionCard}>
-          <Text style={styles.sectionTitle}>STATUS TIMELINE</Text>
+          <Text style={styles.sectionTitle}>{t('statusTimeline', 'STATUS TIMELINE')}</Text>
           {renderStepper()}
         </View>
 
@@ -211,11 +213,11 @@ export const BookingDetailScreen = () => {
               <View style={styles.ratingRow}>
                 <Icon name="star" size={14} color={theme.colors.primary} />
                 <Text style={styles.ratingText}>{data.companionRating}</Text>
-                <Text style={styles.reviewCount}>({data.companionReviews} reviews)</Text>
+                <Text style={styles.reviewCount}>{t('reviewCount', '({{reviewCountVal}} reviews)', { reviewCountVal: data.companionReviews })}</Text>
               </View>
             </View>
             <View style={styles.viewProfileBadge}>
-              <Text style={styles.viewProfileText}>Profile</Text>
+              <Text style={styles.viewProfileText}>{t('viewProfile', 'Profile')}</Text>
               <Icon name="chevron-right" size={16} color={theme.colors.primary} />
             </View>
           </View>
@@ -223,14 +225,14 @@ export const BookingDetailScreen = () => {
 
         {/* Experience Details */}
         <View style={styles.sectionCard}>
-          <Text style={styles.sectionTitle}>EXPERIENCE DETAILS</Text>
+          <Text style={styles.sectionTitle}>{t('experienceDetails', 'EXPERIENCE DETAILS')}</Text>
           
           <View style={styles.detailItem}>
             <View style={styles.detailIconBox}>
               <Icon name="party-popper" size={20} color={theme.colors.primary} />
             </View>
             <View style={styles.detailTextContent}>
-              <Text style={styles.detailLabel}>Activity Type</Text>
+              <Text style={styles.detailLabel}>{t('activityType', 'Activity Type')}</Text>
               <Text style={styles.detailValue}>{data.activity}</Text>
             </View>
           </View>
@@ -240,7 +242,7 @@ export const BookingDetailScreen = () => {
               <Icon name="calendar-clock" size={20} color={theme.colors.primary} />
             </View>
             <View style={styles.detailTextContent}>
-              <Text style={styles.detailLabel}>Date & Time ({data.duration})</Text>
+              <Text style={styles.detailLabel}>{t('dateTimeDuration', 'Date & Time ({{duration}})', { duration: data.duration })}</Text>
               <Text style={styles.detailValue}>{data.date}</Text>
               <Text style={styles.detailSubValue}>{data.time}</Text>
             </View>
@@ -251,7 +253,7 @@ export const BookingDetailScreen = () => {
               <Icon name="map-marker-radius" size={20} color={theme.colors.primary} />
             </View>
             <View style={styles.detailTextContent}>
-              <Text style={styles.detailLabel}>Meeting Venue</Text>
+              <Text style={styles.detailLabel}>{t('meetingVenue', 'Meeting Venue')}</Text>
               <Text style={styles.detailValue}>{data.venue}</Text>
               <Text style={styles.detailSubValue}>{data.address}</Text>
             </View>
@@ -263,7 +265,7 @@ export const BookingDetailScreen = () => {
                 <Icon name="text-box-outline" size={20} color={theme.colors.primary} />
               </View>
               <View style={styles.detailTextContent}>
-                <Text style={styles.detailLabel}>Special Requests / Notes</Text>
+                <Text style={styles.detailLabel}>{t('specialRequests', 'Special Requests / Notes')}</Text>
                 <Text style={styles.detailValue}>{data.notes}</Text>
               </View>
             </View>
@@ -273,24 +275,24 @@ export const BookingDetailScreen = () => {
         {/* Payment Summary */}
         <View style={styles.sectionCard}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-            <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>PAYMENT SUMMARY</Text>
+            <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>{t('paymentSummary', 'PAYMENT SUMMARY')}</Text>
             {data.status === 'Declined' ? (
-               <Text style={[styles.escrowBadge, { backgroundColor: 'rgba(239, 68, 68, 0.15)', color: theme.colors.error }]}>Refunded</Text>
+               <Text style={[styles.escrowBadge, { backgroundColor: 'rgba(239, 68, 68, 0.15)', color: theme.colors.error }]}>{t('refunded', 'Refunded')}</Text>
             ) : (
-               <Text style={styles.escrowBadge}>Protected by Escrow</Text>
+               <Text style={styles.escrowBadge}>{t('protectedByEscrow', 'Protected by Escrow')}</Text>
             )}
           </View>
           
           <View style={styles.paymentRow}>
-            <Text style={styles.paymentLabel}>Session Rate ({data.duration})</Text>
+            <Text style={styles.paymentLabel}>{t('sessionRate', 'Session Rate ({{duration}})', { duration: data.duration })}</Text>
             <Text style={styles.paymentValue}>{data.sessionRate}</Text>
           </View>
           <View style={styles.paymentRow}>
-            <Text style={styles.paymentLabel}>Platform Fee</Text>
+            <Text style={styles.paymentLabel}>{t('platformFee', 'Platform Fee')}</Text>
             <Text style={styles.paymentValue}>{data.platformFee}</Text>
           </View>
           <View style={styles.paymentRow}>
-            <Text style={styles.paymentLabel}>Taxes & Surcharges</Text>
+            <Text style={styles.paymentLabel}>{t('taxes', 'Taxes & Surcharges')}</Text>
             <Text style={styles.paymentValue}>{data.taxes}</Text>
           </View>
           
@@ -298,7 +300,7 @@ export const BookingDetailScreen = () => {
           
           <View style={styles.paymentTotalBox}>
             <View style={{ flex: 1, paddingRight: 12 }}>
-              <Text style={styles.paymentTotalLabel}>{data.status === 'Declined' ? 'Total Released' : 'Total Secured'}</Text>
+              <Text style={styles.paymentTotalLabel}>{data.status === 'Declined' ? t('totalReleased', 'Total Released') : t('totalSecured', 'Total Secured')}</Text>
               <Text style={styles.paymentSubtext}>
                 {data.status === 'Declined' ? 'The escrow hold has been fully released.' : 'Held safely until session ends.'}
               </Text>
@@ -311,8 +313,8 @@ export const BookingDetailScreen = () => {
         <View style={styles.safetyCard}>
           <Icon name="shield-check" size={24} color={theme.colors.background} />
           <View style={{ flex: 1, marginLeft: 12 }}>
-            <Text style={styles.safetyTitle}>Meetup Safety Guidelines</Text>
-            <Text style={styles.safetyDesc}>Always meet in public spaces. Never share your exact home address. Use the SOS button in case of emergency.</Text>
+            <Text style={styles.safetyTitle}>{t('safetyTitle', 'Meetup Safety Guidelines')}</Text>
+            <Text style={styles.safetyDesc}>{t('safetyDesc', 'Always meet in public spaces. Never share your exact home address. Use the SOS button in case of emergency.')}</Text>
           </View>
         </View>
 

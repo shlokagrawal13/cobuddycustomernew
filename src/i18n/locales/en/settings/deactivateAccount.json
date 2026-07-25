@@ -1,0 +1,15 @@
+{
+  "headerTitle": "Deactivate Account",
+  "subTitle": "Take a break from CoBuddy.",
+  "point1": "  Your profile will be hidden from everyone.",
+  "point2": "  Active bookings will be cancelled.",
+  "point3": "  You can reactivate anytime by logging in.",
+  "deactivateBtn": "Deactivate My Account",
+  "breakTitle": "Take a break from CoBuddy",
+  "profileHidden": "Profile hidden",
+  "profileHiddenSub": "No one will be able to see your profile or book you.",
+  "pendingBookings": "Pending bookings",
+  "pendingBookingsSub": "Any active or upcoming bookings will remain active. You must complete or cancel them.",
+  "easyReactivation": "Easy reactivation",
+  "easyReactivationSub": "Simply log back in at any time to automatically reactivate your account."
+}

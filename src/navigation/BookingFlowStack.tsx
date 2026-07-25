@@ -1,5 +1,5 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { BookingActivitySelectScreen } from '../screens/booking/BookingActivitySelectScreen';
 import { BookingVenueSelectScreen } from '../screens/booking/BookingVenueSelectScreen';
@@ -10,7 +10,7 @@ import { BookingAcceptedScreen } from '../screens/booking/alerts/BookingAccepted
 import { BookingDeclinedScreen } from '../screens/booking/alerts/BookingDeclinedScreen';
 import { BookingCounterOfferScreen } from '../screens/booking/alerts/BookingCounterOfferScreen';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const BookingFlowStack = () => {
   return (

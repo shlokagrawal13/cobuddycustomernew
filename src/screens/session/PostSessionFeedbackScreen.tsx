@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const PostSessionFeedbackScreen = () => {
+export const PostSessionFeedbackScreen = () => { 
+  const { t } = useTranslation('session.postFeedback');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [sentiment, setSentiment] = useState<'up' | 'down' | null>(null);
@@ -27,14 +29,14 @@ export const PostSessionFeedbackScreen = () => {
         <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Quick Feedback</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Quick Feedback')}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen')}>
-          <Text style={styles.skipBtn}>Skip</Text>
+          <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.question}>How was your session with Elena?</Text>
+        <Text style={styles.question}>{t('questionRate', 'How was your session with Elena?')}</Text>
         
         <View style={styles.sentimentRow}>
           <TouchableOpacity 
@@ -54,7 +56,7 @@ export const PostSessionFeedbackScreen = () => {
 
         {sentiment && (
           <View style={styles.tagsSection}>
-            <Text style={styles.tagsTitle}>What stood out?</Text>
+            <Text style={styles.tagsTitle}>{t('tagsTitle', 'What stood out?')}</Text>
             <View style={styles.tagsContainer}>
               {(sentiment === 'up' ? positiveTags : negativeTags).map(tag => {
                 const isSelected = selectedTags.includes(tag);
@@ -79,7 +81,7 @@ export const PostSessionFeedbackScreen = () => {
           disabled={!sentiment || selectedTags.length === 0}
           onPress={() => navigation.navigate('TipGratuityScreen')}
         >
-          <Text style={styles.primaryBtnText}>Continue</Text>
+          <Text style={styles.primaryBtnText}>{t('continueBtn', 'Continue')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

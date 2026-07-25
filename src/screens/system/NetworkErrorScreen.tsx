@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 export const NetworkErrorScreen = () => {
-  const { t } = useTranslation(['system']);
+  const { t } = useTranslation('system.networkError');
   const [isRetrying, setIsRetrying] = useState(false);
 
   const handleRetry = () => {
@@ -25,7 +25,7 @@ export const NetworkErrorScreen = () => {
           <Icon name="wifi-strength-off-outline" size={72} color={theme.colors.textSecondary} />
         </View>
         
-        <Text style={styles.title}>No Connection</Text>
+        <Text style={styles.title}>{t('title', 'No Connection')}</Text>
         <Text style={styles.message}>
           It looks like you're offline. Please check your internet connection, Wi-Fi, or cellular data and try again.
         </Text>
@@ -40,7 +40,7 @@ export const NetworkErrorScreen = () => {
           {isRetrying ? (
             <ActivityIndicator color={theme.colors.background} />
           ) : (
-            <Text style={styles.primaryButtonText}>Try Again</Text>
+            <Text style={styles.primaryButtonText}>{t('retryBtn', 'Try Again')}</Text>
           )}
         </TouchableOpacity>
       </View>

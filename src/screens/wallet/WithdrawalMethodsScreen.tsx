@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Modal, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,7 +12,8 @@ const INITIAL_METHODS = [
   { id: 'wm_upi1', type: 'upi', icon: 'qrcode', title: 'UPI ID', sub: 'shlok@okicici', isVerified: true },
 ];
 
-export const WithdrawalMethodsScreen = () => {
+export const WithdrawalMethodsScreen = () => { 
+  const { t } = useTranslation('wallet.withdrawalMethods');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -74,7 +76,7 @@ export const WithdrawalMethodsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Select Withdrawal Method</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Select Withdrawal Method')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -82,14 +84,14 @@ export const WithdrawalMethodsScreen = () => {
         
         <View style={styles.infoBanner}>
             <Icon name="information-outline" size={20} color={theme.colors.primary} />
-            <Text style={styles.infoText}>Withdrawals to UPI are typically instant. Bank transfers may take 1-3 business days.</Text>
+            <Text style={styles.infoText}>{t('infoText', 'Withdrawals to UPI are typically instant. Bank transfers may take 1-3 business days.')}</Text>
         </View>
 
         <View style={styles.card}>
-            <Text style={styles.sectionTitle}>SAVED METHODS</Text>
+            <Text style={styles.sectionTitle}>{t('sectionTitle', 'SAVED METHODS')}</Text>
             
             {methods.length === 0 ? (
-                <Text style={styles.emptyText}>No saved withdrawal methods.</Text>
+                <Text style={styles.emptyText}>{t('emptyText', 'No saved withdrawal methods.')}</Text>
             ) : null}
 
             {methods.map((wm, index) => {
@@ -110,7 +112,7 @@ export const WithdrawalMethodsScreen = () => {
                                 {wm.isVerified ? (
                                     <View style={styles.verifiedBadge}>
                                         <Icon name="check-decagram" size={12} color={theme.colors.success} />
-                                        <Text style={styles.verifiedBadgeText}>Verified</Text>
+                                        <Text style={styles.verifiedBadgeText}>{t('verifiedBadge', 'Verified')}</Text>
                                     </View>
                                 ) : null}
                             </View>
@@ -142,7 +144,7 @@ export const WithdrawalMethodsScreen = () => {
                     <View style={styles.addIconWrap}>
                         <Icon name="bank-plus" size={22} color={theme.colors.primary} />
                     </View>
-                    <Text style={styles.addMethodText}>Add Bank Account</Text>
+                    <Text style={styles.addMethodText}>{t('addBank', 'Add Bank Account')}</Text>
                     <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
 
@@ -154,7 +156,7 @@ export const WithdrawalMethodsScreen = () => {
                     <View style={styles.addIconWrap}>
                         <Icon name="at" size={22} color={theme.colors.primary} />
                     </View>
-                    <Text style={styles.addMethodText}>Add UPI ID</Text>
+                    <Text style={styles.addMethodText}>{t('addUpi', 'Add UPI ID')}</Text>
                     <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
             </View>
@@ -166,17 +168,17 @@ export const WithdrawalMethodsScreen = () => {
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.modalOverlay}>
             <View style={styles.modalContent}>
                 <View style={styles.modalHeader}>
-                    <Text style={styles.modalTitle}>Add UPI ID for Payouts</Text>
+                    <Text style={styles.modalTitle}>{t('modalTitle', 'Add UPI ID for Payouts')}</Text>
                     <TouchableOpacity onPress={() => setUpiModalVisible(false)} hitSlop={{top:10, bottom:10, left:10, right:10}}>
                         <Icon name="close" size={24} color={theme.colors.textSecondary} />
                     </TouchableOpacity>
                 </View>
 
-                <Text style={styles.modalLabel}>Enter your UPI ID</Text>
+                <Text style={styles.modalLabel}>{t('modalLabel', 'Enter your UPI ID')}</Text>
                 <View style={styles.inputWrap}>
                     <TextInput 
                         style={styles.upiInput}
-                        placeholder="e.g. name@okhdfcbank"
+                        placeholder={t('placeholder.eGNameOkhdfcban', 'e.g. name@okhdfcbank')}
                         placeholderTextColor={theme.colors.textSecondary}
                         value={newUpiId}
                         onChangeText={setNewUpiId}
@@ -191,7 +193,7 @@ export const WithdrawalMethodsScreen = () => {
                     activeOpacity={0.8}
                     onPress={handleAddUpi}
                 >
-                    <Text style={styles.verifyBtnText}>Verify & Save</Text>
+                    <Text style={styles.verifyBtnText}>{t('modalVerify', 'Verify & Save')}</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>

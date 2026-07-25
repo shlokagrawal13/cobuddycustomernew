@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -12,7 +13,8 @@ const MOCK_BLOCKED_USERS = [
   { id: '3', name: 'Vikram Singh', date: 'Blocked on 22 Mar 2026' },
 ];
 
-export const BlockedUsersScreen = () => {
+export const BlockedUsersScreen = () => { 
+  const { t } = useTranslation('settings.blockedUsers');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [blockedUsers, setBlockedUsers] = useState(MOCK_BLOCKED_USERS);
@@ -42,7 +44,7 @@ export const BlockedUsersScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Blocked Users</Text>
+        <Text style={styles.headerTitle}>{t('blockedUsersHeader', 'Blocked Users')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -73,7 +75,7 @@ export const BlockedUsersScreen = () => {
                             activeOpacity={0.7}
                             onPress={() => handleUnblock(user)}
                         >
-                            <Text style={styles.unblockText}>Unblock</Text>
+                            <Text style={styles.unblockText}>{t('unblock', 'Unblock')}</Text>
                         </TouchableOpacity>
                     </View>
                 ))}
@@ -83,7 +85,7 @@ export const BlockedUsersScreen = () => {
                 <View style={styles.emptyIconWrap}>
                     <Icon name="shield-check" size={48} color={theme.colors.success} />
                 </View>
-                <Text style={styles.emptyTitle}>No Blocked Users</Text>
+                <Text style={styles.emptyTitle}>{t('emptyTitle', 'No Blocked Users')}</Text>
                 <Text style={styles.emptySub}>
                     You haven't blocked anyone yet. When you block a user, they will appear here.
                 </Text>

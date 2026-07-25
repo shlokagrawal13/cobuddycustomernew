@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import { SplashScreen } from '../screens/auth/SplashScreen';
 import { ForceUpdateScreen } from '../screens/system/ForceUpdateScreen';
 import { MaintenanceModeScreen } from '../screens/system/MaintenanceModeScreen';
@@ -16,7 +16,7 @@ import { SafetySupportStack } from './SafetySupportStack';
 
 import { useAuthStore } from '../store/slices/authStore';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export const RootNavigator = () => {
   const { isAuthenticated, isOnboardingComplete } = useAuthStore();
@@ -43,9 +43,9 @@ export const RootNavigator = () => {
       )}
       
       {/* System state and modal screens can be pushed here or kept detached if needed */}
-      <Stack.Screen name="ForceUpdateScreen" component={ForceUpdateScreen} options={{ presentation: 'fullScreenModal' }} />
-      <Stack.Screen name="MaintenanceModeScreen" component={MaintenanceModeScreen} options={{ presentation: 'fullScreenModal' }} />
-      <Stack.Screen name="NetworkErrorScreen" component={NetworkErrorScreen} options={{ presentation: 'fullScreenModal' }} />
+      <Stack.Screen name="ForceUpdateScreen" component={ForceUpdateScreen} options={{ presentation: 'modal' }} />
+      <Stack.Screen name="MaintenanceModeScreen" component={MaintenanceModeScreen} options={{ presentation: 'modal' }} />
+      <Stack.Screen name="NetworkErrorScreen" component={NetworkErrorScreen} options={{ presentation: 'modal' }} />
       <Stack.Screen name="SystemStateStack" component={SystemStateStack} options={{ presentation: 'modal' }} />
       <Stack.Screen name="BookingFlowStack" component={BookingFlowStack} options={{ presentation: 'modal' }} />
       <Stack.Screen name="KYCStack" component={KYCStack} options={{ presentation: 'modal' }} />

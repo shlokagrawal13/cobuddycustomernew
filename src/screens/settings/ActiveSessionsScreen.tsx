@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -50,7 +51,8 @@ const INITIAL_SESSIONS: Session[] = [
     }
 ];
 
-export const ActiveSessionsScreen = () => {
+export const ActiveSessionsScreen = () => { 
+  const { t } = useTranslation('settings.activeSessions');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const [sessions, setSessions] = useState<Session[]>(INITIAL_SESSIONS);
@@ -112,7 +114,7 @@ export const ActiveSessionsScreen = () => {
               </View>
               {session.isCurrentDevice && (
                   <View style={styles.currentBadge}>
-                      <Text style={styles.currentBadgeText}>THIS DEVICE</Text>
+                      <Text style={styles.currentBadgeText}>{t('thisDeviceBadge', 'THIS DEVICE')}</Text>
                   </View>
               )}
           </View>
@@ -143,7 +145,7 @@ export const ActiveSessionsScreen = () => {
                   onPress={() => handleLogoutSession(session.id, session.deviceName)}
               >
                   <Icon name="logout" size={16} color={theme.colors.error} />
-                  <Text style={styles.logoutBtnText}>Log Out Device</Text>
+                  <Text style={styles.logoutBtnText}>{t('logOutDevice', 'Log Out Device')}</Text>
               </TouchableOpacity>
           )}
       </View>
@@ -157,7 +159,7 @@ export const ActiveSessionsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Active Sessions</Text>
+        <Text style={styles.headerTitle}>{t('activeSessions', 'Active Sessions')}</Text>
         <View style={styles.backBtn} />
       </View>
 
@@ -167,7 +169,7 @@ export const ActiveSessionsScreen = () => {
             <View style={styles.shieldIconWrap}>
                 <Icon name="devices" size={32} color={theme.colors.primary} />
             </View>
-            <Text style={styles.heroTitle}>Manage Devices</Text>
+            <Text style={styles.heroTitle}>{t('manageDevices', 'Manage Devices')}</Text>
             <Text style={styles.heroSub}>
                 Review the list of devices where you're currently logged into CoBuddy. Log out of any unfamiliar devices immediately to secure your account.
             </Text>
@@ -175,14 +177,14 @@ export const ActiveSessionsScreen = () => {
 
         {currentDevice && (
             <>
-                <Text style={styles.sectionTitle}>CURRENT SESSION</Text>
+                <Text style={styles.sectionTitle}>{t('currentSession', 'CURRENT SESSION')}</Text>
                 {renderSessionCard(currentDevice)}
             </>
         )}
 
         {otherDevices.length > 0 && (
             <>
-                <Text style={styles.sectionTitle}>OTHER LOGGED-IN DEVICES</Text>
+                <Text style={styles.sectionTitle}>{t('otherDevices', 'OTHER LOGGED-IN DEVICES')}</Text>
                 {otherDevices.map(renderSessionCard)}
                 
                 <TouchableOpacity 
@@ -191,7 +193,7 @@ export const ActiveSessionsScreen = () => {
                     onPress={handleLogoutAll}
                 >
                     <Icon name="shield-alert-outline" size={20} color={theme.colors.error} />
-                    <Text style={styles.logoutAllBtnText}>Log Out of All Other Devices</Text>
+                    <Text style={styles.logoutAllBtnText}>{t('logoutOther', 'Log Out of All Other Devices')}</Text>
                 </TouchableOpacity>
             </>
         )}
@@ -199,15 +201,15 @@ export const ActiveSessionsScreen = () => {
         {otherDevices.length === 0 && (
             <View style={styles.secureState}>
                 <Icon name="shield-check" size={48} color={theme.colors.success} style={{ opacity: 0.8, marginBottom: 12 }} />
-                <Text style={styles.secureTitle}>Account Secure</Text>
-                <Text style={styles.secureSub}>You are only logged in on this device.</Text>
+                <Text style={styles.secureTitle}>{t('accountSecure', 'Account Secure')}</Text>
+                <Text style={styles.secureSub}>{t('accountSecureSub', 'You are only logged in on this device.')}</Text>
             </View>
         )}
 
         <View style={styles.securityTipCard}>
             <Icon name="information-outline" size={20} color={theme.colors.textSecondary} />
             <View style={{ flex: 1 }}>
-                <Text style={styles.securityTipTitle}>Security Tip</Text>
+                <Text style={styles.securityTipTitle}>{t('securityTip', 'Security Tip')}</Text>
                 <Text style={styles.securityTipText}>
                     If you see a device you don't recognize, log it out immediately. If you suspect unauthorized access, please contact CoBuddy Support.
                 </Text>

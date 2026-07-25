@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, TextInput, Modal, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const ModifyBookingScreen = () => {
+export const ModifyBookingScreen = () => { 
+  const { t } = useTranslation('bookings.modify');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -64,7 +66,7 @@ export const ModifyBookingScreen = () => {
         <TouchableOpacity onPress={handleBack} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Modify Booking</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Modify Booking')}</Text>
         <View style={{ width: 40 }} />
       </View>
 
@@ -74,12 +76,12 @@ export const ModifyBookingScreen = () => {
         <View style={styles.infoCard}>
           <Icon name="information-outline" size={24} color={theme.colors.primary} />
           <View style={{ flex: 1, marginLeft: 12 }}>
-            <Text style={styles.infoTitle}>Modification Policy</Text>
-            <Text style={styles.infoDesc}>Changes must be accepted by the companion. Your original booking remains active until they accept the new proposal.</Text>
+            <Text style={styles.infoTitle}>{t('infoTitle', 'Modification Policy')}</Text>
+            <Text style={styles.infoDesc}>{t('infoDesc', 'Changes must be accepted by the companion. Your original booking remains active until they accept the new proposal.')}</Text>
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>CURRENT DETAILS</Text>
+        <Text style={styles.sectionTitle}>{t('sectionCurrent', 'CURRENT DETAILS')}</Text>
         <View style={styles.detailsCard}>
           <View style={styles.detailRow}>
             <Icon name="calendar-month" size={20} color={theme.colors.textSecondary} />
@@ -95,15 +97,15 @@ export const ModifyBookingScreen = () => {
           </View>
         </View>
 
-        <Text style={styles.sectionTitle}>PROPOSE NEW DETAILS</Text>
+        <Text style={styles.sectionTitle}>{t('sectionNew', 'PROPOSE NEW DETAILS')}</Text>
         
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>New Date (DD/MM/YYYY)</Text>
+          <Text style={styles.inputLabel}>{t('inputDate', 'New Date (DD/MM/YYYY)')}</Text>
           <View style={styles.inputWrapper}>
             <Icon name="calendar-edit" size={20} color={theme.colors.primary} style={styles.inputIcon} />
             <TextInput
               style={styles.input}
-              placeholder="e.g. 25/10/2026"
+              placeholder={t('placeholder.eG25102026', 'e.g. 25/10/2026')}
               placeholderTextColor={theme.colors.textSecondary}
               value={newDate}
               onChangeText={handleDateChange}
@@ -115,12 +117,12 @@ export const ModifyBookingScreen = () => {
 
         <View style={styles.rowLayout}>
           <View style={[styles.inputContainer, { flex: 1 }]}>
-            <Text style={styles.inputLabel}>Start Time (HH:MM)</Text>
+            <Text style={styles.inputLabel}>{t('inputTime', 'Start Time (HH:MM)')}</Text>
             <View style={styles.inputWrapper}>
               <Icon name="clock-edit-outline" size={20} color={theme.colors.primary} style={styles.inputIcon} />
               <TextInput
                 style={styles.input}
-                placeholder="05:00"
+                placeholder={t('placeholder.0500', '05:00')}
                 placeholderTextColor={theme.colors.textSecondary}
                 value={newTime}
                 onChangeText={handleTimeChange}
@@ -131,31 +133,31 @@ export const ModifyBookingScreen = () => {
           </View>
           
           <View style={[styles.inputContainer, { width: 100 }]}>
-            <Text style={styles.inputLabel}>AM/PM</Text>
+            <Text style={styles.inputLabel}>{t('inputAmPm', 'AM/PM')}</Text>
             <View style={styles.amPmToggle}>
               <TouchableOpacity 
                 style={[styles.amPmBtn, amPm === 'AM' && styles.amPmBtnActive]} 
                 onPress={() => setAmPm('AM')}
               >
-                <Text style={[styles.amPmText, amPm === 'AM' && styles.amPmTextActive]}>AM</Text>
+                <Text style={[styles.amPmText, amPm === 'AM' && styles.amPmTextActive]}>{t('am', 'AM')}</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.amPmBtn, amPm === 'PM' && styles.amPmBtnActive]} 
                 onPress={() => setAmPm('PM')}
               >
-                <Text style={[styles.amPmText, amPm === 'PM' && styles.amPmTextActive]}>PM</Text>
+                <Text style={[styles.amPmText, amPm === 'PM' && styles.amPmTextActive]}>{t('pm', 'PM')}</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
 
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>Duration (Hours)</Text>
+          <Text style={styles.inputLabel}>{t('inputDuration', 'Duration (Hours)')}</Text>
           <View style={styles.durationWrapper}>
             <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(-1)}>
               <Icon name="minus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
-            <Text style={styles.durationText}>{duration} {duration === 1 ? 'Hour' : 'Hours'}</Text>
+            <Text style={styles.durationText}>{t('durationText', '{{duration}} {{hourText}}', { duration, hourText: duration === 1 ? 'Hour' : 'Hours' })}</Text>
             <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(1)}>
               <Icon name="plus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
@@ -163,7 +165,7 @@ export const ModifyBookingScreen = () => {
         </View>
 
         <View style={styles.inputContainer}>
-          <Text style={styles.inputLabel}>New Venue (Optional)</Text>
+          <Text style={styles.inputLabel}>{t('inputVenue', 'New Venue (Optional)')}</Text>
           <TouchableOpacity style={styles.inputWrapper} activeOpacity={0.7} onPress={() => setVenueModalVisible(true)}>
             <Icon name="magnify" size={20} color={theme.colors.primary} style={styles.inputIcon} />
             <Text style={[styles.input, { color: newVenue ? theme.colors.textPrimary : theme.colors.textSecondary, alignSelf: 'center', flex: 1 }]}>
@@ -184,10 +186,10 @@ export const ModifyBookingScreen = () => {
             disabled={!isFormValid}
             onPress={handleSendRequest}
           >
-            <Text style={styles.primaryBtnText}>Send Modification Request</Text>
+            <Text style={styles.primaryBtnText}>{t('sendBtn', 'Send Modification Request')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.ghostBtn} onPress={handleBack}>
-            <Text style={styles.ghostBtnText}>Cancel</Text>
+            <Text style={styles.ghostBtnText}>{t('cancelBtn', 'Cancel')}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -198,7 +200,7 @@ export const ModifyBookingScreen = () => {
           <TouchableOpacity style={styles.modalDismissArea} onPress={() => setVenueModalVisible(false)} activeOpacity={1} />
           <View style={styles.bottomSheet}>
             <View style={styles.sheetHeader}>
-              <Text style={styles.sheetTitle}>Select a Safe Venue</Text>
+              <Text style={styles.sheetTitle}>{t('sheetTitle', 'Select a Safe Venue')}</Text>
               <TouchableOpacity onPress={() => setVenueModalVisible(false)} style={styles.closeBtn}>
                 <Icon name="close" size={24} color={theme.colors.textPrimary} />
               </TouchableOpacity>
@@ -209,7 +211,7 @@ export const ModifyBookingScreen = () => {
               <Icon name="magnify" size={22} color={theme.colors.textSecondary} />
               <TextInput
                 style={styles.modalSearchInput}
-                placeholder="Search cafes, malls, restaurants..."
+                placeholder={t('placeholder.SearchCafesMall', 'Search cafes, malls, restaurants...')}
                 placeholderTextColor={theme.colors.textSecondary}
               />
             </View>

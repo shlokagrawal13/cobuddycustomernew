@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Animated, Modal, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 
 const { width } = Dimensions.get('window');
 
-export const ActiveSessionScreen = () => {
+export const ActiveSessionScreen = () => { 
+  const { t } = useTranslation('session.active');
   const navigation = useNavigation<any>();
   const [etiquetteVisible, setEtiquetteVisible] = useState(true);
   
@@ -72,11 +74,11 @@ export const ActiveSessionScreen = () => {
       <View style={styles.header}>
         <View style={styles.liveBadge}>
           <Animated.View style={[styles.liveDot, { opacity: pulseAnim }]} />
-          <Text style={styles.liveText}>LIVE SESSION</Text>
+          <Text style={styles.liveText}>{t('liveSession', 'LIVE SESSION')}</Text>
         </View>
         <TouchableOpacity style={styles.sosBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'EmergencySOSScreen' })}>
           <Icon name="shield-half-full" size={18} color={theme.colors.background} />
-          <Text style={styles.sosBtnText}>SOS / EMERGENCY</Text>
+          <Text style={styles.sosBtnText}>{t('sosEmergency', 'SOS / EMERGENCY')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -88,7 +90,7 @@ export const ActiveSessionScreen = () => {
             <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8, justifyContent: 'space-between' }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
                 <Icon name="information" size={18} color={theme.colors.primary} />
-                <Text style={styles.etiquetteTitle}>Etiquette Reminder</Text>
+                <Text style={styles.etiquetteTitle}>{t('etiquetteReminder', 'Etiquette Reminder')}</Text>
               </View>
               <TouchableOpacity onPress={() => setEtiquetteVisible(false)}>
                 <Icon name="close" size={18} color={theme.colors.textSecondary} />
@@ -102,7 +104,7 @@ export const ActiveSessionScreen = () => {
 
         {/* Live Timer Card */}
         <View style={styles.timerCard}>
-          <Text style={styles.timerSub}>Time Remaining</Text>
+          <Text style={styles.timerSub}>{t('timeRemainingLabel', 'Time Remaining')}</Text>
           <Text style={styles.timerMain}>{formatTime(timeLeft)}</Text>
           
           <View style={styles.timerProgressBg}>
@@ -110,8 +112,8 @@ export const ActiveSessionScreen = () => {
           </View>
           
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: 8 }}>
-            <Text style={styles.timerLimitText}>Started: 7:00 PM</Text>
-            <Text style={styles.timerLimitText}>Ends: 9:00 PM</Text>
+            <Text style={styles.timerLimitText}>{t('mockStarted', 'Started: 7:00 PM')}</Text>
+            <Text style={styles.timerLimitText}>{t('mockEnds', 'Ends: 9:00 PM')}</Text>
           </View>
         </View>
 
@@ -123,7 +125,7 @@ export const ActiveSessionScreen = () => {
           <View style={{ flex: 1, paddingLeft: 12 }}>
             <Text style={styles.companionName} numberOfLines={1}>{MOCK_COMPANION}</Text>
             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }}>
-              <Text style={{ color: theme.colors.primary, fontSize: 13, fontWeight: 'bold' }}>View Full Profile</Text>
+              <Text style={{ color: theme.colors.primary, fontSize: 13, fontWeight: 'bold' }}>{t('viewFullProfile', 'View Full Profile')}</Text>
               <Icon name="chevron-right" size={14} color={theme.colors.primary} />
             </TouchableOpacity>
           </View>
@@ -140,7 +142,7 @@ export const ActiveSessionScreen = () => {
         {/* View Details Link */}
         <TouchableOpacity style={styles.detailsBtn} onPress={() => setBookingDetailsModalVisible(true)}>
           <Icon name="file-document-outline" size={18} color={theme.colors.textSecondary} />
-          <Text style={styles.detailsText}>View Booking Details</Text>
+          <Text style={styles.detailsText}>{t('viewBookingDetails', 'View Booking Details')}</Text>
           <Icon name="chevron-right" size={16} color={theme.colors.textSecondary} style={{ marginLeft: 'auto' }} />
         </TouchableOpacity>
 
@@ -148,14 +150,14 @@ export const ActiveSessionScreen = () => {
         <View style={styles.actionGrid}>
           <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)}>
             <Icon name="clock-plus-outline" size={24} color={theme.colors.background} />
-            <Text style={styles.actionBtnPrimaryText}>Extend Session</Text>
-            <Text style={styles.actionBtnPrimarySub}>Add more time</Text>
+            <Text style={styles.actionBtnPrimaryText}>{t('extendSession', 'Extend Session')}</Text>
+            <Text style={styles.actionBtnPrimarySub}>{t('addMoreTime', 'Add more time')}</Text>
           </TouchableOpacity>
           
           <TouchableOpacity style={styles.actionBtnSecondary} onPress={() => setEndEarlyModalVisible(true)}>
             <Icon name="clock-remove-outline" size={24} color={theme.colors.error} />
-            <Text style={styles.actionBtnSecondaryText}>End Early</Text>
-            <Text style={styles.actionBtnSecondarySub}>Pro-rata charges</Text>
+            <Text style={styles.actionBtnSecondaryText}>{t('endEarly', 'End Early')}</Text>
+            <Text style={styles.actionBtnSecondarySub}>{t('proRataCharges', 'Pro-rata charges')}</Text>
           </TouchableOpacity>
         </View>
 
@@ -166,19 +168,19 @@ export const ActiveSessionScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Extend Session</Text>
+              <Text style={styles.modalTitle}>{t('extendSession', 'Extend Session')}</Text>
               <TouchableOpacity onPress={() => setExtendModalVisible(false)} style={styles.modalCloseBtn}>
                 <Icon name="close" size={20} color={theme.colors.textSecondary} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.modalDesc}>How much longer would you like to extend this session?</Text>
+            <Text style={styles.modalDesc}>{t('extendModalDesc', 'How much longer would you like to extend this session?')}</Text>
             
             <View style={{ gap: 12, marginBottom: 24 }}>
               <TouchableOpacity 
                 style={[styles.extensionOption, selectedExtension === 30 && { borderColor: theme.colors.primary, backgroundColor: 'rgba(212,175,55,0.1)' }]}
                 onPress={() => setSelectedExtension(30)}
               >
-                <Text style={[styles.extensionTime, selectedExtension === 30 && { color: theme.colors.primary }]}>+ 30 Mins</Text>
+                <Text style={[styles.extensionTime, selectedExtension === 30 && { color: theme.colors.primary }]}>{t('plus30Mins', '+ 30 Mins')}</Text>
                 <Text style={[styles.extensionPrice, selectedExtension === 30 && { color: theme.colors.primary }]}>₹750</Text>
               </TouchableOpacity>
               
@@ -186,7 +188,7 @@ export const ActiveSessionScreen = () => {
                 style={[styles.extensionOption, selectedExtension === 60 && { borderColor: theme.colors.primary, backgroundColor: 'rgba(212,175,55,0.1)' }]}
                 onPress={() => setSelectedExtension(60)}
               >
-                <Text style={[styles.extensionTime, selectedExtension === 60 && { color: theme.colors.primary }]}>+ 1 Hour</Text>
+                <Text style={[styles.extensionTime, selectedExtension === 60 && { color: theme.colors.primary }]}>{t('plus1Hour', '+ 1 Hour')}</Text>
                 <Text style={[styles.extensionPrice, selectedExtension === 60 && { color: theme.colors.primary }]}>₹1,500</Text>
               </TouchableOpacity>
             </View>
@@ -203,7 +205,7 @@ export const ActiveSessionScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={[styles.modalTitle, { color: theme.colors.error }]}>End Session Early?</Text>
+              <Text style={[styles.modalTitle, { color: theme.colors.error }]}>{t('endSessionEarly', 'End Session Early?')}</Text>
               <TouchableOpacity onPress={() => setEndEarlyModalVisible(false)} style={styles.modalCloseBtn}>
                 <Icon name="close" size={20} color={theme.colors.textSecondary} />
               </TouchableOpacity>
@@ -218,15 +220,15 @@ export const ActiveSessionScreen = () => {
 
             <View style={{ gap: 8, marginBottom: 24 }}>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ color: theme.colors.textSecondary }}>Time completed</Text>
-                <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>1 hr 15 mins</Text>
+                <Text style={{ color: theme.colors.textSecondary }}>{t('timeCompleted', 'Time completed')}</Text>
+                <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{t('mockTimeCompleted', '1 hr 15 mins')}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ color: theme.colors.textSecondary }}>Escrow to be released</Text>
+                <Text style={{ color: theme.colors.textSecondary }}>{t('escrowReleased', 'Escrow to be released')}</Text>
                 <Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>₹1,875</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Text style={{ color: theme.colors.textSecondary }}>Refund to you</Text>
+                <Text style={{ color: theme.colors.textSecondary }}>{t('refundToYou', 'Refund to you')}</Text>
                 <Text style={{ color: theme.colors.success, fontWeight: 'bold' }}>₹1,125</Text>
               </View>
             </View>
@@ -235,11 +237,11 @@ export const ActiveSessionScreen = () => {
               style={[styles.primaryBtn, { backgroundColor: theme.colors.error }]} 
               onPress={handleEndEarly}
             >
-              <Text style={styles.primaryBtnText}>Confirm & End Session</Text>
+              <Text style={styles.primaryBtnText}>{t('confirmEndSession', 'Confirm & End Session')}</Text>
             </TouchableOpacity>
             
             <TouchableOpacity style={{ marginTop: 16, alignItems: 'center' }} onPress={() => setEndEarlyModalVisible(false)}>
-              <Text style={{ color: theme.colors.textSecondary, fontWeight: 'bold' }}>Keep Session Active</Text>
+              <Text style={{ color: theme.colors.textSecondary, fontWeight: 'bold' }}>{t('keepSessionActive', 'Keep Session Active')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -250,7 +252,7 @@ export const ActiveSessionScreen = () => {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Booking Details</Text>
+              <Text style={styles.modalTitle}>{t('bookingDetails', 'Booking Details')}</Text>
               <TouchableOpacity onPress={() => setBookingDetailsModalVisible(false)} style={styles.modalCloseBtn}>
                 <Icon name="close" size={20} color={theme.colors.textSecondary} />
               </TouchableOpacity>
@@ -258,17 +260,17 @@ export const ActiveSessionScreen = () => {
             
             <View style={{ gap: 16, marginBottom: 24 }}>
               <View>
-                <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>Activity</Text>
-                <Text style={{ color: theme.colors.textPrimary, fontSize: 15, fontWeight: 'bold' }}>Fine Dining & Drinks</Text>
+                <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>{t('activityLabel', 'Activity')}</Text>
+                <Text style={{ color: theme.colors.textPrimary, fontSize: 15, fontWeight: 'bold' }}>{t('mockActivity', 'Fine Dining & Drinks')}</Text>
               </View>
               
               <View>
-                <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>Date & Time</Text>
-                <Text style={{ color: theme.colors.textPrimary, fontSize: 15, fontWeight: 'bold' }}>Today, 7:00 PM - 9:00 PM</Text>
+                <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>{t('dateTimeLabel', 'Date & Time')}</Text>
+                <Text style={{ color: theme.colors.textPrimary, fontSize: 15, fontWeight: 'bold' }}>{t('mockDateTime', 'Today, 7:00 PM - 9:00 PM')}</Text>
               </View>
 
               <View>
-                <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>Your Special Note</Text>
+                <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>{t('specialNoteLabel', 'Your Special Note')}</Text>
                 <View style={{ backgroundColor: 'rgba(255,255,255,0.05)', padding: 12, borderRadius: 12, borderWidth: 1, borderColor: theme.colors.border }}>
                   <Text style={{ color: theme.colors.textPrimary, fontSize: 14, fontStyle: 'italic' }}>"I prefer sitting near the window. Please wear smart casuals."</Text>
                 </View>
@@ -276,7 +278,7 @@ export const ActiveSessionScreen = () => {
             </View>
 
             <TouchableOpacity style={styles.primaryBtn} onPress={() => setBookingDetailsModalVisible(false)}>
-              <Text style={styles.primaryBtnText}>Back to Session</Text>
+              <Text style={styles.primaryBtnText}>{t('backToSession', 'Back to Session')}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -287,7 +289,7 @@ export const ActiveSessionScreen = () => {
           style={styles.primaryBtn} 
           onPress={() => navigation.navigate('SessionCompleteScreen')}
         >
-          <Text style={styles.primaryBtnText}>[MOCK] Time's Up / Auto End</Text>
+          <Text style={styles.primaryBtnText}>{t('mockTimesUp', '[MOCK] Time\'s Up / Auto End')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

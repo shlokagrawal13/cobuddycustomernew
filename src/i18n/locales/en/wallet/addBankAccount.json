@@ -1,0 +1,13 @@
+{
+  "headerTitle": "Add Bank Account",
+  "securityTitle": "Secure Bank Linking",
+  "securitySub": "We'll deposit a small amount (like ₹1) to instantly verify your account before saving.",
+  "sectionTitle": "ACCOUNT DETAILS",
+  "inputHolder": "Account Holder Name",
+  "inputAccount": "Account Number",
+  "inputReAccount": "Re-enter Account Number",
+  "errorMismatch": "Account numbers do not match",
+  "inputIfsc": "IFSC Code",
+  "pciNote": "Your details are encrypted and securely sent directly to our banking partner.",
+  "btnVerify": "Verify & Save Account"
+}

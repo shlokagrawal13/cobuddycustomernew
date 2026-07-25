@@ -1,0 +1,16 @@
+{
+  "headerTitle": "Counter Offer",
+  "title": "Action Required",
+  "proposedAdjustment": " proposed an adjustment to your {{activity}} booking.",
+  "messageTitle": "Message from Companion",
+  "messageText": "\"{msg}\"",
+  "sectionTitle": "PROPOSED CHANGES",
+  "detailLabelDate": "Date",
+  "detailLabelVenue": "Venue",
+  "changeLabelTime": "Time",
+  "changeLabelRate": "Rate",
+  "escrowNoteText": "If accepted, your Escrow hold will be updated securely.",
+  "primaryBtnText": "Accept New Offer",
+  "secondaryBtnText": "Message Back",
+  "ghostBtnText": "Decline Booking"
+}

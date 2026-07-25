@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-export const SessionReminderScreen = () => {
+export const SessionReminderScreen = () => { 
+  const { t } = useTranslation('session.reminder');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
@@ -31,7 +33,7 @@ export const SessionReminderScreen = () => {
         <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Meetup Reminder</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Meetup Reminder')}</Text>
         <View style={{ width: 40 }} />
       </View>
 
@@ -39,11 +41,11 @@ export const SessionReminderScreen = () => {
         
         <View style={styles.alertBox}>
           <Icon name="clock-outline" size={24} color={theme.colors.primary} />
-          <Text style={styles.alertText}>Your session with {MOCK_DATA.companionName} starts in <Text style={{fontWeight: 'bold', color: theme.colors.textPrimary}}>2 hours</Text>.</Text>
+          <Text style={styles.alertText}>{t('alertPrefix', 'Your session with ')}{MOCK_DATA.companionName}{t('alertMid', ' starts in ')}<Text style={{fontWeight: 'bold', color: theme.colors.textPrimary}}>{t('alertHours', '2 hours')}</Text>{t('alertSuffix', '.')}</Text>
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Meetup Details</Text>
+          <Text style={styles.cardTitle}>{t('cardTitle', 'Meetup Details')}</Text>
           <View style={styles.detailRow}>
             <View style={styles.iconCircleSm}>
               <Icon name="calendar-clock" size={16} color={theme.colors.primary} />
@@ -59,16 +61,16 @@ export const SessionReminderScreen = () => {
           
           <View style={styles.mapPlaceholder}>
             <Icon name="map-outline" size={40} color={theme.colors.textSecondary} />
-            <Text style={{color: theme.colors.textSecondary, marginTop: 8}}>Map View Placeholder</Text>
+            <Text style={{color: theme.colors.textSecondary, marginTop: 8}}>{t('mapPlaceholder', 'Map View Placeholder')}</Text>
           </View>
 
           <TouchableOpacity style={styles.secondaryBtn}>
             <Icon name="directions" size={18} color={theme.colors.primary} />
-            <Text style={styles.secondaryBtnText}>Get Directions</Text>
+            <Text style={styles.secondaryBtnText}>{t('getDirections', 'Get Directions')}</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.sectionTitle}>Safety Checklist</Text>
+        <Text style={styles.sectionTitle}>{t('safetyTitle', 'Safety Checklist')}</Text>
         <View style={styles.safetyCard}>
           {SAFETY_TIPS.map((tip, index) => (
             <View key={index} style={styles.safetyRow}>
@@ -81,12 +83,12 @@ export const SessionReminderScreen = () => {
       </ScrollView>
 
       <View style={styles.bottomBar}>
-        <Text style={styles.bottomHint}>Only confirm arrival when you are physically at the venue.</Text>
+        <Text style={styles.bottomHint}>Only confirm arrival when you are physically at the venue{t('alertSuffix', '.')}</Text>
         <TouchableOpacity 
           style={styles.primaryBtn} 
           onPress={() => navigation.navigate('ArrivalCheckInScreen')}
         >
-          <Text style={styles.primaryBtnText}>Simulate Arrival at Venue</Text>
+          <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Simulate Arrival at Venue')}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

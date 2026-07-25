@@ -1,0 +1,9 @@
+{
+  "headerTitle": "My Bookings",
+  "headerSubtitle": "Manage your upcoming and past meetups.",
+  "emptyTitle": "No {{tab}} bookings",
+  "emptyDesc": "You don't have any experiences scheduled in this section right now.",
+  "primaryBtnText": "Discover Companions",
+  "gridLabelDate": "Date",
+  "gridLabelTime": "Time ({{duration}})"
+}

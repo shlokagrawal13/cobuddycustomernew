@@ -3,7 +3,8 @@ import {
   View, Text, StyleSheet, ScrollView, TouchableOpacity, 
   StatusBar, Alert 
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -11,8 +12,10 @@ import { theme } from '../../theme';
 // Ring constants for CSS-based ring
 const RING_SIZE = 110;
 
-export const ProfileScreen = () => {
+export const ProfileScreen = () => { 
+  const { t } = useTranslation('profile.main');
   const navigation = useNavigation<any>();
+  const insets = useSafeAreaInsets();
 
   // Mock User Data with Enhanced Fields
   const user = {
@@ -61,8 +64,16 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <SafeAreaView style={styles.root} edges={['top']}>
+    <View style={[styles.root, { paddingTop: insets.top }]}>
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
+
+      {/* ── Polished Theme Header ── */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'My Profile')}</Text>
+        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('SettingsHubScreen')}>
+          <Icon name="cog-outline" size={24} color={theme.colors.textPrimary} />
+        </TouchableOpacity>
+      </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
         
@@ -77,8 +88,8 @@ export const ProfileScreen = () => {
               <Icon name="timer-sand" size={20} color={theme.colors.background} />
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={styles.bannerTitle}>Active Session Ongoing</Text>
-              <Text style={styles.bannerSubtitle}>Tap to return to your live meetup.</Text>
+              <Text style={styles.bannerTitle}>{t('activeSessionTitle', 'Active Session Ongoing')}</Text>
+              <Text style={styles.bannerSubtitle}>{t('activeSessionSub', 'Tap to return to your live meetup.')}</Text>
             </View>
             <Icon name="arrow-right-circle" size={24} color={theme.colors.background} />
           </TouchableOpacity>
@@ -113,7 +124,7 @@ export const ProfileScreen = () => {
                 {user.kycStatus === 'verified' && (
                   <View style={styles.kycBadge}>
                     <Icon name="check-decagram" size={12} color={theme.colors.primary} />
-                    <Text style={styles.kycBadgeText}>Identity Verified</Text>
+                    <Text style={styles.kycBadgeText}>{t('kycVerified', 'Identity Verified')}</Text>
                   </View>
                 )}
                 <View style={styles.locationBadge}>
@@ -148,7 +159,7 @@ export const ProfileScreen = () => {
         <View style={styles.trustCard}>
           <View style={styles.trustGlow} />
           <View style={styles.trustHeader}>
-            <Text style={styles.cardTitle}>Trust Score</Text>
+            <Text style={styles.cardTitle}>{t('trustScoreTitle', 'Trust Score')}</Text>
             <Icon name="shield-star" size={20} color={theme.colors.primary} />
           </View>
 
@@ -164,11 +175,11 @@ export const ProfileScreen = () => {
 
           <View style={styles.trustStats}>
             <View style={styles.trustStatRow}>
-              <Text style={styles.trustStatLabel}>Session Completion</Text>
+              <Text style={styles.trustStatLabel}>{t('sessionCompletion', 'Session Completion')}</Text>
               <Text style={styles.trustStatValue}>100%</Text>
             </View>
             <View style={[styles.trustStatRow, { borderBottomWidth: 0 }]}>
-              <Text style={styles.trustStatLabel}>Safety Rating</Text>
+              <Text style={styles.trustStatLabel}>{t('safetyRating', 'Safety Rating')}</Text>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
                 <Text style={styles.trustStatValue}>4.9</Text>
                 <Icon name="star" size={13} color={theme.colors.primary} />
@@ -179,12 +190,12 @@ export const ProfileScreen = () => {
 
         {/* ── Identity & Contact Card (KYC Checklist) ── */}
         <View style={styles.infoCard}>
-          <Text style={styles.cardTitle}>Identity & Contact</Text>
+          <Text style={styles.cardTitle}>{t('identityContactTitle', 'Identity & Contact')}</Text>
           
           {/* Completeness Bar */}
           <View style={styles.completenessBox}>
             <View style={styles.completenessHeader}>
-              <Text style={styles.completenessTitle}>Profile Completeness</Text>
+              <Text style={styles.completenessTitle}>{t('profileCompleteness', 'Profile Completeness')}</Text>
               <Text style={styles.completenessValue}>{user.profileCompleteness}%</Text>
             </View>
             <View style={styles.progressBarBg}>
@@ -213,7 +224,7 @@ export const ProfileScreen = () => {
                 <Icon name="check" size={16} color={theme.colors.primary} />
               </View>
               <View style={styles.verifyMeta}>
-                <Text style={styles.verifyTitle}>Phone Number</Text>
+                <Text style={styles.verifyTitle}>{t('phoneNumber', 'Phone Number')}</Text>
                 <Text style={styles.verifySub}>{user.phone} • Verified</Text>
               </View>
             </View>
@@ -228,7 +239,7 @@ export const ProfileScreen = () => {
                 />
               </View>
               <View style={styles.verifyMeta}>
-                <Text style={styles.verifyTitle}>Government ID</Text>
+                <Text style={styles.verifyTitle}>{t('govId', 'Government ID')}</Text>
                 <Text style={[styles.verifySub, user.kycStatus !== 'verified' && {color: theme.colors.error}]}>
                   {user.kycStatus === 'verified' ? 'Aadhaar Verified' : 'Pending - Required for booking'}
                 </Text>
@@ -245,7 +256,7 @@ export const ProfileScreen = () => {
                 />
               </View>
               <View style={styles.verifyMeta}>
-                <Text style={styles.verifyTitle}>Live Selfie</Text>
+                <Text style={styles.verifyTitle}>{t('liveSelfie', 'Live Selfie')}</Text>
                 <Text style={[styles.verifySub, user.kycStatus !== 'verified' && {color: theme.colors.error}]}>
                   {user.kycStatus === 'verified' ? 'Biometric matched' : 'Pending - Required for booking'}
                 </Text>
@@ -277,7 +288,7 @@ export const ProfileScreen = () => {
 
         {/* ── Quick Access Links ── */}
         <View style={styles.infoCard}>
-          <Text style={styles.cardTitle}>Wallet & Activity</Text>
+          <Text style={styles.cardTitle}>{t('walletActivityTitle', 'Wallet & Activity')}</Text>
           {[
             { id: 'wallet', icon: 'wallet-outline', label: 'My Wallet', sub: `Balance: ${user.walletBalance}`, action: () => navigation.navigate('WalletScreen') },
             { id: 'reviews', icon: 'star-circle-outline', label: 'My Reviews', sub: `${user.reviewsCount} Ratings received`, action: () => navigation.navigate('MyReviewsScreen') },
@@ -299,7 +310,7 @@ export const ProfileScreen = () => {
 
         {/* ── Safety Settings Inline Toggles ── */}
         <View style={styles.infoCard}>
-          <Text style={styles.cardTitle}>Safety Settings</Text>
+          <Text style={styles.cardTitle}>{t('safetySettingsTitle', 'Safety Settings')}</Text>
           {[
             { id: 'contact_share', title: 'Trusted Contact Sharing', sub: 'Auto-share session details.' },
             { id: 'live_monitor', title: 'Live Safety Monitoring', sub: 'Active tracking during sessions.' }
@@ -325,14 +336,14 @@ export const ProfileScreen = () => {
             onPress={() => navigation.navigate('SafetyHubScreen')}
           >
             <Icon name="security" size={16} color={theme.colors.primary} />
-            <Text style={styles.hubBtnText}>Open Safety Hub</Text>
+            <Text style={styles.hubBtnText}>{t('openSafetyHub', 'Open Safety Hub')}</Text>
             <Icon name="chevron-right" size={20} color={theme.colors.primary} />
           </TouchableOpacity>
         </View>
 
         {/* ── Legal & App Settings ── */}
         <View style={styles.infoCard}>
-          <Text style={styles.cardTitle}>Preferences & Legal</Text>
+          <Text style={styles.cardTitle}>{t('prefsLegalTitle', 'Preferences & Legal')}</Text>
           {[
             { id: 'settings', icon: 'cog-outline', label: 'Settings Hub', sub: 'Account, Notifications, Language', action: () => navigation.navigate('SettingsHubScreen') },
             { id: 'support', icon: 'lifebuoy', label: 'Support Center', sub: 'Get help or report an issue', action: () => navigation.navigate('SupportCenterScreen') },
@@ -354,12 +365,29 @@ export const ProfileScreen = () => {
         <Text style={styles.versionText}>CoBuddy v1.0.0 (Build 42)</Text>
 
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: theme.colors.background },
+  
+  // ── Polished App Theme Header ──
+  header: {
+    height: 60,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    backgroundColor: theme.colors.background,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: theme.colors.border,
+  },
+  headerTitle: { fontSize: 24, fontWeight: 'bold', color: theme.colors.textPrimary },
+  headerIconBtn: {
+    padding: 8,
+  },
+
   scrollContent: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 40, gap: 16 },
 
   // Active Booking

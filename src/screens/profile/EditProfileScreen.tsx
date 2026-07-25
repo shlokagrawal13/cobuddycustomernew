@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform, Alert, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
@@ -23,7 +24,8 @@ const MOCK_PROFILE = {
     ]
 };
 
-export const EditProfileScreen = () => {
+export const EditProfileScreen = () => { 
+  const { t } = useTranslation('profile.edit');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
@@ -102,12 +104,12 @@ export const EditProfileScreen = () => {
                 
                 <View style={styles.inputBlock}>
                     <Text style={styles.inputLabel}>Display Name</Text>
-                    <TextInput style={styles.input} value={form.name} onChangeText={v => updateForm('name', v)} placeholder="First Name" placeholderTextColor={theme.colors.textSecondary} />
+                    <TextInput style={styles.input} value={form.name} onChangeText={v => updateForm('name', v)} placeholder={t('placeholder.FirstName', 'First Name')} placeholderTextColor={theme.colors.textSecondary} />
                 </View>
 
                 <View style={styles.inputBlock}>
                     <Text style={styles.inputLabel}>Short Bio</Text>
-                    <TextInput style={[styles.input, styles.textArea]} value={form.bio} onChangeText={v => updateForm('bio', v)} placeholder="Say something about yourself..." placeholderTextColor={theme.colors.textSecondary} multiline maxLength={150} textAlignVertical="top" />
+                    <TextInput style={[styles.input, styles.textArea]} value={form.bio} onChangeText={v => updateForm('bio', v)} placeholder={t('placeholder.SaySomethingAbo', 'Say something about yourself...')} placeholderTextColor={theme.colors.textSecondary} multiline maxLength={150} textAlignVertical="top" />
                     <Text style={styles.helperText}>{form.bio.length}/150 characters</Text>
                 </View>
 
@@ -187,7 +189,7 @@ export const EditProfileScreen = () => {
 
                 <View style={styles.lockedBlock}>
                     <View style={styles.lockedRow}>
-                        <Text style={styles.lockedLabel}>Gender</Text>
+                        <Text style={styles.lockedLabel}>{t('gender', 'Gender')}</Text>
                         <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                             <Icon name="lock" size={14} color={theme.colors.textSecondary} />
                             <Text style={styles.lockedValue}>{MOCK_PROFILE.gender}</Text>
@@ -195,7 +197,7 @@ export const EditProfileScreen = () => {
                     </View>
                     <View style={styles.lockedDivider} />
                     <View style={styles.lockedRow}>
-                        <Text style={styles.lockedLabel}>Age</Text>
+                        <Text style={styles.lockedLabel}>{t('age', 'Age')}</Text>
                         <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                             <Icon name="lock" size={14} color={theme.colors.textSecondary} />
                             <Text style={styles.lockedValue}>{MOCK_PROFILE.age} yrs</Text>
@@ -203,7 +205,7 @@ export const EditProfileScreen = () => {
                     </View>
                 </View>
                 {MOCK_PROFILE.kycVerified && (
-                    <Text style={styles.helperTextLocked}>These details are locked for safety after KYC verification. Contact support to change.</Text>
+                    <Text style={styles.helperTextLocked}>{t('lockedNotice', 'These details are locked for safety after KYC verification. Contact support to change.')}</Text>
                 )}
             </View>
 

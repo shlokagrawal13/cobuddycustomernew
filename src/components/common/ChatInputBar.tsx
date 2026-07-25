@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
   View, Text, StyleSheet, TouchableOpacity, 
   TextInput, Modal, Platform 
@@ -12,6 +13,7 @@ interface ChatInputBarProps {
 }
 
 export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
+  const { t } = useTranslation('common');
   const [inputText, setInputText] = useState('');
   const [isAttachmentMenuVisible, setAttachmentMenuVisible] = useState(false);
 
@@ -38,7 +40,7 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
           </TouchableOpacity>
           <TextInput 
             style={styles.textInput}
-            placeholder="Message..."
+            placeholder={t('chatInput.placeholder', 'Message...')}
             placeholderTextColor={theme.colors.textSecondary}
             value={inputText}
             onChangeText={setInputText}
@@ -74,7 +76,7 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
         >
           <View style={styles.attachmentSheet}>
             <View style={styles.sheetHandle} />
-            <Text style={styles.sheetTitle}>Share Content</Text>
+            <Text style={styles.sheetTitle}>{t('chatInput.shareContent', 'Share Content')}</Text>
             
             <View style={styles.attachmentGrid}>
               
@@ -82,28 +84,28 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="camera" size={28} color={theme.colors.primary} />
                 </View>
-                <Text style={styles.attachLabel}>Camera</Text>
+                <Text style={styles.attachLabel}>{t('chatInput.camera', 'Camera')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('🖼️ Sent an image')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="image" size={28} color={theme.colors.primary} />
                 </View>
-                <Text style={styles.attachLabel}>Photo</Text>
+                <Text style={styles.attachLabel}>{t('chatInput.photo', 'Photo')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📄 Sent a document')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="file-document" size={28} color={theme.colors.primary} />
                 </View>
-                <Text style={styles.attachLabel}>Document</Text>
+                <Text style={styles.attachLabel}>{t('chatInput.document', 'Document')}</Text>
               </TouchableOpacity>
 
               <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📍 Shared a location')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="map-marker" size={28} color={theme.colors.primary} />
                 </View>
-                <Text style={styles.attachLabel}>Location</Text>
+                <Text style={styles.attachLabel}>{t('chatInput.location', 'Location')}</Text>
               </TouchableOpacity>
 
             </View>

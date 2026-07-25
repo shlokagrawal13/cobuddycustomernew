@@ -21,10 +21,11 @@ const ACTIVITIES = [
   { id: 'a4', title: 'Gaming Session', icon: 'controller-classic-outline', price: '₹600/hr', description: 'Arcade, bowling, or console gaming.' },
 ];
 
-export const BookingActivitySelectScreen = () => {
+export const BookingActivitySelectScreen = () => { 
+  const { t } = useTranslation('booking.activitySelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
-  const { t } = useTranslation(['booking']); // Use a booking namespace ideally
+
   
   // State for selected activity
   const [selectedActivityId, setSelectedActivityId] = useState<string | null>(null);
@@ -47,7 +48,7 @@ export const BookingActivitySelectScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Step 1 of 4</Text>
+        <Text style={styles.headerTitle}>{t('headerTitle', 'Step 1 of 4')}</Text>
         <View style={{ width: 24 }} />
       </View>
       <View style={styles.progressContainer}>
@@ -55,8 +56,8 @@ export const BookingActivitySelectScreen = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>What would you like to do?</Text>
-        <Text style={styles.subtitle}>Select an activity for your booking request.</Text>
+        <Text style={styles.title}>{t('title', 'What would you like to do?')}</Text>
+        <Text style={styles.subtitle}>{t('subtitle', 'Select an activity for your booking request.')}</Text>
 
         <View style={styles.listContainer}>
           {ACTIVITIES.map((activity) => {
