@@ -13,5 +13,7 @@
   "commCall": "Call Securely",
   "commMessage": "Message",
   "reportText": "Companion didn't show up or looks different? Report Issue",
-  "mockOtp": "[MOCK] Companion entered OTP"
+  "mockOtp": "[MOCK] Companion entered OTP",
+  "secureCallTitle": "Secure Call",
+  "secureCallMsg": "This feature requires a telephony backend integration (e.g., Twilio/Exotel) to mask numbers, which is not yet implemented."
 }

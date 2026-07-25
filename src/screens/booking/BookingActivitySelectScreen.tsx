@@ -18,7 +18,7 @@ export const BookingActivitySelectScreen = () => {
   const { t } = useTranslation('booking.activitySelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
-  const setDraftBooking = useBookingStore(state => state.setDraftBooking);
+  const { setDraftBooking, clearDraftBooking } = useBookingStore();
 
   const ACTIVITIES = [
     { id: 'a1', title: t('activity.a1.title', 'Coffee Meetup'), icon: 'coffee-outline', price: '₹500/hr', description: t('activity.a1.desc', 'A relaxed conversation over a cup of coffee.') },
@@ -47,7 +47,10 @@ export const BookingActivitySelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => {
+          clearDraftBooking();
+          smartGoBack();
+        }}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 1 of 4')}</Text>

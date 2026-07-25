@@ -96,7 +96,7 @@ export const ArrivalCheckInScreen = () => {
           <Text style={styles.commTitle}>{t('commTitle', 'Can\'t find your companion?')}</Text>
           <View style={styles.commRow}>
             <TouchableOpacity style={styles.commBtn} onPress={() => {
-              Alert.alert('Secure Call', 'This feature requires a telephony backend integration (e.g., Twilio/Exotel) to mask numbers, which is not yet implemented.');
+              Alert.alert(t('secureCallTitle', 'Secure Call'), t('secureCallMsg', 'This feature requires a telephony backend integration (e.g., Twilio/Exotel) to mask numbers, which is not yet implemented.'));
             }}>
               <Icon name="phone" size={20} color={theme.colors.primary} />
               <Text style={styles.commBtnText}>{t('commCall', 'Call Securely')}</Text>
@@ -113,7 +113,7 @@ export const ArrivalCheckInScreen = () => {
         {/* Safety Issue Link */}
         <TouchableOpacity 
           style={styles.reportBtn} 
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'ReportUserScreen' })}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: COMPANION_NAME } })}
         >
           <Icon name="alert-circle-outline" size={16} color={theme.colors.error} />
           <Text style={styles.reportText}>{t('reportText', 'Companion didn\'t show up or looks different? Report Issue')}</Text>
