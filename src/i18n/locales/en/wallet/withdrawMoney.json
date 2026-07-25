@@ -1,12 +1,21 @@
 {
   "headerTitle": "Withdraw Money",
   "balanceLabel": "WITHDRAWABLE BALANCE",
-  "maxBtn": "Withdraw Max (₹{{max}})",
-  "helperText": "Minimum withdrawal is ₹100. No processing fees apply.",
+  "maxBtn": "Withdraw Max (\u20b9{{max}})",
+  "helperText": "Minimum withdrawal is \u20b9100. No processing fees apply.",
   "sectionTitle": "TRANSFER TO",
   "btnChange": "Change",
   "infoTitle": "Processing Time",
   "infoSubUpi": "UPI transfers are usually instant, but can take up to 2 hours.",
   "infoSubBank": "Standard IMPS/NEFT transfer takes up to 2-3 business days.",
-  "proceedToPay": "Withdraw ₹{{amount}}"
+  "proceedToPay": "Withdraw \u20b9{{amount}}",
+  "errorTitle": "Error",
+  "minWithdrawalError": "Minimum withdrawal amount is \u20b9100.",
+  "exceedsBalanceError": "Amount exceeds your withdrawable balance.",
+  "processingWithdrawalTitle": "Processing Withdrawal",
+  "processingWithdrawalDesc": "\u20b9{{val}} is being transferred to your {{destination}}. It may take up to 2-3 business days to reflect.",
+  "gotItBtn": "Got it",
+  "placeholder": {
+    "0": "0"
+  }
 }

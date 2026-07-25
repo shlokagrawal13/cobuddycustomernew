@@ -4,5 +4,64 @@
   "youCanAddAPhoto": "You can add a photo later from your profile",
   "photoWillOnlyBeVisible": "Photo will only be visible to verified members during active sessions.",
   "read": "READ  \u2192",
-  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences."
+  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences.",
+  "location": {
+    "benefits": {
+      "safety": {
+        "title": "Safety Monitoring",
+        "sub": "Real-time location shared with trusted contacts during sessions"
+      },
+      "venue": {
+        "title": "Venue Discovery",
+        "sub": "Find safe public places and popular venues near you"
+      },
+      "routes": {
+        "title": "Protected Routes",
+        "sub": "Secure navigation and safe transit options"
+      }
+    }
+  },
+  "alertTitleLocationAccess": "Location Access",
+  "alertMsgLocationpermissionwi": "Location permission will be requested on your device. This enables safety monitoring and venue discovery.",
+  "notification": {
+    "benefits": {
+      "updates": {
+        "title": "Booking Updates",
+        "sub": "Instant updates on your booking requests"
+      },
+      "reminders": {
+        "title": "Session Reminders",
+        "sub": "Never miss a booking or pre-session briefing"
+      },
+      "safety": {
+        "title": "Safety Pings",
+        "sub": "Emergency alerts and safety check-ins during sessions"
+      }
+    }
+  },
+  "alertTitleEnableNotificat": "Enable Notifications",
+  "alertMsgNotificationpermissi": "Notification permission will be requested on your device.",
+  "profile": {
+    "error_name": "Invalid name",
+    "dobLabel": "Date of Birth",
+    "uploadPhoto": "Upload Photo",
+    "uploadPhotoDesc": "Choose from your photo library",
+    "takeSelfie": "Take Selfie",
+    "takeSelfieDesc": "Use your front camera",
+    "skipForNow": "Skip For Now"
+  },
+  "placeholder": {
+    "DDMMYYYY": "DD/MM/YYYY"
+  },
+  "title": {
+    "ProfilePhoto": "Profile Photo"
+  },
+  "limitReachedTitle": "Limit Reached",
+  "limitReachedMessage": "You can select up to {{max}} interests.",
+  "centerLabel": {
+    "SafetyAgreement": "Safety Agreement"
+  },
+  "contacts": {
+    "headerTitle": "Emergency Contacts"
+  }
 }

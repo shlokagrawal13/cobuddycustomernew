@@ -3,5 +3,10 @@
   "gpsTitle": "Use Current Location",
   "gpsSub": "Enable GPS for accurate meetups",
   "sectionTitle": "RECENT & SAVED",
-  "tapToSelect": "Tap to select this location"
+  "tapToSelect": "Tap to select this location",
+  "alertTitleLocationFound": "Location Found",
+  "alertMsgDetectedBandraKurlaC": "Detected: Bandra Kurla Complex, Mumbai.",
+  "placeholder": {
+    "SearchCityAreaO": "Search city, area, or landmark"
+  }
 }

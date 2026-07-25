@@ -4,5 +4,13 @@
   "subject": "SUBJECT",
   "description": "DESCRIPTION",
   "attachmentsOptional": "ATTACHMENTS (OPTIONAL)",
-  "submitTicket": "Submit Ticket"
+  "submitTicket": "Submit Ticket",
+  "alertTitleIncomplete": "Incomplete",
+  "alertMsgPleaseselectacategor": "Please select a category and fill out all fields.",
+  "alertTitleTicketSubmitted": "Ticket Submitted",
+  "alertMsgOursupportteamwillge": "Our support team will get back to you within 24 hours.",
+  "placeholder": {
+    "BrieflyDescribe": "Briefly describe the issue",
+    "ProvideAsManyDe": "Provide as many details as possible so we can help you faster..."
+  }
 }

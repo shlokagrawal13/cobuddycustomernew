@@ -12,5 +12,18 @@
   "privacyControl": "Privacy Control",
   "corePermissions": "CORE PERMISSIONS",
   "mediaComm": "MEDIA & COMMUNICATION",
-  "optional": "OPTIONAL"
+  "optional": "OPTIONAL",
+  "alertTitleRevokePermissio": "Revoke Permission",
+  "alertMsgTodisablethispermiss": "To disable this permission, please go to your device Settings.",
+  "manageWhatDataCobuddyCan": "Manage what data CoBuddy can access. We only ask for permissions that are essential to providing you a safe and seamless experience.",
+  "title": {
+    "LocationAccess": "Location Access",
+    "PushNotificatio": "Push Notifications",
+    "Camera": "Camera",
+    "PhotoLibrary": "Photo Library",
+    "Microphone": "Microphone",
+    "CalendarSync": "Calendar Sync",
+    "Contacts": "Contacts"
+  },
+  "revokingRequiredPermissionsMayLimit": "Revoking required permissions may limit app functionality."
 }

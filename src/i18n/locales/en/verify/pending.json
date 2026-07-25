@@ -4,5 +4,8 @@
   "statusLabel": "STATUS",
   "statusValue": "Verification Pending",
   "progress": "VERIFICATION PROGRESS",
-  "continueSetup": "Continue Setting Up Your Experience"
+  "continueSetup": "Continue Setting Up Your Experience",
+  "estimatedTimeUsuallyCompletedWithin": "Estimated Time: Usually completed within 24 hours.",
+  "youCanContinueExploringThe": "You can continue exploring the app while verification is reviewed.",
+  "allVerificationDataIsProtected": "All verification data is protected with end-to-end encryption and never shared without consent."
 }

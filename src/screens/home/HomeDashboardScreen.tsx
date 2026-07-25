@@ -67,7 +67,7 @@ export const HomeDashboardScreen = () => {
       <View style={styles.topBar}>
         <View style={styles.topLeft}>
           <View style={styles.logoBadge}>
-            <Text style={styles.logoBadgeText}>{t('c', 'C')}</Text>
+            <Text style={styles.logoBadgeText}>C</Text>
           </View>
           <Text style={styles.logoText}>{t('appName', 'CoBuddy')}</Text>
         </View>
@@ -83,7 +83,7 @@ export const HomeDashboardScreen = () => {
         
         {/* Welcome Section */}
         <View style={styles.welcomeSection}>
-          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>{t('shlok', 'Shlok')}</Text></Text>
+          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>Shlok</Text></Text>
           <Text style={styles.subtitleText}>{t('subtitle')}</Text>
         </View>
 

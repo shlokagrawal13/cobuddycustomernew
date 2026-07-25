@@ -14,5 +14,7 @@
   "label_rel": "Relationship",
   "btn_save": "Save Contact",
   "error_name": "Please enter a valid name (min 2 chars).",
-  "error_phone": "Please enter a valid phone number."
+  "error_phone": "Please enter a valid phone number.",
+  "placeholder": "AddTrustedContactScreen Placeholder",
+  "headerTitle": "Emergency Contacts"
 }

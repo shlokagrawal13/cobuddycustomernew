@@ -21,5 +21,6 @@
   "safetySecurity": "SAFETY & SECURITY",
   "sosAlerts": "SOS & Security Alerts",
   "sosAlertsSub": "Critical account and safety notices",
-  "securityNote": "Security alerts cannot be disabled for your safety."
+  "securityNote": "Security alerts cannot be disabled for your safety.",
+  "controlWhichNotificationsYouReceive": "Control which notifications you receive and how you receive them."
 }

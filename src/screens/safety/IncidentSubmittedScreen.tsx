@@ -7,7 +7,7 @@ export const IncidentSubmittedScreen = () => {
   const { t } = useTranslation(['onboarding']);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{t('IncidentSubmittedScreen', 'IncidentSubmittedScreen Placeholder')}</Text>
+      <Text style={styles.text}>{t('placeholder', 'IncidentSubmittedScreen Placeholder')}</Text>
     </View>
   );
 };

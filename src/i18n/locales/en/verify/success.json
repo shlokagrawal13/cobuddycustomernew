@@ -1,5 +1,6 @@
 {
   "verified": "You are Verified!",
   "trustedProfile": "Trusted Profile",
-  "bookingAccess": "Booking Access"
+  "bookingAccess": "Booking Access",
+  "yourIdentityHasBeenSuccessfully": "Your identity has been successfully verified. You now have full access to CoBuddy and can start booking companions immediately."
 }

@@ -8,5 +8,10 @@
   "addUpi": "Add UPI ID",
   "modalTitle": "Add UPI ID for Payouts",
   "modalLabel": "Enter your UPI ID",
-  "modalVerify": "Verify & Save"
+  "modalVerify": "Verify & Save",
+  "alertTitleRemovePayoutMet": "Remove Payout Method",
+  "alertMsgAreyousureyouwanttor": "Are you sure you want to remove ",
+  "placeholder": {
+    "eGNameOkhdfcban": "e.g. name@okhdfcbank"
+  }
 }

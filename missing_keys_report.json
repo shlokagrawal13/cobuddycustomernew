@@ -1,0 +1,652 @@
+{
+  "src/screens\\auth\\LocationPermissionScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "location.btn_skip",
+        null
+      ],
+      [
+        "location.title",
+        null
+      ],
+      [
+        "location.subtitle",
+        null
+      ],
+      [
+        "location.trust_note",
+        null
+      ],
+      [
+        "location.btn_allow",
+        null
+      ],
+      [
+        "location.btn_skip",
+        null
+      ]
+    ]
+  },
+  "src/screens\\auth\\NotificationPermissionScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "notification.btn_skip",
+        null
+      ],
+      [
+        "notification.title",
+        null
+      ],
+      [
+        "notification.subtitle",
+        null
+      ],
+      [
+        "notification.trust_note",
+        null
+      ],
+      [
+        "notification.btn_allow",
+        null
+      ],
+      [
+        "notification.btn_skip",
+        null
+      ]
+    ]
+  },
+  "src/screens\\auth\\OTPVerificationScreen.tsx": {
+    "ns": "auth",
+    "json_path": null,
+    "missing": [
+      [
+        "otp.error_invalid",
+        null
+      ],
+      [
+        "otp.header",
+        null
+      ],
+      [
+        "otp.overline",
+        null
+      ],
+      [
+        "otp.title",
+        null
+      ],
+      [
+        "otp.subtitle",
+        null
+      ],
+      [
+        "otp.resend_in",
+        null
+      ],
+      [
+        "otp.resend_active",
+        null
+      ],
+      [
+        "otp.resend_btn",
+        null
+      ],
+      [
+        "otp.dev_hint",
+        null
+      ],
+      [
+        "otp.trust_note",
+        null
+      ],
+      [
+        "otp.btn_verify",
+        null
+      ],
+      [
+        "otp.btn_change",
+        null
+      ]
+    ]
+  },
+  "src/screens\\auth\\PhoneLoginScreen.tsx": {
+    "ns": "auth",
+    "json_path": null,
+    "missing": [
+      [
+        "phone.error_invalid",
+        null
+      ],
+      [
+        "phone.header",
+        null
+      ],
+      [
+        "phone.overline",
+        null
+      ],
+      [
+        "phone.title",
+        null
+      ],
+      [
+        "phone.subtitle",
+        null
+      ],
+      [
+        "phone.label_mobile",
+        null
+      ],
+      [
+        "phone.placeholder",
+        null
+      ],
+      [
+        "phone.trust_note",
+        null
+      ],
+      [
+        "phone.btn_send",
+        null
+      ],
+      [
+        "title.SelectCountry",
+        "Select Country"
+      ]
+    ]
+  },
+  "src/screens\\auth\\WelcomeScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "window",
+        null
+      ],
+      [
+        "welcome.overline",
+        null
+      ],
+      [
+        "welcome.title",
+        null
+      ],
+      [
+        "welcome.subtitle",
+        null
+      ],
+      [
+        "welcome.get_started",
+        null
+      ],
+      [
+        "welcome.disclaimer_part1",
+        null
+      ],
+      [
+        "welcome.terms",
+        null
+      ],
+      [
+        "welcome.and",
+        null
+      ],
+      [
+        "welcome.privacy",
+        null
+      ]
+    ]
+  },
+  "src/screens\\booking\\BookingActivitySelectScreen.tsx": {
+    "ns": "booking.activitySelect",
+    "json_path": "src\\i18n\\locales/en/booking/activitySelect.json",
+    "missing": [
+      [
+        "activity.a1.title",
+        "Coffee Meetup"
+      ],
+      [
+        "activity.a1.desc",
+        "A relaxed conversation over a cup of coffee."
+      ],
+      [
+        "activity.a2.title",
+        "Movie Companion"
+      ],
+      [
+        "activity.a2.desc",
+        "Watch a movie together and discuss it later."
+      ],
+      [
+        "activity.a3.title",
+        "City Tour"
+      ],
+      [
+        "activity.a3.desc",
+        "Explore the best local spots and hidden gems."
+      ],
+      [
+        "activity.a4.title",
+        "Gaming Session"
+      ],
+      [
+        "activity.a4.desc",
+        "Arcade, bowling, or console gaming."
+      ],
+      [
+        "continue",
+        "Continue"
+      ]
+    ]
+  },
+  "src/screens\\booking\\BookingTimeSelectScreen.tsx": {
+    "ns": "booking.timeSelect",
+    "json_path": "src\\i18n\\locales/en/booking/timeSelect.json",
+    "missing": [
+      [
+        "T",
+        null
+      ]
+    ]
+  },
+  "src/screens\\bookings\\BookingsListScreen.tsx": {
+    "ns": "bookings.list",
+    "json_path": "src\\i18n\\locales/en/bookings/list.json",
+    "missing": [
+      [
+        "window",
+        null
+      ],
+      [
+        " - ",
+        null
+      ]
+    ]
+  },
+  "src/screens\\chat\\CompanionChatScreen.tsx": {
+    "ns": "chat.companion",
+    "json_path": "src\\i18n\\locales/en/chat/companion.json",
+    "missing": [
+      [
+        " ",
+        null
+      ]
+    ]
+  },
+  "src/screens\\chat\\IncomingCallScreen.tsx": {
+    "ns": "chat.incomingCall",
+    "json_path": "src\\i18n\\locales/en/chat/incomingCall.json",
+    "missing": [
+      [
+        "window",
+        null
+      ]
+    ]
+  },
+  "src/screens\\home\\CompanionProfileScreen.tsx": {
+    "ns": "companionProfile",
+    "json_path": "src\\i18n\\locales/en/home/companionProfile.json",
+    "missing": [
+      [
+        "window",
+        null
+      ],
+      [
+        "Block User",
+        null
+      ]
+    ]
+  },
+  "src/screens\\onboarding\\BasicProfileSetupScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "profile.error_city",
+        null
+      ],
+      [
+        "profile.error_bio",
+        null
+      ],
+      [
+        "profile.header",
+        null
+      ],
+      [
+        "profile.step",
+        null
+      ],
+      [
+        "profile.title",
+        null
+      ],
+      [
+        "profile.subtitle",
+        null
+      ],
+      [
+        "profile.photo_add",
+        null
+      ],
+      [
+        "profile.photo_added",
+        null
+      ],
+      [
+        "profile.photo_hint_none",
+        null
+      ],
+      [
+        "profile.photo_hint_added",
+        null
+      ],
+      [
+        "profile.label_name",
+        null
+      ],
+      [
+        "profile.placeholder_name",
+        null
+      ],
+      [
+        "profile.label_gender",
+        null
+      ],
+      [
+        "profile.placeholder_gender",
+        null
+      ],
+      [
+        "profile.label_city",
+        null
+      ],
+      [
+        "profile.placeholder_city",
+        null
+      ],
+      [
+        "profile.label_bio",
+        null
+      ],
+      [
+        "profile.placeholder_bio",
+        null
+      ],
+      [
+        "profile.trust_note",
+        null
+      ],
+      [
+        "profile.btn_continue",
+        null
+      ]
+    ]
+  },
+  "src/screens\\onboarding\\InterestSelectionScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "interests.header",
+        null
+      ],
+      [
+        "interests.title",
+        null
+      ],
+      [
+        "interests.subtitle",
+        null
+      ],
+      [
+        "interests.footer_info",
+        null
+      ],
+      [
+        "interests.footer_max",
+        null
+      ],
+      [
+        "interests.btn_continue",
+        null
+      ]
+    ]
+  },
+  "src/screens\\onboarding\\LegalConsentScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "consent.title",
+        null
+      ],
+      [
+        "consent.subtitle",
+        null
+      ],
+      [
+        "consent.btn_agree",
+        null
+      ]
+    ]
+  },
+  "src/screens\\onboarding\\SafetyTutorialScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "window",
+        null
+      ],
+      [
+        "safety.verifiedVenue",
+        "VERIFIED VENUE"
+      ],
+      [
+        "safety.header",
+        null
+      ],
+      [
+        "safety.btn_skip",
+        null
+      ],
+      [
+        "safety.btn_finish",
+        null
+      ],
+      [
+        "safety.btn_next",
+        null
+      ],
+      [
+        "safety.btn_learn_more",
+        null
+      ],
+      [
+        "safety.modal.title",
+        null
+      ],
+      [
+        "safety.modal.btn_understood",
+        null
+      ]
+    ]
+  },
+  "src/screens\\profile\\EditProfileScreen.tsx": {
+    "ns": "profile.edit",
+    "json_path": "src\\i18n\\locales/en/profile/edit.json",
+    "missing": [
+      [
+        "placeholder.FirstName",
+        "First Name"
+      ],
+      [
+        "placeholder.SaySomethingAbo",
+        "Say something about yourself..."
+      ]
+    ]
+  },
+  "src/screens\\profile\\ProfileScreen.tsx": {
+    "ns": "profile.main",
+    "json_path": "src\\i18n\\locales/en/profile/main.json",
+    "missing": [
+      [
+        "headerTitle",
+        "My Profile"
+      ],
+      [
+        "cobuddyV100Build42",
+        "CoBuddy v1.0.0 (Build 42)"
+      ]
+    ]
+  },
+  "src/screens\\profile\\SavedProfilesScreen.tsx": {
+    "ns": "profile.saved",
+    "json_path": "src\\i18n\\locales/en/profile/saved.json",
+    "missing": [
+      [
+        "title.ManageSavedProf",
+        "Manage Saved Profile"
+      ]
+    ]
+  },
+  "src/screens\\safety\\SafetyHubScreen.tsx": {
+    "ns": "safety.hub",
+    "json_path": "src\\i18n\\locales/en/safety/hub.json",
+    "missing": [
+      [
+        "window",
+        null
+      ]
+    ]
+  },
+  "src/screens\\safety\\TrustedContactsScreen.tsx": {
+    "ns": "onboarding",
+    "json_path": "src/i18n/locales/en/onboarding.json",
+    "missing": [
+      [
+        "contacts.error_name",
+        null
+      ],
+      [
+        "contacts.error_phone",
+        null
+      ],
+      [
+        "contacts.header",
+        null
+      ],
+      [
+        "contacts.btn_skip",
+        null
+      ],
+      [
+        "contacts.title",
+        null
+      ],
+      [
+        "contacts.subtitle",
+        null
+      ],
+      [
+        "contacts.btn_add",
+        null
+      ],
+      [
+        "contacts.privacy",
+        null
+      ],
+      [
+        "contacts.btn_complete",
+        null
+      ],
+      [
+        "contacts.sheet_title",
+        null
+      ],
+      [
+        "contacts.label_name",
+        null
+      ],
+      [
+        "contacts.placeholder_name",
+        null
+      ],
+      [
+        "contacts.label_phone",
+        null
+      ],
+      [
+        "contacts.placeholder_phone",
+        null
+      ],
+      [
+        "contacts.label_rel",
+        null
+      ],
+      [
+        "contacts.btn_save",
+        null
+      ]
+    ]
+  },
+  "src/screens\\session\\ActiveSessionScreen.tsx": {
+    "ns": "session.active",
+    "json_path": "src\\i18n\\locales/en/session/active.json",
+    "missing": [
+      [
+        "window",
+        null
+      ]
+    ]
+  },
+  "src/screens\\session\\PostSessionFeedbackScreen.tsx": {
+    "ns": "session.postFeedback",
+    "json_path": "src\\i18n\\locales/en/session/postFeedback.json",
+    "missing": [
+      [
+        "down",
+        null
+      ],
+      [
+        "up",
+        null
+      ]
+    ]
+  },
+  "src/screens\\settings\\ActiveSessionsScreen.tsx": {
+    "ns": "settings.activeSessions",
+    "json_path": "src\\i18n\\locales/en/settings/activeSessions.json",
+    "missing": [
+      [
+        "Log Out Device",
+        null
+      ]
+    ]
+  },
+  "src/screens\\settings\\BlockedUsersScreen.tsx": {
+    "ns": "settings.blockedUsers",
+    "json_path": "src\\i18n\\locales/en/settings/blockedUsers.json",
+    "missing": [
+      [
+        "Unblock User",
+        null
+      ]
+    ]
+  },
+  "src/screens\\verify\\SelfieCaptureScreen.tsx": {
+    "ns": "verify.selfie",
+    "json_path": "src\\i18n\\locales/en/verify/selfie.json",
+    "missing": [
+      [
+        "window",
+        null
+      ]
+    ]
+  }
+}

@@ -6,5 +6,8 @@
   "convoHeaderLabel": "ACTIVE CONVERSATIONS",
   "typing": "typing...",
   "emptyTitle": "No active chats",
-  "emptyDesc": "Once your booking is accepted, you can securely chat with your companion here."
+  "emptyDesc": "Once your booking is accepted, you can securely chat with your companion here.",
+  "connectWithADedicatedSpecialist": "Connect with a dedicated specialist for immediate 24/7 assistance.",
+  "newMessageTitle": "New Message",
+  "newMessageSub": "Select an active booking to start a conversation."
 }

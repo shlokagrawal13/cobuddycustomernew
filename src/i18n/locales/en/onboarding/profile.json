@@ -1,7 +1,9 @@
 {
   "header": "Basic Profile",
   "step": "STEP 1 OF 4",
-  "title": "Create Your Identity",
+  "title": {
+    "ProfilePhoto": "Profile Photo"
+  },
   "subtitle": "Help us personalize your trusted CoBuddy experience.",
   "photo_add": "Add Profile Photo",
   "photo_added": "Photo Added",
@@ -29,5 +31,11 @@
   "uploadPhotoDesc": "Choose from your photo library",
   "takeSelfie": "Take Selfie",
   "takeSelfieDesc": "Use your front camera",
-  "skipForNow": "Skip For Now"
+  "skipForNow": "Skip For Now",
+  "placeholder": {
+    "DDMMYYYY": "DD/MM/YYYY"
+  },
+  "youMustBe18To": "You must be 18+ to use CoBuddy.",
+  "youCanAddAPhoto": "You can add a photo later from your profile",
+  "photoWillOnlyBeVisible": "Photo will only be visible to verified members during active sessions."
 }

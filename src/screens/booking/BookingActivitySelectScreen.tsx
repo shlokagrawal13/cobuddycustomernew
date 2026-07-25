@@ -14,7 +14,7 @@ import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
 export const BookingActivitySelectScreen = () => { 
-  const { t } = useTranslation('booking/activitySelect');
+  const { t } = useTranslation('booking.activitySelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 

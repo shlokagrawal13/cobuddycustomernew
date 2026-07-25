@@ -11,5 +11,10 @@
   "pendingBookings": "Pending bookings",
   "pendingBookingsSub": "Any active or upcoming bookings will remain active. You must complete or cancel them.",
   "easyReactivation": "Easy reactivation",
-  "easyReactivationSub": "Simply log back in at any time to automatically reactivate your account."
+  "easyReactivationSub": "Simply log back in at any time to automatically reactivate your account.",
+  "alertTitleDeactivateAccou": "Deactivate Account",
+  "alertMsgAreyousureyouwanttod": "Are you sure you want to deactivate your account? You will be logged out, and your profile will be hidden.",
+  "alertTitleAccountDeactiva": "Account Deactivated",
+  "alertMsgYouraccounthasbeende": "Your account has been deactivated successfully. You can reactivate by logging in again.",
+  "deactivateSubtitle": "Deactivating your account is temporary. Your profile, photos, and reviews will be hidden from other users."
 }

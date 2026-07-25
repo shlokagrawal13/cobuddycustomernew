@@ -5,5 +5,9 @@
   "inputPublicDesc": "This will appear on {{name}}'s profile.",
   "inputPrivateTitle": "Private Feedback (Optional)",
   "inputPrivateDesc": "Share anything with the CoBuddy Safety Team. The companion will NOT see this.",
-  "submitBtn": "Submit & Finish"
+  "submitBtn": "Submit & Finish",
+  "placeholder": {
+    "WhatDidYouEnjoy": "What did you enjoy the most?",
+    "AnyConcernsOrPr": "Any concerns or private notes?"
+  }
 }

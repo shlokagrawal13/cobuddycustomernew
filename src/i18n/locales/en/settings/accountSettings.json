@@ -18,5 +18,20 @@
   "emailHelper": "Used for booking receipts and support.",
   "dataPrivacy": "DATA & PRIVACY",
   "downloadInfo": "Download Account Info",
-  "downloadSub": "Request a copy of your CoBuddy data"
+  "downloadSub": "Request a copy of your CoBuddy data",
+  "alertTitleEmailUpdated": "Email Updated",
+  "alertMsgYouremailaddresshasb": "Your email address has been successfully updated.",
+  "alertTitleRequestSent": "Request Sent",
+  "alertMsgAlinktodownloadyourd": "A link to download your data will be emailed to you within 48 hours.",
+  "coreIdentity": "CORE IDENTITY (PRIVATE)",
+  "identityVerified": "Identity verified via KYC. Contact support to update.",
+  "legalName": "Legal Name",
+  "mockName": "Shlok Sharma",
+  "matchesGovId": "Matches your Government ID.",
+  "dob": "Date of Birth",
+  "mockDob": "15 Aug 1998",
+  "genderIdentity": "Gender Identity",
+  "placeholder": {
+    "nameExampleCom": "name@example.com"
+  }
 }

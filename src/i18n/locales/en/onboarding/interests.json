@@ -7,5 +7,7 @@
   "footer_info": "Choose at least {{min}} interests. ({{count}} selected)",
   "footer_max": "MAXIMUM {{max}} SELECTIONS ALLOWED",
   "cue": "Your preferences help personalize trusted experiences and recommendations.",
-  "btn_continue": "CONTINUE"
+  "btn_continue": "CONTINUE",
+  "limitReachedTitle": "Limit Reached",
+  "limitReachedMessage": "You can select up to {{max}} interests."
 }

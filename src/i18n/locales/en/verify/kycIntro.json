@@ -4,5 +4,6 @@
   "govIdDesc": "Securely scan your Aadhaar, PAN, DL, or Passport.",
   "livenessCheck": "Liveness Check",
   "livenessDesc": "A quick selfie to ensure you match your ID.",
-  "startVerify": "Start Verification"
+  "startVerify": "Start Verification",
+  "toEnsureASafeAnd": "To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking."
 }

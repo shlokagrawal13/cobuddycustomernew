@@ -20,5 +20,12 @@
   "punctuality": "Punctuality",
   "communication": "Communication",
   "behavior": "Behavior",
-  "shareProfile": "Share Profile"
+  "shareProfile": "Share Profile",
+  "starts_from": "Starts from",
+  "hr": "/ hr",
+  "title": {
+    "Options": "Options"
+  },
+  "blockedTitle": "Blocked",
+  "blockedMessage": "{{name}} has been blocked."
 }

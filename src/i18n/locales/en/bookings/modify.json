@@ -14,5 +14,10 @@
   "inputVenue": "New Venue (Optional)",
   "sendBtn": "Send Modification Request",
   "cancelBtn": "Cancel",
-  "sheetTitle": "Select a Safe Venue"
+  "sheetTitle": "Select a Safe Venue",
+  "placeholder": {
+    "eG25102026": "e.g. 25/10/2026",
+    "0500": "05:00",
+    "SearchCafesMall": "Search cafes, malls, restaurants..."
+  }
 }

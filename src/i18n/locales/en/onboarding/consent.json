@@ -9,5 +9,10 @@
   "item3_desc": "Your data is encrypted. We only share what's necessary.",
   "item4_title": "Clear Boundaries",
   "item4_desc": "Experiences are professional and clearly defined upfront.",
-  "btn_agree": "I Agree & Accept"
+  "btn_agree": "I Agree & Accept",
+  "centerLabel": {
+    "SafetyAgreement": "Safety Agreement"
+  },
+  "read": "READ  \u2192",
+  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences."
 }

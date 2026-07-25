@@ -3,5 +3,21 @@
   "subtitle": "We use your location to show available companions and exclusive venues near you.",
   "btn_allow": "Allow Location Access",
   "btn_skip": "Skip for now",
-  "trust_note": "Your location is only used while the app is active to match you with nearby services."
+  "trust_note": "Your location is only used while the app is active to match you with nearby services.",
+  "benefits": {
+    "safety": {
+      "title": "Safety Monitoring",
+      "sub": "Real-time location shared with trusted contacts during sessions"
+    },
+    "venue": {
+      "title": "Venue Discovery",
+      "sub": "Find safe public places and popular venues near you"
+    },
+    "routes": {
+      "title": "Protected Routes",
+      "sub": "Secure navigation and safe transit options"
+    }
+  },
+  "alertTitleLocationAccess": "Location Access",
+  "alertMsgLocationpermissionwi": "Location permission will be requested on your device. This enables safety monitoring and venue discovery."
 }

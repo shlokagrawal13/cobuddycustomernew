@@ -11,5 +11,9 @@
   "otherDevices": "OTHER LOGGED-IN DEVICES",
   "accountSecure": "Account Secure",
   "accountSecureSub": "You are only logged in on this device.",
-  "securityTip": "Security Tip"
+  "securityTip": "Security Tip",
+  "alertTitleLogOutAllOtherD": "Log Out All Other Devices",
+  "alertMsgYouwillbeloggedoutof": "You will be logged out of all devices except this one. You will need to log in again on those devices.",
+  "reviewTheListOfDevices": "Review the list of devices where you\\",
+  "ifYouSeeADevice": "If you see a device you don\\"
 }

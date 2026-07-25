@@ -8,5 +8,10 @@
   "modalLabel": "Enter your UPI ID",
   "modalVerify": "Verify & Add",
   "secureTitle": "Secure & Encrypted",
-  "secureDesc": "We don't store your full card details. All transactions are PCI-DSS compliant."
+  "secureDesc": "We don't store your full card details. All transactions are PCI-DSS compliant.",
+  "alertTitleRemovePaymentMe": "Remove Payment Method",
+  "alertMsgAreyousureyouwanttor": "Are you sure you want to remove ",
+  "placeholder": {
+    "eGNameOkhdfcban": "e.g. name@okhdfcbank"
+  }
 }

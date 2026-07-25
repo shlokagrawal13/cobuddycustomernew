@@ -2,5 +2,9 @@
   "headerTitle": "Step 2 of 4",
   "title": "Where do you want to meet?",
   "subtitle": "Select a safe public venue for {{activity}}.",
-  "sectionTitle": "Curated Safe Venues"
+  "sectionTitle": "Curated Safe Venues",
+  "placeholder": {
+    "SearchPublicVen": "Search public venues..."
+  },
+  "continueBtn": "Continue"
 }

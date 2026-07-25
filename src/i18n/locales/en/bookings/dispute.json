@@ -7,5 +7,8 @@
   "sectionDesc": "DETAILED DESCRIPTION",
   "sectionProof": "UPLOAD PROOF (OPTIONAL)",
   "uploadText": "Tap to upload screenshots or photos",
-  "submitBtn": "Submit Dispute"
+  "submitBtn": "Submit Dispute",
+  "placeholder": {
+    "PleaseDescribeW": "Please describe what happened in detail (min 10 chars)..."
+  }
 }

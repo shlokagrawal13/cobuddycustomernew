@@ -1,5 +1,24 @@
 {
   "headerTitle": "Step 1 of 4",
   "title": "What would you like to do?",
-  "subtitle": "Select an activity for your booking request."
+  "subtitle": "Select an activity for your booking request.",
+  "activity": {
+    "a1": {
+      "title": "Coffee Meetup",
+      "desc": "A relaxed conversation over a cup of coffee."
+    },
+    "a2": {
+      "title": "Movie Companion",
+      "desc": "Watch a movie together and discuss it later."
+    },
+    "a3": {
+      "title": "City Tour",
+      "desc": "Explore the best local spots and hidden gems."
+    },
+    "a4": {
+      "title": "Gaming Session",
+      "desc": "Arcade, bowling, or console gaming."
+    }
+  },
+  "continue": "Continue"
 }

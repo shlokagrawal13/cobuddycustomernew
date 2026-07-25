@@ -4,5 +4,8 @@
   "title": "Show your appreciation",
   "subtitle": "Did Elena go above and beyond? A small tip can make their day.",
   "customTip": "Custom",
-  "trustText": "100% of your tip goes directly to the companion. CoBuddy takes zero commission."
+  "trustText": "100% of your tip goes directly to the companion. CoBuddy takes zero commission.",
+  "placeholder": {
+    "0": "0"
+  }
 }

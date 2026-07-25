@@ -5,5 +5,8 @@
   "optionProfile": "View Profile",
   "optionMute": "Mute Notifications",
   "optionClear": "Clear Chat",
-  "optionReport": "Report Safety Issue"
+  "optionReport": "Report Safety Issue",
+  "keepAllPaymentsOnThe": "Keep all payments on the app. Do not share personal phone numbers.",
+  "alertTitleNotificationsmu": "Notifications muted for this chat.",
+  "alertTitleOurSafetyTeamha": "Our Safety Team has been notified. We take your safety seriously."
 }

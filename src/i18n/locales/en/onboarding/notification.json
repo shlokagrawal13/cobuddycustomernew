@@ -3,5 +3,22 @@
   "subtitle": "Get instant alerts for booking confirmations, messages, and security notices.",
   "btn_allow": "Enable Notifications",
   "btn_skip": "Skip for now",
-  "trust_note": "We'll only send important updates about your active sessions and account security."
+  "trust_note": "We'll only send important updates about your active sessions and account security.",
+  "benefits": {
+    "updates": {
+      "title": "Booking Updates",
+      "sub": "Instant updates on your booking requests"
+    },
+    "reminders": {
+      "title": "Session Reminders",
+      "sub": "Never miss a booking or pre-session briefing"
+    },
+    "safety": {
+      "title": "Safety Pings",
+      "sub": "Emergency alerts and safety check-ins during sessions"
+    }
+  },
+  "bookingConfirmed": "Booking Confirmed!",
+  "alertTitleEnableNotificat": "Enable Notifications",
+  "alertMsgNotificationpermissi": "Notification permission will be requested on your device."
 }

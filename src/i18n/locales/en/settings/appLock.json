@@ -9,5 +9,7 @@
   "autoLockTime": "AUTO-LOCK TIME",
   "privacy": "PRIVACY",
   "hideScreen": "Hide Screen in App Switcher",
-  "hideScreenDesc": "Blur the app content when viewing recent apps to prevent shoulder surfing."
+  "hideScreenDesc": "Blur the app content when viewing recent apps to prevent shoulder surfing.",
+  "protectYourChatsAndBookings": "Protect your chats and bookings. When enabled, you\\",
+  "cobuddyNeverStoresYourBiometric": "CoBuddy never stores your biometric data. It is securely handled by your device\\"
 }

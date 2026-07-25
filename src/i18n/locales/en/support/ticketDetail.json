@@ -1,7 +1,10 @@
 {
   "statusOpen": "Open",
   "contextLabel": "Refund Request for Booking #4412",
-  "contextMeta": "Category: Payment  •  Created 2 hours ago",
+  "contextMeta": "Category: Payment  \u2022  Created 2 hours ago",
   "closedText": "This ticket has been marked as closed.",
-  "ticketMeta": "Category: Payment  •  Created 2 hours ago"
+  "ticketMeta": "Category: Payment  \u2022  Created 2 hours ago",
+  "placeholder": {
+    "WriteAReply": "Write a reply..."
+  }
 }

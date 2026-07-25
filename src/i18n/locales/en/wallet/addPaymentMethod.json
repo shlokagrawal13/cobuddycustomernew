@@ -1,7 +1,7 @@
 {
   "headerTitle": "Add New Card",
   "securityTitle": "Secure Payments",
-  "securitySub": "We'll charge a refundable ₹2 to verify this card.",
+  "securitySub": "We'll charge a refundable \u20b92 to verify this card.",
   "sectionTitle": "CARD DETAILS",
   "inputName": "Name on Card",
   "inputCardNum": "Card Number",
@@ -16,5 +16,15 @@
   "setDefault": "Set as Default Card",
   "setDefaultSub": "Use this card automatically for session bookings",
   "securityNote": "Card data is never stored on our servers. Information is tokenised by our PCI-DSS Level 1 payment partner.",
-  "saveCard": "Save Card Securely"
+  "saveCard": "Save Card Securely",
+  "alertTitleError": "Error",
+  "alertMsgPleaseenteravalid16d": "Please enter a valid 16-digit card number.",
+  "alertTitleSuccess": "Success",
+  "alertMsgYourcardhasbeensecur": "Your card has been securely added to your wallet.",
+  "placeholder": {
+    "NameAsItAppears": "Name as it appears on card",
+    "000000000000000": "0000 0000 0000 0000",
+    "MMYY": "MM/YY",
+    "123": "123"
+  }
 }

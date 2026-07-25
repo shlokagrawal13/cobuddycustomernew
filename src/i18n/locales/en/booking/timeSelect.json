@@ -4,5 +4,6 @@
   "subtitle": "Select a date and time for your booking.",
   "sectionTitleDate": "Select Date",
   "sectionTitleTime": "Select Time",
-  "sectionTitleDuration": "Duration"
+  "sectionTitleDuration": "Duration",
+  "continue": "Continue"
 }

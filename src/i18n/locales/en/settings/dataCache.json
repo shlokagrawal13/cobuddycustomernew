@@ -21,5 +21,12 @@
   "autoDownloadSub": "Automatically download photos on Wi-Fi",
   "uploadQuality": "Photo Upload Quality",
   "uploadQualitySub": "Adjust quality for profile & chat uploads",
-  "qualityHelper": "High Quality uses more mobile data and storage."
+  "qualityHelper": "High Quality uses more mobile data and storage.",
+  "alertTitleClearCache": "Clear Cache",
+  "alertMsgClearCache": "This will clear temporary files and speed up the app. You won",
+  "alertTitleClearMedia": "Clear Media",
+  "alertMsgClearMedia": "This will delete downloaded companion photos and chat media from your device to save space. They will redownload when you view them again.",
+  "title": {
+    "UploadQuality": "Upload Quality"
+  }
 }

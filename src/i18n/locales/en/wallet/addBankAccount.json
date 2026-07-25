@@ -1,7 +1,7 @@
 {
   "headerTitle": "Add Bank Account",
   "securityTitle": "Secure Bank Linking",
-  "securitySub": "We'll deposit a small amount (like ₹1) to instantly verify your account before saving.",
+  "securitySub": "We'll deposit a small amount (like \u20b91) to instantly verify your account before saving.",
   "sectionTitle": "ACCOUNT DETAILS",
   "inputHolder": "Account Holder Name",
   "inputAccount": "Account Number",
@@ -9,5 +9,16 @@
   "errorMismatch": "Account numbers do not match",
   "inputIfsc": "IFSC Code",
   "pciNote": "Your details are encrypted and securely sent directly to our banking partner.",
-  "btnVerify": "Verify & Save Account"
+  "btnVerify": "Verify & Save Account",
+  "alertTitleError": "Error",
+  "alertMsgPleasefillallthedeta": "Please fill all the details.",
+  "alertMsgAccountnumbersdonotm": "Account numbers do not match.",
+  "alertMsgPleaseenteravalid11d": "Please enter a valid 11-digit IFSC code.",
+  "alertTitleSuccess": "Success",
+  "alertMsgBankaccountverifieda": "Bank account verified and added securely.",
+  "placeholder": {
+    "AsPerBankRecord": "As per bank records",
+    "000000000000": "000000000000",
+    "eGHDFC0001234": "e.g. HDFC0001234"
+  }
 }

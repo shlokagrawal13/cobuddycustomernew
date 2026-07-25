@@ -3,5 +3,7 @@
   "emptyTitle": "No Blocked Users",
   "emptyDesc": "You haven't blocked any companions.",
   "unblock": "Unblock",
-  "blockedUsersHeader": "Blocked Users"
+  "blockedUsersHeader": "Blocked Users",
+  "blockedUsersCannotSendYou": "Blocked users cannot send you messages, request bookings, or view your profile. They won\\",
+  "youHaventBlockedAnyoneYet": "You haven\\"
 }

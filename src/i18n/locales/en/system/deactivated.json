@@ -1,5 +1,6 @@
 {
   "title": "Account Deactivated",
   "reactivateBtn": "Reactivate Account",
-  "supportBtn": "Contact Support"
+  "supportBtn": "Contact Support",
+  "yourAccountIsCurrentlyDeactivated": "Your account is currently deactivated. Your profile is hidden, and you won\\"
 }

@@ -10,5 +10,13 @@
   "chatHistory": "  Your entire chat history",
   "bookingHistory": "  Your booking history and reviews",
   "walletBalance": "  Any remaining wallet balance",
-  "kycStatus": "  Your KYC verification status"
+  "kycStatus": "  Your KYC verification status",
+  "alertTitleFinalConfirmati": "Final Confirmation",
+  "alertMsgThisactionisirrevers": "This action is irreversible. All your data, wallet balance, and history will be permanently deleted.",
+  "alertTitleAccountDeleted": "Account Deleted",
+  "alertMsgYouraccounthasbeende": "Your account has been deleted.",
+  "warningDesc": "Deleting your account is permanent. This action cannot be undone. You will immediately lose access to:",
+  "placeholder": {
+    "DELETE": "DELETE"
+  }
 }

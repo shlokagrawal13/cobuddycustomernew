@@ -17,5 +17,7 @@
   "contactSharingSub": "Automatically share your active session details and live location with your trusted contacts.",
   "liveMonitoring": "Live Safety Monitoring",
   "liveMonitoringSub": "Enable active tracking and anomaly detection during your meetup sessions.",
-  "openSafetyHub": "Open Safety Hub"
+  "openSafetyHub": "Open Safety Hub",
+  "customizeYourPrivacyAndSafety": "Customize your privacy and safety preferences to ensure a secure and comfortable experience on CoBuddy.",
+  "cobuddyActivelyMonitorsReportsTo": "CoBuddy actively monitors reports to maintain a safe community."
 }

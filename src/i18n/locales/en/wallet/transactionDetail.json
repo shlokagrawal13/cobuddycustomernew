@@ -9,5 +9,7 @@
   "infoDuration": "Duration",
   "breakdownTitle": "PAYMENT BREAKDOWN",
   "totalLabel": "TOTAL",
-  "downloadBtn": "Download Receipt"
+  "downloadBtn": "Download Receipt",
+  "alertTitleDownloadReceipt": "Download Receipt",
+  "alertMsgPDFreceipthasbeendow": "PDF receipt has been downloaded successfully."
 }

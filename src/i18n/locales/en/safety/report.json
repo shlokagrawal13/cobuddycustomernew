@@ -5,5 +5,16 @@
   "detailsLabel": "INCIDENT DETAILS (REQUIRED)",
   "evidenceLabel": "EVIDENCE (OPTIONAL)",
   "maxFile": "Max file size: 10MB",
-  "submitBtn": "Submit Confidential Report"
+  "submitBtn": "Submit Confidential Report",
+  "alertTitleIncomplete": "Incomplete",
+  "alertMsgPleaseselectanincide": "Please select an incident type and provide details.",
+  "alertTitleReportSubmitted": "Report Submitted",
+  "alertMsgYoursafetyreporthasb": "Your safety report has been escalated to our Trust & Safety team. We will review this immediately and contact you.",
+  "confidentialAlert": "All reports are strictly confidential. In case of immediate physical danger, please contact local authorities (112) first.",
+  "placeholder": {
+    "eGBooking4412Or": "e.g., Booking #4412 or Companion name",
+    "PleaseDescribeE": "Please describe exactly what happened..."
+  },
+  "evidenceAttached": "Evidence Attached (Tap to remove)",
+  "uploadScreenshots": "Upload Screenshots or Audio"
 }
