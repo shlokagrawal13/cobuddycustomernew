@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
@@ -95,11 +95,15 @@ export const ArrivalCheckInScreen = () => {
         <View style={styles.commCard}>
           <Text style={styles.commTitle}>{t('commTitle', 'Can\'t find your companion?')}</Text>
           <View style={styles.commRow}>
-            <TouchableOpacity style={styles.commBtn} onPress={() => {}}>
+            <TouchableOpacity style={styles.commBtn} onPress={() => {
+              Alert.alert('Secure Call', 'This feature requires a telephony backend integration (e.g., Twilio/Exotel) to mask numbers, which is not yet implemented.');
+            }}>
               <Icon name="phone" size={20} color={theme.colors.primary} />
               <Text style={styles.commBtnText}>{t('commCall', 'Call Securely')}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.commBtn} onPress={() => {}}>
+            <TouchableOpacity style={styles.commBtn} onPress={() => {
+              navigation.navigate('CompanionChatScreen', { companionId: 'c1' });
+            }}>
               <Icon name="chat" size={20} color={theme.colors.primary} />
               <Text style={styles.commBtnText}>{t('commMessage', 'Message')}</Text>
             </TouchableOpacity>

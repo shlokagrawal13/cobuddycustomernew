@@ -12,11 +12,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { useBookingStore } from '../../store/slices/bookingStore';
 
 export const BookingActivitySelectScreen = () => { 
   const { t } = useTranslation('booking.activitySelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
+  const setDraftBooking = useBookingStore(state => state.setDraftBooking);
 
   const ACTIVITIES = [
     { id: 'a1', title: t('activity.a1.title', 'Coffee Meetup'), icon: 'coffee-outline', price: '₹500/hr', description: t('activity.a1.desc', 'A relaxed conversation over a cup of coffee.') },
@@ -32,7 +34,9 @@ export const BookingActivitySelectScreen = () => {
     if (!selectedActivityId) return;
     
     const selectedActivity = ACTIVITIES.find(a => a.id === selectedActivityId);
-    // TODO: Dispatch selected activity to a booking flow Zustand store
+    if (selectedActivity) {
+      setDraftBooking({ activity: selectedActivity.title });
+    }
     
     navigation.navigate('BookingVenueSelectScreen', {
       activity: selectedActivity,

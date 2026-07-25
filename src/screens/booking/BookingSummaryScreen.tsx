@@ -14,12 +14,14 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { useBookingStore } from '../../store/slices/bookingStore';
 
 export const BookingSummaryScreen = () => { 
   const { t } = useTranslation('booking.summary');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
+  const { draftBooking, requestBooking } = useBookingStore();
 
   
   const { activity, venue, date, time, duration = 1 } = route.params || {};
@@ -44,6 +46,12 @@ export const BookingSummaryScreen = () => {
       navigation.navigate('KYCStack');
     } else {
       // Success: Proceed to Request Sent
+      requestBooking({
+        companionId: 'c1', // Mock companion ID
+        activity: draftBooking?.activity || activity?.title || 'Unknown Activity',
+        venue: draftBooking?.venue || venue?.name || 'Unknown Venue',
+        time: draftBooking?.time || time || 'Unknown Time'
+      });
       navigation.navigate('BookingRequestSentScreen');
     }
   };

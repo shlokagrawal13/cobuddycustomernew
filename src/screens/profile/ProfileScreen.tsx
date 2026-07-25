@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   View, Text, StyleSheet, ScrollView, TouchableOpacity, 
-  StatusBar, Alert 
+  StatusBar, Alert, Share 
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -63,6 +63,16 @@ export const ProfileScreen = () => {
     );
   };
 
+  const handleShareProfile = async () => {
+    try {
+      await Share.share({
+        message: `Check out ${user.name}'s profile on CoBuddy! A great companion from ${user.location}. Join CoBuddy today.`,
+      });
+    } catch (error: any) {
+      Alert.alert(t('errorTitle', 'Error'), error.message);
+    }
+  };
+
   return (
     <View style={[styles.root, { paddingTop: insets.top }]}>
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
@@ -108,7 +118,7 @@ export const ProfileScreen = () => {
 
             {/* Top Right Actions */}
             <View style={styles.heroActions}>
-              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => Alert.alert(t('shareProfileTitle', 'Share Profile'), t('comingSoonMessage', 'Coming soon!'))}>
+              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={handleShareProfile}>
                 <Icon name="share-variant" size={16} color={theme.colors.background} />
               </TouchableOpacity>
               <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => navigation.navigate('EditProfileScreen')}>

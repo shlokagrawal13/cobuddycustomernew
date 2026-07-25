@@ -158,7 +158,7 @@ export const BookingDetailScreen = () => {
     if (data.status === 'Completed' || data.status === 'History') {
       return (
         <View style={styles.actionCol}>
-          <TouchableOpacity style={styles.primaryBtn} onPress={() => {}}>
+          <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('CompanionReviewScreen', { bookingId: data.id })}>
             <Text style={styles.primaryBtnText}>{t('leaveReview', 'Leave a Review')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.ghostBtn} onPress={() => navigation.navigate('DisputeRefundScreen', { bookingId: data.id })}>

@@ -13,19 +13,27 @@ export interface Booking {
 
 interface BookingState {
   activeBooking: Booking | null;
+  draftBooking: Partial<Booking> | null;
   bookingHistory: Booking[];
   isLoading: boolean;
+  setDraftBooking: (updates: Partial<Booking>) => void;
+  clearDraftBooking: () => void;
   requestBooking: (booking: Omit<Booking, 'id' | 'status'>) => void;
   cancelBooking: (id: string) => void;
 }
 
 export const useBookingStore = create<BookingState>((set) => ({
   activeBooking: null,
+  draftBooking: null,
   bookingHistory: [],
   isLoading: false,
+  setDraftBooking: (updates) => set((state) => ({ 
+    draftBooking: { ...state.draftBooking, ...updates } 
+  })),
+  clearDraftBooking: () => set({ draftBooking: null }),
   requestBooking: (bookingData) => {
     const newBooking: Booking = { ...bookingData, id: Date.now().toString(), status: 'pending' };
-    set({ activeBooking: newBooking });
+    set({ activeBooking: newBooking, draftBooking: null });
   },
   cancelBooking: (id) => set((state) => ({
     activeBooking: state.activeBooking?.id === id ? null : state.activeBooking,
