@@ -54,7 +54,6 @@ import { DeactivateAccountScreen } from '../screens/settings/DeactivateAccountSc
 import { ActiveSessionsScreen } from '../screens/settings/ActiveSessionsScreen';
 import { SavedProfilesScreen } from '../screens/profile/SavedProfilesScreen';
 import { TrustedContactsScreen } from '../screens/safety/TrustedContactsScreen';
-import { AddTrustedContactScreen } from '../screens/safety/AddTrustedContactScreen';
 import { ReferFriendScreen } from '../screens/settings/ReferFriendScreen';
 import { SafetyHubScreen } from '../screens/safety/SafetyHubScreen';
 import { IncidentReportScreen } from '../screens/safety/IncidentReportScreen';
@@ -136,7 +135,6 @@ const ProfileTabStack = () => (
       <Stack.Screen name="ActiveSessionsScreen" component={ActiveSessionsScreen} />
       <Stack.Screen name="SavedProfilesScreen" component={SavedProfilesScreen} />
       <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
-      <Stack.Screen name="AddTrustedContactScreen" component={AddTrustedContactScreen} />
       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
       <Stack.Screen name="ReferFriendScreen" component={ReferFriendScreen} />
       <Stack.Screen name="SafetyHubScreen" component={SafetyHubScreen} />
