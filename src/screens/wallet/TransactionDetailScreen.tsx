@@ -36,7 +36,7 @@ export const TransactionDetailScreen = () => {
   const tx = MOCK_DETAILS[route.params?.transactionId || 'tx_002']; // Default fallback for dev
 
   const handleDownload = () => {
-    Alert.alert('Download Receipt', 'PDF receipt has been downloaded successfully.');
+    Alert.alert(t('alertTitleDownloadReceipt', 'Download Receipt'), t('alertMsgPDFreceipthasbeendow', 'PDF receipt has been downloaded successfully.'));
   };
 
   return (

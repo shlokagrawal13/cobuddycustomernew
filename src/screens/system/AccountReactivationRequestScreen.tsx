@@ -19,9 +19,7 @@ export const AccountReactivationRequestScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'Request Received')}</Text>
-        <Text style={styles.message}>
-          Your request to reactivate your account has been submitted successfully. Our team will review it and notify you within 24 hours.
-        </Text>
+        <Text style={styles.message}>{t('yourRequestToReactivateYour', 'Your request to reactivate your account has been submitted successfully. Our team will review it and notify you within 24 hours.')}</Text>
       </View>
 
       <View style={styles.footer}>

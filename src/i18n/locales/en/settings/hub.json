@@ -103,4 +103,4 @@
       "title": "Maintenance Mode"
     }
   }
-}
+,"logOutAlert": {"title": "Log Out", "message": "Are you sure you want to log out of CoBuddy?", "cancel": "Cancel", "confirm": "Log Out", "successTitle": "Logged Out", "successMessage": "Successfully logged out."}}

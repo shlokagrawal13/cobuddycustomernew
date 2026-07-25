@@ -204,7 +204,7 @@ export const BasicProfileSetupScreen = () => {
             {/* DOB + Gender row */}
             <View style={styles.ageGenderRow}>
               <View style={[styles.field, { flex: 1.1 }]}>
-                <Text style={styles.fieldLabel}>Date of Birth</Text>
+                <Text style={styles.fieldLabel}>{t('profile.dobLabel', 'Date of Birth')}</Text>
                 <TextInput
                   style={[styles.underlineInput, dobError ? styles.underlineInputError : null]}
                   value={dob}
@@ -243,7 +243,7 @@ export const BasicProfileSetupScreen = () => {
               </View>
             </View>
             {dobError ? <Text style={styles.errorText}>{dobError}</Text> : null}
-            <Text style={styles.ageHint}>You must be 18+ to use CoBuddy.</Text>
+            <Text style={styles.ageHint}>{t('youMustBe18To', 'You must be 18+ to use CoBuddy.')}</Text>
 
             {/* City */}
             <View style={styles.field}>
@@ -316,8 +316,8 @@ export const BasicProfileSetupScreen = () => {
                 <Icon name="image-outline" size={22} color={theme.colors.primary} />
               </View>
               <View style={picker.optionMeta}>
-                <Text style={picker.optionLabel}>Upload Photo</Text>
-                <Text style={picker.optionDesc}>Choose from your photo library</Text>
+                <Text style={picker.optionLabel}>{t('profile.uploadPhoto', 'Upload Photo')}</Text>
+                <Text style={picker.optionDesc}>{t('profile.uploadPhotoDesc', 'Choose from your photo library')}</Text>
               </View>
               <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
@@ -333,8 +333,8 @@ export const BasicProfileSetupScreen = () => {
                 <Icon name="camera-front-variant" size={22} color={theme.colors.primary} />
               </View>
               <View style={picker.optionMeta}>
-                <Text style={picker.optionLabel}>Take Selfie</Text>
-                <Text style={picker.optionDesc}>Use your front camera</Text>
+                <Text style={picker.optionLabel}>{t('profile.takeSelfie', 'Take Selfie')}</Text>
+                <Text style={picker.optionDesc}>{t('profile.takeSelfieDesc', 'Use your front camera')}</Text>
               </View>
               <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
@@ -350,8 +350,8 @@ export const BasicProfileSetupScreen = () => {
                 <Icon name="skip-next-outline" size={22} color={theme.colors.textSecondary} />
               </View>
               <View style={picker.optionMeta}>
-                <Text style={[picker.optionLabel, picker.optionLabelMuted]}>Skip For Now</Text>
-                <Text style={picker.optionDesc}>You can add a photo later from your profile</Text>
+                <Text style={[picker.optionLabel, picker.optionLabelMuted]}>{t('profile.skipForNow', 'Skip For Now')}</Text>
+                <Text style={picker.optionDesc}>{t('youCanAddAPhoto', 'You can add a photo later from your profile')}</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -360,7 +360,7 @@ export const BasicProfileSetupScreen = () => {
               <View style={{ marginTop: 1 }}>
                 <Icon name="shield-check-outline" size={14} color={theme.colors.textSecondary} />
               </View>
-              <Text style={[picker.bottomNoteText, { flex: 1 }]}>Photo will only be visible to verified members during active sessions.</Text>
+              <Text style={[picker.bottomNoteText, { flex: 1 }]}>{t('photoWillOnlyBeVisible', 'Photo will only be visible to verified members during active sessions.')}</Text>
             </View>
           </View>
         </AppBottomSheet>

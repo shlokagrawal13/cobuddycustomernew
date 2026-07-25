@@ -13,13 +13,11 @@ export const DeactivateAccountScreen = () => {
   const { smartGoBack } = useSmartNavigation();
 
   const handleDeactivate = () => {
-      Alert.alert(
-          'Deactivate Account',
-          'Are you sure you want to deactivate your account? You will be logged out, and your profile will be hidden.',
+      Alert.alert(t('alertTitleDeactivateAccou', 'Deactivate Account'), t('alertMsgAreyousureyouwanttod', 'Are you sure you want to deactivate your account? You will be logged out, and your profile will be hidden.'),
           [
               { text: 'Cancel', style: 'cancel' },
               { text: 'Yes, Deactivate', style: 'destructive', onPress: () => {
-                  Alert.alert('Account Deactivated', 'Your account has been deactivated successfully. You can reactivate by logging in again.', [{ text: 'OK' }]);
+                  Alert.alert(t('alertTitleAccountDeactiva', 'Account Deactivated'), t('alertMsgYouraccounthasbeende', 'Your account has been deactivated successfully. You can reactivate by logging in again.'), [{ text: 'OK' }]);
               }}
           ]
       );
@@ -45,8 +43,8 @@ export const DeactivateAccountScreen = () => {
 
         <Text style={styles.title}>{t('breakTitle', 'Take a break from CoBuddy')}</Text>
         <Text style={styles.subtitle}>
-            Deactivating your account is temporary. Your profile, photos, and reviews will be hidden from other users.
-        </Text>
+              {t('deactivateSubtitle', 'Deactivating your account is temporary. Your profile, photos, and reviews will be hidden from other users.')}
+          </Text>
 
         <View style={styles.card}>
             <View style={styles.row}>

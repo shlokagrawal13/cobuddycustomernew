@@ -36,7 +36,7 @@ export const AddPaymentMethodScreen = () => {
 
   const handleSave = () => {
     if (cardNumber.length < 16) {
-        Alert.alert('Error', 'Please enter a valid 16-digit card number.');
+        Alert.alert(t('alertTitleError', 'Error'), t('alertMsgPleaseenteravalid16d', 'Please enter a valid 16-digit card number.'));
         return;
     }
     
@@ -50,7 +50,7 @@ export const AddPaymentMethodScreen = () => {
         isDefault: isDefault
     };
 
-    Alert.alert('Success', 'Your card has been securely added to your wallet.', [
+    Alert.alert(t('alertTitleSuccess', 'Success'), t('alertMsgYourcardhasbeensecur', 'Your card has been securely added to your wallet.'), [
         { text: 'OK', onPress: () => {
             navigation.navigate('PaymentMethodsScreen', { newMethod: newCard });
         }}

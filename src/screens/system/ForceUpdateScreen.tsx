@@ -23,9 +23,7 @@ export const ForceUpdateScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'Update Required')}</Text>
-        <Text style={styles.message}>
-          A crucial update is available for CoBuddy. Please update the app to the latest version to continue using our services and enjoy new features.
-        </Text>
+        <Text style={styles.message}>{t('aCrucialUpdateIsAvailable', 'A crucial update is available for CoBuddy. Please update the app to the latest version to continue using our services and enjoy new features.')}</Text>
       </View>
 
       <View style={styles.footer}>

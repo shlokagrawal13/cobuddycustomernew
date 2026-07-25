@@ -73,9 +73,7 @@ export const AppLockScreen = () => {
                 <Icon name={biometricIcon} size={40} color={theme.colors.primary} />
             </View>
             <Text style={styles.heroTitle}>{t('enhancedSec', 'Enhanced Security')}</Text>
-            <Text style={styles.heroSub}>
-                Protect your chats and bookings. When enabled, you'll need to use your device's biometric lock to open CoBuddy.
-            </Text>
+            <Text style={styles.heroSub}>{t('protectYourChatsAndBookings', 'Protect your chats and bookings. When enabled, you\'ll need to use your device\'s biometric lock to open CoBuddy.')}</Text>
         </View>
 
         <Text style={styles.sectionTitle}>{t('appAccess', 'APP ACCESS')}</Text>
@@ -128,9 +126,7 @@ export const AppLockScreen = () => {
 
         <View style={styles.footerNote}>
             <Icon name="shield-check-outline" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.footerText}>
-                CoBuddy never stores your biometric data. It is securely handled by your device's OS.
-            </Text>
+            <Text style={styles.footerText}>{t('cobuddyNeverStoresYourBiometric', 'CoBuddy never stores your biometric data. It is securely handled by your device\'s OS.')}</Text>
         </View>
 
       </ScrollView>

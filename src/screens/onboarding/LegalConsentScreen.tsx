@@ -123,7 +123,7 @@ export const LegalConsentScreen = () => {
                 style={styles.readLink}
                 activeOpacity={0.7}
                 onPress={() => setActiveDoc(doc)}>
-                <Text style={styles.readText}>READ  →</Text>
+                <Text style={styles.readText}>{t('read', 'READ  →')}</Text>
               </TouchableOpacity>
             </View>
           ))}
@@ -150,9 +150,7 @@ export const LegalConsentScreen = () => {
           })}
         </View>
 
-        <Text style={styles.trustNote}>
-          CoBuddy is designed around trust, verification, and safety-first public experiences.
-        </Text>
+        <Text style={styles.trustNote}>{t('cobuddyIsDesignedAroundTrust', 'CoBuddy is designed around trust, verification, and safety-first public experiences.')}</Text>
       </ScrollView>
 
       <BottomActionBar>

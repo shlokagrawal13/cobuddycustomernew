@@ -22,5 +22,9 @@
     "bookings": "My\nBookings",
     "safety": "Safety\nToolkit",
     "profile": "My\nProfile"
-  }
+  },
+  "exploreActivities": "Explore Activities",
+  "featuredCompanions": "Featured Companions",
+  "viewAll": "View All",
+  "appName": "CoBuddy"
 }

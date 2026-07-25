@@ -96,9 +96,7 @@ export const ActiveSessionScreen = () => {
                 <Icon name="close" size={18} color={theme.colors.textSecondary} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.etiquetteDesc}>
-              Please remain in public spaces at all times. Treat your companion with absolute respect. CoBuddy has a strict zero-tolerance policy for harassment.
-            </Text>
+            <Text style={styles.etiquetteDesc}>{t('pleaseRemainInPublicSpaces', 'Please remain in public spaces at all times. Treat your companion with absolute respect. CoBuddy has a strict zero-tolerance policy for harassment.')}</Text>
           </View>
         )}
 
@@ -213,9 +211,7 @@ export const ActiveSessionScreen = () => {
             
             <View style={styles.warningBox}>
               <Icon name="alert-circle-outline" size={20} color={theme.colors.warning} />
-              <Text style={styles.warningBoxText}>
-                Ending now will release escrow funds based on our Pro-Rata Policy.
-              </Text>
+              <Text style={styles.warningBoxText}>{t('endingNowWillReleaseEscrow', 'Ending now will release escrow funds based on our Pro-Rata Policy.')}</Text>
             </View>
 
             <View style={{ gap: 8, marginBottom: 24 }}>
@@ -272,7 +268,7 @@ export const ActiveSessionScreen = () => {
               <View>
                 <Text style={{ color: theme.colors.textSecondary, fontSize: 12, textTransform: 'uppercase', marginBottom: 4 }}>{t('specialNoteLabel', 'Your Special Note')}</Text>
                 <View style={{ backgroundColor: 'rgba(255,255,255,0.05)', padding: 12, borderRadius: 12, borderWidth: 1, borderColor: theme.colors.border }}>
-                  <Text style={{ color: theme.colors.textPrimary, fontSize: 14, fontStyle: 'italic' }}>"I prefer sitting near the window. Please wear smart casuals."</Text>
+                  <Text style={{ color: theme.colors.textPrimary, fontSize: 14, fontStyle: 'italic' }}>{t('iPreferSittingNearThe', '"I prefer sitting near the window. Please wear smart casuals."')}</Text>
                 </View>
               </View>
             </View>

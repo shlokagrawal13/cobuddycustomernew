@@ -146,9 +146,7 @@ export const BookingTimeSelectScreen = () => {
           onPress={handleNext}
           activeOpacity={0.8}
         >
-          <Text style={[styles.nextBtnText, !selectedTime && styles.nextBtnTextDisabled]}>
-            Continue
-          </Text>
+          <Text style={[styles.nextBtnText, !selectedTime && styles.nextBtnTextDisabled]}>{t('continue', 'Continue')}</Text>
           <Icon 
             name="arrow-right" 
             size={20} 

@@ -150,8 +150,7 @@ export const VerificationProcessingScreen = () => {
           <View style={styles.trustMeta}>
             <Text style={styles.trustTitle}>{t('protectedInfo', 'Your Information Is Protected')}</Text>
             <Text style={styles.trustSub}>
-              We use military-grade end-to-end encryption to secure your identity data.
-              Your documents are strictly used for verification purposes and are never shared.
+              {t('trustSubText', 'We use military-grade end-to-end encryption to secure your identity data.\nYour documents are strictly used for verification purposes and are never shared.')}
             </Text>
           </View>
         </View>

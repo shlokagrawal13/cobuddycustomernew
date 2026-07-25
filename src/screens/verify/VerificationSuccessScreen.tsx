@@ -58,9 +58,7 @@ export const VerificationSuccessScreen = () => {
 
         <Animated.View style={{ opacity: opacityAnim, alignItems: 'center' }}>
           <Text style={styles.title}>{t('verified', 'You are Verified!')}</Text>
-          <Text style={styles.subtitle}>
-            Your identity has been successfully verified. You now have full access to CoBuddy and can start booking companions immediately.
-          </Text>
+          <Text style={styles.subtitle}>{t('yourIdentityHasBeenSuccessfully', 'Your identity has been successfully verified. You now have full access to CoBuddy and can start booking companions immediately.')}</Text>
 
           <View style={styles.badgeRow}>
             <View style={styles.perkBadge}>

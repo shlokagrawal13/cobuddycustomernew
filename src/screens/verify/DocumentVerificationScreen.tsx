@@ -97,9 +97,7 @@ export const DocumentVerificationScreen = () => {
         <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           
           <Text style={styles.title}>{t('completeIdentity', 'Complete Identity Verification')}</Text>
-          <Text style={styles.pageSub}>
-            Upload a valid government-issued identity document to unlock verified CoBuddy experiences.
-          </Text>
+          <Text style={styles.pageSub}>{t('uploadAValidGovernmentissuedIdentity', 'Upload a valid government-issued identity document to unlock verified CoBuddy experiences.')}</Text>
 
           <View style={styles.card}>
             <Text style={styles.sectionLabel}>{t('selectDocType', 'SELECT DOCUMENT TYPE')}</Text>
@@ -158,9 +156,7 @@ export const DocumentVerificationScreen = () => {
 
           <View style={styles.card}>
             <Text style={styles.sectionLabel}>{t('uploadDoc', 'UPLOAD DOCUMENT')}</Text>
-            <Text style={styles.uploadHint}>
-              Clear and readable images work best. Max 5MB (JPG, PNG).
-            </Text>
+            <Text style={styles.uploadHint}>{t('clearAndReadableImagesWork', 'Clear and readable images work best. Max 5MB (JPG, PNG).')}</Text>
 
             <TouchableOpacity
               style={[styles.uploadSlot, frontState === 'uploaded' && styles.uploadSlotDone]}
@@ -236,9 +232,7 @@ export const DocumentVerificationScreen = () => {
 
           <View style={styles.securityNote}>
             <Icon name="lock" size={13} color={theme.colors.textSecondary} />
-            <Text style={styles.securityText}>
-              Your information is encrypted and securely protected. Documents are used only for verification.
-            </Text>
+            <Text style={styles.securityText}>{t('yourInformationIsEncryptedAnd', 'Your information is encrypted and securely protected. Documents are used only for verification.')}</Text>
           </View>
 
           <View style={{height: 20}} />

@@ -52,9 +52,7 @@ export const BlockedUsersScreen = () => {
         
         <View style={styles.infoBox}>
             <Icon name="information-outline" size={20} color={theme.colors.textSecondary} style={{marginTop: 2}} />
-            <Text style={styles.infoText}>
-                Blocked users cannot send you messages, request bookings, or view your profile. They won't be notified that you blocked them.
-            </Text>
+            <Text style={styles.infoText}>{t('blockedUsersCannotSendYou', 'Blocked users cannot send you messages, request bookings, or view your profile. They won\'t be notified that you blocked them.')}</Text>
         </View>
 
         {blockedUsers.length > 0 ? (
@@ -86,9 +84,7 @@ export const BlockedUsersScreen = () => {
                     <Icon name="shield-check" size={48} color={theme.colors.success} />
                 </View>
                 <Text style={styles.emptyTitle}>{t('emptyTitle', 'No Blocked Users')}</Text>
-                <Text style={styles.emptySub}>
-                    You haven't blocked anyone yet. When you block a user, they will appear here.
-                </Text>
+                <Text style={styles.emptySub}>{t('youHaventBlockedAnyoneYet', 'You haven\'t blocked anyone yet. When you block a user, they will appear here.')}</Text>
             </View>
         )}
 

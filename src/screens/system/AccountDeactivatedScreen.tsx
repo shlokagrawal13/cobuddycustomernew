@@ -19,9 +19,7 @@ export const AccountDeactivatedScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'Account Deactivated')}</Text>
-        <Text style={styles.message}>
-          Your account is currently deactivated. Your profile is hidden, and you won't receive new booking requests or messages.
-        </Text>
+        <Text style={styles.message}>{t('yourAccountIsCurrentlyDeactivated', 'Your account is currently deactivated. Your profile is hidden, and you won\'t receive new booking requests or messages.')}</Text>
       </View>
 
       <View style={styles.footer}>

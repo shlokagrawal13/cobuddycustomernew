@@ -32,5 +32,6 @@
     "contacts_text": "You can easily share your session details and live location with your personal emergency contacts directly through the app.",
     "verified_label": "PUBLIC DESTINATIONS",
     "verified_text": "We strictly enforce a public-places-only rule. Meetups must always happen in visible, high-traffic areas like cafes or malls to ensure everyone's comfort."
-  }
+  },
+  "verifiedVenue": "VERIFIED VENUE"
 }

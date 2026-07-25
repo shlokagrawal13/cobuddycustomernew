@@ -65,9 +65,7 @@ export const SafetySettingsScreen = () => {
                 <Icon name="shield-star" size={40} color={theme.colors.primary} />
             </View>
             <Text style={styles.heroTitle}>{t('heroTitle', 'Your Safety First')}</Text>
-            <Text style={styles.heroSub}>
-                Customize your privacy and safety preferences to ensure a secure and comfortable experience on CoBuddy.
-            </Text>
+            <Text style={styles.heroSub}>{t('customizeYourPrivacyAndSafety', 'Customize your privacy and safety preferences to ensure a secure and comfortable experience on CoBuddy.')}</Text>
         </View>
 
         <Text style={styles.sectionTitle}>{t('profileVisibility', 'PROFILE VISIBILITY')}</Text>
@@ -172,9 +170,7 @@ export const SafetySettingsScreen = () => {
 
         <View style={styles.footerNote}>
             <Icon name="lock-check-outline" size={16} color={theme.colors.success} />
-            <Text style={styles.footerText}>
-                CoBuddy actively monitors reports to maintain a safe community.
-            </Text>
+            <Text style={styles.footerText}>{t('cobuddyActivelyMonitorsReportsTo', 'CoBuddy actively monitors reports to maintain a safe community.')}</Text>
         </View>
 
       </ScrollView>

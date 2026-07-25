@@ -71,15 +71,13 @@ export const SafetyHubScreen = () => {
                     style={styles.sosButton} 
                     activeOpacity={0.9}
                     onPress={() => {
-                        Alert.alert(
-                          '🚨 EMERGENCY SOS',
-                          'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.',
+                        Alert.alert(t('alertTitleEMERGENCYSOS', '🚨 EMERGENCY SOS'), t('alertMsgAreyouindangerThiswi', 'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.'),
                           [
                             { text: 'Cancel', style: 'cancel' },
                             { 
                               text: 'ACTIVATE SOS', 
                               style: 'destructive',
-                              onPress: () => Alert.alert('SOS Activated', 'Help is on the way. Your live location is now being shared.')
+                              onPress: () => Alert.alert(t('alertTitleSOSActivated', 'SOS Activated'), t('alertMsgHelpisonthewayYourli', 'Help is on the way. Your live location is now being shared.'))
                             }
                           ]
                         );

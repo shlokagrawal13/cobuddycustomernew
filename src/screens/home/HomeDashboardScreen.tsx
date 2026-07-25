@@ -67,9 +67,9 @@ export const HomeDashboardScreen = () => {
       <View style={styles.topBar}>
         <View style={styles.topLeft}>
           <View style={styles.logoBadge}>
-            <Text style={styles.logoBadgeText}>C</Text>
+            <Text style={styles.logoBadgeText}>{t('c', 'C')}</Text>
           </View>
-          <Text style={styles.logoText}>CoBuddy</Text>
+          <Text style={styles.logoText}>{t('appName', 'CoBuddy')}</Text>
         </View>
         <View style={styles.topRightIcons}>
           <TouchableOpacity style={styles.iconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('NotificationsScreen')}>
@@ -83,7 +83,7 @@ export const HomeDashboardScreen = () => {
         
         {/* Welcome Section */}
         <View style={styles.welcomeSection}>
-          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>Shlok</Text></Text>
+          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>{t('shlok', 'Shlok')}</Text></Text>
           <Text style={styles.subtitleText}>{t('subtitle')}</Text>
         </View>
 
@@ -162,7 +162,7 @@ export const HomeDashboardScreen = () => {
           /* Explore Activities Section */
           <View style={styles.exploreSection}>
             <View style={styles.sectionHeaderRow}>
-              <Text style={styles.sectionTitle}>Explore Activities</Text>
+              <Text style={styles.sectionTitle}>{t('exploreActivities', 'Explore Activities')}</Text>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.exploreScroll}>
               {EXPLORE_CATEGORIES.map(cat => (
@@ -235,9 +235,9 @@ export const HomeDashboardScreen = () => {
         {/* Featured Companions Section */}
         <View style={styles.featuredSection}>
           <View style={styles.sectionHeaderRow}>
-            <Text style={styles.sectionTitle}>Featured Companions</Text>
+            <Text style={styles.sectionTitle}>{t('featuredCompanions', 'Featured Companions')}</Text>
             <TouchableOpacity onPress={() => navigation.navigate('DiscoverTab')}>
-              <Text style={styles.viewAllText}>View All</Text>
+              <Text style={styles.viewAllText}>{t('viewAll', 'View All')}</Text>
             </TouchableOpacity>
           </View>
           

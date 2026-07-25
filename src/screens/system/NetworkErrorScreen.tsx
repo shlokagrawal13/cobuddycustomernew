@@ -26,9 +26,7 @@ export const NetworkErrorScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'No Connection')}</Text>
-        <Text style={styles.message}>
-          It looks like you're offline. Please check your internet connection, Wi-Fi, or cellular data and try again.
-        </Text>
+        <Text style={styles.message}>{t('itLooksLikeYoureOffline', 'It looks like you\'re offline. Please check your internet connection, Wi-Fi, or cellular data and try again.')}</Text>
       </View>
 
       <View style={styles.footer}>

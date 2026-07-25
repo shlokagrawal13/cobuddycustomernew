@@ -25,13 +25,13 @@ export const CreateSupportTicketScreen = () => {
 
   const handleSubmit = () => {
     if (!selectedCategory || !subject.trim() || !description.trim()) {
-      Alert.alert('Incomplete', 'Please select a category and fill out all fields.');
+      Alert.alert(t('alertTitleIncomplete', 'Incomplete'), t('alertMsgPleaseselectacategor', 'Please select a category and fill out all fields.'));
       return;
     }
     
     // Simulate submission
     smartGoBack();
-    Alert.alert('Ticket Submitted', 'Our support team will get back to you within 24 hours.');
+    Alert.alert(t('alertTitleTicketSubmitted', 'Ticket Submitted'), t('alertMsgOursupportteamwillge', 'Our support team will get back to you within 24 hours.'));
   };
 
   return (

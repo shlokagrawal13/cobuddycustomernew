@@ -19,9 +19,7 @@ export const AccountUnderManualReviewScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'Under Review')}</Text>
-        <Text style={styles.message}>
-          Your account is currently under manual review by our Trust & Safety team to ensure a secure environment for everyone.
-        </Text>
+        <Text style={styles.message}>{t('yourAccountIsCurrentlyUnder', 'Your account is currently under manual review by our Trust & Safety team to ensure a secure environment for everyone.')}</Text>
         
         <View style={styles.infoBox}>
           <Icon name="clock-outline" size={20} color={theme.colors.textSecondary} />

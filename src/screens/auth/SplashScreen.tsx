@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 
 export const SplashScreen = () => {
+  const { t } = useTranslation(['common']);
   return (
     <View style={styles.container}>
-      <Text style={styles.logoText}>CoBuddy</Text>
+      <Text style={styles.logoText}>{t('appName', 'CoBuddy')}</Text>
       <ActivityIndicator size="large" color={theme.colors.primary} style={styles.loader} />
     </View>
   );

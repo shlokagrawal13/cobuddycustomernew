@@ -83,9 +83,7 @@ export const AppPermissionsScreen = () => {
   const handleToggle = (key: keyof typeof permissions, newValue: boolean) => {
       if (!newValue) {
           // In native apps, you usually can't revoke permissions programmatically.
-          Alert.alert(
-              'Revoke Permission', 
-              'To disable this permission, please go to your device Settings.',
+          Alert.alert(t('alertTitleRevokePermissio', 'Revoke Permission'), t('alertMsgTodisablethispermiss', 'To disable this permission, please go to your device Settings.'),
               [
                   { text: 'Cancel', style: 'cancel' },
                   { text: 'Open Settings', style: 'default' }
@@ -117,9 +115,7 @@ export const AppPermissionsScreen = () => {
                 <Icon name="shield-lock-outline" size={32} color={theme.colors.primary} />
             </View>
             <Text style={styles.heroTitle}>{t('privacyControl', 'Privacy Control')}</Text>
-            <Text style={styles.heroSub}>
-                Manage what data CoBuddy can access. We only ask for permissions that are essential to providing you a safe and seamless experience.
-            </Text>
+            <Text style={styles.heroSub}>{t('manageWhatDataCobuddyCan', 'Manage what data CoBuddy can access. We only ask for permissions that are essential to providing you a safe and seamless experience.')}</Text>
         </View>
 
         <Text style={styles.sectionTitle}>{t('corePermissions', 'CORE PERMISSIONS')}</Text>
@@ -188,9 +184,7 @@ export const AppPermissionsScreen = () => {
 
         <View style={styles.footerNote}>
             <Icon name="information-outline" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.footerText}>
-                Revoking required permissions may limit app functionality.
-            </Text>
+            <Text style={styles.footerText}>{t('revokingRequiredPermissionsMayLimit', 'Revoking required permissions may limit app functionality.')}</Text>
         </View>
 
       </ScrollView>

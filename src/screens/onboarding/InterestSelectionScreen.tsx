@@ -88,7 +88,7 @@ export const InterestSelectionScreen = () => {
                 <View style={[styles.tileIconWrap, active && styles.tileIconWrapActive]}>
                   <Icon name={item.icon} size={22} color={active ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
-                <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>{item.label}</Text>
+                <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>{t(`interest_${item.id}`, item.label)}</Text>
               </TouchableOpacity>
             );
           })}

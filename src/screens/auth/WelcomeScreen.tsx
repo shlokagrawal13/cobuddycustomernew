@@ -54,7 +54,7 @@ export const WelcomeScreen = () => {
             <View style={styles.heroOverlay} />
           </View>
 
-          <Text style={styles.overline}>COBUDDY CUSTOMER</Text>
+          <Text style={styles.overline}>{t('welcome.overline')}</Text>
           <Text style={styles.heroTitle}>{t('welcome.title')}</Text>
           <Text style={styles.heroSubtitle}>
             {t('welcome.subtitle')}

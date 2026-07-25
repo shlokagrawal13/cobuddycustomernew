@@ -19,9 +19,7 @@ export const AccountSuspendedScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'Account Suspended')}</Text>
-        <Text style={styles.message}>
-          Your account has been suspended due to violations of our Community Guidelines. You cannot accept bookings or messages at this time.
-        </Text>
+        <Text style={styles.message}>{t('yourAccountHasBeenSuspended', 'Your account has been suspended due to violations of our Community Guidelines. You cannot accept bookings or messages at this time.')}</Text>
       </View>
 
       <View style={styles.footer}>

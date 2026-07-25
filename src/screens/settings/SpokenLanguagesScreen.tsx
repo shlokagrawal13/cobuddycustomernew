@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -90,7 +90,7 @@ export const SpokenLanguagesScreen = () => {
                         activeOpacity={0.8}
                     >
                         <View style={styles.tileContent}>
-                            <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>{lang.label}</Text>
+                            <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>{t(`lang_${lang.id}`, lang.label)}</Text>
                             <Text style={[styles.tileNative, active && styles.tileNativeActive]}>{lang.native}</Text>
                         </View>
                         {active && <Icon name="check-circle" size={20} color={theme.colors.primary} />}

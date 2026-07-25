@@ -73,9 +73,7 @@ export const NotificationPreferencesScreen = () => {
                 <Icon name="bell-ring-outline" size={40} color={theme.colors.primary} />
             </View>
             <Text style={styles.heroTitle}>{t('heroTitle', 'Stay Updated')}</Text>
-            <Text style={styles.heroSub}>
-                Control which notifications you receive and how you receive them.
-            </Text>
+            <Text style={styles.heroSub}>{t('controlWhichNotificationsYouReceive', 'Control which notifications you receive and how you receive them.')}</Text>
         </View>
 
         <Text style={styles.sectionTitle}>{t('bookingUpdates', 'BOOKING UPDATES')}</Text>

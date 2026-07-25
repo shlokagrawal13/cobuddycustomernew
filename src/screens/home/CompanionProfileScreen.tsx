@@ -246,13 +246,13 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <View style={styles.statItem}>
               <Icon name="check-decagram" size={24} color={theme.colors.success} />
               <Text style={styles.statValue}>{DUMMY_PROFILE.completedSessions}</Text>
-              <Text style={styles.statLabel}>Sessions</Text>
+              <Text style={styles.statLabel}>{t('statSessions', 'Sessions')}</Text>
             </View>
             <View style={styles.statDivider} />
             <View style={styles.statItem}>
               <Icon name="clock-fast" size={24} color={theme.colors.textSecondary} />
               <Text style={styles.statValue}>{DUMMY_PROFILE.responseTime}</Text>
-              <Text style={styles.statLabel}>Response</Text>
+              <Text style={styles.statLabel}>{t('statResponse', 'Response')}</Text>
             </View>
           </View>
 
@@ -285,7 +285,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
           {/* Services & Pricing Card */}
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Services & Pricing</Text>
+            <Text style={styles.cardTitle}>{t('servicesPricing', 'Services & Pricing')}</Text>
             {DUMMY_PROFILE.pricing.map((p, idx) => (
               <View key={idx} style={styles.pricingRow}>
                 <View style={styles.pricingLeft}>
@@ -305,7 +305,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
           {/* Availability & Rules Card */}
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Availability & Rules</Text>
+            <Text style={styles.cardTitle}>{t('availabilityRules', 'Availability & Rules')}</Text>
             <View style={[styles.infoRow, { marginBottom: 16 }]}>
               <Icon name="calendar-clock" size={20} color={theme.colors.textSecondary} />
               <Text style={[styles.infoText, { color: theme.colors.textPrimary, fontWeight: 'bold' }]}>
@@ -328,7 +328,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
           {/* Verifications Card */}
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>Trust & Verifications</Text>
+            <Text style={styles.cardTitle}>{t('trustVerifications', 'Trust & Verifications')}</Text>
             <Text style={styles.mutedText}>Member since {DUMMY_PROFILE.memberSince}</Text>
             <View style={styles.verificationList}>
               {DUMMY_PROFILE.verifications.map((v, idx) => (
@@ -344,20 +344,20 @@ export const CompanionProfileScreen = ({ route }: any) => {
           <View style={styles.card}>
             <View style={styles.reviewHeader}>
               <Text style={styles.cardTitle}>Reviews ({DUMMY_PROFILE.reviews.count})</Text>
-              <Text style={styles.reviewSeeAll}>See All</Text>
+              <Text style={styles.reviewSeeAll}>{t('reviewSeeAll', 'See All')}</Text>
             </View>
             
             <View style={styles.reviewScoresGrid}>
               <View style={styles.reviewScoreItem}>
-                <Text style={styles.reviewScoreLabel}>Punctuality</Text>
+                <Text style={styles.reviewScoreLabel}>{t('punctuality', 'Punctuality')}</Text>
                 <Text style={styles.reviewScoreValue}>{DUMMY_PROFILE.reviews.categories.punctuality}</Text>
               </View>
               <View style={styles.reviewScoreItem}>
-                <Text style={styles.reviewScoreLabel}>Communication</Text>
+                <Text style={styles.reviewScoreLabel}>{t('communication', 'Communication')}</Text>
                 <Text style={styles.reviewScoreValue}>{DUMMY_PROFILE.reviews.categories.communication}</Text>
               </View>
               <View style={styles.reviewScoreItem}>
-                <Text style={styles.reviewScoreLabel}>Behavior</Text>
+                <Text style={styles.reviewScoreLabel}>{t('behavior', 'Behavior')}</Text>
                 <Text style={styles.reviewScoreValue}>{DUMMY_PROFILE.reviews.categories.behavior}</Text>
               </View>
             </View>
@@ -407,7 +407,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
       <View style={[styles.bottomBar, { paddingBottom: Math.max(insets.bottom + 8, 24), paddingTop: 16 }]}>
         <View style={styles.bottomBarLeft}>
           <Text style={styles.bottomPriceLabel}>{t('starts_from', 'Starts from')}</Text>
-          <Text style={styles.bottomPriceValue}>₹500 <Text style={styles.bottomPriceUnit}>/ hr</Text></Text>
+          <Text style={styles.bottomPriceValue}>₹500 <Text style={styles.bottomPriceUnit}>{t('hr', '/ hr')}</Text></Text>
         </View>
         
         <TouchableOpacity 
@@ -429,7 +429,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <View style={styles.sheetIconWrap}>
               <Icon name="share-variant-outline" size={20} color={theme.colors.textPrimary} />
             </View>
-            <Text style={styles.sheetRowText}>Share Profile</Text>
+            <Text style={styles.sheetRowText}>{t('shareProfile', 'Share Profile')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)}>

@@ -16,11 +16,11 @@ export const AccountSettingsScreen = () => {
   const isKycVerified = true;
   
   const handleSaveEmail = () => {
-      Alert.alert('Email Updated', 'Your email address has been successfully updated.');
+      Alert.alert(t('alertTitleEmailUpdated', 'Email Updated'), t('alertMsgYouremailaddresshasb', 'Your email address has been successfully updated.'));
   };
 
   const handleDataRequest = () => {
-      Alert.alert('Request Sent', 'A link to download your data will be emailed to you within 48 hours.');
+      Alert.alert(t('alertTitleRequestSent', 'Request Sent'), t('alertMsgAlinktodownloadyourd', 'A link to download your data will be emailed to you within 48 hours.'));
   };
 
   const handleSupportRedirect = () => {

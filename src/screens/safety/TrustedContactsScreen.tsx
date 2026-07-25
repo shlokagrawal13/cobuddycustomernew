@@ -187,7 +187,7 @@ export const TrustedContactsScreen = () => {
                   key={rel}
                   style={[sheet.relChip, newRel === rel && sheet.relChipActive]}
                   onPress={() => setNewRel(rel)}>
-                  <Text style={[sheet.relChipText, newRel === rel && sheet.relChipTextActive]}>{rel}</Text>
+                  <Text style={[sheet.relChipText, newRel === rel && sheet.relChipTextActive]}>{t(`rel_${rel.toLowerCase()}`, rel)}</Text>
                 </TouchableOpacity>
               ))}
             </View>

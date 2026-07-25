@@ -91,12 +91,12 @@ export const WalletScreen = () => {
             <Text style={styles.actionLabel}>{t('addMoney', 'Add Money')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={() => Alert.alert('Auto-Reload', 'This feature will be available in V2.')}>
+          <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={() => Alert.alert(t('alertTitleAutoReload', 'Auto-Reload'), t('alertMsgThisfeaturewillbeava', 'This feature will be available in V2.'))}>
             <View style={styles.actionIconBoxV2}>
               <Icon name="autorenew" size={24} color={theme.colors.textSecondary} />
             </View>
             <Text style={styles.actionLabel}>{t('autoReload', 'Auto-Reload')}</Text>
-            <View style={styles.v2Badge}><Text style={styles.v2BadgeText}>V2</Text></View>
+            <View style={styles.v2Badge}><Text style={styles.v2BadgeText}>{t('v2', 'V2')}</Text></View>
           </TouchableOpacity>
 
             <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={() => navigation.navigate('WithdrawMoneyScreen')}>
@@ -124,7 +124,7 @@ export const WalletScreen = () => {
           <View style={styles.txHeader}>
             <View>
               <Text style={styles.sectionTitle}>{t('recentTransactions', 'Recent Transactions')}</Text>
-              <TouchableOpacity style={styles.downloadRow} onPress={() => Alert.alert('Download Statement', 'PDF statement has been generated and saved.')} activeOpacity={0.7}>
+              <TouchableOpacity style={styles.downloadRow} onPress={() => Alert.alert(t('alertTitleDownloadStateme', 'Download Statement'), t('alertMsgPDFstatementhasbeeng', 'PDF statement has been generated and saved.'))} activeOpacity={0.7}>
                 <Icon name="download" size={14} color={theme.colors.primary} />
                 <Text style={styles.downloadText}>{t('downloadStatement', 'Download Statement')}</Text>
               </TouchableOpacity>

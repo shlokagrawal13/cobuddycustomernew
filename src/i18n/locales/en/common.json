@@ -1,5 +1,7 @@
 {
   "loading": "Loading...",
   "error": "Something went wrong",
-  "retry": "Retry"
+  "retry": "Retry",
+  "appName": "CoBuddy",
+  "toEnsureASafeAnd": "To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking."
 }

@@ -71,9 +71,7 @@ export const VerificationPendingScreen = () => {
 
           <View style={styles.etaRow}>
             <Icon name="clock-outline" size={14} color={theme.colors.textSecondary} />
-            <Text style={styles.etaText}>
-              Estimated Time: Usually completed within 24 hours.
-            </Text>
+            <Text style={styles.etaText}>{t('estimatedTimeUsuallyCompletedWithin', 'Estimated Time: Usually completed within 24 hours.')}</Text>
           </View>
         </View>
 
@@ -109,9 +107,7 @@ export const VerificationPendingScreen = () => {
           </View>
           <View style={styles.nextMeta}>
             <Text style={styles.nextTitle}>{t('continueSetup', 'Continue Setting Up Your Experience')}</Text>
-            <Text style={styles.nextSub}>
-              You can continue exploring the app while verification is reviewed.
-            </Text>
+            <Text style={styles.nextSub}>{t('youCanContinueExploringThe', 'You can continue exploring the app while verification is reviewed.')}</Text>
           </View>
         </View>
 
@@ -122,9 +118,7 @@ export const VerificationPendingScreen = () => {
 
         <View style={styles.securityNote}>
           <Icon name="lock" size={13} color={theme.colors.textSecondary} />
-          <Text style={styles.securityText}>
-            All verification data is protected with end-to-end encryption and never shared without consent.
-          </Text>
+          <Text style={styles.securityText}>{t('allVerificationDataIsProtected', 'All verification data is protected with end-to-end encryption and never shared without consent.')}</Text>
         </View>
 
         <View style={{height: 20}} />

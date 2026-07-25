@@ -1,0 +1,4 @@
+{
+  "iAgreeToMeetIn": "I agree to meet in a public place and strictly follow the CoBuddy safety guidelines.",
+  "ifFalsePressingSendRequest": "If FALSE, pressing \"Send Request\" will trigger the KYC interceptor."
+}

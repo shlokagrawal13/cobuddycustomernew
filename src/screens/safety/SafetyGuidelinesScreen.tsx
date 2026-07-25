@@ -64,9 +64,7 @@ export const SafetyGuidelinesScreen = () => {
             <Icon name="shield-check" size={48} color={theme.colors.background} />
           </View>
           <Text style={styles.heroTitle}>{t('heroTitle', 'Your Safety is our Priority')}</Text>
-          <Text style={styles.heroDesc}>
-            We've built CoBuddy to be a safe community, but personal safety starts with you. Please follow these essential guidelines.
-          </Text>
+          <Text style={styles.heroDesc}>{t('weveBuiltCobuddyToBe', 'We\'ve built CoBuddy to be a safe community, but personal safety starts with you. Please follow these essential guidelines.')}</Text>
         </View>
 
         <View style={styles.listContainer}>

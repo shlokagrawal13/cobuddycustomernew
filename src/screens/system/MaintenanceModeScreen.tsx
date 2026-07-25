@@ -21,9 +21,7 @@ export const MaintenanceModeScreen = () => {
         </View>
         
         <Text style={styles.title}>{t('title', 'Under Maintenance')}</Text>
-        <Text style={styles.message}>
-          We're currently undergoing scheduled maintenance to improve your experience. Our team is working hard to bring the app back online shortly.
-        </Text>
+        <Text style={styles.message}>{t('wereCurrentlyUndergoingScheduledMaintenance', 'We\'re currently undergoing scheduled maintenance to improve your experience. Our team is working hard to bring the app back online shortly.')}</Text>
         
         <View style={styles.timeBox}>
           <Text style={styles.timeLabel}>{t('expectedLabel', 'Expected completion:')}</Text>

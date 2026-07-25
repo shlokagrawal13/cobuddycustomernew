@@ -40,6 +40,7 @@ const SAFETY_DETAILS = [
 ];
 
 function SlideVisual({ visual }: { visual: Slide['visual'] }) {
+  const { t } = useTranslation(['onboarding']);
   if (visual === 'shield') {
     return (
       <View style={visualStyles.shieldWrap}>
@@ -66,7 +67,7 @@ function SlideVisual({ visual }: { visual: Slide['visual'] }) {
         <View style={visualStyles.venueOverlay} />
         <View style={visualStyles.venueBadge}>
           <Icon name="map-marker" size={14} color={theme.colors.primary} />
-          <Text style={visualStyles.venueBadgeText}>VERIFIED VENUE</Text>
+          <Text style={visualStyles.venueBadgeText}>{t('safety.verifiedVenue', 'VERIFIED VENUE')}</Text>
         </View>
       </View>
     );

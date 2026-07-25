@@ -68,9 +68,9 @@ export const SettingsHubScreen = () => {
       t('logOutAlert.title', 'Log Out'),
       t('logOutAlert.message', 'Are you sure you want to log out of CoBuddy?'),
       [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Log Out', style: 'destructive', onPress: () => {
-            Alert.alert('Logged Out', 'Successfully logged out.');
+        { text: t('logOutAlert.cancel', 'Cancel'), style: 'cancel' },
+        { text: t('logOutAlert.confirm', 'Log Out'), style: 'destructive', onPress: () => {
+            Alert.alert(t('logOutAlert.successTitle', 'Logged Out'), t('logOutAlert.successMessage', 'Successfully logged out.'));
         }}
       ]
     );

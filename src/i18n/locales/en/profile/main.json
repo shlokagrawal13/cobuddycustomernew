@@ -13,5 +13,15 @@
   "walletActivityTitle": "Wallet & Activity",
   "safetySettingsTitle": "Safety Settings",
   "openSafetyHub": "Open Safety Hub",
-  "prefsLegalTitle": "Preferences & Legal"
+  "prefsLegalTitle": "Preferences & Legal",
+  "langEnglish": "English",
+  "langHindi": "Hindi",
+  "logoutTitle": "Log Out",
+  "logoutMessage": "Are you sure you want to log out of CoBuddy?",
+  "logoutCancel": "Cancel",
+  "logoutConfirm": "Log Out",
+  "loggedOutTitle": "Logged Out",
+  "loggedOutMessage": "Successfully logged out.",
+  "shareProfileTitle": "Share Profile",
+  "comingSoonMessage": "Coming soon!"
 }

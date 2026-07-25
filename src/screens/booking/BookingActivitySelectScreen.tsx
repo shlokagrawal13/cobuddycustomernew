@@ -103,9 +103,7 @@ export const BookingActivitySelectScreen = () => {
           onPress={handleNext}
           activeOpacity={0.8}
         >
-          <Text style={[styles.nextBtnText, !selectedActivityId && styles.nextBtnTextDisabled]}>
-            Continue
-          </Text>
+          <Text style={[styles.nextBtnText, !selectedActivityId && styles.nextBtnTextDisabled]}>{t('continue', 'Continue')}</Text>
           <Icon 
             name="arrow-right" 
             size={20} 

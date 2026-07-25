@@ -7,5 +7,10 @@
   "warningDesc3": ". The escrow hold will be released immediately.",
   "sectionTitle": "WHY ARE YOU CANCELLING?",
   "confirmBtn": "Confirm Cancellation",
-  "keepBtn": "No, Keep Booking"
+  "keepBtn": "No, Keep Booking",
+  "reasonChange": "Change of plans / Schedule conflict",
+  "reasonAnother": "Found another companion",
+  "reasonMistake": "Booked by mistake",
+  "reasonEmergency": "Personal emergency",
+  "reasonOther": "Other"
 }

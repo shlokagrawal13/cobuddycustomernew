@@ -83,9 +83,7 @@ export const ActiveSessionsScreen = () => {
   };
 
   const handleLogoutAll = () => {
-      Alert.alert(
-          'Log Out All Other Devices',
-          'You will be logged out of all devices except this one. You will need to log in again on those devices.',
+      Alert.alert(t('alertTitleLogOutAllOtherD', 'Log Out All Other Devices'), t('alertMsgYouwillbeloggedoutof', 'You will be logged out of all devices except this one. You will need to log in again on those devices.'),
           [
               { text: 'Cancel', style: 'cancel' },
               { 
@@ -170,9 +168,7 @@ export const ActiveSessionsScreen = () => {
                 <Icon name="devices" size={32} color={theme.colors.primary} />
             </View>
             <Text style={styles.heroTitle}>{t('manageDevices', 'Manage Devices')}</Text>
-            <Text style={styles.heroSub}>
-                Review the list of devices where you're currently logged into CoBuddy. Log out of any unfamiliar devices immediately to secure your account.
-            </Text>
+            <Text style={styles.heroSub}>{t('reviewTheListOfDevices', 'Review the list of devices where you\'re currently logged into CoBuddy. Log out of any unfamiliar devices immediately to secure your account.')}</Text>
         </View>
 
         {currentDevice && (
@@ -210,9 +206,7 @@ export const ActiveSessionsScreen = () => {
             <Icon name="information-outline" size={20} color={theme.colors.textSecondary} />
             <View style={{ flex: 1 }}>
                 <Text style={styles.securityTipTitle}>{t('securityTip', 'Security Tip')}</Text>
-                <Text style={styles.securityTipText}>
-                    If you see a device you don't recognize, log it out immediately. If you suspect unauthorized access, please contact CoBuddy Support.
-                </Text>
+                <Text style={styles.securityTipText}>{t('ifYouSeeADevice', 'If you see a device you don\'t recognize, log it out immediately. If you suspect unauthorized access, please contact CoBuddy Support.')}</Text>
             </View>
         </View>
 

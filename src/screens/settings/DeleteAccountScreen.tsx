@@ -18,13 +18,11 @@ export const DeleteAccountScreen = () => {
   const handleDelete = () => {
       if (!isDeleteEnabled) return;
       
-      Alert.alert(
-          'Final Confirmation',
-          'This action is irreversible. All your data, wallet balance, and history will be permanently deleted.',
+      Alert.alert(t('alertTitleFinalConfirmati', 'Final Confirmation'), t('alertMsgThisactionisirrevers', 'This action is irreversible. All your data, wallet balance, and history will be permanently deleted.'),
           [
               { text: 'Cancel', style: 'cancel' },
               { text: 'Yes, Delete', style: 'destructive', onPress: () => {
-                  Alert.alert('Account Deleted', 'Your account has been deleted.', [{ text: 'OK' }]);
+                  Alert.alert(t('alertTitleAccountDeleted', 'Account Deleted'), t('alertMsgYouraccounthasbeende', 'Your account has been deleted.'), [{ text: 'OK' }]);
               }}
           ]
       );
@@ -49,7 +47,7 @@ export const DeleteAccountScreen = () => {
                 <Icon name="alert-circle-outline" size={48} color={theme.colors.error} style={{marginBottom: 16}} />
                 <Text style={styles.warningTitle}>{t('warningTitle', 'Are you absolutely sure?')}</Text>
                 <Text style={styles.warningDesc}>
-                    Deleting your account is permanent. This action cannot be undone. You will immediately lose access to:
+                    {t('warningDesc', 'Deleting your account is permanent. This action cannot be undone. You will immediately lose access to:')}
                 </Text>
                 <View style={styles.bulletList}>
                     <Text style={styles.bulletItem}>{t('chatHistory', '• Your entire chat history')}</Text>

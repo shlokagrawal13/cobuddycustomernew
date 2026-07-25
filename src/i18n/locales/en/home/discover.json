@@ -13,5 +13,16 @@
     "title": "No Matches Found",
     "message": "We couldn't find any companions matching your current filters. Try adjusting your search to see more results.",
     "btn_clear": "CLEAR FILTERS"
-  }
+  },
+  "title": "Discover",
+  "noCompanions": "No companions found",
+  "clearFilters": "Clear Filters",
+  "filtersTitle": "Filters",
+  "filterActivityType": "Activity Type",
+  "filterGender": "Gender",
+  "filterMaxHourlyRate": "Maximum Hourly Rate",
+  "filterMinRating": "Minimum Rating",
+  "filterMaxDistance": "Maximum Distance",
+  "clearAll": "Clear All",
+  "applyFilters": "Apply Filters"
 }

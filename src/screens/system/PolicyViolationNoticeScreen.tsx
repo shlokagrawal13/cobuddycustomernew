@@ -25,9 +25,7 @@ export const PolicyViolationNoticeScreen = () => {
         
         <View style={styles.card}>
           <Text style={styles.cardTitle}>{t('violationType', 'Violation Type: Off-App Payment Attempt')}</Text>
-          <Text style={styles.cardMessage}>
-            Our system detected an attempt to negotiate or request payments outside of the CoBuddy platform. This violates our Community Guidelines and compromises the safety and security of our ecosystem.
-          </Text>
+          <Text style={styles.cardMessage}>{t('ourSystemDetectedAnAttempt', 'Our system detected an attempt to negotiate or request payments outside of the CoBuddy platform. This violates our Community Guidelines and compromises the safety and security of our ecosystem.')}</Text>
         </View>
 
         <Text style={styles.sectionTitle}>{t('whyMatters', 'WHY THIS MATTERS')}</Text>
@@ -43,9 +41,7 @@ export const PolicyViolationNoticeScreen = () => {
         </View>
 
         <Text style={styles.sectionTitle}>{t('nextSteps', 'NEXT STEPS')}</Text>
-        <Text style={styles.paragraph}>
-          This is a formal warning. Please review our Community Guidelines. Repeated violations will result in permanent account suspension.
-        </Text>
+        <Text style={styles.paragraph}>{t('thisIsAFormalWarning', 'This is a formal warning. Please review our Community Guidelines. Repeated violations will result in permanent account suspension.')}</Text>
 
       </ScrollView>
 

@@ -26,13 +26,11 @@ export const IncidentReportScreen = () => {
 
   const handleSubmit = () => {
     if (!selectedType || !description.trim()) {
-      Alert.alert('Incomplete', 'Please select an incident type and provide details.');
+      Alert.alert(t('alertTitleIncomplete', 'Incomplete'), t('alertMsgPleaseselectanincide', 'Please select an incident type and provide details.'));
       return;
     }
     
-    Alert.alert(
-      'Report Submitted',
-      'Your safety report has been escalated to our Trust & Safety team. We will review this immediately and contact you.',
+    Alert.alert(t('alertTitleReportSubmitted', 'Report Submitted'), t('alertMsgYoursafetyreporthasb', 'Your safety report has been escalated to our Trust & Safety team. We will review this immediately and contact you.'),
       [{ text: 'OK', onPress: () => smartGoBack() }]
     );
   };
@@ -55,7 +53,7 @@ export const IncidentReportScreen = () => {
           <View style={styles.alertBanner}>
             <Icon name="shield-alert" size={20} color={theme.colors.error} />
             <Text style={styles.alertText}>
-              All reports are strictly confidential. In case of immediate physical danger, please contact local authorities (112) first.
+              {t('confidentialAlert', 'All reports are strictly confidential. In case of immediate physical danger, please contact local authorities (112) first.')}
             </Text>
           </View>
 
@@ -72,7 +70,7 @@ export const IncidentReportScreen = () => {
                   {selectedType === type.id && <View style={styles.radioDot} />}
                 </View>
                 <Text style={[styles.typeLabel, selectedType === type.id && styles.typeLabelActive]}>
-                  {type.label}
+                  {t(type.id, type.label)}
                 </Text>
               </TouchableOpacity>
             ))}
@@ -119,7 +117,7 @@ export const IncidentReportScreen = () => {
                 color={hasEvidence ? theme.colors.primary : theme.colors.textSecondary} 
               />
               <Text style={[styles.attachmentText, hasEvidence && { color: theme.colors.primary }]}>
-                {hasEvidence ? 'Evidence Attached (Tap to remove)' : 'Upload Screenshots or Audio'}
+                {hasEvidence ? t('evidenceAttached', 'Evidence Attached (Tap to remove)') : t('uploadScreenshots', 'Upload Screenshots or Audio')}
               </Text>
             </TouchableOpacity>
             <Text style={styles.helperText}>{t('maxFile', 'Max file size: 10MB')}</Text>

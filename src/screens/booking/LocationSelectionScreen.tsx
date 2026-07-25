@@ -25,7 +25,7 @@ export const LocationSelectionScreen = () => {
       // Simulate GPS fetch
       setTimeout(() => {
           setIsLocating(false);
-          Alert.alert('Location Found', 'Detected: Bandra Kurla Complex, Mumbai.', [
+          Alert.alert(t('alertTitleLocationFound', 'Location Found'), t('alertMsgDetectedBandraKurlaC', 'Detected: Bandra Kurla Complex, Mumbai.'), [
               { text: 'Use this', onPress: () => {
                   navigation.navigate({
                       name: 'EditProfileScreen',

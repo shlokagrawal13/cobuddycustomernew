@@ -145,7 +145,7 @@ export const BookingSummaryScreen = () => {
             color={agreedToSafety ? theme.colors.primary : theme.colors.textSecondary} 
           />
           <Text style={styles.safetyAgreementText}>
-            I agree to meet in a public place and strictly follow the CoBuddy safety guidelines.
+            {t('safetyAgreement', 'I agree to meet in a public place and strictly follow the CoBuddy safety guidelines.')}
           </Text>
         </TouchableOpacity>
 
@@ -161,7 +161,7 @@ export const BookingSummaryScreen = () => {
             />
           </View>
           <Text style={styles.devDesc}>
-            If FALSE, pressing "Send Request" will trigger the KYC interceptor.
+            {t('devDesc', 'If FALSE, pressing "Send Request" will trigger the KYC interceptor.')}
           </Text>
         </View>
       </ScrollView>

@@ -26,9 +26,7 @@ export const KYCIntroScreen = () => {
         </View>
 
         <Text style={styles.title}>{t('verifyIdentity', 'Verify your Identity')}</Text>
-        <Text style={styles.subtitle}>
-          To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking.
-        </Text>
+        <Text style={styles.subtitle}>{t('toEnsureASafeAnd', 'To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking.')}</Text>
 
         <View style={styles.features}>
           <View style={styles.featureRow}>

@@ -77,9 +77,7 @@ export const VerificationRejectedScreen = () => {
 
           <View style={styles.etaRow}>
             <Icon name="alert" size={14} color={theme.colors.textSecondary} />
-            <Text style={styles.etaText}>
-              We could not verify your identity with the provided details.
-            </Text>
+            <Text style={styles.etaText}>{t('weCouldNotVerifyYour', 'We could not verify your identity with the provided details.')}</Text>
           </View>
         </View>
 
@@ -125,9 +123,7 @@ export const VerificationRejectedScreen = () => {
           </View>
           <View style={styles.nextMeta}>
             <Text style={styles.nextTitle}>{t('tryAgain', 'Please Try Again')}</Text>
-            <Text style={styles.nextSub}>
-              Ensure your document is clearly visible, not expired, and matches your selfie exactly.
-            </Text>
+            <Text style={styles.nextSub}>{t('ensureYourDocumentIsClearly', 'Ensure your document is clearly visible, not expired, and matches your selfie exactly.')}</Text>
           </View>
         </View>
 
@@ -138,9 +134,7 @@ export const VerificationRejectedScreen = () => {
 
         <View style={styles.securityNote}>
           <Icon name="headset" size={13} color={theme.colors.textSecondary} />
-          <Text style={styles.securityText}>
-            Need help? Contact our Concierge Support for manual verification.
-          </Text>
+          <Text style={styles.securityText}>{t('needHelpContactOurConcierge', 'Need help? Contact our Concierge Support for manual verification.')}</Text>
         </View>
 
         <View style={{height: 20}} />

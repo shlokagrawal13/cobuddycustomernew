@@ -43,17 +43,13 @@ export const ReferFriendScreen = () => {
             <Icon name="account-group" size={72} color={theme.colors.primary} />
           </View>
           <Text style={styles.heroTitle}>{t('heroTitle', 'Invite Friends')}</Text>
-          <Text style={styles.heroDesc}>
-            Love using CoBuddy? Share the experience with your friends and help grow our trusted community!
-          </Text>
+          <Text style={styles.heroDesc}>{t('loveUsingCobuddyShareThe', 'Love using CoBuddy? Share the experience with your friends and help grow our trusted community!')}</Text>
         </View>
 
         {/* Share Button Box */}
         <View style={styles.codeContainer}>
           <Text style={styles.codeLabel}>{t('spreadWord', 'SPREAD THE WORD')}</Text>
-          <Text style={styles.shareSubtext}>
-            Tap below to share a direct download link with your friends via WhatsApp, SMS, or any social app.
-          </Text>
+          <Text style={styles.shareSubtext}>{t('tapBelowToShareA', 'Tap below to share a direct download link with your friends via WhatsApp, SMS, or any social app.')}</Text>
           
           <TouchableOpacity style={styles.shareBtn} onPress={handleShare} activeOpacity={0.8}>
             <Icon name="share-variant" size={20} color={theme.colors.background} />

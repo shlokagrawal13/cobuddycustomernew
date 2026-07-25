@@ -10,5 +10,15 @@
   },
   "trust_score": "Trust Score",
   "trust_score_info": "This score is based on ID verification, user reviews, and successful public meetups.",
-  "btn_request": "Request Booking"
+  "btn_request": "Request Booking",
+  "statSessions": "Sessions",
+  "statResponse": "Response",
+  "servicesPricing": "Services & Pricing",
+  "availabilityRules": "Availability & Rules",
+  "trustVerifications": "Trust & Verifications",
+  "reviewSeeAll": "See All",
+  "punctuality": "Punctuality",
+  "communication": "Communication",
+  "behavior": "Behavior",
+  "shareProfile": "Share Profile"
 }

@@ -18,15 +18,15 @@ export const AddBankAccountScreen = () => {
 
   const handleSave = () => {
     if (!accName.trim() || !accNumber || !reAccNumber || !ifsc) {
-        Alert.alert('Error', 'Please fill all the details.');
+        Alert.alert(t('alertTitleError', 'Error'), t('alertMsgPleasefillallthedeta', 'Please fill all the details.'));
         return;
     }
     if (accNumber !== reAccNumber) {
-        Alert.alert('Error', 'Account numbers do not match.');
+        Alert.alert(t('alertTitleError', 'Error'), t('alertMsgAccountnumbersdonotm', 'Account numbers do not match.'));
         return;
     }
     if (ifsc.length < 11) {
-        Alert.alert('Error', 'Please enter a valid 11-digit IFSC code.');
+        Alert.alert(t('alertTitleError', 'Error'), t('alertMsgPleaseenteravalid11d', 'Please enter a valid 11-digit IFSC code.'));
         return;
     }
     
@@ -39,7 +39,7 @@ export const AddBankAccountScreen = () => {
         isVerified: true
     };
 
-    Alert.alert('Success', 'Bank account verified and added securely.', [
+    Alert.alert(t('alertTitleSuccess', 'Success'), t('alertMsgBankaccountverifieda', 'Bank account verified and added securely.'), [
         { text: 'OK', onPress: () => {
             navigation.navigate('WithdrawalMethodsScreen', { newMethod: newBank });
         }}

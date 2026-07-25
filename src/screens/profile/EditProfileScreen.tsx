@@ -66,10 +66,10 @@ export const EditProfileScreen = () => {
 
   const handleSave = () => {
       if (!form.name.trim()) {
-          Alert.alert('Error', 'Display name cannot be empty.');
+          Alert.alert(t('errorTitle', 'Error'), t('errorEmptyName', 'Display name cannot be empty.'));
           return;
       }
-      Alert.alert('Success', 'Profile updated successfully!', [{ text: 'OK', onPress: () => smartGoBack() }]);
+      Alert.alert(t('successTitle', 'Success'), t('successProfileUpdate', 'Profile updated successfully!'), [{ text: t('ok', 'OK'), onPress: () => smartGoBack() }]);
   };
 
   return (
@@ -80,9 +80,9 @@ export const EditProfileScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Edit Profile</Text>
+        <Text style={styles.headerTitle}>{t('title', 'Edit Profile')}</Text>
         <TouchableOpacity style={styles.saveHeaderBtn} onPress={handleSave}>
-            <Text style={styles.saveHeaderBtnText}>Save</Text>
+            <Text style={styles.saveHeaderBtnText}>{t('saveBtn', 'Save')}</Text>
         </TouchableOpacity>
       </View>
 
@@ -96,25 +96,25 @@ export const EditProfileScreen = () => {
                         <Icon name="camera" size={16} color={theme.colors.surface} />
                     </TouchableOpacity>
                 </View>
-                <Text style={styles.avatarSub}>Tap to change photo</Text>
+                <Text style={styles.avatarSub}>{t('changePhoto', 'Tap to change photo')}</Text>
             </View>
 
             <View style={styles.formSection}>
-                <Text style={styles.sectionTitle}>BASIC INFO</Text>
+                <Text style={styles.sectionTitle}>{t('basicInfo', 'BASIC INFO')}</Text>
                 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Display Name</Text>
+                    <Text style={styles.inputLabel}>{t('displayName', 'Display Name')}</Text>
                     <TextInput style={styles.input} value={form.name} onChangeText={v => updateForm('name', v)} placeholder={t('placeholder.FirstName', 'First Name')} placeholderTextColor={theme.colors.textSecondary} />
                 </View>
 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Short Bio</Text>
+                    <Text style={styles.inputLabel}>{t('shortBio', 'Short Bio')}</Text>
                     <TextInput style={[styles.input, styles.textArea]} value={form.bio} onChangeText={v => updateForm('bio', v)} placeholder={t('placeholder.SaySomethingAbo', 'Say something about yourself...')} placeholderTextColor={theme.colors.textSecondary} multiline maxLength={150} textAlignVertical="top" />
                     <Text style={styles.helperText}>{form.bio.length}/150 characters</Text>
                 </View>
 
                 <View style={styles.inputBlock}>
-                    <Text style={styles.inputLabel}>Current City</Text>
+                    <Text style={styles.inputLabel}>{t('currentCity', 'Current City')}</Text>
                     <TouchableOpacity 
                         style={[styles.iconInputWrap, {paddingVertical: 14, paddingRight: 16}]} 
                         activeOpacity={0.7}
@@ -129,7 +129,7 @@ export const EditProfileScreen = () => {
 
             <View style={styles.formSection}>
                 <View style={styles.rowHeader}>
-                    <Text style={styles.sectionTitle}>LANGUAGES SPOKEN</Text>
+                <Text style={styles.sectionTitle}>{t('languagesSpoken', 'LANGUAGES SPOKEN')}</Text>
                     <TouchableOpacity 
                         style={styles.editIconBtn} 
                         onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })}
@@ -152,7 +152,7 @@ export const EditProfileScreen = () => {
 
             <View style={styles.formSection}>
                 <View style={styles.rowHeader}>
-                    <Text style={styles.sectionTitle}>INTERESTS & ACTIVITIES</Text>
+                    <Text style={styles.sectionTitle}>{t('interestsActivities', 'INTERESTS & ACTIVITIES')}</Text>
                     <TouchableOpacity 
                         style={styles.editIconBtn} 
                         onPress={() => navigation.navigate('InterestSelectionScreen', { 
@@ -178,11 +178,11 @@ export const EditProfileScreen = () => {
 
             <View style={styles.formSection}>
                 <View style={styles.rowHeader}>
-                    <Text style={[styles.sectionTitle, {marginBottom: 0}]}>LOCKED DEMOGRAPHICS</Text>
+                    <Text style={[styles.sectionTitle, {marginBottom: 0}]}>{t('lockedDemographics', 'LOCKED DEMOGRAPHICS')}</Text>
                     {MOCK_PROFILE.kycVerified && (
                         <View style={styles.kycBadge}>
                             <Icon name="shield-check" size={12} color={theme.colors.success} />
-                            <Text style={styles.kycBadgeText}>KYC Verified</Text>
+                            <Text style={styles.kycBadgeText}>{t('kycVerified', 'KYC Verified')}</Text>
                         </View>
                     )}
                 </View>

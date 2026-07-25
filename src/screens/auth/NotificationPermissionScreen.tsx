@@ -45,7 +45,7 @@ export const NotificationPermissionScreen = () => {
           {/* Notification chip floating */}
           <View style={styles.notifChip}>
             <View style={styles.notifDot} />
-            <Text style={styles.notifChipText}>Booking Confirmed!</Text>
+            <Text style={styles.notifChipText}>{t('bookingConfirmed', 'Booking Confirmed!')}</Text>
           </View>
         </View>
 
@@ -88,9 +88,7 @@ export const NotificationPermissionScreen = () => {
         <TouchableOpacity
           style={styles.ctaPrimary}
           onPress={() =>
-            Alert.alert(
-              'Enable Notifications',
-              'Notification permission will be requested on your device.',
+            Alert.alert(t('alertTitleEnableNotificat', 'Enable Notifications'), t('alertMsgNotificationpermissi', 'Notification permission will be requested on your device.'),
               [
                 { text: 'Cancel', style: 'cancel' },
                 { text: 'Continue', onPress: () => navigation.navigate('BasicProfileSetupScreen') },

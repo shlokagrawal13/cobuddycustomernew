@@ -23,5 +23,11 @@
   "error_name": "Please enter a valid display name (min 2 chars).",
   "error_age": "You must be 18 or older.",
   "error_city": "City must be at least 3 characters.",
-  "error_bio": "Bio must be at least 10 characters long."
+  "error_bio": "Bio must be at least 10 characters long.",
+  "dobLabel": "Date of Birth",
+  "uploadPhoto": "Upload Photo",
+  "uploadPhotoDesc": "Choose from your photo library",
+  "takeSelfie": "Take Selfie",
+  "takeSelfieDesc": "Use your front camera",
+  "skipForNow": "Skip For Now"
 }

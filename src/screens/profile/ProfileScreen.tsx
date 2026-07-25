@@ -50,15 +50,15 @@ export const ProfileScreen = () => {
 
   const handleLogout = () => {
     Alert.alert(
-      'Log Out',
-      'Are you sure you want to log out of CoBuddy?',
+      t('logoutTitle', 'Log Out'),
+      t('logoutMessage', 'Are you sure you want to log out of CoBuddy?'),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('logoutCancel', 'Cancel'), style: 'cancel' },
         { 
-          text: 'Log Out', 
+          text: t('logoutConfirm', 'Log Out'), 
           style: 'destructive',
           onPress: () => navigation.reset({ index: 0, routes: [{ name: 'AuthStack' }] }) 
-        },
+        }
       ]
     );
   };
@@ -108,7 +108,7 @@ export const ProfileScreen = () => {
 
             {/* Top Right Actions */}
             <View style={styles.heroActions}>
-              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => Alert.alert('Share Profile', 'Coming soon!')}>
+              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => Alert.alert(t('shareProfileTitle', 'Share Profile'), t('comingSoonMessage', 'Coming soon!'))}>
                 <Icon name="share-variant" size={16} color={theme.colors.background} />
               </TouchableOpacity>
               <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => navigation.navigate('EditProfileScreen')}>
@@ -134,11 +134,11 @@ export const ProfileScreen = () => {
               </View>
 
               <View style={styles.langTagsRow}>
-                <View style={styles.langTag}>
-                  <Text style={styles.langTagText}>English</Text>
-                </View>
-                <View style={styles.langTag}>
-                  <Text style={styles.langTagText}>Hindi</Text>
+                  <View style={styles.langTag}>
+                    <Text style={styles.langTagText}>{t('langEnglish', 'English')}</Text>
+                  </View>
+                  <View style={styles.langTag}>
+                    <Text style={styles.langTagText}>{t('langHindi', 'Hindi')}</Text>
                 </View>
               </View>
               
@@ -362,7 +362,7 @@ export const ProfileScreen = () => {
           ))}
         </View>
 
-        <Text style={styles.versionText}>CoBuddy v1.0.0 (Build 42)</Text>
+        <Text style={styles.versionText}>{t('cobuddyV100Build42', 'CoBuddy v1.0.0 (Build 42)')}</Text>
 
       </ScrollView>
     </View>

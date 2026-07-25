@@ -210,7 +210,7 @@ export const DiscoverScreen = () => {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerTop}>
-          <Text style={styles.headerTitle}>Discover</Text>
+          <Text style={styles.headerTitle}>{t('title', 'Discover')}</Text>
           <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
@@ -294,9 +294,9 @@ export const DiscoverScreen = () => {
           ListEmptyComponent={() => (
             <View style={styles.emptyContainer}>
               <Icon name="account-search-outline" size={48} color={theme.colors.border} />
-              <Text style={styles.emptyText}>No companions found</Text>
-              <TouchableOpacity onPress={clearAllFilters} style={styles.clearAllBtn}>
-                <Text style={styles.clearAllBtnText}>Clear Filters</Text>
+              <Text style={styles.emptyText}>{t('noCompanions', 'No companions found')}</Text>
+              <TouchableOpacity style={styles.clearAllBtn} onPress={clearAllFilters}>
+                <Text style={styles.clearAllBtnText}>{t('clearFilters', 'Clear Filters')}</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -315,7 +315,7 @@ export const DiscoverScreen = () => {
           <View style={styles.modalContent}>
             
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Filters</Text>
+              <Text style={styles.modalTitle}>{t('filtersTitle', 'Filters')}</Text>
               <TouchableOpacity onPress={() => setIsFilterVisible(false)}>
                 <Icon name="close" size={24} color={theme.colors.textPrimary} />
               </TouchableOpacity>
@@ -324,7 +324,7 @@ export const DiscoverScreen = () => {
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.modalScroll}>
               
               {/* Categories */}
-              <Text style={styles.modalSectionTitle}>Activity Type</Text>
+              <Text style={styles.modalSectionTitle}>{t('filterActivityType', 'Activity Type')}</Text>
               <View style={styles.modalOptionsGrid}>
                 {MODAL_CATEGORIES.map((cat) => (
                   <TouchableOpacity 
@@ -344,7 +344,7 @@ export const DiscoverScreen = () => {
               </View>
 
               {/* Gender */}
-              <Text style={styles.modalSectionTitle}>Gender</Text>
+              <Text style={styles.modalSectionTitle}>{t('filterGender', 'Gender')}</Text>
               <View style={styles.modalOptionsGrid}>
                 {GENDER_OPTIONS.map((g) => (
                   <TouchableOpacity 
@@ -364,7 +364,7 @@ export const DiscoverScreen = () => {
               </View>
 
               {/* Price Range Slider */}
-              <Text style={styles.modalSectionTitle}>Maximum Hourly Rate</Text>
+              <Text style={styles.modalSectionTitle}>{t('filterMaxHourlyRate', 'Maximum Hourly Rate')}</Text>
               <CustomSlider 
                 value={filterMaxPrice} 
                 onValueChange={setFilterMaxPrice} 
@@ -389,7 +389,7 @@ export const DiscoverScreen = () => {
               </View>
 
               {/* Rating Slider */}
-              <Text style={styles.modalSectionTitle}>Minimum Rating</Text>
+              <Text style={styles.modalSectionTitle}>{t('filterMinRating', 'Minimum Rating')}</Text>
               <CustomSlider 
                 value={filterRating} 
                 onValueChange={setFilterRating} 
@@ -413,7 +413,7 @@ export const DiscoverScreen = () => {
               </View>
 
               {/* Distance Slider */}
-              <Text style={styles.modalSectionTitle}>Maximum Distance</Text>
+              <Text style={styles.modalSectionTitle}>{t('filterMaxDistance', 'Maximum Distance')}</Text>
               <CustomSlider 
                 value={filterDistance} 
                 onValueChange={setFilterDistance} 
@@ -440,10 +440,10 @@ export const DiscoverScreen = () => {
             {/* Bottom Actions */}
             <View style={styles.modalFooter}>
               <TouchableOpacity style={styles.modalClearBtn} onPress={clearAllFilters}>
-                <Text style={styles.modalClearBtnText}>Clear All</Text>
+                <Text style={styles.modalClearBtnText}>{t('clearAll', 'Clear All')}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.modalApplyBtn} onPress={() => setIsFilterVisible(false)}>
-                <Text style={styles.modalApplyBtnText}>Apply Filters</Text>
+                <Text style={styles.modalApplyBtnText}>{t('applyFilters', 'Apply Filters')}</Text>
               </TouchableOpacity>
             </View>
 

@@ -107,9 +107,7 @@ export const CompanionChatScreen = () => {
         {/* Safety Banner */}
         <View style={styles.safetyBanner}>
           <Icon name="shield-lock" size={16} color={theme.colors.warning} />
-          <Text style={styles.safetyText}>
-            Keep all payments on the app. Do not share personal phone numbers.
-          </Text>
+          <Text style={styles.safetyText}>{t('keepAllPaymentsOnThe', 'Keep all payments on the app. Do not share personal phone numbers.')}</Text>
         </View>
       </SafeAreaView>
 
@@ -181,7 +179,7 @@ export const CompanionChatScreen = () => {
                 style={styles.optionItem} 
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
-                  Alert.alert('Notifications muted for this chat.'); 
+                  Alert.alert(t('alertTitleNotificationsmu', 'Notifications muted for this chat.')); 
                 }}
               >
                 <Icon name="bell-off-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
@@ -204,7 +202,7 @@ export const CompanionChatScreen = () => {
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
                   // If we have an IncidentReport screen we can navigate there, or mock it:
-                  Alert.alert('Our Safety Team has been notified. We take your safety seriously.'); 
+                  Alert.alert(t('alertTitleOurSafetyTeamha', 'Our Safety Team has been notified. We take your safety seriously.')); 
                 }}
               >
                 <Icon name="shield-alert-outline" size={24} color={theme.colors.error} style={styles.optionIcon} />
