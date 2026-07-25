@@ -129,7 +129,7 @@ export const BookingDetailScreen = () => {
               <Text style={styles.primaryBtnText}>{t('viewUpcoming', 'View Upcoming Meetup')}</Text>
             </TouchableOpacity>
             <Text style={{ fontSize: 11, color: theme.colors.textSecondary, textAlign: 'center', marginTop: 8 }}>
-              Unlocked! Share this with your companion upon meeting.
+              {t('unlockedText', 'Unlocked! Share this with your companion upon meeting.')}
             </Text>
           </View>
 

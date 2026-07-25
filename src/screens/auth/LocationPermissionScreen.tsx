@@ -14,15 +14,15 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { useTranslation } from 'react-i18next';
 
-const BENEFITS = [
-  { icon: 'shield-check-outline', title: 'Safety Monitoring', sub: 'Real-time location shared with trusted contacts during sessions' },
-  { icon: 'map-marker-outline', title: 'Venue Discovery', sub: 'Find safe public places and popular venues near you' },
-  { icon: 'navigation-variant-outline', title: 'Protected Routes', sub: 'Secure navigation and safe transit options' },
-];
-
 export const LocationPermissionScreen = () => {
   const navigation = useNavigation<any>();
   const { t } = useTranslation(['onboarding']);
+
+  const BENEFITS = [
+    { icon: 'shield-check-outline', title: t('location.benefits.safety.title', 'Safety Monitoring'), sub: t('location.benefits.safety.sub', 'Real-time location shared with trusted contacts during sessions') },
+    { icon: 'map-marker-outline', title: t('location.benefits.venue.title', 'Venue Discovery'), sub: t('location.benefits.venue.sub', 'Find safe public places and popular venues near you') },
+    { icon: 'navigation-variant-outline', title: t('location.benefits.routes.title', 'Protected Routes'), sub: t('location.benefits.routes.sub', 'Secure navigation and safe transit options') },
+  ];
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>

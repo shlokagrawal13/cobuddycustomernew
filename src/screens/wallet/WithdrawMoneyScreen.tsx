@@ -1,4 +1,4 @@
-﻿import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, Platform, KeyboardAvoidingView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -35,20 +35,20 @@ export const WithdrawMoneyScreen = () => {
   const handleWithdraw = () => {
     const val = parseInt(amount);
     if (!val || val < 100) {
-        Alert.alert('Error', 'Minimum withdrawal amount is ₹100.');
+        Alert.alert(t('errorTitle', 'Error'), t('minWithdrawalError', 'Minimum withdrawal amount is ₹100.'));
         return;
     }
     if (val > MAX_WITHDRAWABLE) {
-        Alert.alert('Error', 'Amount exceeds your withdrawable balance.');
+        Alert.alert(t('errorTitle', 'Error'), t('exceedsBalanceError', 'Amount exceeds your withdrawable balance.'));
         return;
     }
 
     const destination = selectedMethod.type === 'upi' ? 'UPI ID (' + selectedMethod.sub + ')' : selectedMethod.title + ' ' + selectedMethod.sub.toLowerCase();
     
     Alert.alert(
-        'Processing Withdrawal',
-        '₹' + val + ' is being transferred to your ' + destination + '. It may take up to 2-3 business days to reflect.',
-        [{ text: 'Got it', onPress: () => navigation.navigate('TransactionHistoryScreen') }]
+        t('processingWithdrawalTitle', 'Processing Withdrawal'),
+        t('processingWithdrawalDesc', '₹{{val}} is being transferred to your {{destination}}. It may take up to 2-3 business days to reflect.', { val, destination }),
+        [{ text: t('gotItBtn', 'Got it'), onPress: () => navigation.navigate('TransactionHistoryScreen') }]
     );
   };
 

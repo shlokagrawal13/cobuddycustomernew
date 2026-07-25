@@ -456,7 +456,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
                         text: "Block", 
                         style: "destructive",
                         onPress: () => {
-                          Alert.alert("Blocked", `${DUMMY_PROFILE.name} has been blocked.`);
+                          Alert.alert(t('blockedTitle', 'Blocked'), t('blockedMessage', '{{name}} has been blocked.', { name: DUMMY_PROFILE.name }));
                           smartGoBack('DiscoverTab');
                         }
                       }

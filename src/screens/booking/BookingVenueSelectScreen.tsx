@@ -121,7 +121,7 @@ export const BookingVenueSelectScreen = () => {
           activeOpacity={0.8}
         >
           <Text style={[styles.nextBtnText, !selectedVenueId && styles.nextBtnTextDisabled]}>
-            Continue
+            {t('continueBtn', 'Continue')}
           </Text>
           <Icon 
             name="arrow-right" 

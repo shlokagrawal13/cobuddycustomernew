@@ -13,20 +13,18 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 
-// MOCK: Replace with actual companion's services from Zustand/API
-const ACTIVITIES = [
-  { id: 'a1', title: 'Coffee Meetup', icon: 'coffee-outline', price: '₹500/hr', description: 'A relaxed conversation over a cup of coffee.' },
-  { id: 'a2', title: 'Movie Companion', icon: 'popcorn', price: '₹800/hr', description: 'Watch a movie together and discuss it later.' },
-  { id: 'a3', title: 'City Tour', icon: 'city-variant-outline', price: '₹1000/hr', description: 'Explore the best local spots and hidden gems.' },
-  { id: 'a4', title: 'Gaming Session', icon: 'controller-classic-outline', price: '₹600/hr', description: 'Arcade, bowling, or console gaming.' },
-];
-
 export const BookingActivitySelectScreen = () => { 
-  const { t } = useTranslation('booking.activitySelect');
+  const { t } = useTranslation('booking/activitySelect');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
-  
+  const ACTIVITIES = [
+    { id: 'a1', title: t('activity.a1.title', 'Coffee Meetup'), icon: 'coffee-outline', price: '₹500/hr', description: t('activity.a1.desc', 'A relaxed conversation over a cup of coffee.') },
+    { id: 'a2', title: t('activity.a2.title', 'Movie Companion'), icon: 'popcorn', price: '₹800/hr', description: t('activity.a2.desc', 'Watch a movie together and discuss it later.') },
+    { id: 'a3', title: t('activity.a3.title', 'City Tour'), icon: 'city-variant-outline', price: '₹1000/hr', description: t('activity.a3.desc', 'Explore the best local spots and hidden gems.') },
+    { id: 'a4', title: t('activity.a4.title', 'Gaming Session'), icon: 'controller-classic-outline', price: '₹600/hr', description: t('activity.a4.desc', 'Arcade, bowling, or console gaming.') },
+  ];
+
   // State for selected activity
   const [selectedActivityId, setSelectedActivityId] = useState<string | null>(null);
 
