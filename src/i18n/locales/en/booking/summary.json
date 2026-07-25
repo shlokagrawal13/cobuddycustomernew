@@ -22,5 +22,5 @@
     "HowWillTheCompa": "How will the companion recognize you? Any special requests?"
   },
   "safetyAgreement": "I agree to meet in a public place and strictly follow the CoBuddy safety guidelines.",
-  "devDesc": "If FALSE, pressing "
+  "devDesc": "If FALSE, pressing \"Send Request\" will trigger the KYC interceptor."
 }

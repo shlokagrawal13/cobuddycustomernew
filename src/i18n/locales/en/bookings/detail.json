@@ -1,7 +1,7 @@
 {
   "headerTitle": "Booking ID: {{id}}",
   "statusDeclined": "Booking Declined",
-  "declineReason": "\"{reason}\"",
+  "declineReason": "\"{{reason}}\"",
   "cancelRequest": "Cancel Request",
   "modify": "Modify",
   "viewUpcoming": "View Upcoming Meetup",
@@ -12,7 +12,7 @@
   "raiseDispute": "Raise a Dispute",
   "sos": "SOS",
   "statusTimeline": "STATUS TIMELINE",
-  "reviewCount": "({{count}} reviews)",
+  "reviewCount": "({{reviewCountVal}} reviews)",
   "viewProfile": "Profile",
   "experienceDetails": "EXPERIENCE DETAILS",
   "activityType": "Activity Type",
