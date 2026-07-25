@@ -209,7 +209,7 @@ export const BasicProfileSetupScreen = () => {
                   style={[styles.underlineInput, dobError ? styles.underlineInputError : null]}
                   value={dob}
                   onChangeText={handleDobChange}
-                  placeholder={t('placeholder.DDMMYYYY', 'DD/MM/YYYY')}
+                  placeholder={t('profile.placeholder.DDMMYYYY', 'DD/MM/YYYY')}
                   placeholderTextColor={theme.colors.textSecondary}
                   keyboardType="number-pad"
                   maxLength={10}
@@ -243,7 +243,7 @@ export const BasicProfileSetupScreen = () => {
               </View>
             </View>
             {dobError ? <Text style={styles.errorText}>{dobError}</Text> : null}
-            <Text style={styles.ageHint}>{t('youMustBe18To', 'You must be 18+ to use CoBuddy.')}</Text>
+            <Text style={styles.ageHint}>{t('profile.youMustBe18To', 'You must be 18+ to use CoBuddy.')}</Text>
 
             {/* City */}
             <View style={styles.field}>
@@ -305,7 +305,7 @@ export const BasicProfileSetupScreen = () => {
         <AppBottomSheet
           visible={showAvatarSheet}
           onClose={() => setShowAvatarSheet(false)}
-          title={t('titleProfilePhoto', 'Profile Photo')}>
+          title={t('profile.titleProfilePhoto', 'Profile Photo')}>
           <View style={picker.list}>
             {/* Upload Photo */}
             <TouchableOpacity
@@ -351,7 +351,7 @@ export const BasicProfileSetupScreen = () => {
               </View>
               <View style={picker.optionMeta}>
                 <Text style={[picker.optionLabel, picker.optionLabelMuted]}>{t('profile.skipForNow', 'Skip For Now')}</Text>
-                <Text style={picker.optionDesc}>{t('youCanAddAPhoto', 'You can add a photo later from your profile')}</Text>
+                <Text style={picker.optionDesc}>{t('profile.youCanAddAPhoto', 'You can add a photo later from your profile')}</Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -360,7 +360,7 @@ export const BasicProfileSetupScreen = () => {
               <View style={{ marginTop: 1 }}>
                 <Icon name="shield-check-outline" size={14} color={theme.colors.textSecondary} />
               </View>
-              <Text style={[picker.bottomNoteText, { flex: 1 }]}>{t('photoWillOnlyBeVisible', 'Photo will only be visible to verified members during active sessions.')}</Text>
+              <Text style={[picker.bottomNoteText, { flex: 1 }]}>{t('profile.photoWillOnlyBeVisible', 'Photo will only be visible to verified members during active sessions.')}</Text>
             </View>
           </View>
         </AppBottomSheet>

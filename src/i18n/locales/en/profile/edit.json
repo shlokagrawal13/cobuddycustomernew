@@ -19,6 +19,7 @@
     "successProfileUpdate":  "Profile updated successfully!",
     "ok":  "OK",
     "placeholder":  {
-
+                        "FirstName":  "First Name",
+                        "SaySomethingAbo":  "Say something about yourself..."
                     }
 }
