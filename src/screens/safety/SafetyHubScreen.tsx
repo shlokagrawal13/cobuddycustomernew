@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { isFeatureEnabled } from '../../config/featureFlags';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -81,8 +82,8 @@ export const SafetyHubScreen = () => {
                 <View style={[styles.statusDot, !isSessionActive && styles.statusDotInactive]} />
                 <Text style={[styles.statusText, !isSessionActive && styles.statusTextInactive]}>{isSessionActive ? t('statusText', 'Live Protection Active') : t('statusInactive', 'Live Protection Inactive')}</Text>
             </View>
-            {isSessionActive && lastKnownLocation && (
-              <Text style={styles.locationText}>Mock GPS: {lastKnownLocation.lat.toFixed(4)}, {lastKnownLocation.lng.toFixed(4)}</Text>
+            {isSessionActive && lastKnownLocation && isFeatureEnabled('ENABLE_SOS_BACKGROUND_TRACKING') && (
+              <Text style={styles.locationText}>{t('mockGps', 'Mock GPS')}: {lastKnownLocation.lat.toFixed(4)}, {lastKnownLocation.lng.toFixed(4)}</Text>
             )}
         </View>
 

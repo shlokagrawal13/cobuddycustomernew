@@ -10,6 +10,8 @@ import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton
 import { DUMMY_COMPANIONS } from '../../services/mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
+import { selectInterests } from '../../store/selectors/userPreferencesSelectors';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
 const MODAL_CATEGORIES = [
@@ -76,6 +78,7 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
 
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
+  const selectedInterests = useUserPreferencesStore(selectInterests);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'DiscoverScreen'>>();
   

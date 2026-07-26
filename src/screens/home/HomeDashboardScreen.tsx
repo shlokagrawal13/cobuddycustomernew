@@ -10,6 +10,8 @@ import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton
 import { DUMMY_FEATURED } from '../../services/mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
+import { selectInterests } from '../../store/selectors/userPreferencesSelectors';
 
 const EXPLORE_CATEGORIES = [
   { id: 'coffee', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
@@ -22,6 +24,7 @@ export const HomeDashboardScreen = () => {
   const { t } = useTranslation('home.dashboard');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [loading, setLoading] = useState(true);
+  const selectedInterests = useUserPreferencesStore(selectInterests);
 
   // In real app, this comes from global state or API
   const [hasActiveBooking, setHasActiveBooking] = useState(false);
