@@ -115,7 +115,7 @@ export const ArrivalCheckInScreen = () => {
         {/* Safety Issue Link */}
         <TouchableOpacity 
           style={styles.reportBtn} 
-          onPress={() => (navigation as any).navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: COMPANION_NAME } })} accessibilityRole="button" accessibilityLabel={t('a11yCompanionDidntShowUp', "Companion didn't show up")}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: COMPANION_NAME } })} accessibilityRole="button" accessibilityLabel={t('a11yCompanionDidntShowUp', "Companion didn't show up")}
         >
           <Icon name="alert-circle-outline" size={16} color={theme.colors.error} />
           <Text style={styles.reportText}>{t('reportText', "Companion didn't show up or looks different? Report Issue")}</Text>

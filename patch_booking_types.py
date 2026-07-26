@@ -1,4 +1,16 @@
-export interface BookingActivity {
+import re
+import json
+
+def replace_in_file(filepath, old, new):
+    with open(filepath, 'r', encoding='utf8') as f:
+        content = f.read()
+    if old in content:
+        content = content.replace(old, new)
+        with open(filepath, 'w', encoding='utf8') as f:
+            f.write(content)
+        print(f"Patched {filepath}")
+
+new_content = '''export interface BookingActivity {
   id: string;
   titleKey: string;
   defaultTitle: string;
@@ -28,3 +40,8 @@ export interface BookingStackParamList {
   ModifyBookingScreen: { bookingId?: string } | undefined;
   DisputeRefundScreen: { bookingId?: string } | undefined;
 };
+'''
+
+with open('src/types/navigation/booking.types.ts', 'w', encoding='utf8') as f:
+    f.write(new_content)
+print("Updated booking.types.ts")

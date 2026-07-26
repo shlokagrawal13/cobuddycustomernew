@@ -77,7 +77,7 @@ export const ActiveSessionScreen = () => {
           <Animated.View style={[styles.liveDot, { opacity: pulseAnim }]} />
           <Text style={styles.liveText}>{t('liveSession', 'LIVE SESSION')}</Text>
         </View>
-        <TouchableOpacity style={styles.sosBtn} onPress={() => (navigation as any).navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11ySosEmergency', 'SOS / EMERGENCY')}>
+        <TouchableOpacity style={styles.sosBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11ySosEmergency', 'SOS / EMERGENCY')}>
           <Icon name="shield-half-full" size={18} color={theme.colors.background} />
           <Text style={styles.sosBtnText}>{t('sosEmergency', 'SOS / EMERGENCY')}</Text>
         </TouchableOpacity>

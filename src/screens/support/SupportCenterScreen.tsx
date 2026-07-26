@@ -73,7 +73,7 @@ export const SupportCenterScreen = () => {
         {filteredTickets.length === 0 ? (
           <View style={styles.emptyState}>
             <Icon name="ticket-confirmation-outline" size={48} color={theme.colors.textSecondary} style={{opacity: 0.5, marginBottom: 16}} />
-            <Text style={styles.emptyTitle}>No {activeTab.toLowerCase()} tickets</Text>
+            <Text style={styles.emptyTitle}>{t('noTickets', 'No {{tab}} tickets', { tab: activeTab.toLowerCase() })}</Text>
             <Text style={styles.emptySub}>{t('emptySub', 'You don\'t have any support tickets in this category right now.')}</Text>
           </View>
         ) : (

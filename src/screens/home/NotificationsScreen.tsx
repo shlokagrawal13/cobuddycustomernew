@@ -48,9 +48,9 @@ export const NotificationsScreen = () => {
     );
     // Navigate across tabs if stack is provided
     if (notification.stack) {
-      (navigation as any).navigate(notification.stack, { screen: notification.route, params: notification.routeParams });
+      (navigation.navigate as any)(notification.stack, { screen: notification.route, params: notification.routeParams });
     } else if (notification.route) {
-      (navigation as any).navigate(notification.route, notification.routeParams);
+      (navigation.navigate as any)(notification.route, notification.routeParams);
     }
   };
 

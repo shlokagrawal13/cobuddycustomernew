@@ -60,7 +60,7 @@ export const CompanionChatScreen = () => {
   };
 
   const handleCall = () => {
-    (navigation as any).navigate('VoiceCallScreen', { companionName: companionName, callType: 'companion' });
+    navigation.navigate('VoiceCallScreen', { companionName: companionName });
   };
 
   return (

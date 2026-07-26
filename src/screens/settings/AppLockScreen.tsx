@@ -84,7 +84,7 @@ export const AppLockScreen = () => {
         <View style={styles.card}>
             <View style={styles.settingRow}>
                 <View style={styles.settingTextContent}>
-                    <Text style={styles.settingTitle}>Require {biometricName}</Text>
+                    <Text style={styles.settingTitle}>{t('requireBiometric', 'Require {{biometric}}', { biometric: biometricName })}</Text>
                     <Text style={styles.settingDesc}>{t('appAccessDesc', 'Use your device credentials to unlock the app.')}</Text>
                 </View>
                 <CustomSwitch value={appLockEnabled} onValueChange={setAppLockEnabled} />

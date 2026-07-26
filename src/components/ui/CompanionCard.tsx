@@ -71,7 +71,7 @@ export const CompanionCard = ({
 
           <View style={styles.statsRow}>
             <Icon name="star" size={14} color={theme.colors.primary} />
-            <Text style={styles.statsText}>{rating} <Text style={styles.statsMuted}>· {reviews} reviews · {sessions} sessions</Text></Text>
+            <Text style={styles.statsText}>{rating} <Text style={styles.statsMuted}>{t('companionCard.statsMuted', '� {{reviews}} reviews � {{sessions}} sessions', { reviews, sessions })}</Text></Text>
           </View>
           
           {distance && (
@@ -95,7 +95,7 @@ export const CompanionCard = ({
 
       {/* Bottom Action Section */}
       <View style={styles.bottomRow}>
-        <Text style={styles.rateLabel}>From <Text style={styles.rateValue}>{rate}</Text></Text>
+        <Text style={styles.rateLabel}>{t('companionCard.fromRate', 'From ')}<Text style={styles.rateValue}>{rate}</Text></Text>
         
         <TouchableOpacity
           style={styles.actionBtn}

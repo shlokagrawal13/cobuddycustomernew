@@ -365,7 +365,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
         
         <TouchableOpacity 
           style={styles.requestBtn}
-          onPress={() => (navigation as any).navigate('BookingFlowStack')} accessibilityRole="button" accessibilityLabel={t('a11yRequestBooking', 'Request Booking')}
+          onPress={() => navigation.navigate('BookingStack')} accessibilityRole="button" accessibilityLabel={t('a11yRequestBooking', 'Request Booking')}
         >
           <Text style={styles.requestBtnText}>{t('btn_request', 'Request Booking')}</Text>
         </TouchableOpacity>
@@ -389,7 +389,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <View style={styles.sheetIconWrap}>
               <Icon name="flag-outline" size={20} color={theme.colors.textPrimary} />
             </View>
-            <Text style={styles.sheetRowText}>Report {DUMMY_PROFILE.name}</Text>
+            <Text style={styles.sheetRowText}>{t('reportName', 'Report {{name}}', { name: DUMMY_PROFILE.name })}</Text>
           </TouchableOpacity>
 
           <View style={styles.sheetDivider} />

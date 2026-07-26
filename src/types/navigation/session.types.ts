@@ -5,5 +5,5 @@ export interface SessionStackParamList {
   SessionCompleteScreen: undefined;
   PostSessionFeedbackScreen: undefined;
   TipGratuityScreen: undefined;
-  CompanionReviewScreen: undefined;
+  CompanionReviewScreen: { bookingId?: string } | undefined;
 };

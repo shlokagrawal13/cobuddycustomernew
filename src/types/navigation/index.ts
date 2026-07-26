@@ -1,3 +1,15 @@
+import { NavigatorScreenParams } from '@react-navigation/native';
+import { AuthStackParamList } from './auth.types';
+import { BookingStackParamList } from './booking.types';
+import { ChatStackParamList } from './chat.types';
+import { HomeStackParamList } from './home.types';
+import { ProfileStackParamList } from './profile.types';
+import { SafetyStackParamList } from './safety.types';
+import { SessionStackParamList } from './session.types';
+import { SupportStackParamList } from './support.types';
+import { SystemStackParamList } from './system.types';
+import { VerifyStackParamList } from './verify.types';
+
 
 export * from './auth.types';
 export * from './booking.types';
@@ -59,7 +71,7 @@ export type RootStackParamList = {
   SessionCompleteScreen: undefined;
   PostSessionFeedbackScreen: undefined;
   TipGratuityScreen: undefined;
-  CompanionReviewScreen: undefined;
+  CompanionReviewScreen: { bookingId?: string } | undefined;
   ActiveSessionsScreen: undefined;
   AppLockScreen: undefined;
   AppPermissionsScreen: undefined;
@@ -102,16 +114,19 @@ export type RootStackParamList = {
   AddPaymentMethodScreen: undefined;
 
   // Nested Stack Navigators
-  AuthStack: { screen?: string; params?: any } | undefined;
+  AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
   MainTabs: { screen?: string; params?: any } | undefined;
   MainTabNavigator: { screen?: string; params?: any } | undefined;
-  HomeTab: { screen?: string; params?: any } | undefined;
-  DiscoverTab: { screen?: string; params?: any } | undefined;
-  BookingsTab: { screen?: string; params?: any } | undefined;
-  ChatTab: { screen?: string; params?: any } | undefined;
-  ProfileTab: { screen?: string; params?: any } | undefined;
-  BookingStack: { screen?: string; params?: any } | undefined;
-  KYCStack: { screen?: string; params?: any } | undefined;
+  HomeTab: NavigatorScreenParams<HomeStackParamList> | undefined;
+  DiscoverTab: NavigatorScreenParams<HomeStackParamList> | undefined;
+  BookingsTab: NavigatorScreenParams<BookingStackParamList> | undefined;
+  ChatTab: NavigatorScreenParams<ChatStackParamList> | undefined;
+  ProfileTab: NavigatorScreenParams<ProfileStackParamList> | undefined;
+  BookingStack: NavigatorScreenParams<BookingStackParamList> | undefined;
+  KYCStack: NavigatorScreenParams<VerifyStackParamList> | undefined;
   SafetyTutorialScreen: undefined;
 
+  SafetySupportStack: NavigatorScreenParams<SafetyStackParamList & SupportStackParamList> | undefined;
+  LiveSessionStack: NavigatorScreenParams<SessionStackParamList> | undefined;
+  SystemStateStack: NavigatorScreenParams<SystemStackParamList> | undefined;
 };

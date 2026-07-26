@@ -34,7 +34,7 @@ export const AccountDeactivatedScreen = () => {
         
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => (navigation as any).navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yContactSupport', 'Contact Support')}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yContactSupport', 'Contact Support')}
         >
           <Text style={styles.secondaryButtonText}>{t('supportBtn', 'Contact Support')}</Text>
         </TouchableOpacity>

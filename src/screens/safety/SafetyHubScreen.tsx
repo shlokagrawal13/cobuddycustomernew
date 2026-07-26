@@ -100,16 +100,16 @@ export const SafetyHubScreen = () => {
                     activeOpacity={0.9}
                     onPress={() => {
                         if (isSOSActive) {
-                            Alert.alert('Cancel SOS', 'Are you sure you want to cancel the SOS?', [
-                                { text: 'No', style: 'cancel' },
+                            Alert.alert(t('alertTitleCancelSOS', 'Cancel SOS'), t('alertMsgAreYouSureYouWantToCancel', 'Are you sure you want to cancel the SOS?'), [
+                                { text: t('no', 'No'), style: 'cancel' },
                                 { text: t('yesSafe', 'Yes, I am safe'), onPress: () => resolveSOS() }
                             ]);
                         } else {
                             Alert.alert(t('alertTitleEMERGENCYSOS', '🚨 EMERGENCY SOS'), t('alertMsgAreyouindangerThiswi', 'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.'),
                               [
-                                { text: 'Cancel', style: 'cancel' },
+                                { text: t('cancel', 'Cancel'), style: 'cancel' },
                                 { 
-                                  text: 'ACTIVATE SOS', 
+                                  text: t('activateSOS', 'ACTIVATE SOS'), 
                                   style: 'destructive',
                                   onPress: () => {
                                     triggerSOS();
