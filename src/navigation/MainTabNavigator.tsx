@@ -122,6 +122,7 @@ const ProfileTabStack = () => (
         <Stack.Screen name="SupportCenterScreen" component={SupportCenterScreen} />
         <Stack.Screen name="CreateSupportTicketScreen" component={CreateSupportTicketScreen} />
         <Stack.Screen name="SupportTicketDetailScreen" component={SupportTicketDetailScreen} />
+        <Stack.Screen name="ConciergeChatScreen" component={ConciergeChatScreen} />
         <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
         <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
         <Stack.Screen name="SafetyHubScreen" component={SafetyHubScreen} />
