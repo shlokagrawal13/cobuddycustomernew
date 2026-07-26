@@ -1,4 +1,4 @@
-export type SystemStackParamList = {
+export interface SystemStackParamList {
   AccountDeactivatedScreen: undefined;
   AccountReactivationRequestScreen: undefined;
   AccountSuspendedScreen: undefined;

@@ -29,7 +29,7 @@ const SAFE_VENUES = [
 export const BookingVenueSelectScreen = () => { 
   const { t } = useTranslation('booking.venueSelect');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { smartGoBack } = useSmartNavigation();
+  const { goBack } = useNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'BookingVenueSelectScreen'>>();
   const setDraftBooking = useBookingStore(selectSetDraftBooking);
 
@@ -55,7 +55,7 @@ export const BookingVenueSelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => goBack()} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 2 of 4')}</Text>

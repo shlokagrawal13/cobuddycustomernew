@@ -1,4 +1,4 @@
-export type SupportStackParamList = {
+export interface SupportStackParamList {
   HelpCenterScreen: undefined;
   SupportCenterScreen: undefined;
   CreateSupportTicketScreen: { category?: string } | undefined;

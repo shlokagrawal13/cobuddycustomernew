@@ -70,7 +70,7 @@ export const InterestSelectionScreen = () => {
               merge: true,
           });
       } else {
-          navigation.navigate('SafetyTutorialScreen');
+          navigation.navigate('SafetyTutorialScreen' as never);
       }
   };
 

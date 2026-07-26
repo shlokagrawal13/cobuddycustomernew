@@ -365,7 +365,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
         
         <TouchableOpacity 
           style={styles.requestBtn}
-          onPress={() => navigation.navigate('BookingFlowStack')} accessibilityRole="button" accessibilityLabel={t('a11yRequestBooking', 'Request Booking')}
+          onPress={() => (navigation as any).navigate('BookingFlowStack')} accessibilityRole="button" accessibilityLabel={t('a11yRequestBooking', 'Request Booking')}
         >
           <Text style={styles.requestBtnText}>{t('btn_request', 'Request Booking')}</Text>
         </TouchableOpacity>

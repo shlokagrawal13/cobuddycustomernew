@@ -85,7 +85,7 @@ export const ConciergeChatScreen = () => {
           {isFeatureEnabled('ENABLE_VOICE_CALL') && (
             <TouchableOpacity 
               style={styles.callBtn}
-              onPress={() => navigation.navigate('VoiceCallScreen', { callerName: 'CoBuddy Concierge', callType: 'support' })}
+              onPress={() => (navigation as any).navigate('VoiceCallScreen', { companionName: 'CoBuddy Concierge', callType: 'support' })}
               activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yCall', 'Call')}
             >
               <Icon name="phone" size={20} color={theme.colors.textPrimary} />

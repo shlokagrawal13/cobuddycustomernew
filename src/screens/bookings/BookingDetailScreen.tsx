@@ -104,7 +104,7 @@ export const BookingDetailScreen = () => {
           <View>
             <TouchableOpacity 
               style={styles.primaryBtn} 
-              onPress={() => navigation.navigate('LiveSessionStack')} accessibilityRole="button" accessibilityLabel={t('a11yViewUpcomingMeetup', 'View Upcoming Meetup')}
+              onPress={() => (navigation as any).navigate('LiveSessionStack')} accessibilityRole="button" accessibilityLabel={t('a11yViewUpcomingMeetup', 'View Upcoming Meetup')}
             >
               <Icon name="key" size={18} color={theme.colors.background} />
               <Text style={styles.primaryBtnText}>{t('viewUpcoming', 'View Upcoming Meetup')}</Text>
@@ -139,10 +139,10 @@ export const BookingDetailScreen = () => {
     if (data.status === 'Completed' || data.status === 'History') {
       return (
         <View style={styles.actionCol}>
-          <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('CompanionReviewScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel={t('a11yLeaveAReview', 'Leave a Review')}>
+          <TouchableOpacity style={styles.primaryBtn} onPress={() => (navigation as any).navigate('CompanionReviewScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel={t('a11yLeaveAReview', 'Leave a Review')}>
             <Text style={styles.primaryBtnText}>{t('leaveReview', 'Leave a Review')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.ghostBtn} onPress={() => navigation.navigate('DisputeRefundScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel={t('a11yRaiseADispute', 'Raise a Dispute')}>
+          <TouchableOpacity style={styles.ghostBtn} onPress={() => (navigation as any).navigate('DisputeRefundScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel={t('a11yRaiseADispute', 'Raise a Dispute')}>
             <Text style={[styles.ghostBtnText, { color: theme.colors.warning }]}>{t('raiseDispute', 'Raise a Dispute')}</Text>
           </TouchableOpacity>
         </View>
@@ -162,7 +162,7 @@ export const BookingDetailScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Booking ID: {{id}}', { id: data.id })}</Text>
-        <TouchableOpacity style={styles.helpBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11ySos', 'SOS')}>
+        <TouchableOpacity style={styles.helpBtn} onPress={() => (navigation as any).navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11ySos', 'SOS')}>
           <Icon name="shield-half-full" size={16} color={theme.colors.background} />
           <Text style={styles.helpBtnText}>{t('sos', 'SOS')}</Text>
         </TouchableOpacity>

@@ -26,12 +26,12 @@ export const OTPInput = ({
 }: OTPInputProps) => {
   const inputRef = useRef<TextInput>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (autoFocus) {
-      const t = setTimeout(() => inputRef.current?.focus(), 300);
-      const { t } = useTranslation();
-      return () => clearTimeout(t);
+      const timer = setTimeout(() => inputRef.current?.focus(), 300);
+      return () => clearTimeout(timer);
     }
   }, [autoFocus]);
 

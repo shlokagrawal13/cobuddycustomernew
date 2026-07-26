@@ -1,4 +1,4 @@
-export type SessionStackParamList = {
+export interface SessionStackParamList {
   ActiveSessionScreen: undefined;
   ArrivalCheckInScreen: undefined;
   SessionReminderScreen: undefined;

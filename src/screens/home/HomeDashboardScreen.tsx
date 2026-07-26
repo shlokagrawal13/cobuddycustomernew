@@ -183,7 +183,7 @@ export const HomeDashboardScreen = () => {
 
             <TouchableOpacity 
               style={styles.gridItem}
-              onPress={() => navigation.navigate('ProfileTab', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yGoToProfiletab', 'Go to ProfileTab')}
+              onPress={() => (navigation as any).navigate('ProfileTab', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yGoToProfiletab', 'Go to ProfileTab')}
             >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="shield-check" size={24} color={theme.colors.primary} />
@@ -193,7 +193,7 @@ export const HomeDashboardScreen = () => {
 
             <TouchableOpacity 
               style={styles.gridItem}
-              onPress={() => navigation.navigate('ProfileTab')} accessibilityRole="button" accessibilityLabel={t('a11yGoToProfiletab', 'Go to ProfileTab')}
+              onPress={() => (navigation as any).navigate('ProfileTab')} accessibilityRole="button" accessibilityLabel={t('a11yGoToProfiletab', 'Go to ProfileTab')}
             >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="account-outline" size={24} color={theme.colors.primary} />
@@ -228,10 +228,10 @@ export const HomeDashboardScreen = () => {
                 <View key={item.id} style={styles.featuredCardWrapper}>
                   <CompanionCard
                     {...item}
-                    onPress={(id) => navigation.navigate('DiscoverTab', {
+                    onPress={(id) => (navigation as any).navigate('DiscoverTab', {
                       screen: 'CompanionProfileScreen',
                       params: { id }
-                    })}
+                    } as never)}
                   />
                 </View>
               ))

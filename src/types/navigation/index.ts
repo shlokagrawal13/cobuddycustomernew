@@ -1,36 +1,117 @@
-import { AuthStackParamList } from './auth.types';
-import { BookingStackParamList } from './booking.types';
-import { ChatStackParamList } from './chat.types';
-import { SafetyStackParamList } from './safety.types';
-import { WalletStackParamList } from './wallet.types';
-import { ProfileStackParamList } from './profile.types';
-import { SupportStackParamList } from './support.types';
-import { HomeStackParamList } from './home.types';
-import { VerifyStackParamList } from './verify.types';
-import { SessionStackParamList } from './session.types';
-import { SystemStackParamList } from './system.types';
-import { SettingsStackParamList } from './settings.types';
 
-export type RootStackParamList = AuthStackParamList &
-  BookingStackParamList &
-  ChatStackParamList &
-  SafetyStackParamList &
-  WalletStackParamList &
-  ProfileStackParamList &
-  SupportStackParamList &
-  HomeStackParamList &
-  VerifyStackParamList &
-  SessionStackParamList &
-  SystemStackParamList &
-  SettingsStackParamList & {
-    // Nested Stack Navigators
-    AuthStack: undefined;
-    MainTabs: undefined;
-    MainTabNavigator: undefined;
-    DiscoverTab: undefined;
-    BookingStack: undefined;
-    SafetySupportStack: { screen?: string; params?: any } | undefined;
-    KYCStack: undefined;
-    LiveSessionStack: { screen?: string; params?: any } | undefined;
-    SystemStateStack: { screen?: string; params?: any } | undefined;
-  };
+export * from './auth.types';
+export * from './booking.types';
+export * from './chat.types';
+export * from './safety.types';
+export * from './wallet.types';
+export * from './profile.types';
+export * from './support.types';
+export * from './home.types';
+export * from './verify.types';
+export * from './session.types';
+export * from './system.types';
+export * from './settings.types';
+
+export type RootStackParamList = {
+  WelcomeScreen: undefined;
+  PhoneLoginScreen: { isUpdate?: boolean } | undefined;
+  OTPVerificationScreen: { phone?: string; isUpdate?: boolean } | undefined;
+  LocationPermissionScreen: undefined;
+  NotificationPermissionScreen: undefined;
+  BasicProfileSetupScreen: undefined;
+  LocationSelectionScreen: undefined;
+  BookingActivitySelectScreen: undefined;
+  BookingVenueSelectScreen: { activity?: any } | undefined;
+  BookingTimeSelectScreen: { activity?: any; venue?: any } | undefined;
+  BookingSummaryScreen: { activity?: any; venue?: any; date?: any; time?: string; duration?: number; bookingId?: string } | undefined;
+  BookingSuccessScreen: undefined;
+  BookingDetailScreen: { bookingId?: string; status?: string } | undefined;
+  CancelBookingScreen: { bookingId?: string } | undefined;
+  ModifyBookingScreen: { bookingId?: string } | undefined;
+  DisputeRefundScreen: { bookingId?: string } | undefined;
+  ChatListScreen: undefined;
+  CompanionChatScreen: { companionName?: string; bookingId?: string } | undefined;
+  ConciergeChatScreen: undefined;
+  IncomingCallScreen: { callerName?: string } | undefined;
+  VoiceCallScreen: { companionName?: string } | undefined;
+  HomeScreen: undefined;
+  CompanionProfileScreen: { companionId?: string } | undefined;
+  DiscoverScreen: { category?: string } | undefined;
+  NotificationsScreen: undefined;
+  ActiveBookingsScreen: undefined;
+  PastBookingsScreen: undefined;
+  MyReviewsScreen: undefined;
+  SavedProfilesScreen: undefined;
+  ProfileScreen: undefined;
+  EditProfileScreen: { updatedCity?: string; updatedInterests?: string[]; updatedLanguages?: string[]; updatedLangIds?: string[] } | undefined;
+  InterestSelectionScreen: { isEditMode?: boolean; initialInterests?: string[] } | undefined;
+  SpokenLanguagesScreen: { initialLanguages?: string[] } | undefined;
+  SettingsHubScreen: undefined;
+  AccountSettingsScreen: undefined;
+  SafetyHubScreen: undefined;
+  SafetyGuidelinesScreen: undefined;
+  IncidentReportScreen: { companionName?: string; bookingId?: string; companionId?: string } | undefined;
+  TrustedContactsScreen: { fromSettings?: boolean } | undefined;
+  SafetySettingsScreen: undefined;
+  ActiveSessionScreen: undefined;
+  ArrivalCheckInScreen: undefined;
+  SessionReminderScreen: undefined;
+  SessionCompleteScreen: undefined;
+  PostSessionFeedbackScreen: undefined;
+  TipGratuityScreen: undefined;
+  CompanionReviewScreen: undefined;
+  ActiveSessionsScreen: undefined;
+  AppLockScreen: undefined;
+  AppPermissionsScreen: undefined;
+  BlockedUsersScreen: undefined;
+  DataCacheScreen: undefined;
+  DeactivateAccountScreen: undefined;
+  DeleteAccountScreen: undefined;
+  LanguageSelectionScreen: undefined;
+  LegalAgreementsScreen: undefined;
+  NotificationPreferencesScreen: undefined;
+  ReferFriendScreen: undefined;
+  HelpCenterScreen: undefined;
+  SupportCenterScreen: undefined;
+  CreateSupportTicketScreen: { category?: string } | undefined;
+  SupportTicketDetailScreen: { ticketId?: string } | undefined;
+  AccountDeactivatedScreen: undefined;
+  AccountReactivationRequestScreen: undefined;
+  AccountSuspendedScreen: undefined;
+  AccountUnderManualReviewScreen: undefined;
+  ForceUpdateScreen: undefined;
+  MaintenanceModeScreen: undefined;
+  NetworkErrorScreen: undefined;
+  PolicyViolationNoticeScreen: undefined;
+  KYCIntroScreen: undefined;
+  DocumentVerificationScreen: undefined;
+  LivenessDetectionScreen: undefined;
+  SelfieCaptureScreen: undefined;
+  VerificationPendingScreen: undefined;
+  VerificationProcessingScreen: undefined;
+  VerificationRejectedScreen: undefined;
+  VerificationSuccessScreen: undefined;
+  WalletScreen: undefined;
+  AddMoneyScreen: { selectedMethod?: any } | undefined;
+  WithdrawMoneyScreen: { selectedMethod?: any } | undefined;
+  PaymentMethodsScreen: { mode?: 'select'; currentId?: string; newMethod?: any } | undefined;
+  WithdrawalMethodsScreen: { currentId?: string; newMethod?: any } | undefined;
+  TransactionHistoryScreen: undefined;
+  TransactionDetailScreen: { transactionId?: string } | undefined;
+  AddBankAccountScreen: undefined;
+  AddPaymentMethodScreen: undefined;
+
+  // Nested Stack Navigators
+  AuthStack: { screen?: string; params?: any } | undefined;
+  MainTabs: { screen?: string; params?: any } | undefined;
+  MainTabNavigator: { screen?: string; params?: any } | undefined;
+  HomeTab: { screen?: string; params?: any } | undefined;
+  DiscoverTab: { screen?: string; params?: any } | undefined;
+  BookingsTab: { screen?: string; params?: any } | undefined;
+  ChatTab: { screen?: string; params?: any } | undefined;
+  ProfileTab: { screen?: string; params?: any } | undefined;
+  BookingStack: { screen?: string; params?: any } | undefined;
+  KYCStack: { screen?: string; params?: any } | undefined;
+  SafetyTutorialScreen: undefined;
+
+};

@@ -32,7 +32,7 @@ export const AccountUnderManualReviewScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yContactSupport', 'Contact Support')}
+          onPress={() => (navigation as any).navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yContactSupport', 'Contact Support')}
         >
           <Text style={styles.primaryButtonText}>{t('supportBtn', 'Contact Support')}</Text>
         </TouchableOpacity>

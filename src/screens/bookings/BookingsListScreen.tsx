@@ -21,7 +21,7 @@ export const BookingsListScreen = () => {
 
   const handlePressCard = (booking: any) => {
     if (booking.displayStatus === 'Counter-Proposed') {
-      navigation.navigate('BookingFlowStack', { 
+      (navigation as any).navigate('BookingFlowStack', { 
         screen: 'BookingCounterOfferScreen', 
         params: { bookingId: booking.id, companionName: booking.companionName } 
       });
@@ -79,7 +79,7 @@ export const BookingsListScreen = () => {
           <TouchableOpacity 
             style={styles.headerIconBtn} 
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yHelp', 'Help')}
+            onPress={() => (navigation as any).navigate('SafetySupportStack', { screen: 'HelpCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yHelp', 'Help')}
           >
              <Icon name="help-circle-outline" size={24} color={theme.colors.textPrimary} />
           </TouchableOpacity>

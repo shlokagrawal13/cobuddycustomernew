@@ -93,7 +93,7 @@ export const ProfileScreen = () => {
         {user.hasActiveBooking && (
           <TouchableOpacity 
             style={styles.activeBookingBanner}
-            onPress={() => navigation.navigate('LiveSessionStack', { screen: 'ActiveSessionScreen' })}
+            onPress={() => (navigation as any).navigate('LiveSessionStack', { screen: 'ActiveSessionScreen' })}
             activeOpacity={0.9} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
           >
             <View style={styles.bannerIconBox}>

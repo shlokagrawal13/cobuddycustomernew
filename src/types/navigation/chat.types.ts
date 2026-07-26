@@ -1,4 +1,4 @@
-export type ChatStackParamList = {
+export interface ChatStackParamList {
   ChatListScreen: undefined;
   CompanionChatScreen: { companionName?: string; bookingId?: string } | undefined;
   ConciergeChatScreen: undefined;

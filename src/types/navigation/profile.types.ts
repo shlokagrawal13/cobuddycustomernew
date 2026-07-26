@@ -1,4 +1,4 @@
-export type ProfileStackParamList = {
+export interface ProfileStackParamList {
   MyReviewsScreen: undefined;
   SavedProfilesScreen: undefined;
   ProfileScreen: undefined;

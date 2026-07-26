@@ -1,4 +1,4 @@
-export type SettingsStackParamList = {
+export interface SettingsStackParamList {
   ActiveSessionsScreen: undefined;
   AppLockScreen: undefined;
   AppPermissionsScreen: undefined;

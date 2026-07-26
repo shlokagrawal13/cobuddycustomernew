@@ -1,4 +1,4 @@
-export type VerifyStackParamList = {
+export interface VerifyStackParamList {
   KYCIntroScreen: undefined;
   DocumentVerificationScreen: undefined;
   LivenessDetectionScreen: undefined;

@@ -1,4 +1,4 @@
-export type HomeStackParamList = {
+export interface HomeStackParamList {
   HomeScreen: undefined;
   CompanionProfileScreen: { companionId?: string } | undefined;
   DiscoverScreen: { category?: string } | undefined;

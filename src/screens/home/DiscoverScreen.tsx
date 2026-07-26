@@ -240,7 +240,7 @@ export const DiscoverScreen = () => {
           renderItem={({ item }) => (
             <CompanionCard
               {...item}
-              onPress={(id) => navigation.navigate('CompanionProfileScreen', { id })}
+              onPress={(id) => navigation.navigate('CompanionProfileScreen', { companionId: id })}
             />
           )}
           ListEmptyComponent={() => (

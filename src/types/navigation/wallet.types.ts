@@ -1,4 +1,4 @@
-export type WalletStackParamList = {
+export interface WalletStackParamList {
   WalletScreen: undefined;
   AddMoneyScreen: { selectedMethod?: any } | undefined;
   WithdrawMoneyScreen: { selectedMethod?: any } | undefined;

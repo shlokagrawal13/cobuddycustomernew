@@ -161,7 +161,7 @@ export const SettingsHubScreen = () => {
                      // Directly registered in RootNavigator usually? Wait, let's try pushing directly.
                      navigation.navigate(item.route as never);
                   } else {
-                     navigation.navigate('SystemStateStack', { screen: item.route });
+                     (navigation as any).navigate('SystemStateStack', { screen: item.route });
                   }
                 }} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
               >
