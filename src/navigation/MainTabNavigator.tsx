@@ -128,6 +128,7 @@ const ProfileTabStack = () => (
       <Stack.Screen name="DeactivateAccountScreen" component={DeactivateAccountScreen} />
       <Stack.Screen name="ActiveSessionsScreen" component={ActiveSessionsScreen} />
       <Stack.Screen name="SavedProfilesScreen" component={SavedProfilesScreen} />
+        <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
       <Stack.Screen name="ReferFriendScreen" component={ReferFriendScreen} />
   </Stack.Navigator>
 );
