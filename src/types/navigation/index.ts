@@ -122,7 +122,7 @@ export type RootStackParamList = {
   BookingsTab: NavigatorScreenParams<BookingStackParamList> | undefined;
   ChatTab: NavigatorScreenParams<ChatStackParamList> | undefined;
   ProfileTab: NavigatorScreenParams<ProfileStackParamList> | undefined;
-  BookingStack: NavigatorScreenParams<BookingStackParamList> | undefined;
+  BookingFlowStack: NavigatorScreenParams<BookingStackParamList> | undefined;
   KYCStack: NavigatorScreenParams<VerifyStackParamList> | undefined;
   SafetyTutorialScreen: undefined;
 

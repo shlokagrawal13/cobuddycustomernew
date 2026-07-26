@@ -21,7 +21,7 @@ export const BookingsListScreen = () => {
 
   const handlePressCard = (booking: any) => {
     if (booking.displayStatus === 'Counter-Proposed') {
-      navigation.navigate('BookingStack', { 
+      navigation.navigate('BookingFlowStack', { 
         screen: 'BookingCounterOfferScreen', 
         params: { bookingId: booking.id, companionName: booking.companionName } 
       });
