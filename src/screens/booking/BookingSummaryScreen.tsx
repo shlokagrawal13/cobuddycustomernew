@@ -54,7 +54,7 @@ export const BookingSummaryScreen = () => {
         venue: draftBooking?.venue || venue?.name || 'Unknown Venue',
         time: draftBooking?.time || time || 'Unknown Time'
       });
-      navigation.navigate('BookingSuccessScreen');
+      navigation.navigate('BookingRequestSentScreen');
     }
   };
 

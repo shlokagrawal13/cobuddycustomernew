@@ -37,6 +37,10 @@ export type RootStackParamList = {
   BookingTimeSelectScreen: { activity?: any; venue?: any } | undefined;
   BookingSummaryScreen: { activity?: any; venue?: any; date?: any; time?: string; duration?: number; bookingId?: string } | undefined;
   BookingSuccessScreen: undefined;
+  BookingRequestSentScreen: undefined;
+  BookingAcceptedScreen: undefined;
+  BookingDeclinedScreen: undefined;
+  BookingCounterOfferScreen: { bookingId?: string; companionName?: string } | undefined;
   BookingDetailScreen: { bookingId?: string; status?: string } | undefined;
   CancelBookingScreen: { bookingId?: string } | undefined;
   ModifyBookingScreen: { bookingId?: string } | undefined;
