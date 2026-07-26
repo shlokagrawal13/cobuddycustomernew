@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { getMockChatMessages } from '../../services/mock/chat.mock';
 
 export const CompanionChatScreen = () => { 
   const { t } = useTranslation('chat.companion');
@@ -23,14 +24,7 @@ export const CompanionChatScreen = () => {
   const [isOptionsMenuVisible, setOptionsMenuVisible] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
 
-  const [messages, setMessages] = useState([
-    { id: 'sys1', type: 'system', text: 'Booking Accepted! You can now chat securely.', time: '11:30 AM' },
-    { id: '1', type: 'text', text: 'Hi! Looking forward to our meetup today.', sender: 'them', time: '11:32 AM' },
-    { id: '2', type: 'text', text: 'Hi Elena! Me too. Are we still meeting at the Starbucks in Connaught Place?', sender: 'me', time: '11:35 AM' },
-    { id: '3', type: 'text', text: 'Yes, exactly! See you there.', sender: 'them', time: '11:36 AM' },
-    { id: 'sys2', type: 'system', text: `${companionName.split(' ')[0]} arrived at the venue.`, time: '12:45 PM' },
-    { id: '4', type: 'text', text: 'I have arrived at the cafe. See you soon!', sender: 'them', time: '12:45 PM' },
-  ]);
+  const [messages, setMessages] = useState(getMockChatMessages(companionName));
 
   const handleSend = (text: string) => {
     if (!text.trim()) return;

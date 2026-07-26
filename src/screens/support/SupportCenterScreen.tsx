@@ -6,12 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-
-const MOCK_TICKETS = [
-  { id: 'TKT-8921', subject: 'Refund Request for Booking #4412', status: 'Open', date: '2 hours ago', category: 'Payment' },
-  { id: 'TKT-8804', subject: 'Report: Inappropriate behavior', status: 'In Progress', date: 'Yesterday', category: 'Safety' },
-  { id: 'TKT-7122', subject: 'How do I change my phone number?', status: 'Closed', date: '12 May, 2026', category: 'Account' }
-];
+import { MOCK_TICKETS } from '../../services/mock/support.mock';
 
 export const SupportCenterScreen = () => { 
   const { t } = useTranslation('support.supportCenter');
