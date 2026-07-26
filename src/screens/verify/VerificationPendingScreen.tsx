@@ -38,7 +38,7 @@ export const VerificationPendingScreen = () => {
           style={styles.backBtn}
           onPress={handleGoToIdentity}
           hitSlop={{top:10,bottom:10,left:10,right:10}}
-          activeOpacity={0.7}>
+          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Close">
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Verification Status')}</Text>
@@ -111,7 +111,7 @@ export const VerificationPendingScreen = () => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85}>
+        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="isFromFlow ? \'Go Back\' : \'Cont...">
           <Text style={styles.ctaBtnText}>{isFromFlow ? 'Go Back' : 'Continue to App'}</Text>
           <Icon name={isFromFlow ? "arrow-left" : "arrow-right"} size={18} color={theme.colors.background} />
         </TouchableOpacity>

@@ -41,7 +41,7 @@ export const IncidentReportScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Report Incident')}</Text>
@@ -65,7 +65,7 @@ export const IncidentReportScreen = () => {
                 key={type.id} 
                 style={[styles.typeItem, selectedType === type.id && styles.typeItemActive]}
                 onPress={() => setSelectedType(type.id)}
-                activeOpacity={0.7}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
               >
                 <View style={[styles.radioBox, selectedType === type.id && styles.radioBoxActive]}>
                   {selectedType === type.id && <View style={styles.radioDot} />}
@@ -110,7 +110,7 @@ export const IncidentReportScreen = () => {
             <TouchableOpacity 
               style={[styles.attachmentBtn, hasEvidence && styles.attachmentBtnActive]}
               onPress={() => setHasEvidence(!hasEvidence)}
-              activeOpacity={0.7}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="hasEvidence ? Evidence Attache..."
             >
               <Icon 
                 name={hasEvidence ? "check-circle" : "camera-plus"} 
@@ -131,7 +131,7 @@ export const IncidentReportScreen = () => {
         <TouchableOpacity 
           style={[styles.submitBtn, (!selectedType || !description) && styles.submitBtnDisabled]}
           onPress={handleSubmit}
-          activeOpacity={0.8}
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Submit Confidential Report"
         >
           <Icon name="alert-octagon" size={20} color={theme.colors.background} />
           <Text style={styles.submitBtnText}>{t('submitBtn', 'Submit Confidential Report')}</Text>

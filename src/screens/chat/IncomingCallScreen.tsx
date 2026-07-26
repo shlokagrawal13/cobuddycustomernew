@@ -55,11 +55,11 @@ export const IncomingCallScreen = () => {
 
       <View style={styles.bottomSection}>
         <View style={styles.actionRow}>
-          <TouchableOpacity style={styles.declineBtn} onPress={handleDecline}>
+          <TouchableOpacity style={styles.declineBtn} onPress={handleDecline} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="phone-hangup" size={32} color={theme.colors.background} />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.acceptBtn} onPress={handleAccept}>
+          <TouchableOpacity style={styles.acceptBtn} onPress={handleAccept} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="phone" size={32} color={theme.colors.background} />
           </TouchableOpacity>
         </View>

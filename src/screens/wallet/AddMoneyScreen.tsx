@@ -35,7 +35,7 @@ export const AddMoneyScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Add Money')}</Text>
@@ -70,7 +70,7 @@ export const AddMoneyScreen = () => {
                         key={preset} 
                         style={styles.presetChip}
                         activeOpacity={0.7}
-                        onPress={() => setAmount(preset)}
+                        onPress={() => setAmount(preset)} accessibilityRole="button" accessibilityLabel="+ ₹ preset"
                     >
                         <Text style={styles.presetText}>+ ₹{preset}</Text>
                     </TouchableOpacity>
@@ -92,7 +92,7 @@ export const AddMoneyScreen = () => {
                     <TouchableOpacity 
                         style={styles.changeBtn} 
                         activeOpacity={0.7}
-                        onPress={() => navigation.navigate('PaymentMethodsScreen', { mode: 'select', currentId: selectedMethod.id })}
+                        onPress={() => navigation.navigate('PaymentMethodsScreen', { mode: 'select', currentId: selectedMethod.id })} accessibilityRole="button" accessibilityLabel="Change"
                     >
                         <Text style={styles.changeText}>{t('btnChange', 'Change')}</Text>
                     </TouchableOpacity>
@@ -114,7 +114,7 @@ export const AddMoneyScreen = () => {
           <TouchableOpacity 
               style={[styles.proceedBtn, (!amount || parseInt(amount) < 100) ? styles.proceedBtnDisabled : null]} 
               activeOpacity={0.8}
-              onPress={handleProceed}
+              onPress={handleProceed} accessibilityRole="button" accessibilityLabel="button"
           >
               <Text style={styles.proceedText}>{t('proceedToPay', 'Proceed to Pay ₹{{amount}}', { amount: amount || '0' })}</Text>
           </TouchableOpacity>

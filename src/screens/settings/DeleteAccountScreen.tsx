@@ -33,7 +33,7 @@ export const DeleteAccountScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Delete Account')}</Text>
@@ -73,7 +73,7 @@ export const DeleteAccountScreen = () => {
                 style={[styles.deleteBtn, !isDeleteEnabled && styles.deleteBtnDisabled]} 
                 activeOpacity={0.8}
                 disabled={!isDeleteEnabled}
-                onPress={handleDelete}
+                onPress={handleDelete} accessibilityRole="button" accessibilityLabel="Permanently Delete My Account"
             >
                 <Text style={[styles.deleteBtnText, !isDeleteEnabled && styles.deleteBtnTextDisabled]}>{t('deleteBtn', 'Permanently Delete My Account')}</Text>
             </TouchableOpacity>

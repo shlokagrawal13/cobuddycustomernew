@@ -50,7 +50,7 @@ export const SafetyGuidelinesScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Guidelines')}</Text>
@@ -84,7 +84,7 @@ export const SafetyGuidelinesScreen = () => {
         <TouchableOpacity 
           style={styles.contactBtn}
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('ConciergeChatScreen')}
+          onPress={() => navigation.navigate('ConciergeChatScreen')} accessibilityRole="button" accessibilityLabel="Contact Trust & Safety Team"
         >
           <Icon name="headset" size={20} color={theme.colors.background} />
           <Text style={styles.contactBtnText}>{t('contactBtn', 'Contact Trust & Safety Team')}</Text>

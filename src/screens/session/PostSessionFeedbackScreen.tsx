@@ -26,11 +26,11 @@ export const PostSessionFeedbackScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Quick Feedback')}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel="Skip">
           <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
@@ -41,14 +41,14 @@ export const PostSessionFeedbackScreen = () => {
         <View style={styles.sentimentRow}>
           <TouchableOpacity 
             style={[styles.sentimentBtn, sentiment === 'down' && styles.sentimentBtnDown]}
-            onPress={() => { setSentiment('down'); setSelectedTags([]); }}
+            onPress={() => { setSentiment('down'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel="button"
           >
             <Icon name={sentiment === 'down' ? 'thumb-down' : 'thumb-down-outline'} size={40} color={sentiment === 'down' ? theme.colors.background : theme.colors.error} />
           </TouchableOpacity>
           
           <TouchableOpacity 
             style={[styles.sentimentBtn, sentiment === 'up' && styles.sentimentBtnUp]}
-            onPress={() => { setSentiment('up'); setSelectedTags([]); }}
+            onPress={() => { setSentiment('up'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel="button"
           >
             <Icon name={sentiment === 'up' ? 'thumb-up' : 'thumb-up-outline'} size={40} color={sentiment === 'up' ? theme.colors.background : theme.colors.primary} />
           </TouchableOpacity>
@@ -64,7 +64,7 @@ export const PostSessionFeedbackScreen = () => {
                   <TouchableOpacity 
                     key={tag} 
                     style={[styles.tagBadge, isSelected && styles.tagBadgeSelected]}
-                    onPress={() => handleTagToggle(tag)}
+                    onPress={() => handleTagToggle(tag)} accessibilityRole="button" accessibilityLabel="tag"
                   >
                     <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{tag}</Text>
                   </TouchableOpacity>
@@ -79,7 +79,7 @@ export const PostSessionFeedbackScreen = () => {
         <TouchableOpacity 
           style={[styles.primaryBtn, (!sentiment || selectedTags.length === 0) && { opacity: 0.5 }]} 
           disabled={!sentiment || selectedTags.length === 0}
-          onPress={() => navigation.navigate('TipGratuityScreen')}
+          onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel="Continue"
         >
           <Text style={styles.primaryBtnText}>{t('continueBtn', 'Continue')}</Text>
         </TouchableOpacity>

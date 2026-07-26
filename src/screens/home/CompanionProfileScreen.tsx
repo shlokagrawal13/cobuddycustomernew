@@ -155,7 +155,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
         {/* Floating Header Actions (static over skeleton) */}
         <View style={[styles.floatingActions, { top: Math.max(insets.top, 16) + 6 }]}>
-          <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')}>
+          <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')} accessibilityRole="button" accessibilityLabel="Go back">
             <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
           </TouchableOpacity>
           <View style={{ flexDirection: 'row', gap: 12 }}>
@@ -389,15 +389,15 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
       {/* Floating Header Actions */}
       <View style={[styles.floatingActions, { top: Math.max(insets.top, 16) + 6 }]}>
-        <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')}>
+        <TouchableOpacity style={styles.iconCircle} onPress={() => smartGoBack('DiscoverTab')} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         
         <View style={{ flexDirection: 'row', gap: 12 }}>
-          <TouchableOpacity style={styles.iconCircle} onPress={() => setIsFavorite(!isFavorite)}>
+          <TouchableOpacity style={styles.iconCircle} onPress={() => setIsFavorite(!isFavorite)} accessibilityRole="button" accessibilityLabel="button">
             <Icon name={isFavorite ? "heart" : "heart-outline"} size={22} color={isFavorite ? theme.colors.error : theme.colors.textPrimary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconCircle} onPress={() => setShowMenuSheet(true)}>
+          <TouchableOpacity style={styles.iconCircle} onPress={() => setShowMenuSheet(true)} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="dots-vertical" size={22} color={theme.colors.textPrimary} />
           </TouchableOpacity>
         </View>
@@ -412,7 +412,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
         
         <TouchableOpacity 
           style={styles.requestBtn}
-          onPress={() => navigation.navigate('BookingFlowStack')}
+          onPress={() => navigation.navigate('BookingFlowStack')} accessibilityRole="button" accessibilityLabel="Request Booking"
         >
           <Text style={styles.requestBtnText}>{t('btn_request', 'Request Booking')}</Text>
         </TouchableOpacity>
@@ -425,14 +425,14 @@ export const CompanionProfileScreen = ({ route }: any) => {
         title={t('title.Options', 'Options')}
       >
         <View style={styles.sheetContent}>
-          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)}>
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel="Share Profile">
             <View style={styles.sheetIconWrap}>
               <Icon name="share-variant-outline" size={20} color={theme.colors.textPrimary} />
             </View>
             <Text style={styles.sheetRowText}>{t('shareProfile', 'Share Profile')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)}>
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel="Report  DUMMY_PROFILE.name">
             <View style={styles.sheetIconWrap}>
               <Icon name="flag-outline" size={20} color={theme.colors.textPrimary} />
             </View>
@@ -463,7 +463,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
                     ]
                   );
               }, 300);
-            }}
+            }} accessibilityRole="button" accessibilityLabel="Block  DUMMY_PROFILE.name"
           >
             <View style={[styles.sheetIconWrap, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
               <Icon name="block-helper" size={20} color={theme.colors.error} />

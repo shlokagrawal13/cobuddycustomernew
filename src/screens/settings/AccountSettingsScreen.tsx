@@ -40,7 +40,7 @@ export const AccountSettingsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Account Settings')}</Text>
@@ -61,7 +61,7 @@ export const AccountSettingsScreen = () => {
 
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('legalName', 'Legal Name')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect}>
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel="Shlok Sharma">
                             <Text style={styles.lockedText}>{t('mockName', 'Shlok Sharma')}</Text>
                             <Icon name={isKycVerified ? "lock" : "pencil"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
@@ -72,7 +72,7 @@ export const AccountSettingsScreen = () => {
 
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('dob', 'Date of Birth')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect}>
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel="15 Aug 1998">
                             <Text style={styles.lockedText}>{t('mockDob', '15 Aug 1998')}</Text>
                             <Icon name={isKycVerified ? "lock" : "calendar-month"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
@@ -82,7 +82,7 @@ export const AccountSettingsScreen = () => {
 
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('genderIdentity', 'Gender Identity')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect}>
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel="Male">
                             <Text style={styles.lockedText}>{t('genderMale', 'Male')}</Text>
                             <Icon name={isKycVerified ? "lock" : "chevron-down"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
@@ -96,7 +96,7 @@ export const AccountSettingsScreen = () => {
                 <View style={styles.card}>
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('phone', 'Phone Number')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate}>
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate} accessibilityRole="button" accessibilityLabel="button">
                             <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
                                 <Text style={styles.lockedText}>{t('mockPhone', '+91 98****1234')}</Text>
                                 <Icon name="check-decagram" size={16} color={theme.colors.primary} />
@@ -120,7 +120,7 @@ export const AccountSettingsScreen = () => {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                             />
-                            <TouchableOpacity style={styles.saveBtn} onPress={handleSaveEmail}>
+                            <TouchableOpacity style={styles.saveBtn} onPress={handleSaveEmail} accessibilityRole="button" accessibilityLabel="Save">
                                 <Text style={styles.saveBtnText}>{t('save', 'Save')}</Text>
                             </TouchableOpacity>
                         </View>
@@ -145,7 +145,7 @@ export const AccountSettingsScreen = () => {
                                 <Icon name="apple" size={24} color={theme.colors.textPrimary} />
                                 <Text style={styles.linkedText}>{t('apple', 'Apple')}</Text>
                             </View>
-                            <TouchableOpacity onPress={toggleAppleConnect}>
+                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel="appleConnected ? \'Connected\' :...">
                                 <Text style={[styles.linkStatus, {color: appleConnected ? theme.colors.success : theme.colors.primary}]}>
                                     {appleConnected ? 'Connected' : 'Connect'}
                                 </Text>
@@ -159,7 +159,7 @@ export const AccountSettingsScreen = () => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('dataPrivacy', 'DATA & PRIVACY')}</Text>
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest}>
+                    <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest} accessibilityRole="button" accessibilityLabel="Next">
                         <View style={styles.iconBox}>
                             <Icon name="download-box-outline" size={24} color={theme.colors.textPrimary} />
                         </View>

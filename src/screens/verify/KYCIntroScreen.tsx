@@ -15,7 +15,7 @@ export const KYCIntroScreen = () => {
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Close">
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
       </View>
@@ -54,7 +54,7 @@ export const KYCIntroScreen = () => {
         <TouchableOpacity
           style={styles.nextBtn}
           onPress={() => navigation.navigate('DocumentVerificationScreen')}
-          activeOpacity={0.8}
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Start Verification"
         >
           <Text style={styles.nextBtnText}>{t('startVerify', 'Start Verification')}</Text>
           <Icon name="arrow-right" size={20} color={theme.colors.background} />

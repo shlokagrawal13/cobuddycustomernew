@@ -51,7 +51,7 @@ export const AddBankAccountScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Add Bank Account')}</Text>
@@ -131,7 +131,7 @@ export const AddBankAccountScreen = () => {
                 <Text style={styles.pciNoteText}>{t('pciNote', 'Your details are encrypted and securely sent directly to our banking partner.')}</Text>
             </View>
 
-            <TouchableOpacity style={styles.saveBtn} activeOpacity={0.8} onPress={handleSave}>
+            <TouchableOpacity style={styles.saveBtn} activeOpacity={0.8} onPress={handleSave} accessibilityRole="button" accessibilityLabel="Verify & Save Account">
                 <Icon name="check-decagram" size={20} color={theme.colors.surface} />
                 <Text style={styles.saveBtnText}>{t('btnVerify', 'Verify & Save Account')}</Text>
             </TouchableOpacity>

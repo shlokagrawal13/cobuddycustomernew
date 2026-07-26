@@ -41,7 +41,7 @@ export const SelfieCaptureScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('step2of3', 'Step 2 of 3')}</Text>
@@ -81,16 +81,16 @@ export const SelfieCaptureScreen = () => {
         <View style={styles.bottomBar}>
           {photoCaptured ? (
             <View style={styles.actionRow}>
-              <TouchableOpacity style={styles.retakeBtn} onPress={handleRetake}>
+              <TouchableOpacity style={styles.retakeBtn} onPress={handleRetake} accessibilityRole="button" accessibilityLabel="Retake">
                 <Text style={styles.retakeBtnText}>{t('retakeBtn', 'Retake')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.confirmBtn} onPress={handleNext}>
+              <TouchableOpacity style={styles.confirmBtn} onPress={handleNext} accessibilityRole="button" accessibilityLabel="Confirm">
                 <Text style={styles.confirmBtnText}>{t('confirmBtn', 'Confirm')}</Text>
                 <Icon name="check" size={20} color={theme.colors.background} />
               </TouchableOpacity>
             </View>
           ) : (
-            <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8} disabled={!hasPermission}>
+            <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8} disabled={!hasPermission} accessibilityRole="button" accessibilityLabel="button">
               <View style={[styles.captureInnerBtn, !hasPermission && { backgroundColor: theme.colors.textSecondary }]} />
             </TouchableOpacity>
           )}

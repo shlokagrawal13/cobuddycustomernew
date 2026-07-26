@@ -71,7 +71,7 @@ export const WithdrawalMethodsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Select Withdrawal Method')}</Text>
@@ -99,7 +99,7 @@ export const WithdrawalMethodsScreen = () => {
                         key={wm.id} 
                         style={[styles.methodRow, index !== methods.length - 1 ? styles.methodBorder : null, isSelected ? styles.methodSelected : null]}
                         activeOpacity={0.8}
-                        onPress={() => handleMethodPress(wm)}
+                        onPress={() => handleMethodPress(wm)} accessibilityRole="button" accessibilityLabel="button"
                     >
                         <View style={[styles.methodIconWrap, isSelected ? styles.methodIconWrapActive : null]}>
                             <Icon name={wm.icon} size={22} color={isSelected ? theme.colors.primary : theme.colors.textSecondary} />
@@ -121,7 +121,7 @@ export const WithdrawalMethodsScreen = () => {
                             <TouchableOpacity 
                                 style={styles.deleteBtn} 
                                 onPress={() => handleDelete(wm.id, wm.title)}
-                                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+                                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} accessibilityRole="button" accessibilityLabel="button"
                             >
                                 <Icon name="trash-can-outline" size={18} color={theme.colors.textSecondary} />
                             </TouchableOpacity>
@@ -137,7 +137,7 @@ export const WithdrawalMethodsScreen = () => {
                 <TouchableOpacity 
                     style={styles.addMethodRow} 
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('AddBankAccountScreen')}
+                    onPress={() => navigation.navigate('AddBankAccountScreen')} accessibilityRole="button" accessibilityLabel="Add Bank Account"
                 >
                     <View style={styles.addIconWrap}>
                         <Icon name="bank-plus" size={22} color={theme.colors.primary} />
@@ -149,7 +149,7 @@ export const WithdrawalMethodsScreen = () => {
                 <TouchableOpacity 
                     style={[styles.addMethodRow, { borderTopWidth: 0, paddingTop: 12, marginTop: 4 }]} 
                     activeOpacity={0.7}
-                    onPress={() => setUpiModalVisible(true)}
+                    onPress={() => setUpiModalVisible(true)} accessibilityRole="button" accessibilityLabel="Add UPI ID"
                 >
                     <View style={styles.addIconWrap}>
                         <Icon name="at" size={22} color={theme.colors.primary} />
@@ -167,7 +167,7 @@ export const WithdrawalMethodsScreen = () => {
             <View style={styles.modalContent}>
                 <View style={styles.modalHeader}>
                     <Text style={styles.modalTitle}>{t('modalTitle', 'Add UPI ID for Payouts')}</Text>
-                    <TouchableOpacity onPress={() => setUpiModalVisible(false)} hitSlop={{top:10, bottom:10, left:10, right:10}}>
+                    <TouchableOpacity onPress={() => setUpiModalVisible(false)} hitSlop={{top:10, bottom:10, left:10, right:10}} accessibilityRole="button" accessibilityLabel="Close">
                         <Icon name="close" size={24} color={theme.colors.textSecondary} />
                     </TouchableOpacity>
                 </View>
@@ -189,7 +189,7 @@ export const WithdrawalMethodsScreen = () => {
                 <TouchableOpacity 
                     style={[styles.verifyBtn, (!newUpiId.includes('@') || newUpiId.length < 5) ? {opacity: 0.5} : null]}
                     activeOpacity={0.8}
-                    onPress={handleAddUpi}
+                    onPress={handleAddUpi} accessibilityRole="button" accessibilityLabel="Verify & Save"
                 >
                     <Text style={styles.verifyBtnText}>{t('modalVerify', 'Verify & Save')}</Text>
                 </TouchableOpacity>

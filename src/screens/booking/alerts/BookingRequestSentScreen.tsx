@@ -90,10 +90,10 @@ export const BookingRequestSentScreen = ({ route }: any) => {
       </View>
 
       <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.primaryBtn} onPress={handleViewDetails} activeOpacity={0.85}>
+        <TouchableOpacity style={styles.primaryBtn} onPress={handleViewDetails} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="View Request Details">
           <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'View Request Details')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryBtn} onPress={handleReturnHome} activeOpacity={0.85}>
+        <TouchableOpacity style={styles.secondaryBtn} onPress={handleReturnHome} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Return to Home">
           <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'Return to Home')}</Text>
         </TouchableOpacity>
       </View>

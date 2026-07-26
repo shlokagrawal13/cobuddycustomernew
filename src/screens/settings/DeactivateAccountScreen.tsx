@@ -28,7 +28,7 @@ export const DeactivateAccountScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Deactivate Account')}</Text>
@@ -85,7 +85,7 @@ export const DeactivateAccountScreen = () => {
       </ScrollView>
 
       <View style={styles.footer}>
-          <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={handleDeactivate}>
+          <TouchableOpacity style={styles.actionBtn} activeOpacity={0.8} onPress={handleDeactivate} accessibilityRole="button" accessibilityLabel="Deactivate My Account">
               <Text style={styles.actionBtnText}>{t('deactivateBtn', 'Deactivate My Account')}</Text>
           </TouchableOpacity>
       </View>

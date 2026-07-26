@@ -30,13 +30,13 @@ export const AccountUnderManualReviewScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel="Contact Support"
         >
           <Text style={styles.primaryButtonText}>{t('supportBtn', 'Contact Support')}</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => navigation.navigate('AuthStack')}
+          onPress={() => navigation.navigate('AuthStack')} accessibilityRole="button" accessibilityLabel="Return to Login"
         >
           <Text style={styles.secondaryButtonText}>{t('loginBtn', 'Return to Login')}</Text>
         </TouchableOpacity>

@@ -25,14 +25,14 @@ export const AccountDeactivatedScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('AccountReactivationRequestScreen')}
+          onPress={() => navigation.navigate('AccountReactivationRequestScreen')} accessibilityRole="button" accessibilityLabel="Reactivate Account"
         >
           <Text style={styles.primaryButtonText}>{t('reactivateBtn', 'Reactivate Account')}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel="Contact Support"
         >
           <Text style={styles.secondaryButtonText}>{t('supportBtn', 'Contact Support')}</Text>
         </TouchableOpacity>

@@ -59,20 +59,20 @@ export const VoiceCallScreen = () => {
           
           <TouchableOpacity 
             style={[styles.controlBtn, isMuted && styles.controlBtnActive]} 
-            onPress={() => setIsMuted(!isMuted)}
+            onPress={() => setIsMuted(!isMuted)} accessibilityRole="button" accessibilityLabel="Mute"
           >
             <Icon name={isMuted ? "microphone-off" : "microphone"} size={28} color={isMuted ? theme.colors.background : theme.colors.textPrimary} />
             <Text style={[styles.controlLabel, isMuted && { color: theme.colors.background }]}>{t('controlMute', 'Mute')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.controlBtn}>
+          <TouchableOpacity style={styles.controlBtn} accessibilityRole="button" accessibilityLabel="Keypad">
             <Icon name="dialpad" size={28} color={theme.colors.textPrimary} />
             <Text style={styles.controlLabel}>{t('controlKeypad', 'Keypad')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
             style={[styles.controlBtn, isSpeaker && styles.controlBtnActive]} 
-            onPress={() => setIsSpeaker(!isSpeaker)}
+            onPress={() => setIsSpeaker(!isSpeaker)} accessibilityRole="button" accessibilityLabel="Speaker"
           >
             <Icon name={isSpeaker ? "volume-high" : "volume-medium"} size={28} color={isSpeaker ? theme.colors.background : theme.colors.textPrimary} />
             <Text style={[styles.controlLabel, isSpeaker && { color: theme.colors.background }]}>{t('controlSpeaker', 'Speaker')}</Text>
@@ -80,7 +80,7 @@ export const VoiceCallScreen = () => {
 
         </View>
 
-        <TouchableOpacity style={styles.endCallBtn} onPress={handleEndCall}>
+        <TouchableOpacity style={styles.endCallBtn} onPress={handleEndCall} accessibilityRole="button" accessibilityLabel="button">
           <Icon name="phone-hangup" size={32} color={theme.colors.background} />
         </TouchableOpacity>
       </View>

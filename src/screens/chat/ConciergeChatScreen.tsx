@@ -65,7 +65,7 @@ export const ConciergeChatScreen = () => {
       <SafeAreaView edges={['top']} style={styles.headerSafeArea}>
         <View style={styles.header}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => smartGoBack()} style={styles.backBtn}>
+            <TouchableOpacity onPress={() => smartGoBack()} style={styles.backBtn} accessibilityRole="button" accessibilityLabel="Go back">
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
             <View style={styles.avatarBox}>
@@ -82,7 +82,7 @@ export const ConciergeChatScreen = () => {
           <TouchableOpacity 
             style={styles.callBtn}
             onPress={() => navigation.navigate('VoiceCallScreen', { callerName: 'CoBuddy Concierge', callType: 'support' })}
-            activeOpacity={0.7}
+            activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
           >
             <Icon name="phone" size={20} color={theme.colors.textPrimary} />
           </TouchableOpacity>
@@ -137,7 +137,7 @@ export const ConciergeChatScreen = () => {
             <TouchableOpacity 
               key={idx} 
               style={styles.actionChip}
-              onPress={() => handleSend(action)}
+              onPress={() => handleSend(action)} accessibilityRole="button" accessibilityLabel="action"
             >
               <Text style={styles.actionText}>{action}</Text>
             </TouchableOpacity>

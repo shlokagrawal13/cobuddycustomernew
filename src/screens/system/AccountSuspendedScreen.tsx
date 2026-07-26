@@ -25,14 +25,14 @@ export const AccountSuspendedScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('PolicyViolationNoticeScreen')}
+          onPress={() => navigation.navigate('PolicyViolationNoticeScreen')} accessibilityRole="button" accessibilityLabel="View Violation Details"
         >
           <Text style={styles.primaryButtonText}>{t('viewDetails', 'View Violation Details')}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel="Submit Appeal"
         >
           <Text style={styles.secondaryButtonText}>{t('appealBtn', 'Submit Appeal')}</Text>
         </TouchableOpacity>

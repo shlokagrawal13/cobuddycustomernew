@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]}
+            ]} accessibilityRole="button" accessibilityLabel="button"
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -101,7 +101,7 @@ export const AppPermissionsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('appPermissions', 'App Permissions')}</Text>

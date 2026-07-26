@@ -60,7 +60,7 @@ export const BookingSummaryScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 4 of 4')}</Text>
@@ -145,7 +145,7 @@ export const BookingSummaryScreen = () => {
         <TouchableOpacity 
           style={styles.safetyAgreementRow} 
           onPress={() => setAgreedToSafety(!agreedToSafety)}
-          activeOpacity={0.7}
+          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="I agree to meet in a public pl..."
         >
           <Icon 
             name={agreedToSafety ? "checkbox-marked" : "checkbox-blank-outline"} 
@@ -180,7 +180,7 @@ export const BookingSummaryScreen = () => {
           style={[styles.nextBtn, !agreedToSafety && styles.nextBtnDisabled]}
           disabled={!agreedToSafety}
           onPress={handleSendRequest}
-          activeOpacity={0.8}
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Send Request"
         >
           <Text style={[styles.nextBtnText, !agreedToSafety && styles.nextBtnTextDisabled]}>{t('nextBtnText', 'Send Request')}</Text>
           <Icon name="send-outline" size={20} color={agreedToSafety ? theme.colors.background : 'rgba(255,255,255,0.4)'} />

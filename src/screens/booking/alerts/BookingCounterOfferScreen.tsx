@@ -46,7 +46,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
       
       {/* Luxury Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Close">
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Counter Offer')}</Text>
@@ -147,16 +147,16 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
       {/* Action Buttons */}
       <View style={styles.bottomBar}>
         <View style={styles.bottomBarHandle} />
-        <TouchableOpacity style={styles.primaryBtn} onPress={handleAccept} activeOpacity={0.85}>
+        <TouchableOpacity style={styles.primaryBtn} onPress={handleAccept} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Accept New Offer">
           <Icon name="check-circle" size={20} color={theme.colors.background} />
           <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Accept New Offer')}</Text>
         </TouchableOpacity>
         
         <View style={styles.splitBtns}>
-          <TouchableOpacity style={styles.secondaryBtn} onPress={handleMessageBack} activeOpacity={0.85}>
+          <TouchableOpacity style={styles.secondaryBtn} onPress={handleMessageBack} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Message Back">
             <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'Message Back')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.ghostBtn} onPress={handleDecline} activeOpacity={0.85}>
+          <TouchableOpacity style={styles.ghostBtn} onPress={handleDecline} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Decline Booking">
             <Text style={styles.ghostBtnText}>{t('ghostBtnText', 'Decline Booking')}</Text>
           </TouchableOpacity>
         </View>

@@ -80,7 +80,7 @@ export const ProfileScreen = () => {
       {/* ── Polished Theme Header ── */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>{t('headerTitle', 'My Profile')}</Text>
-        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('SettingsHubScreen')}>
+        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('SettingsHubScreen')} accessibilityRole="button" accessibilityLabel="button">
           <Icon name="cog-outline" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
       </View>
@@ -92,7 +92,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={styles.activeBookingBanner}
             onPress={() => navigation.navigate('LiveSessionStack', { screen: 'ActiveSessionScreen' })}
-            activeOpacity={0.9}
+            activeOpacity={0.9} accessibilityRole="button" accessibilityLabel="button"
           >
             <View style={styles.bannerIconBox}>
               <Icon name="timer-sand" size={20} color={theme.colors.background} />
@@ -118,10 +118,10 @@ export const ProfileScreen = () => {
 
             {/* Top Right Actions */}
             <View style={styles.heroActions}>
-              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={handleShareProfile}>
+              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={handleShareProfile} accessibilityRole="button" accessibilityLabel="button">
                 <Icon name="share-variant" size={16} color={theme.colors.background} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => navigation.navigate('EditProfileScreen')}>
+              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => navigation.navigate('EditProfileScreen')} accessibilityRole="button" accessibilityLabel="button">
                 <Icon name="pencil" size={16} color={theme.colors.background} />
               </TouchableOpacity>
             </View>
@@ -157,7 +157,7 @@ export const ProfileScreen = () => {
                 <Text style={styles.heroBio} numberOfLines={isBioExpanded ? undefined : 1}>
                   {user.bio}
                 </Text>
-                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)}>
+                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel="isBioExpanded ? \'Show less\' : ...">
                   <Text style={styles.readMoreText}>{isBioExpanded ? 'Show less' : 'Read more'}</Text>
                 </TouchableOpacity>
               </View>
@@ -219,7 +219,7 @@ export const ProfileScreen = () => {
             <TouchableOpacity 
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
               onPress={() => navigation.navigate('EditProfileScreen')}
-              activeOpacity={0.7}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="user.email"
             >
               <Text style={styles.contactEmailText}>{user.email}</Text>
               <Icon name="pencil" size={14} color={theme.colors.primary} />
@@ -278,7 +278,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={[styles.kycBtn, user.kycStatus !== 'verified' && styles.kycBtnPrimary]}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('KYCStack')}
+            onPress={() => navigation.navigate('KYCStack')} accessibilityRole="button" accessibilityLabel="user.kycStatus === \'verified\' ..."
           >
             <Icon 
               name="shield-account" 
@@ -305,7 +305,7 @@ export const ProfileScreen = () => {
             { id: 'saved', icon: 'bookmark-outline', label: 'Saved Checklists', sub: 'Your favorite companions', action: () => navigation.navigate('SavedProfilesScreen') },
             { id: 'refer', icon: 'account-multiple-plus-outline', label: 'Refer a Friend', sub: 'Invite trusted members', action: () => navigation.navigate('ReferFriendScreen') },
           ].map((item, i, arr) => (
-            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7}>
+            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Next">
               <View style={styles.linkIconBox}>
                 <Icon name={item.icon} size={18} color={theme.colors.primary} />
               </View>
@@ -333,7 +333,7 @@ export const ProfileScreen = () => {
               <TouchableOpacity
                 onPress={() => handleToggle(s.id)}
                 style={[styles.toggleTrack, toggles[s.id] && styles.toggleTrackOn]}
-                activeOpacity={0.9}
+                activeOpacity={0.9} accessibilityRole="button" accessibilityLabel="button"
               >
                 <View style={[styles.toggleThumb, toggles[s.id] && styles.toggleThumbOn]} />
               </TouchableOpacity>
@@ -343,7 +343,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={styles.hubBtn}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('SafetyHubScreen')}
+            onPress={() => navigation.navigate('SafetyHubScreen')} accessibilityRole="button" accessibilityLabel="Open Safety Hub"
           >
             <Icon name="security" size={16} color={theme.colors.primary} />
             <Text style={styles.hubBtnText}>{t('openSafetyHub', 'Open Safety Hub')}</Text>
@@ -359,7 +359,7 @@ export const ProfileScreen = () => {
             { id: 'support', icon: 'lifebuoy', label: 'Support Center', sub: 'Get help or report an issue', action: () => navigation.navigate('SupportCenterScreen') },
             { id: 'legal', icon: 'file-document-outline', label: 'Legal Agreements', sub: 'Terms of Service & Privacy', action: () => navigation.navigate('LegalAgreementsScreen') },
           ].map((item, i, arr) => (
-            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7}>
+            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Next">
               <View style={styles.linkIconBox}>
                 <Icon name={item.icon} size={18} color={theme.colors.primary} />
               </View>

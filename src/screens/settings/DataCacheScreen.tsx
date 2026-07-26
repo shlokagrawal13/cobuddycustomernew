@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? (disabled ? 'rgba(212,175,55,0.5)' : theme.colors.primary) : 'rgba(255,255,255,0.1)' }
-            ]}
+            ]} accessibilityRole="button" accessibilityLabel="button"
         >
             <Animated.View style={[styles.switchThumb, { transform: [{ translateX }] }]} />
         </TouchableOpacity>
@@ -70,7 +70,7 @@ export const DataCacheScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('dataStorage', 'Data & Storage')}</Text>
@@ -117,7 +117,7 @@ export const DataCacheScreen = () => {
         {/* Storage Management */}
         <Text style={styles.sectionTitle}>{t('manageStorage', 'MANAGE STORAGE')}</Text>
         <View style={styles.card}>
-            <TouchableOpacity style={[styles.row, styles.borderBottom]} activeOpacity={0.7} onPress={handleClearCache}>
+            <TouchableOpacity style={[styles.row, styles.borderBottom]} activeOpacity={0.7} onPress={handleClearCache} accessibilityRole="button" accessibilityLabel="cacheSize">
                 <View style={styles.iconBox}>
                     <Icon name="broom" size={20} color={theme.colors.textPrimary} />
                 </View>
@@ -128,7 +128,7 @@ export const DataCacheScreen = () => {
                 <Text style={styles.sizeText}>{cacheSize}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={handleClearMedia}>
+            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={handleClearMedia} accessibilityRole="button" accessibilityLabel="mediaSize">
                 <View style={styles.iconBox}>
                     <Icon name="image-multiple-outline" size={20} color={theme.colors.textPrimary} />
                 </View>
@@ -151,7 +151,7 @@ export const DataCacheScreen = () => {
                 <CustomSwitch value={autoDownload} onValueChange={setAutoDownload} />
             </View>
 
-            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)}>
+            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel="button">
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('uploadQuality', 'Photo Upload Quality')}</Text>
                     <Text style={styles.sub}>{t('uploadQualitySub', 'Adjust quality for profile & chat uploads')}</Text>
@@ -180,7 +180,7 @@ export const DataCacheScreen = () => {
                     onPress={() => {
                         setUploadQuality(quality);
                         setShowQualitySheet(false);
-                    }}
+                    }} accessibilityRole="button" accessibilityLabel="quality"
                 >
                     <Text style={[styles.sheetRowText, uploadQuality === quality && { color: theme.colors.primary, fontWeight: 'bold' }]}>
                         {quality}

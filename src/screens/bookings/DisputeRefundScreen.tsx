@@ -39,7 +39,7 @@ export const DisputeRefundScreen = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleBack} style={styles.iconBtn}>
+        <TouchableOpacity onPress={handleBack} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Raise a Dispute')}</Text>
@@ -78,7 +78,7 @@ export const DisputeRefundScreen = () => {
               key={category} 
               style={[styles.reasonRow, selectedCategory === category && styles.reasonRowActive]}
               onPress={() => setSelectedCategory(category)}
-              activeOpacity={0.7}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="category"
             >
               <Text style={[styles.reasonText, selectedCategory === category && styles.reasonTextActive]}>{category}</Text>
               <View style={[styles.radioCircle, selectedCategory === category && styles.radioCircleActive]}>
@@ -101,7 +101,7 @@ export const DisputeRefundScreen = () => {
         />
         
         <Text style={styles.sectionTitle}>{t('sectionProof', 'UPLOAD PROOF (OPTIONAL)')}</Text>
-        <TouchableOpacity style={styles.uploadBox}>
+        <TouchableOpacity style={styles.uploadBox} accessibilityRole="button" accessibilityLabel="Tap to upload screenshots or p...">
           <Icon name="camera-plus" size={32} color={theme.colors.primary} />
           <Text style={styles.uploadText}>{t('uploadText', 'Tap to upload screenshots or photos')}</Text>
         </TouchableOpacity>
@@ -115,7 +115,7 @@ export const DisputeRefundScreen = () => {
           <TouchableOpacity 
             style={[styles.primaryBtn, { opacity: isFormValid ? 1 : 0.5 }]} 
             disabled={!isFormValid}
-            onPress={handleSubmit}
+            onPress={handleSubmit} accessibilityRole="button" accessibilityLabel="Submit Dispute"
           >
             <Text style={styles.primaryBtnText}>{t('submitBtn', 'Submit Dispute')}</Text>
           </TouchableOpacity>

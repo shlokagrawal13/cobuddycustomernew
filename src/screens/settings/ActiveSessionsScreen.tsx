@@ -140,7 +140,7 @@ export const ActiveSessionsScreen = () => {
               <TouchableOpacity 
                   style={styles.logoutBtn} 
                   activeOpacity={0.7}
-                  onPress={() => handleLogoutSession(session.id, session.deviceName)}
+                  onPress={() => handleLogoutSession(session.id, session.deviceName)} accessibilityRole="button" accessibilityLabel="Log Out Device"
               >
                   <Icon name="logout" size={16} color={theme.colors.error} />
                   <Text style={styles.logoutBtnText}>{t('logOutDevice', 'Log Out Device')}</Text>
@@ -154,7 +154,7 @@ export const ActiveSessionsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('activeSessions', 'Active Sessions')}</Text>
@@ -186,7 +186,7 @@ export const ActiveSessionsScreen = () => {
                 <TouchableOpacity 
                     style={styles.logoutAllBtn} 
                     activeOpacity={0.7}
-                    onPress={handleLogoutAll}
+                    onPress={handleLogoutAll} accessibilityRole="button" accessibilityLabel="Log Out of All Other Devices"
                 >
                     <Icon name="shield-alert-outline" size={20} color={theme.colors.error} />
                     <Text style={styles.logoutAllBtnText}>{t('logoutOther', 'Log Out of All Other Devices')}</Text>

@@ -52,7 +52,7 @@ export const BookingVenueSelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 2 of 4')}</Text>
@@ -87,7 +87,7 @@ export const BookingVenueSelectScreen = () => {
                 key={venue.id}
                 style={[styles.card, isSelected && styles.cardSelected]}
                 onPress={() => setSelectedVenueId(venue.id)}
-                activeOpacity={0.7}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
               >
                 <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}>
                   <Icon 
@@ -121,7 +121,7 @@ export const BookingVenueSelectScreen = () => {
           style={[styles.nextBtn, !selectedVenueId && styles.nextBtnDisabled]}
           disabled={!selectedVenueId}
           onPress={handleNext}
-          activeOpacity={0.8}
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Continue"
         >
           <Text style={[styles.nextBtnText, !selectedVenueId && styles.nextBtnTextDisabled]}>
             {t('continueBtn', 'Continue')}

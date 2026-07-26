@@ -8,9 +8,11 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'outline';
   loading?: boolean;
   disabled?: boolean;
+  accessibilityLabel?: string;
+  accessibilityHint?: string;
 }
 
-export const Button = ({ title, onPress, variant = 'primary', loading, disabled }: Props) => {
+export const Button = ({ title, onPress, variant = 'primary', loading, disabled, accessibilityLabel, accessibilityHint }: Props) => {
   return (
     <TouchableOpacity 
       style={[
@@ -21,6 +23,10 @@ export const Button = ({ title, onPress, variant = 'primary', loading, disabled 
       ]} 
       onPress={onPress}
       disabled={disabled || loading}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel || title}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled: disabled || loading, busy: loading }}
     >
       {loading ? <ActivityIndicator color={variant === 'primary' ? theme.colors.background : theme.colors.primary} /> : (
         <Text style={[

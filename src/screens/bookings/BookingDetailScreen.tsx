@@ -106,10 +106,10 @@ export const BookingDetailScreen = () => {
     if (data.status === 'Awaiting Reply' || data.status === 'Pending') {
       return (
         <View style={styles.actionRow}>
-          <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })}>
+          <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel="Cancel Request">
             <Text style={styles.secondaryBtnText}>{t('cancelRequest', 'Cancel Request')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.primaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('ModifyBookingScreen', { bookingId: data.id })}>
+          <TouchableOpacity style={[styles.primaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('ModifyBookingScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel="Modify">
             <Text style={styles.primaryBtnText}>{t('modify', 'Modify')}</Text>
           </TouchableOpacity>
         </View>
@@ -123,7 +123,7 @@ export const BookingDetailScreen = () => {
           <View>
             <TouchableOpacity 
               style={styles.primaryBtn} 
-              onPress={() => navigation.navigate('LiveSessionStack')}
+              onPress={() => navigation.navigate('LiveSessionStack')} accessibilityRole="button" accessibilityLabel="View Upcoming Meetup"
             >
               <Icon name="key" size={18} color={theme.colors.background} />
               <Text style={styles.primaryBtnText}>{t('viewUpcoming', 'View Upcoming Meetup')}</Text>
@@ -134,11 +134,11 @@ export const BookingDetailScreen = () => {
           </View>
 
           <View style={styles.actionRow}>
-            <TouchableOpacity style={[styles.secondaryBtn, { flex: 1, backgroundColor: 'rgba(212, 175, 55, 0.1)', borderColor: theme.colors.primary }]} onPress={handleMessage}>
+            <TouchableOpacity style={[styles.secondaryBtn, { flex: 1, backgroundColor: 'rgba(212, 175, 55, 0.1)', borderColor: theme.colors.primary }]} onPress={handleMessage} accessibilityRole="button" accessibilityLabel="Message">
               <Icon name="chat" size={18} color={theme.colors.primary} />
               <Text style={[styles.secondaryBtnText, { color: theme.colors.primary, marginLeft: 4 }]}>{t('message', 'Message')}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })}>
+            <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel="Cancel">
               <Text style={[styles.secondaryBtnText, { color: theme.colors.error }]}>{t('cancel', 'Cancel')}</Text>
             </TouchableOpacity>
           </View>
@@ -148,7 +148,7 @@ export const BookingDetailScreen = () => {
 
     if (data.status === 'Declined') {
       return (
-        <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('DiscoverTab')}>
+        <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('DiscoverTab')} accessibilityRole="button" accessibilityLabel="Find Another Companion">
           <Icon name="account-search" size={20} color={theme.colors.background} />
           <Text style={styles.primaryBtnText}>{t('findAnother', 'Find Another Companion')}</Text>
         </TouchableOpacity>
@@ -158,10 +158,10 @@ export const BookingDetailScreen = () => {
     if (data.status === 'Completed' || data.status === 'History') {
       return (
         <View style={styles.actionCol}>
-          <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('CompanionReviewScreen', { bookingId: data.id })}>
+          <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('CompanionReviewScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel="Leave a Review">
             <Text style={styles.primaryBtnText}>{t('leaveReview', 'Leave a Review')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.ghostBtn} onPress={() => navigation.navigate('DisputeRefundScreen', { bookingId: data.id })}>
+          <TouchableOpacity style={styles.ghostBtn} onPress={() => navigation.navigate('DisputeRefundScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel="Raise a Dispute">
             <Text style={[styles.ghostBtnText, { color: theme.colors.warning }]}>{t('raiseDispute', 'Raise a Dispute')}</Text>
           </TouchableOpacity>
         </View>
@@ -177,11 +177,11 @@ export const BookingDetailScreen = () => {
       
       {/* Luxury Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleBack} style={styles.iconBtn}>
+        <TouchableOpacity onPress={handleBack} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Booking ID: {{id}}', { id: data.id })}</Text>
-        <TouchableOpacity style={styles.helpBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })}>
+        <TouchableOpacity style={styles.helpBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel="SOS">
           <Icon name="shield-half-full" size={16} color={theme.colors.background} />
           <Text style={styles.helpBtnText}>{t('sos', 'SOS')}</Text>
         </TouchableOpacity>
@@ -199,7 +199,7 @@ export const BookingDetailScreen = () => {
         <TouchableOpacity 
           style={styles.companionCard}
           activeOpacity={0.9}
-          onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { id: data.companionId } })}
+          onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { id: data.companionId } })} accessibilityRole="button" accessibilityLabel="button"
         >
           <View style={styles.profileRow}>
             <View style={styles.avatarPlaceholder}>

@@ -78,28 +78,28 @@ export const CompanionChatScreen = () => {
       <SafeAreaView edges={['top']} style={styles.headerSafeArea}>
         <View style={styles.header}>
           <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
-            <TouchableOpacity onPress={() => smartGoBack()} style={styles.backBtn}>
+            <TouchableOpacity onPress={() => smartGoBack()} style={styles.backBtn} accessibilityRole="button" accessibilityLabel="Go back">
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
             <TouchableOpacity 
               style={styles.avatarBox}
-              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' })}
+              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' })} accessibilityRole="button" accessibilityLabel="button"
             >
               <Text style={styles.avatarInitials}>{companionName.charAt(0)}</Text>
               <View style={styles.onlineDot} />
             </TouchableOpacity>
             <View style={{ marginLeft: 12, flexShrink: 1 }}>
               <Text style={styles.headerTitle} numberOfLines={1}>{companionName}</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', params: { bookingId } })}>
+              <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', params: { bookingId } })} accessibilityRole="button" accessibilityLabel="View Booking">
                 <Text style={styles.viewBookingText}>{t('viewBookingText', 'View Booking')}</Text>
               </TouchableOpacity>
             </View>
           </View>
           
-          <TouchableOpacity style={styles.callBtn} onPress={handleCall}>
+          <TouchableOpacity style={styles.callBtn} onPress={handleCall} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="phone" size={20} color={theme.colors.textPrimary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.moreBtn} onPress={() => setOptionsMenuVisible(true)}>
+          <TouchableOpacity style={styles.moreBtn} onPress={() => setOptionsMenuVisible(true)} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="dots-vertical" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
         </View>
@@ -157,7 +157,7 @@ export const CompanionChatScreen = () => {
         <TouchableOpacity 
           style={styles.modalOverlay} 
           activeOpacity={1} 
-          onPress={() => setOptionsMenuVisible(false)}
+          onPress={() => setOptionsMenuVisible(false)} accessibilityRole="button" accessibilityLabel="button"
         >
           <View style={styles.optionsSheet}>
             <View style={styles.sheetHandle} />
@@ -169,7 +169,7 @@ export const CompanionChatScreen = () => {
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
                   navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' }); 
-                }}
+                }} accessibilityRole="button" accessibilityLabel="View Profile"
               >
                 <Icon name="account-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
                 <Text style={styles.optionText}>{t('optionProfile', 'View Profile')}</Text>
@@ -180,7 +180,7 @@ export const CompanionChatScreen = () => {
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
                   Alert.alert(t('alertTitleNotificationsmu', 'Notifications muted for this chat.')); 
-                }}
+                }} accessibilityRole="button" accessibilityLabel="Mute Notifications"
               >
                 <Icon name="bell-off-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
                 <Text style={styles.optionText}>{t('optionMute', 'Mute Notifications')}</Text>
@@ -191,7 +191,7 @@ export const CompanionChatScreen = () => {
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
                   setMessages([{ id: 'sys1', type: 'system', text: 'Booking Accepted! You can now chat securely.', time: '11:30 AM' }]); 
-                }}
+                }} accessibilityRole="button" accessibilityLabel="Clear Chat"
               >
                 <Icon name="delete-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />
                 <Text style={styles.optionText}>{t('optionClear', 'Clear Chat')}</Text>
@@ -203,7 +203,7 @@ export const CompanionChatScreen = () => {
                   setOptionsMenuVisible(false); 
                   // If we have an IncidentReport screen we can navigate there, or mock it:
                   Alert.alert(t('alertTitleOurSafetyTeamha', 'Our Safety Team has been notified. We take your safety seriously.')); 
-                }}
+                }} accessibilityRole="button" accessibilityLabel="Report Safety Issue"
               >
                 <Icon name="shield-alert-outline" size={24} color={theme.colors.error} style={styles.optionIcon} />
                 <Text style={[styles.optionText, { color: theme.colors.error, fontWeight: 'bold' }]}>{t('optionReport', 'Report Safety Issue')}</Text>

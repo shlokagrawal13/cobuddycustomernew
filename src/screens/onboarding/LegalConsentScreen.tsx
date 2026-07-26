@@ -122,7 +122,7 @@ export const LegalConsentScreen = () => {
               <TouchableOpacity
                 style={styles.readLink}
                 activeOpacity={0.7}
-                onPress={() => setActiveDoc(doc)}>
+                onPress={() => setActiveDoc(doc)} accessibilityRole="button" accessibilityLabel="READ  →">
                 <Text style={styles.readText}>{t('consent.read', 'READ  →')}</Text>
               </TouchableOpacity>
             </View>
@@ -138,7 +138,7 @@ export const LegalConsentScreen = () => {
                 key={c.id}
                 style={styles.consentRow}
                 onPress={() => toggle(c.id)}
-                activeOpacity={0.75}>
+                activeOpacity={0.75} accessibilityRole="button" accessibilityLabel="c.label">
                 <View style={[styles.checkbox, active && styles.checkboxChecked]}>
                   {active && <Icon name="check" size={16} color={theme.colors.background} />}
                 </View>

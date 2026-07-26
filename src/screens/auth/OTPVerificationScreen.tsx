@@ -112,7 +112,7 @@ export const OTPVerificationScreen = () => {
               {t('otp.resend_in')}<Text style={styles.timerValue}>{timerStr}</Text>
             </Text>
           ) : (
-            <TouchableOpacity onPress={handleResend} disabled={resending} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <TouchableOpacity onPress={handleResend} disabled={resending} style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }} accessibilityRole="button" accessibilityLabel="button">
               <Icon name="refresh" size={16} color={theme.colors.primary} />
               <Text style={styles.resendBtn}>
                 {resending ? t('otp.resend_active') : t('otp.resend_btn')}
@@ -139,7 +139,7 @@ export const OTPVerificationScreen = () => {
           onPress={handleVerify}
           disabled={!validateOTP(otp)}
         />
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.changeRow}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.changeRow} accessibilityRole="button" accessibilityLabel="button">
           <Text style={styles.changeText}>{t('otp.btn_change')}</Text>
         </TouchableOpacity>
       </BottomActionBar>

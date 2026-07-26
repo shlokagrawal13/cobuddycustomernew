@@ -25,7 +25,7 @@ export const AccountReactivationRequestScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('AuthStack')}
+          onPress={() => navigation.navigate('AuthStack')} accessibilityRole="button" accessibilityLabel="Return to Login"
         >
           <Text style={styles.primaryButtonText}>{t('loginBtn', 'Return to Login')}</Text>
         </TouchableOpacity>

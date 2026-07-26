@@ -57,7 +57,7 @@ export const WithdrawMoneyScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Withdraw Money')}</Text>
@@ -87,7 +87,7 @@ export const WithdrawMoneyScreen = () => {
             </View>
 
             <View style={styles.quickSelect}>
-                <TouchableOpacity style={styles.maxBtn} onPress={() => setAmount(MAX_WITHDRAWABLE.toString())}>
+                <TouchableOpacity style={styles.maxBtn} onPress={() => setAmount(MAX_WITHDRAWABLE.toString())} accessibilityRole="button" accessibilityLabel="button">
                     <Text style={styles.maxBtnText}>{t('maxBtn', 'Withdraw Max (₹{{max}})', { max: MAX_WITHDRAWABLE })}</Text>
                 </TouchableOpacity>
             </View>
@@ -108,7 +108,7 @@ export const WithdrawMoneyScreen = () => {
                     <TouchableOpacity 
                         style={styles.changeBtn} 
                         activeOpacity={0.7}
-                        onPress={() => navigation.navigate('WithdrawalMethodsScreen', { currentId: selectedMethod.id })}
+                        onPress={() => navigation.navigate('WithdrawalMethodsScreen', { currentId: selectedMethod.id })} accessibilityRole="button" accessibilityLabel="Change"
                     >
                         <Text style={styles.changeText}>{t('btnChange', 'Change')}</Text>
                     </TouchableOpacity>
@@ -130,7 +130,7 @@ export const WithdrawMoneyScreen = () => {
           <TouchableOpacity 
               style={[styles.proceedBtn, (!amount || parseInt(amount) < 100 || parseInt(amount) > MAX_WITHDRAWABLE) ? styles.proceedBtnDisabled : null]} 
               activeOpacity={0.8}
-              onPress={handleWithdraw}
+              onPress={handleWithdraw} accessibilityRole="button" accessibilityLabel="button"
           >
               <Text style={styles.proceedText}>{t('proceedToPay', 'Withdraw ₹{{amount}}', { amount: amount || '0' })}</Text>
           </TouchableOpacity>

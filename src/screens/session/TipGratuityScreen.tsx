@@ -44,11 +44,11 @@ export const TipGratuityScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Add a Tip')}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('CompanionReviewScreen')}>
+        <TouchableOpacity onPress={() => navigation.navigate('CompanionReviewScreen')} accessibilityRole="button" accessibilityLabel="Skip">
           <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
@@ -71,7 +71,7 @@ export const TipGratuityScreen = () => {
                 onPress={() => {
                   setSelectedTip(amount);
                   setCustomTip('');
-                }}
+                }} accessibilityRole="button" accessibilityLabel="₹ amount"
               >
                 <Text style={[styles.tipAmount, selectedTip === amount && styles.tipAmountSelected]}>₹{amount}</Text>
               </TouchableOpacity>
@@ -80,7 +80,7 @@ export const TipGratuityScreen = () => {
             {/* Custom Tip Option */}
             <TouchableOpacity 
               style={[styles.tipCard, selectedTip === -1 && styles.tipCardSelected]}
-              onPress={() => setSelectedTip(-1)}
+              onPress={() => setSelectedTip(-1)} accessibilityRole="button" accessibilityLabel="button"
             >
               {selectedTip === -1 ? (
                 <View style={styles.customInputWrapper}>
@@ -114,7 +114,7 @@ export const TipGratuityScreen = () => {
         <TouchableOpacity 
           style={[styles.primaryBtn, isPayDisabled && { opacity: 0.5 }]} 
           disabled={isPayDisabled}
-          onPress={handlePayTip}
+          onPress={handlePayTip} accessibilityRole="button" accessibilityLabel="button"
         >
           <Text style={styles.primaryBtnText}>{getButtonLabel()}</Text>
         </TouchableOpacity>

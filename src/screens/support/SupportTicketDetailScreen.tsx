@@ -41,7 +41,7 @@ export const SupportTicketDetailScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <View style={styles.headerTitleWrap}>
@@ -84,7 +84,7 @@ export const SupportTicketDetailScreen = () => {
         {/* Reply Box */}
         {!isClosed ? (
           <View style={styles.replyBox}>
-            <TouchableOpacity style={styles.attachBtn} activeOpacity={0.7}>
+            <TouchableOpacity style={styles.attachBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
               <Icon name="paperclip" size={24} color={theme.colors.textSecondary} />
             </TouchableOpacity>
             <TextInput
@@ -98,7 +98,7 @@ export const SupportTicketDetailScreen = () => {
             <TouchableOpacity 
               style={[styles.sendBtn, !replyText.trim() && { opacity: 0.5 }]} 
               onPress={handleSend}
-              activeOpacity={0.8}
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button"
             >
               <Icon name="send" size={20} color={theme.colors.background} />
             </TouchableOpacity>

@@ -30,7 +30,7 @@ export const SessionReminderScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn}>
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Meetup Reminder')}</Text>
@@ -64,7 +64,7 @@ export const SessionReminderScreen = () => {
             <Text style={{color: theme.colors.textSecondary, marginTop: 8}}>{t('mapPlaceholder', 'Map View Placeholder')}</Text>
           </View>
 
-          <TouchableOpacity style={styles.secondaryBtn}>
+          <TouchableOpacity style={styles.secondaryBtn} accessibilityRole="button" accessibilityLabel="Get Directions">
             <Icon name="directions" size={18} color={theme.colors.primary} />
             <Text style={styles.secondaryBtnText}>{t('getDirections', 'Get Directions')}</Text>
           </TouchableOpacity>
@@ -86,7 +86,7 @@ export const SessionReminderScreen = () => {
         <Text style={styles.bottomHint}>Only confirm arrival when you are physically at the venue{t('alertSuffix', '.')}</Text>
         <TouchableOpacity 
           style={styles.primaryBtn} 
-          onPress={() => navigation.navigate('ArrivalCheckInScreen')}
+          onPress={() => navigation.navigate('ArrivalCheckInScreen')} accessibilityRole="button" accessibilityLabel="Simulate Arrival at Venue"
         >
           <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Simulate Arrival at Venue')}</Text>
         </TouchableOpacity>

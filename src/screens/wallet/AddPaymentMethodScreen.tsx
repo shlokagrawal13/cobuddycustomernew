@@ -62,7 +62,7 @@ export const AddPaymentMethodScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Add New Card')}</Text>
@@ -172,7 +172,7 @@ export const AddPaymentMethodScreen = () => {
                 <Text style={styles.pciNoteText}>{t('securityNote', 'Card data is never stored on our servers. Information is tokenised by our PCI-DSS Level 1 payment partner.')}</Text>
             </View>
 
-            <TouchableOpacity style={styles.saveBtn} activeOpacity={0.8} onPress={handleSave}>
+            <TouchableOpacity style={styles.saveBtn} activeOpacity={0.8} onPress={handleSave} accessibilityRole="button" accessibilityLabel="Save Card Securely">
                 <Icon name="lock-check" size={20} color={theme.colors.surface} />
                 <Text style={styles.saveBtnText}>{t('saveCard', 'Save Card Securely')}</Text>
             </TouchableOpacity>

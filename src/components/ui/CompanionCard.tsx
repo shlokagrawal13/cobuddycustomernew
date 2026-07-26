@@ -100,7 +100,10 @@ export const CompanionCard = ({
         <TouchableOpacity
           style={styles.actionBtn}
           activeOpacity={0.8}
-          onPress={() => onPress(id)}>
+          onPress={() => onPress(id)}
+          accessibilityRole="button"
+          accessibilityLabel={`${t('companionCard.viewProfile', 'View Profile')} for ${name}`}
+        >
           <Text style={styles.actionBtnText}>{t('companionCard.viewProfile', 'View Profile')}</Text>
           <Icon name="arrow-right" size={16} color={theme.colors.background} />
         </TouchableOpacity>

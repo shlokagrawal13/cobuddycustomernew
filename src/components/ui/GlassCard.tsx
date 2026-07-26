@@ -7,6 +7,9 @@ interface GlassCardProps {
   style?: ViewStyle;
   glow?: boolean;
   variant?: 'default' | 'elevated' | 'outlined';
+  accessible?: boolean;
+  accessibilityRole?: 'none' | 'button' | 'link' | 'search' | 'image' | 'keyboardkey' | 'text' | 'adjustable' | 'imagebutton' | 'header' | 'summary';
+  accessibilityLabel?: string;
 }
 
 export const GlassCard = ({
@@ -14,6 +17,9 @@ export const GlassCard = ({
   style,
   glow = false,
   variant = 'default',
+  accessible,
+  accessibilityRole,
+  accessibilityLabel,
 }: GlassCardProps) => {
   return (
     <View
@@ -23,7 +29,11 @@ export const GlassCard = ({
         variant === 'outlined' && styles.outlined,
         glow && styles.glow,
         style,
-      ]}>
+      ]}
+      accessible={accessible}
+      accessibilityRole={accessibilityRole}
+      accessibilityLabel={accessibilityLabel}
+    >
       {children}
     </View>
   );

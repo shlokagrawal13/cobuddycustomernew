@@ -57,7 +57,7 @@ export const HelpCenterScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Help Center')}</Text>
@@ -83,7 +83,7 @@ export const HelpCenterScreen = () => {
                         }}
                     />
                     {searchQuery.length > 0 && (
-                        <TouchableOpacity onPress={() => setSearchQuery('')}>
+                        <TouchableOpacity onPress={() => setSearchQuery('')} accessibilityRole="button" accessibilityLabel="Close">
                             <Icon name="close-circle" size={20} color={theme.colors.textSecondary} />
                         </TouchableOpacity>
                     )}
@@ -103,7 +103,7 @@ export const HelpCenterScreen = () => {
                             onPress={() => {
                                 setSelectedCategory(isSelected ? null : cat.id);
                                 setExpandedFaq(null);
-                            }}
+                            }} accessibilityRole="button" accessibilityLabel="cat.title"
                         >
                             <View style={[styles.iconCircle, isSelected && styles.iconCircleActive]}>
                                 <Icon name={cat.icon} size={24} color={isSelected ? theme.colors.background : theme.colors.primary} />
@@ -133,7 +133,7 @@ export const HelpCenterScreen = () => {
                                 <TouchableOpacity 
                                     style={[styles.faqRow, index !== 0 && styles.borderTop]} 
                                     activeOpacity={0.7}
-                                    onPress={() => setExpandedFaq(isExpanded ? null : faq.id)}
+                                    onPress={() => setExpandedFaq(isExpanded ? null : faq.id)} accessibilityRole="button" accessibilityLabel="faq.question"
                                 >
                                     <Text style={[styles.faqQuestion, isExpanded && {color: theme.colors.primary}]}>{faq.question}</Text>
                                     <Icon name={isExpanded ? 'chevron-up' : 'chevron-down'} size={20} color={isExpanded ? theme.colors.primary : theme.colors.textSecondary} />
@@ -158,7 +158,7 @@ export const HelpCenterScreen = () => {
                 <TouchableOpacity 
                     style={styles.chatBtn}
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('ConciergeChatScreen')}
+                    onPress={() => navigation.navigate('ConciergeChatScreen')} accessibilityRole="button" accessibilityLabel="Chat Now"
                 >
                     <Icon name="message-text-outline" size={20} color={theme.colors.background} />
                     <Text style={styles.chatBtnText}>{t('chatNow', 'Chat Now')}</Text>

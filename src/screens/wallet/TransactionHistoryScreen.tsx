@@ -32,11 +32,11 @@ export const TransactionHistoryScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Transaction History')}</Text>
-        <TouchableOpacity style={styles.backBtn} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="download" size={22} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
@@ -48,7 +48,7 @@ export const TransactionHistoryScreen = () => {
               key={f} 
               style={[styles.filterChip, activeFilter === f && styles.filterChipActive]} 
               onPress={() => setActiveFilter(f)}
-              activeOpacity={0.8}
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="f"
             >
               <Text style={[styles.filterText, activeFilter === f && styles.filterTextActive]}>{f}</Text>
             </TouchableOpacity>
@@ -68,7 +68,7 @@ export const TransactionHistoryScreen = () => {
               key={tx.id} 
               style={[styles.txItem, index !== filtered.length - 1 && styles.txBorder]}
               onPress={() => navigation.navigate('TransactionDetailScreen', { transactionId: tx.id })}
-              activeOpacity={0.7}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
             >
               <View style={[styles.txIconWrap, tx.positive ? styles.txIconWrapPos : styles.txIconWrapNeg, tx.status === 'Refunded' && styles.txIconWrapRefund]}>
                 <Icon name={tx.icon} size={20} color={tx.status === 'Refunded' ? theme.colors.warning : tx.positive ? theme.colors.success : theme.colors.error} />

@@ -14,6 +14,8 @@ export const Input = ({ label, error, ...props }: Props) => {
       <TextInput 
         style={[styles.input, error && styles.inputError]} 
         placeholderTextColor={theme.colors.textSecondary}
+        accessibilityLabel={props.accessibilityLabel || label || props.placeholder || 'Text input'}
+        accessibilityHint={error}
         {...props} 
       />
       {error && <Text style={styles.errorText}>{error}</Text>}

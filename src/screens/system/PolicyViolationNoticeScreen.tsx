@@ -48,14 +48,14 @@ export const PolicyViolationNoticeScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={() => smartGoBack()}
+          onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="I Understand"
         >
           <Text style={styles.primaryButtonText}>{t('understandBtn', 'I Understand')}</Text>
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' })} accessibilityRole="button" accessibilityLabel="Submit Appeal"
         >
           <Text style={styles.secondaryButtonText}>{t('appealBtn', 'Submit Appeal')}</Text>
         </TouchableOpacity>

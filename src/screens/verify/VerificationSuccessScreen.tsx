@@ -77,7 +77,7 @@ export const VerificationSuccessScreen = () => {
         <TouchableOpacity
           style={styles.btn}
           onPress={handleContinue}
-          activeOpacity={0.85}
+          activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="isFromFlow ? \'Continue\' : \'Sta..."
         >
           <Text style={styles.btnText}>{isFromFlow ? 'Continue' : 'Start Exploring'}</Text>
           <Icon name={isFromFlow ? "check" : "arrow-right"} size={20} color={theme.colors.background} />

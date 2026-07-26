@@ -39,7 +39,7 @@ export const CreateSupportTicketScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Create Ticket')}</Text>
@@ -56,7 +56,7 @@ export const CreateSupportTicketScreen = () => {
                 key={cat.id} 
                 style={[styles.categoryCard, selectedCategory === cat.id && styles.categoryCardActive]}
                 onPress={() => setSelectedCategory(cat.id)}
-                activeOpacity={0.7}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="cat.label"
               >
                 <Icon 
                   name={cat.icon} 
@@ -108,7 +108,7 @@ export const CreateSupportTicketScreen = () => {
             <TouchableOpacity 
               style={[styles.attachmentBtn, hasAttachment && styles.attachmentBtnActive]}
               onPress={() => setHasAttachment(!hasAttachment)}
-              activeOpacity={0.7}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="hasAttachment ? \'Screenshot At..."
             >
               <Icon 
                 name={hasAttachment ? "image-check" : "camera-plus"} 
@@ -128,7 +128,7 @@ export const CreateSupportTicketScreen = () => {
         <TouchableOpacity 
           style={[styles.submitBtn, (!selectedCategory || !subject || !description) && styles.submitBtnDisabled]}
           onPress={handleSubmit}
-          activeOpacity={0.8}
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Submit Ticket"
         >
           <Text style={styles.submitBtnText}>{t('submitTicket', 'Submit Ticket')}</Text>
         </TouchableOpacity>

@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]}
+            ]} accessibilityRole="button" accessibilityLabel="button"
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -51,7 +51,7 @@ export const SafetySettingsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Center')}</Text>
@@ -117,7 +117,7 @@ export const SafetySettingsScreen = () => {
             <TouchableOpacity 
                 style={styles.actionRow} 
                 activeOpacity={0.7} 
-                onPress={() => navigation.navigate('TrustedContactsScreen', { fromSettings: true })}
+                onPress={() => navigation.navigate('TrustedContactsScreen', { fromSettings: true })} accessibilityRole="button" accessibilityLabel="Next"
             >
                 <View style={[styles.iconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
                     <Icon name="car-emergency" size={20} color={theme.colors.error} />
@@ -161,7 +161,7 @@ export const SafetySettingsScreen = () => {
         <TouchableOpacity 
             style={styles.hubBtn}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('SafetyHubScreen')}
+            onPress={() => navigation.navigate('SafetyHubScreen')} accessibilityRole="button" accessibilityLabel="Open Safety Hub"
         >
             <Icon name="security" size={18} color={theme.colors.background} />
             <Text style={styles.hubBtnText}>{t('openSafetyHub', 'Open Safety Hub')}</Text>

@@ -24,7 +24,7 @@ export const LegalAgreementsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Legal & Agreements')}</Text>
@@ -38,7 +38,7 @@ export const LegalAgreementsScreen = () => {
                 <TouchableOpacity 
                     key={doc.id} 
                     style={[styles.row, index !== LEGAL_DOCS.length - 1 && styles.borderBottom]}
-                    activeOpacity={0.7}
+                    activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
                 >
                     <View style={styles.iconWrap}>
                         <Icon name={doc.icon} size={22} color={theme.colors.textSecondary} />

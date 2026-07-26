@@ -76,7 +76,7 @@ export const ActiveSessionScreen = () => {
           <Animated.View style={[styles.liveDot, { opacity: pulseAnim }]} />
           <Text style={styles.liveText}>{t('liveSession', 'LIVE SESSION')}</Text>
         </View>
-        <TouchableOpacity style={styles.sosBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })}>
+        <TouchableOpacity style={styles.sosBtn} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel="SOS / EMERGENCY">
           <Icon name="shield-half-full" size={18} color={theme.colors.background} />
           <Text style={styles.sosBtnText}>{t('sosEmergency', 'SOS / EMERGENCY')}</Text>
         </TouchableOpacity>
@@ -92,7 +92,7 @@ export const ActiveSessionScreen = () => {
                 <Icon name="information" size={18} color={theme.colors.primary} />
                 <Text style={styles.etiquetteTitle}>{t('etiquetteReminder', 'Etiquette Reminder')}</Text>
               </View>
-              <TouchableOpacity onPress={() => setEtiquetteVisible(false)}>
+              <TouchableOpacity onPress={() => setEtiquetteVisible(false)} accessibilityRole="button" accessibilityLabel="Close">
                 <Icon name="close" size={18} color={theme.colors.textSecondary} />
               </TouchableOpacity>
             </View>
@@ -122,23 +122,23 @@ export const ActiveSessionScreen = () => {
           </View>
           <View style={{ flex: 1, paddingLeft: 12 }}>
             <Text style={styles.companionName} numberOfLines={1}>{MOCK_COMPANION}</Text>
-            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }}>
+            <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }} accessibilityRole="button" accessibilityLabel="View Full Profile">
               <Text style={{ color: theme.colors.primary, fontSize: 13, fontWeight: 'bold' }}>{t('viewFullProfile', 'View Full Profile')}</Text>
               <Icon name="chevron-right" size={14} color={theme.colors.primary} />
             </TouchableOpacity>
           </View>
           <View style={{ flexDirection: 'row', gap: 8 }}>
-            <TouchableOpacity style={styles.circleBtn}>
+            <TouchableOpacity style={styles.circleBtn} accessibilityRole="button" accessibilityLabel="button">
               <Icon name="phone" size={18} color={theme.colors.textPrimary} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.circleBtn}>
+            <TouchableOpacity style={styles.circleBtn} accessibilityRole="button" accessibilityLabel="button">
               <Icon name="chat" size={18} color={theme.colors.textPrimary} />
             </TouchableOpacity>
           </View>
         </View>
 
         {/* View Details Link */}
-        <TouchableOpacity style={styles.detailsBtn} onPress={() => setBookingDetailsModalVisible(true)}>
+        <TouchableOpacity style={styles.detailsBtn} onPress={() => setBookingDetailsModalVisible(true)} accessibilityRole="button" accessibilityLabel="View Booking Details">
           <Icon name="file-document-outline" size={18} color={theme.colors.textSecondary} />
           <Text style={styles.detailsText}>{t('viewBookingDetails', 'View Booking Details')}</Text>
           <Icon name="chevron-right" size={16} color={theme.colors.textSecondary} style={{ marginLeft: 'auto' }} />
@@ -146,13 +146,13 @@ export const ActiveSessionScreen = () => {
 
         {/* Action Controls */}
         <View style={styles.actionGrid}>
-          <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)}>
+          <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="clock-plus-outline" size={24} color={theme.colors.background} />
             <Text style={styles.actionBtnPrimaryText}>{t('extendSession', 'Extend Session')}</Text>
             <Text style={styles.actionBtnPrimarySub}>{t('addMoreTime', 'Add more time')}</Text>
           </TouchableOpacity>
           
-          <TouchableOpacity style={styles.actionBtnSecondary} onPress={() => setEndEarlyModalVisible(true)}>
+          <TouchableOpacity style={styles.actionBtnSecondary} onPress={() => setEndEarlyModalVisible(true)} accessibilityRole="button" accessibilityLabel="button">
             <Icon name="clock-remove-outline" size={24} color={theme.colors.error} />
             <Text style={styles.actionBtnSecondaryText}>{t('endEarly', 'End Early')}</Text>
             <Text style={styles.actionBtnSecondarySub}>{t('proRataCharges', 'Pro-rata charges')}</Text>
@@ -167,7 +167,7 @@ export const ActiveSessionScreen = () => {
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>{t('extendSession', 'Extend Session')}</Text>
-              <TouchableOpacity onPress={() => setExtendModalVisible(false)} style={styles.modalCloseBtn}>
+              <TouchableOpacity onPress={() => setExtendModalVisible(false)} style={styles.modalCloseBtn} accessibilityRole="button" accessibilityLabel="Close">
                 <Icon name="close" size={20} color={theme.colors.textSecondary} />
               </TouchableOpacity>
             </View>
@@ -176,7 +176,7 @@ export const ActiveSessionScreen = () => {
             <View style={{ gap: 12, marginBottom: 24 }}>
               <TouchableOpacity 
                 style={[styles.extensionOption, selectedExtension === 30 && { borderColor: theme.colors.primary, backgroundColor: 'rgba(212,175,55,0.1)' }]}
-                onPress={() => setSelectedExtension(30)}
+                onPress={() => setSelectedExtension(30)} accessibilityRole="button" accessibilityLabel="+ 30 Mins ₹750"
               >
                 <Text style={[styles.extensionTime, selectedExtension === 30 && { color: theme.colors.primary }]}>{t('plus30Mins', '+ 30 Mins')}</Text>
                 <Text style={[styles.extensionPrice, selectedExtension === 30 && { color: theme.colors.primary }]}>₹750</Text>
@@ -184,14 +184,14 @@ export const ActiveSessionScreen = () => {
               
               <TouchableOpacity 
                 style={[styles.extensionOption, selectedExtension === 60 && { borderColor: theme.colors.primary, backgroundColor: 'rgba(212,175,55,0.1)' }]}
-                onPress={() => setSelectedExtension(60)}
+                onPress={() => setSelectedExtension(60)} accessibilityRole="button" accessibilityLabel="+ 1 Hour ₹1,500"
               >
                 <Text style={[styles.extensionTime, selectedExtension === 60 && { color: theme.colors.primary }]}>{t('plus1Hour', '+ 1 Hour')}</Text>
                 <Text style={[styles.extensionPrice, selectedExtension === 60 && { color: theme.colors.primary }]}>₹1,500</Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.primaryBtn} onPress={handleConfirmExtension}>
+            <TouchableOpacity style={styles.primaryBtn} onPress={handleConfirmExtension} accessibilityRole="button" accessibilityLabel="button">
               <Text style={styles.primaryBtnText}>Confirm Extension (₹{selectedExtension === 30 ? '750' : '1,500'})</Text>
             </TouchableOpacity>
           </View>
@@ -204,7 +204,7 @@ export const ActiveSessionScreen = () => {
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <Text style={[styles.modalTitle, { color: theme.colors.error }]}>{t('endSessionEarly', 'End Session Early?')}</Text>
-              <TouchableOpacity onPress={() => setEndEarlyModalVisible(false)} style={styles.modalCloseBtn}>
+              <TouchableOpacity onPress={() => setEndEarlyModalVisible(false)} style={styles.modalCloseBtn} accessibilityRole="button" accessibilityLabel="Close">
                 <Icon name="close" size={20} color={theme.colors.textSecondary} />
               </TouchableOpacity>
             </View>
@@ -231,12 +231,12 @@ export const ActiveSessionScreen = () => {
 
             <TouchableOpacity 
               style={[styles.primaryBtn, { backgroundColor: theme.colors.error }]} 
-              onPress={handleEndEarly}
+              onPress={handleEndEarly} accessibilityRole="button" accessibilityLabel="Confirm & End Session"
             >
               <Text style={styles.primaryBtnText}>{t('confirmEndSession', 'Confirm & End Session')}</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={{ marginTop: 16, alignItems: 'center' }} onPress={() => setEndEarlyModalVisible(false)}>
+            <TouchableOpacity style={{ marginTop: 16, alignItems: 'center' }} onPress={() => setEndEarlyModalVisible(false)} accessibilityRole="button" accessibilityLabel="Keep Session Active">
               <Text style={{ color: theme.colors.textSecondary, fontWeight: 'bold' }}>{t('keepSessionActive', 'Keep Session Active')}</Text>
             </TouchableOpacity>
           </View>
@@ -249,7 +249,7 @@ export const ActiveSessionScreen = () => {
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>{t('bookingDetails', 'Booking Details')}</Text>
-              <TouchableOpacity onPress={() => setBookingDetailsModalVisible(false)} style={styles.modalCloseBtn}>
+              <TouchableOpacity onPress={() => setBookingDetailsModalVisible(false)} style={styles.modalCloseBtn} accessibilityRole="button" accessibilityLabel="Close">
                 <Icon name="close" size={20} color={theme.colors.textSecondary} />
               </TouchableOpacity>
             </View>
@@ -273,7 +273,7 @@ export const ActiveSessionScreen = () => {
               </View>
             </View>
 
-            <TouchableOpacity style={styles.primaryBtn} onPress={() => setBookingDetailsModalVisible(false)}>
+            <TouchableOpacity style={styles.primaryBtn} onPress={() => setBookingDetailsModalVisible(false)} accessibilityRole="button" accessibilityLabel="Back to Session">
               <Text style={styles.primaryBtnText}>{t('backToSession', 'Back to Session')}</Text>
             </TouchableOpacity>
           </View>
@@ -283,7 +283,7 @@ export const ActiveSessionScreen = () => {
       <View style={styles.bottomBar}>
         <TouchableOpacity 
           style={styles.primaryBtn} 
-          onPress={() => navigation.navigate('SessionCompleteScreen')}
+          onPress={() => navigation.navigate('SessionCompleteScreen')} accessibilityRole="button" accessibilityLabel="[MOCK] Time\\'s Up / Auto End"
         >
           <Text style={styles.primaryBtnText}>{t('mockTimesUp', '[MOCK] Time\'s Up / Auto End')}</Text>
         </TouchableOpacity>

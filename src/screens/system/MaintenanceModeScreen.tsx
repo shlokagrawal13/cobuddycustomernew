@@ -32,7 +32,7 @@ export const MaintenanceModeScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.secondaryButton}
-          onPress={handleStatusCheck}
+          onPress={handleStatusCheck} accessibilityRole="button" accessibilityLabel="Check System Status"
         >
           <Text style={styles.secondaryButtonText}>{t('statusBtn', 'Check System Status')}</Text>
         </TouchableOpacity>

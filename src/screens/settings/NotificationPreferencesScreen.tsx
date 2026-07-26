@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? (disabled ? 'rgba(212,175,55,0.5)' : theme.colors.primary) : 'rgba(255,255,255,0.1)' }
-            ]}
+            ]} accessibilityRole="button" accessibilityLabel="button"
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -59,7 +59,7 @@ export const NotificationPreferencesScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Notifications')}</Text>

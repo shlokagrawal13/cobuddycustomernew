@@ -51,7 +51,7 @@ export const LocationSelectionScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Select Location')}</Text>
@@ -70,7 +70,7 @@ export const LocationSelectionScreen = () => {
                   autoFocus={true}
               />
               {searchQuery.length > 0 && (
-                  <TouchableOpacity onPress={() => setSearchQuery('')} style={styles.clearBtn}>
+                  <TouchableOpacity onPress={() => setSearchQuery('')} style={styles.clearBtn} accessibilityRole="button" accessibilityLabel="Close">
                       <Icon name="close-circle" size={20} color={theme.colors.textSecondary} />
                   </TouchableOpacity>
               )}
@@ -84,7 +84,7 @@ export const LocationSelectionScreen = () => {
                 style={styles.gpsBtn} 
                 activeOpacity={0.7}
                 onPress={handleUseCurrentLocation}
-                disabled={isLocating}
+                disabled={isLocating} accessibilityRole="button" accessibilityLabel="Next"
             >
                 {isLocating ? (
                     <ActivityIndicator size="small" color={theme.colors.primary} />
@@ -108,7 +108,7 @@ export const LocationSelectionScreen = () => {
                             key={loc.id} 
                             style={[styles.row, index !== RECENT_LOCATIONS.length - 1 && styles.borderBottom]}
                             activeOpacity={0.7}
-                            onPress={() => handleSelectLocation(loc.mainText)}
+                            onPress={() => handleSelectLocation(loc.mainText)} accessibilityRole="button" accessibilityLabel="button"
                         >
                             <View style={styles.iconWrap}>
                                 <Icon name={loc.icon} size={20} color={theme.colors.textSecondary} />
@@ -126,7 +126,7 @@ export const LocationSelectionScreen = () => {
         {searchQuery.length > 0 && (
             <View style={styles.section}>
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => handleSelectLocation(searchQuery)}>
+                    <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => handleSelectLocation(searchQuery)} accessibilityRole="button" accessibilityLabel="button">
                         <View style={styles.iconWrap}>
                             <Icon name="map-marker" size={20} color={theme.colors.primary} />
                         </View>

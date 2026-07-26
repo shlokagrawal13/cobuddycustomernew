@@ -62,11 +62,11 @@ export const SpokenLanguagesScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Spoken Languages')}</Text>
-        <TouchableOpacity style={styles.saveHeaderBtn} onPress={handleSave}>
+        <TouchableOpacity style={styles.saveHeaderBtn} onPress={handleSave} accessibilityRole="button" accessibilityLabel="Done">
             <Text style={styles.saveHeaderBtnText}>{t('doneBtn', 'Done')}</Text>
         </TouchableOpacity>
       </View>
@@ -87,7 +87,7 @@ export const SpokenLanguagesScreen = () => {
                         key={lang.id} 
                         style={[styles.tile, active && styles.tileActive]} 
                         onPress={() => toggleLang(lang.id)}
-                        activeOpacity={0.8}
+                        activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button"
                     >
                         <View style={styles.tileContent}>
                             <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>{t(`lang_${lang.id}`, lang.label)}</Text>

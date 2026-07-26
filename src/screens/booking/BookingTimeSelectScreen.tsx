@@ -72,7 +72,7 @@ export const BookingTimeSelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Go back">
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 3 of 4')}</Text>
@@ -97,7 +97,7 @@ export const BookingTimeSelectScreen = () => {
                 onPress={() => {
                   setSelectedDateId(d.id);
                   setSelectedTime(null); // Reset time when date changes
-                }}
+                }} accessibilityRole="button" accessibilityLabel="d.dayName d.dayNumber"
               >
                 <Text style={[styles.dayName, isSelected && styles.textSelected]}>{d.dayName}</Text>
                 <Text style={[styles.dayNumber, isSelected && styles.textSelected]}>{d.dayNumber}</Text>
@@ -114,7 +114,7 @@ export const BookingTimeSelectScreen = () => {
               <TouchableOpacity
                 key={time}
                 style={[styles.timeSlot, isSelected && styles.timeSlotSelected]}
-                onPress={() => setSelectedTime(time)}
+                onPress={() => setSelectedTime(time)} accessibilityRole="button" accessibilityLabel="time"
               >
                 <Text style={[styles.timeText, isSelected && styles.textSelected]}>{time}</Text>
               </TouchableOpacity>
@@ -130,7 +130,7 @@ export const BookingTimeSelectScreen = () => {
               <TouchableOpacity
                 key={hrs}
                 style={[styles.durationBtn, isSelected && styles.durationBtnSelected]}
-                onPress={() => setDuration(hrs)}
+                onPress={() => setDuration(hrs)} accessibilityRole="button" accessibilityLabel="hrs  hrs === 1 ? \'hr\' : \'hrs\'"
               >
                 <Text style={[styles.durationText, isSelected && styles.textSelected]}>
                   {hrs} {hrs === 1 ? 'hr' : 'hrs'}
@@ -147,7 +147,7 @@ export const BookingTimeSelectScreen = () => {
           style={[styles.nextBtn, !selectedTime && styles.nextBtnDisabled]}
           disabled={!selectedTime}
           onPress={handleNext}
-          activeOpacity={0.8}
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Continue"
         >
           <Text style={[styles.nextBtnText, !selectedTime && styles.nextBtnTextDisabled]}>{t('continue', 'Continue')}</Text>
           <Icon 
