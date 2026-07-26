@@ -117,7 +117,6 @@ const ProfileTabStack = () => (
       <Stack.Screen name="AccountSettingsScreen" component={AccountSettingsScreen} />
       <Stack.Screen name="DeleteAccountScreen" component={DeleteAccountScreen} />
       <Stack.Screen name="LegalAgreementsScreen" component={LegalAgreementsScreen} />
-      <Stack.Screen name="InterestSelectionScreen" component={InterestSelectionScreen} />
       <Stack.Screen name="SpokenLanguagesScreen" component={SpokenLanguagesScreen} />
       <Stack.Screen name="LocationSelectionScreen" component={LocationSelectionScreen} />
       <Stack.Screen name="AppPermissionsScreen" component={AppPermissionsScreen} />
@@ -125,22 +124,10 @@ const ProfileTabStack = () => (
       <Stack.Screen name="BlockedUsersScreen" component={BlockedUsersScreen} />
       <Stack.Screen name="SafetySettingsScreen" component={SafetySettingsScreen} />
       <Stack.Screen name="DataCacheScreen" component={DataCacheScreen} />
-      <Stack.Screen name="HelpCenterScreen" component={HelpCenterScreen} />
-      <Stack.Screen name="SupportCenterScreen" component={SupportCenterScreen} />
-      <Stack.Screen name="CreateSupportTicketScreen" component={CreateSupportTicketScreen} />
-      <Stack.Screen name="SupportTicketDetailScreen" component={SupportTicketDetailScreen} />
-      <Stack.Screen name="PhoneLoginScreen" component={PhoneLoginScreen} />
-      <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
       <Stack.Screen name="DeactivateAccountScreen" component={DeactivateAccountScreen} />
       <Stack.Screen name="ActiveSessionsScreen" component={ActiveSessionsScreen} />
       <Stack.Screen name="SavedProfilesScreen" component={SavedProfilesScreen} />
-      <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
-      <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
       <Stack.Screen name="ReferFriendScreen" component={ReferFriendScreen} />
-      <Stack.Screen name="SafetyHubScreen" component={SafetyHubScreen} />
-      <Stack.Screen name="IncidentReportScreen" component={IncidentReportScreen} />
-      <Stack.Screen name="SafetyGuidelinesScreen" component={SafetyGuidelinesScreen} />
-      <Stack.Screen name="ConciergeChatScreen" component={ConciergeChatScreen} />
   </Stack.Navigator>
 );
 
