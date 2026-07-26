@@ -8,6 +8,8 @@ import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useSafetyStore } from '../../store/slices/safetyStore';
+import { selectIsSOSActive, selectTriggerSOS, selectResolveSOS, selectIsSessionActive, selectLastKnownLocation } from '../../store/selectors/safetySelectors';
 
 const { width } = Dimensions.get('window');
 
@@ -36,6 +38,26 @@ export const SafetyHubScreen = () => {
   const ring2Scale = pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.8, 2.4] });
   const ring2Opacity = pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.4, 0] });
 
+  const isSOSActive = useSafetyStore(selectIsSOSActive);
+  const triggerSOS = useSafetyStore(selectTriggerSOS);
+  const resolveSOS = useSafetyStore(selectResolveSOS);
+  const isSessionActive = useSafetyStore(selectIsSessionActive);
+  const lastKnownLocation = useSafetyStore(selectLastKnownLocation);
+  const setSessionActive = useSafetyStore((state) => state.setSessionActive);
+  const updateLocation = useSafetyStore((state) => state.updateLocation);
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isSessionActive) {
+      interval = setInterval(() => {
+        const lat = 37.7749 + (Math.random() - 0.5) * 0.01;
+        const lng = -122.4194 + (Math.random() - 0.5) * 0.01;
+        updateLocation(lat, lng);
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isSessionActive, updateLocation]);
+
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
@@ -55,10 +77,13 @@ export const SafetyHubScreen = () => {
         
         {/* Status Pill */}
         <View style={styles.statusWrapper}>
-            <View style={styles.statusPill}>
-                <View style={styles.statusDot} />
-                <Text style={styles.statusText}>{t('statusText', 'Live Protection Active')}</Text>
+            <View style={[styles.statusPill, !isSessionActive && styles.statusPillInactive]}>
+                <View style={[styles.statusDot, !isSessionActive && styles.statusDotInactive]} />
+                <Text style={[styles.statusText, !isSessionActive && styles.statusTextInactive]}>{isSessionActive ? t('statusText', 'Live Protection Active') : t('statusInactive', 'Live Protection Inactive')}</Text>
             </View>
+            {isSessionActive && lastKnownLocation && (
+              <Text style={styles.locationText}>Mock GPS: {lastKnownLocation.lat.toFixed(4)}, {lastKnownLocation.lng.toFixed(4)}</Text>
+            )}
         </View>
 
         {/* Hero SOS Section */}
@@ -70,24 +95,34 @@ export const SafetyHubScreen = () => {
                 
                 {/* Main SOS Button */}
                 <TouchableOpacity 
-                    style={styles.sosButton} 
+                    style={[styles.sosButton, isSOSActive && styles.sosButtonActive]} 
                     activeOpacity={0.9}
                     onPress={() => {
-                        Alert.alert(t('alertTitleEMERGENCYSOS', '🚨 EMERGENCY SOS'), t('alertMsgAreyouindangerThiswi', 'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.'),
-                          [
-                            { text: 'Cancel', style: 'cancel' },
-                            { 
-                              text: 'ACTIVATE SOS', 
-                              style: 'destructive',
-                              onPress: () => Alert.alert(t('alertTitleSOSActivated', 'SOS Activated'), t('alertMsgHelpisonthewayYourli', 'Help is on the way. Your live location is now being shared.'))
-                            }
-                          ]
-                        );
+                        if (isSOSActive) {
+                            Alert.alert('Cancel SOS', 'Are you sure you want to cancel the SOS?', [
+                                { text: 'No', style: 'cancel' },
+                                { text: 'Yes, I am safe', onPress: () => resolveSOS() }
+                            ]);
+                        } else {
+                            Alert.alert(t('alertTitleEMERGENCYSOS', '🚨 EMERGENCY SOS'), t('alertMsgAreyouindangerThiswi', 'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.'),
+                              [
+                                { text: 'Cancel', style: 'cancel' },
+                                { 
+                                  text: 'ACTIVATE SOS', 
+                                  style: 'destructive',
+                                  onPress: () => {
+                                    triggerSOS();
+                                    Alert.alert(t('alertTitleSOSActivated', 'SOS Activated'), t('alertMsgHelpisonthewayYourli', 'Help is on the way. Your live location is now being shared.'));
+                                  }
+                                }
+                              ]
+                            );
+                        }
                     }} accessibilityRole="button" accessibilityLabel="Action"
                 >
-                    <View style={styles.sosButtonInner}>
-                        <Icon name="shield-alert" size={42} color={theme.colors.background} />
-                        <Text style={styles.sosButtonText}>{t('sosBtn', 'SOS')}</Text>
+                    <View style={[styles.sosButtonInner, isSOSActive && styles.sosButtonInnerActive]}>
+                        <Icon name={isSOSActive ? "shield-check" : "shield-alert"} size={42} color={theme.colors.background} />
+                        <Text style={styles.sosButtonText}>{isSOSActive ? "SAFE" : t('sosBtn', 'SOS')}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -98,6 +133,21 @@ export const SafetyHubScreen = () => {
         <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>{t('quickActions', 'QUICK ACTIONS')}</Text>
         </View>
+
+        <TouchableOpacity 
+            style={styles.premiumCard} 
+            activeOpacity={0.7}
+            onPress={() => setSessionActive(!isSessionActive)} accessibilityRole="button" accessibilityLabel="Toggle"
+        >
+            <View style={[styles.cardIconBox, { backgroundColor: isSessionActive ? 'rgba(34, 197, 94, 0.1)' : 'rgba(156, 163, 175, 0.1)' }]}>
+                <Icon name={isSessionActive ? "radar" : "radar-off"} size={24} color={isSessionActive ? theme.colors.success : theme.colors.textSecondary} />
+            </View>
+            <View style={styles.cardTextContent}>
+                <Text style={styles.cardTitle}>{isSessionActive ? "Stop Live Session" : "Start Live Session (Mock)"}</Text>
+                <Text style={styles.cardDesc}>Toggle background location service mocking.</Text>
+            </View>
+            <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
+        </TouchableOpacity>
 
         <TouchableOpacity 
             style={styles.premiumCard} 
@@ -175,6 +225,12 @@ const styles = StyleSheet.create({
   statusPill: { flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(34, 197, 94, 0.1)', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20, borderWidth: 1, borderColor: 'rgba(34, 197, 94, 0.2)' },
   statusDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: theme.colors.success, marginRight: 8, shadowColor: theme.colors.success, shadowOffset: { width: 0, height: 0 }, shadowOpacity: 0.8, shadowRadius: 4 },
   statusText: { fontSize: 12, fontWeight: 'bold', color: theme.colors.success, letterSpacing: 0.5 },
+  statusPillInactive: { backgroundColor: 'rgba(156, 163, 175, 0.1)', borderColor: 'rgba(156, 163, 175, 0.2)' },
+  statusDotInactive: { backgroundColor: theme.colors.textSecondary, shadowOpacity: 0 },
+  statusTextInactive: { color: theme.colors.textSecondary },
+  locationText: { fontSize: 10, color: theme.colors.textSecondary, marginTop: 4 },
+  sosButtonActive: { backgroundColor: theme.colors.success, shadowColor: theme.colors.success },
+  sosButtonInnerActive: { borderColor: 'rgba(255,255,255,0.4)' },
 
   heroSection: { alignItems: 'center', paddingVertical: 30, marginBottom: 20 },
   sosContainer: { width: 160, height: 160, justifyContent: 'center', alignItems: 'center', position: 'relative' },
