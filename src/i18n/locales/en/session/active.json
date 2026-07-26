@@ -50,5 +50,6 @@
   "a11yAction": "Action",
   "a11yConfirmEndSession": "Confirm & End Session",
   "a11yKeepSessionActive": "Keep Session Active",
-  "a11yBackToSession": "Back to Session"
+  "a11yBackToSession": "Back to Session",
+  "a11yMockTimesUpAutoEnd": "[MOCK] Time's Up / Auto End"
 }

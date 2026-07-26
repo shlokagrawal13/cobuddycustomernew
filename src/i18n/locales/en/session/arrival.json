@@ -20,5 +20,6 @@
   "a11yAction": "Action",
   "a11yCallSecurely": "Call Securely",
   "a11yMessage": "Message",
-  "a11yMockCompanionEnteredOtp": "[MOCK] Companion entered OTP"
+  "a11yMockCompanionEnteredOtp": "[MOCK] Companion entered OTP",
+  "a11yCompanionDidntShowUp": "Companion didn't show up"
 }

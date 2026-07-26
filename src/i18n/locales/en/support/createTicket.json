@@ -14,5 +14,6 @@
     "ProvideAsManyDe": "Provide as many details as possible so we can help you faster..."
   },
   "a11yGoBack": "Go back",
-  "a11ySubmitTicket": "Submit Ticket"
+  "a11ySubmitTicket": "Submit Ticket",
+  "a11yHasattachmentScreenshotAt": "Has attachment: screenshot attached"
 }
