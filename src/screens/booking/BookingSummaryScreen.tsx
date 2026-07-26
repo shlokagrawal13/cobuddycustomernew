@@ -28,6 +28,10 @@ export const BookingSummaryScreen = () => {
   
   const { activity, venue, date, time, duration = 1 } = route.params || {};
 
+  const parsedDate = date ? new Date(date) : new Date();
+  const dayName = parsedDate.toLocaleDateString('en-US', { weekday: 'short' });
+  const dayNumber = parsedDate.getDate().toString();
+
   // DEV MOCK: Toggle to test KYC interceptor
   const [isKycVerified, setIsKycVerified] = useState(false);
   
@@ -50,7 +54,7 @@ export const BookingSummaryScreen = () => {
       // Success: Proceed to Request Sent
       requestBooking({
         companionId: 'c1', // Mock companion ID
-        activity: draftBooking?.activity || activity?.title || 'Unknown Activity',
+        activity: draftBooking?.activity || activity?.defaultTitle || 'Unknown Activity',
         venue: draftBooking?.venue || venue?.name || 'Unknown Venue',
         time: draftBooking?.time || time || 'Unknown Time'
       });
@@ -83,7 +87,7 @@ export const BookingSummaryScreen = () => {
             </View>
             <View style={styles.summaryContent}>
               <Text style={styles.summaryLabel}>{t('summaryLabelActivity', 'Activity')}</Text>
-              <Text style={styles.summaryValue}>{activity?.title || t('defaultActivity', 'Coffee Meetup')}</Text>
+              <Text style={styles.summaryValue}>{activity?.defaultTitle || t('defaultActivity', 'Coffee Meetup')}</Text>
             </View>
             <Text style={styles.priceValue}>{activity?.price || t('defaultPrice', '₹500/hr')}</Text>
           </View>
@@ -109,7 +113,7 @@ export const BookingSummaryScreen = () => {
             </View>
             <View style={styles.summaryContent}>
               <Text style={styles.summaryLabel}>{t('summaryLabelDate', 'Date & Time')}</Text>
-              <Text style={styles.summaryValue}>{date?.dayName}, {date?.dayNumber}</Text>
+              <Text style={styles.summaryValue}>{dayName}, {dayNumber}</Text>
               <Text style={styles.summarySubValue}>{t('durationText', '{{time}} ({{duration}} {{hourText}})', { time, duration, hourText: duration === 1 ? 'hour' : 'hours' })}</Text>
             </View>
           </View>

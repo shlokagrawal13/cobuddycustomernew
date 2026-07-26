@@ -164,7 +164,7 @@ export const SafetySettingsScreen = () => {
         <TouchableOpacity 
             style={styles.hubBtn}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('SafetyHubScreen')} accessibilityRole="button" accessibilityLabel={t('a11yOpenSafetyHub', 'Open Safety Hub')}
+            onPress={() => navigation.navigate('SafetySupportStack', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yOpenSafetyHub', 'Open Safety Hub')}
         >
             <Icon name="security" size={18} color={theme.colors.background} />
             <Text style={styles.hubBtnText}>{t('openSafetyHub', 'Open Safety Hub')}</Text>

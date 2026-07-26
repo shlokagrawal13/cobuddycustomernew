@@ -160,7 +160,7 @@ export const HelpCenterScreen = () => {
                 <TouchableOpacity 
                     style={styles.chatBtn}
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('ConciergeChatScreen')} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
+                    onPress={() => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
                 >
                     <Icon name="message-text-outline" size={20} color={theme.colors.background} />
                     <Text style={styles.chatBtnText}>{t('chatNow', 'Chat Now')}</Text>

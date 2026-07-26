@@ -30,7 +30,7 @@ export const AccountSettingsScreen = () => {
   };
 
   const handlePhoneUpdate = () => {
-      navigation.navigate('PhoneLoginScreen', { isUpdate: true });
+      navigation.navigate('OTPVerificationScreen', { isUpdate: true } as any);
   };
 
   const toggleAppleConnect = () => {

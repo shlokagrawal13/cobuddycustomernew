@@ -118,16 +118,16 @@ const ProfileTabStack = () => (
       <Stack.Screen name="AccountSettingsScreen" component={AccountSettingsScreen} />
       <Stack.Screen name="DeleteAccountScreen" component={DeleteAccountScreen} />
       <Stack.Screen name="LegalAgreementsScreen" component={LegalAgreementsScreen} />
-        <Stack.Screen name="HelpCenterScreen" component={HelpCenterScreen} />
-        <Stack.Screen name="SupportCenterScreen" component={SupportCenterScreen} />
-        <Stack.Screen name="CreateSupportTicketScreen" component={CreateSupportTicketScreen} />
-        <Stack.Screen name="SupportTicketDetailScreen" component={SupportTicketDetailScreen} />
-        <Stack.Screen name="ConciergeChatScreen" component={ConciergeChatScreen} />
-        <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
-        <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
-        <Stack.Screen name="SafetyHubScreen" component={SafetyHubScreen} />
-        <Stack.Screen name="IncidentReportScreen" component={IncidentReportScreen} />
-        <Stack.Screen name="SafetyGuidelinesScreen" component={SafetyGuidelinesScreen} />
+      
+      {/* 
+        NOTE: TrustedContactsScreen and OTPVerificationScreen are intentionally dual-registered here in ProfileTabStack.
+        They are also registered in their respective main stacks (AuthStack and SafetySupportStack).
+        This allows them to be accessed directly from the Profile/Settings context with their own back-stack,
+        without resetting the user's tab state. 
+      */}
+      <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
+      <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
+      
       <Stack.Screen name="SpokenLanguagesScreen" component={SpokenLanguagesScreen} />
       <Stack.Screen name="LocationSelectionScreen" component={LocationSelectionScreen} />
       <Stack.Screen name="AppPermissionsScreen" component={AppPermissionsScreen} />
@@ -138,7 +138,6 @@ const ProfileTabStack = () => (
       <Stack.Screen name="DeactivateAccountScreen" component={DeactivateAccountScreen} />
       <Stack.Screen name="ActiveSessionsScreen" component={ActiveSessionsScreen} />
       <Stack.Screen name="SavedProfilesScreen" component={SavedProfilesScreen} />
-        <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
       <Stack.Screen name="ReferFriendScreen" component={ReferFriendScreen} />
   </Stack.Navigator>
 );

@@ -77,3 +77,9 @@ yarn-error.log
 match.txt
 last_match.txt
 __pycache__/
+
+# Temporary patch scripts
+fix_*.py
+patch_*.py
+patch_*.js
+

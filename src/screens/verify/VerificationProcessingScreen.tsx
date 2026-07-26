@@ -51,7 +51,7 @@ export const VerificationProcessingScreen = () => {
         // For now, randomly showing all 3 screens for your frontend testing
         const outcomes = ['VerificationSuccessScreen', 'VerificationPendingScreen', 'VerificationRejectedScreen'];
         const randomOutcome = outcomes[Math.floor(Math.random() * outcomes.length)];
-        (navigation as any).replace(randomOutcome);
+        navigation.replace(randomOutcome as keyof RootStackParamList);
         
       } catch (error) {
         // If API fails (e.g. no internet), show rejected or error screen

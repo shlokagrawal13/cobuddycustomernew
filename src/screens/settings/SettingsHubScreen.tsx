@@ -9,40 +9,6 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const SETTING_SECTIONS = [
-  {
-    title: 'ACCOUNT',
-    items: [
-      { id: 'acc', icon: 'account-cog-outline', title: 'Account Settings', sub: 'Phone, Email, Linked Accounts', route: 'AccountSettingsScreen' },
-      { id: 'perms', icon: 'shield-account-outline', title: 'App Permissions', sub: 'Camera, Location, Microphone', route: 'AppPermissionsScreen' },
-      { id: 'sessions', icon: 'devices', title: 'Active Sessions', sub: 'Manage logged-in devices', route: 'ActiveSessionsScreen' },
-    ]
-  },
-  {
-    title: 'PRIVACY & SAFETY',
-    items: [
-      { id: 'applock', icon: 'fingerprint', title: 'App Lock', sub: 'FaceID & Biometrics', route: 'AppLockScreen' },
-      { id: 'blocked', icon: 'cancel', title: 'Blocked Users', sub: 'Manage your blocked list', route: 'BlockedUsersScreen' },
-      { id: 'safety', icon: 'shield-check-outline', title: 'Safety Settings', sub: 'SOS & Trusted Contacts', route: 'SafetySettingsScreen' },
-    ]
-  },
-  {
-    title: 'DATA & NOTIFICATIONS',
-    items: [
-      { id: 'notif', icon: 'bell-outline', title: 'Notifications', sub: 'Push & Email preferences', route: 'NotificationPreferencesScreen' },
-      { id: 'data', icon: 'database-outline', title: 'Data & Cache', sub: 'Clear cache & consent manager', route: 'DataCacheScreen' },
-      { id: 'lang', icon: 'translate', title: 'App Language', sub: 'English (US)', route: 'LanguageSelectionScreen' },
-    ]
-  },
-  {
-    title: 'SUPPORT',
-    items: [
-      { id: 'help', icon: 'help-circle-outline', title: 'Help Center', sub: 'FAQs & Guides', route: 'HelpCenterScreen' },
-      { id: 'contact', icon: 'headset', title: 'Contact Support', sub: '24/7 Concierge Chat', route: 'ConciergeChatScreen' },
-      { id: 'report', icon: 'alert-circle-outline', title: 'Report a Problem', sub: 'Flag an issue or bug', route: 'CreateSupportTicketScreen' },
-    ]
-  },
-];
 
 const DANGER_ZONE = [
   { id: 'deactivate', icon: 'pause-circle-outline', title: 'Deactivate Account', sub: 'Temporarily hide your profile', route: 'DeactivateAccountScreen' },
@@ -63,7 +29,42 @@ const DEV_TEST_SCREENS = [
 export const SettingsHubScreen = () => { 
   const { t } = useTranslation('settings.hub');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { smartGoBack } = useSmartNavigation();
+
+  const SETTING_SECTIONS = [
+    {
+      title: 'ACCOUNT',
+      items: [
+        { id: 'acc', icon: 'account-cog-outline', title: 'Account Settings', sub: 'Phone, Email, Linked Accounts', route: 'AccountSettingsScreen' },
+        { id: 'perms', icon: 'shield-account-outline', title: 'App Permissions', sub: 'Camera, Location, Microphone', route: 'AppPermissionsScreen' },
+        { id: 'sessions', icon: 'devices', title: 'Active Sessions', sub: 'Manage logged-in devices', route: 'ActiveSessionsScreen' },
+      ]
+    },
+    {
+      title: 'PRIVACY & SAFETY',
+      items: [
+        { id: 'applock', icon: 'fingerprint', title: 'App Lock', sub: 'FaceID & Biometrics', route: 'AppLockScreen' },
+        { id: 'blocked', icon: 'cancel', title: 'Blocked Users', sub: 'Manage your blocked list', route: 'BlockedUsersScreen' },
+        { id: 'safety', icon: 'shield-check-outline', title: 'Safety Settings', sub: 'SOS & Trusted Contacts', route: 'SafetySettingsScreen' },
+      ]
+    },
+    {
+      title: 'DATA & NOTIFICATIONS',
+      items: [
+        { id: 'notif', icon: 'bell-outline', title: 'Notifications', sub: 'Push & Email preferences', route: 'NotificationPreferencesScreen' },
+        { id: 'data', icon: 'database-outline', title: 'Data & Cache', sub: 'Clear cache & consent manager', route: 'DataCacheScreen' },
+        { id: 'lang', icon: 'translate', title: 'App Language', sub: 'English (US)', route: 'LanguageSelectionScreen' },
+      ]
+    },
+    {
+      title: 'SUPPORT',
+      items: [
+        { id: 'help', icon: 'help-circle-outline', title: 'Help Center', sub: 'FAQs & Guides', action: () => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' }) },
+        { id: 'contact', icon: 'headset', title: 'Contact Support', sub: '24/7 Concierge Chat', action: () => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen' }) },
+        { id: 'report', icon: 'alert-circle-outline', title: 'Report a Problem', sub: 'Flag an issue or bug', action: () => navigation.navigate('SafetySupportStack', { screen: 'CreateSupportTicketScreen' }) },
+      ]
+    },
+  ];
+    const { smartGoBack } = useSmartNavigation();
 
   const handleLogout = () => {
     Alert.alert(
@@ -128,8 +129,8 @@ export const SettingsHubScreen = () => {
                   key={item.id} 
                   style={[styles.row, index !== section.items.length - 1 && styles.borderBottom]}
                   activeOpacity={0.7}
-                  onPress={() => item.route ? navigation.navigate(item.route as never) : null}
-                  disabled={!item.route} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                  onPress={() => 'action' in item ? (item as any).action() : 'route' in item && (item as any).route ? navigation.navigate((item as any).route as never) : null}
+                  disabled={!('route' in item && (item as any).route) && !('action' in item)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
                 >
                   <View style={styles.iconWrap}>
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />
@@ -138,7 +139,7 @@ export const SettingsHubScreen = () => {
                     <Text style={styles.title}>{t(`items.${item.id}.title`, item.title)}</Text>
                     <Text style={styles.sub}>{t(`items.${item.id}.sub`, item.sub)}</Text>
                   </View>
-                  {item.route ? <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} /> : null}
+                  {('route' in item && (item as any).route) ? <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} /> : null}
                 </TouchableOpacity>
               ))}
             </View>
@@ -186,7 +187,7 @@ export const SettingsHubScreen = () => {
                 key={item.id} 
                 style={[styles.row, index !== DANGER_ZONE.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(239, 68, 68, 0.1)'}]}
                 activeOpacity={0.7}
-                onPress={() => item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+                onPress={() => 'action' in item ? (item as any).action() : 'route' in item && (item as any).route ? navigation.navigate((item as any).route as never) : null} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
               >
                 <View style={[styles.iconWrap, {backgroundColor: 'rgba(239, 68, 68, 0.1)'}]}>
                   <Icon name={item.icon} size={22} color={theme.colors.error} />

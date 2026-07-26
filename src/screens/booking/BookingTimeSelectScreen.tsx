@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { BookingHeader } from '../../components/booking/BookingHeader';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { useBookingStore } from '../../store/slices/bookingStore';
 import { selectSetDraftBooking } from '../../store/selectors/bookingSelectors';
 import { RootStackParamList } from '../../types/navigation';
@@ -45,7 +46,8 @@ const TIME_SLOTS = [
 export const BookingTimeSelectScreen = () => { 
   const { t } = useTranslation('booking.timeSelect');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { goBack } = useNavigation();
+  const { smartGoBack } = useSmartNavigation();
+    const clearDraftBooking = useBookingStore(state => state.clearDraftBooking);
   const route = useRoute<RouteProp<RootStackParamList, 'BookingTimeSelectScreen'>>();
   const setDraftBooking = useBookingStore(selectSetDraftBooking);
 
@@ -56,7 +58,12 @@ export const BookingTimeSelectScreen = () => {
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [duration, setDuration] = useState<number>(1); // Default 1 hour
 
-  const handleNext = () => {
+  const handleBack = () => {
+      clearDraftBooking();
+      smartGoBack();
+    };
+
+    const handleNext = () => {
     if (!selectedTime) return;
     
     const selectedDate = DATES.find(d => d.id === selectedDateId);
@@ -65,7 +72,7 @@ export const BookingTimeSelectScreen = () => {
     navigation.navigate('BookingSummaryScreen', {
       activity,
       venue,
-      date: selectedDate,
+      date: selectedDate?.dateStr,
       time: selectedTime,
       duration,
     });
@@ -75,7 +82,7 @@ export const BookingTimeSelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => goBack()} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
+        <TouchableOpacity style={styles.backBtn} onPress={handleBack} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 3 of 4')}</Text>

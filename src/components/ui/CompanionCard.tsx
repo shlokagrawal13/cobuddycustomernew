@@ -71,7 +71,7 @@ export const CompanionCard = ({
 
           <View style={styles.statsRow}>
             <Icon name="star" size={14} color={theme.colors.primary} />
-            <Text style={styles.statsText}>{rating} <Text style={styles.statsMuted}>{t('companionCard.statsMuted', '� {{reviews}} reviews � {{sessions}} sessions', { reviews, sessions })}</Text></Text>
+            <Text style={styles.statsText}>{rating} <Text style={styles.statsMuted}>{t('companionCard.statsMuted', '• {{reviews}} reviews • {{sessions}} sessions', { reviews, sessions })}</Text></Text>
           </View>
           
           {distance && (

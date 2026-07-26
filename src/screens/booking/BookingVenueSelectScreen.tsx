@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { BookingHeader } from '../../components/booking/BookingHeader';
+import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { useBookingStore } from '../../store/slices/bookingStore';
 import { selectSetDraftBooking } from '../../store/selectors/bookingSelectors';
 import { RootStackParamList } from '../../types/navigation';
@@ -29,7 +30,8 @@ const SAFE_VENUES = [
 export const BookingVenueSelectScreen = () => { 
   const { t } = useTranslation('booking.venueSelect');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { goBack } = useNavigation();
+  const { smartGoBack } = useSmartNavigation();
+    const clearDraftBooking = useBookingStore(state => state.clearDraftBooking);
   const route = useRoute<RouteProp<RootStackParamList, 'BookingVenueSelectScreen'>>();
   const setDraftBooking = useBookingStore(selectSetDraftBooking);
 
@@ -39,7 +41,12 @@ export const BookingVenueSelectScreen = () => {
   const [selectedVenueId, setSelectedVenueId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleNext = () => {
+  const handleBack = () => {
+      clearDraftBooking();
+      smartGoBack();
+    };
+
+    const handleNext = () => {
     if (!selectedVenueId) return;
     
     const selectedVenue = SAFE_VENUES.find(v => v.id === selectedVenueId) || { name: 'Custom Venue', address: searchQuery };
@@ -55,7 +62,7 @@ export const BookingVenueSelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => goBack()} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
+        <TouchableOpacity style={styles.backBtn} onPress={handleBack} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 2 of 4')}</Text>
@@ -67,7 +74,7 @@ export const BookingVenueSelectScreen = () => {
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>{t('title', 'Where do you want to meet?')}</Text>
-        <Text style={styles.subtitle}>{t('subtitle', 'Select a safe public venue for {{activity}}.', { activity: activity?.title || 'this session' })}</Text>
+        <Text style={styles.subtitle}>{t('subtitle', 'Select a safe public venue for {{activity}}.', { activity: activity?.defaultTitle || 'this session' })}</Text>
 
         <View style={styles.searchContainer}>
           <Icon name="magnify" size={24} color={theme.colors.textSecondary} />

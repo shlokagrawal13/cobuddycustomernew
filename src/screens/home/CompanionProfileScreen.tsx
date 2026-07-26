@@ -211,7 +211,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
 
           {/* About Card */}
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>About {DUMMY_PROFILE.name}</Text>
+            <Text style={styles.cardTitle}>{t('aboutName', 'About {{name}}', { name: DUMMY_PROFILE.name })}</Text>
             <Text style={styles.bioText}>{DUMMY_PROFILE.bio}</Text>
             
             <View style={styles.tagsContainer}>
@@ -421,7 +421,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <View style={[styles.sheetIconWrap, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
               <Icon name="block-helper" size={20} color={theme.colors.error} />
             </View>
-            <Text style={[styles.sheetRowText, { color: theme.colors.error }]}>Block {DUMMY_PROFILE.name}</Text>
+            <Text style={[styles.sheetRowText, { color: theme.colors.error }]}>{t('blockName', 'Block {{name}}', { name: DUMMY_PROFILE.name })}</Text>
           </TouchableOpacity>
         </View>
       </AppBottomSheet>
