@@ -12,6 +12,7 @@ import { ChatInputBar } from '../../components/common/ChatInputBar';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { getMockChatMessages } from '../../services/mock/chat.mock';
 import { RootStackParamList } from '../../types/navigation';
+import { isFeatureEnabled } from '../../config/featureFlags';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const CompanionChatScreen = () => { 
@@ -92,9 +93,11 @@ export const CompanionChatScreen = () => {
             </View>
           </View>
           
-          <TouchableOpacity style={styles.callBtn} onPress={handleCall} accessibilityRole="button" accessibilityLabel="Call">
-            <Icon name="phone" size={20} color={theme.colors.textPrimary} />
-          </TouchableOpacity>
+          {isFeatureEnabled('ENABLE_VOICE_CALL') && (
+            <TouchableOpacity style={styles.callBtn} onPress={handleCall} accessibilityRole="button" accessibilityLabel="Call">
+              <Icon name="phone" size={20} color={theme.colors.textPrimary} />
+            </TouchableOpacity>
+          )}
           <TouchableOpacity style={styles.moreBtn} onPress={() => setOptionsMenuVisible(true)} accessibilityRole="button" accessibilityLabel="More options">
             <Icon name="dots-vertical" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>

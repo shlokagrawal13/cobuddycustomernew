@@ -11,6 +11,7 @@ import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
+import { isFeatureEnabled } from '../../config/featureFlags';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const ConciergeChatScreen = () => { 
@@ -81,13 +82,15 @@ export const ConciergeChatScreen = () => {
               </View>
             </View>
           </View>
-          <TouchableOpacity 
-            style={styles.callBtn}
-            onPress={() => navigation.navigate('VoiceCallScreen', { callerName: 'CoBuddy Concierge', callType: 'support' })}
-            activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Call"
-          >
-            <Icon name="phone" size={20} color={theme.colors.textPrimary} />
-          </TouchableOpacity>
+          {isFeatureEnabled('ENABLE_VOICE_CALL') && (
+            <TouchableOpacity 
+              style={styles.callBtn}
+              onPress={() => navigation.navigate('VoiceCallScreen', { callerName: 'CoBuddy Concierge', callType: 'support' })}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Call"
+            >
+              <Icon name="phone" size={20} color={theme.colors.textPrimary} />
+            </TouchableOpacity>
+          )}
         </View>
       </SafeAreaView>
 
