@@ -8,7 +8,7 @@ export interface Companion {
   interests: string[];
 }
 
-interface CompanionState {
+export interface CompanionState {
   companions: Companion[];
   selectedCompanion: Companion | null;
   isLoading: boolean;

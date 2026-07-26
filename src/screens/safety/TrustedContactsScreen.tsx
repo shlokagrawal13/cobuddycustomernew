@@ -17,6 +17,7 @@ import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { useAuthStore } from '../../store/slices/authStore';
+import { selectCompleteOnboarding } from '../../store/selectors/authSelectors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { validatePhone, validateName } from '../../utils/validation';
@@ -31,7 +32,7 @@ export const TrustedContactsScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'TrustedContactsScreen'>>();
   const { t } = useTranslation(['onboarding']);
-  const completeOnboarding = useAuthStore((state) => state.completeOnboarding);
+  const completeOnboarding = useAuthStore(selectCompleteOnboarding);
   const isFromSettings = route.params?.fromSettings;
   const [contacts, setContacts] = useState([{ name: 'Aman', phone: '9876543210', relationship: 'Family' }]);
   const [showAddSheet, setShowAddSheet] = useState(false);

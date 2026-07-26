@@ -11,8 +11,9 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
-import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { BookingHeader } from '../../components/booking/BookingHeader';
 import { useBookingStore } from '../../store/slices/bookingStore';
+import { selectSetDraftBooking } from '../../store/selectors/bookingSelectors';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -46,7 +47,7 @@ export const BookingTimeSelectScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'BookingTimeSelectScreen'>>();
-  const setDraftBooking = useBookingStore(state => state.setDraftBooking);
+  const setDraftBooking = useBookingStore(selectSetDraftBooking);
 
   
   const { activity, venue } = route.params || {};

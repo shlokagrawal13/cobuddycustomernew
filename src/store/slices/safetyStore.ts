@@ -6,7 +6,7 @@ export interface TrustedContact {
   phone: string;
 }
 
-interface SafetyState {
+export interface SafetyState {
   isSOSActive: boolean;
   isSessionActive: boolean;
   trustedContacts: TrustedContact[];

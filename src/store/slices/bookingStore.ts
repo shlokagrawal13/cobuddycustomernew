@@ -11,7 +11,7 @@ export interface Booking {
   status: BookingStatus;
 }
 
-interface BookingState {
+export interface BookingState {
   activeBooking: Booking | null;
   draftBooking: Partial<Booking> | null;
   bookingHistory: Booking[];
