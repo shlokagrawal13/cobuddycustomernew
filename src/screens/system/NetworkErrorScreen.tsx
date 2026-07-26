@@ -33,7 +33,7 @@ export const NetworkErrorScreen = () => {
         <TouchableOpacity 
           style={styles.primaryButton}
           onPress={handleRetry}
-          disabled={isRetrying} accessibilityRole="button" accessibilityLabel="Action"
+          disabled={isRetrying} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
         >
           {isRetrying ? (
             <ActivityIndicator color={theme.colors.background} />

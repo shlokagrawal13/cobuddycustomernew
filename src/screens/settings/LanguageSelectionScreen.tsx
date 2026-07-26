@@ -28,7 +28,7 @@ export const LanguageSelectionScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Language')}</Text>
@@ -50,7 +50,7 @@ export const LanguageSelectionScreen = () => {
                         key={lang.id} 
                         style={[styles.row, index !== LANGUAGES.length - 1 && styles.borderBottom]}
                         activeOpacity={0.7}
-                        onPress={() => setSelectedLang(lang.id)} accessibilityRole="button" accessibilityLabel="Action"
+                        onPress={() => setSelectedLang(lang.id)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
                     >
                         <View style={styles.meta}>
                             <Text style={styles.title}>{lang.name}</Text>

@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { theme } from '../../theme';
+import { useTranslation } from 'react-i18next';
 
 interface AppBottomSheetProps {
   visible: boolean;
@@ -69,9 +70,11 @@ export const AppBottomSheet = ({
     }),
   ).current;
 
+  const { t } = useTranslation();
+
   return (
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose} statusBarTranslucent>
-      <Pressable style={StyleSheet.absoluteFill as object} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close bottom sheet backdrop">
+      <Pressable style={StyleSheet.absoluteFill as object} onPress={onClose} accessibilityRole="button" accessibilityLabel={t('a11yCloseBottomSheetBackdrop', 'Close bottom sheet backdrop')}>
         <Animated.View style={[StyleSheet.absoluteFill as object, styles.backdrop, { opacity: backdropOpacity }]} />
       </Pressable>
       <Animated.View style={[
@@ -86,7 +89,7 @@ export const AppBottomSheet = ({
         {title ? (
           <View style={styles.header}>
             <Text style={styles.title}>{title}</Text>
-            <TouchableOpacity onPress={onClose} accessibilityRole="button" accessibilityLabel="Close">
+            <TouchableOpacity onPress={onClose} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
               <Text style={styles.closeBtn}>✕</Text>
             </TouchableOpacity>
           </View>

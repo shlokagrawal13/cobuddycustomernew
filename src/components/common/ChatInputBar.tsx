@@ -36,7 +36,7 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
             style={styles.attachBtn}
             onPress={() => setAttachmentMenuVisible(true)}
             accessibilityRole="button"
-            accessibilityLabel="Open attachment menu"
+            accessibilityLabel={t('a11yOpenAttachmentMenu', 'Open attachment menu')}
           >
             <Icon name="plus" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
@@ -50,7 +50,7 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
             onSubmitEditing={() => handleSend(inputText)}
           />
           {inputText.trim().length > 0 ? (
-            <TouchableOpacity style={styles.sendBtn} onPress={() => handleSend(inputText)} accessibilityRole="button" accessibilityLabel="Send message">
+            <TouchableOpacity style={styles.sendBtn} onPress={() => handleSend(inputText)} accessibilityRole="button" accessibilityLabel={t('a11ySendMessage', 'Send message')}>
               <Icon name="send" size={20} color={theme.colors.background} />
             </TouchableOpacity>
           ) : (
@@ -58,7 +58,7 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
               style={styles.attachBtn}
               onPress={() => handleAttachment('📷 Sent a photo')}
               accessibilityRole="button"
-              accessibilityLabel="Open camera"
+              accessibilityLabel={t('a11yOpenCamera', 'Open camera')}
             >
               <Icon name="camera-outline" size={24} color={theme.colors.textSecondary} />
             </TouchableOpacity>
@@ -78,7 +78,7 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
           activeOpacity={1} 
           onPress={() => setAttachmentMenuVisible(false)}
           accessibilityRole="button"
-          accessibilityLabel="Close attachment menu"
+          accessibilityLabel={t('a11yCloseAttachmentMenu', 'Close attachment menu')}
         >
           <View style={styles.attachmentSheet}>
             <View style={styles.sheetHandle} />
@@ -86,28 +86,28 @@ export const ChatInputBar: React.FC<ChatInputBarProps> = ({ onSend }) => {
             
             <View style={styles.attachmentGrid}>
               
-              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📷 Sent a photo')} accessibilityRole="button" accessibilityLabel="Take photo">
+              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📷 Sent a photo')} accessibilityRole="button" accessibilityLabel={t('a11yTakePhoto', 'Take photo')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="camera" size={28} color={theme.colors.primary} />
                 </View>
                 <Text style={styles.attachLabel}>{t('chatInput.camera', 'Camera')}</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('🖼️ Sent an image')} accessibilityRole="button" accessibilityLabel="Choose photo">
+              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('🖼️ Sent an image')} accessibilityRole="button" accessibilityLabel={t('a11yChoosePhoto', 'Choose photo')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="image" size={28} color={theme.colors.primary} />
                 </View>
                 <Text style={styles.attachLabel}>{t('chatInput.photo', 'Photo')}</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📄 Sent a document')} accessibilityRole="button" accessibilityLabel="Attach document">
+              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📄 Sent a document')} accessibilityRole="button" accessibilityLabel={t('a11yAttachDocument', 'Attach document')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="file-document" size={28} color={theme.colors.primary} />
                 </View>
                 <Text style={styles.attachLabel}>{t('chatInput.document', 'Document')}</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📍 Shared a location')} accessibilityRole="button" accessibilityLabel="Share location">
+              <TouchableOpacity style={styles.attachItem} onPress={() => handleAttachment('📍 Shared a location')} accessibilityRole="button" accessibilityLabel={t('a11yShareLocation', 'Share location')}>
                 <View style={[styles.attachIconWrap, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                   <Icon name="map-marker" size={28} color={theme.colors.primary} />
                 </View>

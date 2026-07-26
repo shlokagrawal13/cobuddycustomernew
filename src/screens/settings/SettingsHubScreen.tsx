@@ -83,7 +83,7 @@ export const SettingsHubScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Settings')}</Text>
@@ -129,7 +129,7 @@ export const SettingsHubScreen = () => {
                   style={[styles.row, index !== section.items.length - 1 && styles.borderBottom]}
                   activeOpacity={0.7}
                   onPress={() => item.route ? navigation.navigate(item.route as never) : null}
-                  disabled={!item.route} accessibilityRole="button" accessibilityLabel="Action"
+                  disabled={!item.route} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
                 >
                   <View style={styles.iconWrap}>
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />
@@ -163,7 +163,7 @@ export const SettingsHubScreen = () => {
                   } else {
                      navigation.navigate('SystemStateStack', { screen: item.route });
                   }
-                }} accessibilityRole="button" accessibilityLabel="Next"
+                }} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
               >
                 <View style={[styles.iconWrap, {backgroundColor: 'rgba(245, 158, 11, 0.1)'}]}>
                   <Icon name="test-tube" size={22} color={theme.colors.warning} />
@@ -186,7 +186,7 @@ export const SettingsHubScreen = () => {
                 key={item.id} 
                 style={[styles.row, index !== DANGER_ZONE.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(239, 68, 68, 0.1)'}]}
                 activeOpacity={0.7}
-                onPress={() => item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel="Next"
+                onPress={() => item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
               >
                 <View style={[styles.iconWrap, {backgroundColor: 'rgba(239, 68, 68, 0.1)'}]}>
                   <Icon name={item.icon} size={22} color={theme.colors.error} />
@@ -201,7 +201,7 @@ export const SettingsHubScreen = () => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.logoutBtn} activeOpacity={0.8} onPress={handleLogout} accessibilityRole="button" accessibilityLabel="Log Out">
+        <TouchableOpacity style={styles.logoutBtn} activeOpacity={0.8} onPress={handleLogout} accessibilityRole="button" accessibilityLabel={t('a11yLogOut', 'Log Out')}>
           <Icon name="logout-variant" size={20} color={theme.colors.error} />
           <Text style={styles.logoutText}>{t('logOut', 'Log Out')}</Text>
         </TouchableOpacity>

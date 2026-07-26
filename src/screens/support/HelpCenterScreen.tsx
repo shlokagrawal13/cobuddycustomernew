@@ -59,7 +59,7 @@ export const HelpCenterScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Help Center')}</Text>
@@ -85,7 +85,7 @@ export const HelpCenterScreen = () => {
                         }}
                     />
                     {searchQuery.length > 0 && (
-                        <TouchableOpacity onPress={() => setSearchQuery('')} accessibilityRole="button" accessibilityLabel="Close">
+                        <TouchableOpacity onPress={() => setSearchQuery('')} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
                             <Icon name="close-circle" size={20} color={theme.colors.textSecondary} />
                         </TouchableOpacity>
                     )}
@@ -160,7 +160,7 @@ export const HelpCenterScreen = () => {
                 <TouchableOpacity 
                     style={styles.chatBtn}
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('ConciergeChatScreen')} accessibilityRole="button" accessibilityLabel="Chat Now"
+                    onPress={() => navigation.navigate('ConciergeChatScreen')} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
                 >
                     <Icon name="message-text-outline" size={20} color={theme.colors.background} />
                     <Text style={styles.chatBtnText}>{t('chatNow', 'Chat Now')}</Text>

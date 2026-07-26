@@ -7,6 +7,7 @@ import {
   Text,
 } from 'react-native';
 import { theme } from '../../theme';
+import { useTranslation } from 'react-i18next';
 
 interface OTPInputProps {
   length?: number;
@@ -29,6 +30,7 @@ export const OTPInput = ({
   useEffect(() => {
     if (autoFocus) {
       const t = setTimeout(() => inputRef.current?.focus(), 300);
+      const { t } = useTranslation();
       return () => clearTimeout(t);
     }
   }, [autoFocus]);
@@ -41,7 +43,7 @@ export const OTPInput = ({
       onPress={() => inputRef.current?.focus()}
       style={styles.container}
       accessibilityRole="button"
-      accessibilityLabel="Enter OTP">
+      accessibilityLabel={t('a11yEnterOtp', 'Enter OTP')}>
       <TextInput
         ref={inputRef}
         value={value}
@@ -55,7 +57,7 @@ export const OTPInput = ({
         style={styles.hiddenInput}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        accessibilityLabel="OTP Code Input"
+        accessibilityLabel={t('a11yOtpCodeInput', 'OTP Code Input')}
       />
       <View style={styles.boxes}>
         {Array.from({ length }).map((_, i) => {

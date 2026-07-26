@@ -27,7 +27,7 @@ export const TransactionDetailScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Transaction Details')}</Text>
@@ -114,7 +114,7 @@ export const TransactionDetailScreen = () => {
         </View>
 
         
-        <TouchableOpacity style={styles.downloadBtn} activeOpacity={0.8} onPress={handleDownload} accessibilityRole="button" accessibilityLabel="Download Receipt">
+        <TouchableOpacity style={styles.downloadBtn} activeOpacity={0.8} onPress={handleDownload} accessibilityRole="button" accessibilityLabel={t('a11yDownloadReceipt', 'Download Receipt')}>
             <Icon name="download" size={20} color={theme.colors.surface} />
             <Text style={styles.downloadBtnText}>{t('downloadBtn', 'Download Receipt')}</Text>
         </TouchableOpacity>

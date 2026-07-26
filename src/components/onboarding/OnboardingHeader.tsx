@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { theme } from '../../theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useTranslation } from 'react-i18next';
 
 interface OnboardingHeaderProps {
   showBack?: boolean;
@@ -34,6 +35,8 @@ export const OnboardingHeader = ({
 }: OnboardingHeaderProps) => {
   const progressPct = Math.min(1, currentStep / totalSteps);
 
+  const { t } = useTranslation();
+
   return (
     <View style={[styles.wrapper, style]}>
       {/* Row */}
@@ -47,7 +50,7 @@ export const OnboardingHeader = ({
               hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               activeOpacity={0.7}
               accessibilityRole="button"
-              accessibilityLabel="Go back">
+              accessibilityLabel={t('a11yGoBack', 'Go back')}>
               <Icon name="arrow-left" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
           ) : (

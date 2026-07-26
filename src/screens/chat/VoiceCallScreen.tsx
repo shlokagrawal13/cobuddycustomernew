@@ -61,20 +61,20 @@ export const VoiceCallScreen = () => {
           
           <TouchableOpacity 
             style={[styles.controlBtn, isMuted && styles.controlBtnActive]} 
-            onPress={() => setIsMuted(!isMuted)} accessibilityRole="button" accessibilityLabel="Mute"
+            onPress={() => setIsMuted(!isMuted)} accessibilityRole="button" accessibilityLabel={t('a11yMute', 'Mute')}
           >
             <Icon name={isMuted ? "microphone-off" : "microphone"} size={28} color={isMuted ? theme.colors.background : theme.colors.textPrimary} />
             <Text style={[styles.controlLabel, isMuted && { color: theme.colors.background }]}>{t('controlMute', 'Mute')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.controlBtn} accessibilityRole="button" accessibilityLabel="Keypad">
+          <TouchableOpacity style={styles.controlBtn} accessibilityRole="button" accessibilityLabel={t('a11yKeypad', 'Keypad')}>
             <Icon name="dialpad" size={28} color={theme.colors.textPrimary} />
             <Text style={styles.controlLabel}>{t('controlKeypad', 'Keypad')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
             style={[styles.controlBtn, isSpeaker && styles.controlBtnActive]} 
-            onPress={() => setIsSpeaker(!isSpeaker)} accessibilityRole="button" accessibilityLabel="Speaker"
+            onPress={() => setIsSpeaker(!isSpeaker)} accessibilityRole="button" accessibilityLabel={t('a11ySpeaker', 'Speaker')}
           >
             <Icon name={isSpeaker ? "volume-high" : "volume-medium"} size={28} color={isSpeaker ? theme.colors.background : theme.colors.textPrimary} />
             <Text style={[styles.controlLabel, isSpeaker && { color: theme.colors.background }]}>{t('controlSpeaker', 'Speaker')}</Text>
@@ -82,7 +82,7 @@ export const VoiceCallScreen = () => {
 
         </View>
 
-        <TouchableOpacity style={styles.endCallBtn} onPress={handleEndCall} accessibilityRole="button" accessibilityLabel="Phone Hangup">
+        <TouchableOpacity style={styles.endCallBtn} onPress={handleEndCall} accessibilityRole="button" accessibilityLabel={t('a11yPhoneHangup', 'Phone Hangup')}>
           <Icon name="phone-hangup" size={32} color={theme.colors.background} />
         </TouchableOpacity>
       </View>

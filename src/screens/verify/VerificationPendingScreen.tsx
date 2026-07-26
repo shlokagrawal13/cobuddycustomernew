@@ -40,7 +40,7 @@ export const VerificationPendingScreen = () => {
           style={styles.backBtn}
           onPress={handleGoToIdentity}
           hitSlop={{top:10,bottom:10,left:10,right:10}}
-          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Close">
+          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Verification Status')}</Text>

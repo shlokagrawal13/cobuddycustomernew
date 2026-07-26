@@ -39,7 +39,7 @@ export const CancelBookingScreen = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleBack} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity onPress={handleBack} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Cancel Booking')}</Text>
@@ -78,7 +78,7 @@ export const CancelBookingScreen = () => {
               key={reason} 
               style={[styles.reasonRow, selectedReason === reason && styles.reasonRowActive]}
               onPress={() => setSelectedReason(reason)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="reason"
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yReason', 'reason')}
             >
               <Text style={[styles.reasonText, selectedReason === reason && styles.reasonTextActive]}>{reason}</Text>
               <View style={[styles.radioCircle, selectedReason === reason && styles.radioCircleActive]}>
@@ -100,12 +100,12 @@ export const CancelBookingScreen = () => {
               { backgroundColor: selectedReason ? theme.colors.error : 'rgba(255,255,255,0.05)', shadowColor: theme.colors.error }
             ]} 
             disabled={!selectedReason}
-            onPress={handleConfirmCancel} accessibilityRole="button" accessibilityLabel="Confirm Cancellation"
+            onPress={handleConfirmCancel} accessibilityRole="button" accessibilityLabel={t('a11yConfirmCancellation', 'Confirm Cancellation')}
           >
             <Text style={[styles.primaryBtnText, { color: selectedReason ? theme.colors.background : theme.colors.textSecondary }]}>{t('confirmBtn', 'Confirm Cancellation')}</Text>
           </TouchableOpacity>
           
-          <TouchableOpacity style={styles.secondaryBtn} onPress={handleBack} accessibilityRole="button" accessibilityLabel="No, Keep Booking">
+          <TouchableOpacity style={styles.secondaryBtn} onPress={handleBack} accessibilityRole="button" accessibilityLabel={t('a11yNoKeepBooking', 'No, Keep Booking')}>
             <Text style={styles.secondaryBtnText}>{t('keepBtn', 'No, Keep Booking')}</Text>
           </TouchableOpacity>
         </View>

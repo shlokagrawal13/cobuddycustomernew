@@ -42,7 +42,7 @@ export const AccountSettingsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Account Settings')}</Text>
@@ -63,7 +63,7 @@ export const AccountSettingsScreen = () => {
 
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('legalName', 'Legal Name')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel="Shlok Sharma">
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel={t('a11yShlokSharma', 'Shlok Sharma')}>
                             <Text style={styles.lockedText}>{t('mockName', 'Shlok Sharma')}</Text>
                             <Icon name={isKycVerified ? "lock" : "pencil"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
@@ -74,7 +74,7 @@ export const AccountSettingsScreen = () => {
 
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('dob', 'Date of Birth')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel="15 Aug 1998">
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel={t('a11y15Aug1998', '15 Aug 1998')}>
                             <Text style={styles.lockedText}>{t('mockDob', '15 Aug 1998')}</Text>
                             <Icon name={isKycVerified ? "lock" : "calendar-month"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
@@ -84,7 +84,7 @@ export const AccountSettingsScreen = () => {
 
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('genderIdentity', 'Gender Identity')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel="Male">
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.9} onPress={handleSupportRedirect} accessibilityRole="button" accessibilityLabel={t('a11yMale', 'Male')}>
                             <Text style={styles.lockedText}>{t('genderMale', 'Male')}</Text>
                             <Icon name={isKycVerified ? "lock" : "chevron-down"} size={16} color={isKycVerified ? theme.colors.textSecondary : theme.colors.primary} />
                         </TouchableOpacity>
@@ -98,7 +98,7 @@ export const AccountSettingsScreen = () => {
                 <View style={styles.card}>
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('phone', 'Phone Number')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate} accessibilityRole="button" accessibilityLabel="Check Decagram">
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate} accessibilityRole="button" accessibilityLabel={t('a11yCheckDecagram', 'Check Decagram')}>
                             <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
                                 <Text style={styles.lockedText}>{t('mockPhone', '+91 98****1234')}</Text>
                                 <Icon name="check-decagram" size={16} color={theme.colors.primary} />
@@ -122,7 +122,7 @@ export const AccountSettingsScreen = () => {
                                 keyboardType="email-address"
                                 autoCapitalize="none"
                             />
-                            <TouchableOpacity style={styles.saveBtn} onPress={handleSaveEmail} accessibilityRole="button" accessibilityLabel="Save">
+                            <TouchableOpacity style={styles.saveBtn} onPress={handleSaveEmail} accessibilityRole="button" accessibilityLabel={t('a11ySave', 'Save')}>
                                 <Text style={styles.saveBtnText}>{t('save', 'Save')}</Text>
                             </TouchableOpacity>
                         </View>
@@ -161,7 +161,7 @@ export const AccountSettingsScreen = () => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('dataPrivacy', 'DATA & PRIVACY')}</Text>
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest} accessibilityRole="button" accessibilityLabel="Next">
+                    <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
                         <View style={styles.iconBox}>
                             <Icon name="download-box-outline" size={24} color={theme.colors.textPrimary} />
                         </View>

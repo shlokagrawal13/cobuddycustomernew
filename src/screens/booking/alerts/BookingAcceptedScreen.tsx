@@ -118,11 +118,11 @@ export const BookingAcceptedScreen = ({ route }: any) => {
       {/* Floating Luxury Bottom Bar */}
       <View style={styles.bottomBar}>
         <View style={styles.bottomBarHandle} />
-        <TouchableOpacity style={styles.primaryBtn} onPress={handleMessage} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Chat">
+        <TouchableOpacity style={styles.primaryBtn} onPress={handleMessage} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('a11yChat', 'Chat')}>
           <Icon name="chat" size={20} color={theme.colors.background} />
           <Text style={styles.primaryBtnText}>{t('messageCompanion', 'Message {{name}}', { name: bookingData.companionName })}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryBtn} onPress={handleViewItinerary} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="View Booking Details">
+        <TouchableOpacity style={styles.secondaryBtn} onPress={handleViewItinerary} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('a11yViewBookingDetails', 'View Booking Details')}>
           <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'View Booking Details')}</Text>
         </TouchableOpacity>
       </View>

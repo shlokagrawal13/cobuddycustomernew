@@ -12,6 +12,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Reusable Custom Switch
 const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean }) => {
+    const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
     useEffect(() => {
         Animated.timing(translateX, {
@@ -27,7 +28,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? (disabled ? 'rgba(212,175,55,0.5)' : theme.colors.primary) : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel="Action"
+            ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
         >
             <Animated.View style={[styles.switchThumb, { transform: [{ translateX }] }]} />
         </TouchableOpacity>
@@ -72,7 +73,7 @@ export const DataCacheScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('dataStorage', 'Data & Storage')}</Text>
@@ -119,7 +120,7 @@ export const DataCacheScreen = () => {
         {/* Storage Management */}
         <Text style={styles.sectionTitle}>{t('manageStorage', 'MANAGE STORAGE')}</Text>
         <View style={styles.card}>
-            <TouchableOpacity style={[styles.row, styles.borderBottom]} activeOpacity={0.7} onPress={handleClearCache} accessibilityRole="button" accessibilityLabel="cacheSize">
+            <TouchableOpacity style={[styles.row, styles.borderBottom]} activeOpacity={0.7} onPress={handleClearCache} accessibilityRole="button" accessibilityLabel={t('a11yCachesize', 'cacheSize')}>
                 <View style={styles.iconBox}>
                     <Icon name="broom" size={20} color={theme.colors.textPrimary} />
                 </View>
@@ -130,7 +131,7 @@ export const DataCacheScreen = () => {
                 <Text style={styles.sizeText}>{cacheSize}</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={handleClearMedia} accessibilityRole="button" accessibilityLabel="mediaSize">
+            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={handleClearMedia} accessibilityRole="button" accessibilityLabel={t('a11yMediasize', 'mediaSize')}>
                 <View style={styles.iconBox}>
                     <Icon name="image-multiple-outline" size={20} color={theme.colors.textPrimary} />
                 </View>
@@ -153,7 +154,7 @@ export const DataCacheScreen = () => {
                 <CustomSwitch value={autoDownload} onValueChange={setAutoDownload} />
             </View>
 
-            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel="Action">
+            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('uploadQuality', 'Photo Upload Quality')}</Text>
                     <Text style={styles.sub}>{t('uploadQualitySub', 'Adjust quality for profile & chat uploads')}</Text>
@@ -182,7 +183,7 @@ export const DataCacheScreen = () => {
                     onPress={() => {
                         setUploadQuality(quality);
                         setShowQualitySheet(false);
-                    }} accessibilityRole="button" accessibilityLabel="quality"
+                    }} accessibilityRole="button" accessibilityLabel={t('a11yQuality', 'quality')}
                 >
                     <Text style={[styles.sheetRowText, uploadQuality === quality && { color: theme.colors.primary, fontWeight: 'bold' }]}>
                         {quality}

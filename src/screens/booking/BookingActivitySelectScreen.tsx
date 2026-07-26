@@ -47,7 +47,7 @@ export const BookingActivitySelectScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => {
           clearDraftBooking();
           smartGoBack();
-        }} accessibilityRole="button" accessibilityLabel="Go back">
+        }} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 1 of 4')}</Text>
@@ -103,7 +103,7 @@ export const BookingActivitySelectScreen = () => {
           style={[styles.nextBtn, !selectedActivityId && styles.nextBtnDisabled]}
           disabled={!selectedActivityId}
           onPress={handleNext}
-          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Continue"
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yContinue', 'Continue')}
         >
           <Text style={[styles.nextBtnText, !selectedActivityId && styles.nextBtnTextDisabled]}>{t('continue', 'Continue')}</Text>
           <Icon 

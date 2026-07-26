@@ -38,7 +38,7 @@ export const SupportTicketDetailScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <View style={styles.headerTitleWrap}>
@@ -81,7 +81,7 @@ export const SupportTicketDetailScreen = () => {
         {/* Reply Box */}
         {!isClosed ? (
           <View style={styles.replyBox}>
-            <TouchableOpacity style={styles.attachBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Attach file">
+            <TouchableOpacity style={styles.attachBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yAttachFile', 'Attach file')}>
               <Icon name="paperclip" size={24} color={theme.colors.textSecondary} />
             </TouchableOpacity>
             <TextInput
@@ -95,7 +95,7 @@ export const SupportTicketDetailScreen = () => {
             <TouchableOpacity 
               style={[styles.sendBtn, !replyText.trim() && { opacity: 0.5 }]} 
               onPress={handleSend}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Send"
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11ySend', 'Send')}
             >
               <Icon name="send" size={20} color={theme.colors.background} />
             </TouchableOpacity>

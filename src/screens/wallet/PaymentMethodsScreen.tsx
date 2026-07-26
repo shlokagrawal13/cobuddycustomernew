@@ -81,7 +81,7 @@ export const PaymentMethodsScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{isSelectionMode ? 'Select Payment Method' : 'Payment Methods'}</Text>
@@ -112,7 +112,7 @@ export const PaymentMethodsScreen = () => {
                         key={pm.id} 
                         style={[styles.methodRow, index !== methods.length - 1 ? styles.methodBorder : null, isSelected ? styles.methodSelected : null]}
                         activeOpacity={0.8}
-                        onPress={() => handleMethodPress(pm)} accessibilityRole="button" accessibilityLabel="Action"
+                        onPress={() => handleMethodPress(pm)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
                     >
                         <View style={[styles.methodIconWrap, isSelected ? styles.methodIconWrapActive : null]}>
                             <Icon name={pm.icon} size={22} color={isSelected ? theme.colors.primary : theme.colors.textSecondary} />
@@ -130,7 +130,7 @@ export const PaymentMethodsScreen = () => {
                         </View>
                         
                         {!isSelectionMode ? (
-                            <TouchableOpacity style={styles.deleteBtn} onPress={() => handleDelete(pm.id, pm.title)} accessibilityRole="button" accessibilityLabel="Delete">
+                            <TouchableOpacity style={styles.deleteBtn} onPress={() => handleDelete(pm.id, pm.title)} accessibilityRole="button" accessibilityLabel={t('a11yDelete', 'Delete')}>
                                 <Icon name="trash-can-outline" size={20} color={theme.colors.textSecondary} />
                             </TouchableOpacity>
                         ) : (
@@ -146,7 +146,7 @@ export const PaymentMethodsScreen = () => {
                 <TouchableOpacity 
                     style={styles.addMethodRow} 
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('AddPaymentMethodScreen')} accessibilityRole="button" accessibilityLabel="Add New Card"
+                    onPress={() => navigation.navigate('AddPaymentMethodScreen')} accessibilityRole="button" accessibilityLabel={t('a11yAddNewCard', 'Add New Card')}
                 >
                     <View style={styles.addIconWrap}>
                         <Icon name="credit-card-plus-outline" size={22} color={theme.colors.primary} />
@@ -158,7 +158,7 @@ export const PaymentMethodsScreen = () => {
                 <TouchableOpacity 
                     style={[styles.addMethodRow, { borderTopWidth: 0, paddingTop: 12, marginTop: 4 }]} 
                     activeOpacity={0.7}
-                    onPress={() => setUpiModalVisible(true)} accessibilityRole="button" accessibilityLabel="Add UPI ID"
+                    onPress={() => setUpiModalVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yAddUpiId', 'Add UPI ID')}
                 >
                     <View style={styles.addIconWrap}>
                         <Icon name="at" size={22} color={theme.colors.primary} />
@@ -181,7 +181,7 @@ export const PaymentMethodsScreen = () => {
             <View style={styles.modalContent}>
                 <View style={styles.modalHeader}>
                     <Text style={styles.modalTitle}>{t('modalTitle', 'Add UPI ID')}</Text>
-                    <TouchableOpacity onPress={() => setUpiModalVisible(false)} hitSlop={{top:10, bottom:10, left:10, right:10}} accessibilityRole="button" accessibilityLabel="Close">
+                    <TouchableOpacity onPress={() => setUpiModalVisible(false)} hitSlop={{top:10, bottom:10, left:10, right:10}} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
                         <Icon name="close" size={24} color={theme.colors.textSecondary} />
                     </TouchableOpacity>
                 </View>
@@ -203,7 +203,7 @@ export const PaymentMethodsScreen = () => {
                 <TouchableOpacity 
                     style={[styles.verifyBtn, (!newUpiId.includes('@') || newUpiId.length < 5) ? {opacity: 0.5} : null]}
                     activeOpacity={0.8}
-                    onPress={handleAddUpi} accessibilityRole="button" accessibilityLabel="Verify & Add"
+                    onPress={handleAddUpi} accessibilityRole="button" accessibilityLabel={t('a11yVerifyAdd', 'Verify & Add')}
                 >
                     <Text style={styles.verifyBtnText}>{t('modalVerify', 'Verify & Add')}</Text>
                 </TouchableOpacity>

@@ -38,7 +38,7 @@ export const BlockedUsersScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('blockedUsersHeader', 'Blocked Users')}</Text>
@@ -68,7 +68,7 @@ export const BlockedUsersScreen = () => {
                         <TouchableOpacity 
                             style={styles.unblockBtn}
                             activeOpacity={0.7}
-                            onPress={() => handleUnblock(user)} accessibilityRole="button" accessibilityLabel="Unblock"
+                            onPress={() => handleUnblock(user)} accessibilityRole="button" accessibilityLabel={t('a11yUnblock', 'Unblock')}
                         >
                             <Text style={styles.unblockText}>{t('unblock', 'Unblock')}</Text>
                         </TouchableOpacity>

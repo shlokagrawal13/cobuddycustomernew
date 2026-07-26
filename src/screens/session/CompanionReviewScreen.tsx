@@ -50,7 +50,7 @@ export const CompanionReviewScreen = () => {
           
           <View style={styles.starsRow}>
             {[1, 2, 3, 4, 5].map(star => (
-              <TouchableOpacity key={star} onPress={() => setRating(star)} style={styles.starBtn} accessibilityRole="button" accessibilityLabel="Review">
+              <TouchableOpacity key={star} onPress={() => setRating(star)} style={styles.starBtn} accessibilityRole="button" accessibilityLabel={t('a11yReview', 'Review')}>
                 <Icon 
                   name={rating >= star ? 'star' : 'star-outline'} 
                   size={48} 
@@ -106,7 +106,7 @@ export const CompanionReviewScreen = () => {
         <TouchableOpacity 
           style={[styles.primaryBtn, rating === 0 && { opacity: 0.5 }]} 
           disabled={rating === 0}
-          onPress={handleFinish} accessibilityRole="button" accessibilityLabel="Submit & Finish"
+          onPress={handleFinish} accessibilityRole="button" accessibilityLabel={t('a11ySubmitFinish', 'Submit & Finish')}
         >
           <Text style={styles.primaryBtnText}>{t('submitBtn', 'Submit & Finish')}</Text>
         </TouchableOpacity>

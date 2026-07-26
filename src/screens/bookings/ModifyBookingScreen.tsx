@@ -64,7 +64,7 @@ export const ModifyBookingScreen = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleBack} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity onPress={handleBack} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Modify Booking')}</Text>
@@ -138,13 +138,13 @@ export const ModifyBookingScreen = () => {
             <View style={styles.amPmToggle}>
               <TouchableOpacity 
                 style={[styles.amPmBtn, amPm === 'AM' && styles.amPmBtnActive]} 
-                onPress={() => setAmPm('AM')} accessibilityRole="button" accessibilityLabel="AM"
+                onPress={() => setAmPm('AM')} accessibilityRole="button" accessibilityLabel={t('a11yAm', 'AM')}
               >
                 <Text style={[styles.amPmText, amPm === 'AM' && styles.amPmTextActive]}>{t('am', 'AM')}</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.amPmBtn, amPm === 'PM' && styles.amPmBtnActive]} 
-                onPress={() => setAmPm('PM')} accessibilityRole="button" accessibilityLabel="PM"
+                onPress={() => setAmPm('PM')} accessibilityRole="button" accessibilityLabel={t('a11yPm', 'PM')}
               >
                 <Text style={[styles.amPmText, amPm === 'PM' && styles.amPmTextActive]}>{t('pm', 'PM')}</Text>
               </TouchableOpacity>
@@ -155,11 +155,11 @@ export const ModifyBookingScreen = () => {
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>{t('inputDuration', 'Duration (Hours)')}</Text>
           <View style={styles.durationWrapper}>
-            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(-1)} accessibilityRole="button" accessibilityLabel="minus">
+            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(-1)} accessibilityRole="button" accessibilityLabel={t('a11yMinus', 'minus')}>
               <Icon name="minus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
             <Text style={styles.durationText}>{t('durationText', '{{duration}} {{hourText}}', { duration, hourText: duration === 1 ? 'Hour' : 'Hours' })}</Text>
-            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(1)} accessibilityRole="button" accessibilityLabel="Add">
+            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(1)} accessibilityRole="button" accessibilityLabel={t('a11yAdd', 'Add')}>
               <Icon name="plus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
           </View>
@@ -167,7 +167,7 @@ export const ModifyBookingScreen = () => {
 
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>{t('inputVenue', 'New Venue (Optional)')}</Text>
-          <TouchableOpacity style={styles.inputWrapper} activeOpacity={0.7} onPress={() => setVenueModalVisible(true)} accessibilityRole="button" accessibilityLabel="newVenue || \'Search safe publi...">
+          <TouchableOpacity style={styles.inputWrapper} activeOpacity={0.7} onPress={() => setVenueModalVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yNewvenueSearchSafePubli', 'newVenue || \'Search safe publi...')}>
             <Icon name="magnify" size={20} color={theme.colors.primary} style={styles.inputIcon} />
             <Text style={[styles.input, { color: newVenue ? theme.colors.textPrimary : theme.colors.textSecondary, alignSelf: 'center', flex: 1 }]}>
               {newVenue || 'Search safe public venue...'}
@@ -185,11 +185,11 @@ export const ModifyBookingScreen = () => {
           <TouchableOpacity 
             style={[styles.primaryBtn, { opacity: isFormValid ? 1 : 0.5 }]} 
             disabled={!isFormValid}
-            onPress={handleSendRequest} accessibilityRole="button" accessibilityLabel="Send Modification Request"
+            onPress={handleSendRequest} accessibilityRole="button" accessibilityLabel={t('a11ySendModificationRequest', 'Send Modification Request')}
           >
             <Text style={styles.primaryBtnText}>{t('sendBtn', 'Send Modification Request')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.ghostBtn} onPress={handleBack} accessibilityRole="button" accessibilityLabel="Cancel">
+          <TouchableOpacity style={styles.ghostBtn} onPress={handleBack} accessibilityRole="button" accessibilityLabel={t('a11yCancel', 'Cancel')}>
             <Text style={styles.ghostBtnText}>{t('cancelBtn', 'Cancel')}</Text>
           </TouchableOpacity>
         </View>
@@ -198,11 +198,11 @@ export const ModifyBookingScreen = () => {
       {/* Bottom Sheet Picker Modal for Venue */}
       <Modal visible={venueModalVisible} transparent={true} animationType="slide" onRequestClose={() => setVenueModalVisible(false)}>
         <View style={styles.modalOverlay}>
-          <TouchableOpacity style={styles.modalDismissArea} onPress={() => setVenueModalVisible(false)} activeOpacity={1} accessibilityRole="button" accessibilityLabel="Close modal" />
+          <TouchableOpacity style={styles.modalDismissArea} onPress={() => setVenueModalVisible(false)} activeOpacity={1} accessibilityRole="button" accessibilityLabel={t('a11yCloseModal', 'Close modal')} />
           <View style={styles.bottomSheet}>
             <View style={styles.sheetHeader}>
               <Text style={styles.sheetTitle}>{t('sheetTitle', 'Select a Safe Venue')}</Text>
-              <TouchableOpacity onPress={() => setVenueModalVisible(false)} style={styles.closeBtn} accessibilityRole="button" accessibilityLabel="Close">
+              <TouchableOpacity onPress={() => setVenueModalVisible(false)} style={styles.closeBtn} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
                 <Icon name="close" size={24} color={theme.colors.textPrimary} />
               </TouchableOpacity>
             </View>
@@ -224,7 +224,7 @@ export const ModifyBookingScreen = () => {
                 <TouchableOpacity style={styles.sheetOption} onPress={() => {
                   setNewVenue(item === 'Keep Original Venue' ? '' : item);
                   setVenueModalVisible(false);
-                }} accessibilityRole="button" accessibilityLabel="item">
+                }} accessibilityRole="button" accessibilityLabel={t('a11yItem', 'item')}>
                   <Icon name={item === 'Keep Original Venue' ? 'restore' : 'map-marker-outline'} size={20} color={theme.colors.primary} style={{ marginRight: 12 }} />
                   <Text style={[styles.sheetOptionText, { flex: 1 }]}>{item}</Text>
                   <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />

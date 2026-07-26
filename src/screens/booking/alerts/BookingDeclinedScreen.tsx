@@ -54,10 +54,10 @@ export const BookingDeclinedScreen = ({ route }: any) => {
       </View>
 
       <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.primaryBtn} onPress={handleFindAnother} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Find Another Companion">
+        <TouchableOpacity style={styles.primaryBtn} onPress={handleFindAnother} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('a11yFindAnotherCompanion', 'Find Another Companion')}>
           <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Find Another Companion')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondaryBtn} onPress={handleFindAnother} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Return to Home">
+        <TouchableOpacity style={styles.secondaryBtn} onPress={handleFindAnother} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('a11yReturnToHome', 'Return to Home')}>
           <Text style={styles.secondaryBtnText}>{t('secondaryBtnText', 'Return to Home')}</Text>
         </TouchableOpacity>
       </View>

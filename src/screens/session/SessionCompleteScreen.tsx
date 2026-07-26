@@ -69,7 +69,7 @@ export const SessionCompleteScreen = () => {
         <View style={styles.footer}>
           <TouchableOpacity 
             style={styles.primaryBtn} 
-            onPress={() => navigation.navigate('PostSessionFeedbackScreen')} accessibilityRole="button" accessibilityLabel="Continue to Feedback"
+            onPress={() => navigation.navigate('PostSessionFeedbackScreen')} accessibilityRole="button" accessibilityLabel={t('a11yContinueToFeedback', 'Continue to Feedback')}
           >
             <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Continue to Feedback')}</Text>
           </TouchableOpacity>

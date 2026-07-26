@@ -64,7 +64,7 @@ export const NotificationsScreen = () => {
         fallbackTab="HomeTab"
         rightAction={
           notifications.some(n => !n.isRead) ? (
-            <TouchableOpacity onPress={handleMarkAllRead} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Mark all read">
+            <TouchableOpacity onPress={handleMarkAllRead} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yMarkAllRead', 'Mark all read')}>
               <Text style={styles.markReadText}>{t('markAllRead', 'Mark all read')}</Text>
             </TouchableOpacity>
           ) : undefined
@@ -88,7 +88,7 @@ export const NotificationsScreen = () => {
                 style={[
                   styles.categoryChip,
                   isActive && styles.categoryChipActive
-                ]} accessibilityRole="button" accessibilityLabel="category"
+                ]} accessibilityRole="button" accessibilityLabel={t('a11yCategory', 'category')}
               >
                 <Text style={[
                   styles.categoryChipText,
@@ -123,7 +123,7 @@ export const NotificationsScreen = () => {
                 styles.notifCard,
                 !notif.isRead && styles.notifCardUnread,
                 index === filteredNotifications.length - 1 && styles.lastCard
-              ]} accessibilityRole="button" accessibilityLabel="Action"
+              ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
             >
               {/* Unread Indicator */}
               {!notif.isRead && <View style={styles.unreadDot} />}

@@ -64,11 +64,11 @@ export const EditProfileScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('title', 'Edit Profile')}</Text>
-        <TouchableOpacity style={styles.saveHeaderBtn} onPress={handleSave} accessibilityRole="button" accessibilityLabel="Save">
+        <TouchableOpacity style={styles.saveHeaderBtn} onPress={handleSave} accessibilityRole="button" accessibilityLabel={t('a11ySave', 'Save')}>
             <Text style={styles.saveHeaderBtnText}>{t('saveBtn', 'Save')}</Text>
         </TouchableOpacity>
       </View>
@@ -79,7 +79,7 @@ export const EditProfileScreen = () => {
             <View style={styles.avatarSection}>
                 <View style={styles.avatarWrap}>
                     <Image source={{uri: 'https://i.pravatar.cc/300?img=11'}} style={styles.avatar} />
-                    <TouchableOpacity style={styles.editAvatarBtn} accessibilityRole="button" accessibilityLabel="Camera">
+                    <TouchableOpacity style={styles.editAvatarBtn} accessibilityRole="button" accessibilityLabel={t('a11yCamera', 'Camera')}>
                         <Icon name="camera" size={16} color={theme.colors.surface} />
                     </TouchableOpacity>
                 </View>
@@ -119,7 +119,7 @@ export const EditProfileScreen = () => {
                 <Text style={styles.sectionTitle}>{t('languagesSpoken', 'LANGUAGES SPOKEN')}</Text>
                     <TouchableOpacity 
                         style={styles.editIconBtn} 
-                        onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel="Edit"
+                        onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={t('a11yEdit', 'Edit')}
                     >
                         <Icon name="pencil" size={16} color={theme.colors.primary} />
                     </TouchableOpacity>
@@ -145,7 +145,7 @@ export const EditProfileScreen = () => {
                         onPress={() => navigation.navigate('InterestSelectionScreen', { 
                             isEditMode: true, 
                             initialInterests: form.interests.map(i => i.id) 
-                        })} accessibilityRole="button" accessibilityLabel="Edit"
+                        })} accessibilityRole="button" accessibilityLabel={t('a11yEdit', 'Edit')}
                     >
                         <Icon name="pencil" size={16} color={theme.colors.primary} />
                     </TouchableOpacity>

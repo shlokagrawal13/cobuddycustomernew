@@ -46,7 +46,7 @@ export const VerificationRejectedScreen = () => {
           style={styles.backBtn}
           onPress={handleClose}
           hitSlop={{top:10,bottom:10,left:10,right:10}}
-          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Close">
+          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
           <Icon name="close" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Verification Status')}</Text>
@@ -129,7 +129,7 @@ export const VerificationRejectedScreen = () => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.ctaBtn} onPress={handleRetry} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Retry Verification">
+        <TouchableOpacity style={styles.ctaBtn} onPress={handleRetry} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('a11yRetryVerification', 'Retry Verification')}>
           <Icon name="refresh" size={18} color={theme.colors.background} />
           <Text style={styles.ctaBtnText}>{t('retryBtn', 'Retry Verification')}</Text>
         </TouchableOpacity>

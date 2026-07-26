@@ -39,7 +39,7 @@ export const SavedProfilesScreen = () => {
         <TouchableOpacity 
             style={styles.exploreBtn} 
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('DiscoverTab')} accessibilityRole="button" accessibilityLabel="Explore Companions"
+            onPress={() => navigation.navigate('DiscoverTab')} accessibilityRole="button" accessibilityLabel={t('a11yExploreCompanions', 'Explore Companions')}
         >
             <Text style={styles.exploreBtnText}>{t('exploreBtn', 'Explore Companions')}</Text>
         </TouchableOpacity>
@@ -50,14 +50,14 @@ export const SavedProfilesScreen = () => {
     <TouchableOpacity 
         style={styles.card} 
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('CompanionProfileScreen', { companionId: item.id })} accessibilityRole="button" accessibilityLabel="Go to CompanionProfile"
+        onPress={() => navigation.navigate('CompanionProfileScreen', { companionId: item.id })} accessibilityRole="button" accessibilityLabel={t('a11yGoToCompanionprofile', 'Go to CompanionProfile')}
     >
         <View style={styles.imagePlaceholder}>
             <Icon name="account" size={40} color="rgba(255,255,255,0.1)" />
             <TouchableOpacity 
                 style={styles.bookmarkBtn}
                 activeOpacity={0.7}
-                onPress={() => openOptions(item)} accessibilityRole="button" accessibilityLabel="More options"
+                onPress={() => openOptions(item)} accessibilityRole="button" accessibilityLabel={t('a11yMoreOptions', 'More options')}
             >
                 <Icon name="dots-horizontal" size={20} color={theme.colors.background} />
             </TouchableOpacity>
@@ -96,7 +96,7 @@ export const SavedProfilesScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Saved Checklists')}</Text>
@@ -124,7 +124,7 @@ export const SavedProfilesScreen = () => {
                 onPress={() => {
                     setShowSheet(false);
                     navigation.navigate('CompanionProfileScreen', { companionId: selectedProfile?.id });
-                }} accessibilityRole="button" accessibilityLabel="View Full Profile"
+                }} accessibilityRole="button" accessibilityLabel={t('a11yViewFullProfile', 'View Full Profile')}
             >
                 <View style={styles.sheetIconBox}>
                     <Icon name="account-outline" size={20} color={theme.colors.textPrimary} />
@@ -137,7 +137,7 @@ export const SavedProfilesScreen = () => {
                 activeOpacity={0.7}
                 onPress={() => {
                     if(selectedProfile) handleUnsave(selectedProfile.id);
-                }} accessibilityRole="button" accessibilityLabel="Remove from Saved"
+                }} accessibilityRole="button" accessibilityLabel={t('a11yRemoveFromSaved', 'Remove from Saved')}
             >
                 <View style={[styles.sheetIconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
                     <Icon name="bookmark-off-outline" size={20} color={theme.colors.error} />

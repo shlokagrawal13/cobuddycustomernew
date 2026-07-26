@@ -29,7 +29,7 @@ export const ForceUpdateScreen = () => {
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.primaryButton}
-          onPress={handleUpdate} accessibilityRole="button" accessibilityLabel="Update Now"
+          onPress={handleUpdate} accessibilityRole="button" accessibilityLabel={t('a11yUpdateNow', 'Update Now')}
         >
           <Text style={styles.primaryButtonText}>{t('updateBtn', 'Update Now')}</Text>
         </TouchableOpacity>

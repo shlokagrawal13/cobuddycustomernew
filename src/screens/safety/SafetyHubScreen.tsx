@@ -64,11 +64,11 @@ export const SafetyHubScreen = () => {
 
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Hub')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('SafetySettingsScreen')} accessibilityRole="button" accessibilityLabel="Settings">
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('SafetySettingsScreen')} accessibilityRole="button" accessibilityLabel={t('a11ySettings', 'Settings')}>
           <Icon name="cog-outline" size={24} color={theme.colors.textSecondary} />
         </TouchableOpacity>
       </View>
@@ -118,7 +118,7 @@ export const SafetyHubScreen = () => {
                               ]
                             );
                         }
-                    }} accessibilityRole="button" accessibilityLabel="Action"
+                    }} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
                 >
                     <View style={[styles.sosButtonInner, isSOSActive && styles.sosButtonInnerActive]}>
                         <Icon name={isSOSActive ? "shield-check" : "shield-alert"} size={42} color={theme.colors.background} />
@@ -137,7 +137,7 @@ export const SafetyHubScreen = () => {
         <TouchableOpacity 
             style={styles.premiumCard} 
             activeOpacity={0.7}
-            onPress={() => setSessionActive(!isSessionActive)} accessibilityRole="button" accessibilityLabel="Toggle"
+            onPress={() => setSessionActive(!isSessionActive)} accessibilityRole="button" accessibilityLabel={t('a11yToggle', 'Toggle')}
         >
             <View style={[styles.cardIconBox, { backgroundColor: isSessionActive ? 'rgba(34, 197, 94, 0.1)' : 'rgba(156, 163, 175, 0.1)' }]}>
                 <Icon name={isSessionActive ? "radar" : "radar-off"} size={24} color={isSessionActive ? theme.colors.success : theme.colors.textSecondary} />
@@ -152,7 +152,7 @@ export const SafetyHubScreen = () => {
         <TouchableOpacity 
             style={styles.premiumCard} 
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('TrustedContactsScreen', { fromSettings: true })} accessibilityRole="button" accessibilityLabel="Next"
+            onPress={() => navigation.navigate('TrustedContactsScreen', { fromSettings: true })} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
         >
             <View style={[styles.cardIconBox, { backgroundColor: 'rgba(212,175,55,0.1)' }]}>
                 <Icon name="account-group" size={24} color={theme.colors.primary} />
@@ -167,7 +167,7 @@ export const SafetyHubScreen = () => {
         <TouchableOpacity 
             style={styles.premiumCard} 
             activeOpacity={0.7}
-            onPress={() => navigation.navigate('IncidentReportScreen')} accessibilityRole="button" accessibilityLabel="Next"
+            onPress={() => navigation.navigate('IncidentReportScreen')} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
         >
             <View style={[styles.cardIconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
                 <Icon name="alert-octagon" size={24} color={theme.colors.error} />
@@ -185,7 +185,7 @@ export const SafetyHubScreen = () => {
         </View>
 
         <View style={styles.menuList}>
-            <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => navigation.navigate('SafetyGuidelinesScreen')} accessibilityRole="button" accessibilityLabel="Next">
+            <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => navigation.navigate('SafetyGuidelinesScreen')} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
                 <View style={[styles.menuIconBox, { backgroundColor: 'rgba(255,255,255,0.05)' }]}>
                     <Icon name="book-open-page-variant" size={20} color={theme.colors.textPrimary} />
                 </View>
@@ -197,7 +197,7 @@ export const SafetyHubScreen = () => {
             
             <View style={styles.divider} />
 
-            <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel="Next">
+            <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
                 <View style={[styles.menuIconBox, { backgroundColor: 'rgba(255,255,255,0.05)' }]}>
                     <Icon name="headset" size={20} color={theme.colors.textPrimary} />
                 </View>

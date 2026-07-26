@@ -33,7 +33,7 @@ export const ArrivalCheckInScreen = () => {
       
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Meetup Day')}</Text>
@@ -60,7 +60,7 @@ export const ArrivalCheckInScreen = () => {
             <TouchableOpacity 
               style={[styles.primaryBtn, { width: '100%' }, isLocating && { opacity: 0.7 }]} 
               onPress={handleSimulateArrival}
-              disabled={isLocating} accessibilityRole="button" accessibilityLabel="Action"
+              disabled={isLocating} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
             >
               {isLocating ? (
                 <ActivityIndicator color={theme.colors.background} />
@@ -99,13 +99,13 @@ export const ArrivalCheckInScreen = () => {
           <View style={styles.commRow}>
             <TouchableOpacity style={styles.commBtn} onPress={() => {
               Alert.alert(t('secureCallTitle', 'Secure Call'), t('secureCallMsg', 'This feature requires a telephony backend integration (e.g., Twilio/Exotel) to mask numbers, which is not yet implemented.'));
-            }} accessibilityRole="button" accessibilityLabel="Call Securely">
+            }} accessibilityRole="button" accessibilityLabel={t('a11yCallSecurely', 'Call Securely')}>
               <Icon name="phone" size={20} color={theme.colors.primary} />
               <Text style={styles.commBtnText}>{t('commCall', 'Call Securely')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.commBtn} onPress={() => {
               navigation.navigate('CompanionChatScreen', { companionId: 'c1' });
-            }} accessibilityRole="button" accessibilityLabel="Message">
+            }} accessibilityRole="button" accessibilityLabel={t('a11yMessage', 'Message')}>
               <Icon name="chat" size={20} color={theme.colors.primary} />
               <Text style={styles.commBtnText}>{t('commMessage', 'Message')}</Text>
             </TouchableOpacity>
@@ -115,10 +115,10 @@ export const ArrivalCheckInScreen = () => {
         {/* Safety Issue Link */}
         <TouchableOpacity 
           style={styles.reportBtn} 
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: COMPANION_NAME } })} accessibilityRole="button" accessibilityLabel="Companion didn\\'t show up or l..."
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: COMPANION_NAME } })} accessibilityRole="button" accessibilityLabel={t('a11yCompanionDidntShowUp', "Companion didn't show up")}
         >
           <Icon name="alert-circle-outline" size={16} color={theme.colors.error} />
-          <Text style={styles.reportText}>{t('reportText', 'Companion didn\'t show up or looks different? Report Issue')}</Text>
+          <Text style={styles.reportText}>{t('reportText', "Companion didn't show up or looks different? Report Issue")}</Text>
         </TouchableOpacity>
 
       </ScrollView>
@@ -127,7 +127,7 @@ export const ArrivalCheckInScreen = () => {
         <View style={styles.bottomBar}>
           <TouchableOpacity 
             style={styles.primaryBtn} 
-            onPress={() => navigation.navigate('ActiveSessionScreen')} accessibilityRole="button" accessibilityLabel="[MOCK] Companion entered OTP"
+            onPress={() => navigation.navigate('ActiveSessionScreen')} accessibilityRole="button" accessibilityLabel={t('a11yMockCompanionEnteredOtp', '[MOCK] Companion entered OTP')}
           >
             <Text style={styles.primaryBtnText}>{t('mockOtp', '[MOCK] Companion entered OTP')}</Text>
           </TouchableOpacity>

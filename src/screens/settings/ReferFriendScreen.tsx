@@ -29,7 +29,7 @@ export const ReferFriendScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Refer a Friend')}</Text>
@@ -53,7 +53,7 @@ export const ReferFriendScreen = () => {
           <Text style={styles.codeLabel}>{t('spreadWord', 'SPREAD THE WORD')}</Text>
           <Text style={styles.shareSubtext}>{t('tapBelowToShareA', 'Tap below to share a direct download link with your friends via WhatsApp, SMS, or any social app.')}</Text>
           
-          <TouchableOpacity style={styles.shareBtn} onPress={handleShare} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Share Invite Link">
+          <TouchableOpacity style={styles.shareBtn} onPress={handleShare} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yShareInviteLink', 'Share Invite Link')}>
             <Icon name="share-variant" size={20} color={theme.colors.background} />
             <Text style={styles.shareBtnText}>{t('shareBtn', 'Share Invite Link')}</Text>
           </TouchableOpacity>

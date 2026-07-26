@@ -28,11 +28,11 @@ export const PostSessionFeedbackScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
       
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity onPress={() => smartGoBack()} style={styles.iconBtn} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Quick Feedback')}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel="Skip">
+        <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel={t('a11ySkip', 'Skip')}>
           <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
@@ -43,14 +43,14 @@ export const PostSessionFeedbackScreen = () => {
         <View style={styles.sentimentRow}>
           <TouchableOpacity 
             style={[styles.sentimentBtn, sentiment === 'down' && styles.sentimentBtnDown]}
-            onPress={() => { setSentiment('down'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel="{sentiment === down ? thumb down : thumb down outline}"
+            onPress={() => { setSentiment('down'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel={t('a11ySentimentDownThumbDownThumbDownOutline', '{sentiment === down ? thumb down : thumb down outline}')}
           >
             <Icon name={sentiment === 'down' ? 'thumb-down' : 'thumb-down-outline'} size={40} color={sentiment === 'down' ? theme.colors.background : theme.colors.error} />
           </TouchableOpacity>
           
           <TouchableOpacity 
             style={[styles.sentimentBtn, sentiment === 'up' && styles.sentimentBtnUp]}
-            onPress={() => { setSentiment('up'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel="{sentiment === up ? thumb up : thumb up outline}"
+            onPress={() => { setSentiment('up'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel={t('a11ySentimentUpThumbUpThumbUpOutline', '{sentiment === up ? thumb up : thumb up outline}')}
           >
             <Icon name={sentiment === 'up' ? 'thumb-up' : 'thumb-up-outline'} size={40} color={sentiment === 'up' ? theme.colors.background : theme.colors.primary} />
           </TouchableOpacity>
@@ -66,7 +66,7 @@ export const PostSessionFeedbackScreen = () => {
                   <TouchableOpacity 
                     key={tag} 
                     style={[styles.tagBadge, isSelected && styles.tagBadgeSelected]}
-                    onPress={() => handleTagToggle(tag)} accessibilityRole="button" accessibilityLabel="tag"
+                    onPress={() => handleTagToggle(tag)} accessibilityRole="button" accessibilityLabel={t('a11yTag', 'tag')}
                   >
                     <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{tag}</Text>
                   </TouchableOpacity>
@@ -81,7 +81,7 @@ export const PostSessionFeedbackScreen = () => {
         <TouchableOpacity 
           style={[styles.primaryBtn, (!sentiment || selectedTags.length === 0) && { opacity: 0.5 }]} 
           disabled={!sentiment || selectedTags.length === 0}
-          onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel="Continue"
+          onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel={t('a11yContinue', 'Continue')}
         >
           <Text style={styles.primaryBtnText}>{t('continueBtn', 'Continue')}</Text>
         </TouchableOpacity>

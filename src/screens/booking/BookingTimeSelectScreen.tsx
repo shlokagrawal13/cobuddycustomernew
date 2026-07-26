@@ -75,7 +75,7 @@ export const BookingTimeSelectScreen = () => {
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Top Header & Progress */}
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Step 3 of 4')}</Text>
@@ -117,7 +117,7 @@ export const BookingTimeSelectScreen = () => {
               <TouchableOpacity
                 key={time}
                 style={[styles.timeSlot, isSelected && styles.timeSlotSelected]}
-                onPress={() => setSelectedTime(time)} accessibilityRole="button" accessibilityLabel="time"
+                onPress={() => setSelectedTime(time)} accessibilityRole="button" accessibilityLabel={t('a11yTime', 'time')}
               >
                 <Text style={[styles.timeText, isSelected && styles.textSelected]}>{time}</Text>
               </TouchableOpacity>
@@ -150,7 +150,7 @@ export const BookingTimeSelectScreen = () => {
           style={[styles.nextBtn, !selectedTime && styles.nextBtnDisabled]}
           disabled={!selectedTime}
           onPress={handleNext}
-          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Continue"
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yContinue', 'Continue')}
         >
           <Text style={[styles.nextBtnText, !selectedTime && styles.nextBtnTextDisabled]}>{t('continue', 'Continue')}</Text>
           <Icon 

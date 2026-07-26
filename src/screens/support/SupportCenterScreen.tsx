@@ -43,11 +43,11 @@ export const SupportCenterScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Support Tickets')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel="Help">
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel={t('a11yHelp', 'Help')}>
           <Icon name="help-circle-outline" size={24} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
@@ -56,14 +56,14 @@ export const SupportCenterScreen = () => {
         <TouchableOpacity 
           style={[styles.tab, activeTab === 'Active' && styles.activeTab]}
           onPress={() => setActiveTab('Active')}
-          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Active"
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yActive', 'Active')}
         >
           <Text style={[styles.tabText, activeTab === 'Active' && styles.activeTabText]}>{t('activeTab', 'Active')}</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={[styles.tab, activeTab === 'Closed' && styles.activeTab]}
           onPress={() => setActiveTab('Closed')}
-          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Closed"
+          activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yClosed', 'Closed')}
         >
           <Text style={[styles.tabText, activeTab === 'Closed' && styles.activeTabText]}>{t('closedTab', 'Closed')}</Text>
         </TouchableOpacity>
@@ -83,7 +83,7 @@ export const SupportCenterScreen = () => {
                 key={ticket.id} 
                 style={styles.ticketCard}
                 activeOpacity={0.7}
-                onPress={() => navigation.navigate('SupportTicketDetailScreen', { ticketId: ticket.id })} accessibilityRole="button" accessibilityLabel="Go to SupportTicketDetail"
+                onPress={() => navigation.navigate('SupportTicketDetailScreen', { ticketId: ticket.id })} accessibilityRole="button" accessibilityLabel={t('a11yGoToSupportticketdetail', 'Go to SupportTicketDetail')}
               >
                 <View style={styles.ticketHeader}>
                   <View style={styles.ticketMeta}>
@@ -113,7 +113,7 @@ export const SupportCenterScreen = () => {
       <TouchableOpacity 
         style={styles.fab}
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('CreateSupportTicketScreen')} accessibilityRole="button" accessibilityLabel="New Ticket"
+        onPress={() => navigation.navigate('CreateSupportTicketScreen')} accessibilityRole="button" accessibilityLabel={t('a11yNewTicket', 'New Ticket')}
       >
         <Icon name="plus" size={24} color={theme.colors.background} />
         <Text style={styles.fabText}>{t('newTicket', 'New Ticket')}</Text>

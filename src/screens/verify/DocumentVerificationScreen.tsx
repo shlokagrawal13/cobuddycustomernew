@@ -88,7 +88,7 @@ export const DocumentVerificationScreen = () => {
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel="Go back">
+        <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('step1of3', 'Step 1 of 3')}</Text>
@@ -163,7 +163,7 @@ export const DocumentVerificationScreen = () => {
             <TouchableOpacity
               style={[styles.uploadSlot, frontState === 'uploaded' && styles.uploadSlotDone]}
               onPress={() => handleMockUpload('front')}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Confirm">
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yConfirm', 'Confirm')}>
               <Icon
                 name={frontState === 'uploaded' ? 'check-circle' : frontState === 'selected' ? 'timer-sand' : 'cloud-upload'}
                 size={28}
@@ -188,7 +188,7 @@ export const DocumentVerificationScreen = () => {
                 <TouchableOpacity
                   style={[styles.uploadSlot, backState === 'uploaded' && styles.uploadSlotDone]}
                   onPress={() => handleMockUpload('back')}
-                  activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Go back">
+                  activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
                   <Icon
                     name={backState === 'uploaded' ? 'check-circle' : backState === 'selected' ? 'timer-sand' : 'image'}
                     size={28}
@@ -227,7 +227,7 @@ export const DocumentVerificationScreen = () => {
             style={[styles.ctaBtn, !canSubmit() && styles.ctaBtnDisabled]}
             disabled={!canSubmit()}
             onPress={() => navigation.navigate('SelfieCaptureScreen')}
-            activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="Continue Verification">
+            activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('a11yContinueVerification', 'Continue Verification')}>
             <Icon name="upload" size={18} color={theme.colors.background} />
             <Text style={styles.ctaBtnText}>{t('continueVerify', 'Continue Verification')}</Text>
           </TouchableOpacity>

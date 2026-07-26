@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { theme } from '../../theme';
+import { useTranslation } from 'react-i18next';
 
 interface SmartHeaderProps {
   title?: string;
@@ -19,6 +20,8 @@ export const SmartHeader: React.FC<SmartHeaderProps> = ({
 }) => {
   const { smartGoBack } = useSmartNavigation();
 
+  const { t } = useTranslation();
+
   return (
     <View style={[styles.header, transparent && styles.transparent]}>
       <TouchableOpacity 
@@ -26,7 +29,7 @@ export const SmartHeader: React.FC<SmartHeaderProps> = ({
         onPress={() => smartGoBack(fallbackTab)} 
         activeOpacity={0.7}
         accessibilityRole="button"
-        accessibilityLabel="Go back"
+        accessibilityLabel={t('a11yGoBack', 'Go back')}
       >
         <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
       </TouchableOpacity>

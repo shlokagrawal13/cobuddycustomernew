@@ -163,7 +163,7 @@ export const DiscoverScreen = () => {
       <View style={styles.header}>
         <View style={styles.headerTop}>
           <Text style={styles.headerTitle}>{t('title', 'Discover')}</Text>
-          <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)} accessibilityRole="button" accessibilityLabel="Filter">
+          <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yFilter', 'Filter')}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
             {(filterGender !== 'Any' || filterRating > 4.0 || filterMaxPrice < 2000 || filterDistance < 50) && (
@@ -183,7 +183,7 @@ export const DiscoverScreen = () => {
             onChangeText={setSearchQuery}
           />
           {searchQuery.length > 0 && (
-            <TouchableOpacity onPress={() => setSearchQuery('')} style={styles.clearSearchBtn} accessibilityRole="button" accessibilityLabel="Close">
+            <TouchableOpacity onPress={() => setSearchQuery('')} style={styles.clearSearchBtn} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
               <Icon name="close-circle" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
           )}
@@ -203,7 +203,7 @@ export const DiscoverScreen = () => {
                   styles.filterPill,
                   activeStatus === item && styles.filterPillActive
                 ]}
-                onPress={() => setActiveStatus(item)} accessibilityRole="button" accessibilityLabel="item"
+                onPress={() => setActiveStatus(item)} accessibilityRole="button" accessibilityLabel={t('a11yItem', 'item')}
               >
                 <Text
                   style={[
@@ -247,7 +247,7 @@ export const DiscoverScreen = () => {
             <View style={styles.emptyContainer}>
               <Icon name="account-search-outline" size={48} color={theme.colors.border} />
               <Text style={styles.emptyText}>{t('noCompanions', 'No companions found')}</Text>
-              <TouchableOpacity style={styles.clearAllBtn} onPress={clearAllFilters} accessibilityRole="button" accessibilityLabel="Clear Filters">
+              <TouchableOpacity style={styles.clearAllBtn} onPress={clearAllFilters} accessibilityRole="button" accessibilityLabel={t('a11yClearFilters', 'Clear Filters')}>
                 <Text style={styles.clearAllBtnText}>{t('clearFilters', 'Clear Filters')}</Text>
               </TouchableOpacity>
             </View>
@@ -263,12 +263,12 @@ export const DiscoverScreen = () => {
         onRequestClose={() => setIsFilterVisible(false)}
       >
         <View style={styles.modalOverlay}>
-          <Pressable style={styles.modalBackdrop} onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel="Close filters" />
+          <Pressable style={styles.modalBackdrop} onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel={t('a11yCloseFilters', 'Close filters')} />
           <View style={styles.modalContent}>
             
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>{t('filtersTitle', 'Filters')}</Text>
-              <TouchableOpacity onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel="Close">
+              <TouchableOpacity onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel={t('a11yClose', 'Close')}>
                 <Icon name="close" size={24} color={theme.colors.textPrimary} />
               </TouchableOpacity>
             </View>
@@ -305,7 +305,7 @@ export const DiscoverScreen = () => {
                       styles.modalOptionBtn,
                       filterGender === g && styles.modalOptionBtnActive
                     ]}
-                    onPress={() => setFilterGender(g)} accessibilityRole="button" accessibilityLabel="g"
+                    onPress={() => setFilterGender(g)} accessibilityRole="button" accessibilityLabel={t('a11yG', 'g')}
                   >
                     <Text style={[
                       styles.modalOptionText,
@@ -331,7 +331,7 @@ export const DiscoverScreen = () => {
                   <TouchableOpacity 
                     key={p} 
                     style={[styles.modalOptionBtn, filterMaxPrice === p && styles.modalOptionBtnActive]}
-                    onPress={() => setFilterMaxPrice(p)} accessibilityRole="button" accessibilityLabel="₹ p"
+                    onPress={() => setFilterMaxPrice(p)} accessibilityRole="button" accessibilityLabel={t('a11yP', '₹ p')}
                   >
                     <Text style={[styles.modalOptionText, filterMaxPrice === p && styles.modalOptionTextActive]}>
                       ₹{p}
@@ -355,7 +355,7 @@ export const DiscoverScreen = () => {
                   <TouchableOpacity 
                     key={r} 
                     style={[styles.modalOptionBtn, filterRating === r && styles.modalOptionBtnActive]}
-                    onPress={() => setFilterRating(r)} accessibilityRole="button" accessibilityLabel="r + ⭐"
+                    onPress={() => setFilterRating(r)} accessibilityRole="button" accessibilityLabel={t('a11yR', 'r + ⭐')}
                   >
                     <Text style={[styles.modalOptionText, filterRating === r && styles.modalOptionTextActive]}>
                       {r}+ ⭐
@@ -379,7 +379,7 @@ export const DiscoverScreen = () => {
                   <TouchableOpacity 
                     key={d} 
                     style={[styles.modalOptionBtn, filterDistance === d && styles.modalOptionBtnActive]}
-                    onPress={() => setFilterDistance(d)} accessibilityRole="button" accessibilityLabel="d km"
+                    onPress={() => setFilterDistance(d)} accessibilityRole="button" accessibilityLabel={t('a11yDKm', 'd km')}
                   >
                     <Text style={[styles.modalOptionText, filterDistance === d && styles.modalOptionTextActive]}>
                       {d} km
@@ -391,10 +391,10 @@ export const DiscoverScreen = () => {
 
             {/* Bottom Actions */}
             <View style={styles.modalFooter}>
-              <TouchableOpacity style={styles.modalClearBtn} onPress={clearAllFilters} accessibilityRole="button" accessibilityLabel="Clear All">
+              <TouchableOpacity style={styles.modalClearBtn} onPress={clearAllFilters} accessibilityRole="button" accessibilityLabel={t('a11yClearAll', 'Clear All')}>
                 <Text style={styles.modalClearBtnText}>{t('clearAll', 'Clear All')}</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.modalApplyBtn} onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel="Apply Filters">
+              <TouchableOpacity style={styles.modalApplyBtn} onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel={t('a11yApplyFilters', 'Apply Filters')}>
                 <Text style={styles.modalApplyBtnText}>{t('applyFilters', 'Apply Filters')}</Text>
               </TouchableOpacity>
             </View>
