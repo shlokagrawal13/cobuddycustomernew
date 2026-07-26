@@ -110,7 +110,7 @@ export const PaymentMethodsScreen = () => {
                         key={pm.id} 
                         style={[styles.methodRow, index !== methods.length - 1 ? styles.methodBorder : null, isSelected ? styles.methodSelected : null]}
                         activeOpacity={0.8}
-                        onPress={() => handleMethodPress(pm)} accessibilityRole="button" accessibilityLabel="button"
+                        onPress={() => handleMethodPress(pm)} accessibilityRole="button" accessibilityLabel="Action"
                     >
                         <View style={[styles.methodIconWrap, isSelected ? styles.methodIconWrapActive : null]}>
                             <Icon name={pm.icon} size={22} color={isSelected ? theme.colors.primary : theme.colors.textSecondary} />
@@ -128,7 +128,7 @@ export const PaymentMethodsScreen = () => {
                         </View>
                         
                         {!isSelectionMode ? (
-                            <TouchableOpacity style={styles.deleteBtn} onPress={() => handleDelete(pm.id, pm.title)} accessibilityRole="button" accessibilityLabel="button">
+                            <TouchableOpacity style={styles.deleteBtn} onPress={() => handleDelete(pm.id, pm.title)} accessibilityRole="button" accessibilityLabel="Delete">
                                 <Icon name="trash-can-outline" size={20} color={theme.colors.textSecondary} />
                             </TouchableOpacity>
                         ) : (

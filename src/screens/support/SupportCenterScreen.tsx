@@ -45,7 +45,7 @@ export const SupportCenterScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Support Tickets')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel="Help">
           <Icon name="help-circle-outline" size={24} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
@@ -81,7 +81,7 @@ export const SupportCenterScreen = () => {
                 key={ticket.id} 
                 style={styles.ticketCard}
                 activeOpacity={0.7}
-                onPress={() => navigation.navigate('SupportTicketDetailScreen', { ticketId: ticket.id })} accessibilityRole="button" accessibilityLabel="button"
+                onPress={() => navigation.navigate('SupportTicketDetailScreen', { ticketId: ticket.id })} accessibilityRole="button" accessibilityLabel="Go to SupportTicketDetail"
               >
                 <View style={styles.ticketHeader}>
                   <View style={styles.ticketMeta}>

@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? (disabled ? 'rgba(212,175,55,0.5)' : theme.colors.primary) : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel="button"
+            ]} accessibilityRole="button" accessibilityLabel="Action"
         >
             <Animated.View style={[styles.switchThumb, { transform: [{ translateX }] }]} />
         </TouchableOpacity>
@@ -151,7 +151,7 @@ export const DataCacheScreen = () => {
                 <CustomSwitch value={autoDownload} onValueChange={setAutoDownload} />
             </View>
 
-            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel="Action">
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('uploadQuality', 'Photo Upload Quality')}</Text>
                     <Text style={styles.sub}>{t('uploadQualitySub', 'Adjust quality for profile & chat uploads')}</Text>

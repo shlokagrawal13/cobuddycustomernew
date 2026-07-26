@@ -44,7 +44,7 @@ export const SafetyHubScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Hub')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('SafetySettingsScreen')} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('SafetySettingsScreen')} accessibilityRole="button" accessibilityLabel="Settings">
           <Icon name="cog-outline" size={24} color={theme.colors.textSecondary} />
         </TouchableOpacity>
       </View>
@@ -81,7 +81,7 @@ export const SafetyHubScreen = () => {
                             }
                           ]
                         );
-                    }} accessibilityRole="button" accessibilityLabel="button"
+                    }} accessibilityRole="button" accessibilityLabel="Action"
                 >
                     <View style={styles.sosButtonInner}>
                         <Icon name="shield-alert" size={42} color={theme.colors.background} />

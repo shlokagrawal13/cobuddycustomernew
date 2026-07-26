@@ -92,7 +92,7 @@ export const EditProfileScreen = () => {
             <View style={styles.avatarSection}>
                 <View style={styles.avatarWrap}>
                     <Image source={{uri: 'https://i.pravatar.cc/300?img=11'}} style={styles.avatar} />
-                    <TouchableOpacity style={styles.editAvatarBtn} accessibilityRole="button" accessibilityLabel="button">
+                    <TouchableOpacity style={styles.editAvatarBtn} accessibilityRole="button" accessibilityLabel="Camera">
                         <Icon name="camera" size={16} color={theme.colors.surface} />
                     </TouchableOpacity>
                 </View>
@@ -118,7 +118,7 @@ export const EditProfileScreen = () => {
                     <TouchableOpacity 
                         style={[styles.iconInputWrap, {paddingVertical: 14, paddingRight: 16}]} 
                         activeOpacity={0.7}
-                        onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel="form.city || \'Select Location\'"
+                        onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel={`${form.city} || \'Select Location\'`}
                     >
                         <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} style={styles.inputIcon} />
                         <Text style={[styles.iconInput, {paddingVertical: 0, paddingRight: 0}]}>{form.city || 'Select Location'}</Text>
@@ -132,7 +132,7 @@ export const EditProfileScreen = () => {
                 <Text style={styles.sectionTitle}>{t('languagesSpoken', 'LANGUAGES SPOKEN')}</Text>
                     <TouchableOpacity 
                         style={styles.editIconBtn} 
-                        onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel="button"
+                        onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel="Edit"
                     >
                         <Icon name="pencil" size={16} color={theme.colors.primary} />
                     </TouchableOpacity>
@@ -141,7 +141,7 @@ export const EditProfileScreen = () => {
                 <TouchableOpacity 
                     style={styles.clickableRow} 
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel="form.languages.length > 0 ? fo..."
+                    onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={`${form.languages}.length > 0 ? fo...`}
                 >
                     <Text style={styles.clickableRowText}>
                         {form.languages.length > 0 ? form.languages.join(', ') : 'Select Languages'}
@@ -158,7 +158,7 @@ export const EditProfileScreen = () => {
                         onPress={() => navigation.navigate('InterestSelectionScreen', { 
                             isEditMode: true, 
                             initialInterests: form.interests.map(i => i.id) 
-                        })} accessibilityRole="button" accessibilityLabel="button"
+                        })} accessibilityRole="button" accessibilityLabel="Edit"
                     >
                         <Icon name="pencil" size={16} color={theme.colors.primary} />
                     </TouchableOpacity>

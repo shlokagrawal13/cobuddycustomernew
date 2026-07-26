@@ -36,7 +36,7 @@ export const TransactionHistoryScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Transaction History')}</Text>
-        <TouchableOpacity style={styles.backBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.backBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Download">
             <Icon name="download" size={22} color={theme.colors.primary} />
         </TouchableOpacity>
       </View>
@@ -68,7 +68,7 @@ export const TransactionHistoryScreen = () => {
               key={tx.id} 
               style={[styles.txItem, index !== filtered.length - 1 && styles.txBorder]}
               onPress={() => navigation.navigate('TransactionDetailScreen', { transactionId: tx.id })}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go to TransactionDetail"
             >
               <View style={[styles.txIconWrap, tx.positive ? styles.txIconWrapPos : styles.txIconWrapNeg, tx.status === 'Refunded' && styles.txIconWrapRefund]}>
                 <Icon name={tx.icon} size={20} color={tx.status === 'Refunded' ? theme.colors.warning : tx.positive ? theme.colors.success : theme.colors.error} />

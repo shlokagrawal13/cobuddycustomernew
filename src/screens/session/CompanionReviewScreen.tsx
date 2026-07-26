@@ -48,7 +48,7 @@ export const CompanionReviewScreen = () => {
           
           <View style={styles.starsRow}>
             {[1, 2, 3, 4, 5].map(star => (
-              <TouchableOpacity key={star} onPress={() => setRating(star)} style={styles.starBtn} accessibilityRole="button" accessibilityLabel="button">
+              <TouchableOpacity key={star} onPress={() => setRating(star)} style={styles.starBtn} accessibilityRole="button" accessibilityLabel="Review">
                 <Icon 
                   name={rating >= star ? 'star' : 'star-outline'} 
                   size={48} 

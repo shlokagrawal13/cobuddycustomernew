@@ -84,7 +84,7 @@ export const InterestSelectionScreen = () => {
           {INTERESTS_DATA.map(item => {
             const active = selected.has(item.id);
             return (
-              <TouchableOpacity key={item.id} style={[styles.tile, active && styles.tileActive]} onPress={() => toggle(item.id)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button">
+              <TouchableOpacity key={item.id} style={[styles.tile, active && styles.tileActive]} onPress={() => toggle(item.id)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Action">
                 <View style={[styles.tileIconWrap, active && styles.tileIconWrapActive]}>
                   <Icon name={item.icon} size={22} color={active ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>

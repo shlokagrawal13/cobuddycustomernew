@@ -394,10 +394,10 @@ export const CompanionProfileScreen = ({ route }: any) => {
         </TouchableOpacity>
         
         <View style={{ flexDirection: 'row', gap: 12 }}>
-          <TouchableOpacity style={styles.iconCircle} onPress={() => setIsFavorite(!isFavorite)} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.iconCircle} onPress={() => setIsFavorite(!isFavorite)} accessibilityRole="button" accessibilityLabel="Like">
             <Icon name={isFavorite ? "heart" : "heart-outline"} size={22} color={isFavorite ? theme.colors.error : theme.colors.textPrimary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconCircle} onPress={() => setShowMenuSheet(true)} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.iconCircle} onPress={() => setShowMenuSheet(true)} accessibilityRole="button" accessibilityLabel="More options">
             <Icon name="dots-vertical" size={22} color={theme.colors.textPrimary} />
           </TouchableOpacity>
         </View>
@@ -432,7 +432,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <Text style={styles.sheetRowText}>{t('shareProfile', 'Share Profile')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel="Report  DUMMY_PROFILE.name">
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel={`Report ${DUMMY_PROFILE.name}`}>
             <View style={styles.sheetIconWrap}>
               <Icon name="flag-outline" size={20} color={theme.colors.textPrimary} />
             </View>
@@ -463,7 +463,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
                     ]
                   );
               }, 300);
-            }} accessibilityRole="button" accessibilityLabel="Block  DUMMY_PROFILE.name"
+            }} accessibilityRole="button" accessibilityLabel={`Block ${DUMMY_PROFILE.name}`}
           >
             <View style={[styles.sheetIconWrap, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
               <Icon name="block-helper" size={20} color={theme.colors.error} />

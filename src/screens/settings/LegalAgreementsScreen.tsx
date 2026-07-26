@@ -38,7 +38,7 @@ export const LegalAgreementsScreen = () => {
                 <TouchableOpacity 
                     key={doc.id} 
                     style={[styles.row, index !== LEGAL_DOCS.length - 1 && styles.borderBottom]}
-                    activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
+                    activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Open In New"
                 >
                     <View style={styles.iconWrap}>
                         <Icon name={doc.icon} size={22} color={theme.colors.textSecondary} />

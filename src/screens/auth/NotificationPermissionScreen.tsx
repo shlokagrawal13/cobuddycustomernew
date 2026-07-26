@@ -30,7 +30,7 @@ export const NotificationPermissionScreen = () => {
       <TouchableOpacity
         style={styles.skipBtn}
         onPress={() => navigation.navigate('BasicProfileSetupScreen')}
-        activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+        activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go to BasicProfileSetup">
         <Text style={styles.skipText}>{t('notification.btn_skip')}</Text>
       </TouchableOpacity>
 
@@ -97,14 +97,14 @@ export const NotificationPermissionScreen = () => {
               ]
             )
           }
-          activeOpacity={0.88} accessibilityRole="button" accessibilityLabel="button">
+          activeOpacity={0.88} accessibilityRole="button" accessibilityLabel="Notifications">
           <Icon name="bell-ring-outline" size={20} color={theme.colors.background} />
           <Text style={styles.ctaPrimaryText}>{t('notification.btn_allow')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.ctaSecondary}
           onPress={() => navigation.navigate('BasicProfileSetupScreen')}
-          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go to BasicProfileSetup">
           <Text style={styles.ctaSecondaryText}>{t('notification.btn_skip')}</Text>
         </TouchableOpacity>
       </View>

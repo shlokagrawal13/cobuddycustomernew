@@ -211,7 +211,7 @@ export const DiscoverScreen = () => {
       <View style={styles.header}>
         <View style={styles.headerTop}>
           <Text style={styles.headerTitle}>{t('title', 'Discover')}</Text>
-          <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)} accessibilityRole="button" accessibilityLabel="Filter">
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
             {(filterGender !== 'Any' || filterRating > 4.0 || filterMaxPrice < 2000 || filterDistance < 50) && (
@@ -311,7 +311,7 @@ export const DiscoverScreen = () => {
         onRequestClose={() => setIsFilterVisible(false)}
       >
         <View style={styles.modalOverlay}>
-          <Pressable style={styles.modalBackdrop} onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel="button" />
+          <Pressable style={styles.modalBackdrop} onPress={() => setIsFilterVisible(false)} accessibilityRole="button" accessibilityLabel="Close filters" />
           <View style={styles.modalContent}>
             
             <View style={styles.modalHeader}>
@@ -333,7 +333,7 @@ export const DiscoverScreen = () => {
                       styles.modalOptionBtn,
                       searchQuery === cat.label && styles.modalOptionBtnActive
                     ]}
-                    onPress={() => setSearchQuery(searchQuery === cat.label ? '' : cat.label)} accessibilityRole="button" accessibilityLabel="cat.label"
+                    onPress={() => setSearchQuery(searchQuery === cat.label ? '' : cat.label)} accessibilityRole="button" accessibilityLabel={cat.label}
                   >
                     <Text style={[
                       styles.modalOptionText,

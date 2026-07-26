@@ -77,7 +77,7 @@ export const CompanionChatScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity 
               style={styles.avatarBox}
-              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' })} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' })} accessibilityRole="button" accessibilityLabel="Go to DiscoverTab"
             >
               <Text style={styles.avatarInitials}>{companionName.charAt(0)}</Text>
               <View style={styles.onlineDot} />
@@ -90,10 +90,10 @@ export const CompanionChatScreen = () => {
             </View>
           </View>
           
-          <TouchableOpacity style={styles.callBtn} onPress={handleCall} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.callBtn} onPress={handleCall} accessibilityRole="button" accessibilityLabel="Call">
             <Icon name="phone" size={20} color={theme.colors.textPrimary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.moreBtn} onPress={() => setOptionsMenuVisible(true)} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.moreBtn} onPress={() => setOptionsMenuVisible(true)} accessibilityRole="button" accessibilityLabel="More options">
             <Icon name="dots-vertical" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
         </View>
@@ -151,7 +151,7 @@ export const CompanionChatScreen = () => {
         <TouchableOpacity 
           style={styles.modalOverlay} 
           activeOpacity={1} 
-          onPress={() => setOptionsMenuVisible(false)} accessibilityRole="button" accessibilityLabel="button"
+          onPress={() => setOptionsMenuVisible(false)} accessibilityRole="button" accessibilityLabel="Action"
         >
           <View style={styles.optionsSheet}>
             <View style={styles.sheetHandle} />

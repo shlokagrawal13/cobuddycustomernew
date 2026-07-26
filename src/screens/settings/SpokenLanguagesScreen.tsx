@@ -87,7 +87,7 @@ export const SpokenLanguagesScreen = () => {
                         key={lang.id} 
                         style={[styles.tile, active && styles.tileActive]} 
                         onPress={() => toggleLang(lang.id)}
-                        activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button"
+                        activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Action"
                     >
                         <View style={styles.tileContent}>
                             <Text style={[styles.tileLabel, active && styles.tileLabelActive]}>{t(`lang_${lang.id}`, lang.label)}</Text>

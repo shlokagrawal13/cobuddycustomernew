@@ -72,7 +72,7 @@ export const HomeDashboardScreen = () => {
           <Text style={styles.logoText}>{t('appName', 'CoBuddy')}</Text>
         </View>
         <View style={styles.topRightIcons}>
-          <TouchableOpacity style={styles.iconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('NotificationsScreen')} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.iconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('NotificationsScreen')} accessibilityRole="button" accessibilityLabel="Notifications">
             <View style={styles.notifDot} />
             <Icon name="bell-outline" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>
@@ -109,7 +109,7 @@ export const HomeDashboardScreen = () => {
                   <Text style={styles.activeMeetupTitle}>{t('upcoming.meetup_title')}</Text>
                   <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · ID Verified</Text>
                 </View>
-                <TouchableOpacity style={styles.arrowBtn} accessibilityRole="button" accessibilityLabel="button">
+                <TouchableOpacity style={styles.arrowBtn} accessibilityRole="button" accessibilityLabel="Arrow Right">
                   <Icon name="arrow-right" size={20} color={theme.colors.background} />
                 </TouchableOpacity>
               </View>
@@ -119,7 +119,7 @@ export const HomeDashboardScreen = () => {
             <View style={styles.itineraryCard}>
               <View style={styles.itineraryHeaderRow}>
                 <Text style={styles.itineraryTitle}>{t('itinerary.title')}</Text>
-                <TouchableOpacity accessibilityRole="button" accessibilityLabel="button">
+                <TouchableOpacity accessibilityRole="button" accessibilityLabel="Dots Horizontal">
                   <Icon name="dots-horizontal" size={24} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
               </View>
@@ -153,7 +153,7 @@ export const HomeDashboardScreen = () => {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.fullItineraryBtn} accessibilityRole="button" accessibilityLabel="button">
+              <TouchableOpacity style={styles.fullItineraryBtn} accessibilityRole="button" accessibilityLabel="Action">
                 <Text style={styles.fullItineraryText}>{t('itinerary.view_full')}</Text>
               </TouchableOpacity>
             </View>
@@ -172,7 +172,7 @@ export const HomeDashboardScreen = () => {
                   onPress={() => navigation.navigate('DiscoverTab', { 
                     screen: 'DiscoverScreen', 
                     params: { category: cat.id } 
-                  })} accessibilityRole="button" accessibilityLabel="cat.title"
+                  })} accessibilityRole="button" accessibilityLabel={cat.title}
                 >
                   <View style={[styles.exploreIconBox, { backgroundColor: `${cat.color}20` }]}>
                     <Icon name={cat.icon} size={28} color={cat.color} />
@@ -191,7 +191,7 @@ export const HomeDashboardScreen = () => {
             
             <TouchableOpacity 
               style={styles.gridItem}
-              onPress={() => navigation.navigate('DiscoverTab')} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => navigation.navigate('DiscoverTab')} accessibilityRole="button" accessibilityLabel="Go to DiscoverTab"
             >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="account-search" size={24} color={theme.colors.primary} />
@@ -201,7 +201,7 @@ export const HomeDashboardScreen = () => {
 
             <TouchableOpacity 
               style={styles.gridItem}
-              onPress={() => navigation.navigate('BookingsTab')} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => navigation.navigate('BookingsTab')} accessibilityRole="button" accessibilityLabel="Go to BookingsTab"
             >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="calendar-clock" size={24} color={theme.colors.primary} />
@@ -211,7 +211,7 @@ export const HomeDashboardScreen = () => {
 
             <TouchableOpacity 
               style={styles.gridItem}
-              onPress={() => navigation.navigate('ProfileTab', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => navigation.navigate('ProfileTab', { screen: 'SafetyHubScreen' })} accessibilityRole="button" accessibilityLabel="Go to ProfileTab"
             >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="shield-check" size={24} color={theme.colors.primary} />
@@ -221,7 +221,7 @@ export const HomeDashboardScreen = () => {
 
             <TouchableOpacity 
               style={styles.gridItem}
-              onPress={() => navigation.navigate('ProfileTab')} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => navigation.navigate('ProfileTab')} accessibilityRole="button" accessibilityLabel="Go to ProfileTab"
             >
               <View style={[styles.gridIconCircle, { backgroundColor: 'rgba(212, 175, 55, 0.1)' }]}>
                 <Icon name="account-outline" size={24} color={theme.colors.primary} />

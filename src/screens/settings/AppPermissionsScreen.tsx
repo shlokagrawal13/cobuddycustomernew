@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel="button"
+            ]} accessibilityRole="button" accessibilityLabel="Action"
         >
             <Animated.View style={[
                 styles.switchThumb,

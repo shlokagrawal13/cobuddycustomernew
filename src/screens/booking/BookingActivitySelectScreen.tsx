@@ -72,7 +72,7 @@ export const BookingActivitySelectScreen = () => {
                 key={activity.id}
                 style={[styles.card, isSelected && styles.cardSelected]}
                 onPress={() => setSelectedActivityId(activity.id)}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="activity.price"
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`Price: ${activity.price}`}
               >
                 <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}>
                   <Icon 

@@ -80,7 +80,7 @@ export const VoiceCallScreen = () => {
 
         </View>
 
-        <TouchableOpacity style={styles.endCallBtn} onPress={handleEndCall} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.endCallBtn} onPress={handleEndCall} accessibilityRole="button" accessibilityLabel="Phone Hangup">
           <Icon name="phone-hangup" size={32} color={theme.colors.background} />
         </TouchableOpacity>
       </View>

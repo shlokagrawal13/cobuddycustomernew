@@ -114,7 +114,7 @@ export const DocumentVerificationScreen = () => {
                       setFrontState('idle');
                       setBackState('idle');
                     }}
-                    activeOpacity={0.75} accessibilityRole="button" accessibilityLabel="doc.label">
+                    activeOpacity={0.75} accessibilityRole="button" accessibilityLabel={doc.label}>
                     <Icon name={doc.icon} size={24} color={selected ? theme.colors.primary : theme.colors.textSecondary} />
                     <Text style={[styles.docTypeLabel, selected && styles.docTypeLabelSelected]}>
                       {doc.label}
@@ -161,7 +161,7 @@ export const DocumentVerificationScreen = () => {
             <TouchableOpacity
               style={[styles.uploadSlot, frontState === 'uploaded' && styles.uploadSlotDone]}
               onPress={() => handleMockUpload('front')}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button">
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Confirm">
               <Icon
                 name={frontState === 'uploaded' ? 'check-circle' : frontState === 'selected' ? 'timer-sand' : 'cloud-upload'}
                 size={28}
@@ -186,7 +186,7 @@ export const DocumentVerificationScreen = () => {
                 <TouchableOpacity
                   style={[styles.uploadSlot, backState === 'uploaded' && styles.uploadSlotDone]}
                   onPress={() => handleMockUpload('back')}
-                  activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button">
+                  activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Go back">
                   <Icon
                     name={backState === 'uploaded' ? 'check-circle' : backState === 'selected' ? 'timer-sand' : 'image'}
                     size={28}

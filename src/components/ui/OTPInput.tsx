@@ -39,7 +39,9 @@ export const OTPInput = ({
     <TouchableOpacity
       activeOpacity={1}
       onPress={() => inputRef.current?.focus()}
-      style={styles.container}>
+      style={styles.container}
+      accessibilityRole="button"
+      accessibilityLabel="Enter OTP">
       <TextInput
         ref={inputRef}
         value={value}
@@ -53,6 +55,7 @@ export const OTPInput = ({
         style={styles.hiddenInput}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        accessibilityLabel="OTP Code Input"
       />
       <View style={styles.boxes}>
         {Array.from({ length }).map((_, i) => {

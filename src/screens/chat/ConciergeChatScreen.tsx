@@ -82,7 +82,7 @@ export const ConciergeChatScreen = () => {
           <TouchableOpacity 
             style={styles.callBtn}
             onPress={() => navigation.navigate('VoiceCallScreen', { callerName: 'CoBuddy Concierge', callType: 'support' })}
-            activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button"
+            activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Call"
           >
             <Icon name="phone" size={20} color={theme.colors.textPrimary} />
           </TouchableOpacity>

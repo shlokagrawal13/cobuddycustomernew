@@ -76,7 +76,7 @@ export const ChatListScreen = () => {
       {/* ── Polished Theme Header ── */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Messages')}</Text>
-        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => setShowNewMessageModal(true)} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => setShowNewMessageModal(true)} accessibilityRole="button" accessibilityLabel="Edit">
           <Icon name="square-edit-outline" size={24} color={Colors.textPrimary} />
           {/* Ye dot tab dikhega jab koi naya notification/message compose action pending ho, ya isko hata bhi sakte hain */}
           {/* <View style={styles.headerNotifDot} /> */}
@@ -128,7 +128,7 @@ export const ChatListScreen = () => {
             <TouchableOpacity
               style={styles.convoItem}
               onPress={() => navigation.navigate('CompanionChatScreen', { companionName: chat.name, bookingId: chat.id })}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button">
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Go to CompanionChat">
               
               <View style={styles.convoAvatar}>
                 <Text style={styles.convoAvatarText}>{chat.name.charAt(0)}</Text>
@@ -194,7 +194,7 @@ export const ChatListScreen = () => {
         transparent={true}
         onRequestClose={() => setShowNewMessageModal(false)}
       >
-        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setShowNewMessageModal(false)} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setShowNewMessageModal(false)} accessibilityRole="button" accessibilityLabel="Action">
           <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
             <View style={styles.modalHandle} />
             <Text style={styles.modalTitle}>{t('newMessageTitle', 'New Message')}</Text>

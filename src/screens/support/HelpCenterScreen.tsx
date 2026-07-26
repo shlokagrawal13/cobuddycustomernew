@@ -103,7 +103,7 @@ export const HelpCenterScreen = () => {
                             onPress={() => {
                                 setSelectedCategory(isSelected ? null : cat.id);
                                 setExpandedFaq(null);
-                            }} accessibilityRole="button" accessibilityLabel="cat.title"
+                            }} accessibilityRole="button" accessibilityLabel={cat.title}
                         >
                             <View style={[styles.iconCircle, isSelected && styles.iconCircleActive]}>
                                 <Icon name={cat.icon} size={24} color={isSelected ? theme.colors.background : theme.colors.primary} />
@@ -133,7 +133,7 @@ export const HelpCenterScreen = () => {
                                 <TouchableOpacity 
                                     style={[styles.faqRow, index !== 0 && styles.borderTop]} 
                                     activeOpacity={0.7}
-                                    onPress={() => setExpandedFaq(isExpanded ? null : faq.id)} accessibilityRole="button" accessibilityLabel="faq.question"
+                                    onPress={() => setExpandedFaq(isExpanded ? null : faq.id)} accessibilityRole="button" accessibilityLabel={faq.question}
                                 >
                                     <Text style={[styles.faqQuestion, isExpanded && {color: theme.colors.primary}]}>{faq.question}</Text>
                                     <Icon name={isExpanded ? 'chevron-up' : 'chevron-down'} size={20} color={isExpanded ? theme.colors.primary : theme.colors.textSecondary} />

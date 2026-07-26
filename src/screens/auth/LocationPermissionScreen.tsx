@@ -30,7 +30,7 @@ export const LocationPermissionScreen = () => {
       <TouchableOpacity
         style={styles.skipBtn}
         onPress={() => navigation.navigate('NotificationPermissionScreen')}
-        activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+        activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go to NotificationPermission">
         <Text style={styles.skipText}>{t('location.btn_skip')}</Text>
       </TouchableOpacity>
 
@@ -92,14 +92,14 @@ export const LocationPermissionScreen = () => {
               ]
             )
           }
-          activeOpacity={0.88} accessibilityRole="button" accessibilityLabel="button">
+          activeOpacity={0.88} accessibilityRole="button" accessibilityLabel="crosshairs gps">
           <Icon name="crosshairs-gps" size={20} color={theme.colors.background} />
           <Text style={styles.ctaPrimaryText}>{t('location.btn_allow')}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.ctaSecondary}
           onPress={() => navigation.navigate('NotificationPermissionScreen')}
-          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+          activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Go to NotificationPermission">
           <Text style={styles.ctaSecondaryText}>{t('location.btn_skip')}</Text>
         </TouchableOpacity>
       </View>

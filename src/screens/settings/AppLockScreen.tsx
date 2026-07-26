@@ -25,7 +25,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel="button"
+            ]} accessibilityRole="button" accessibilityLabel="Action"
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -99,7 +99,7 @@ export const AppLockScreen = () => {
                                 key={option.id} 
                                 style={[styles.timeoutRow, index > 0 && styles.timeoutRowBorder]}
                                 onPress={() => setTimeoutSelected(option.id)}
-                                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="option.label"
+                                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={option.label}
                             >
                                 <Text style={styles.timeoutLabel}>{option.label}</Text>
                                 <View style={styles.radioContainer}>

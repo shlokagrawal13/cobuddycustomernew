@@ -80,7 +80,7 @@ export const TipGratuityScreen = () => {
             {/* Custom Tip Option */}
             <TouchableOpacity 
               style={[styles.tipCard, selectedTip === -1 && styles.tipCardSelected]}
-              onPress={() => setSelectedTip(-1)} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => setSelectedTip(-1)} accessibilityRole="button" accessibilityLabel="Action"
             >
               {selectedTip === -1 ? (
                 <View style={styles.customInputWrapper}>
@@ -114,7 +114,7 @@ export const TipGratuityScreen = () => {
         <TouchableOpacity 
           style={[styles.primaryBtn, isPayDisabled && { opacity: 0.5 }]} 
           disabled={isPayDisabled}
-          onPress={handlePayTip} accessibilityRole="button" accessibilityLabel="button"
+          onPress={handlePayTip} accessibilityRole="button" accessibilityLabel="Action"
         >
           <Text style={styles.primaryBtnText}>{getButtonLabel()}</Text>
         </TouchableOpacity>

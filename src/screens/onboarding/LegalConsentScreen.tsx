@@ -138,7 +138,7 @@ export const LegalConsentScreen = () => {
                 key={c.id}
                 style={styles.consentRow}
                 onPress={() => toggle(c.id)}
-                activeOpacity={0.75} accessibilityRole="button" accessibilityLabel="c.label">
+                activeOpacity={0.75} accessibilityRole="button" accessibilityLabel={c.label}>
                 <View style={[styles.checkbox, active && styles.checkboxChecked]}>
                   {active && <Icon name="check" size={16} color={theme.colors.background} />}
                 </View>

@@ -80,14 +80,14 @@ export const SavedProfilesScreen = () => {
     <TouchableOpacity 
         style={styles.card} 
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('CompanionProfileScreen', { companionId: item.id })} accessibilityRole="button" accessibilityLabel="button"
+        onPress={() => navigation.navigate('CompanionProfileScreen', { companionId: item.id })} accessibilityRole="button" accessibilityLabel="Go to CompanionProfile"
     >
         <View style={styles.imagePlaceholder}>
             <Icon name="account" size={40} color="rgba(255,255,255,0.1)" />
             <TouchableOpacity 
                 style={styles.bookmarkBtn}
                 activeOpacity={0.7}
-                onPress={() => openOptions(item)} accessibilityRole="button" accessibilityLabel="button"
+                onPress={() => openOptions(item)} accessibilityRole="button" accessibilityLabel="More options"
             >
                 <Icon name="dots-horizontal" size={20} color={theme.colors.background} />
             </TouchableOpacity>

@@ -199,7 +199,7 @@ export const BookingDetailScreen = () => {
         <TouchableOpacity 
           style={styles.companionCard}
           activeOpacity={0.9}
-          onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { id: data.companionId } })} accessibilityRole="button" accessibilityLabel="button"
+          onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { id: data.companionId } })} accessibilityRole="button" accessibilityLabel="Go to DiscoverTab"
         >
           <View style={styles.profileRow}>
             <View style={styles.avatarPlaceholder}>

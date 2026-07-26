@@ -71,7 +71,7 @@ export const AppBottomSheet = ({
 
   return (
     <Modal visible={visible} transparent animationType="none" onRequestClose={onClose} statusBarTranslucent>
-      <Pressable style={StyleSheet.absoluteFill as object} onPress={onClose}>
+      <Pressable style={StyleSheet.absoluteFill as object} onPress={onClose} accessibilityRole="button" accessibilityLabel="Close bottom sheet backdrop">
         <Animated.View style={[StyleSheet.absoluteFill as object, styles.backdrop, { opacity: backdropOpacity }]} />
       </Pressable>
       <Animated.View style={[
@@ -86,7 +86,7 @@ export const AppBottomSheet = ({
         {title ? (
           <View style={styles.header}>
             <Text style={styles.title}>{title}</Text>
-            <TouchableOpacity onPress={onClose}>
+            <TouchableOpacity onPress={onClose} accessibilityRole="button" accessibilityLabel="Close">
               <Text style={styles.closeBtn}>✕</Text>
             </TouchableOpacity>
           </View>

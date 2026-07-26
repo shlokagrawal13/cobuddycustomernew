@@ -96,7 +96,7 @@ export const AccountSettingsScreen = () => {
                 <View style={styles.card}>
                     <View style={styles.inputBlock}>
                         <Text style={styles.inputLabel}>{t('phone', 'Phone Number')}</Text>
-                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate} accessibilityRole="button" accessibilityLabel="button">
+                        <TouchableOpacity style={styles.lockedInput} activeOpacity={0.7} onPress={handlePhoneUpdate} accessibilityRole="button" accessibilityLabel="Check Decagram">
                             <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
                                 <Text style={styles.lockedText}>{t('mockPhone', '+91 98****1234')}</Text>
                                 <Icon name="check-decagram" size={16} color={theme.colors.primary} />
@@ -145,7 +145,7 @@ export const AccountSettingsScreen = () => {
                                 <Icon name="apple" size={24} color={theme.colors.textPrimary} />
                                 <Text style={styles.linkedText}>{t('apple', 'Apple')}</Text>
                             </View>
-                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel="appleConnected ? \'Connected\' :...">
+                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel={appleConnected ? \'Connected\' :...}>
                                 <Text style={[styles.linkStatus, {color: appleConnected ? theme.colors.success : theme.colors.primary}]}>
                                     {appleConnected ? 'Connected' : 'Connect'}
                                 </Text>

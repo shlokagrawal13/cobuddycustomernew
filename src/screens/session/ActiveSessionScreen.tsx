@@ -128,10 +128,10 @@ export const ActiveSessionScreen = () => {
             </TouchableOpacity>
           </View>
           <View style={{ flexDirection: 'row', gap: 8 }}>
-            <TouchableOpacity style={styles.circleBtn} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.circleBtn} accessibilityRole="button" accessibilityLabel="Call">
               <Icon name="phone" size={18} color={theme.colors.textPrimary} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.circleBtn} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.circleBtn} accessibilityRole="button" accessibilityLabel="Chat">
               <Icon name="chat" size={18} color={theme.colors.textPrimary} />
             </TouchableOpacity>
           </View>
@@ -146,13 +146,13 @@ export const ActiveSessionScreen = () => {
 
         {/* Action Controls */}
         <View style={styles.actionGrid}>
-          <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)} accessibilityRole="button" accessibilityLabel="Add">
             <Icon name="clock-plus-outline" size={24} color={theme.colors.background} />
             <Text style={styles.actionBtnPrimaryText}>{t('extendSession', 'Extend Session')}</Text>
             <Text style={styles.actionBtnPrimarySub}>{t('addMoreTime', 'Add more time')}</Text>
           </TouchableOpacity>
           
-          <TouchableOpacity style={styles.actionBtnSecondary} onPress={() => setEndEarlyModalVisible(true)} accessibilityRole="button" accessibilityLabel="button">
+          <TouchableOpacity style={styles.actionBtnSecondary} onPress={() => setEndEarlyModalVisible(true)} accessibilityRole="button" accessibilityLabel="clock remove outline">
             <Icon name="clock-remove-outline" size={24} color={theme.colors.error} />
             <Text style={styles.actionBtnSecondaryText}>{t('endEarly', 'End Early')}</Text>
             <Text style={styles.actionBtnSecondarySub}>{t('proRataCharges', 'Pro-rata charges')}</Text>
@@ -191,7 +191,7 @@ export const ActiveSessionScreen = () => {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.primaryBtn} onPress={handleConfirmExtension} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.primaryBtn} onPress={handleConfirmExtension} accessibilityRole="button" accessibilityLabel="Action">
               <Text style={styles.primaryBtnText}>Confirm Extension (₹{selectedExtension === 30 ? '750' : '1,500'})</Text>
             </TouchableOpacity>
           </View>

@@ -79,7 +79,7 @@ export const SupportTicketDetailScreen = () => {
         {/* Reply Box */}
         {!isClosed ? (
           <View style={styles.replyBox}>
-            <TouchableOpacity style={styles.attachBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.attachBtn} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Attach file">
               <Icon name="paperclip" size={24} color={theme.colors.textSecondary} />
             </TouchableOpacity>
             <TextInput
@@ -93,7 +93,7 @@ export const SupportTicketDetailScreen = () => {
             <TouchableOpacity 
               style={[styles.sendBtn, !replyText.trim() && { opacity: 0.5 }]} 
               onPress={handleSend}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button"
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Send"
             >
               <Icon name="send" size={20} color={theme.colors.background} />
             </TouchableOpacity>

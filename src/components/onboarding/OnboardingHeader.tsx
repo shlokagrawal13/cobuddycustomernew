@@ -45,7 +45,9 @@ export const OnboardingHeader = ({
               style={styles.backBtn}
               onPress={onBack}
               hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              activeOpacity={0.7}>
+              activeOpacity={0.7}
+              accessibilityRole="button"
+              accessibilityLabel="Go back">
               <Icon name="arrow-left" size={20} color={theme.colors.textSecondary} />
             </TouchableOpacity>
           ) : (

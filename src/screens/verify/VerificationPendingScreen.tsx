@@ -111,7 +111,7 @@ export const VerificationPendingScreen = () => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel="isFromFlow ? \'Go Back\' : \'Cont...">
+        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={isFromFlow ? \'Go Back\' : \'Cont...}>
           <Text style={styles.ctaBtnText}>{isFromFlow ? 'Go Back' : 'Continue to App'}</Text>
           <Icon name={isFromFlow ? "arrow-left" : "arrow-right"} size={18} color={theme.colors.background} />
         </TouchableOpacity>

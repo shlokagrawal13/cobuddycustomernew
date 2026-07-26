@@ -108,7 +108,7 @@ export const LocationSelectionScreen = () => {
                             key={loc.id} 
                             style={[styles.row, index !== RECENT_LOCATIONS.length - 1 && styles.borderBottom]}
                             activeOpacity={0.7}
-                            onPress={() => handleSelectLocation(loc.mainText)} accessibilityRole="button" accessibilityLabel="button"
+                            onPress={() => handleSelectLocation(loc.mainText)} accessibilityRole="button" accessibilityLabel="Action"
                         >
                             <View style={styles.iconWrap}>
                                 <Icon name={loc.icon} size={20} color={theme.colors.textSecondary} />
@@ -126,7 +126,7 @@ export const LocationSelectionScreen = () => {
         {searchQuery.length > 0 && (
             <View style={styles.section}>
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => handleSelectLocation(searchQuery)} accessibilityRole="button" accessibilityLabel="button">
+                    <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => handleSelectLocation(searchQuery)} accessibilityRole="button" accessibilityLabel="Action">
                         <View style={styles.iconWrap}>
                             <Icon name="map-marker" size={20} color={theme.colors.primary} />
                         </View>

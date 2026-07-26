@@ -25,6 +25,8 @@ export const SmartHeader: React.FC<SmartHeaderProps> = ({
         style={styles.backBtn} 
         onPress={() => smartGoBack(fallbackTab)} 
         activeOpacity={0.7}
+        accessibilityRole="button"
+        accessibilityLabel="Go back"
       >
         <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
       </TouchableOpacity>

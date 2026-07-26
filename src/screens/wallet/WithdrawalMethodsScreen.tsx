@@ -99,7 +99,7 @@ export const WithdrawalMethodsScreen = () => {
                         key={wm.id} 
                         style={[styles.methodRow, index !== methods.length - 1 ? styles.methodBorder : null, isSelected ? styles.methodSelected : null]}
                         activeOpacity={0.8}
-                        onPress={() => handleMethodPress(wm)} accessibilityRole="button" accessibilityLabel="button"
+                        onPress={() => handleMethodPress(wm)} accessibilityRole="button" accessibilityLabel="Action"
                     >
                         <View style={[styles.methodIconWrap, isSelected ? styles.methodIconWrapActive : null]}>
                             <Icon name={wm.icon} size={22} color={isSelected ? theme.colors.primary : theme.colors.textSecondary} />
@@ -121,7 +121,7 @@ export const WithdrawalMethodsScreen = () => {
                             <TouchableOpacity 
                                 style={styles.deleteBtn} 
                                 onPress={() => handleDelete(wm.id, wm.title)}
-                                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} accessibilityRole="button" accessibilityLabel="button"
+                                hitSlop={{top: 10, bottom: 10, left: 10, right: 10}} accessibilityRole="button" accessibilityLabel="Delete"
                             >
                                 <Icon name="trash-can-outline" size={18} color={theme.colors.textSecondary} />
                             </TouchableOpacity>

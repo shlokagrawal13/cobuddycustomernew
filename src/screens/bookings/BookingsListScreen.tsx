@@ -144,7 +144,7 @@ export const BookingsListScreen = () => {
           <TouchableOpacity 
             style={styles.headerIconBtn} 
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' })} accessibilityRole="button" accessibilityLabel="button"
+            onPress={() => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' })} accessibilityRole="button" accessibilityLabel="Help"
           >
              <Icon name="help-circle-outline" size={24} color={theme.colors.textPrimary} />
           </TouchableOpacity>
@@ -160,7 +160,7 @@ export const BookingsListScreen = () => {
               key={tab}
               style={[styles.tabBtn, activeTab === tab && styles.tabBtnActive]}
               onPress={() => setActiveTab(tab)}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="button"
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel="Action"
             >
               <Text style={[styles.tabText, activeTab === tab && styles.tabTextActive]}>
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -190,7 +190,7 @@ export const BookingsListScreen = () => {
               key={booking.id} 
               style={styles.card} 
               activeOpacity={0.9}
-              onPress={() => handlePressCard(booking)} accessibilityRole="button" accessibilityLabel="button"
+              onPress={() => handlePressCard(booking)} accessibilityRole="button" accessibilityLabel="Action"
             >
               {/* Top Section: ID & Status */}
               <View style={styles.cardTopRow}>

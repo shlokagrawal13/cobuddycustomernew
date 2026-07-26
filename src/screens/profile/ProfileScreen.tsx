@@ -80,7 +80,7 @@ export const ProfileScreen = () => {
       {/* ── Polished Theme Header ── */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>{t('headerTitle', 'My Profile')}</Text>
-        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('SettingsHubScreen')} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.headerIconBtn} activeOpacity={0.7} onPress={() => navigation.navigate('SettingsHubScreen')} accessibilityRole="button" accessibilityLabel="Settings">
           <Icon name="cog-outline" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
       </View>
@@ -92,7 +92,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={styles.activeBookingBanner}
             onPress={() => navigation.navigate('LiveSessionStack', { screen: 'ActiveSessionScreen' })}
-            activeOpacity={0.9} accessibilityRole="button" accessibilityLabel="button"
+            activeOpacity={0.9} accessibilityRole="button" accessibilityLabel="Next"
           >
             <View style={styles.bannerIconBox}>
               <Icon name="timer-sand" size={20} color={theme.colors.background} />
@@ -118,10 +118,10 @@ export const ProfileScreen = () => {
 
             {/* Top Right Actions */}
             <View style={styles.heroActions}>
-              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={handleShareProfile} accessibilityRole="button" accessibilityLabel="button">
+              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={handleShareProfile} accessibilityRole="button" accessibilityLabel="Share">
                 <Icon name="share-variant" size={16} color={theme.colors.background} />
               </TouchableOpacity>
-              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => navigation.navigate('EditProfileScreen')} accessibilityRole="button" accessibilityLabel="button">
+              <TouchableOpacity style={styles.heroBtn} activeOpacity={0.7} onPress={() => navigation.navigate('EditProfileScreen')} accessibilityRole="button" accessibilityLabel="Edit">
                 <Icon name="pencil" size={16} color={theme.colors.background} />
               </TouchableOpacity>
             </View>
@@ -157,7 +157,7 @@ export const ProfileScreen = () => {
                 <Text style={styles.heroBio} numberOfLines={isBioExpanded ? undefined : 1}>
                   {user.bio}
                 </Text>
-                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel="isBioExpanded ? \'Show less\' : ...">
+                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel={isBioExpanded ? 'Show less' : 'Show more'}>
                   <Text style={styles.readMoreText}>{isBioExpanded ? 'Show less' : 'Read more'}</Text>
                 </TouchableOpacity>
               </View>
@@ -219,7 +219,7 @@ export const ProfileScreen = () => {
             <TouchableOpacity 
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
               onPress={() => navigation.navigate('EditProfileScreen')}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="user.email"
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`Email: ${user.email}`}
             >
               <Text style={styles.contactEmailText}>{user.email}</Text>
               <Icon name="pencil" size={14} color={theme.colors.primary} />
@@ -278,7 +278,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={[styles.kycBtn, user.kycStatus !== 'verified' && styles.kycBtnPrimary]}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('KYCStack')} accessibilityRole="button" accessibilityLabel="user.kycStatus === \'verified\' ..."
+            onPress={() => navigation.navigate('KYCStack')} accessibilityRole="button" accessibilityLabel={`${user.kycStatus} === \'verified\' ...`}
           >
             <Icon 
               name="shield-account" 
@@ -333,7 +333,7 @@ export const ProfileScreen = () => {
               <TouchableOpacity
                 onPress={() => handleToggle(s.id)}
                 style={[styles.toggleTrack, toggles[s.id] && styles.toggleTrackOn]}
-                activeOpacity={0.9} accessibilityRole="button" accessibilityLabel="button"
+                activeOpacity={0.9} accessibilityRole="button" accessibilityLabel="Action"
               >
                 <View style={[styles.toggleThumb, toggles[s.id] && styles.toggleThumbOn]} />
               </TouchableOpacity>

@@ -218,7 +218,7 @@ export const NotificationsScreen = () => {
                 styles.notifCard,
                 !notif.isRead && styles.notifCardUnread,
                 index === filteredNotifications.length - 1 && styles.lastCard
-              ]} accessibilityRole="button" accessibilityLabel="button"
+              ]} accessibilityRole="button" accessibilityLabel="Action"
             >
               {/* Unread Indicator */}
               {!notif.isRead && <View style={styles.unreadDot} />}

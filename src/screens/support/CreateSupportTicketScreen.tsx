@@ -56,7 +56,7 @@ export const CreateSupportTicketScreen = () => {
                 key={cat.id} 
                 style={[styles.categoryCard, selectedCategory === cat.id && styles.categoryCardActive]}
                 onPress={() => setSelectedCategory(cat.id)}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="cat.label"
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={cat.label}
               >
                 <Icon 
                   name={cat.icon} 

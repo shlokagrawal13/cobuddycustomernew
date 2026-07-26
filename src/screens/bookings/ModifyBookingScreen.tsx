@@ -154,11 +154,11 @@ export const ModifyBookingScreen = () => {
         <View style={styles.inputContainer}>
           <Text style={styles.inputLabel}>{t('inputDuration', 'Duration (Hours)')}</Text>
           <View style={styles.durationWrapper}>
-            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(-1)} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(-1)} accessibilityRole="button" accessibilityLabel="minus">
               <Icon name="minus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
             <Text style={styles.durationText}>{t('durationText', '{{duration}} {{hourText}}', { duration, hourText: duration === 1 ? 'Hour' : 'Hours' })}</Text>
-            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(1)} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(1)} accessibilityRole="button" accessibilityLabel="Add">
               <Icon name="plus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
           </View>
@@ -197,7 +197,7 @@ export const ModifyBookingScreen = () => {
       {/* Bottom Sheet Picker Modal for Venue */}
       <Modal visible={venueModalVisible} transparent={true} animationType="slide" onRequestClose={() => setVenueModalVisible(false)}>
         <View style={styles.modalOverlay}>
-          <TouchableOpacity style={styles.modalDismissArea} onPress={() => setVenueModalVisible(false)} activeOpacity={1} accessibilityRole="button" accessibilityLabel="button" />
+          <TouchableOpacity style={styles.modalDismissArea} onPress={() => setVenueModalVisible(false)} activeOpacity={1} accessibilityRole="button" accessibilityLabel="Close modal" />
           <View style={styles.bottomSheet}>
             <View style={styles.sheetHeader}>
               <Text style={styles.sheetTitle}>{t('sheetTitle', 'Select a Safe Venue')}</Text>

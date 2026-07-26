@@ -48,7 +48,7 @@ export const LanguageSelectionScreen = () => {
                         key={lang.id} 
                         style={[styles.row, index !== LANGUAGES.length - 1 && styles.borderBottom]}
                         activeOpacity={0.7}
-                        onPress={() => setSelectedLang(lang.id)} accessibilityRole="button" accessibilityLabel="button"
+                        onPress={() => setSelectedLang(lang.id)} accessibilityRole="button" accessibilityLabel="Action"
                     >
                         <View style={styles.meta}>
                             <Text style={styles.title}>{lang.name}</Text>

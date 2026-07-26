@@ -127,7 +127,7 @@ export const SettingsHubScreen = () => {
                   style={[styles.row, index !== section.items.length - 1 && styles.borderBottom]}
                   activeOpacity={0.7}
                   onPress={() => item.route ? navigation.navigate(item.route) : null}
-                  disabled={!item.route} accessibilityRole="button" accessibilityLabel="button"
+                  disabled={!item.route} accessibilityRole="button" accessibilityLabel="Action"
                 >
                   <View style={styles.iconWrap}>
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />

@@ -87,7 +87,7 @@ export const WithdrawMoneyScreen = () => {
             </View>
 
             <View style={styles.quickSelect}>
-                <TouchableOpacity style={styles.maxBtn} onPress={() => setAmount(MAX_WITHDRAWABLE.toString())} accessibilityRole="button" accessibilityLabel="button">
+                <TouchableOpacity style={styles.maxBtn} onPress={() => setAmount(MAX_WITHDRAWABLE.toString())} accessibilityRole="button" accessibilityLabel="Action">
                     <Text style={styles.maxBtnText}>{t('maxBtn', 'Withdraw Max (₹{{max}})', { max: MAX_WITHDRAWABLE })}</Text>
                 </TouchableOpacity>
             </View>
@@ -130,7 +130,7 @@ export const WithdrawMoneyScreen = () => {
           <TouchableOpacity 
               style={[styles.proceedBtn, (!amount || parseInt(amount) < 100 || parseInt(amount) > MAX_WITHDRAWABLE) ? styles.proceedBtnDisabled : null]} 
               activeOpacity={0.8}
-              onPress={handleWithdraw} accessibilityRole="button" accessibilityLabel="button"
+              onPress={handleWithdraw} accessibilityRole="button" accessibilityLabel="Action"
           >
               <Text style={styles.proceedText}>{t('proceedToPay', 'Withdraw ₹{{amount}}', { amount: amount || '0' })}</Text>
           </TouchableOpacity>

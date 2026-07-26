@@ -152,7 +152,7 @@ export const SafetyTutorialScreen = () => {
         rightNode={
           <TouchableOpacity
             onPress={() => navigation.navigate('TrustedContactsScreen')}
-            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }} accessibilityRole="button" accessibilityLabel="button">
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }} accessibilityRole="button" accessibilityLabel="Go to TrustedContacts">
             <Text style={styles.skipText}>{t('safety.btn_skip')}</Text>
           </TouchableOpacity>
         }
@@ -185,7 +185,7 @@ export const SafetyTutorialScreen = () => {
           title={isLast ? t('safety.btn_finish') : t('safety.btn_next')}
           onPress={goNext}
         />
-        <TouchableOpacity style={styles.learnMoreBtn} onPress={() => setShowLearnMore(true)} accessibilityRole="button" accessibilityLabel="button">
+        <TouchableOpacity style={styles.learnMoreBtn} onPress={() => setShowLearnMore(true)} accessibilityRole="button" accessibilityLabel="Action">
           <Text style={styles.learnMoreText}>{t('safety.btn_learn_more')}</Text>
         </TouchableOpacity>
       </BottomActionBar>

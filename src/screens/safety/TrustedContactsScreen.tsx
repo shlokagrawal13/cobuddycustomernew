@@ -88,7 +88,7 @@ export const TrustedContactsScreen = () => {
               <TouchableOpacity
                 onPress={() => completeOnboarding()}
                 hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Action">
                 <Text style={styles.skipText}>{t('contacts.btn_skip')}</Text>
               </TouchableOpacity>
             }
@@ -135,7 +135,7 @@ export const TrustedContactsScreen = () => {
           ))}
           
           {contacts.length < 3 && (
-            <TouchableOpacity onPress={() => setShowAddSheet(true)} style={styles.addButton} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="button">
+            <TouchableOpacity onPress={() => setShowAddSheet(true)} style={styles.addButton} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel="Add">
               <Icon name="plus-circle-outline" size={20} color={theme.colors.primary} />
               <Text style={styles.addButtonText}>{t('contacts.btn_add')}</Text>
             </TouchableOpacity>
@@ -186,7 +186,7 @@ export const TrustedContactsScreen = () => {
                 <TouchableOpacity 
                   key={rel}
                   style={[sheet.relChip, newRel === rel && sheet.relChipActive]}
-                  onPress={() => setNewRel(rel)} accessibilityRole="button" accessibilityLabel="button">
+                  onPress={() => setNewRel(rel)} accessibilityRole="button" accessibilityLabel="Action">
                   <Text style={[sheet.relChipText, newRel === rel && sheet.relChipTextActive]}>{t(`rel_${rel.toLowerCase()}`, rel)}</Text>
                 </TouchableOpacity>
               ))}
