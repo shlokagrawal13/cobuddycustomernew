@@ -19,6 +19,8 @@
     "location": "Location"
   },
   "companionCard": {
+    "statsMuted": "• {{reviews}} reviews • {{sessions}} sessions",
+    "fromRate": "From ",
     "viewProfile": "View Profile"
   },
   "a11yOpenAttachmentMenu": "Open attachment menu",
