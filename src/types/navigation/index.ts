@@ -33,9 +33,9 @@ export type RootStackParamList = {
   BasicProfileSetupScreen: undefined;
   LocationSelectionScreen: undefined;
   BookingActivitySelectScreen: undefined;
-  BookingVenueSelectScreen: { activity?: any } | undefined;
-  BookingTimeSelectScreen: { activity?: any; venue?: any } | undefined;
-  BookingSummaryScreen: { activity?: any; venue?: any; date?: any; time?: string; duration?: number; bookingId?: string } | undefined;
+  BookingVenueSelectScreen: { activity?: import('./booking.types').BookingActivity } | undefined;
+  BookingTimeSelectScreen: { activity?: import('./booking.types').BookingActivity; venue?: import('./booking.types').BookingVenue } | undefined;
+  BookingSummaryScreen: { activity?: import('./booking.types').BookingActivity; venue?: import('./booking.types').BookingVenue; date?: string; time?: string; duration?: number; bookingId?: string } | undefined;
   BookingSuccessScreen: undefined;
   BookingRequestSentScreen: undefined;
   BookingAcceptedScreen: undefined;
