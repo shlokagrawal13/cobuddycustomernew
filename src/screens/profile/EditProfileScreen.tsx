@@ -7,22 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { INTERESTS_DATA } from '../onboarding/InterestSelectionScreen'; // To map IDs to full objects
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-
-const MOCK_PROFILE = {
-    name: 'Shlok',
-    bio: 'Tech enthusiast and coffee lover. Always looking for good conversations and networking opportunities.',
-    age: '24',
-    gender: 'Male',
-    city: 'Mumbai, MH',
-    kycVerified: true,
-    languages: ['English', 'Hindi'],
-    langIds: ['en', 'hi'],
-    interests: [
-      { id: 'cafe', label: 'Cafe Meetup', icon: 'coffee-outline' },
-      { id: 'network', label: 'Networking', icon: 'handshake-outline' },
-      { id: 'wellness', label: 'Yoga & Wellness', icon: 'yoga' },
-    ]
-};
+import { MOCK_PROFILE } from '../../services/mock';
 
 export const EditProfileScreen = () => { 
   const { t } = useTranslation('profile.edit');

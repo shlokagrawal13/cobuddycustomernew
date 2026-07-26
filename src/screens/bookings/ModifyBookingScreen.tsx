@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { MOCK_VENUES } from '../../services/mock';
 
 export const ModifyBookingScreen = () => { 
   const { t } = useTranslation('bookings.modify');
@@ -21,9 +22,7 @@ export const ModifyBookingScreen = () => {
   const [newVenue, setNewVenue] = useState('');
   
   const [venueModalVisible, setVenueModalVisible] = useState(false);
-  const MOCK_VENUES = ['Blue Tokai Coffee, CP', 'Starbucks, Hauz Khas', 'DLF Promenade Mall', 'Keep Original Venue'];
-
-  const handleDateChange = (text: string) => {
+    const handleDateChange = (text: string) => {
     let cleaned = text.replace(/\D/g, '');
     let formatted = cleaned;
     if (cleaned.length > 2 && cleaned.length <= 4) {

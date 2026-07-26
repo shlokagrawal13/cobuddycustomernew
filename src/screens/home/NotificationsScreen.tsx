@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { SmartHeader } from '../../components/ui/SmartHeader';
+import { MOCK_NOTIFICATIONS } from '../../services/mock';
 
 type NotificationCategory = 'All' | 'Bookings' | 'Wallet' | 'Security' | 'Support';
 
@@ -25,104 +26,6 @@ interface NotificationItem {
 
 const CATEGORIES: NotificationCategory[] = ['All', 'Bookings', 'Wallet', 'Security', 'Support'];
 
-const MOCK_NOTIFICATIONS: NotificationItem[] = [
-  {
-    id: 'n1',
-    category: 'Bookings',
-    title: 'Booking Confirmed!',
-    description: 'Your evening walk with Priya has been confirmed for tomorrow at 6 PM.',
-    time: '2m ago',
-    isRead: false,
-    icon: 'calendar-check',
-    iconColor: theme.colors.success,
-    route: 'BookingAcceptedScreen',
-    stack: 'BookingFlowStack',
-  },
-  {
-    id: 'n1_declined',
-    category: 'Bookings',
-    title: 'Booking Declined',
-    description: 'Natasha is unavailable for Friday evening. Please check other companions.',
-    time: '15m ago',
-    isRead: false,
-    icon: 'calendar-remove',
-    iconColor: theme.colors.error,
-    route: 'BookingDeclinedScreen',
-    stack: 'BookingFlowStack',
-  },
-  {
-    id: 'n1_counter',
-    category: 'Bookings',
-    title: 'New Counter Offer',
-    description: 'Rahul has proposed a different time and price for your coffee meetup.',
-    time: '30m ago',
-    isRead: false,
-    icon: 'calendar-sync',
-    iconColor: theme.colors.warning,
-    route: 'BookingCounterOfferScreen',
-    stack: 'BookingFlowStack',
-  },
-  {
-    id: 'n2',
-    category: 'Wallet',
-    title: 'Refund Processed',
-    description: '₹1,500 has been successfully refunded to your CoBuddy Wallet.',
-    time: '1h ago',
-    isRead: false,
-    icon: 'wallet-plus',
-    iconColor: theme.colors.primary,
-    route: 'WalletScreen',
-    stack: 'ProfileTab',
-  },
-  {
-    id: 'n3',
-    category: 'Security',
-    title: 'New Login Detected',
-    description: 'We detected a new login from an iPhone 14 Pro in New Delhi.',
-    time: '3h ago',
-    isRead: true,
-    icon: 'shield-alert',
-    iconColor: theme.colors.error,
-    route: 'ActiveSessionsScreen',
-    stack: 'ProfileTab',
-  },
-  {
-    id: 'n4',
-    category: 'Bookings',
-    title: 'Upcoming Meetup Reminder',
-    description: 'Don\'t forget! Your coffee meetup with Rahul starts in 2 hours.',
-    time: '5h ago',
-    isRead: true,
-    icon: 'clock-outline',
-    iconColor: theme.colors.warning,
-    route: 'BookingDetailScreen',
-    stack: 'BookingsTab',
-  },
-  {
-    id: 'n5',
-    category: 'Support',
-    title: 'Support Ticket Updated',
-    description: 'Our Concierge team has responded to your ticket #402.',
-    time: '1d ago',
-    isRead: true,
-    icon: 'headset',
-    iconColor: '#3B82F6', // Blue for support
-    route: 'SupportTicketDetailScreen',
-    stack: 'ProfileTab',
-  },
-  {
-    id: 'n6',
-    category: 'Security',
-    title: 'KYC Verified successfully',
-    description: 'Your Identity verification is complete. You now have the verified badge!',
-    time: '2d ago',
-    isRead: true,
-    icon: 'check-decagram',
-    iconColor: theme.colors.success,
-    route: 'VerificationSuccessScreen', // Route to Verification success popup
-    stack: 'KYCStack',
-  },
-];
 
 export const NotificationsScreen = () => { 
   const { t } = useTranslation('home.notifications');

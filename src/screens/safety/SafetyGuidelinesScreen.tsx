@@ -6,46 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { GUIDELINES } from '../../services/mock';
 
 export const SafetyGuidelinesScreen = () => { 
   const { t } = useTranslation('safety.guidelines');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
-  const GUIDELINES = [
-    {
-      id: 'g1',
-      icon: 'map-marker-radius',
-      title: t('guideline.g1.title', 'Meet in Public Places'),
-      desc: t('guideline.g1.desc', 'Always arrange your first meetup in a well-lit, public location like a café, mall, or popular tourist spot. Avoid secluded areas or private residences.')
-    },
-    {
-      id: 'g2',
-      icon: 'shield-account',
-      title: t('guideline.g2.title', 'Verify Their Identity'),
-      desc: t('guideline.g2.desc', 'Look for the "Identity Verified" badge on their profile. Trust your instincts—if a profile seems fake or suspicious, report it immediately.')
-    },
-    {
-      id: 'g3',
-      icon: 'share-variant',
-      title: t('guideline.g3.title', 'Share Your Plans'),
-      desc: t('guideline.g3.desc', 'Use the "Trusted Contacts" feature to automatically share your live location and meetup details with a friend or family member.')
-    },
-    {
-      id: 'g4',
-      icon: 'car',
-      title: t('guideline.g4.title', 'Control Your Transport'),
-      desc: t('guideline.g4.desc', 'Always be in control of how you get to and from the meetup. Do not rely entirely on the companion for transportation.')
-    },
-    {
-      id: 'g5',
-      icon: 'message-text-lock',
-      title: t('guideline.g5.title', 'Keep Chat on CoBuddy'),
-      desc: t('guideline.g5.desc', 'Do not move your conversation to WhatsApp or SMS before meeting. Our chat filters protect you from scams and inappropriate content.')
-    }
-  ];
-
-  return (
+    return (
     <SafeAreaView style={styles.root} edges={['top']}>
       <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
 

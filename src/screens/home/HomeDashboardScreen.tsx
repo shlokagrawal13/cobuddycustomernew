@@ -7,37 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { CompanionCard } from '../../components/ui/CompanionCard';
 import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton';
-
-const DUMMY_FEATURED = [
-  {
-    id: 'f1',
-    name: 'Elena Vasquez',
-    initials: 'EV',
-    title: 'City guide & local experiences expert',
-    activities: ['Fine Dining', 'Art & Culture'],
-    trustScore: 98,
-    rating: 4.97,
-    reviews: 124,
-    sessions: 312,
-    rate: '₹500 /hr',
-    distance: '2.5 km away',
-    isOnline: true,
-  },
-  {
-    id: 'f2',
-    name: 'Marcus Chen',
-    initials: 'MC',
-    title: 'Art historian & cultural explorer',
-    activities: ['Art & Culture', 'Architecture'],
-    trustScore: 96,
-    rating: 4.92,
-    reviews: 89,
-    sessions: 205,
-    rate: '₹450 /hr',
-    distance: '4.0 km away',
-    isOnline: true,
-  },
-];
+import { DUMMY_FEATURED } from '../../services/mock';
 
 const EXPLORE_CATEGORIES = [
   { id: 'coffee', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },

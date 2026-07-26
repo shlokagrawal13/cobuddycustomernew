@@ -6,34 +6,15 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { MOCK_TRANSACTION_DETAILS } from '../../services/mock';
 
-const MOCK_DETAILS: Record<string, any> = {
-  tx_001: {
-    id: 'tx_001', icon: 'wallet-plus', label: 'Money Added', category: 'Money Added',
-    date: 'Oct 24, 2023', time: '14:30 IST', amount: '+ ₹1,000', positive: true, status: 'Successful',
-    refId: '#CB-ADD-8829', paymentSource: 'UPI ending in 45',
-    breakdown: [{ label: 'Top-up Amount', value: '₹1,000' }],
-  },
-  tx_002: {
-    id: 'tx_002', icon: 'account-clock', label: 'Session with Maya', category: 'Spent',
-    date: 'Oct 23, 2023', time: '20:15 IST', amount: '- ₹450', positive: false, status: 'Successful',
-    refId: '#CB-SES-7741', paymentSource: 'CoBuddy Wallet',
-    companion: 'Maya Sharma',
-    duration: '60 mins',
-    breakdown: [
-      { label: 'Session Fee (Hourly)', value: '₹350' },
-      { label: 'Platform Fee', value: '₹50' },
-      { label: 'Taxes (GST 18%)', value: '₹50' },
-    ],
-  }
-};
 
 export const TransactionDetailScreen = () => { 
   const { t } = useTranslation('wallet.transactionDetail');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<any>();
-  const tx = MOCK_DETAILS[route.params?.transactionId || 'tx_002']; // Default fallback for dev
+  const tx = MOCK_TRANSACTION_DETAILS[route.params?.transactionId || 'tx_002']; // Default fallback for dev
 
   const handleDownload = () => {
     Alert.alert(t('alertTitleDownloadReceipt', 'Download Receipt'), t('alertMsgPDFreceipthasbeendow', 'PDF receipt has been downloaded successfully.'));

@@ -7,39 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-
-const MOCK_SAVED = [
-  {
-    id: '1',
-    name: 'Aisha',
-    age: 26,
-    rating: 4.9,
-    reviews: 128,
-    rate: '₹1500/hr',
-    location: 'Bandra West, Mumbai',
-    tags: ['Nightlife', 'Foodie'],
-  },
-  {
-    id: '2',
-    name: 'Kabir',
-    age: 29,
-    rating: 4.8,
-    reviews: 84,
-    rate: '₹1200/hr',
-    location: 'South Delhi',
-    tags: ['Movies', 'Cafes'],
-  },
-  {
-    id: '3',
-    name: 'Riya',
-    age: 24,
-    rating: 5.0,
-    reviews: 42,
-    rate: '₹2000/hr',
-    location: 'Koramangala, Bangalore',
-    tags: ['Events', 'Shopping'],
-  }
-];
+import { MOCK_SAVED } from '../../services/mock';
 
 export const SavedProfilesScreen = () => { 
   const { t } = useTranslation('profile.saved');

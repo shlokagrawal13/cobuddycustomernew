@@ -130,7 +130,7 @@ export const BookingTimeSelectScreen = () => {
               <TouchableOpacity
                 key={hrs}
                 style={[styles.durationBtn, isSelected && styles.durationBtnSelected]}
-                onPress={() => setDuration(hrs)} accessibilityRole="button" accessibilityLabel={hrs  hrs === 1 ? \'hr\' : \'hrs\'}
+                onPress={() => setDuration(hrs)} accessibilityRole="button" accessibilityLabel={hrs === 1 ? 'hr' : 'hrs'}
               >
                 <Text style={[styles.durationText, isSelected && styles.textSelected]}>
                   {hrs} {hrs === 1 ? 'hr' : 'hrs'}

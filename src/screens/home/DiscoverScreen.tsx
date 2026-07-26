@@ -7,57 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { CompanionCard } from '../../components/ui/CompanionCard';
 import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton';
-
-const DUMMY_COMPANIONS = [
-  {
-    id: 'c1',
-    name: 'Elena Vasquez',
-    initials: 'EV',
-    title: 'City guide & local experiences expert',
-    activities: ['Fine Dining', 'Art & Culture', 'Networking'],
-    trustScore: 98,
-    rating: 4.97,
-    reviews: 124,
-    sessions: 312,
-    rate: '₹500 /hr',
-    distance: '2.5 km away',
-    isOnline: true,
-    category: 'conversation',
-    gender: 'Female',
-  },
-  {
-    id: 'c2',
-    name: 'Marcus Chen',
-    initials: 'MC',
-    title: 'Art historian & cultural explorer',
-    activities: ['Art & Culture', 'Architecture', 'Wellness'],
-    trustScore: 96,
-    rating: 4.92,
-    reviews: 89,
-    sessions: 205,
-    rate: '₹450 /hr',
-    distance: '4.0 km away',
-    isOnline: true,
-    category: 'movie',
-    gender: 'Male',
-  },
-  {
-    id: 'c3',
-    name: 'Sophia Laurent',
-    initials: 'SL',
-    title: 'Coffee enthusiast & deep conversations',
-    activities: ['Coffee', 'Networking', 'Study Buddy'],
-    trustScore: 99,
-    rating: 4.99,
-    reviews: 210,
-    sessions: 512,
-    rate: '₹600 /hr',
-    distance: '1.2 km away',
-    isOnline: false,
-    category: 'coffee',
-    gender: 'Female',
-  },
-];
+import { DUMMY_COMPANIONS } from '../../services/mock';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
 const MODAL_CATEGORIES = [

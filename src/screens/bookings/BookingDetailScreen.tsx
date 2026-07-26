@@ -6,28 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-
-const MOCK_DETAILS = {
-  id: 'CB-REQ-8829',
-  status: 'Accepted', // 'Awaiting Reply', 'Accepted', 'Counter-Proposed', 'Completed'
-  createdAt: 'Oct 23, 10:15 AM',
-  companionName: 'Elena Vasquez',
-  companionId: 'EV123',
-  companionRating: '4.9',
-  companionReviews: '128',
-  activity: 'Fine Dining & Drinks',
-  date: 'Friday, 24 Oct 2026',
-  time: '7:00 PM - 9:00 PM',
-  duration: '2 Hours',
-  venue: 'Blue Tokai Coffee',
-  address: 'Connaught Place, Inner Circle, New Delhi, 110001',
-  sessionRate: '₹3,000',
-  platformFee: '₹150',
-  taxes: '₹54',
-  total: '₹3,204',
-  notes: 'I prefer sitting near the window. Please wear smart casuals.',
-  declineReason: 'I am so sorry, but I just got booked for a full-day event on this date.',
-};
+import { MOCK_DETAILS } from '../../services/mock';
 
 export const BookingDetailScreen = () => { 
   const { t } = useTranslation('bookings.detail');

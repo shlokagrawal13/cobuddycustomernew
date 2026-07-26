@@ -6,12 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-
-const MOCK_REVIEWS = [
-    { id: '1', companionName: 'Aisha', rating: 5, date: '2 days ago', comment: 'Shlok was a great conversationalist! Very polite and respectful. Would highly recommend meeting him.' },
-    { id: '2', companionName: 'Priya', rating: 4, date: '1 week ago', comment: 'Nice meetup. We had a good time discussing tech and startups.' },
-    { id: '3', companionName: 'Rohan (Guide)', rating: 5, date: '1 month ago', comment: 'Great client, arrived on time and was very friendly.' }
-];
+import { MOCK_REVIEWS } from '../../services/mock';
 
 export const MyReviewsScreen = () => { 
   const { t } = useTranslation('profile.reviews');

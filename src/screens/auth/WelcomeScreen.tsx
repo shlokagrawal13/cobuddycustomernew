@@ -76,7 +76,6 @@ export const WelcomeScreen = () => {
           <Button
             title={t('welcome.get_started')}
             onPress={() => navigation.navigate('PhoneLoginScreen')}
-            accessibilityRole="button"
             accessibilityLabel={t('welcome.get_started') as string}
           />
         </Animated.View>

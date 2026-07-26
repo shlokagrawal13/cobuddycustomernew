@@ -13,18 +13,13 @@ import { theme } from '../../theme';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { useTranslation } from 'react-i18next';
+import { NOTIFICATION_BENEFITS } from '../../services/mock';
 
 export const NotificationPermissionScreen = () => {
   const navigation = useNavigation<any>();
   const { t } = useTranslation(['onboarding']);
 
-  const BENEFITS = [
-    { icon: 'bell-outline', title: t('notification.benefits.updates.title', 'Booking Updates'), sub: t('notification.benefits.updates.sub', 'Instant updates on your booking requests') },
-    { icon: 'calendar-clock-outline', title: t('notification.benefits.reminders.title', 'Session Reminders'), sub: t('notification.benefits.reminders.sub', 'Never miss a booking or pre-session briefing') },
-    { icon: 'shield-alert-outline', title: t('notification.benefits.safety.title', 'Safety Pings'), sub: t('notification.benefits.safety.sub', 'Emergency alerts and safety check-ins during sessions') },
-  ];
-
-  return (
+    return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
       {/* Skip */}
       <TouchableOpacity
@@ -59,10 +54,10 @@ export const NotificationPermissionScreen = () => {
 
         {/* Benefits */}
         <View style={styles.benefitsCard}>
-          {BENEFITS.map((b, i) => (
+          {NOTIFICATION_BENEFITS.map((b, i) => (
             <View
               key={b.icon}
-              style={[styles.benefitRow, i < BENEFITS.length - 1 && styles.benefitRowBorder]}>
+              style={[styles.benefitRow, i < NOTIFICATION_BENEFITS.length - 1 && styles.benefitRowBorder]}>
               <View style={styles.benefitIconWrap}>
                 <Icon name={b.icon} size={20} color={theme.colors.primary} />
               </View>

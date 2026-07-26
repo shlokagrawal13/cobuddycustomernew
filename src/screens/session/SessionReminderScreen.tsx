@@ -6,19 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { MOCK_DATA } from '../../services/mock';
 
 export const SessionReminderScreen = () => { 
   const { t } = useTranslation('session.reminder');
   const navigation = useNavigation<any>();
   const { smartGoBack } = useSmartNavigation();
 
-  const MOCK_DATA = {
-    companionName: 'Elena Vasquez',
-    time: 'Today, 7:00 PM',
-    venue: 'Starbucks, Connaught Place',
-  };
-
-  const SAFETY_TIPS = [
+    const SAFETY_TIPS = [
     { icon: 'shield-account-outline', text: 'Meet in a public place with good lighting.' },
     { icon: 'account-cancel-outline', text: 'Do not share your personal address or last name.' },
     { icon: 'cellphone-check', text: 'Keep your phone charged and handy.' },

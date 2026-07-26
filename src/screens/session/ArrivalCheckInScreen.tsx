@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { MOCK_OTP } from '../../services/mock';
 
 export const ArrivalCheckInScreen = () => { 
   const { t } = useTranslation('session.arrival');
@@ -14,8 +15,7 @@ export const ArrivalCheckInScreen = () => {
   const [hasArrived, setHasArrived] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
 
-  const MOCK_OTP = '4921';
-  const COMPANION_NAME = 'Elena Vasquez';
+    const COMPANION_NAME = 'Elena Vasquez';
 
   const handleSimulateArrival = () => {
     setIsLocating(true);

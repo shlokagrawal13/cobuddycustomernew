@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { MOCK_COMPANION } from '../../services/mock';
 
 const { width } = Dimensions.get('window');
 
@@ -26,9 +27,7 @@ export const ActiveSessionScreen = () => {
   // Pulse Animation for LIVE badge
   const pulseAnim = useRef(new Animated.Value(1)).current;
 
-  const MOCK_COMPANION = 'Elena Vasquez';
-
-  useEffect(() => {
+    useEffect(() => {
     // Pulse animation
     Animated.loop(
       Animated.sequence([

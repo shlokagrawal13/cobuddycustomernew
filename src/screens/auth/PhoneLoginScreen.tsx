@@ -97,7 +97,7 @@ export const PhoneLoginScreen = () => {
             <TouchableOpacity
               style={styles.codeBtn}
               onPress={() => setPickerVisible(true)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`${countryCode.flag} ${countryCode.c}...`}>
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`${countryCode.flag} ${countryCode.code}`}>
               <Text style={styles.codeFlag}>{countryCode.flag}</Text>
               <Text style={styles.codeText}>{countryCode.code}</Text>
               <Icon name="chevron-down" size={16} color={theme.colors.textSecondary} />
@@ -158,7 +158,7 @@ export const PhoneLoginScreen = () => {
               onPress={() => {
                 setCountryCode(item);
                 setPickerVisible(false);
-              }} accessibilityRole="button" accessibilityLabel={`${item.flag} ${item.country} ${item.co}...`}>
+              }} accessibilityRole="button" accessibilityLabel={`${item.flag} ${item.country} ${item.code}`}>
               <Text style={styles.pickerFlag}>{item.flag}</Text>
               <Text style={styles.pickerCountry}>{item.country}</Text>
               <Text style={styles.pickerCode}>{item.code}</Text>

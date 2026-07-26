@@ -6,12 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-
-const MOCK_BLOCKED_USERS = [
-  { id: '1', name: 'Rohan Sharma', date: 'Blocked on 12 Jan 2026' },
-  { id: '2', name: 'Sneha Kapoor', date: 'Blocked on 05 Feb 2026' },
-  { id: '3', name: 'Vikram Singh', date: 'Blocked on 22 Mar 2026' },
-];
+import { MOCK_BLOCKED_USERS } from '../../services/mock';
 
 export const BlockedUsersScreen = () => { 
   const { t } = useTranslation('settings.blockedUsers');
