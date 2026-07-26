@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
+import { selectInterests, selectSetInterests } from '../../store/selectors/userPreferencesSelectors';
 
 export const INTERESTS_DATA = [
   { id: 'cafe', label: 'Cafe Meetup', icon: 'coffee-outline' },
@@ -37,7 +39,10 @@ export const InterestSelectionScreen = () => {
   const { t } = useTranslation(['onboarding']);
   
   const isEditMode = route.params?.isEditMode || false;
-  const initialInterests = route.params?.initialInterests || ['coffee', 'art', 'wellness'];
+  const globalInterests = useUserPreferencesStore(selectInterests);
+  const setGlobalInterests = useUserPreferencesStore(selectSetInterests);
+
+  const initialInterests = route.params?.initialInterests || (globalInterests.length > 0 ? globalInterests : ['cafe', 'art', 'wellness']);
 
   const [selected, setSelected] = useState<Set<string>>(new Set(initialInterests));
 
@@ -55,11 +60,13 @@ export const InterestSelectionScreen = () => {
   const isValid = count >= MIN_SELECT;
 
   const handleNext = () => {
+      const newInterests = Array.from(selected);
+      setGlobalInterests(newInterests);
       if (isEditMode) {
           // Pass data back to EditProfileScreen
           navigation.navigate({
               name: 'EditProfileScreen',
-              params: { updatedInterests: Array.from(selected) },
+              params: { updatedInterests: newInterests },
               merge: true,
           });
       } else {
