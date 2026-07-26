@@ -9,6 +9,8 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { SkeletonLoader } from '../../components/ui/SkeletonLoader';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { DUMMY_PROFILE } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { width, height } = Dimensions.get('window');
 const HERO_HEIGHT = height * 0.55; 
@@ -17,7 +19,7 @@ const HERO_HEIGHT = height * 0.55;
 export const CompanionProfileScreen = ({ route }: any) => {
   const { id } = route?.params || {};
   const { t } = useTranslation(['companionProfile']);
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const insets = useSafeAreaInsets();
   const [loading, setLoading] = useState(true);

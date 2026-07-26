@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const DEFAULT_MOCK_DATA = {
   companionName: 'Natasha',
@@ -15,7 +17,7 @@ const DEFAULT_MOCK_DATA = {
 
 export const BookingDeclinedScreen = ({ route }: any) => { 
   const { t } = useTranslation('booking.declined');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   
   const bookingData = route?.params || DEFAULT_MOCK_DATA;
 

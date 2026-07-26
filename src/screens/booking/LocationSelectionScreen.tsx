@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const RECENT_LOCATIONS = [
     { id: '1', mainText: 'Mumbai, MH', subText: 'Maharashtra, India', icon: 'map-marker-outline' },
@@ -15,7 +17,7 @@ const RECENT_LOCATIONS = [
 
 export const LocationSelectionScreen = () => { 
   const { t } = useTranslation('booking.locationSelection');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [searchQuery, setSearchQuery] = useState('');
   const [isLocating, setIsLocating] = useState(false);

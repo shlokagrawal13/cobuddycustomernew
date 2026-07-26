@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const ALL_TRANSACTIONS = [
   { id: 'tx_001', icon: 'wallet-plus', label: 'Money Added', category: 'Money Added', date: 'Today, 2:30 PM', amount: '+ ₹1,000', positive: true, status: 'Successful' },
@@ -19,7 +21,7 @@ const FILTERS = ['All', 'Money Added', 'Spent', 'Refunds'];
 
 export const TransactionHistoryScreen = () => { 
   const { t } = useTranslation('wallet.transactionHistory');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [activeFilter, setActiveFilter] = useState('All');
 

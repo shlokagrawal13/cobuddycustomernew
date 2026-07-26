@@ -5,10 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const CompanionReviewScreen = () => { 
   const { t } = useTranslation('session.companionReview');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [rating, setRating] = useState(0);
   const [publicReview, setPublicReview] = useState('');
   const [privateFeedback, setPrivateFeedback] = useState('');

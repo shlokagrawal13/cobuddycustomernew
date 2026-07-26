@@ -9,6 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Mock Data
 const WALLET_DATA = {
@@ -27,7 +29,7 @@ const TRANSACTIONS = [
 
 export const WalletScreen = () => { 
   const { t } = useTranslation('wallet.wallet');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
 
   return (

@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 interface Session {
     id: string;
@@ -53,7 +55,7 @@ const INITIAL_SESSIONS: Session[] = [
 
 export const ActiveSessionsScreen = () => { 
   const { t } = useTranslation('settings.activeSessions');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [sessions, setSessions] = useState<Session[]>(INITIAL_SESSIONS);
 

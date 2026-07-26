@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { theme } from '../../theme';
 import { Button } from '../../components/ui/Button';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
@@ -9,6 +9,8 @@ import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const INTERESTS_DATA = [
   { id: 'cafe', label: 'Cafe Meetup', icon: 'coffee-outline' },
@@ -29,9 +31,9 @@ const MIN_SELECT = 3;
 const MAX_SELECT = 10;
 
 export const InterestSelectionScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'InterestSelectionScreen'>>();
   const { t } = useTranslation(['onboarding']);
   
   const isEditMode = route.params?.isEditMode || false;

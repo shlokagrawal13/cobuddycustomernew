@@ -18,6 +18,8 @@ import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { width: SW } = Dimensions.get('window');
 
@@ -114,7 +116,7 @@ function SlideVisual({ visual }: { visual: Slide['visual'] }) {
 }
 
 export const SafetyTutorialScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const { t } = useTranslation(['onboarding']);
   const [current, setCurrent] = useState(0);

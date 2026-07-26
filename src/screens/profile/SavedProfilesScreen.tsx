@@ -8,10 +8,12 @@ import { theme } from '../../theme';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { MOCK_SAVED } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const SavedProfilesScreen = () => { 
   const { t } = useTranslation('profile.saved');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [savedProfiles, setSavedProfiles] = useState(MOCK_SAVED);
   const [selectedProfile, setSelectedProfile] = useState<any>(null);

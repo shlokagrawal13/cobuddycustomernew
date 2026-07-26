@@ -21,6 +21,8 @@ import { useAuthStore } from '../../store/slices/authStore';
 import { validateName, validateDOB } from '../../utils/validation';
 import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const GENDER_OPTIONS = ['Man', 'Woman', 'Non-binary', 'Prefer not to say'];
 
@@ -32,7 +34,7 @@ const AVATAR_COLORS: Record<AvatarState, string> = {
 };
 
 export const BasicProfileSetupScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');

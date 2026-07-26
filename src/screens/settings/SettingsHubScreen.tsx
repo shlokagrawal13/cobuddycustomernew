@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const SETTING_SECTIONS = [
   {
@@ -60,7 +62,7 @@ const DEV_TEST_SCREENS = [
 
 export const SettingsHubScreen = () => { 
   const { t } = useTranslation('settings.hub');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
 
   const handleLogout = () => {
@@ -126,7 +128,7 @@ export const SettingsHubScreen = () => {
                   key={item.id} 
                   style={[styles.row, index !== section.items.length - 1 && styles.borderBottom]}
                   activeOpacity={0.7}
-                  onPress={() => item.route ? navigation.navigate(item.route) : null}
+                  onPress={() => item.route ? navigation.navigate(item.route as never) : null}
                   disabled={!item.route} accessibilityRole="button" accessibilityLabel="Action"
                 >
                   <View style={styles.iconWrap}>
@@ -157,7 +159,7 @@ export const SettingsHubScreen = () => {
                   // If it fails, we catch it or we just use nested navigation:
                   if (item.route === 'NetworkErrorScreen' || item.route === 'ForceUpdateScreen' || item.route === 'MaintenanceModeScreen') {
                      // Directly registered in RootNavigator usually? Wait, let's try pushing directly.
-                     navigation.navigate(item.route);
+                     navigation.navigate(item.route as never);
                   } else {
                      navigation.navigate('SystemStateStack', { screen: item.route });
                   }
@@ -184,7 +186,7 @@ export const SettingsHubScreen = () => {
                 key={item.id} 
                 style={[styles.row, index !== DANGER_ZONE.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(239, 68, 68, 0.1)'}]}
                 activeOpacity={0.7}
-                onPress={() => item.route ? navigation.navigate(item.route) : null} accessibilityRole="button" accessibilityLabel="Next"
+                onPress={() => item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel="Next"
               >
                 <View style={[styles.iconWrap, {backgroundColor: 'rgba(239, 68, 68, 0.1)'}]}>
                   <Icon name={item.icon} size={22} color={theme.colors.error} />

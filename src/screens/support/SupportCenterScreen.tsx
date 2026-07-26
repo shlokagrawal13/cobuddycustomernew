@@ -7,10 +7,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { MOCK_TICKETS } from '../../services/mock/support.mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const SupportCenterScreen = () => { 
   const { t } = useTranslation('support.supportCenter');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [activeTab, setActiveTab] = useState<'Active' | 'Closed'>('Active');
 

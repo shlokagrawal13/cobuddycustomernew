@@ -14,6 +14,8 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { MOCK_CHAT_LIST } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Define the exact colors to match the luxury theme
 const Colors = {
@@ -29,7 +31,7 @@ const Colors = {
 
 export const ChatListScreen = () => { 
   const { t } = useTranslation('chat.list');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const [showNewMessageModal, setShowNewMessageModal] = useState(false);
   const activeBookings = [

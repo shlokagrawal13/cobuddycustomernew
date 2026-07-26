@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { theme } from '../../theme';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
@@ -13,13 +13,15 @@ import { validateOTP } from '../../utils/validation';
 
 import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const OTP_EXPIRY = 30;
 
 export const OTPVerificationScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'OTPVerificationScreen'>>();
   const { t } = useTranslation(['auth']);
   const phone = route.params?.phone || '+91 0000000000';
   

@@ -14,6 +14,8 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { Button } from '../../components/ui/Button';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { height: SCREEN_H, width: SCREEN_W } = Dimensions.get('window');
 
@@ -24,7 +26,7 @@ const TRUST_PILLARS = [
 ];
 
 export const WelcomeScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { t } = useTranslation(['onboarding']);
   
   const heroOpacity = useRef(new Animated.Value(0)).current;

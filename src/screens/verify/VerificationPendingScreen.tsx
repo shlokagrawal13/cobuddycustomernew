@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const REVIEW_STEPS = [
   {icon: 'check-circle',        label: 'Document Verification', status: 'Completed',    done: true},
@@ -15,7 +17,7 @@ const REVIEW_STEPS = [
 
 export const VerificationPendingScreen = () => { 
   const { t } = useTranslation('verify.pending');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const handleGoToIdentity = () => {
     // If KYC was opened from another flow (like Booking), return to it.

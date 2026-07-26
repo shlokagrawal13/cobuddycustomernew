@@ -5,18 +5,20 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { ChatInputBar } from '../../components/common/ChatInputBar';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { getMockChatMessages } from '../../services/mock/chat.mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const CompanionChatScreen = () => { 
   const { t } = useTranslation('chat.companion');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'CompanionChatScreen'>>();
   const companionName = route.params?.companionName || 'Elena Vasquez';
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
   

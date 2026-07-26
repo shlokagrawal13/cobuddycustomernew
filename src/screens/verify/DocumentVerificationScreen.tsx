@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const DOC_TYPES = [
   {id: 'AADHAAR',  icon: 'card-account-details-outline', label: 'Aadhaar'},
@@ -25,7 +27,7 @@ type UploadState = 'idle' | 'selected' | 'uploaded';
 
 export const DocumentVerificationScreen = () => { 
   const { t } = useTranslation('verify.document');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedDoc, setSelectedDoc] = useState<DocType>('AADHAAR');
   const [docNumber, setDocNumber] = useState('');

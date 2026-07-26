@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange: (val: boolean) => void }) => {
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
@@ -44,7 +46,7 @@ const TIMEOUT_OPTIONS = [
 
 export const AppLockScreen = () => { 
   const { t } = useTranslation('settings.appLock');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   
   const [appLockEnabled, setAppLockEnabled] = useState(true);

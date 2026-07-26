@@ -2,10 +2,12 @@ import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, Platform, KeyboardAvoidingView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const DEFAULT_PAYOUT = {
     id: 'wm_bank1',
@@ -17,9 +19,9 @@ const DEFAULT_PAYOUT = {
 
 export const WithdrawMoneyScreen = () => { 
   const { t } = useTranslation('wallet.withdrawMoney');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'WithdrawMoneyScreen'>>();
   const [amount, setAmount] = useState('');
   const [selectedMethod, setSelectedMethod] = useState(DEFAULT_PAYOUT);
   

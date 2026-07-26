@@ -7,6 +7,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Reusable Custom Switch
 const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean }) => {
@@ -34,7 +36,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
 
 export const DataCacheScreen = () => { 
   const { t } = useTranslation('settings.dataCache');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   
   const [cacheSize, setCacheSize] = useState('45.2 MB');

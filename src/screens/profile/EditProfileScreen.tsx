@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform, Alert, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { INTERESTS_DATA } from '../onboarding/InterestSelectionScreen'; // To map IDs to full objects
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { MOCK_PROFILE } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const EditProfileScreen = () => { 
   const { t } = useTranslation('profile.edit');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'EditProfileScreen'>>();
   
   const [form, setForm] = useState({
       name: MOCK_PROFILE.name,
@@ -27,7 +29,7 @@ export const EditProfileScreen = () => {
   // Handle incoming params from sub-screens (Location, Interests, Languages)
   useEffect(() => {
       if (route.params?.updatedCity) {
-          setForm(prev => ({ ...prev, city: route.params.updatedCity }));
+          setForm(prev => ({ ...prev, city: (route.params?.updatedCity as string) }));
       }
       if (route.params?.updatedInterests) {
           // Map IDs back to full interest objects for rendering the grid
@@ -39,8 +41,8 @@ export const EditProfileScreen = () => {
       if (route.params?.updatedLanguages) {
           setForm(prev => ({ 
               ...prev, 
-              languages: route.params.updatedLanguages,
-              langIds: route.params.updatedLangIds || prev.langIds 
+              languages: (route.params?.updatedLanguages as string[]),
+              langIds: (route.params?.updatedLangIds as string[]) || prev.langIds 
           }));
       }
   }, [route.params]);

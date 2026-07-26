@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const STEPS = [
   {id: 1, icon: 'file-document-check', label: 'Document Verification', status: 'COMPLETED'},
@@ -15,7 +17,7 @@ const STEPS = [
 
 export const VerificationProcessingScreen = () => { 
   const { t } = useTranslation('verify.processing');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const pulseAnim = useRef(new Animated.Value(1)).current;
   const [activeStep, setActiveStep] = useState(2); // 0=none, 1=doc, 2=selfie, 3=profile, 4=done
 

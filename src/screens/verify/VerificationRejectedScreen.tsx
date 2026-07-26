@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const REVIEW_STEPS = [
   {icon: 'check-circle',        label: 'Document Verification', status: 'Completed',    done: true},
@@ -15,7 +17,7 @@ const REVIEW_STEPS = [
 
 export const VerificationRejectedScreen = () => { 
   const { t } = useTranslation('verify.rejected');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const handleRetry = () => {
     // Reset back to KYC intro or Document verification

@@ -2,10 +2,12 @@ import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Modal, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const INITIAL_METHODS = [
   { id: 'wm_bank1', type: 'bank', icon: 'bank', title: 'HDFC Bank', sub: 'Account ending in 4242', isVerified: true },
@@ -14,9 +16,9 @@ const INITIAL_METHODS = [
 
 export const WithdrawalMethodsScreen = () => { 
   const { t } = useTranslation('wallet.withdrawalMethods');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'WithdrawalMethodsScreen'>>();
   const [methods, setMethods] = useState(INITIAL_METHODS);
   const [upiModalVisible, setUpiModalVisible] = useState(false);
   const [newUpiId, setNewUpiId] = useState('');

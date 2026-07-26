@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const DEFAULT_MOCK_DATA = {
   bookingId: 'CB-REQ-8829',
@@ -19,7 +21,7 @@ const DEFAULT_MOCK_DATA = {
 
 export const BookingAcceptedScreen = ({ route }: any) => { 
   const { t } = useTranslation('booking.accepted');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const scaleAnim = useRef(new Animated.Value(0)).current;
 
   const bookingData = { ...DEFAULT_MOCK_DATA, ...(route?.params || {}) };

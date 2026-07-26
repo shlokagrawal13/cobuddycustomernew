@@ -6,12 +6,14 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { MOCK_COMPANION } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { width } = Dimensions.get('window');
 
 export const ActiveSessionScreen = () => { 
   const { t } = useTranslation('session.active');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [etiquetteVisible, setEtiquetteVisible] = useState(true);
   
   // Timer State (e.g. 2 hours = 7200 seconds)

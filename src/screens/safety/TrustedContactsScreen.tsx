@@ -18,16 +18,18 @@ import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { useAuthStore } from '../../store/slices/authStore';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { validatePhone, validateName } from '../../utils/validation';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const RELATIONSHIPS = ['Family', 'Friend', 'Partner', 'Other'];
 
 export const TrustedContactsScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'TrustedContactsScreen'>>();
   const { t } = useTranslation(['onboarding']);
   const completeOnboarding = useAuthStore((state) => state.completeOnboarding);
   const isFromSettings = route.params?.fromSettings;

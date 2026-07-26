@@ -2,12 +2,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Modal, Pressable, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation, useRoute, useFocusEffect } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp, useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { CompanionCard } from '../../components/ui/CompanionCard';
 import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton';
 import { DUMMY_COMPANIONS } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
 const MODAL_CATEGORIES = [
@@ -74,8 +76,8 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
 
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
-  const navigation = useNavigation<any>();
-  const route = useRoute<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'DiscoverScreen'>>();
   
   const [activeStatus, setActiveStatus] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');

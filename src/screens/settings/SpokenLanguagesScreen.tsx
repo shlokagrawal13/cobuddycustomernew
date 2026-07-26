@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const SPOKEN_LANGUAGES = [
     { id: 'en', label: 'English', native: 'English' },
@@ -25,9 +27,9 @@ const SPOKEN_LANGUAGES = [
 
 export const SpokenLanguagesScreen = () => { 
   const { t } = useTranslation('settings.spokenLanguages');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'SpokenLanguagesScreen'>>();
   
   const initialLanguages = route.params?.initialLanguages || ['en', 'hi'];
   const [selected, setSelected] = useState<Set<string>>(new Set(initialLanguages));

@@ -7,6 +7,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { SmartHeader } from '../../components/ui/SmartHeader';
 import { MOCK_NOTIFICATIONS } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 type NotificationCategory = 'All' | 'Bookings' | 'Wallet' | 'Security' | 'Support';
 
@@ -29,7 +31,7 @@ const CATEGORIES: NotificationCategory[] = ['All', 'Bookings', 'Wallet', 'Securi
 
 export const NotificationsScreen = () => { 
   const { t } = useTranslation('home.notifications');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [activeCategory, setActiveCategory] = useState<NotificationCategory>('All');
   const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS);
 

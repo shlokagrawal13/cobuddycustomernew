@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const LEGAL_DOCS = [
     { id: 'tos', title: 'Terms of Service', sub: 'Last updated: June 2026', icon: 'file-document-outline' },
@@ -16,7 +18,7 @@ const LEGAL_DOCS = [
 
 export const LegalAgreementsScreen = () => { 
   const { t } = useTranslation('settings.legalAgreements');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
 
   return (

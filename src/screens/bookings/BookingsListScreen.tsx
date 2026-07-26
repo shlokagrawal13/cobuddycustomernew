@@ -6,13 +6,15 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { MOCK_BOOKINGS } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { width } = Dimensions.get('window');
 type TabType = 'pending' | 'accepted' | 'history';
 
 export const BookingsListScreen = () => { 
   const { t } = useTranslation('bookings.list');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [activeTab, setActiveTab] = useState<TabType>('pending');
 
   const filteredBookings = MOCK_BOOKINGS.filter(b => b.type === activeTab);

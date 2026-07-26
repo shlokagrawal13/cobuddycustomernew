@@ -3,17 +3,19 @@ import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { MOCK_TRANSACTION_DETAILS } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 
 export const TransactionDetailScreen = () => { 
   const { t } = useTranslation('wallet.transactionDetail');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<any>();
+  const route = useRoute<RouteProp<RootStackParamList, 'TransactionDetailScreen'>>();
   const tx = MOCK_TRANSACTION_DETAILS[route.params?.transactionId || 'tx_002']; // Default fallback for dev
 
   const handleDownload = () => {

@@ -23,6 +23,8 @@ import { validatePhone } from '../../utils/validation';
 
 import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const COUNTRY_CODES = [
   { flag: '🇮🇳', code: '+91', country: 'India', maxLength: 10 },
@@ -35,7 +37,7 @@ const COUNTRY_CODES = [
 ];
 
 export const PhoneLoginScreen = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const { t } = useTranslation(['auth']);
   const [countryCode, setCountryCode] = useState(COUNTRY_CODES[0]);

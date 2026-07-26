@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CATEGORIES = [
   { id: 'payment', label: 'Payment & Refunds', icon: 'credit-card-outline' },
@@ -16,7 +18,7 @@ const CATEGORIES = [
 
 export const CreateSupportTicketScreen = () => { 
   const { t } = useTranslation('support.createTicket');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [subject, setSubject] = useState('');

@@ -1,0 +1,12 @@
+export type BookingStackParamList = {
+  LocationSelectionScreen: undefined;
+  BookingActivitySelectScreen: undefined;
+  BookingVenueSelectScreen: { activity?: any } | undefined;
+  BookingTimeSelectScreen: { activity?: any; venue?: any } | undefined;
+  BookingSummaryScreen: { activity?: any; venue?: any; date?: string; time?: string; duration?: number } | undefined;
+  BookingSuccessScreen: undefined;
+  BookingDetailScreen: { bookingId?: string; status?: string } | undefined;
+  CancelBookingScreen: { bookingId?: string } | undefined;
+  ModifyBookingScreen: { bookingId?: string } | undefined;
+  DisputeRefundScreen: { bookingId?: string } | undefined;
+};

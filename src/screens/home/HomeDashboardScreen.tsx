@@ -8,6 +8,8 @@ import { theme } from '../../theme';
 import { CompanionCard } from '../../components/ui/CompanionCard';
 import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton';
 import { DUMMY_FEATURED } from '../../services/mock';
+import { RootStackParamList } from '../../types/navigation';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const EXPLORE_CATEGORIES = [
   { id: 'coffee', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
@@ -18,7 +20,7 @@ const EXPLORE_CATEGORIES = [
 
 export const HomeDashboardScreen = () => {
   const { t } = useTranslation('home.dashboard');
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [loading, setLoading] = useState(true);
 
   // In real app, this comes from global state or API
