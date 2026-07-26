@@ -29,7 +29,8 @@ export const BookingActivitySelectScreen = () => {
     
     const selectedActivity = ACTIVITIES.find(a => a.id === selectedActivityId);
     if (selectedActivity) {
-      setDraftBooking({ activity: selectedActivity.title });
+      const activityTitle = t(selectedActivity.titleKey, selectedActivity.defaultTitle) as string;
+      setDraftBooking({ activity: activityTitle });
     }
     
     navigation.navigate('BookingVenueSelectScreen', {
@@ -78,10 +79,10 @@ export const BookingActivitySelectScreen = () => {
                 
                 <View style={styles.cardContent}>
                   <Text style={[styles.cardTitle, isSelected && styles.cardTitleSelected]}>
-                    {activity.title}
+                    {t(activity.titleKey, activity.defaultTitle) as string}
                   </Text>
                   <Text style={[styles.cardDesc, isSelected && styles.cardDescSelected]}>
-                    {activity.description}
+                    {t(activity.descKey, activity.defaultDesc) as string}
                   </Text>
                 </View>
                 

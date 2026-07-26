@@ -12,7 +12,8 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {theme} from '../../theme';
+import { theme } from '../../theme';
+import { MOCK_CHAT_LIST } from '../../services/mock';
 
 // Define the exact colors to match the luxury theme
 const Colors = {
@@ -36,38 +37,7 @@ export const ChatListScreen = () => {
     { id: 'CB-REQ-9912', name: 'Sneha Verma', role: 'Local Guide', online: false },
   ];
 
-  const MOCK_CHATS = [
-    {
-      id: 'CB-REQ-8829',
-      name: 'Elena Vasquez',
-      lastMessage: 'I have arrived at the cafe. See you soon!',
-      time: '12:45 PM',
-      unread: 1,
-      isOnline: true,
-      isTyping: false,
-      readReceipt: 'none', // sent by them, so no read receipt for us
-    },
-    {
-      id: 'CB-REQ-7711',
-      name: 'Priya Sharma',
-      lastMessage: 'Thank you for the amazing session yesterday.',
-      time: 'Yesterday',
-      unread: 0,
-      isOnline: false,
-      isTyping: false,
-      readReceipt: 'read', // double blue/gold tick
-    },
-    {
-      id: 'CB-REQ-5522',
-      name: 'Aisha Khan',
-      lastMessage: '',
-      time: 'Just now',
-      unread: 0,
-      isOnline: true,
-      isTyping: true, // Show "typing..." animation text
-      readReceipt: 'none',
-    },
-  ];
+
 
   return (
     <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
@@ -123,7 +93,7 @@ export const ChatListScreen = () => {
           <Text style={styles.convoHeaderLabel}>{t('convoHeaderLabel', 'ACTIVE CONVERSATIONS')}</Text>
         </View>
 
-        {MOCK_CHATS.map((chat, index) => (
+        {MOCK_CHAT_LIST.map((chat, index) => (
           <React.Fragment key={chat.id}>
             <TouchableOpacity
               style={styles.convoItem}
@@ -172,11 +142,11 @@ export const ChatListScreen = () => {
             </TouchableOpacity>
             
             {/* Divider between chats */}
-            {index < MOCK_CHATS.length - 1 && <View style={styles.chatDivider} />}
+            {index < MOCK_CHAT_LIST.length - 1 && <View style={styles.chatDivider} />}
           </React.Fragment>
         ))}
 
-        {MOCK_CHATS.length === 0 && (
+        {MOCK_CHAT_LIST.length === 0 && (
           <View style={styles.emptyState}>
             <Icon name="message-text-outline" size={48} color={Colors.border} />
             <Text style={styles.emptyTitle}>{t('emptyTitle', 'No active chats')}</Text>

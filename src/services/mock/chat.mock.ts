@@ -6,3 +6,27 @@ export const getMockChatMessages = (companionName: string) => [
   { id: 'sys2', type: 'system', text: `${companionName.split(' ')[0]} arrived at the venue.`, time: '12:45 PM' },
   { id: '4', type: 'text', text: 'I have arrived at the cafe. See you soon!', sender: 'them', time: '12:45 PM' },
 ];
+
+export const MOCK_CHAT_LIST = [
+      {
+        id: 'CB-REQ-8829',
+        name: 'Elena Vasquez',
+        lastMessage: 'I have arrived at the cafe. See you soon!',
+        time: '12:45 PM',
+        unread: 1,
+        isOnline: true,
+        isTyping: false,
+        readReceipt: 'none', 
+      },
+      {
+        id: 'CB-REQ-7711',
+        name: 'Priya Sharma',
+        lastMessage: 'Thank you for the amazing session yesterday.',
+        time: 'Yesterday',
+        unread: 0,
+        isOnline: false,
+        isTyping: false,
+        readReceipt: 'read', 
+      },
+    ];
+

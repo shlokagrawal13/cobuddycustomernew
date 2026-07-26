@@ -38,14 +38,14 @@ export const SafetyGuidelinesScreen = () => {
         <View style={styles.listContainer}>
           {GUIDELINES.map((item, index) => (
             <View key={item.id} style={styles.ruleCard}>
-              <View style={styles.ruleHeader}>
-                <View style={styles.ruleIconBox}>
-                  <Icon name={item.icon} size={22} color={theme.colors.primary} />
+                <View style={styles.ruleHeader}>
+                  <View style={styles.ruleIconBox}>
+                    <Icon name={item.icon} size={22} color={theme.colors.primary} />
+                  </View>
+                  <Text style={styles.ruleTitle}>{t(item.titleKey, item.defaultTitle) as string}</Text>
                 </View>
-                <Text style={styles.ruleTitle}>{item.title}</Text>
+                <Text style={styles.ruleDesc}>{t(item.descKey, item.defaultDesc) as string}</Text>
               </View>
-              <Text style={styles.ruleDesc}>{item.desc}</Text>
-            </View>
           ))}
         </View>
 

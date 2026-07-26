@@ -57,8 +57,8 @@ export const LocationPermissionScreen = () => {
                 <Icon name={b.icon} size={20} color={theme.colors.primary} />
               </View>
               <View style={styles.benefitMeta}>
-                <Text style={styles.benefitTitle}>{b.title}</Text>
-                <Text style={styles.benefitSub}>{b.sub}</Text>
+                <Text style={styles.benefitTitle}>{t(b.titleKey, b.defaultTitle) as string}</Text>
+                <Text style={styles.benefitSub}>{t(b.subKey, b.defaultSub) as string}</Text>
               </View>
             </View>
           ))}
