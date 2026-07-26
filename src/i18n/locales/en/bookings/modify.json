@@ -19,5 +19,15 @@
     "eG25102026": "e.g. 25/10/2026",
     "0500": "05:00",
     "SearchCafesMall": "Search cafes, malls, restaurants..."
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yAm": "AM",
+  "a11yPm": "PM",
+  "a11yMinus": "minus",
+  "a11yAdd": "Add",
+  "a11ySendModificationRequest": "Send Modification Request",
+  "a11yCancel": "Cancel",
+  "a11yCloseModal": "Close modal",
+  "a11yClose": "Close",
+  "a11yItem": "item"
 }

@@ -12,5 +12,9 @@
   "reasonAnother": "Found another companion",
   "reasonMistake": "Booked by mistake",
   "reasonEmergency": "Personal emergency",
-  "reasonOther": "Other"
+  "reasonOther": "Other",
+  "a11yGoBack": "Go back",
+  "a11yReason": "reason",
+  "a11yConfirmCancellation": "Confirm Cancellation",
+  "a11yNoKeepBooking": "No, Keep Booking"
 }

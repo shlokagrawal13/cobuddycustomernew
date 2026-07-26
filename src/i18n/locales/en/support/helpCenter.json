@@ -8,5 +8,8 @@
   "chatNow": "Chat Now",
   "placeholder": {
     "SearchForHelpFA": "Search for help, FAQs..."
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yClose": "Close",
+  "a11yChatNow": "Chat Now"
 }

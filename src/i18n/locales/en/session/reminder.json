@@ -9,5 +9,8 @@
   "getDirections": "Get Directions",
   "safetyTitle": "Safety Checklist",
   "bottomHint": "Only confirm arrival when you are physically at the venue.",
-  "primaryBtnText": "Simulate Arrival at Venue"
+  "primaryBtnText": "Simulate Arrival at Venue",
+  "a11yGoBack": "Go back",
+  "a11yGetDirections": "Get Directions",
+  "a11ySimulateArrivalAtVenue": "Simulate Arrival at Venue"
 }

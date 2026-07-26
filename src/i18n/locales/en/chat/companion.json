@@ -8,5 +8,15 @@
   "optionReport": "Report Safety Issue",
   "keepAllPaymentsOnThe": "Keep all payments on the app. Do not share personal phone numbers.",
   "alertTitleNotificationsmu": "Notifications muted for this chat.",
-  "alertTitleOurSafetyTeamha": "Our Safety Team has been notified. We take your safety seriously."
+  "alertTitleOurSafetyTeamha": "Our Safety Team has been notified. We take your safety seriously.",
+  "a11yGoBack": "Go back",
+  "a11yGoToDiscovertab": "Go to DiscoverTab",
+  "a11yViewBooking": "View Booking",
+  "a11yCall": "Call",
+  "a11yMoreOptions": "More options",
+  "a11yAction": "Action",
+  "a11yViewProfile": "View Profile",
+  "a11yMuteNotifications": "Mute Notifications",
+  "a11yClearChat": "Clear Chat",
+  "a11yReportSafetyIssue": "Report Safety Issue"
 }

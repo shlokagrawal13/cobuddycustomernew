@@ -5,5 +5,8 @@
   "sectionTitleDate": "Select Date",
   "sectionTitleTime": "Select Time",
   "sectionTitleDuration": "Duration",
-  "continue": "Continue"
+  "continue": "Continue",
+  "a11yGoBack": "Go back",
+  "a11yTime": "time",
+  "a11yContinue": "Continue"
 }

@@ -9,5 +9,7 @@
   "placeholder": {
     "WhatDidYouEnjoy": "What did you enjoy the most?",
     "AnyConcernsOrPr": "Any concerns or private notes?"
-  }
+  },
+  "a11yReview": "Review",
+  "a11ySubmitFinish": "Submit & Finish"
 }

@@ -3,5 +3,6 @@
   "expectedLabel": "Expected completion:",
   "expectedValue": "~ 2 Hours",
   "statusBtn": "Check System Status",
-  "wereCurrentlyUndergoingScheduledMaintenance": "We're currently undergoing scheduled maintenance to improve your experience. Our team is working hard to bring the app back online shortly."
+  "wereCurrentlyUndergoingScheduledMaintenance": "We're currently undergoing scheduled maintenance to improve your experience. Our team is working hard to bring the app back online shortly.",
+  "a11yCheckSystemStatus": "Check System Status"
 }

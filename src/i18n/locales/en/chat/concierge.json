@@ -1,5 +1,8 @@
 {
   "headerTitle": "CoBuddy Concierge",
   "onlineText": "Typically replies in 2 mins",
-  "dateText": "TODAY"
+  "dateText": "TODAY",
+  "a11yGoBack": "Go back",
+  "a11yCall": "Call",
+  "a11yAction": "action"
 }

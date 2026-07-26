@@ -19,5 +19,9 @@
   "liveMonitoringSub": "Enable active tracking and anomaly detection during your meetup sessions.",
   "openSafetyHub": "Open Safety Hub",
   "customizeYourPrivacyAndSafety": "Customize your privacy and safety preferences to ensure a secure and comfortable experience on CoBuddy.",
-  "cobuddyActivelyMonitorsReportsTo": "CoBuddy actively monitors reports to maintain a safe community."
+  "cobuddyActivelyMonitorsReportsTo": "CoBuddy actively monitors reports to maintain a safe community.",
+  "a11yAction": "Action",
+  "a11yGoBack": "Go back",
+  "a11yNext": "Next",
+  "a11yOpenSafetyHub": "Open Safety Hub"
 }

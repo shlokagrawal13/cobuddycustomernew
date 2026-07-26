@@ -19,5 +19,6 @@
     }
   },
   "alertTitleLocationAccess": "Location Access",
-  "alertMsgLocationpermissionwi": "Location permission will be requested on your device. This enables safety monitoring and venue discovery."
+  "alertMsgLocationpermissionwi": "Location permission will be requested on your device. This enables safety monitoring and venue discovery.",
+  "": "Go to NotificationPermission"
 }

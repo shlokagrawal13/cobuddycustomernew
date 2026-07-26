@@ -1,4 +1,6 @@
 {
   "headerTitle": "Language",
-  "infoText": "Select your preferred language. This will change the text across the CoBuddy app."
+  "infoText": "Select your preferred language. This will change the text across the CoBuddy app.",
+  "a11yGoBack": "Go back",
+  "a11yAction": "Action"
 }

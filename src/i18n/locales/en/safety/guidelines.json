@@ -5,11 +5,11 @@
   "guideline": {
     "g1": {
       "title": "Meet in Public Places",
-      "desc": "Always arrange your first meetup in a well-lit, public location like a caf\u00e9, mall, or popular tourist spot. Avoid secluded areas or private residences."
+      "desc": "Always arrange your first meetup in a well-lit, public location like a café, mall, or popular tourist spot. Avoid secluded areas or private residences."
     },
     "g2": {
       "title": "Verify Their Identity",
-      "desc": "Look for the \"Identity Verified\" badge on their profile. Trust your instincts\u2014if a profile seems fake or suspicious, report it immediately."
+      "desc": "Look for the \"Identity Verified\" badge on their profile. Trust your instincts—if a profile seems fake or suspicious, report it immediately."
     },
     "g3": {
       "title": "Share Your Plans",
@@ -24,5 +24,7 @@
       "desc": "Do not move your conversation to WhatsApp or SMS before meeting. Our chat filters protect you from scams and inappropriate content."
     }
   },
-  "weveBuiltCobuddyToBe": "We've built CoBuddy to be a safe community, but personal safety starts with you. Please follow these essential guidelines."
+  "weveBuiltCobuddyToBe": "We've built CoBuddy to be a safe community, but personal safety starts with you. Please follow these essential guidelines.",
+  "a11yGoBack": "Go back",
+  "a11yContactTrustSafetyTeam": "Contact Trust & Safety Team"
 }

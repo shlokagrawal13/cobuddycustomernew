@@ -27,5 +27,10 @@
     "Options": "Options"
   },
   "blockedTitle": "Blocked",
-  "blockedMessage": "{{name}} has been blocked."
+  "blockedMessage": "{{name}} has been blocked.",
+  "a11yGoBack": "Go back",
+  "a11yLike": "Like",
+  "a11yMoreOptions": "More options",
+  "a11yRequestBooking": "Request Booking",
+  "a11yShareProfile": "Share Profile"
 }

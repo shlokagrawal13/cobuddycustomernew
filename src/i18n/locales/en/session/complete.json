@@ -6,5 +6,6 @@
   "labelPlatform": "Platform Fee (5%)",
   "labelTaxes": "Taxes (18% GST)",
   "labelEscrow": "Escrow Released",
-  "primaryBtnText": "Continue to Feedback"
+  "primaryBtnText": "Continue to Feedback",
+  "a11yContinueToFeedback": "Continue to Feedback"
 }

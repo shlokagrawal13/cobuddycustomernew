@@ -11,5 +11,7 @@
   "hideScreen": "Hide Screen in App Switcher",
   "hideScreenDesc": "Blur the app content when viewing recent apps to prevent shoulder surfing.",
   "protectYourChatsAndBookings": "Protect your chats and bookings. When enabled, you'll need to use your device's biometric lock to open CoBuddy.",
-  "cobuddyNeverStoresYourBiometric": "CoBuddy never stores your biometric data. It is securely handled by your device's OS."
+  "cobuddyNeverStoresYourBiometric": "CoBuddy never stores your biometric data. It is securely handled by your device's OS.",
+  "a11yAction": "Action",
+  "a11yGoBack": "Go back"
 }

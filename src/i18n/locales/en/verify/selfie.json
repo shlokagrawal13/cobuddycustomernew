@@ -3,5 +3,9 @@
   "selfieVerify": "Selfie Verification",
   "tipsText": "Face the camera directly and center your face in the oval.",
   "retakeBtn": "Retake",
-  "confirmBtn": "Confirm"
+  "confirmBtn": "Confirm",
+  "a11yGoBack": "Go back",
+  "a11yRetake": "Retake",
+  "a11yConfirm": "Confirm",
+  "a11yAction": "Action"
 }

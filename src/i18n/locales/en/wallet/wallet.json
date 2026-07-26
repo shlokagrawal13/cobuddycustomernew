@@ -1,7 +1,7 @@
 {
   "headerTitle": "My Wallet",
   "availableBalance": "Available Balance",
-  "kycWarning": "Wallet restricted to \u20b910,000 limit. Complete KYC to upgrade.",
+  "kycWarning": "Wallet restricted to ₹10,000 limit. Complete KYC to upgrade.",
   "addMoney": "Add Money",
   "autoReload": "Auto-Reload",
   "withdraw": "Withdraw",
@@ -21,5 +21,13 @@
     "add": "Money Added",
     "deduct": "Session Payment",
     "refund": "Refund Processed"
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yWalletRestrictedTo10000L": "Wallet restricted to ₹10,000 l...",
+  "a11yAddMoney": "Add Money",
+  "a11yAutoReload": "Auto-Reload",
+  "a11yWithdraw": "Withdraw",
+  "a11yNext": "Next",
+  "a11yDownloadStatement": "Download Statement",
+  "a11yViewAll": "View All"
 }

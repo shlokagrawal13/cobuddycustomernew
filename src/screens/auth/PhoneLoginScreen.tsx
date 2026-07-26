@@ -93,7 +93,7 @@ export const PhoneLoginScreen = () => {
           <TouchableOpacity
             activeOpacity={1}
             style={[styles.fieldRow, error ? styles.fieldRowError : null]}
-            onPress={() => inputRef.current?.focus()} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+            onPress={() => inputRef.current?.focus()} accessibilityRole="button" accessibilityLabel={t('phone.', 'Action')}>
             
             {/* Country code button */}
             <TouchableOpacity

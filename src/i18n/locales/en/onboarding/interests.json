@@ -9,5 +9,6 @@
   "cue": "Your preferences help personalize trusted experiences and recommendations.",
   "btn_continue": "CONTINUE",
   "limitReachedTitle": "Limit Reached",
-  "limitReachedMessage": "You can select up to {{max}} interests."
+  "limitReachedMessage": "You can select up to {{max}} interests.",
+  "": "Action"
 }

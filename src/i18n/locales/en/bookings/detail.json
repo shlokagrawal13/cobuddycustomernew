@@ -30,5 +30,16 @@
   "safetyDesc": "Always meet in public spaces. Never share your exact home address. Use the SOS button in case of emergency.",
   "totalReleased": "Total Released",
   "totalSecured": "Total Secured",
-  "unlockedText": "Unlocked! Share this with your companion upon meeting."
+  "unlockedText": "Unlocked! Share this with your companion upon meeting.",
+  "a11yCancelRequest": "Cancel Request",
+  "a11yModify": "Modify",
+  "a11yViewUpcomingMeetup": "View Upcoming Meetup",
+  "a11yMessage": "Message",
+  "a11yCancel": "Cancel",
+  "a11yFindAnotherCompanion": "Find Another Companion",
+  "a11yLeaveAReview": "Leave a Review",
+  "a11yRaiseADispute": "Raise a Dispute",
+  "a11yGoBack": "Go back",
+  "a11ySos": "SOS",
+  "a11yGoToDiscovertab": "Go to DiscoverTab"
 }

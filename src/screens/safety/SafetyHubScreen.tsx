@@ -102,7 +102,7 @@ export const SafetyHubScreen = () => {
                         if (isSOSActive) {
                             Alert.alert('Cancel SOS', 'Are you sure you want to cancel the SOS?', [
                                 { text: 'No', style: 'cancel' },
-                                { text: 'Yes, I am safe', onPress: () => resolveSOS() }
+                                { text: t('yesSafe', 'Yes, I am safe'), onPress: () => resolveSOS() }
                             ]);
                         } else {
                             Alert.alert(t('alertTitleEMERGENCYSOS', '🚨 EMERGENCY SOS'), t('alertMsgAreyouindangerThiswi', 'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.'),
@@ -144,7 +144,7 @@ export const SafetyHubScreen = () => {
                 <Icon name={isSessionActive ? "radar" : "radar-off"} size={24} color={isSessionActive ? theme.colors.success : theme.colors.textSecondary} />
             </View>
             <View style={styles.cardTextContent}>
-                <Text style={styles.cardTitle}>{isSessionActive ? "Stop Live Session" : "Start Live Session (Mock)"}</Text>
+                <Text style={styles.cardTitle}>{isSessionActive ? t('stopLiveSession', 'Stop Live Session') : t('startLiveSession', 'Start Live Session (Mock)')}</Text>
                 <Text style={styles.cardDesc}>Toggle background location service mocking.</Text>
             </View>
             <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />

@@ -1,11 +1,17 @@
 {
-    "emptyTitle":  "No Saved Checklists",
-    "emptySub":  "When you find a companion you like, tap the bookmark icon to save their profile here.",
-    "exploreBtn":  "Explore Companions",
-    "headerTitle":  "Saved Checklists",
-    "viewProfile":  "View Full Profile",
-    "removeSaved":  "Remove from Saved",
-    "title":  {
-                  "ManageSavedProf":  "Manage Saved Profile"
-              }
+  "emptyTitle": "No Saved Checklists",
+  "emptySub": "When you find a companion you like, tap the bookmark icon to save their profile here.",
+  "exploreBtn": "Explore Companions",
+  "headerTitle": "Saved Checklists",
+  "viewProfile": "View Full Profile",
+  "removeSaved": "Remove from Saved",
+  "title": {
+    "ManageSavedProf": "Manage Saved Profile"
+  },
+  "a11yExploreCompanions": "Explore Companions",
+  "a11yGoToCompanionprofile": "Go to CompanionProfile",
+  "a11yMoreOptions": "More options",
+  "a11yGoBack": "Go back",
+  "a11yViewFullProfile": "View Full Profile",
+  "a11yRemoveFromSaved": "Remove from Saved"
 }

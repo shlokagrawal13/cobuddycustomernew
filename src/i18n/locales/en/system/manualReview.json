@@ -3,5 +3,7 @@
   "info": "This process usually takes 24-48 hours.",
   "supportBtn": "Contact Support",
   "loginBtn": "Return to Login",
-  "yourAccountIsCurrentlyUnder": "Your account is currently under manual review by our Trust & Safety team to ensure a secure environment for everyone."
+  "yourAccountIsCurrentlyUnder": "Your account is currently under manual review by our Trust & Safety team to ensure a secure environment for everyone.",
+  "a11yContactSupport": "Contact Support",
+  "a11yReturnToLogin": "Return to Login"
 }

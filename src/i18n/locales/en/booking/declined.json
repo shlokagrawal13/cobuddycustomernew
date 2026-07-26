@@ -4,5 +4,7 @@
   "reasonText": "\"{reason}\"",
   "noteText": "Any pre-authorized holds on your payment method have been released instantly.",
   "primaryBtnText": "Find Another Companion",
-  "secondaryBtnText": "Return to Home"
+  "secondaryBtnText": "Return to Home",
+  "a11yFindAnotherCompanion": "Find Another Companion",
+  "a11yReturnToHome": "Return to Home"
 }

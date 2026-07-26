@@ -2,5 +2,9 @@
   "secureText": "End-to-End Encrypted",
   "controlMute": "Mute",
   "controlKeypad": "Keypad",
-  "controlSpeaker": "Speaker"
+  "controlSpeaker": "Speaker",
+  "a11yMute": "Mute",
+  "a11yKeypad": "Keypad",
+  "a11ySpeaker": "Speaker",
+  "a11yPhoneHangup": "Phone Hangup"
 }

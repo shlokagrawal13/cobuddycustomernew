@@ -24,5 +24,16 @@
   "filterMinRating": "Minimum Rating",
   "filterMaxDistance": "Maximum Distance",
   "clearAll": "Clear All",
-  "applyFilters": "Apply Filters"
+  "applyFilters": "Apply Filters",
+  "a11yFilter": "Filter",
+  "a11yClose": "Close",
+  "a11yItem": "item",
+  "a11yClearFilters": "Clear Filters",
+  "a11yCloseFilters": "Close filters",
+  "a11yG": "g",
+  "a11yP": "₹ p",
+  "a11yR": "r + ⭐",
+  "a11yDKm": "d km",
+  "a11yClearAll": "Clear All",
+  "a11yApplyFilters": "Apply Filters"
 }

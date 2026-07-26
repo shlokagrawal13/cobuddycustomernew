@@ -10,5 +10,9 @@
   "submitBtn": "Submit Dispute",
   "placeholder": {
     "PleaseDescribeW": "Please describe what happened in detail (min 10 chars)..."
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yCategory": "category",
+  "a11yTapToUploadScreenshotsOrP": "Tap to upload screenshots or p...",
+  "a11ySubmitDispute": "Submit Dispute"
 }

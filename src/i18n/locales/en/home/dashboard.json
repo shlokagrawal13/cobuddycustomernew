@@ -26,5 +26,13 @@
   "exploreActivities": "Explore Activities",
   "featuredCompanions": "Featured Companions",
   "viewAll": "View All",
-  "appName": "CoBuddy"
+  "appName": "CoBuddy",
+  "a11yNotifications": "Notifications",
+  "a11yArrowRight": "Arrow Right",
+  "a11yDotsHorizontal": "Dots Horizontal",
+  "a11yAction": "Action",
+  "a11yGoToDiscovertab": "Go to DiscoverTab",
+  "a11yGoToBookingstab": "Go to BookingsTab",
+  "a11yGoToProfiletab": "Go to ProfileTab",
+  "a11yViewAll": "View All"
 }

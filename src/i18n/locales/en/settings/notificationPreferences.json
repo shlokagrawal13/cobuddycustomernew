@@ -22,5 +22,7 @@
   "sosAlerts": "SOS & Security Alerts",
   "sosAlertsSub": "Critical account and safety notices",
   "securityNote": "Security alerts cannot be disabled for your safety.",
-  "controlWhichNotificationsYouReceive": "Control which notifications you receive and how you receive them."
+  "controlWhichNotificationsYouReceive": "Control which notifications you receive and how you receive them.",
+  "a11yAction": "Action",
+  "a11yGoBack": "Go back"
 }

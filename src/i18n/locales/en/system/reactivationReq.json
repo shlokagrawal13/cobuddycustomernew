@@ -1,5 +1,6 @@
 {
   "title": "Request Received",
   "loginBtn": "Return to Login",
-  "yourRequestToReactivateYour": "Your request to reactivate your account has been submitted successfully. Our team will review it and notify you within 24 hours."
+  "yourRequestToReactivateYour": "Your request to reactivate your account has been submitted successfully. Our team will review it and notify you within 24 hours.",
+  "a11yReturnToLogin": "Return to Login"
 }

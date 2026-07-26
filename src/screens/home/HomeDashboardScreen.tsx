@@ -12,6 +12,7 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
 import { selectInterests } from '../../store/selectors/userPreferencesSelectors';
+import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
 
 const EXPLORE_CATEGORIES = [
   { id: 'coffee', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
@@ -25,6 +26,26 @@ export const HomeDashboardScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [loading, setLoading] = useState(true);
   const selectedInterests = useUserPreferencesStore(selectInterests);
+
+  const sortedExploreCategories = React.useMemo(() => {
+    if (!selectedInterests || selectedInterests.length === 0) return EXPLORE_CATEGORIES;
+
+    const userCategoryIds = new Set<string>();
+    selectedInterests.forEach(interestId => {
+      const mapping = INTEREST_MAPPING[interestId];
+      if (mapping && mapping.categoryId) {
+        userCategoryIds.add(mapping.categoryId);
+      }
+    });
+
+    return [...EXPLORE_CATEGORIES].sort((a, b) => {
+      const aMatches = userCategoryIds.has(a.id);
+      const bMatches = userCategoryIds.has(b.id);
+      if (aMatches && !bMatches) return -1;
+      if (!aMatches && bMatches) return 1;
+      return 0;
+    });
+  }, [selectedInterests]);
 
   // In real app, this comes from global state or API
   const [hasActiveBooking, setHasActiveBooking] = useState(false);
@@ -140,7 +161,7 @@ export const HomeDashboardScreen = () => {
               <Text style={styles.sectionTitle}>{t('exploreActivities', 'Explore Activities')}</Text>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.exploreScroll}>
-              {EXPLORE_CATEGORIES.map(cat => (
+              {sortedExploreCategories.map(cat => (
                 <TouchableOpacity 
                   key={cat.id} 
                   style={styles.exploreCard}

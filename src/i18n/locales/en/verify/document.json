@@ -12,5 +12,8 @@
     "eGShlokSharma": "e.g. Shlok Sharma"
   },
   "clearAndReadableImagesWork": "Clear and readable images work best. Max 5MB (JPG, PNG).",
-  "yourInformationIsEncryptedAnd": "Your information is encrypted and securely protected. Documents are used only for verification."
+  "yourInformationIsEncryptedAnd": "Your information is encrypted and securely protected. Documents are used only for verification.",
+  "a11yGoBack": "Go back",
+  "a11yConfirm": "Confirm",
+  "a11yContinueVerification": "Continue Verification"
 }

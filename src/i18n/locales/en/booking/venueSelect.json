@@ -6,5 +6,8 @@
   "placeholder": {
     "SearchPublicVen": "Search public venues..."
   },
-  "continueBtn": "Continue"
+  "continueBtn": "Continue",
+  "a11yGoBack": "Go back",
+  "a11yAction": "Action",
+  "a11yContinue": "Continue"
 }

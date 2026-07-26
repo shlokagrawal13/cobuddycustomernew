@@ -28,5 +28,10 @@
   "alertMsgClearMedia": "This will delete downloaded companion photos and chat media from your device to save space. They will redownload when you view them again.",
   "title": {
     "UploadQuality": "Upload Quality"
-  }
+  },
+  "a11yAction": "Action",
+  "a11yGoBack": "Go back",
+  "a11yCachesize": "cacheSize",
+  "a11yMediasize": "mediaSize",
+  "a11yQuality": "quality"
 }

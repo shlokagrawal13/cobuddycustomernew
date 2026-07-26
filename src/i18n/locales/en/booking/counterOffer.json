@@ -12,5 +12,9 @@
   "escrowNoteText": "If accepted, your Escrow hold will be updated securely.",
   "primaryBtnText": "Accept New Offer",
   "secondaryBtnText": "Message Back",
-  "ghostBtnText": "Decline Booking"
+  "ghostBtnText": "Decline Booking",
+  "a11yClose": "Close",
+  "a11yAcceptNewOffer": "Accept New Offer",
+  "a11yMessageBack": "Message Back",
+  "a11yDeclineBooking": "Decline Booking"
 }

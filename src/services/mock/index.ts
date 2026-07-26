@@ -10,3 +10,5 @@ export * from './safety.mock';
 export * from './session.mock';
 export * from './onboarding.mock';
 export * from './profile.mock';
+
+export * from './interestMapping';

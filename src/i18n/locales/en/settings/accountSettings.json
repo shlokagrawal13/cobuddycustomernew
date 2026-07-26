@@ -33,5 +33,12 @@
   "genderIdentity": "Gender Identity",
   "placeholder": {
     "nameExampleCom": "name@example.com"
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yShlokSharma": "Shlok Sharma",
+  "a11y15Aug1998": "15 Aug 1998",
+  "a11yMale": "Male",
+  "a11yCheckDecagram": "Check Decagram",
+  "a11ySave": "Save",
+  "a11yNext": "Next"
 }

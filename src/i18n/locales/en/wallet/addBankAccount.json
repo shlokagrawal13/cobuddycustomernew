@@ -1,7 +1,7 @@
 {
   "headerTitle": "Add Bank Account",
   "securityTitle": "Secure Bank Linking",
-  "securitySub": "We'll deposit a small amount (like \u20b91) to instantly verify your account before saving.",
+  "securitySub": "We'll deposit a small amount (like ₹1) to instantly verify your account before saving.",
   "sectionTitle": "ACCOUNT DETAILS",
   "inputHolder": "Account Holder Name",
   "inputAccount": "Account Number",
@@ -20,5 +20,7 @@
     "AsPerBankRecord": "As per bank records",
     "000000000000": "000000000000",
     "eGHDFC0001234": "e.g. HDFC0001234"
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yVerifySaveAccount": "Verify & Save Account"
 }

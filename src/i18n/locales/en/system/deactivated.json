@@ -2,5 +2,7 @@
   "title": "Account Deactivated",
   "reactivateBtn": "Reactivate Account",
   "supportBtn": "Contact Support",
-  "yourAccountIsCurrentlyDeactivated": "Your account is currently deactivated. Your profile is hidden, and you won't receive new booking requests or messages."
+  "yourAccountIsCurrentlyDeactivated": "Your account is currently deactivated. Your profile is hidden, and you won't receive new booking requests or messages.",
+  "a11yReactivateAccount": "Reactivate Account",
+  "a11yContactSupport": "Contact Support"
 }

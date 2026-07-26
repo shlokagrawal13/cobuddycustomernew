@@ -1,4 +1,6 @@
 {
   "incomingText": "CoBuddy Voice Call",
-  "statusText": "Ringing..."
+  "statusText": "Ringing...",
+  "a11yPhoneHangup": "Phone Hangup",
+  "a11yCall": "Call"
 }

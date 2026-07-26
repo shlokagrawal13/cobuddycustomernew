@@ -8,5 +8,7 @@
   "retryBtn": "Retry Verification",
   "weCouldNotVerifyYour": "We could not verify your identity with the provided details.",
   "ensureYourDocumentIsClearly": "Ensure your document is clearly visible, not expired, and matches your selfie exactly.",
-  "needHelpContactOurConcierge": "Need help? Contact our Concierge Support for manual verification."
+  "needHelpContactOurConcierge": "Need help? Contact our Concierge Support for manual verification.",
+  "a11yClose": "Close",
+  "a11yRetryVerification": "Retry Verification"
 }

@@ -13,6 +13,7 @@
   "centerLabel": {
     "SafetyAgreement": "Safety Agreement"
   },
-  "read": "READ  \u2192",
-  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences."
+  "read": "READ  →",
+  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences.",
+  "": "READ  →"
 }

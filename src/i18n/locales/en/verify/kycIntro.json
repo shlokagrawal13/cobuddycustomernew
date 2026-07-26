@@ -5,5 +5,7 @@
   "livenessCheck": "Liveness Check",
   "livenessDesc": "A quick selfie to ensure you match your ID.",
   "startVerify": "Start Verification",
-  "toEnsureASafeAnd": "To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking."
+  "toEnsureASafeAnd": "To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking.",
+  "a11yClose": "Close",
+  "a11yStartVerification": "Start Verification"
 }

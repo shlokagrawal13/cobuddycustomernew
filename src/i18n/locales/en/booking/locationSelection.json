@@ -8,5 +8,9 @@
   "alertMsgDetectedBandraKurlaC": "Detected: Bandra Kurla Complex, Mumbai.",
   "placeholder": {
     "SearchCityAreaO": "Search city, area, or landmark"
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yClose": "Close",
+  "a11yNext": "Next",
+  "a11yAction": "Action"
 }

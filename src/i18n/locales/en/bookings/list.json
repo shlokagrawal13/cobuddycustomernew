@@ -5,5 +5,8 @@
   "emptyDesc": "You don't have any experiences scheduled in this section right now.",
   "primaryBtnText": "Discover Companions",
   "gridLabelDate": "Date",
-  "gridLabelTime": "Time ({{duration}})"
+  "gridLabelTime": "Time ({{duration}})",
+  "a11yHelp": "Help",
+  "a11yAction": "Action",
+  "a11yDiscoverCompanions": "Discover Companions"
 }

@@ -12,6 +12,7 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
 import { selectInterests } from '../../store/selectors/userPreferencesSelectors';
+import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
 const MODAL_CATEGORIES = [
@@ -119,35 +120,63 @@ export const DiscoverScreen = () => {
     return () => clearTimeout(timer);
   }, [activeStatus, searchQuery, filterGender, filterRating, filterMaxPrice, filterDistance]);
 
-  const filteredCompanions = DUMMY_COMPANIONS.filter(c => {
-    // Search match
-    const matchesSearch = searchQuery === '' || 
-                          c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                          MODAL_CATEGORIES.find(m => m.label.toLowerCase() === searchQuery.toLowerCase())?.id === c.category;
-    
-    // Quick status filters
-    let matchesStatus = true;
-    if (activeStatus === 'Available Today') matchesStatus = c.isOnline === true;
-    if (activeStatus === 'Top Rated') matchesStatus = c.rating >= 4.95;
-    
-    // Advanced Filters
-    let matchesGender = true;
-    if (filterGender !== 'Any') matchesGender = c.gender === filterGender;
-    
-    let matchesRating = true;
-    matchesRating = c.rating >= filterRating;
+  const filteredCompanions = React.useMemo(() => {
+    // 1. Gather all activity labels from user's selected interests
+    const userActivityLabels = new Set<string>();
+    if (selectedInterests) {
+      selectedInterests.forEach(interestId => {
+        const mapping = INTEREST_MAPPING[interestId];
+        if (mapping && mapping.activityLabels) {
+          mapping.activityLabels.forEach(label => userActivityLabels.add(label));
+        }
+      });
+    }
 
-    let matchesPrice = true;
-    const rateValue = parseInt(c.rate.replace(/\D/g, ''), 10);
-    matchesPrice = rateValue <= filterMaxPrice;
+    // 2. Filter companions
+    const filtered = DUMMY_COMPANIONS.filter(c => {
+      // Search match
+      const matchesSearch = searchQuery === '' || 
+                            c.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            c.activities.some(act => act.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                            MODAL_CATEGORIES.find(m => m.label.toLowerCase() === searchQuery.toLowerCase())?.id === c.category;
+      
+      // Quick status filters
+      let matchesStatus = true;
+      if (activeStatus === 'Available Today') matchesStatus = c.isOnline === true;
+      if (activeStatus === 'Top Rated') matchesStatus = c.rating >= 4.95;
+      
+      // Advanced Filters
+      let matchesGender = true;
+      if (filterGender !== 'Any') matchesGender = c.gender === filterGender;
+      
+      let matchesRating = true;
+      matchesRating = c.rating >= filterRating;
 
-    let matchesDistance = true;
-    const distValue = parseFloat(c.distance);
-    matchesDistance = distValue <= filterDistance;
-    
-    return matchesSearch && matchesStatus && matchesGender && matchesRating && matchesPrice && matchesDistance;
-  });
+      let matchesPrice = true;
+      const rateValue = parseInt(c.rate.replace(/\D/g, ''), 10);
+      matchesPrice = rateValue <= filterMaxPrice;
+
+      let matchesDistance = true;
+      const distValue = parseFloat(c.distance);
+      matchesDistance = distValue <= filterDistance;
+      
+      return matchesSearch && matchesStatus && matchesGender && matchesRating && matchesPrice && matchesDistance;
+    });
+
+    // 3. Sort companions to boost matches based on selected interests
+    if (userActivityLabels.size > 0) {
+      filtered.sort((a, b) => {
+        const aMatches = a.activities.some(act => userActivityLabels.has(act)) ? 1 : 0;
+        const bMatches = b.activities.some(act => userActivityLabels.has(act)) ? 1 : 0;
+        return bMatches - aMatches;
+      });
+    }
+
+    return filtered;
+  }, [
+    searchQuery, activeStatus, filterGender, filterRating, 
+    filterMaxPrice, filterDistance, selectedInterests
+  ]);
 
   const clearAllFilters = () => {
     setSearchQuery('');

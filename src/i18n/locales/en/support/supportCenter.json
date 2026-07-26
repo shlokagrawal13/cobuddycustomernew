@@ -3,5 +3,11 @@
   "activeTab": "Active",
   "closedTab": "Closed",
   "emptySub": "You don't have any support tickets in this category right now.",
-  "newTicket": "New Ticket"
+  "newTicket": "New Ticket",
+  "a11yGoBack": "Go back",
+  "a11yHelp": "Help",
+  "a11yActive": "Active",
+  "a11yClosed": "Closed",
+  "a11yGoToSupportticketdetail": "Go to SupportTicketDetail",
+  "a11yNewTicket": "New Ticket"
 }

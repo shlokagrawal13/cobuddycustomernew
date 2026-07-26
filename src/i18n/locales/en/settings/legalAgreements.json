@@ -1,5 +1,7 @@
 {
   "headerTitle": "Legal & Agreements",
   "brandText": "CoBuddy Technologies",
-  "copyrightText": "All rights reserved."
+  "copyrightText": "All rights reserved.",
+  "a11yGoBack": "Go back",
+  "a11yOpenInNew": "Open In New"
 }

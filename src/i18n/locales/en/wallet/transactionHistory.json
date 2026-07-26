@@ -1,4 +1,8 @@
 {
   "headerTitle": "Transaction History",
-  "emptyText": "No transactions found."
+  "emptyText": "No transactions found.",
+  "a11yGoBack": "Go back",
+  "a11yDownload": "Download",
+  "a11yF": "f",
+  "a11yGoToTransactiondetail": "Go to TransactionDetail"
 }

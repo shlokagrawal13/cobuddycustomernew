@@ -3,5 +3,11 @@
   "skipBtn": "Skip",
   "questionRate": "How was your session with Elena?",
   "tagsTitle": "What stood out?",
-  "continueBtn": "Continue"
+  "continueBtn": "Continue",
+  "a11yGoBack": "Go back",
+  "a11ySkip": "Skip",
+  "a11ySentimentDownThumbDownThumbDownOutline": "{sentiment === down ? thumb down : thumb down outline}",
+  "a11ySentimentUpThumbUpThumbUpOutline": "{sentiment === up ? thumb up : thumb up outline}",
+  "a11yTag": "tag",
+  "a11yContinue": "Continue"
 }

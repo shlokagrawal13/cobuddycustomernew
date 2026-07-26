@@ -1,5 +1,6 @@
 {
   "title": "No Connection",
   "retryBtn": "Try Again",
-  "itLooksLikeYoureOffline": "It looks like you're offline. Please check your internet connection, Wi-Fi, or cellular data and try again."
+  "itLooksLikeYoureOffline": "It looks like you're offline. Please check your internet connection, Wi-Fi, or cellular data and try again.",
+  "a11yAction": "Action"
 }

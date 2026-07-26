@@ -7,5 +7,9 @@
   "trustText": "100% of your tip goes directly to the companion. CoBuddy takes zero commission.",
   "placeholder": {
     "0": "0"
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11ySkip": "Skip",
+  "a11yAmount": "₹ amount",
+  "a11yAction": "Action"
 }

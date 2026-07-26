@@ -9,5 +9,7 @@
   "detailLabelTotal": "Total Secured",
   "escrowNote": "Protected by Escrow",
   "messageCompanion": "Message {{name}}",
-  "secondaryBtnText": "View Booking Details"
+  "secondaryBtnText": "View Booking Details",
+  "a11yChat": "Chat",
+  "a11yViewBookingDetails": "View Booking Details"
 }

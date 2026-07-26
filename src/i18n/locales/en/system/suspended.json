@@ -2,5 +2,7 @@
   "title": "Account Suspended",
   "viewDetails": "View Violation Details",
   "appealBtn": "Submit Appeal",
-  "yourAccountHasBeenSuspended": "Your account has been suspended due to violations of our Community Guidelines. You cannot accept bookings or messages at this time."
+  "yourAccountHasBeenSuspended": "Your account has been suspended due to violations of our Community Guidelines. You cannot accept bookings or messages at this time.",
+  "a11yViewViolationDetails": "View Violation Details",
+  "a11ySubmitAppeal": "Submit Appeal"
 }

@@ -20,5 +20,7 @@
       "desc": "Arcade, bowling, or console gaming."
     }
   },
-  "continue": "Continue"
+  "continue": "Continue",
+  "a11yGoBack": "Go back",
+  "a11yContinue": "Continue"
 }

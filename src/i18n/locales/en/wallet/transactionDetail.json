@@ -11,5 +11,7 @@
   "totalLabel": "TOTAL",
   "downloadBtn": "Download Receipt",
   "alertTitleDownloadReceipt": "Download Receipt",
-  "alertMsgPDFreceipthasbeendow": "PDF receipt has been downloaded successfully."
+  "alertMsgPDFreceipthasbeendow": "PDF receipt has been downloaded successfully.",
+  "a11yGoBack": "Go back",
+  "a11yDownloadReceipt": "Download Receipt"
 }

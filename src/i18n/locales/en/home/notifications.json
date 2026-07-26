@@ -4,5 +4,8 @@
   "emptySub": "You have no notifications in this category right now.",
   "title": {
     "Notifications": "Notifications"
-  }
+  },
+  "a11yMarkAllRead": "Mark all read",
+  "a11yCategory": "category",
+  "a11yAction": "Action"
 }

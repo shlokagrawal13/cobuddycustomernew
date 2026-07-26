@@ -1,7 +1,7 @@
 {
   "headerTitle": "Add New Card",
   "securityTitle": "Secure Payments",
-  "securitySub": "We'll charge a refundable \u20b92 to verify this card.",
+  "securitySub": "We'll charge a refundable ₹2 to verify this card.",
   "sectionTitle": "CARD DETAILS",
   "inputName": "Name on Card",
   "inputCardNum": "Card Number",
@@ -22,9 +22,11 @@
   "alertTitleSuccess": "Success",
   "alertMsgYourcardhasbeensecur": "Your card has been securely added to your wallet.",
   "placeholder": {
+    "123": "123",
     "NameAsItAppears": "Name as it appears on card",
     "000000000000000": "0000 0000 0000 0000",
-    "MMYY": "MM/YY",
-    "123": "123"
-  }
+    "MMYY": "MM/YY"
+  },
+  "a11yGoBack": "Go back",
+  "a11ySaveCardSecurely": "Save Card Securely"
 }

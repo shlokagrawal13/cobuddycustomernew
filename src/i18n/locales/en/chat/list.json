@@ -9,5 +9,10 @@
   "emptyDesc": "Once your booking is accepted, you can securely chat with your companion here.",
   "connectWithADedicatedSpecialist": "Connect with a dedicated specialist for immediate 24/7 assistance.",
   "newMessageTitle": "New Message",
-  "newMessageSub": "Select an active booking to start a conversation."
+  "newMessageSub": "Select an active booking to start a conversation.",
+  "a11yEdit": "Edit",
+  "a11yStartConversation": "Start Conversation",
+  "a11yGoToCompanionchat": "Go to CompanionChat",
+  "a11yAction": "Action",
+  "a11yNext": "Next"
 }

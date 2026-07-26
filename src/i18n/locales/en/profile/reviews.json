@@ -4,5 +4,6 @@
   "trustBanner": "A high trust score makes it 3x more likely for your booking requests to be accepted!",
   "recentReviews": "RECENT REVIEWS",
   "emptyTitle": "No reviews yet",
-  "emptySub": "Book a meetup with a companion. After your session, their review will appear here."
+  "emptySub": "Book a meetup with a companion. After your session, their review will appear here.",
+  "a11yGoBack": "Go back"
 }

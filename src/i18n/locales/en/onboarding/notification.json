@@ -20,5 +20,6 @@
   },
   "bookingConfirmed": "Booking Confirmed!",
   "alertTitleEnableNotificat": "Enable Notifications",
-  "alertMsgNotificationpermissi": "Notification permission will be requested on your device."
+  "alertMsgNotificationpermissi": "Notification permission will be requested on your device.",
+  "": "Go to BasicProfileSetup"
 }

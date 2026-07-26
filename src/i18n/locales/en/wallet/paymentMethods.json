@@ -13,5 +13,12 @@
   "alertMsgAreyousureyouwanttor": "Are you sure you want to remove ",
   "placeholder": {
     "eGNameOkhdfcban": "e.g. name@okhdfcbank"
-  }
+  },
+  "a11yGoBack": "Go back",
+  "a11yAction": "Action",
+  "a11yDelete": "Delete",
+  "a11yAddNewCard": "Add New Card",
+  "a11yAddUpiId": "Add UPI ID",
+  "a11yClose": "Close",
+  "a11yVerifyAdd": "Verify & Add"
 }
