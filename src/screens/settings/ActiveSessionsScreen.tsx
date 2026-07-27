@@ -69,12 +69,12 @@ export const ActiveSessionsScreen = () => {
 
   const handleLogoutSession = (id: string, deviceName: string) => {
       Alert.alert(
-          'Log Out Device',
-          `Are you sure you want to log out from ${deviceName}?`,
+          t('logOutDeviceTitle', 'Log Out Device'),
+          t('logOutDeviceMsg', 'Are you sure you want to log out from {{deviceName}}?', { deviceName }),
           [
-              { text: 'Cancel', style: 'cancel' },
+              { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
               { 
-                  text: 'Log Out', 
+                  text: t('logOutBtn', 'Log Out'), 
                   style: 'destructive',
                   onPress: () => {
                       setSessions(prev => prev.filter(s => s.id !== id));
@@ -87,9 +87,9 @@ export const ActiveSessionsScreen = () => {
   const handleLogoutAll = () => {
       Alert.alert(t('alertTitleLogOutAllOtherD', 'Log Out All Other Devices'), t('alertMsgYouwillbeloggedoutof', 'You will be logged out of all devices except this one. You will need to log in again on those devices.'),
           [
-              { text: 'Cancel', style: 'cancel' },
+              { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
               { 
-                  text: 'Log Out All', 
+                  text: t('logOutAllBtn', 'Log Out All'), 
                   style: 'destructive',
                   onPress: () => {
                       setSessions(prev => prev.filter(s => s.isCurrentDevice));

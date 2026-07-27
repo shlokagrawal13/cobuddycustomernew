@@ -401,12 +401,12 @@ export const CompanionProfileScreen = ({ route }: any) => {
               setShowMenuSheet(false);
               setTimeout(() => {
                   Alert.alert(
-                    "Block User",
-                    `Are you sure you want to block ${DUMMY_PROFILE.name}? You won't be able to request bookings or send messages to them.`,
+                    t('blockUserTitle', 'Block User'),
+                    t('blockUserConfirm', "Are you sure you want to block {{name}}? You won't be able to request bookings or send messages to them.", { name: DUMMY_PROFILE.name }),
                     [
-                      { text: "Cancel", style: "cancel" },
+                      { text: t('cancel', 'Cancel'), style: "cancel" },
                       { 
-                        text: "Block", 
+                        text: t('block', 'Block'), 
                         style: "destructive",
                         onPress: () => {
                           Alert.alert(t('blockedTitle', 'Blocked'), t('blockedMessage', '{{name}} has been blocked.', { name: DUMMY_PROFILE.name }));

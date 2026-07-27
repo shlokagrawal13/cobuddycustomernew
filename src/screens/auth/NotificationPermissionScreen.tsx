@@ -89,8 +89,8 @@ export const NotificationPermissionScreen = () => {
               t('notification.alertTitleEnableNotificat', 'Enable Notifications'),
               t('notification.alertMsgNotificationpermissi', 'Notification permission will be requested on your device.'),
               [
-                { text: 'Cancel', style: 'cancel' },
-                { text: 'Continue', onPress: () => navigation.navigate('BasicProfileSetupScreen') },
+                { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
+                { text: t('continueBtn', 'Continue'), onPress: () => navigation.navigate('BasicProfileSetupScreen') },
               ]
             )
           }

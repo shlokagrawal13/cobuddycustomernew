@@ -28,14 +28,14 @@ export const LocationSelectionScreen = () => {
       setTimeout(() => {
           setIsLocating(false);
           Alert.alert(t('alertTitleLocationFound', 'Location Found'), t('alertMsgDetectedBandraKurlaC', 'Detected: Bandra Kurla Complex, Mumbai.'), [
-              { text: 'Use this', onPress: () => {
+              { text: t('useThisBtn', 'Use this'), onPress: () => {
                   navigation.navigate({
                       name: 'EditProfileScreen',
                       params: { updatedCity: 'Mumbai, MH' },
                       merge: true,
                   });
               }},
-              { text: 'Cancel', style: 'cancel' }
+              { text: t('cancelBtn', 'Cancel'), style: 'cancel' }
           ]);
       }, 1500);
   };

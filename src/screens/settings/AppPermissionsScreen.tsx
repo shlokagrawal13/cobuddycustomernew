@@ -88,8 +88,8 @@ export const AppPermissionsScreen = () => {
           // In native apps, you usually can't revoke permissions programmatically.
           Alert.alert(t('alertTitleRevokePermissio', 'Revoke Permission'), t('alertMsgTodisablethispermiss', 'To disable this permission, please go to your device Settings.'),
               [
-                  { text: 'Cancel', style: 'cancel' },
-                  { text: 'Open Settings', style: 'default' }
+                  { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
+                  { text: t('openSettingsBtn', 'Open Settings'), style: 'default' }
               ]
           );
           return;

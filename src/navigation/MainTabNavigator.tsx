@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -141,6 +142,7 @@ const ProfileTabStack = () => (
 );
 
 export const MainTabNavigator = () => {
+  const { t } = useTranslation('common');
   const insets = useSafeAreaInsets();
   
   const getTabBarStyle = (route: any) => {
@@ -196,11 +198,11 @@ export const MainTabNavigator = () => {
         },
       })}
     >
-      <Tab.Screen name="HomeTab" component={HomeTabStack} options={{ title: 'Home' }} />
-      <Tab.Screen name="DiscoverTab" component={DiscoverTabStack} options={{ title: 'Discover' }} />
-      <Tab.Screen name="BookingsTab" component={BookingsTabStack} options={{ title: 'Bookings' }} />
-      <Tab.Screen name="ChatTab" component={ChatTabStack} options={{ title: 'Messages', tabBarBadge: 2 }} />
-      <Tab.Screen name="ProfileTab" component={ProfileTabStack} options={{ title: 'Profile' }} />
+      <Tab.Screen name="HomeTab" component={HomeTabStack} options={{ title: t('tabHome', 'Home') }} />
+      <Tab.Screen name="DiscoverTab" component={DiscoverTabStack} options={{ title: t('tabDiscover', 'Discover') }} />
+      <Tab.Screen name="BookingsTab" component={BookingsTabStack} options={{ title: t('tabBookings', 'Bookings') }} />
+      <Tab.Screen name="ChatTab" component={ChatTabStack} options={{ title: t('tabMessages', 'Messages'), tabBarBadge: 2 }} />
+      <Tab.Screen name="ProfileTab" component={ProfileTabStack} options={{ title: t('tabProfile', 'Profile') }} />
     </Tab.Navigator>
   );
 };

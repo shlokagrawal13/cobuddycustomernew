@@ -43,8 +43,8 @@ export const WithdrawalMethodsScreen = () => {
   const handleDelete = (id: string, title: string) => {
     Alert.alert(t('alertTitleRemovePayoutMet', 'Remove Payout Method'), t('alertMsgAreyousureyouwanttor', 'Are you sure you want to remove ') + title + '?',
         [
-            { text: 'Cancel', style: 'cancel' },
-            { text: 'Remove', style: 'destructive', onPress: () => {
+            { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
+            { text: t('removeBtn', 'Remove'), style: 'destructive', onPress: () => {
                 setMethods(prev => prev.filter(m => m.id !== id));
             }}
         ]

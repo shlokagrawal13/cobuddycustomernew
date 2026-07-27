@@ -34,7 +34,7 @@ export const IncidentReportScreen = () => {
     }
     
     Alert.alert(t('alertTitleReportSubmitted', 'Report Submitted'), t('alertMsgYoursafetyreporthasb', 'Your safety report has been escalated to our Trust & Safety team. We will review this immediately and contact you.'),
-      [{ text: 'OK', onPress: () => smartGoBack() }]
+      [{ text: t('okBtn', 'OK'), onPress: () => smartGoBack() }]
     );
   };
 

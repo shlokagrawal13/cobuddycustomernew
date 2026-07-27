@@ -52,8 +52,8 @@ export const PaymentMethodsScreen = () => {
   const handleDelete = (id: string, title: string) => {
     Alert.alert(t('alertTitleRemovePaymentMe', 'Remove Payment Method'), t('alertMsgAreyousureyouwanttor', 'Are you sure you want to remove ') + title + ' from your saved methods?',
         [
-            { text: 'Cancel', style: 'cancel' },
-            { text: 'Remove', style: 'destructive', onPress: () => {
+            { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
+            { text: t('removeBtn', 'Remove'), style: 'destructive', onPress: () => {
                 setMethods(prev => prev.filter(m => m.id !== id));
             }}
         ]

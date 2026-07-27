@@ -42,7 +42,7 @@ export const AddBankAccountScreen = () => {
     };
 
     Alert.alert(t('alertTitleSuccess', 'Success'), t('alertMsgBankaccountverifieda', 'Bank account verified and added securely.'), [
-        { text: 'OK', onPress: () => {
+        { text: t('okBtn', 'OK'), onPress: () => {
             navigation.navigate('WithdrawalMethodsScreen', { newMethod: newBank });
         }}
     ]);

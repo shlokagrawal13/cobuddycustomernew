@@ -18,12 +18,12 @@ export const BlockedUsersScreen = () => {
 
   const handleUnblock = (user: typeof MOCK_BLOCKED_USERS[0]) => {
     Alert.alert(
-      "Unblock User",
-      `Are you sure you want to unblock ${user.name}? They will be able to message you and view your profile again.`,
+      t('unblockTitle', 'Unblock User'),
+      t('unblockMessage', 'Are you sure you want to unblock {{name}}? They will be able to message you and view your profile again.', { name: user.name }),
       [
-        { text: "Cancel", style: "cancel" },
+        { text: t('cancelBtn', 'Cancel'), style: "cancel" },
         { 
-          text: "Unblock", 
+          text: t('unblockBtn', 'Unblock'), 
           style: "destructive",
           onPress: () => {
             setBlockedUsers(prev => prev.filter(u => u.id !== user.id));

@@ -51,8 +51,8 @@ export const DataCacheScreen = () => {
           t('alertTitleClearCache', "Clear Cache"),
           t('alertMsgClearCache', "This will clear temporary files and speed up the app. You won't be logged out."),
           [
-              { text: "Cancel", style: "cancel" },
-              { text: "Clear", style: "destructive", onPress: () => setCacheSize('0 B') }
+              { text: t('cancelBtn', 'Cancel'), style: "cancel" },
+              { text: t('clearBtn', 'Clear'), style: "destructive", onPress: () => setCacheSize('0 B') }
           ]
       );
   };
@@ -62,8 +62,8 @@ export const DataCacheScreen = () => {
         t('alertTitleClearMedia', "Clear Media"),
         t('alertMsgClearMedia', "This will delete downloaded companion photos and chat media from your device to save space. They will redownload when you view them again."),
         [
-            { text: "Cancel", style: "cancel" },
-            { text: "Clear Media", style: "destructive", onPress: () => setMediaSize('0 B') }
+            { text: t('cancelBtn', 'Cancel'), style: "cancel" },
+            { text: t('clearMediaBtn', 'Clear Media'), style: "destructive", onPress: () => setMediaSize('0 B') }
         ]
     );
   };
