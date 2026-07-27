@@ -26,7 +26,7 @@ export const AccountSettingsScreen = () => {
   };
 
   const handleSupportRedirect = () => {
-      navigation.navigate('CreateSupportTicketScreen', { category: 'Identity Update' });
+      navigation.navigate('SafetySupportStack', { screen: 'CreateSupportTicketScreen', params: { category: 'Identity Update' } });
   };
 
   const handlePhoneUpdate = () => {
