@@ -18,5 +18,7 @@
   "alertMsgYouraccounthasbeende": "Your account has been deactivated successfully. You can reactivate by logging in again.",
   "deactivateSubtitle": "Deactivating your account is temporary. Your profile, photos, and reviews will be hidden from other users.",
   "a11yGoBack": "Go back",
-  "a11yDeactivateMyAccount": "Deactivate My Account"
+  "a11yDeactivateMyAccount": "Deactivate My Account",
+  "cancelBtn": "Cancel",
+  "okBtn": "OK"
 }

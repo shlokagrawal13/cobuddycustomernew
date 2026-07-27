@@ -18,5 +18,10 @@
   "ifYouSeeADevice": "If you see a device you don't recognize, log it out immediately. If you suspect unauthorized access, please contact CoBuddy Support.",
   "a11yLogOutDevice": "Log Out Device",
   "a11yGoBack": "Go back",
-  "a11yLogOutOfAllOtherDevices": "Log Out of All Other Devices"
+  "a11yLogOutOfAllOtherDevices": "Log Out of All Other Devices",
+  "logOutDeviceTitle": "Log Out Device",
+  "logOutDeviceMsg": "Are you sure you want to log out from {{deviceName}}?",
+  "cancelBtn": "Cancel",
+  "logOutBtn": "Log Out",
+  "logOutAllBtn": "Log Out All"
 }

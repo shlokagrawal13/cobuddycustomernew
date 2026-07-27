@@ -7,5 +7,9 @@
   "blockedUsersCannotSendYou": "Blocked users cannot send you messages, request bookings, or view your profile. They won't be notified that you blocked them.",
   "youHaventBlockedAnyoneYet": "You haven't blocked anyone yet. When you block a user, they will appear here.",
   "a11yGoBack": "Go back",
-  "a11yUnblock": "Unblock"
+  "a11yUnblock": "Unblock",
+  "unblockTitle": "Unblock User",
+  "unblockMessage": "Are you sure you want to unblock {{name}}? They will be able to message you and view your profile again.",
+  "cancelBtn": "Cancel",
+  "unblockBtn": "Unblock"
 }

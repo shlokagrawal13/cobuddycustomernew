@@ -28,5 +28,6 @@
     "MMYY": "MM/YY"
   },
   "a11yGoBack": "Go back",
-  "a11ySaveCardSecurely": "Save Card Securely"
+  "a11ySaveCardSecurely": "Save Card Securely",
+  "okBtn": "OK"
 }

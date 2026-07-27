@@ -20,5 +20,7 @@
   "a11yAddNewCard": "Add New Card",
   "a11yAddUpiId": "Add UPI ID",
   "a11yClose": "Close",
-  "a11yVerifyAdd": "Verify & Add"
+  "a11yVerifyAdd": "Verify & Add",
+  "cancelBtn": "Cancel",
+  "removeBtn": "Remove"
 }

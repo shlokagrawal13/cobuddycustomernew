@@ -27,5 +27,7 @@
   },
   "revokingRequiredPermissionsMayLimit": "Revoking required permissions may limit app functionality.",
   "a11yAction": "Action",
-  "a11yGoBack": "Go back"
+  "a11yGoBack": "Go back",
+  "cancelBtn": "Cancel",
+  "openSettingsBtn": "Open Settings"
 }

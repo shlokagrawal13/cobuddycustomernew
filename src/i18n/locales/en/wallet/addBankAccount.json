@@ -22,5 +22,6 @@
     "eGHDFC0001234": "e.g. HDFC0001234"
   },
   "a11yGoBack": "Go back",
-  "a11yVerifySaveAccount": "Verify & Save Account"
+  "a11yVerifySaveAccount": "Verify & Save Account",
+  "okBtn": "OK"
 }

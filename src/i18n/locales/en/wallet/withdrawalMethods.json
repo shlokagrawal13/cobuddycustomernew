@@ -20,5 +20,7 @@
   "a11yAddBankAccount": "Add Bank Account",
   "a11yAddUpiId": "Add UPI ID",
   "a11yClose": "Close",
-  "a11yVerifySave": "Verify & Save"
+  "a11yVerifySave": "Verify & Save",
+  "cancelBtn": "Cancel",
+  "removeBtn": "Remove"
 }

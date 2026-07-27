@@ -84,8 +84,8 @@ export const LocationPermissionScreen = () => {
               t('location.alertTitleLocationAccess', 'Location Access'),
               t('location.alertMsgLocationpermissionwi', 'Location permission will be requested on your device. This enables safety monitoring and venue discovery.'),
               [
-                { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
-                { text: t('continueBtn', 'Continue'), onPress: () => navigation.navigate('NotificationPermissionScreen') },
+                { text: t('location.cancelBtn', 'Cancel'), style: 'cancel' },
+                { text: t('location.continueBtn', 'Continue'), onPress: () => navigation.navigate('NotificationPermissionScreen') },
               ]
             )
           }
