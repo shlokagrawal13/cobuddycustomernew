@@ -36,5 +36,6 @@
   "a11yClose": "Close",
   "a11yEnterOtp": "Enter OTP",
   "a11yOtpCodeInput": "OTP Code Input",
-  "a11yAction": "Action"
+  "a11yAction": "Action",
+  "stepCounter": "Step {{step}} of {{totalSteps}}"
 }

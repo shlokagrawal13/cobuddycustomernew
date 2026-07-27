@@ -53,7 +53,6 @@ import { OTPVerificationScreen } from '../screens/auth/OTPVerificationScreen';
 import { DeactivateAccountScreen } from '../screens/settings/DeactivateAccountScreen';
 import { ActiveSessionsScreen } from '../screens/settings/ActiveSessionsScreen';
 import { SavedProfilesScreen } from '../screens/profile/SavedProfilesScreen';
-import { TrustedContactsScreen } from '../screens/safety/TrustedContactsScreen';
 import { ReferFriendScreen } from '../screens/settings/ReferFriendScreen';
 import { SafetyHubScreen } from '../screens/safety/SafetyHubScreen';
 import { IncidentReportScreen } from '../screens/safety/IncidentReportScreen';
@@ -120,12 +119,11 @@ const ProfileTabStack = () => (
       <Stack.Screen name="LegalAgreementsScreen" component={LegalAgreementsScreen} />
       
       {/* 
-        NOTE: TrustedContactsScreen and OTPVerificationScreen are intentionally dual-registered here in ProfileTabStack.
+        NOTE: OTPVerificationScreen is intentionally dual-registered here in ProfileTabStack.
         They are also registered in their respective main stacks (AuthStack and SafetySupportStack).
         This allows them to be accessed directly from the Profile/Settings context with their own back-stack,
         without resetting the user's tab state. 
       */}
-      <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
       <Stack.Screen name="OTPVerificationScreen" component={OTPVerificationScreen} />
       
       <Stack.Screen name="SpokenLanguagesScreen" component={SpokenLanguagesScreen} />

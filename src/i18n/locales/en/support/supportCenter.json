@@ -9,5 +9,6 @@
   "a11yActive": "Active",
   "a11yClosed": "Closed",
   "a11yGoToSupportticketdetail": "Go to SupportTicketDetail",
-  "a11yNewTicket": "New Ticket"
+  "a11yNewTicket": "New Ticket",
+  "noTickets": "No Tickets Found"
 }

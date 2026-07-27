@@ -12,7 +12,7 @@ export interface BookingHeaderProps {
 }
 
 export const BookingHeader: React.FC<BookingHeaderProps> = ({ step, totalSteps, onBack, style }) => {
-  const { t } = useTranslation('booking');
+  const { t } = useTranslation('common');
   
   return (
     <View style={[styles.header, style]}>

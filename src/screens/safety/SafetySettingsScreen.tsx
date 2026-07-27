@@ -120,7 +120,7 @@ export const SafetySettingsScreen = () => {
             <TouchableOpacity 
                 style={styles.actionRow} 
                 activeOpacity={0.7} 
-                onPress={() => navigation.navigate('TrustedContactsScreen', { fromSettings: true })} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+                onPress={() => navigation.navigate('SafetySupportStack', { screen: 'TrustedContactsScreen', params: { fromSettings: true } })} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
             >
                 <View style={[styles.iconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
                     <Icon name="car-emergency" size={20} color={theme.colors.error} />

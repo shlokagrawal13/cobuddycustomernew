@@ -38,5 +38,6 @@
   "blockUserTitle": "Block User",
   "blockUserConfirm": "Are you sure you want to block {{name}}? You won't be able to request bookings or send messages to them.",
   "cancel": "Cancel",
-  "block": "Block"
+  "block": "Block",
+  "reportName": "Report {{name}}"
 }
