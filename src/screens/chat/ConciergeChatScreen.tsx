@@ -21,12 +21,15 @@ export const ConciergeChatScreen = () => {
   const scrollRef = useRef<ScrollView>(null);
 
   const QUICK_ACTIONS = [
-    'Cancel Booking', 'Refund Status', 'Report Safety Issue', 'General Help'
+    t('quickAction.cancelBooking', 'Cancel Booking'), 
+    t('quickAction.refundStatus', 'Refund Status'), 
+    t('quickAction.reportSafety', 'Report Safety Issue'), 
+    t('quickAction.generalHelp', 'General Help')
   ];
 
   const [messages, setMessages] = useState([
-    { id: '1', text: 'Hi! I am the CoBuddy Support Bot. How can I help you today?', sender: 'bot', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) },
-    { id: '2', text: 'If you have an emergency, please use the SOS button on the home screen or type your issue below.', sender: 'bot', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
+    { id: '1', text: t('botMsg.hi', 'Hi! I am the CoBuddy Support Bot. How can I help you today?'), sender: 'bot', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) },
+    { id: '2', text: t('botMsg.emergency', 'If you have an emergency, please use the SOS button on the home screen or type your issue below.'), sender: 'bot', time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }
   ]);
 
   const handleSend = (text: string) => {
@@ -48,7 +51,7 @@ export const ConciergeChatScreen = () => {
     setTimeout(() => {
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
-        text: 'Our team will assist you shortly. Please hold on.',
+        text: t('botMsg.assistShortly', 'Our team will assist you shortly. Please hold on.'),
         sender: 'bot',
         time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
       }]);

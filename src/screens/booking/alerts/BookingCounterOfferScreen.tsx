@@ -39,7 +39,10 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
   };
 
   const handleMessageBack = () => {
-    navigation.navigate('CompanionChatScreen');
+    navigation.navigate('MainTabNavigator' as any, { 
+      screen: 'ChatTab', 
+      params: { screen: 'CompanionChatScreen', params: { companionName: bookingData.companionName, bookingId: bookingData.bookingId } } 
+    });
   };
 
   return (

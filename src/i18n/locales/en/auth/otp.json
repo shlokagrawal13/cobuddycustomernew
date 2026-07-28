@@ -10,6 +10,5 @@
   "btn_change": "Change phone number",
   "header": "Verify Identity",
   "overline": "SECURE HANDSHAKE",
-  "error_invalid": "Invalid OTP code. Please try again.",
-  "": "Refresh"
+  "error_invalid": "Invalid OTP code. Please try again."
 }

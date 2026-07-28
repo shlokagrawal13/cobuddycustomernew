@@ -105,12 +105,12 @@ export const HelpCenterScreen = () => {
                             onPress={() => {
                                 setSelectedCategory(isSelected ? null : cat.id);
                                 setExpandedFaq(null);
-                            }} accessibilityRole="button" accessibilityLabel={cat.title}
+                            }} accessibilityRole="button" accessibilityLabel={t(`categories.${cat.id}`, cat.title)}
                         >
                             <View style={[styles.iconCircle, isSelected && styles.iconCircleActive]}>
                                 <Icon name={cat.icon} size={24} color={isSelected ? theme.colors.background : theme.colors.primary} />
                             </View>
-                            <Text style={[styles.gridTitle, isSelected && styles.gridTitleActive]}>{cat.title}</Text>
+                            <Text style={[styles.gridTitle, isSelected && styles.gridTitleActive]}>{t(`categories.${cat.id}`, cat.title)}</Text>
                         </TouchableOpacity>
                     );
                 })}
@@ -160,7 +160,7 @@ export const HelpCenterScreen = () => {
                 <TouchableOpacity 
                     style={styles.chatBtn}
                     activeOpacity={0.8}
-                    onPress={() => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
+                    onPress={() => navigation.navigate('MainTabNavigator' as any, { screen: 'ChatTab', params: { screen: 'ConciergeChatScreen' } })} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
                 >
                     <Icon name="message-text-outline" size={20} color={theme.colors.background} />
                     <Text style={styles.chatBtnText}>{t('chatNow', 'Chat Now')}</Text>

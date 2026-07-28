@@ -20,6 +20,10 @@ export const OnboardingStack = () => {
       <Stack.Screen name="BasicProfileSetupScreen" component={BasicProfileSetupScreen} />
       <Stack.Screen name="InterestSelectionScreen" component={InterestSelectionScreen} />
       <Stack.Screen name="SafetyTutorialScreen" component={SafetyTutorialScreen} />
+      {/* 
+        NOTE: TrustedContactsScreen is intentionally dual-registered here in OnboardingStack 
+        and SafetySupportStack so it can be accessed during onboarding or from Safety Hub/Settings.
+      */}
       <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
     </Stack.Navigator>
   );

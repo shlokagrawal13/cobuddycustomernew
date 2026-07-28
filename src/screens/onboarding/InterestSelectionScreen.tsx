@@ -79,21 +79,21 @@ export const InterestSelectionScreen = () => {
       <OnboardingHeader
         showBack={navigation.canGoBack()}
         onBack={() => smartGoBack()}
-        centerLabel={isEditMode ? 'Edit Interests' : t('interests.header')}
+        centerLabel={isEditMode ? t('interests.edit_header', 'Edit Interests') : t('interests.header')}
         showProgress={!isEditMode}
         currentStep={3}
         totalSteps={5}
       />
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
-        <Text style={styles.headline}>{isEditMode ? 'Update Your Interests' : t('interests.title')}</Text>
+        <Text style={styles.headline}>{isEditMode ? t('interests.edit_title', 'Update Your Interests') : t('interests.title')}</Text>
         <Text style={styles.subheadline}>{t('interests.subtitle')}</Text>
 
         <View style={styles.grid}>
           {INTERESTS_DATA.map(item => {
             const active = selected.has(item.id);
             return (
-              <TouchableOpacity key={item.id} style={[styles.tile, active && styles.tileActive]} onPress={() => toggle(item.id)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('interests.', 'Action')}>
+              <TouchableOpacity key={item.id} style={[styles.tile, active && styles.tileActive]} onPress={() => toggle(item.id)} activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t(`interest_${item.id}`, item.label)}>
                 <View style={[styles.tileIconWrap, active && styles.tileIconWrapActive]}>
                   <Icon name={item.icon} size={22} color={active ? theme.colors.primary : theme.colors.textSecondary} />
                 </View>
@@ -114,7 +114,7 @@ export const InterestSelectionScreen = () => {
 
       <BottomActionBar>
         <Button
-          title={isEditMode ? 'Save Interests' : t('interests.btn_continue')}
+          title={isEditMode ? t('interests.edit_btn_save', 'Save Interests') : t('interests.btn_continue')}
           onPress={handleNext}
           disabled={!isValid}
         />

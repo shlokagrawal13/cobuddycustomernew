@@ -104,7 +104,10 @@ export const ArrivalCheckInScreen = () => {
               <Text style={styles.commBtnText}>{t('commCall', 'Call Securely')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.commBtn} onPress={() => {
-              navigation.navigate('CompanionChatScreen', { companionName: 'c1' });
+              navigation.navigate('MainTabNavigator' as any, {
+                screen: 'ChatTab',
+                params: { screen: 'CompanionChatScreen', params: { companionName: 'c1' } }
+              });
             }} accessibilityRole="button" accessibilityLabel={t('a11yMessage', 'Message')}>
               <Icon name="chat" size={20} color={theme.colors.primary} />
               <Text style={styles.commBtnText}>{t('commMessage', 'Message')}</Text>

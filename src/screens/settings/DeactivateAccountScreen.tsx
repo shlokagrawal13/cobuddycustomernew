@@ -18,7 +18,7 @@ export const DeactivateAccountScreen = () => {
       Alert.alert(t('alertTitleDeactivateAccou', 'Deactivate Account'), t('alertMsgAreyousureyouwanttod', 'Are you sure you want to deactivate your account? You will be logged out, and your profile will be hidden.'),
           [
               { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
-              { text: 'Yes, Deactivate', style: 'destructive', onPress: () => {
+              { text: t('confirmDeactivate', 'Yes, Deactivate'), style: 'destructive', onPress: () => {
                   Alert.alert(t('alertTitleAccountDeactiva', 'Account Deactivated'), t('alertMsgYouraccounthasbeende', 'Your account has been deactivated successfully. You can reactivate by logging in again.'), [{ text: t('okBtn', 'OK') }]);
               }}
           ]

@@ -23,7 +23,7 @@ export const DeleteAccountScreen = () => {
       Alert.alert(t('alertTitleFinalConfirmati', 'Final Confirmation'), t('alertMsgThisactionisirrevers', 'This action is irreversible. All your data, wallet balance, and history will be permanently deleted.'),
           [
               { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
-              { text: 'Yes, Delete', style: 'destructive', onPress: () => {
+              { text: t('confirmDelete', 'Yes, Delete'), style: 'destructive', onPress: () => {
                   Alert.alert(t('alertTitleAccountDeleted', 'Account Deleted'), t('alertMsgYouraccounthasbeende', 'Your account has been deleted.'), [{ text: t('okBtn', 'OK') }]);
               }}
           ]

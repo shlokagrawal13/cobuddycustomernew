@@ -69,7 +69,7 @@ export const SafetyHubScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Hub')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('SafetySettingsScreen')} accessibilityRole="button" accessibilityLabel={t('a11ySettings', 'Settings')}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => navigation.navigate('MainTabNavigator' as any, { screen: 'ProfileTab', params: { screen: 'SafetySettingsScreen' } })} accessibilityRole="button" accessibilityLabel={t('a11ySettings', 'Settings')}>
           <Icon name="cog-outline" size={24} color={theme.colors.textSecondary} />
         </TouchableOpacity>
       </View>
@@ -198,7 +198,7 @@ export const SafetyHubScreen = () => {
             
             <View style={styles.divider} />
 
-            <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
+            <TouchableOpacity style={styles.menuRow} activeOpacity={0.7} onPress={() => navigation.navigate('HelpCenterScreen')} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
                 <View style={[styles.menuIconBox, { backgroundColor: 'rgba(255,255,255,0.05)' }]}>
                     <Icon name="headset" size={20} color={theme.colors.textPrimary} />
                 </View>

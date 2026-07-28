@@ -105,7 +105,7 @@ export const EditProfileScreen = () => {
                     <TouchableOpacity 
                         style={[styles.iconInputWrap, {paddingVertical: 14, paddingRight: 16}]} 
                         activeOpacity={0.7}
-                        onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel={`${form.city} || \'Select Location\'`}
+                        onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel={form.city || t('a11ySelectLocation', 'Select Location')}
                     >
                         <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} style={styles.inputIcon} />
                         <Text style={[styles.iconInput, {paddingVertical: 0, paddingRight: 0}]}>{form.city || 'Select Location'}</Text>
@@ -128,7 +128,7 @@ export const EditProfileScreen = () => {
                 <TouchableOpacity 
                     style={styles.clickableRow} 
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={`${form.languages}.length > 0 ? fo...`}
+                    onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={form.languages.length > 0 ? form.languages.join(', ') : t('a11ySelectLanguages', 'Select Languages')}
                 >
                     <Text style={styles.clickableRowText}>
                         {form.languages.length > 0 ? form.languages.join(', ') : 'Select Languages'}

@@ -16,10 +16,10 @@ export const SessionReminderScreen = () => {
   const { smartGoBack } = useSmartNavigation();
 
     const SAFETY_TIPS = [
-    { icon: 'shield-account-outline', text: 'Meet in a public place with good lighting.' },
-    { icon: 'account-cancel-outline', text: 'Do not share your personal address or last name.' },
-    { icon: 'cellphone-check', text: 'Keep your phone charged and handy.' },
-    { icon: 'account-group-outline', text: 'Respect boundaries and CoBuddy etiquette.' },
+    { icon: 'shield-account-outline', text: t('safetyTip.public', 'Meet in a public place with good lighting.') },
+    { icon: 'account-cancel-outline', text: t('safetyTip.personal', 'Do not share your personal address or last name.') },
+    { icon: 'cellphone-check', text: t('safetyTip.phone', 'Keep your phone charged and handy.') },
+    { icon: 'account-group-outline', text: t('safetyTip.boundaries', 'Respect boundaries and CoBuddy etiquette.') },
   ];
 
   return (
@@ -80,7 +80,7 @@ export const SessionReminderScreen = () => {
       </ScrollView>
 
       <View style={styles.bottomBar}>
-        <Text style={styles.bottomHint}>Only confirm arrival when you are physically at the venue{t('alertSuffix', '.')}</Text>
+        <Text style={styles.bottomHint}>{t('bottomHint', 'Only confirm arrival when you are physically at the venue.')}</Text>
         <TouchableOpacity 
           style={styles.primaryBtn} 
           onPress={() => navigation.navigate('ArrivalCheckInScreen')} accessibilityRole="button" accessibilityLabel={t('a11ySimulateArrivalAtVenue', 'Simulate Arrival at Venue')}

@@ -9,8 +9,22 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+interface MenuItem {
+  id: string;
+  icon: string;
+  title: string;
+  sub?: string;
+  route?: string;
+  action?: () => void;
+}
 
-const DANGER_ZONE = [
+interface MenuSection {
+  title: string;
+  items: MenuItem[];
+}
+
+
+const DANGER_ZONE: MenuItem[] = [
   { id: 'deactivate', icon: 'pause-circle-outline', title: 'Deactivate Account', sub: 'Temporarily hide your profile', route: 'DeactivateAccountScreen' },
   { id: 'delete', icon: 'delete-forever-outline', title: 'Delete Account', sub: 'Permanently remove all data', route: 'DeleteAccountScreen' },
 ];
@@ -30,7 +44,7 @@ export const SettingsHubScreen = () => {
   const { t } = useTranslation('settings.hub');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const SETTING_SECTIONS = [
+  const SETTING_SECTIONS: MenuSection[] = [
     {
       title: 'ACCOUNT',
       items: [
@@ -129,17 +143,17 @@ export const SettingsHubScreen = () => {
                   key={item.id} 
                   style={[styles.row, index !== section.items.length - 1 && styles.borderBottom]}
                   activeOpacity={0.7}
-                  onPress={() => 'action' in item ? (item as any).action() : 'route' in item && (item as any).route ? navigation.navigate((item as any).route as never) : null}
-                  disabled={!('route' in item && (item as any).route) && !('action' in item)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                  onPress={() => item.action ? item.action() : item.route ? navigation.navigate(item.route as never) : null}
+                  disabled={!item.route && !item.action} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
                 >
                   <View style={styles.iconWrap}>
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />
                   </View>
                   <View style={styles.meta}>
                     <Text style={styles.title}>{t(`items.${item.id}.title`, item.title)}</Text>
-                    <Text style={styles.sub}>{t(`items.${item.id}.sub`, item.sub)}</Text>
+                    {item.sub ? <Text style={styles.sub}>{t(`items.${item.id}.sub`, { defaultValue: item.sub })}</Text> : null}
                   </View>
-                  {('route' in item && (item as any).route) ? <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} /> : null}
+                  {item.route ? <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} /> : null}
                 </TouchableOpacity>
               ))}
             </View>
@@ -187,7 +201,7 @@ export const SettingsHubScreen = () => {
                 key={item.id} 
                 style={[styles.row, index !== DANGER_ZONE.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(239, 68, 68, 0.1)'}]}
                 activeOpacity={0.7}
-                onPress={() => 'action' in item ? (item as any).action() : 'route' in item && (item as any).route ? navigation.navigate((item as any).route as never) : null} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+                onPress={() => item.action ? item.action() : item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
               >
                 <View style={[styles.iconWrap, {backgroundColor: 'rgba(239, 68, 68, 0.1)'}]}>
                   <Icon name={item.icon} size={22} color={theme.colors.error} />

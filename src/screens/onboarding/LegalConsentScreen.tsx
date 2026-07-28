@@ -46,45 +46,45 @@ export const LegalConsentScreen = () => {
     {
       id: 'terms',
       icon: '⚖',
-      title: 'Terms & Conditions',
-      desc: 'Our legal framework for usage and liability.',
+      title: t('consent.docs.terms.title', 'Terms & Conditions'),
+      desc: t('consent.docs.terms.desc', 'Our legal framework for usage and liability.'),
       sections: [
-        { heading: 'Eligibility', body: 'You must be 18 years or older to use CoBuddy. By registering, you confirm you meet this requirement and have the legal capacity to enter into this agreement.' },
-        { heading: 'Permitted Use', body: 'CoBuddy connects members for trusted public-only experiences including dining, cultural outings, networking, and wellness activities. The platform is strictly for platonic, professional companionship in verified public settings.' },
-        { heading: 'Account Responsibility', body: 'You are responsible for all activity under your account. Do not share credentials. CoBuddy reserves the right to suspend accounts for any breach of these terms without prior notice.' },
-        { heading: 'Limitation of Liability', body: 'CoBuddy acts as a connection platform only. We are not liable for conduct between members during or after sessions. Sessions are undertaken at your own discretion.' },
+        { heading: t('consent.docs.terms.s1.h', 'Eligibility'), body: t('consent.docs.terms.s1.b', 'You must be 18 years or older to use CoBuddy. By registering, you confirm you meet this requirement and have the legal capacity to enter into this agreement.') },
+        { heading: t('consent.docs.terms.s2.h', 'Permitted Use'), body: t('consent.docs.terms.s2.b', 'CoBuddy connects members for trusted public-only experiences including dining, cultural outings, networking, and wellness activities. The platform is strictly for platonic, professional companionship in verified public settings.') },
+        { heading: t('consent.docs.terms.s3.h', 'Account Responsibility'), body: t('consent.docs.terms.s3.b', 'You are responsible for all activity under your account. Do not share credentials. CoBuddy reserves the right to suspend accounts for any breach of these terms without prior notice.') },
+        { heading: t('consent.docs.terms.s4.h', 'Limitation of Liability'), body: t('consent.docs.terms.s4.b', 'CoBuddy acts as a connection platform only. We are not liable for conduct between members during or after sessions. Sessions are undertaken at your own discretion.') },
       ],
     },
     {
       id: 'privacy',
       icon: '🔐',
-      title: 'Privacy Policy',
-      desc: 'How we protect and manage your data.',
+      title: t('consent.docs.privacy.title', 'Privacy Policy'),
+      desc: t('consent.docs.privacy.desc', 'How we protect and manage your data.'),
       sections: [
-        { heading: 'Data We Collect', body: 'We collect identity verification data (government ID), contact information, location data during active sessions, and usage analytics to improve your experience.' },
-        { heading: 'How We Use Your Data', body: 'Your data is used exclusively for identity verification, session matching, safety monitoring, and personalized recommendations. We never sell personal data to third parties.' },
-        { heading: 'Data Protection', body: 'All data is encrypted in transit and at rest. We are compliant with applicable regional data protection regulations.' },
-        { heading: 'Your Rights', body: 'You may request access to, correction of, or deletion of your personal data at any time through Settings.' },
+        { heading: t('consent.docs.privacy.s1.h', 'Data We Collect'), body: t('consent.docs.privacy.s1.b', 'We collect identity verification data (government ID), contact information, location data during active sessions, and usage analytics to improve your experience.') },
+        { heading: t('consent.docs.privacy.s2.h', 'How We Use Your Data'), body: t('consent.docs.privacy.s2.b', 'Your data is used exclusively for identity verification, session matching, safety monitoring, and personalized recommendations. We never sell personal data to third parties.') },
+        { heading: t('consent.docs.privacy.s3.h', 'Data Protection'), body: t('consent.docs.privacy.s3.b', 'All data is encrypted in transit and at rest. We are compliant with applicable regional data protection regulations.') },
+        { heading: t('consent.docs.privacy.s4.h', 'Your Rights'), body: t('consent.docs.privacy.s4.b', 'You may request access to, correction of, or deletion of your personal data at any time through Settings.') },
       ],
     },
     {
       id: 'community',
       icon: '🛡',
-      title: 'Community Guidelines',
-      desc: 'Behavioral standards for all members.',
+      title: t('consent.docs.community.title', 'Community Guidelines'),
+      desc: t('consent.docs.community.desc', 'Behavioral standards for all members.'),
       sections: [
-        { heading: 'Respect & Dignity', body: 'All members must treat companions and fellow users with respect. Harassment, discrimination, or any form of disrespectful conduct will result in immediate account suspension.' },
-        { heading: 'Public Venues Only', body: 'For safety, all first-time meetings must occur in CoBuddy-verified public venues. Never request a companion to meet in private or isolated settings.' },
-        { heading: 'Zero Tolerance Policy', body: 'Any solicitation for services beyond our platform scope (romantic, sexual, or private arrangements) is strictly prohibited and will result in permanent banning and potential legal action.' },
-        { heading: 'Reporting', body: 'If you experience any behavior that violates these guidelines, use the in-app report feature immediately.' },
+        { heading: t('consent.docs.community.s1.h', 'Respect & Dignity'), body: t('consent.docs.community.s1.b', 'All members must treat companions and fellow users with respect. Harassment, discrimination, or any form of disrespectful conduct will result in immediate account suspension.') },
+        { heading: t('consent.docs.community.s2.h', 'Public Venues Only'), body: t('consent.docs.community.s2.b', 'For safety, all first-time meetings must occur in CoBuddy-verified public venues. Never request a companion to meet in private or isolated settings.') },
+        { heading: t('consent.docs.community.s3.h', 'Zero Tolerance Policy'), body: t('consent.docs.community.s3.b', 'Any solicitation for services beyond our platform scope (romantic, sexual, or private arrangements) is strictly prohibited and will result in permanent banning and potential legal action.') },
+        { heading: t('consent.docs.community.s4.h', 'Reporting'), body: t('consent.docs.community.s4.b', 'If you experience any behavior that violates these guidelines, use the in-app report feature immediately.') },
       ],
     },
   ];
   
   const CONSENTS = [
-    { id: 'tos', label: "I agree to CoBuddy's Terms & Conditions" },
-    { id: 'public', label: 'I understand CoBuddy supports public-only meetups and verified experiences' },
-    { id: 'safety', label: 'I agree to follow community safety and respectful behavior guidelines' },
+    { id: 'tos', label: t('consent.checkbox.tos', "I agree to CoBuddy's Terms & Conditions") },
+    { id: 'public', label: t('consent.checkbox.public', 'I understand CoBuddy supports public-only meetups and verified experiences') },
+    { id: 'safety', label: t('consent.checkbox.safety', 'I agree to follow community safety and respectful behavior guidelines') },
   ];
 
   const allChecked = CONSENTS.every(c => checked[c.id]);

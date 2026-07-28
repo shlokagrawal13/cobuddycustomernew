@@ -217,7 +217,7 @@ export const ProfileScreen = () => {
 
           {/* Contact Details Overview */}
           <View style={styles.contactInfoBox}>
-            <Text style={styles.memberSinceText}>Member since {user.memberSince}</Text>
+            <Text style={styles.memberSinceText}>{t('memberSince', 'Member since')} {user.memberSince}</Text>
             <TouchableOpacity 
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
               onPress={() => navigation.navigate('EditProfileScreen')}
@@ -237,7 +237,7 @@ export const ProfileScreen = () => {
               </View>
               <View style={styles.verifyMeta}>
                 <Text style={styles.verifyTitle}>{t('phoneNumber', 'Phone Number')}</Text>
-                <Text style={styles.verifySub}>{user.phone} • Verified</Text>
+                <Text style={styles.verifySub}>{user.phone} • {t('statusVerified', 'Verified')}</Text>
               </View>
             </View>
 
@@ -253,7 +253,7 @@ export const ProfileScreen = () => {
               <View style={styles.verifyMeta}>
                 <Text style={styles.verifyTitle}>{t('govId', 'Government ID')}</Text>
                 <Text style={[styles.verifySub, user.kycStatus !== 'verified' && {color: theme.colors.error}]}>
-                  {user.kycStatus === 'verified' ? 'Aadhaar Verified' : 'Pending - Required for booking'}
+                  {user.kycStatus === 'verified' ? t('kycAadhaarVerified', 'Aadhaar Verified') : t('kycPending', 'Pending - Required for booking')}
                 </Text>
               </View>
             </View>
@@ -270,7 +270,7 @@ export const ProfileScreen = () => {
               <View style={styles.verifyMeta}>
                 <Text style={styles.verifyTitle}>{t('liveSelfie', 'Live Selfie')}</Text>
                 <Text style={[styles.verifySub, user.kycStatus !== 'verified' && {color: theme.colors.error}]}>
-                  {user.kycStatus === 'verified' ? 'Biometric matched' : 'Pending - Required for booking'}
+                  {user.kycStatus === 'verified' ? t('kycBiometricMatched', 'Biometric matched') : t('kycPending', 'Pending - Required for booking')}
                 </Text>
               </View>
             </View>
@@ -288,7 +288,7 @@ export const ProfileScreen = () => {
               color={user.kycStatus === 'verified' ? theme.colors.primary : theme.colors.background} 
             />
             <Text style={[styles.kycBtnText, user.kycStatus !== 'verified' && { color: theme.colors.background }]}>
-              {user.kycStatus === 'verified' ? 'View Identity Details' : 'Complete KYC Verification'}
+              {user.kycStatus === 'verified' ? t('kycViewDetails', 'View Identity Details') : t('kycComplete', 'Complete KYC Verification')}
             </Text>
             <Icon 
               name="chevron-right" 
@@ -302,8 +302,8 @@ export const ProfileScreen = () => {
         <View style={styles.infoCard}>
           <Text style={styles.cardTitle}>{t('walletActivityTitle', 'Wallet & Activity')}</Text>
           {[
-            { id: 'wallet', icon: 'wallet-outline', label: 'My Wallet', sub: `Balance: ${user.walletBalance}`, action: () => navigation.navigate('WalletScreen') },
-            { id: 'reviews', icon: 'star-circle-outline', label: 'My Reviews', sub: `${user.reviewsCount} Ratings received`, action: () => navigation.navigate('MyReviewsScreen') },
+            { id: 'wallet', icon: 'wallet-outline', label: 'My Wallet', sub: t('walletBalance', 'Balance: {{balance}}', { balance: user.walletBalance }), action: () => navigation.navigate('WalletScreen') },
+            { id: 'reviews', icon: 'star-circle-outline', label: 'My Reviews', sub: t('ratingsReceived', '{{count}} Ratings received', { count: user.reviewsCount }), action: () => navigation.navigate('MyReviewsScreen') },
             { id: 'saved', icon: 'bookmark-outline', label: 'Saved Checklists', sub: 'Your favorite companions', action: () => navigation.navigate('SavedProfilesScreen') },
             { id: 'refer', icon: 'account-multiple-plus-outline', label: 'Refer a Friend', sub: 'Invite trusted members', action: () => navigation.navigate('ReferFriendScreen') },
           ].map((item, i, arr) => (

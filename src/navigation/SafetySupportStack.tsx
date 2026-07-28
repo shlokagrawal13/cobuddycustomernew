@@ -16,6 +16,10 @@ export const SafetySupportStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SafetyHubScreen" component={SafetyHubScreen} />
+      {/* 
+        NOTE: TrustedContactsScreen is intentionally dual-registered here in SafetySupportStack 
+        and OnboardingStack so it can be accessed during onboarding or from Safety Hub/Settings.
+      */}
       <Stack.Screen name="TrustedContactsScreen" component={TrustedContactsScreen} />
       <Stack.Screen name="IncidentReportScreen" component={IncidentReportScreen} />
       <Stack.Screen name="SafetyGuidelinesScreen" component={SafetyGuidelinesScreen} />

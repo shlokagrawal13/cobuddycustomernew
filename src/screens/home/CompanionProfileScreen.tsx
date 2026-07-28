@@ -193,7 +193,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <View style={styles.statItem}>
               <Icon name="star" size={24} color={theme.colors.primary} />
               <Text style={styles.statValue}>{DUMMY_PROFILE.reviews.average}</Text>
-              <Text style={styles.statLabel}>{DUMMY_PROFILE.reviews.count} Reviews</Text>
+              <Text style={styles.statLabel}>{DUMMY_PROFILE.reviews.count} {t('statReviews', 'Reviews')}</Text>
             </View>
             <View style={styles.statDivider} />
             <View style={styles.statItem}>
@@ -282,7 +282,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
           {/* Verifications Card */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>{t('trustVerifications', 'Trust & Verifications')}</Text>
-            <Text style={styles.mutedText}>Member since {DUMMY_PROFILE.memberSince}</Text>
+            <Text style={styles.mutedText}>{t('memberSince', 'Member since')} {DUMMY_PROFILE.memberSince}</Text>
             <View style={styles.verificationList}>
               {DUMMY_PROFILE.verifications.map((v, idx) => (
                 <View key={idx} style={styles.verifyItem}>
@@ -296,7 +296,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
           {/* Reviews Card */}
           <View style={styles.card}>
             <View style={styles.reviewHeader}>
-              <Text style={styles.cardTitle}>Reviews ({DUMMY_PROFILE.reviews.count})</Text>
+              <Text style={styles.cardTitle}>{t('reviewsCount', 'Reviews ({{count}})', { count: DUMMY_PROFILE.reviews.count })}</Text>
               <Text style={styles.reviewSeeAll}>{t('reviewSeeAll', 'See All')}</Text>
             </View>
             
@@ -385,7 +385,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
             <Text style={styles.sheetRowText}>{t('shareProfile', 'Share Profile')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel={`Report ${DUMMY_PROFILE.name}`}>
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel={t('a11yReportName', 'Report {{name}}', { name: DUMMY_PROFILE.name })}>
             <View style={styles.sheetIconWrap}>
               <Icon name="flag-outline" size={20} color={theme.colors.textPrimary} />
             </View>

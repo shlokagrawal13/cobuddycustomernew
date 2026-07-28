@@ -51,7 +51,7 @@ export const CompanionChatScreen = () => {
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         type: 'text',
-        text: 'Got it, see you shortly!',
+        text: t('botMsg.gotIt', 'Got it, see you shortly!'),
         sender: 'them',
         time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
       }]);
@@ -189,7 +189,7 @@ export const CompanionChatScreen = () => {
                 style={styles.optionItem} 
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
-                  setMessages([{ id: 'sys1', type: 'system', text: 'Booking Accepted! You can now chat securely.', time: '11:30 AM' }]); 
+                  setMessages([{ id: 'sys1', type: 'system', text: t('sysMsg.bookingAccepted', 'Booking Accepted! You can now chat securely.'), time: '11:30 AM' }]); 
                 }} accessibilityRole="button" accessibilityLabel={t('a11yClearChat', 'Clear Chat')}
               >
                 <Icon name="delete-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />

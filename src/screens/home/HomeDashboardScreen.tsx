@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { CompanionCard } from '../../components/ui/CompanionCard';
 import { CompanionCardSkeleton } from '../../components/ui/CompanionCardSkeleton';
-import { DUMMY_FEATURED } from '../../services/mock';
+import { DUMMY_FEATURED, MOCK_PROFILE } from '../../services/mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
@@ -79,7 +79,7 @@ export const HomeDashboardScreen = () => {
         
         {/* Welcome Section */}
         <View style={styles.welcomeSection}>
-          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>Shlok</Text></Text>
+          <Text style={styles.welcomeText}>{t('greeting')} <Text style={styles.welcomeName}>{MOCK_PROFILE.name}</Text></Text>
           <Text style={styles.subtitleText}>{t('subtitle')}</Text>
         </View>
 
@@ -168,12 +168,12 @@ export const HomeDashboardScreen = () => {
                   onPress={() => navigation.navigate('DiscoverTab', { 
                     screen: 'DiscoverScreen', 
                     params: { category: cat.id } 
-                  })} accessibilityRole="button" accessibilityLabel={cat.title}
+                  })} accessibilityRole="button" accessibilityLabel={t(`categories.${cat.id}`, cat.title)}
                 >
                   <View style={[styles.exploreIconBox, { backgroundColor: `${cat.color}20` }]}>
                     <Icon name={cat.icon} size={28} color={cat.color} />
                   </View>
-                  <Text style={styles.exploreCardTitle}>{cat.title}</Text>
+                  <Text style={styles.exploreCardTitle}>{t(`categories.${cat.id}`, cat.title)}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>

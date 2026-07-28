@@ -15,7 +15,7 @@ export * from './auth.types';
 export * from './booking.types';
 export * from './chat.types';
 export * from './safety.types';
-export * from './wallet.types';
+
 export * from './profile.types';
 export * from './support.types';
 export * from './home.types';

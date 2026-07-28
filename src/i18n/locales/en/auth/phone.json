@@ -8,6 +8,5 @@
   "btn_send": "Send Verification Code",
   "error_invalid": "Please enter a valid phone number for this country.",
   "header": "Secure Access",
-  "overline": "IDENTITY VERIFICATION",
-  "": "Action"
+  "overline": "IDENTITY VERIFICATION"
 }
