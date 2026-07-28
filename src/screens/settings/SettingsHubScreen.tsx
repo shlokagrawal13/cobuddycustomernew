@@ -23,8 +23,11 @@ interface MenuSection {
   items: MenuItem[];
 }
 
-
-
+interface DevTestItem {
+  id: string;
+  title: string;
+  route: string;
+}
 
 export const SettingsHubScreen = () => { 
   const { t } = useTranslation('settings.hub');
@@ -69,6 +72,19 @@ export const SettingsHubScreen = () => {
     { id: 'deactivate', icon: 'pause-circle-outline', title: t('items.deactivate.title', 'Deactivate Account'), sub: t('items.deactivate.sub', 'Temporarily hide your profile'), route: 'DeactivateAccountScreen' },
     { id: 'delete', icon: 'delete-forever-outline', title: t('items.delete.title', 'Delete Account'), sub: t('items.delete.sub', 'Permanently remove all data'), route: 'DeleteAccountScreen' },
   ];
+
+  // NOTE: kept intentionally (not to be removed by automated fix passes) — will be removed manually before final handoff.
+  const DEV_TEST_SCREENS: DevTestItem[] = [
+    { id: 'susp', title: t('items.susp.title', 'Suspended Screen'), route: 'AccountSuspendedScreen' },
+    { id: 'rev', title: t('items.rev.title', 'Under Review Screen'), route: 'AccountUnderManualReviewScreen' },
+    { id: 'react', title: t('items.react.title', 'Reactivation Request'), route: 'AccountReactivationRequestScreen' },
+    { id: 'pol', title: t('items.pol.title', 'Policy Violation'), route: 'PolicyViolationNoticeScreen' },
+    { id: 'deact', title: t('items.deact.title', 'Deactivated Screen'), route: 'AccountDeactivatedScreen' },
+    { id: 'net', title: t('items.net.title', 'Network Error'), route: 'NetworkErrorScreen' },
+    { id: 'force', title: t('items.force.title', 'Force Update'), route: 'ForceUpdateScreen' },
+    { id: 'maint', title: t('items.maint.title', 'Maintenance Mode'), route: 'MaintenanceModeScreen' },
+  ];
+
     const { smartGoBack } = useSmartNavigation();
 
   const handleLogout = () => {
@@ -135,7 +151,7 @@ export const SettingsHubScreen = () => {
                   style={[styles.row, index !== section.items.length - 1 && styles.borderBottom]}
                   activeOpacity={0.7}
                   onPress={() => item.action ? item.action() : item.route ? navigation.navigate(item.route as never) : null}
-                  disabled={!item.route && !item.action} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                  disabled={!item.route && !item.action} accessibilityRole="button" accessibilityLabel={item.title}
                 >
                   <View style={styles.iconWrap}>
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />
@@ -151,7 +167,69 @@ export const SettingsHubScreen = () => {
           </View>
         ))}
 
-        
+        {/* DEV ZONE FOR TESTING SYSTEM SCREENS — kept intentionally, remove manually before final handoff */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, {color: theme.colors.warning}]}>{t('devZone', 'DEV ZONE (TEMPORARY)')}</Text>
+          <View style={[styles.card, {borderColor: 'rgba(245, 158, 11, 0.2)'}]}>
+            {DEV_TEST_SCREENS.map((item, index) => (
+              <TouchableOpacity
+                key={item.id}
+                style={[styles.row, index !== DEV_TEST_SCREENS.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(245, 158, 11, 0.1)'}]}
+                activeOpacity={0.7}
+                onPress={() => {
+                  if (item.route === 'NetworkErrorScreen' || item.route === 'ForceUpdateScreen' || item.route === 'MaintenanceModeScreen') {
+                    navigation.navigate(item.route as never);
+                  } else {
+                    navigation.navigate('SystemStateStack', { screen: item.route as never });
+                  }
+                }} accessibilityRole="button" accessibilityLabel={item.title}
+              >
+                <View style={[styles.iconWrap, {backgroundColor: 'rgba(245, 158, 11, 0.1)'}]}>
+                  <Icon name="test-tube" size={22} color={theme.colors.warning} />
+                </View>
+                <View style={styles.meta}>
+                  <Text style={[styles.title, {color: theme.colors.warning}]}>{item.title}</Text>
+                </View>
+                <Icon name="chevron-right" size={20} color={theme.colors.warning} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+
+        {/* Danger Zone */}
+        <View style={styles.section}>
+          <Text style={[styles.sectionTitle, {color: theme.colors.error}]}>{t('dangerZone', 'DANGER ZONE')}</Text>
+          <View style={[styles.card, {borderColor: 'rgba(239, 68, 68, 0.2)'}]}>
+            {DANGER_ZONE.map((item, index) => (
+              <TouchableOpacity
+                key={item.id}
+                style={[styles.row, index !== DANGER_ZONE.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(239, 68, 68, 0.1)'}]}
+                activeOpacity={0.7}
+                onPress={() => item.action ? item.action() : item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel={item.title}
+              >
+                <View style={[styles.iconWrap, {backgroundColor: 'rgba(239, 68, 68, 0.1)'}]}>
+                  <Icon name={item.icon} size={22} color={theme.colors.error} />
+                </View>
+                <View style={styles.meta}>
+                  <Text style={[styles.title, {color: theme.colors.error}]}>{item.title}</Text>
+                  {item.sub ? <Text style={[styles.sub, {color: theme.colors.error, opacity: 0.7}]}>{item.sub}</Text> : null}
+                </View>
+                <Icon name="chevron-right" size={20} color={theme.colors.error} />
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+
+        <TouchableOpacity style={styles.logoutBtn} activeOpacity={0.8} onPress={handleLogout} accessibilityRole="button" accessibilityLabel={t('a11yLogOut', 'Log Out')}>
+          <Icon name="logout-variant" size={20} color={theme.colors.error} />
+          <Text style={styles.logoutText}>{t('logOut', 'Log Out')}</Text>
+        </TouchableOpacity>
+
+        <View style={styles.footerBrand}>
+            <Text style={styles.brandText}>{t('brand', 'CoBuddy')}</Text>
+            <Text style={styles.copyrightText}>{t('copyright', '© 2026 CoBuddy Technologies')}</Text>
+            <Text style={styles.versionText}>{t('version', 'v1.0.0 (Build 42)')}</Text>
+        </View>
 
       </ScrollView>
     </SafeAreaView>
