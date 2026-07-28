@@ -54,7 +54,7 @@ export const AddPaymentMethodScreen = () => {
 
     Alert.alert(t('alertTitleSuccess', 'Success'), t('alertMsgYourcardhasbeensecur', 'Your card has been securely added to your wallet.'), [
         { text: t('okBtn', 'OK'), onPress: () => {
-            navigation.navigate('PaymentMethodsScreen', { newMethod: newCard });
+            navigation.navigate('PaymentMethodsScreen' as any, { newMethod: newCard as any });
         }}
     ]);
   };

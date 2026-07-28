@@ -6,6 +6,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { MOCK_BOOKINGS } from '../../services/mock/bookings.mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -23,6 +24,7 @@ export const CancelBookingScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'CancelBookingScreen'>>();
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
+  const booking = MOCK_BOOKINGS.find(b => b.id === bookingId) || MOCK_BOOKINGS[0];
   
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
 
@@ -53,11 +55,11 @@ export const CancelBookingScreen = () => {
           <Text style={styles.summaryTitle}>{t('summaryTitle', 'Cancelling Booking: {{id}}', { id: bookingId })}</Text>
           <View style={styles.summaryRow}>
             <Icon name="account" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>Elena Vasquez</Text>
+            <Text style={styles.summaryText}>{booking?.companionName || 'Companion'}</Text>
           </View>
           <View style={styles.summaryRow}>
             <Icon name="calendar-clock" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>Fri, 24 Oct 2026 • 7:00 PM</Text>
+            <Text style={styles.summaryText}>{booking?.date} • {booking?.time}</Text>
           </View>
         </View>
 

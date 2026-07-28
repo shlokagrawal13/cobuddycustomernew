@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { MOCK_VENUES } from '../../services/mock';
+import { MOCK_BOOKINGS } from '../../services/mock/bookings.mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -16,6 +17,7 @@ export const ModifyBookingScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'ModifyBookingScreen'>>();
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
+  const booking = MOCK_BOOKINGS.find(b => b.id === bookingId) || MOCK_BOOKINGS[0];
   
   const [newDate, setNewDate] = useState('');
   const [newTime, setNewTime] = useState('');
@@ -86,15 +88,15 @@ export const ModifyBookingScreen = () => {
         <View style={styles.detailsCard}>
           <View style={styles.detailRow}>
             <Icon name="calendar-month" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>Friday, 24 Oct 2026</Text>
+            <Text style={styles.detailText}>{booking?.date || 'Friday, 24 Oct 2026'}</Text>
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="clock-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>7:00 PM - 9:00 PM</Text>
+            <Text style={styles.detailText}>{booking?.time || '7:00 PM - 9:00 PM'}</Text>
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>Blue Tokai Coffee, CP</Text>
+            <Text style={styles.detailText}>{booking?.venue || 'Blue Tokai Coffee, CP'}</Text>
           </View>
         </View>
 

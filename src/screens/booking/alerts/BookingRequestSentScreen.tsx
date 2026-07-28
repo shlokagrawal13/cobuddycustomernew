@@ -17,7 +17,9 @@ const DEFAULT_MOCK_DATA = {
   amount: '₹3,000'
 };
 
-export const BookingRequestSentScreen = ({ route }: any) => { 
+import { RouteProp } from '@react-navigation/native';
+
+export const BookingRequestSentScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.requestSent');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const pulseAnim = useRef(new Animated.Value(1)).current;

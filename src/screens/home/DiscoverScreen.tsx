@@ -27,7 +27,7 @@ const PRICE_PILLS = [500, 1000, 2000];
 const DISTANCE_PILLS = [5, 15, 50];
 
 // --- Custom Slider Component ---
-const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffix = '' }: any) => {
+const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffix = '' }: { value: number; onValueChange: (v: number) => void; min: number; max: number; step: number; prefix?: string; suffix?: string; }) => {
   const [width, setWidth] = useState(1);
   const [localVal, setLocalVal] = useState(value);
 
@@ -36,7 +36,7 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
     setLocalVal(value);
   }, [value]);
 
-  const updateValue = (e: any, isRelease = false) => {
+  const updateValue = (e: import("react-native").GestureResponderEvent, isRelease = false) => {
     const x = e.nativeEvent.locationX;
     let percent = x / width;
     if (percent < 0) percent = 0;

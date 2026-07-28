@@ -108,10 +108,10 @@ export type RootStackParamList = {
   VerificationRejectedScreen: undefined;
   VerificationSuccessScreen: undefined;
   WalletScreen: undefined;
-  AddMoneyScreen: { selectedMethod?: any } | undefined;
-  WithdrawMoneyScreen: { selectedMethod?: any } | undefined;
-  PaymentMethodsScreen: { mode?: 'select'; currentId?: string; newMethod?: any } | undefined;
-  WithdrawalMethodsScreen: { currentId?: string; newMethod?: any } | undefined;
+  AddMoneyScreen: { selectedMethod?: { id: string; type: string; title: string; sub: string; icon: string; } } | undefined;
+  WithdrawMoneyScreen: { selectedMethod?: Record<string, unknown> } | undefined;
+  PaymentMethodsScreen: { mode?: 'select'; currentId?: string; newMethod?: { id: string; type: string; title: string; sub: string; icon: string; isVerified?: boolean; isDefault?: boolean; } } | undefined;
+  WithdrawalMethodsScreen: { currentId?: string; newMethod?: Record<string, unknown> } | undefined;
   TransactionHistoryScreen: undefined;
   TransactionDetailScreen: { transactionId?: string } | undefined;
   AddBankAccountScreen: undefined;
@@ -119,8 +119,8 @@ export type RootStackParamList = {
 
   // Nested Stack Navigators
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
-  MainTabs: { screen?: string; params?: any } | undefined;
-  MainTabNavigator: { screen?: string; params?: any } | undefined;
+  MainTabs: { screen?: string; params?: Record<string, unknown> } | undefined;
+  MainTabNavigator: { screen?: string; params?: Record<string, unknown> } | undefined;
   HomeTab: NavigatorScreenParams<HomeStackParamList> | undefined;
   DiscoverTab: NavigatorScreenParams<HomeStackParamList> | undefined;
   BookingsTab: NavigatorScreenParams<BookingStackParamList> | undefined;

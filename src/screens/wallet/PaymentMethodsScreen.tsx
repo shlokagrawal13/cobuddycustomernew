@@ -1,4 +1,4 @@
-﻿import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Modal, TextInput, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -32,7 +32,7 @@ export const PaymentMethodsScreen = () => {
       if (newMethod.isDefault) {
         updatedMethods = updatedMethods.map(m => ({ ...m, isDefault: false }));
       }
-      updatedMethods.unshift(newMethod);
+      updatedMethods.unshift(newMethod as any);
       setMethods(updatedMethods);
       navigation.setParams({ newMethod: undefined });
     }

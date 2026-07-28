@@ -54,7 +54,7 @@ export const SafetyGuidelinesScreen = () => {
         <TouchableOpacity 
           style={styles.contactBtn}
           activeOpacity={0.8}
-          onPress={() => navigation.navigate('MainTabNavigator' as any, { screen: 'ChatTab', params: { screen: 'ConciergeChatScreen' } })} accessibilityRole="button" accessibilityLabel={t('a11yContactTrustSafetyTeam', 'Contact Trust & Safety Team')}
+          onPress={() => { const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { screen: 'ChatTab', params: { screen: 'ConciergeChatScreen' } }); }} accessibilityRole="button" accessibilityLabel={t('a11yContactTrustSafetyTeam', 'Contact Trust & Safety Team')}
         >
           <Icon name="headset" size={20} color={theme.colors.background} />
           <Text style={styles.contactBtnText}>{t('contactBtn', 'Contact Trust & Safety Team')}</Text>

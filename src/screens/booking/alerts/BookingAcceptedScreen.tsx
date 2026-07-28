@@ -19,7 +19,9 @@ const DEFAULT_MOCK_DATA = {
   amount: '₹3,000'
 };
 
-export const BookingAcceptedScreen = ({ route }: any) => { 
+import { RouteProp } from '@react-navigation/native';
+
+export const BookingAcceptedScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.accepted');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const scaleAnim = useRef(new Animated.Value(0)).current;

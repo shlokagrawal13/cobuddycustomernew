@@ -29,7 +29,7 @@ export const WithdrawalMethodsScreen = () => {
     if (route.params?.newMethod) {
       const newMethod = route.params.newMethod;
       let updatedMethods = [...methods];
-      updatedMethods.unshift(newMethod);
+      updatedMethods.unshift(newMethod as any);
       setMethods(updatedMethods);
       navigation.setParams({ newMethod: undefined });
     }

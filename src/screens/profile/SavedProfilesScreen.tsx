@@ -16,7 +16,7 @@ export const SavedProfilesScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [savedProfiles, setSavedProfiles] = useState(MOCK_SAVED);
-  const [selectedProfile, setSelectedProfile] = useState<any>(null);
+  const [selectedProfile, setSelectedProfile] = useState<typeof MOCK_SAVED[0] | null>(null);
   const [showSheet, setShowSheet] = useState(false);
 
   const handleUnsave = (id: string) => {
@@ -24,7 +24,7 @@ export const SavedProfilesScreen = () => {
     setShowSheet(false);
   };
 
-  const openOptions = (profile: any) => {
+  const openOptions = (profile: typeof MOCK_SAVED[0]) => {
     setSelectedProfile(profile);
     setShowSheet(true);
   };
@@ -46,7 +46,7 @@ export const SavedProfilesScreen = () => {
     </View>
   );
 
-  const renderItem = ({ item }: { item: any }) => (
+  const renderItem = ({ item }: { item: typeof MOCK_SAVED[0] }) => (
     <TouchableOpacity 
         style={styles.card} 
         activeOpacity={0.8}

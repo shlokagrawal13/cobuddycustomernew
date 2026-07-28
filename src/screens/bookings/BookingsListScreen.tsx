@@ -19,7 +19,7 @@ export const BookingsListScreen = () => {
 
   const filteredBookings = MOCK_BOOKINGS.filter(b => b.type === activeTab);
 
-  const handlePressCard = (booking: any) => {
+  const handlePressCard = (booking: typeof MOCK_BOOKINGS[0]) => {
     if (booking.displayStatus === 'Counter-Proposed') {
       navigation.navigate('BookingFlowStack', { 
         screen: 'BookingCounterOfferScreen', 

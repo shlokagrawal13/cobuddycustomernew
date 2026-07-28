@@ -1,9 +1,10 @@
-﻿import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, Platform, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
@@ -18,7 +19,7 @@ export const AddMoneyScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'AddMoneyScreen'>>();
   const [amount, setAmount] = useState('');
-  const [selectedMethod, setSelectedMethod] = useState(DEFAULT_PAYMENT);
+  const [selectedMethod, setSelectedMethod] = useState<any>(DEFAULT_PAYMENT);
 
   useEffect(() => {
     if (route.params?.selectedMethod) {

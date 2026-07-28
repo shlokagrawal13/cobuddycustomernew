@@ -101,7 +101,7 @@ export const TransactionDetailScreen = () => {
         
         <View style={styles.card}>
             <Text style={styles.sectionTitle}>{t('breakdownTitle', 'PAYMENT BREAKDOWN')}</Text>
-            {tx.breakdown.map((item: any, i: number) => (
+            {tx.breakdown.map((item: typeof tx.breakdown[0], i: number) => (
                 <View key={item.label} style={[styles.summaryRow, i !== tx.breakdown.length - 1 && styles.summaryBorder]}>
                     <Text style={styles.summaryLabel}>{item.label}</Text>
                     <Text style={styles.summaryValue}>{item.value}</Text>

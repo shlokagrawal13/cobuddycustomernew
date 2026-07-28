@@ -70,8 +70,8 @@ export const ProfileScreen = () => {
       await Share.share({
         message: `Check out ${user.name}'s profile on CoBuddy! A great companion from ${user.location}. Join CoBuddy today.`,
       });
-    } catch (error: any) {
-      Alert.alert(t('errorTitle', 'Error'), error.message);
+    } catch (error: unknown) {
+      Alert.alert(t('errorTitle', 'Error'), (error as Error).message);
     }
   };
 
@@ -280,7 +280,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={[styles.kycBtn, user.kycStatus !== 'verified' && styles.kycBtnPrimary]}
             activeOpacity={0.8}
-            onPress={() => navigation.navigate('KYCStack')} accessibilityRole="button" accessibilityLabel={`${user.kycStatus} === \'verified\' ...`}
+            onPress={() => navigation.navigate('KYCStack')} accessibilityRole="button" accessibilityLabel={user.kycStatus === 'verified' ? t('a11yKycVerified', 'KYC Verified') : t('a11yKycUnverified', 'Complete KYC verification')}
           >
             <Icon 
               name="shield-account" 

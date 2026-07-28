@@ -23,7 +23,7 @@ interface NotificationItem {
   iconColor: string;
   route: string;
   stack?: string; // Optional stack for cross-tab navigation
-  routeParams?: any;
+  routeParams?: Record<string, unknown>;
 }
 
 const CATEGORIES: NotificationCategory[] = ['All', 'Bookings', 'Wallet', 'Security', 'Support'];
@@ -33,7 +33,7 @@ export const NotificationsScreen = () => {
   const { t } = useTranslation('home.notifications');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [activeCategory, setActiveCategory] = useState<NotificationCategory>('All');
-  const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS);
+  const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS as unknown as NotificationItem[]);
 
   const filteredNotifications = notifications.filter(n => activeCategory === 'All' || n.category === activeCategory);
 
@@ -48,9 +48,11 @@ export const NotificationsScreen = () => {
     );
     // Navigate across tabs if stack is provided
     if (notification.stack) {
-      (navigation.navigate as any)(notification.stack, { screen: notification.route, params: notification.routeParams });
+      const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void };
+      nav.navigate(notification.stack, { screen: notification.route, params: notification.routeParams });
     } else if (notification.route) {
-      (navigation.navigate as any)(notification.route, notification.routeParams);
+      const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void };
+      nav.navigate(notification.route, notification.routeParams);
     }
   };
 

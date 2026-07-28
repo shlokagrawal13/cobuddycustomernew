@@ -9,15 +9,18 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { SkeletonLoader } from '../../components/ui/SkeletonLoader';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { DUMMY_PROFILE } from '../../services/mock';
-import { RootStackParamList } from '../../types/navigation';
+
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { width, height } = Dimensions.get('window');
 const HERO_HEIGHT = height * 0.55; 
 
 // Dummy data enhanced with details
-export const CompanionProfileScreen = ({ route }: any) => {
-  const { id } = route?.params || {};
+import { RouteProp } from '@react-navigation/native';
+import { RootStackParamList } from '../../types/navigation';
+
+export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackParamList, 'CompanionProfileScreen'> }) => {
+  const { companionId } = route?.params || {};
   const { t } = useTranslation(['companionProfile']);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
@@ -47,7 +50,7 @@ export const CompanionProfileScreen = ({ route }: any) => {
     extrapolate: 'clamp',
   });
 
-  const onMomentumScrollEnd = (event: any) => {
+  const onMomentumScrollEnd = (event: import('react-native').NativeSyntheticEvent<import('react-native').NativeScrollEvent>) => {
     const index = Math.round(event.nativeEvent.contentOffset.x / width);
     setActivePhotoIndex(index);
   };

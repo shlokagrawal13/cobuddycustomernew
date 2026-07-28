@@ -24,21 +24,7 @@ interface MenuSection {
 }
 
 
-const DANGER_ZONE: MenuItem[] = [
-  { id: 'deactivate', icon: 'pause-circle-outline', title: 'Deactivate Account', sub: 'Temporarily hide your profile', route: 'DeactivateAccountScreen' },
-  { id: 'delete', icon: 'delete-forever-outline', title: 'Delete Account', sub: 'Permanently remove all data', route: 'DeleteAccountScreen' },
-];
 
-const DEV_TEST_SCREENS = [
-  { id: 'susp', title: 'Suspended Screen', route: 'AccountSuspendedScreen' },
-  { id: 'rev', title: 'Under Review Screen', route: 'AccountUnderManualReviewScreen' },
-  { id: 'react', title: 'Reactivation Request', route: 'AccountReactivationRequestScreen' },
-  { id: 'pol', title: 'Policy Violation', route: 'PolicyViolationNoticeScreen' },
-  { id: 'deact', title: 'Deactivated Screen', route: 'AccountDeactivatedScreen' },
-  { id: 'net', title: 'Network Error', route: 'NetworkErrorScreen' },
-  { id: 'force', title: 'Force Update', route: 'ForceUpdateScreen' },
-  { id: 'maint', title: 'Maintenance Mode', route: 'MaintenanceModeScreen' },
-];
 
 export const SettingsHubScreen = () => { 
   const { t } = useTranslation('settings.hub');
@@ -46,37 +32,42 @@ export const SettingsHubScreen = () => {
 
   const SETTING_SECTIONS: MenuSection[] = [
     {
-      title: 'ACCOUNT',
+      title: t('sections.account', 'ACCOUNT'),
       items: [
-        { id: 'acc', icon: 'account-cog-outline', title: 'Account Settings', sub: 'Phone, Email, Linked Accounts', route: 'AccountSettingsScreen' },
-        { id: 'perms', icon: 'shield-account-outline', title: 'App Permissions', sub: 'Camera, Location, Microphone', route: 'AppPermissionsScreen' },
-        { id: 'sessions', icon: 'devices', title: 'Active Sessions', sub: 'Manage logged-in devices', route: 'ActiveSessionsScreen' },
+        { id: 'acc', icon: 'account-cog-outline', title: t('items.acc.title', 'Account Settings'), sub: t('items.acc.sub', 'Phone, Email, Linked Accounts'), route: 'AccountSettingsScreen' },
+        { id: 'perms', icon: 'shield-account-outline', title: t('items.perms.title', 'App Permissions'), sub: t('items.perms.sub', 'Camera, Location, Microphone'), route: 'AppPermissionsScreen' },
+        { id: 'sessions', icon: 'devices', title: t('items.sessions.title', 'Active Sessions'), sub: t('items.sessions.sub', 'Manage logged-in devices'), route: 'ActiveSessionsScreen' },
       ]
     },
     {
-      title: 'PRIVACY & SAFETY',
+      title: t('sections.privacy___safety', 'PRIVACY & SAFETY'),
       items: [
-        { id: 'applock', icon: 'fingerprint', title: 'App Lock', sub: 'FaceID & Biometrics', route: 'AppLockScreen' },
-        { id: 'blocked', icon: 'cancel', title: 'Blocked Users', sub: 'Manage your blocked list', route: 'BlockedUsersScreen' },
-        { id: 'safety', icon: 'shield-check-outline', title: 'Safety Settings', sub: 'SOS & Trusted Contacts', route: 'SafetySettingsScreen' },
+        { id: 'applock', icon: 'fingerprint', title: t('items.applock.title', 'App Lock'), sub: t('items.applock.sub', 'FaceID & Biometrics'), route: 'AppLockScreen' },
+        { id: 'blocked', icon: 'cancel', title: t('items.blocked.title', 'Blocked Users'), sub: t('items.blocked.sub', 'Manage your blocked list'), route: 'BlockedUsersScreen' },
+        { id: 'safety', icon: 'shield-check-outline', title: t('items.safety.title', 'Safety Settings'), sub: t('items.safety.sub', 'SOS & Trusted Contacts'), route: 'SafetySettingsScreen' },
       ]
     },
     {
-      title: 'DATA & NOTIFICATIONS',
+      title: t('sections.data___notifications', 'DATA & NOTIFICATIONS'),
       items: [
-        { id: 'notif', icon: 'bell-outline', title: 'Notifications', sub: 'Push & Email preferences', route: 'NotificationPreferencesScreen' },
-        { id: 'data', icon: 'database-outline', title: 'Data & Cache', sub: 'Clear cache & consent manager', route: 'DataCacheScreen' },
-        { id: 'lang', icon: 'translate', title: 'App Language', sub: 'English (US)', route: 'LanguageSelectionScreen' },
+        { id: 'notif', icon: 'bell-outline', title: t('items.notif.title', 'Notifications'), sub: t('items.notif.sub', 'Push & Email preferences'), route: 'NotificationPreferencesScreen' },
+        { id: 'data', icon: 'database-outline', title: t('items.data.title', 'Data & Cache'), sub: t('items.data.sub', 'Clear cache & consent manager'), route: 'DataCacheScreen' },
+        { id: 'lang', icon: 'translate', title: t('items.lang.title', 'App Language'), sub: t('items.lang.sub', 'English (US)'), route: 'LanguageSelectionScreen' },
       ]
     },
     {
-      title: 'SUPPORT',
+      title: t('sections.support', 'SUPPORT'),
       items: [
-        { id: 'help', icon: 'help-circle-outline', title: 'Help Center', sub: 'FAQs & Guides', action: () => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' }) },
-        { id: 'contact', icon: 'headset', title: 'Contact Support', sub: '24/7 Concierge Chat', action: () => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen' }) },
-        { id: 'report', icon: 'alert-circle-outline', title: 'Report a Problem', sub: 'Flag an issue or bug', action: () => navigation.navigate('SafetySupportStack', { screen: 'CreateSupportTicketScreen' }) },
+        { id: 'help', icon: 'help-circle-outline', title: t('items.help.title', 'Help Center'), sub: t('items.help.sub', 'FAQs & Guides'), action: () => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' }) },
+        { id: 'contact', icon: 'headset', title: t('items.contact.title', 'Contact Support'), sub: t('items.contact.sub', '24/7 Concierge Chat'), action: () => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen' }) },
+        { id: 'report', icon: 'alert-circle-outline', title: t('items.report.title', 'Report a Problem'), sub: t('items.report.sub', 'Flag an issue or bug'), action: () => navigation.navigate('SafetySupportStack', { screen: 'CreateSupportTicketScreen' }) },
       ]
     },
+  ];
+
+  const DANGER_ZONE: MenuItem[] = [
+    { id: 'deactivate', icon: 'pause-circle-outline', title: t('items.deactivate.title', 'Deactivate Account'), sub: t('items.deactivate.sub', 'Temporarily hide your profile'), route: 'DeactivateAccountScreen' },
+    { id: 'delete', icon: 'delete-forever-outline', title: t('items.delete.title', 'Delete Account'), sub: t('items.delete.sub', 'Permanently remove all data'), route: 'DeleteAccountScreen' },
   ];
     const { smartGoBack } = useSmartNavigation();
 
@@ -136,7 +127,7 @@ export const SettingsHubScreen = () => {
 
         {SETTING_SECTIONS.map((section) => (
           <View key={section.title} style={styles.section}>
-            <Text style={styles.sectionTitle}>{t(`sections.${section.title.toLowerCase().replace(/[^a-z0-9]/g, '_')}`, section.title)}</Text>
+            <Text style={styles.sectionTitle}>{section.title}</Text>
             <View style={styles.card}>
               {section.items.map((item, index) => (
                 <TouchableOpacity 
@@ -150,8 +141,8 @@ export const SettingsHubScreen = () => {
                     <Icon name={item.icon} size={22} color={theme.colors.primary} />
                   </View>
                   <View style={styles.meta}>
-                    <Text style={styles.title}>{t(`items.${item.id}.title`, item.title)}</Text>
-                    {item.sub ? <Text style={styles.sub}>{t(`items.${item.id}.sub`, { defaultValue: item.sub })}</Text> : null}
+                    <Text style={styles.title}>{item.title}</Text>
+                    {item.sub ? <Text style={styles.sub}>{item.sub}</Text> : null}
                   </View>
                   {item.route ? <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} /> : null}
                 </TouchableOpacity>
@@ -160,72 +151,7 @@ export const SettingsHubScreen = () => {
           </View>
         ))}
 
-        {/* DEV ZONE FOR TESTING SYSTEM SCREENS */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, {color: theme.colors.warning}]}>{t('devZone', 'DEV ZONE (TEMPORARY)')}</Text>
-          <View style={[styles.card, {borderColor: 'rgba(245, 158, 11, 0.2)'}]}>
-            {DEV_TEST_SCREENS.map((item, index) => (
-              <TouchableOpacity 
-                key={item.id} 
-                style={[styles.row, index !== DEV_TEST_SCREENS.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(245, 158, 11, 0.1)'}]}
-                activeOpacity={0.7}
-                onPress={() => {
-                  // Some screens are in SystemStateStack, others might be standalone. 
-                  // If it fails, we catch it or we just use nested navigation:
-                  if (item.route === 'NetworkErrorScreen' || item.route === 'ForceUpdateScreen' || item.route === 'MaintenanceModeScreen') {
-                     // Directly registered in RootNavigator usually? Wait, let's try pushing directly.
-                     navigation.navigate(item.route as never);
-                  } else {
-                     navigation.navigate('SystemStateStack', { screen: item.route as any });
-                  }
-                }} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
-              >
-                <View style={[styles.iconWrap, {backgroundColor: 'rgba(245, 158, 11, 0.1)'}]}>
-                  <Icon name="test-tube" size={22} color={theme.colors.warning} />
-                </View>
-                <View style={styles.meta}>
-                  <Text style={[styles.title, {color: theme.colors.warning}]}>{item.title}</Text>
-                </View>
-                <Icon name="chevron-right" size={20} color={theme.colors.warning} />
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-
-        {/* Danger Zone */}
-        <View style={styles.section}>
-          <Text style={[styles.sectionTitle, {color: theme.colors.error}]}>{t('dangerZone', 'DANGER ZONE')}</Text>
-          <View style={[styles.card, {borderColor: 'rgba(239, 68, 68, 0.2)'}]}>
-            {DANGER_ZONE.map((item, index) => (
-              <TouchableOpacity 
-                key={item.id} 
-                style={[styles.row, index !== DANGER_ZONE.length - 1 && {borderBottomWidth: 1, borderBottomColor: 'rgba(239, 68, 68, 0.1)'}]}
-                activeOpacity={0.7}
-                onPress={() => item.action ? item.action() : item.route ? navigation.navigate(item.route as never) : null} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
-              >
-                <View style={[styles.iconWrap, {backgroundColor: 'rgba(239, 68, 68, 0.1)'}]}>
-                  <Icon name={item.icon} size={22} color={theme.colors.error} />
-                </View>
-                <View style={styles.meta}>
-                  <Text style={[styles.title, {color: theme.colors.error}]}>{item.title}</Text>
-                  <Text style={[styles.sub, {color: theme.colors.error, opacity: 0.7}]}>{item.sub}</Text>
-                </View>
-                <Icon name="chevron-right" size={20} color={theme.colors.error} />
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-
-        <TouchableOpacity style={styles.logoutBtn} activeOpacity={0.8} onPress={handleLogout} accessibilityRole="button" accessibilityLabel={t('a11yLogOut', 'Log Out')}>
-          <Icon name="logout-variant" size={20} color={theme.colors.error} />
-          <Text style={styles.logoutText}>{t('logOut', 'Log Out')}</Text>
-        </TouchableOpacity>
-
-        <View style={styles.footerBrand}>
-            <Text style={styles.brandText}>{t('brand', 'CoBuddy')}</Text>
-            <Text style={styles.copyrightText}>{t('copyright', '© 2026 CoBuddy Technologies')}</Text>
-            <Text style={styles.versionText}>{t('version', 'v1.0.0 (Build 42)')}</Text>
-        </View>
+        
 
       </ScrollView>
     </SafeAreaView>

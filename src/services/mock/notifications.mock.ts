@@ -1,6 +1,6 @@
 // MOCK: replace with API
 
-export const MOCK_NOTIFICATIONS: any[] = [
+export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   {
     id: 'n1',
     category: 'Bookings',

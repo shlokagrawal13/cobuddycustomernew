@@ -1,4 +1,6 @@
 import { useNavigation, CommonActions } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../types/navigation';
 import { useEffect } from 'react';
 import { BackHandler } from 'react-native';
 
@@ -31,7 +33,7 @@ export const useHardwareBackLock = () => {
 };
 
 export const useSmartNavigation = () => {
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const smartGoBack = (fallbackTab: string = 'HomeTab') => {
     if (isNavigating) return;
@@ -45,14 +47,14 @@ export const useSmartNavigation = () => {
     } else if (navigation.canGoBack()) {
       navigation.goBack();
     } else {
-      navigation.navigate(fallbackTab);
+      (navigation as any).navigate(fallbackTab);
     }
   };
 
-  const smartNavigate = (routeName: string, params?: any) => {
+  const smartNavigate = (routeName: keyof RootStackParamList, params?: RootStackParamList[keyof RootStackParamList]) => {
     if (isNavigating) return;
     setNavigatingLock();
-    navigation.navigate(routeName, params);
+    navigation.navigate(routeName as any, params);
   };
 
   return {

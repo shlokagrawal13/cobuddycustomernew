@@ -6,6 +6,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { MOCK_BOOKINGS } from '../../services/mock/bookings.mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -22,6 +23,7 @@ export const DisputeRefundScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'DisputeRefundScreen'>>();
   const bookingId = route.params?.bookingId || 'CB-HIS-9921';
+  const booking = MOCK_BOOKINGS.find(b => b.id === bookingId) || MOCK_BOOKINGS[0];
   
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [description, setDescription] = useState('');
@@ -55,11 +57,11 @@ export const DisputeRefundScreen = () => {
           <Text style={styles.summaryTitle}>{t('summaryTitle', 'Disputing Booking: {{id}}', { id: bookingId })}</Text>
           <View style={styles.summaryRow}>
             <Icon name="account" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>Companion: Elena Vasquez</Text>
+            <Text style={styles.summaryText}>Companion: {booking?.companionName || 'Companion'}</Text>
           </View>
           <View style={styles.summaryRow}>
             <Icon name="calendar-check" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>Session Date: Fri, 24 Oct 2026</Text>
+            <Text style={styles.summaryText}>Session Date: {booking?.date || 'Fri, 24 Oct 2026'}</Text>
           </View>
         </View>
 

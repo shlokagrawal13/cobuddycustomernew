@@ -9,6 +9,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+
 const DEFAULT_PAYOUT = {
     id: 'wm_bank1',
     type: 'bank',
@@ -23,7 +24,7 @@ export const WithdrawMoneyScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'WithdrawMoneyScreen'>>();
   const [amount, setAmount] = useState('');
-  const [selectedMethod, setSelectedMethod] = useState(DEFAULT_PAYOUT);
+  const [selectedMethod, setSelectedMethod] = useState<any>(DEFAULT_PAYOUT);
   
   const MAX_WITHDRAWABLE = 4500;
 

@@ -15,7 +15,9 @@ const DEFAULT_MOCK_DATA = {
   reason: 'Schedule conflict',
 };
 
-export const BookingDeclinedScreen = ({ route }: any) => { 
+import { RouteProp } from '@react-navigation/native';
+
+export const BookingDeclinedScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.declined');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   

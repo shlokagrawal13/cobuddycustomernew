@@ -104,7 +104,8 @@ export const ArrivalCheckInScreen = () => {
               <Text style={styles.commBtnText}>{t('commCall', 'Call Securely')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.commBtn} onPress={() => {
-              navigation.navigate('MainTabNavigator' as any, {
+              const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void };
+              nav.navigate('MainTabNavigator', {
                 screen: 'ChatTab',
                 params: { screen: 'CompanionChatScreen', params: { companionName: 'c1' } }
               });

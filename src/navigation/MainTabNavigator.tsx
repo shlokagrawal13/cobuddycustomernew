@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { RouteProp, ParamListBase } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { theme } from '../theme';
@@ -145,7 +146,7 @@ export const MainTabNavigator = () => {
   const { t } = useTranslation('common');
   const insets = useSafeAreaInsets();
   
-  const getTabBarStyle = (route: any) => {
+    const getTabBarStyle = (route: RouteProp<ParamListBase, string>) => {
     const routeName = getFocusedRouteNameFromRoute(route);
     
     // Root screens where the tab bar should be visible

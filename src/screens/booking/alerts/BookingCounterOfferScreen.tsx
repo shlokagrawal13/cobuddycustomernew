@@ -24,7 +24,9 @@ const DEFAULT_MOCK_DATA = {
   message: "Hi! I have another engagement that runs late. Can we shift by 1 hour? Also due to weekend peak rates, I have slightly adjusted the price. Let me know if this works!",
 };
 
-export const BookingCounterOfferScreen = ({ route }: any) => { 
+import { RouteProp } from '@react-navigation/native';
+
+export const BookingCounterOfferScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.counterOffer');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
@@ -39,7 +41,7 @@ export const BookingCounterOfferScreen = ({ route }: any) => {
   };
 
   const handleMessageBack = () => {
-    navigation.navigate('MainTabNavigator' as any, { 
+    const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { 
       screen: 'ChatTab', 
       params: { screen: 'CompanionChatScreen', params: { companionName: bookingData.companionName, bookingId: bookingData.bookingId } } 
     });
