@@ -11,7 +11,7 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Reusable Custom Switch
-const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean }) => {
+const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean, label?: string }) => {
     const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
     useEffect(() => {
@@ -28,7 +28,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? (disabled ? 'rgba(212,175,55,0.5)' : theme.colors.primary) : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+            ]} accessibilityRole="button" accessibilityLabel={label || 'Toggle switch'}
         >
             <Animated.View style={[styles.switchThumb, { transform: [{ translateX }] }]} />
         </TouchableOpacity>
@@ -151,10 +151,10 @@ export const DataCacheScreen = () => {
                     <Text style={styles.title}>{t('autoDownload', 'Auto-Download Media')}</Text>
                     <Text style={styles.sub}>{t('autoDownloadSub', 'Automatically download photos on Wi-Fi')}</Text>
                 </View>
-                <CustomSwitch value={autoDownload} onValueChange={setAutoDownload} />
+                <CustomSwitch value={autoDownload} onValueChange={setAutoDownload} label={t('a11yAutoDownloadToggle', 'Toggle auto-download media on Wi-Fi')} />
             </View>
 
-            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+            <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => setShowQualitySheet(true)} accessibilityRole="button" accessibilityLabel={t('a11yPhotoUploadQuality', 'Change photo upload quality')}>
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('uploadQuality', 'Photo Upload Quality')}</Text>
                     <Text style={styles.sub}>{t('uploadQualitySub', 'Adjust quality for profile & chat uploads')}</Text>

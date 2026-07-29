@@ -22,5 +22,6 @@
   "a11yClose": "Close",
   "a11yVerifyAdd": "Verify & Add",
   "cancelBtn": "Cancel",
-  "removeBtn": "Remove"
+  "removeBtn": "Remove",
+  "a11ySelectPaymentMethod": "Select {{method}}"
 }

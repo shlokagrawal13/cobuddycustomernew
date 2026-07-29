@@ -9,7 +9,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange: (val: boolean) => void }) => {
+const CustomSwitch = ({ value, onValueChange, label }: { value: boolean, onValueChange: (val: boolean) => void, label?: string }) => {
     const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
@@ -28,7 +28,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+            ]} accessibilityRole="button" accessibilityLabel={label || 'Toggle switch'}
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -82,7 +82,7 @@ export const SafetySettingsScreen = () => {
                     <Text style={styles.settingTitle}>{t('incognitoMode', 'Incognito Mode')}</Text>
                     <Text style={styles.settingDesc}>{t('incognitoModeSub', 'Hide your profile from Discover. Only people you message can see you.')}</Text>
                 </View>
-                <CustomSwitch value={incognito} onValueChange={setIncognito} />
+                <CustomSwitch value={incognito} onValueChange={setIncognito} label={t('a11yIncognitoMode', 'Toggle incognito mode')} />
             </View>
         </View>
 
@@ -97,7 +97,7 @@ export const SafetySettingsScreen = () => {
                     <Text style={styles.settingTitle}>{t('safeChat', 'Safe Chat Filter')}</Text>
                     <Text style={styles.settingDesc}>{t('safeChatSub', 'Automatically blur explicit images and flag offensive words in messages.')}</Text>
                 </View>
-                <CustomSwitch value={safeChat} onValueChange={setSafeChat} />
+                <CustomSwitch value={safeChat} onValueChange={setSafeChat} label={t('a11ySafeChat', 'Toggle safe chat mode')} />
             </View>
             
             <View style={styles.divider} />
@@ -120,7 +120,7 @@ export const SafetySettingsScreen = () => {
             <TouchableOpacity 
                 style={styles.actionRow} 
                 activeOpacity={0.7} 
-                onPress={() => navigation.navigate('SafetySupportStack', { screen: 'TrustedContactsScreen', params: { fromSettings: true } })} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+                onPress={() => navigation.navigate('SafetySupportStack', { screen: 'TrustedContactsScreen', params: { fromSettings: true } })} accessibilityRole="button" accessibilityLabel={t('a11yTrustedContacts', 'Manage trusted contacts')}
             >
                 <View style={[styles.iconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
                     <Icon name="car-emergency" size={20} color={theme.colors.error} />

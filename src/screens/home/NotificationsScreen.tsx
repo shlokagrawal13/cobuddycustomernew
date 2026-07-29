@@ -125,7 +125,7 @@ export const NotificationsScreen = () => {
                 styles.notifCard,
                 !notif.isRead && styles.notifCardUnread,
                 index === filteredNotifications.length - 1 && styles.lastCard
-              ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+              ]} accessibilityRole="button" accessibilityLabel={t('a11yOpenNotification', 'Open notification')}
             >
               {/* Unread Indicator */}
               {!notif.isRead && <View style={styles.unreadDot} />}

@@ -4,5 +4,6 @@
   "infoText": "Select up to 5 languages you can fluently converse in during a meetup.",
   "a11yGoBack": "Go back",
   "a11yDone": "Done",
-  "a11yAction": "Action"
+  "a11yAction": "Action",
+  "a11yToggleLanguage": "Toggle {{lang}}"
 }

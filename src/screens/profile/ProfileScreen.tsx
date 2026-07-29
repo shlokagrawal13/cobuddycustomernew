@@ -94,7 +94,7 @@ export const ProfileScreen = () => {
           <TouchableOpacity 
             style={styles.activeBookingBanner}
             onPress={() => navigation.navigate('LiveSessionStack', { screen: 'ActiveSessionScreen' })}
-            activeOpacity={0.9} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+            activeOpacity={0.9} accessibilityRole="button" accessibilityLabel={t('a11yViewActiveSession', 'View your active session')}
           >
             <View style={styles.bannerIconBox}>
               <Icon name="timer-sand" size={20} color={theme.colors.background} />
@@ -307,7 +307,7 @@ export const ProfileScreen = () => {
             { id: 'saved', icon: 'bookmark-outline', label: t('stats.savedChecklists', 'Saved Checklists'), sub: t('stats.savedChecklistsSub', 'Your favorite companions'), action: () => navigation.navigate('SavedProfilesScreen') },
             { id: 'refer', icon: 'account-multiple-plus-outline', label: t('stats.referAFriend', 'Refer a Friend'), sub: t('stats.referAFriendSub', 'Invite trusted members'), action: () => navigation.navigate('ReferFriendScreen') },
           ].map((item, i, arr) => (
-            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
+            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yOpenItem', 'Open {{label}}', { label: item.label })}>
               <View style={styles.linkIconBox}>
                 <Icon name={item.icon} size={18} color={theme.colors.primary} />
               </View>
@@ -335,7 +335,7 @@ export const ProfileScreen = () => {
               <TouchableOpacity
                 onPress={() => handleToggle(s.id)}
                 style={[styles.toggleTrack, toggles[s.id] && styles.toggleTrackOn]}
-                activeOpacity={0.9} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                activeOpacity={0.9} accessibilityRole="button" accessibilityLabel={t('a11yToggleSafetySetting', 'Toggle {{title}}', { title: s.title })}
               >
                 <View style={[styles.toggleThumb, toggles[s.id] && styles.toggleThumbOn]} />
               </TouchableOpacity>
@@ -361,7 +361,7 @@ export const ProfileScreen = () => {
             { id: 'support', icon: 'lifebuoy', label: t('profile.supportCenter', 'Support Center'), sub: t('profile.supportCenterSub', 'Get help or report an issue'), action: () => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' }) },
             { id: 'legal', icon: 'file-document-outline', label: t('profile.legalAgreements', 'Legal Agreements'), sub: t('profile.legalAgreementsSub', 'Terms of Service & Privacy'), action: () => navigation.navigate('LegalAgreementsScreen') },
           ].map((item, i, arr) => (
-            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
+            <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yOpenItem', 'Open {{label}}', { label: item.label })}>
               <View style={styles.linkIconBox}>
                 <Icon name={item.icon} size={18} color={theme.colors.primary} />
               </View>

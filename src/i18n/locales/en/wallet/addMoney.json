@@ -13,5 +13,6 @@
   "a11yGoBack": "Go back",
   "a11yPreset": "+ ₹ preset",
   "a11yChange": "Change",
-  "a11yAction": "Action"
+  "a11yAction": "Action",
+  "a11yProceedToPay": "Proceed to pay"
 }

@@ -29,5 +29,6 @@
   "a11yAction": "Action",
   "a11yGoBack": "Go back",
   "cancelBtn": "Cancel",
-  "openSettingsBtn": "Open Settings"
+  "openSettingsBtn": "Open Settings",
+  "a11yTogglePermission": "Toggle {{permission}} permission"
 }

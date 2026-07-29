@@ -70,7 +70,7 @@ export const IncidentReportScreen = () => {
                 key={type.id} 
                 style={[styles.typeItem, selectedType === type.id && styles.typeItemActive]}
                 onPress={() => setSelectedType(type.id)}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11ySelectIncidentType', 'Select {{type}}', { type: type.label })}
               >
                 <View style={[styles.radioBox, selectedType === type.id && styles.radioBoxActive]}>
                   {selectedType === type.id && <View style={styles.radioDot} />}

@@ -156,7 +156,7 @@ export const CompanionChatScreen = () => {
         <TouchableOpacity 
           style={styles.modalOverlay} 
           activeOpacity={1} 
-          onPress={() => setOptionsMenuVisible(false)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+          onPress={() => setOptionsMenuVisible(false)} accessibilityRole="button" accessibilityLabel={t('a11yCloseOptionsMenu', 'Close options menu')}
         >
           <View style={styles.optionsSheet}>
             <View style={styles.sheetHandle} />

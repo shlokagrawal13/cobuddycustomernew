@@ -161,7 +161,7 @@ export const AccountSettingsScreen = () => {
             <View style={styles.section}>
                 <Text style={styles.sectionTitle}>{t('dataPrivacy', 'DATA & PRIVACY')}</Text>
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
+                    <TouchableOpacity style={styles.downloadRow} activeOpacity={0.7} onPress={handleDataRequest} accessibilityRole="button" accessibilityLabel={t('a11yRequestDataDownload', 'Request your data download')}>
                         <View style={styles.iconBox}>
                             <Icon name="download-box-outline" size={24} color={theme.colors.textPrimary} />
                         </View>

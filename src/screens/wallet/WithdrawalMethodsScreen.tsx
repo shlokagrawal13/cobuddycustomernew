@@ -101,7 +101,7 @@ export const WithdrawalMethodsScreen = () => {
                         key={wm.id} 
                         style={[styles.methodRow, index !== methods.length - 1 ? styles.methodBorder : null, isSelected ? styles.methodSelected : null]}
                         activeOpacity={0.8}
-                        onPress={() => handleMethodPress(wm)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                        onPress={() => handleMethodPress(wm)} accessibilityRole="button" accessibilityLabel={t('a11ySelectWithdrawalMethod', 'Select {{method}}', { method: wm.title })}
                     >
                         <View style={[styles.methodIconWrap, isSelected ? styles.methodIconWrapActive : null]}>
                             <Icon name={wm.icon} size={22} color={isSelected ? theme.colors.primary : theme.colors.textSecondary} />

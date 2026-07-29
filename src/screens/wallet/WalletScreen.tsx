@@ -113,7 +113,7 @@ export const WalletScreen = () => {
         </View>
 
         
-        <TouchableOpacity style={styles.paymentCard} activeOpacity={0.8} onPress={() => navigation.navigate('PaymentMethodsScreen')} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
+        <TouchableOpacity style={styles.paymentCard} activeOpacity={0.8} onPress={() => navigation.navigate('PaymentMethodsScreen')} accessibilityRole="button" accessibilityLabel={t('a11yViewPaymentMethods', 'View payment methods')}>
           <View style={styles.paymentIconWrap}>
             <Icon name="credit-card-outline" size={22} color={theme.colors.primary} />
           </View>

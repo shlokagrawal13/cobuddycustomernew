@@ -92,7 +92,7 @@ export const SelfieCaptureScreen = () => {
               </TouchableOpacity>
             </View>
           ) : (
-            <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8} disabled={!hasPermission} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+            <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8} disabled={!hasPermission} accessibilityRole="button" accessibilityLabel={t('a11yCaptureSelfie', 'Capture selfie photo')}>
               <View style={[styles.captureInnerBtn, !hasPermission && { backgroundColor: theme.colors.textSecondary }]} />
             </TouchableOpacity>
           )}

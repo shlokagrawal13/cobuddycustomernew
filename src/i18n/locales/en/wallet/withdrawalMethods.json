@@ -22,5 +22,6 @@
   "a11yClose": "Close",
   "a11yVerifySave": "Verify & Save",
   "cancelBtn": "Cancel",
-  "removeBtn": "Remove"
+  "removeBtn": "Remove",
+  "a11ySelectWithdrawalMethod": "Select {{method}}"
 }

@@ -4,5 +4,6 @@
   "dateText": "TODAY",
   "a11yGoBack": "Go back",
   "a11yCall": "Call",
-  "a11yAction": "action"
+  "a11yAction": "action",
+  "a11ySendQuickAction": "Send: {{action}}"
 }

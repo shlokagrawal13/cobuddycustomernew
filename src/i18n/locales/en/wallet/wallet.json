@@ -29,5 +29,6 @@
   "a11yWithdraw": "Withdraw",
   "a11yNext": "Next",
   "a11yDownloadStatement": "Download Statement",
-  "a11yViewAll": "View All"
+  "a11yViewAll": "View All",
+  "a11yViewPaymentMethods": "View payment methods"
 }

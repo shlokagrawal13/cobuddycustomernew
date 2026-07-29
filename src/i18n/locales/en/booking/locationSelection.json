@@ -14,5 +14,8 @@
   "a11yNext": "Next",
   "a11yAction": "Action",
   "useThisBtn": "Use this",
-  "cancelBtn": "Cancel"
+  "cancelBtn": "Cancel",
+  "a11yUseCurrentLocation": "Use current location",
+  "a11ySelectLocation": "Select {{location}}",
+  "a11ySelectSearchedLocation": "Select {{location}}"
 }

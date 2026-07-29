@@ -20,5 +20,7 @@
   },
   "a11yGoBack": "Go back",
   "a11yAction": "Action",
-  "a11yChange": "Change"
+  "a11yChange": "Change",
+  "a11yWithdrawMax": "Withdraw maximum amount",
+  "a11yProceedWithdraw": "Proceed to withdraw"
 }

@@ -32,5 +32,8 @@
   "a11yShare": "Share",
   "a11yEdit": "Edit",
   "a11yAction": "Action",
-  "a11yOpenSafetyHub": "Open Safety Hub"
+  "a11yOpenSafetyHub": "Open Safety Hub",
+  "a11yViewActiveSession": "View your active session",
+  "a11yOpenItem": "Open {{label}}",
+  "a11yToggleSafetySetting": "Toggle {{title}}"
 }

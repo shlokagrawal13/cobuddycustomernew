@@ -34,5 +34,6 @@
   "a11yGoToDiscovertab": "Go to DiscoverTab",
   "a11yGoToBookingstab": "Go to BookingsTab",
   "a11yGoToProfiletab": "Go to ProfileTab",
-  "a11yViewAll": "View All"
+  "a11yViewAll": "View All",
+  "a11yViewFullItinerary": "View full itinerary"
 }

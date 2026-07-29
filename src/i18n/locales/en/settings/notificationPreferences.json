@@ -24,5 +24,13 @@
   "securityNote": "Security alerts cannot be disabled for your safety.",
   "controlWhichNotificationsYouReceive": "Control which notifications you receive and how you receive them.",
   "a11yAction": "Action",
-  "a11yGoBack": "Go back"
+  "a11yGoBack": "Go back",
+  "a11yToggleBookingPush": "Toggle booking push notifications",
+  "a11yToggleBookingReminders": "Toggle session reminders",
+  "a11yToggleBookingEmail": "Toggle email receipts",
+  "a11yToggleChatPush": "Toggle chat message notifications",
+  "a11yToggleWalletPush": "Toggle wallet alerts",
+  "a11yToggleReviewPush": "Toggle review requests",
+  "a11yTogglePromoPush": "Toggle promotions and offers",
+  "a11ySOSAlertsStatus": "SOS alerts cannot be disabled"
 }

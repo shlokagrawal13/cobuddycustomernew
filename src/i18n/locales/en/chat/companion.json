@@ -18,5 +18,6 @@
   "a11yViewProfile": "View Profile",
   "a11yMuteNotifications": "Mute Notifications",
   "a11yClearChat": "Clear Chat",
-  "a11yReportSafetyIssue": "Report Safety Issue"
+  "a11yReportSafetyIssue": "Report Safety Issue",
+  "a11yCloseOptionsMenu": "Close options menu"
 }

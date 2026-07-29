@@ -23,5 +23,8 @@
   "a11yAction": "Action",
   "a11yGoBack": "Go back",
   "a11yNext": "Next",
-  "a11yOpenSafetyHub": "Open Safety Hub"
+  "a11yOpenSafetyHub": "Open Safety Hub",
+  "a11yIncognitoMode": "Toggle incognito mode",
+  "a11ySafeChat": "Toggle safe chat mode",
+  "a11yTrustedContacts": "Manage trusted contacts"
 }

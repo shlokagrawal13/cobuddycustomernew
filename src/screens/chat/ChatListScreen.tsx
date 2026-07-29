@@ -166,7 +166,7 @@ export const ChatListScreen = () => {
         transparent={true}
         onRequestClose={() => setShowNewMessageModal(false)}
       >
-        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setShowNewMessageModal(false)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+        <TouchableOpacity style={styles.modalOverlay} activeOpacity={1} onPress={() => setShowNewMessageModal(false)} accessibilityRole="button" accessibilityLabel={t('a11yCloseNewMessageDialog', 'Close new message dialog')}>
           <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
             <View style={styles.modalHandle} />
             <Text style={styles.modalTitle}>{t('newMessageTitle', 'New Message')}</Text>
@@ -180,7 +180,7 @@ export const ChatListScreen = () => {
                 onPress={() => {
                   setShowNewMessageModal(false);
                   navigation.navigate('CompanionChatScreen', { companionName: bk.name, bookingId: bk.id });
-                }} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+                }} accessibilityRole="button" accessibilityLabel={t('a11yStartChatWith', 'Start chat with {{name}}', { name: bk.name })}
               >
                 <View style={styles.newChatAvatar}>
                    <Text style={styles.newChatAvatarText}>{bk.name.charAt(0)}</Text>

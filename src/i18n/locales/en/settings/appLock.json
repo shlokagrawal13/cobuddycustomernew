@@ -14,5 +14,7 @@
   "cobuddyNeverStoresYourBiometric": "CoBuddy never stores your biometric data. It is securely handled by your device's OS.",
   "a11yAction": "Action",
   "a11yGoBack": "Go back",
-  "requireBiometric": "Require Biometric"
+  "requireBiometric": "Require Biometric",
+  "a11yAppLockToggle": "Toggle app lock",
+  "a11yHideScreenToggle": "Toggle hide screen in app switcher"
 }

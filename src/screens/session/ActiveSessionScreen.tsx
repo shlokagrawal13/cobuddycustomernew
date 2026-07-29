@@ -192,7 +192,7 @@ export const ActiveSessionScreen = () => {
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity style={styles.primaryBtn} onPress={handleConfirmExtension} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+            <TouchableOpacity style={styles.primaryBtn} onPress={handleConfirmExtension} accessibilityRole="button" accessibilityLabel={t('a11yConfirmExtension', 'Confirm session extension')}>
               <Text style={styles.primaryBtnText}>Confirm Extension (₹{selectedExtension === 30 ? '750' : '1,500'})</Text>
             </TouchableOpacity>
           </View>

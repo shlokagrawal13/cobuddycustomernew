@@ -86,7 +86,7 @@ export const LocationSelectionScreen = () => {
                 style={styles.gpsBtn} 
                 activeOpacity={0.7}
                 onPress={handleUseCurrentLocation}
-                disabled={isLocating} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}
+                disabled={isLocating} accessibilityRole="button" accessibilityLabel={t('a11yUseCurrentLocation', 'Use current location')}
             >
                 {isLocating ? (
                     <ActivityIndicator size="small" color={theme.colors.primary} />
@@ -110,7 +110,7 @@ export const LocationSelectionScreen = () => {
                             key={loc.id} 
                             style={[styles.row, index !== RECENT_LOCATIONS.length - 1 && styles.borderBottom]}
                             activeOpacity={0.7}
-                            onPress={() => handleSelectLocation(loc.mainText)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                            onPress={() => handleSelectLocation(loc.mainText)} accessibilityRole="button" accessibilityLabel={t('a11ySelectLocation', 'Select {{location}}', { location: loc.mainText })}
                         >
                             <View style={styles.iconWrap}>
                                 <Icon name={loc.icon} size={20} color={theme.colors.textSecondary} />
@@ -128,7 +128,7 @@ export const LocationSelectionScreen = () => {
         {searchQuery.length > 0 && (
             <View style={styles.section}>
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => handleSelectLocation(searchQuery)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+                    <TouchableOpacity style={styles.row} activeOpacity={0.7} onPress={() => handleSelectLocation(searchQuery)} accessibilityRole="button" accessibilityLabel={t('a11ySelectSearchedLocation', 'Select {{location}}', { location: searchQuery })}>
                         <View style={styles.iconWrap}>
                             <Icon name="map-marker" size={20} color={theme.colors.primary} />
                         </View>

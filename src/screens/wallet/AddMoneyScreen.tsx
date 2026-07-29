@@ -117,7 +117,7 @@ export const AddMoneyScreen = () => {
           <TouchableOpacity 
               style={[styles.proceedBtn, (!amount || parseInt(amount) < 100) ? styles.proceedBtnDisabled : null]} 
               activeOpacity={0.8}
-              onPress={handleProceed} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+              onPress={handleProceed} accessibilityRole="button" accessibilityLabel={t('a11yProceedToPay', 'Proceed to pay')}
           >
               <Text style={styles.proceedText}>{t('proceedToPay', 'Proceed to Pay ₹{{amount}}', { amount: amount || '0' })}</Text>
           </TouchableOpacity>

@@ -9,7 +9,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean }) => {
+const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean, label?: string }) => {
     const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
@@ -28,7 +28,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false }: { value: boole
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? (disabled ? 'rgba(212,175,55,0.5)' : theme.colors.primary) : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+            ]} accessibilityRole="button" accessibilityLabel={label || 'Toggle switch'}
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -86,21 +86,21 @@ export const NotificationPreferencesScreen = () => {
                     <Text style={styles.title}>{t('statusUpdates', 'Status Updates')}</Text>
                     <Text style={styles.sub}>{t('statusUpdatesSub', 'Requests accepted, companion arrivals')}</Text>
                 </View>
-                <CustomSwitch value={prefs.bookingPush} onValueChange={() => togglePref('bookingPush')} />
+                <CustomSwitch value={prefs.bookingPush} onValueChange={() => togglePref('bookingPush')} label={t('a11yToggleBookingPush', 'Toggle booking push notifications')} />
             </View>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('sessionReminders', 'Session Reminders')}</Text>
                     <Text style={styles.sub}>{t('sessionRemindersSub', '"Your session starts in 1 hour"')}</Text>
                 </View>
-                <CustomSwitch value={prefs.bookingReminders} onValueChange={() => togglePref('bookingReminders')} />
+                <CustomSwitch value={prefs.bookingReminders} onValueChange={() => togglePref('bookingReminders')} label={t('a11yToggleBookingReminders', 'Toggle session reminders')} />
             </View>
             <View style={styles.row}>
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('emailReceipts', 'Email Receipts')}</Text>
                     <Text style={styles.sub}>{t('emailReceiptsSub', 'Invoices and booking summaries')}</Text>
                 </View>
-                <CustomSwitch value={prefs.bookingEmail} onValueChange={() => togglePref('bookingEmail')} />
+                <CustomSwitch value={prefs.bookingEmail} onValueChange={() => togglePref('bookingEmail')} label={t('a11yToggleBookingEmail', 'Toggle email receipts')} />
             </View>
         </View>
 
@@ -111,21 +111,21 @@ export const NotificationPreferencesScreen = () => {
                     <Text style={styles.title}>{t('chatMessages', 'Chat Messages')}</Text>
                     <Text style={styles.sub}>{t('chatMessagesSub', 'Direct messages from companions')}</Text>
                 </View>
-                <CustomSwitch value={prefs.chatPush} onValueChange={() => togglePref('chatPush')} />
+                <CustomSwitch value={prefs.chatPush} onValueChange={() => togglePref('chatPush')} label={t('a11yToggleChatPush', 'Toggle chat message notifications')} />
             </View>
             <View style={[styles.row, styles.borderBottom]}>
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('walletAlerts', 'Wallet Alerts')}</Text>
                     <Text style={styles.sub}>{t('walletAlertsSub', 'Money added, refunds processed')}</Text>
                 </View>
-                <CustomSwitch value={prefs.walletPush} onValueChange={() => togglePref('walletPush')} />
+                <CustomSwitch value={prefs.walletPush} onValueChange={() => togglePref('walletPush')} label={t('a11yToggleWalletPush', 'Toggle wallet alerts')} />
             </View>
             <View style={styles.row}>
                 <View style={styles.meta}>
                     <Text style={styles.title}>{t('reviewRequests', 'Review Requests')}</Text>
                     <Text style={styles.sub}>{t('reviewRequestsSub', '"How was your session with Sarah?"')}</Text>
                 </View>
-                <CustomSwitch value={prefs.reviewPush} onValueChange={() => togglePref('reviewPush')} />
+                <CustomSwitch value={prefs.reviewPush} onValueChange={() => togglePref('reviewPush')} label={t('a11yToggleReviewPush', 'Toggle review requests')} />
             </View>
         </View>
 
@@ -136,7 +136,7 @@ export const NotificationPreferencesScreen = () => {
                     <Text style={styles.title}>{t('promotions', 'Promotions & Offers')}</Text>
                     <Text style={styles.sub}>{t('promotionsSub', 'Discounts, new features, and news')}</Text>
                 </View>
-                <CustomSwitch value={prefs.promoPush} onValueChange={() => togglePref('promoPush')} />
+                <CustomSwitch value={prefs.promoPush} onValueChange={() => togglePref('promoPush')} label={t('a11yTogglePromoPush', 'Toggle promotions and offers')} />
             </View>
         </View>
 
@@ -147,7 +147,7 @@ export const NotificationPreferencesScreen = () => {
                     <Text style={styles.title}>{t('sosAlerts', 'SOS & Security Alerts')}</Text>
                     <Text style={styles.sub}>{t('sosAlertsSub', 'Critical account and safety notices')}</Text>
                 </View>
-                <CustomSwitch value={true} disabled={true} />
+                <CustomSwitch value={true} disabled={true} label={t('a11ySOSAlertsStatus', 'SOS alerts cannot be disabled')} />
             </View>
         </View>
         <View style={styles.footerNote}>

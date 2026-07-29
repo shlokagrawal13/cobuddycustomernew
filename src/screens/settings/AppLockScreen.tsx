@@ -9,7 +9,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange: (val: boolean) => void }) => {
+const CustomSwitch = ({ value, onValueChange, label }: { value: boolean, onValueChange: (val: boolean) => void, label?: string }) => {
     const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
@@ -28,7 +28,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+            ]} accessibilityRole="button" accessibilityLabel={label || 'Toggle switch'}
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -89,7 +89,7 @@ export const AppLockScreen = () => {
                     <Text style={styles.settingTitle}>{t('requireBiometric', 'Require {{biometric}}', { biometric: biometricName })}</Text>
                     <Text style={styles.settingDesc}>{t('appAccessDesc', 'Use your device credentials to unlock the app.')}</Text>
                 </View>
-                <CustomSwitch value={appLockEnabled} onValueChange={setAppLockEnabled} />
+                <CustomSwitch value={appLockEnabled} onValueChange={setAppLockEnabled} label={t('a11yAppLockToggle', 'Toggle app lock')} />
             </View>
         </View>
 
@@ -125,7 +125,7 @@ export const AppLockScreen = () => {
                     <Text style={styles.settingTitle}>{t('hideScreen', 'Hide Screen in App Switcher')}</Text>
                     <Text style={styles.settingDesc}>{t('hideScreenDesc', 'Blur the app content when viewing recent apps to prevent shoulder surfing.')}</Text>
                 </View>
-                <CustomSwitch value={hideScreenEnabled} onValueChange={setHideScreenEnabled} />
+                <CustomSwitch value={hideScreenEnabled} onValueChange={setHideScreenEnabled} label={t('a11yHideScreenToggle', 'Toggle hide screen in app switcher')} />
             </View>
         </View>
 

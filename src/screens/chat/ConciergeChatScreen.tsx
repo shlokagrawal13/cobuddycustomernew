@@ -145,7 +145,7 @@ export const ConciergeChatScreen = () => {
             <TouchableOpacity 
               key={idx} 
               style={styles.actionChip}
-              onPress={() => handleSend(action)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'action')}
+              onPress={() => handleSend(action)} accessibilityRole="button" accessibilityLabel={t('a11ySendQuickAction', 'Send: {{action}}', { action })}
             >
               <Text style={styles.actionText}>{action}</Text>
             </TouchableOpacity>

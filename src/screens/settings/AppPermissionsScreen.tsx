@@ -9,7 +9,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange: (val: boolean) => void }) => {
+const CustomSwitch = ({ value, onValueChange, label }: { value: boolean, onValueChange: (val: boolean) => void, label?: string }) => {
     const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
@@ -28,7 +28,7 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
             style={[
                 styles.switchContainer, 
                 { backgroundColor: value ? theme.colors.primary : 'rgba(255,255,255,0.1)' }
-            ]} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+            ]} accessibilityRole="button" accessibilityLabel={label || 'Toggle switch'}
         >
             <Animated.View style={[
                 styles.switchThumb,
@@ -62,7 +62,7 @@ const PermissionItem: React.FC<PermissionItemProps> = ({ icon, title, descriptio
                 </View>
                 <Text style={styles.permissionDesc}>{description}</Text>
             </View>
-            <CustomSwitch value={isGranted} onValueChange={onToggle} />
+            <CustomSwitch value={isGranted} onValueChange={onToggle} label={t('a11yTogglePermission', 'Toggle {{permission}} permission', { permission: title })} />
         </View>
     </View>
 )};

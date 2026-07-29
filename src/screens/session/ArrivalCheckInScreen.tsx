@@ -60,7 +60,7 @@ export const ArrivalCheckInScreen = () => {
             <TouchableOpacity 
               style={[styles.primaryBtn, { width: '100%' }, isLocating && { opacity: 0.7 }]} 
               onPress={handleSimulateArrival}
-              disabled={isLocating} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+              disabled={isLocating} accessibilityRole="button" accessibilityLabel={t('a11yShareLocation', 'Share live location')}
             >
               {isLocating ? (
                 <ActivityIndicator color={theme.colors.background} />

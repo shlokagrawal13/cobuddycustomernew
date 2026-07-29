@@ -152,7 +152,7 @@ export const HomeDashboardScreen = () => {
                 </View>
               </View>
 
-              <TouchableOpacity style={styles.fullItineraryBtn} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}>
+              <TouchableOpacity style={styles.fullItineraryBtn} accessibilityRole="button" accessibilityLabel={t('a11yViewFullItinerary', 'View full itinerary')}>
                 <Text style={styles.fullItineraryText}>{t('itinerary.view_full')}</Text>
               </TouchableOpacity>
             </View>

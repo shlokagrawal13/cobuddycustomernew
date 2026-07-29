@@ -239,7 +239,7 @@ export const DiscoverScreen = () => {
                   styles.filterPill,
                   activeStatus === item && styles.filterPillActive
                 ]}
-                onPress={() => setActiveStatus(item)} accessibilityRole="button" accessibilityLabel={t('a11yItem', 'item')}
+                onPress={() => setActiveStatus(item)} accessibilityRole="button" accessibilityLabel={t('a11ySelectFilter', 'Filter by {{item}}', { item })}
               >
                 <Text
                   style={[

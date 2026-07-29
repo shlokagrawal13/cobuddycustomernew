@@ -95,7 +95,7 @@ export const BookingsListScreen = () => {
               key={tab}
               style={[styles.tabBtn, activeTab === tab && styles.tabBtnActive]}
               onPress={() => setActiveTab(tab)}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11ySwitchTab', 'Switch to {{tab}} tab', { tab })}
             >
               <Text style={[styles.tabText, activeTab === tab && styles.tabTextActive]}>
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -125,7 +125,7 @@ export const BookingsListScreen = () => {
               key={booking.id} 
               style={styles.card} 
               activeOpacity={0.9}
-              onPress={() => handlePressCard(booking)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+              onPress={() => handlePressCard(booking)} accessibilityRole="button" accessibilityLabel={t('a11yViewBookingDetails', 'View booking details')}
             >
               {/* Top Section: ID & Status */}
               <View style={styles.cardTopRow}>

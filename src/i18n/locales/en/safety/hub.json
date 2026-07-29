@@ -29,5 +29,10 @@
   "alertMsgAreYouSureYouWantToCancel": "Are you sure you want to cancel the SOS?",
   "no": "No",
   "cancel": "Cancel",
-  "activateSOS": "ACTIVATE SOS"
+  "activateSOS": "ACTIVATE SOS",
+  "a11yActivateSOS": "Activate SOS emergency alert",
+  "a11yManageTrustedContacts": "Manage trusted contacts",
+  "a11yReportIncident": "Report a safety incident",
+  "a11yViewSafetyGuidelines": "View safety guidelines",
+  "a11yOpenHelpCenter": "Open help center"
 }

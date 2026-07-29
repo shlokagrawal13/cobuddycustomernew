@@ -9,5 +9,6 @@
   "continueBtn": "Continue",
   "a11yGoBack": "Go back",
   "a11yAction": "Action",
-  "a11yContinue": "Continue"
+  "a11yContinue": "Continue",
+  "a11ySelectVenue": "Select {{venue}}"
 }

@@ -22,5 +22,6 @@
   "a11yAction": "Action",
   "a11yHasevidenceEvidenceAttache": "hasEvidence ? Evidence Attache...",
   "a11ySubmitConfidentialReport": "Submit Confidential Report",
-  "okBtn": "OK"
+  "okBtn": "OK",
+  "a11ySelectIncidentType": "Select {{type}}"
 }

@@ -226,7 +226,7 @@ export const ModifyBookingScreen = () => {
                 <TouchableOpacity style={styles.sheetOption} onPress={() => {
                   setNewVenue(item === 'Keep Original Venue' ? '' : item);
                   setVenueModalVisible(false);
-                }} accessibilityRole="button" accessibilityLabel={t('a11yItem', 'item')}>
+                }} accessibilityRole="button" accessibilityLabel={t('a11ySelectVenueOption', 'Select {{venue}}', { venue: item })}>
                   <Icon name={item === 'Keep Original Venue' ? 'restore' : 'map-marker-outline'} size={20} color={theme.colors.primary} style={{ marginRight: 12 }} />
                   <Text style={[styles.sheetOptionText, { flex: 1 }]}>{item}</Text>
                   <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />

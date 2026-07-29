@@ -36,5 +36,7 @@
   "a11yQuality": "quality",
   "cancelBtn": "Cancel",
   "clearBtn": "Clear",
-  "clearMediaBtn": "Clear Media"
+  "clearMediaBtn": "Clear Media",
+  "a11yAutoDownloadToggle": "Toggle auto-download media on Wi-Fi",
+  "a11yPhotoUploadQuality": "Change photo upload quality"
 }

@@ -112,7 +112,7 @@ export const PaymentMethodsScreen = () => {
                         key={pm.id} 
                         style={[styles.methodRow, index !== methods.length - 1 ? styles.methodBorder : null, isSelected ? styles.methodSelected : null]}
                         activeOpacity={0.8}
-                        onPress={() => handleMethodPress(pm)} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                        onPress={() => handleMethodPress(pm)} accessibilityRole="button" accessibilityLabel={t('a11ySelectPaymentMethod', 'Select {{method}}', { method: pm.title })}
                     >
                         <View style={[styles.methodIconWrap, isSelected ? styles.methodIconWrapActive : null]}>
                             <Icon name={pm.icon} size={22} color={isSelected ? theme.colors.primary : theme.colors.textSecondary} />

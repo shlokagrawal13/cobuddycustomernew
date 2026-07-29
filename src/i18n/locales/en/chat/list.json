@@ -14,5 +14,7 @@
   "a11yStartConversation": "Start Conversation",
   "a11yGoToCompanionchat": "Go to CompanionChat",
   "a11yAction": "Action",
-  "a11yNext": "Next"
+  "a11yNext": "Next",
+  "a11yCloseNewMessageDialog": "Close new message dialog",
+  "a11yStartChatWith": "Start chat with {{name}}"
 }

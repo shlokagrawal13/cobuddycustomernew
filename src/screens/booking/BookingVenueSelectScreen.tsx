@@ -97,7 +97,7 @@ export const BookingVenueSelectScreen = () => {
                 key={venue.id}
                 style={[styles.card, isSelected && styles.cardSelected]}
                 onPress={() => setSelectedVenueId(venue.id)}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yAction', 'Action')}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11ySelectVenue', 'Select {{venue}}', { venue: venue.name })}
               >
                 <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}>
                   <Icon 

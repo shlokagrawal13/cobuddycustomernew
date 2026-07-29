@@ -35,5 +35,6 @@
   "a11yR": "r + ⭐",
   "a11yDKm": "d km",
   "a11yClearAll": "Clear All",
-  "a11yApplyFilters": "Apply Filters"
+  "a11yApplyFilters": "Apply Filters",
+  "a11ySelectFilter": "Filter by {{item}}"
 }

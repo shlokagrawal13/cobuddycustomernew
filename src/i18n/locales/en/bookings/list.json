@@ -8,5 +8,7 @@
   "gridLabelTime": "Time ({{duration}})",
   "a11yHelp": "Help",
   "a11yAction": "Action",
-  "a11yDiscoverCompanions": "Discover Companions"
+  "a11yDiscoverCompanions": "Discover Companions",
+  "a11ySwitchTab": "Switch to {{tab}} tab",
+  "a11yViewBookingDetails": "View booking details"
 }
