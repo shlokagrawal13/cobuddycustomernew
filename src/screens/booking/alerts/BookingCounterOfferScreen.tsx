@@ -9,25 +9,26 @@ import { useSmartNavigation } from '../../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const DEFAULT_MOCK_DATA = {
-  bookingId: 'CB-REQ-8830',
-  companionName: 'Aisha Sharma',
-  activity: 'Shopping Companion',
-  venue: 'DLF Promenade, Vasant Kunj',
-  date: 'Sun, 26 Oct 2026',
-  
-  originalTime: '5:00 PM - 8:00 PM',
-  newTime: '6:00 PM - 9:00 PM',
-  originalAmount: '₹4,000',
-  newAmount: '₹4,500', 
-  
-  message: "Hi! I have another engagement that runs late. Can we shift by 1 hour? Also due to weekend peak rates, I have slightly adjusted the price. Let me know if this works!",
-};
-
 import { RouteProp } from '@react-navigation/native';
 
 export const BookingCounterOfferScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.counterOffer');
+
+  const DEFAULT_MOCK_DATA = {
+    bookingId: 'CB-REQ-8830',
+    companionName: 'Aisha Sharma',
+    activity: 'Shopping Companion',
+    venue: 'DLF Promenade, Vasant Kunj',
+    date: 'Sun, 26 Oct 2026',
+    
+    originalTime: '5:00 PM - 8:00 PM',
+    newTime: '6:00 PM - 9:00 PM',
+    originalAmount: '₹4,000',
+    newAmount: '₹4,500', 
+    
+    message: t('defaultMessage', 'Hi! I have another engagement that runs late. Can we shift by 1 hour? Also due to weekend peak rates, I have slightly adjusted the price. Let me know if this works!'),
+  };
+
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const bookingData = { ...DEFAULT_MOCK_DATA, ...(route?.params || {}) };
