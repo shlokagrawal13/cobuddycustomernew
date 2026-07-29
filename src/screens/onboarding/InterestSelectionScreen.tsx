@@ -14,10 +14,28 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
 import { selectInterests, selectSetInterests } from '../../store/selectors/userPreferencesSelectors';
 
-export 
-
 const MIN_SELECT = 3;
 const MAX_SELECT = 10;
+
+export const useInterestsData = () => {
+  const { t } = useTranslation(['onboarding']);
+  return [
+  { id: 'cafe', label: t('interests.cafeMeetup', 'Cafe Meetup'), icon: 'coffee-outline' },
+  { id: 'movie', label: t('interests.movieCompanion', 'Movie Companion'), icon: 'movie-open-outline' },
+  { id: 'tour', label: t('interests.localTour', 'Local Tour'), icon: 'map-marker-path' },
+  { id: 'event', label: t('interests.eventPartner', 'Event Partner'), icon: 'ticket-confirmation-outline' },
+  { id: 'gym', label: t('interests.gymBuddy', 'Gym Buddy'), icon: 'weight-lifter' },
+  { id: 'shopping', label: t('interests.shoppingAssistant', 'Shopping Assistant'), icon: 'shopping-outline' },
+  { id: 'dining', label: t('interests.fineDining', 'Fine Dining'), icon: 'silverware-fork-knife' },
+  { id: 'art', label: t('interests.artGallery', 'Art Gallery'), icon: 'palette-outline' },
+  { id: 'network', label: t('interests.networking', 'Networking'), icon: 'handshake-outline' },
+  { id: 'wellness', label: t('interests.yogaWellness', 'Yoga & Wellness'), icon: 'yoga' },
+  { id: 'language', label: t('interests.languageExchange', 'Language Exchange'), icon: 'earth' },
+  { id: 'music', label: t('interests.liveConcerts', 'Live Concerts'), icon: 'music-note-outline' },
+  { id: 'photography', label: t('interests.photography', 'Photography'), icon: 'camera-outline' },
+  { id: 'gaming', label: t('interests.gaming', 'Gaming'), icon: 'gamepad-variant-outline' },
+  ];
+};
 
 export const InterestSelectionScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();

@@ -11,14 +11,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange: (val: boolean) => void }) => {
     const { t } = useTranslation();
-
-  const TIMEOUT_OPTIONS = [
-    { id: 'immediate', label: t('timeout.immediately', 'Immediately') },
-    { id: '1min', label: t('timeout.after1min', 'After 1 minute') },
-    { id: '5min', label: t('timeout.after5min', 'After 5 minutes') },
-    { id: '15min', label: t('timeout.after15min', 'After 15 minutes') },
-];
-
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
     useEffect(() => {
@@ -48,8 +40,15 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
 
 
 
-export const AppLockScreen = () => { 
+export const AppLockScreen = () => {
   const { t } = useTranslation('settings.appLock');
+
+  const TIMEOUT_OPTIONS = [
+    { id: 'immediate', label: t('timeout.immediately', 'Immediately') },
+    { id: '1min', label: t('timeout.after1min', 'After 1 minute') },
+    { id: '5min', label: t('timeout.after5min', 'After 5 minutes') },
+    { id: '15min', label: t('timeout.after15min', 'After 15 minutes') },
+  ];
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   

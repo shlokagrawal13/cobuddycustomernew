@@ -9,18 +9,17 @@ import { theme } from '../../theme';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const ALL_TRANSACTIONS = [
-  { id: 'tx_001', icon: 'wallet-plus', label: t('txTypes.moneyAdded', 'Money Added'), category: 'Money Added', date: 'Today, 2:30 PM', amount: '+ ₹1,000', positive: true, status: 'Successful' },
-  { id: 'tx_002', icon: 'account-clock', label: 'Session with Maya', category: 'Spent', date: 'Yesterday, 8:15 PM', amount: '- ₹450', positive: false, status: 'Successful' },
-  { id: 'tx_003', icon: 'arrow-u-left-top', label: 'Refund: Session Cancelled', category: 'Refunds', date: 'Oct 18, 10:00 AM', amount: '+ ₹200', positive: true, status: 'Refunded' },
-  { id: 'tx_004', icon: 'wallet-plus', label: t('txTypes.moneyAdded', 'Money Added'), category: 'Money Added', date: 'Oct 10, 1:15 PM', amount: '+ ₹2,000', positive: true, status: 'Successful' },
-  { id: 'tx_005', icon: 'account-clock', label: 'Session with Rahul', category: 'Spent', date: 'Oct 05, 5:00 PM', amount: '- ₹600', positive: false, status: 'Pending' },
-];
-
 const FILTERS = ['All', 'Money Added', 'Spent', 'Refunds'];
 
 export const TransactionHistoryScreen = () => { 
   const { t } = useTranslation('wallet.transactionHistory');
+  const ALL_TRANSACTIONS = [
+    { id: 'tx_001', icon: 'wallet-plus', label: t('txTypes.moneyAdded', 'Money Added'), category: 'Money Added', date: 'Today, 2:30 PM', amount: '+ ₹1,000', positive: true, status: 'Successful' },
+    { id: 'tx_002', icon: 'account-clock', label: 'Session with Maya', category: 'Spent', date: 'Yesterday, 8:15 PM', amount: '- ₹1450', positive: false, status: 'Successful' },
+    { id: 'tx_003', icon: 'arrow-u-left-top', label: 'Refund: Session Cancelled', category: 'Refunds', date: 'Oct 18, 10:00 AM', amount: '+ ₹1200', positive: true, status: 'Refunded' },
+    { id: 'tx_004', icon: 'wallet-plus', label: t('txTypes.moneyAdded', 'Money Added'), category: 'Money Added', date: 'Oct 10, 1:15 PM', amount: '+ ₹2,000', positive: true, status: 'Successful' },
+    { id: 'tx_005', icon: 'account-clock', label: 'Session with Rahul', category: 'Spent', date: 'Oct 05, 5:00 PM', amount: '- ₹1600', positive: false, status: 'Pending' },
+  ];
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [activeFilter, setActiveFilter] = useState('All');

@@ -7,16 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
- as const;
-type DocType = typeof DOC_TYPES[number]['id'];
-
-const UPLOAD_TIPS = [
-  {icon: 'white-balance-sunny', label: t('docVerify.clearLighting', 'Use clear lighting')},
-  {icon: 'aspect-ratio',        label: t('docVerify.cornersVisible', 'Keep all corners visible')},
-  {icon: 'blur-off',            label: t('docVerify.noBlurry', 'No blurry or cropped images')},
-];
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';type DocType = 'AADHAAR' | 'PAN' | 'PASSPORT' | 'DL';
 
 type UploadState = 'idle' | 'selected' | 'uploaded';
 
@@ -24,11 +15,17 @@ export const DocumentVerificationScreen = () => {
   const { t } = useTranslation('verify.document');
 
   const DOC_TYPES = [
-  {id: 'AADHAAR',  icon: 'card-account-details-outline', label: 'Aadhaar'},
-  {id: 'PAN',      icon: 'card-account-details',         label: 'PAN Card'},
-  {id: 'PASSPORT', icon: 'book-open-page-variant',       label: 'Passport'},
-  {id: 'DL',       icon: 'car',                          label: 'Driving License'},
-]
+    {id: 'AADHAAR',  icon: 'card-account-details-outline', label: t('docType.aadhaar', 'Aadhaar')},
+    {id: 'PAN',      icon: 'card-account-details',         label: t('docType.pan', 'PAN Card')},
+    {id: 'PASSPORT', icon: 'book-open-page-variant',       label: t('docType.passport', 'Passport')},
+    {id: 'DL',       icon: 'car',                          label: t('docType.dl', 'Driving License')},
+  ] as const;
+
+  const UPLOAD_TIPS = [
+    {icon: 'white-balance-sunny', label: t('docVerify.clearLighting', 'Use clear lighting')},
+    {icon: 'aspect-ratio',        label: t('docVerify.cornersVisible', 'Keep all corners visible')},
+    {icon: 'blur-off',            label: t('docVerify.noBlurry', 'No blurry or cropped images')},
+  ];
 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();

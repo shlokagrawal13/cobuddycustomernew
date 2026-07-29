@@ -23,6 +23,7 @@ const DISTANCE_PILLS = [5, 15, 50];
 
 // --- Custom Slider Component ---
 const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffix = '' }: { value: number; onValueChange: (v: number) => void; min: number; max: number; step: number; prefix?: string; suffix?: string; }) => {
+  const { t } = useTranslation();
   const [width, setWidth] = useState(1);
   const [localVal, setLocalVal] = useState(value);
 
