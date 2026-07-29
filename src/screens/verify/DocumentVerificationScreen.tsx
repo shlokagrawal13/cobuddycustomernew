@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -18,9 +19,9 @@ const DOC_TYPES = [
 type DocType = typeof DOC_TYPES[number]['id'];
 
 const UPLOAD_TIPS = [
-  {icon: 'white-balance-sunny', label: 'Use clear lighting'},
-  {icon: 'aspect-ratio',        label: 'Keep all corners visible'},
-  {icon: 'blur-off',            label: 'No blurry or cropped images'},
+  {icon: 'white-balance-sunny', label: t('docVerify.clearLighting', 'Use clear lighting')},
+  {icon: 'aspect-ratio',        label: t('docVerify.cornersVisible', 'Keep all corners visible')},
+  {icon: 'blur-off',            label: t('docVerify.noBlurry', 'No blurry or cropped images')},
 ];
 
 type UploadState = 'idle' | 'selected' | 'uploaded';
@@ -171,10 +172,10 @@ export const DocumentVerificationScreen = () => {
               />
               <View style={styles.uploadSlotMeta}>
                 <Text style={styles.uploadSlotTitle}>
-                  {frontState === 'uploaded' ? 'Front Side Uploaded' : frontState === 'selected' ? 'Processing...' : 'Upload Front Side'}
+                  {frontState === 'uploaded' ? t('doc.frontUploaded', 'Front Side Uploaded') : frontState === 'selected' ? t('doc.processing', 'Processing...') : t('doc.uploadFront', 'Upload Front Side')}
                 </Text>
                 <Text style={styles.uploadSlotSub}>
-                  {frontState === 'uploaded' ? 'Image accepted' : 'Tap to select image'}
+                  {frontState === 'uploaded' ? t('doc.imageAccepted', 'Image accepted') : t('doc.tapToSelect', 'Tap to select image')}
                 </Text>
               </View>
               {frontState === 'idle' && (
@@ -196,7 +197,7 @@ export const DocumentVerificationScreen = () => {
                   />
                   <View style={styles.uploadSlotMeta}>
                     <Text style={styles.uploadSlotTitle}>
-                      {backState === 'uploaded' ? 'Back Side Uploaded' : backState === 'selected' ? 'Processing...' : 'Upload Back Side'}
+                      {backState === 'uploaded' ? t('doc.backUploaded', 'Back Side Uploaded') : backState === 'selected' ? 'Processing...' : t('doc.uploadBack', 'Upload Back Side')}
                     </Text>
                     <Text style={styles.uploadSlotSub}>
                       {backState === 'uploaded' ? 'Image accepted' : 'Tap to select image'}

@@ -51,7 +51,7 @@ export const KYCIntroScreen = () => {
 
       <View style={styles.bottomBar}>
         <Text style={styles.privacyText}>
-          <Icon name="lock" size={12} color={theme.colors.textSecondary} /> Your data is securely encrypted and never shared.
+          <Icon name="lock" size={12} color={theme.colors.textSecondary} /> {t('dataSecureNotice', 'Your data is securely encrypted and never shared.')}
         </Text>
         <TouchableOpacity
           style={styles.nextBtn}

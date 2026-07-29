@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,18 +16,18 @@ import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore
 import { selectInterests, selectSetInterests } from '../../store/selectors/userPreferencesSelectors';
 
 export const INTERESTS_DATA = [
-  { id: 'cafe', label: 'Cafe Meetup', icon: 'coffee-outline' },
-  { id: 'movie', label: 'Movie Companion', icon: 'movie-open-outline' },
-  { id: 'tour', label: 'Local Tour', icon: 'map-marker-path' },
-  { id: 'event', label: 'Event Partner', icon: 'ticket-confirmation-outline' },
-  { id: 'gym', label: 'Gym Buddy', icon: 'weight-lifter' },
-  { id: 'shopping', label: 'Shopping Assistant', icon: 'shopping-outline' },
-  { id: 'dining', label: 'Fine Dining', icon: 'silverware-fork-knife' },
-  { id: 'art', label: 'Art Gallery', icon: 'palette-outline' },
-  { id: 'network', label: 'Networking', icon: 'handshake-outline' },
-  { id: 'wellness', label: 'Yoga & Wellness', icon: 'yoga' },
-  { id: 'language', label: 'Language Exchange', icon: 'earth' },
-  { id: 'music', label: 'Live Concerts', icon: 'music-note-outline' },
+  { id: 'cafe', label: t('interests.cafeMeetup', 'Cafe Meetup'), icon: 'coffee-outline' },
+  { id: 'movie', label: t('interests.movieCompanion', 'Movie Companion'), icon: 'movie-open-outline' },
+  { id: 'tour', label: t('interests.localTour', 'Local Tour'), icon: 'map-marker-path' },
+  { id: 'event', label: t('interests.eventPartner', 'Event Partner'), icon: 'ticket-confirmation-outline' },
+  { id: 'gym', label: t('interests.gymBuddy', 'Gym Buddy'), icon: 'weight-lifter' },
+  { id: 'shopping', label: t('interests.shoppingAssistant', 'Shopping Assistant'), icon: 'shopping-outline' },
+  { id: 'dining', label: t('interests.fineDining', 'Fine Dining'), icon: 'silverware-fork-knife' },
+  { id: 'art', label: t('interests.artGallery', 'Art Gallery'), icon: 'palette-outline' },
+  { id: 'network', label: t('interests.networking', 'Networking'), icon: 'handshake-outline' },
+  { id: 'wellness', label: t('interests.yogaWellness', 'Yoga & Wellness'), icon: 'yoga' },
+  { id: 'language', label: t('interests.languageExchange', 'Language Exchange'), icon: 'earth' },
+  { id: 'music', label: t('interests.liveConcerts', 'Live Concerts'), icon: 'music-note-outline' },
 ];
 
 const MIN_SELECT = 3;

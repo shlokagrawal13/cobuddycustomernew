@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useRef, useEffect } from 'react';
 import {
   View,
@@ -20,9 +21,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 const { height: SCREEN_H, width: SCREEN_W } = Dimensions.get('window');
 
 const TRUST_PILLARS = [
-  { icon: 'shield-check-outline', label: 'Verified' },
-  { icon: 'lock-outline', label: 'Secure' },
-  { icon: 'account-heart-outline', label: 'Respectful' },
+  { icon: 'shield-check-outline', label: t('features.verified', 'Verified') },
+  { icon: 'lock-outline', label: t('features.secure', 'Secure') },
+  { icon: 'account-heart-outline', label: t('features.respectful', 'Respectful') },
 ];
 
 export const WelcomeScreen = () => {

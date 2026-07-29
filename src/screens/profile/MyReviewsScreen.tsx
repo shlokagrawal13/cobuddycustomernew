@@ -37,7 +37,7 @@ export const MyReviewsScreen = () => {
                 <Text style={styles.scoreText}>4.8</Text>
                 <Text style={styles.scoreTotal}>/5</Text>
             </View>
-            <Text style={styles.reviewsCount}>Based on {MOCK_REVIEWS.length} reviews from companions</Text>
+            <Text style={styles.reviewsCount}>{t('reviews.basedOn', 'Based on ')}{MOCK_REVIEWS.length} {t('reviews.fromCompanions', 'reviews from companions')}</Text>
         </View>
 
         <View style={styles.trustBanner}>

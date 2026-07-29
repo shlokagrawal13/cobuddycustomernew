@@ -121,7 +121,7 @@ export const WithdrawMoneyScreen = () => {
                     <Icon name="clock-outline" size={16} color={theme.colors.primary} />
                     <View style={{flex: 1}}>
                         <Text style={styles.infoTitle}>{t('infoTitle', 'Processing Time')}</Text>
-                        <Text style={styles.infoSub}>{selectedMethod.type === 'upi' ? 'UPI transfers are usually instant, but can take up to 2 hours.' : 'Standard IMPS/NEFT transfer takes up to 2-3 business days.'}</Text>
+                        <Text style={styles.infoSub}>{selectedMethod.type === 'upi' ? t('withdraw.upiNotice', 'UPI transfers are usually instant, but can take up to 2 hours.') : t('withdraw.impsNotice', 'Standard IMPS/NEFT transfer takes up to 2-3 business days.')}</Text>
                     </View>
                 </View>
             </View>

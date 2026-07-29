@@ -84,7 +84,7 @@ export const PaymentMethodsScreen = () => {
         <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>{isSelectionMode ? 'Select Payment Method' : 'Payment Methods'}</Text>
+        <Text style={styles.headerTitle}>{isSelectionMode ? t('payment.selectMethod', 'Select Payment Method') : t('payment.methods', 'Payment Methods')}</Text>
         <View style={styles.backBtn} />
       </View>
 

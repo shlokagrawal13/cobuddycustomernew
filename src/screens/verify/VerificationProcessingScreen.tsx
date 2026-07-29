@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Animated, StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,10 +10,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const STEPS = [
-  {id: 1, icon: 'file-document-check', label: 'Document Verification', status: 'COMPLETED'},
-  {id: 2, icon: 'face-recognition',    label: 'Selfie & Liveness Check',status: 'COMPLETED'},
-  {id: 3, icon: 'account-search',      label: 'Profile Review',        status: 'PROCESSING'},
-  {id: 4, icon: 'check-decagram',      label: 'Booking Authorization', status: 'PENDING'},
+  {id: 1, icon: 'file-document-check', label: t('steps.documentVerification', 'Document Verification'), status: t('processing.statusCompleted', 'COMPLETED')},
+  {id: 2, icon: 'face-recognition',    label: t('steps.selfieLiveness', 'Selfie & Liveness Check'),status: 'COMPLETED'},
+  {id: 3, icon: 'account-search',      label: t('steps.profileReview', 'Profile Review'),        status: t('processing.statusProcessing', 'PROCESSING')},
+  {id: 4, icon: 'check-decagram',      label: t('steps.bookingAuthorization', 'Booking Authorization'), status: t('processing.statusPending', 'PENDING')},
 ];
 
 export const VerificationProcessingScreen = () => { 
@@ -91,7 +92,7 @@ export const VerificationProcessingScreen = () => {
           {activeStep >= 4 ? `Verification\nComplete` : `Securely Verifying\nYour Identity`}
         </Text>
         <Text style={styles.heroSub}>
-          {activeStep >= 4 ? 'Your profile is now trusted.' : 'Reviewing verification details...'}
+          {activeStep >= 4 ? t('processing.profileTrusted', 'Your profile is now trusted.') : t('processing.reviewingDetails', 'Reviewing verification details...')}
         </Text>
 
         <View style={styles.progressBarTrack}>

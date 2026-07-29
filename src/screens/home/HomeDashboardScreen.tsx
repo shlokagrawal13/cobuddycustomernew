@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,10 +16,10 @@ import { selectInterests } from '../../store/selectors/userPreferencesSelectors'
 import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
 
 const EXPLORE_CATEGORIES = [
-  { id: 'coffee', title: 'Coffee Meetups', icon: 'coffee', color: '#D4AF37' },
-  { id: 'movie', title: 'Movie Buffs', icon: 'movie', color: '#E11D48' },
-  { id: 'city', title: 'City Walk', icon: 'map-marker', color: '#10B981' },
-  { id: 'study', title: 'Study Buddy', icon: 'book', color: '#3B82F6' },
+  { id: 'coffee', title: t('categories.coffeeMeetups', 'Coffee Meetups'), icon: 'coffee', color: '#D4AF37' },
+  { id: 'movie', title: t('categories.movieBuffs', 'Movie Buffs'), icon: 'movie', color: '#E11D48' },
+  { id: 'city', title: t('categories.cityWalk', 'City Walk'), icon: 'map-marker', color: '#10B981' },
+  { id: 'study', title: t('categories.studyBuddy', 'Study Buddy'), icon: 'book', color: '#3B82F6' },
 ];
 
 export const HomeDashboardScreen = () => {

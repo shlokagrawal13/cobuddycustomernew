@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,10 +11,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CATEGORIES = [
-  { id: 'payment', label: 'Payment & Refunds', icon: 'credit-card-outline' },
-  { id: 'booking', label: 'Booking Issue', icon: 'calendar-check-outline' },
-  { id: 'safety', label: 'Report a Safety Concern', icon: 'shield-alert-outline' },
-  { id: 'account', label: 'Account & Tech Support', icon: 'account-cog-outline' }
+  { id: 'payment', label: t('ticket.paymentRefunds', 'Payment & Refunds'), icon: 'credit-card-outline' },
+  { id: 'booking', label: t('ticket.bookingIssue', 'Booking Issue'), icon: 'calendar-check-outline' },
+  { id: 'safety', label: t('ticket.safetyConcern', 'Report a Safety Concern'), icon: 'shield-alert-outline' },
+  { id: 'account', label: t('ticket.techSupport', 'Account & Tech Support'), icon: 'account-cog-outline' }
 ];
 
 export const CreateSupportTicketScreen = () => { 
@@ -118,7 +119,7 @@ export const CreateSupportTicketScreen = () => {
                 color={hasAttachment ? theme.colors.primary : theme.colors.textSecondary} 
               />
               <Text style={[styles.attachmentText, hasAttachment && { color: theme.colors.primary }]}>
-                {hasAttachment ? 'Screenshot Attached (Tap to remove)' : 'Upload Screenshot or Photo'}
+                {hasAttachment ? t('ticket.screenshotAttached', 'Screenshot Attached (Tap to remove)') : t('ticket.uploadScreenshot', 'Upload Screenshot or Photo')}
               </Text>
             </TouchableOpacity>
           </View>

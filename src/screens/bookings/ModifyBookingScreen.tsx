@@ -96,7 +96,7 @@ export const ModifyBookingScreen = () => {
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{booking?.venue || 'Blue Tokai Coffee, CP'}</Text>
+            <Text style={styles.detailText}>{booking?.venue || t('fallback.venue', 'Blue Tokai Coffee, CP')}</Text>
           </View>
         </View>
 

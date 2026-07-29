@@ -85,11 +85,11 @@ export const AddPaymentMethodScreen = () => {
                 <View style={styles.cardPreviewBottom}>
                     <View>
                         <Text style={styles.cardPreviewLabel}>{t('cardholderUpper', 'CARDHOLDER')}</Text>
-                        <Text style={styles.cardPreviewValue}>{cardHolder.trim() || 'YOUR NAME'}</Text>
+                        <Text style={styles.cardPreviewValue}>{cardHolder.trim() || t('card.yourName', 'YOUR NAME')}</Text>
                     </View>
                     <View>
                         <Text style={styles.cardPreviewLabel}>{t('expiryUpper', 'EXPIRY')}</Text>
-                        <Text style={styles.cardPreviewValue}>{expiry || 'MM/YY'}</Text>
+                        <Text style={styles.cardPreviewValue}>{expiry || t('card.mmYy', 'MM/YY')}</Text>
                     </View>
                 </View>
             </View>

@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,10 +10,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const REVIEW_STEPS = [
-  {icon: 'check-circle',        label: 'Document Verification', status: 'Completed',    done: true},
-  {icon: 'check-circle',        label: 'Selfie & Liveness Check', status: 'Completed',    done: true},
-  {icon: 'timer-sand',          label: 'Profile Review',        status: 'Under Review', done: false},
-  {icon: 'clock-outline',       label: 'Booking Authorization', status: 'Pending',      done: false},
+  {icon: 'check-circle',        label: t('steps.documentVerification', 'Document Verification'), status: 'Completed',    done: true},
+  {icon: 'check-circle',        label: t('steps.selfieLiveness', 'Selfie & Liveness Check'), status: 'Completed',    done: true},
+  {icon: 'timer-sand',          label: t('steps.profileReview', 'Profile Review'),        status: 'Under Review', done: false},
+  {icon: 'clock-outline',       label: t('steps.bookingAuthorization', 'Booking Authorization'), status: 'Pending',      done: false},
 ];
 
 export const VerificationPendingScreen = () => { 
@@ -113,8 +114,8 @@ export const VerificationPendingScreen = () => {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={isFromFlow ? 'Go Back' : 'Continue'}>
-          <Text style={styles.ctaBtnText}>{isFromFlow ? 'Go Back' : 'Continue to App'}</Text>
+        <TouchableOpacity style={styles.ctaBtn} onPress={handleGoToIdentity} activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={isFromFlow ? t('actions.goBack', 'Go Back') : t('actions.continue', 'Continue')}>
+          <Text style={styles.ctaBtnText}>{isFromFlow ? t('actions.goBack', 'Go Back') : t('actions.continueToApp', 'Continue to App')}</Text>
           <Icon name={isFromFlow ? "arrow-left" : "arrow-right"} size={18} color={theme.colors.background} />
         </TouchableOpacity>
 

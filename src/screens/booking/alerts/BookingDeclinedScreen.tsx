@@ -39,7 +39,7 @@ export const BookingDeclinedScreen = ({ route }: { route: any }) => {
 
         <Text style={styles.title}>{t('title', 'Booking Declined')}</Text>
         <Text style={styles.subtitle}>
-          Unfortunately, {bookingData.companionName} is unavailable for {bookingData.date} at {bookingData.time}. Don't worry, there are many other great companions available!
+          {t('bookingDec.unfortunatePrefix', 'Unfortunately, ')}{bookingData.companionName}{t('bookingDec.unavailableFor', ' is unavailable for ')}{bookingData.date}{t('bookingDec.atTime', ' at ')}{bookingData.time}{t('bookingDec.dontWorry', '. Don\'t worry, there are many other great companions available!')}
         </Text>
         
         {bookingData.reason ? (

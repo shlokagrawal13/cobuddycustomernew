@@ -159,8 +159,8 @@ export const ProfileScreen = () => {
                 <Text style={styles.heroBio} numberOfLines={isBioExpanded ? undefined : 1}>
                   {user.bio}
                 </Text>
-                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel={isBioExpanded ? 'Show less' : 'Show more'}>
-                  <Text style={styles.readMoreText}>{isBioExpanded ? 'Show less' : 'Read more'}</Text>
+                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel={isBioExpanded ? t('actions.showLess', 'Show less') : 'Show more'}>
+                  <Text style={styles.readMoreText}>{isBioExpanded ? 'Show less' : t('actions.readMore', 'Read more')}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -302,10 +302,10 @@ export const ProfileScreen = () => {
         <View style={styles.infoCard}>
           <Text style={styles.cardTitle}>{t('walletActivityTitle', 'Wallet & Activity')}</Text>
           {[
-            { id: 'wallet', icon: 'wallet-outline', label: 'My Wallet', sub: t('walletBalance', 'Balance: {{balance}}', { balance: user.walletBalance }), action: () => navigation.navigate('WalletScreen') },
-            { id: 'reviews', icon: 'star-circle-outline', label: 'My Reviews', sub: t('ratingsReceived', '{{count}} Ratings received', { count: user.reviewsCount }), action: () => navigation.navigate('MyReviewsScreen') },
-            { id: 'saved', icon: 'bookmark-outline', label: 'Saved Checklists', sub: 'Your favorite companions', action: () => navigation.navigate('SavedProfilesScreen') },
-            { id: 'refer', icon: 'account-multiple-plus-outline', label: 'Refer a Friend', sub: 'Invite trusted members', action: () => navigation.navigate('ReferFriendScreen') },
+            { id: 'wallet', icon: 'wallet-outline', label: t('stats.myWallet', 'My Wallet'), sub: t('walletBalance', 'Balance: {{balance}}', { balance: user.walletBalance }), action: () => navigation.navigate('WalletScreen') },
+            { id: 'reviews', icon: 'star-circle-outline', label: t('stats.myReviews', 'My Reviews'), sub: t('ratingsReceived', '{{count}} Ratings received', { count: user.reviewsCount }), action: () => navigation.navigate('MyReviewsScreen') },
+            { id: 'saved', icon: 'bookmark-outline', label: t('stats.savedChecklists', 'Saved Checklists'), sub: t('stats.savedChecklistsSub', 'Your favorite companions'), action: () => navigation.navigate('SavedProfilesScreen') },
+            { id: 'refer', icon: 'account-multiple-plus-outline', label: t('stats.referAFriend', 'Refer a Friend'), sub: t('stats.referAFriendSub', 'Invite trusted members'), action: () => navigation.navigate('ReferFriendScreen') },
           ].map((item, i, arr) => (
             <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
               <View style={styles.linkIconBox}>
@@ -324,8 +324,8 @@ export const ProfileScreen = () => {
         <View style={styles.infoCard}>
           <Text style={styles.cardTitle}>{t('safetySettingsTitle', 'Safety Settings')}</Text>
           {[
-            { id: 'contact_share', title: 'Trusted Contact Sharing', sub: 'Auto-share session details.' },
-            { id: 'live_monitor', title: 'Live Safety Monitoring', sub: 'Active tracking during sessions.' }
+            { id: 'contact_share', title: t('safety.trustedContact', 'Trusted Contact Sharing'), sub: t('safety.trustedContactSub', 'Auto-share session details.') },
+            { id: 'live_monitor', title: t('safety.liveSafety', 'Live Safety Monitoring'), sub: t('safety.liveSafetySub', 'Active tracking during sessions.') }
           ].map((s, i) => (
             <View key={s.id} style={[styles.safetyRow, i === 0 && styles.linkRowBorder]}>
               <View style={styles.safetyMeta}>

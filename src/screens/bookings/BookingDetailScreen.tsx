@@ -45,9 +45,9 @@ export const BookingDetailScreen = () => {
     }
 
     const steps = [
-      { label: 'Requested', time: data.createdAt },
-      { label: 'Accepted', time: data.status === 'Accepted' || data.status === 'Completed' ? 'Oct 23, 11:30 AM' : '--' },
-      { label: 'Meetup', time: data.status === 'Completed' ? 'Oct 24, 7:00 PM' : '--' }
+      { label: t('timeline.requested', 'Requested'), time: data.createdAt },
+      { label: t('timeline.accepted', 'Accepted'), time: data.status === 'Accepted' || data.status === 'Completed' ? 'Oct 23, 11:30 AM' : '--' },
+      { label: t('timeline.meetup', 'Meetup'), time: data.status === 'Completed' ? 'Oct 24, 7:00 PM' : '--' }
     ];
     let activeIndex = 0;
     if (data.status === 'Accepted') activeIndex = 1;
@@ -283,7 +283,7 @@ export const BookingDetailScreen = () => {
             <View style={{ flex: 1, paddingRight: 12 }}>
               <Text style={styles.paymentTotalLabel}>{data.status === 'Declined' ? t('totalReleased', 'Total Released') : t('totalSecured', 'Total Secured')}</Text>
               <Text style={styles.paymentSubtext}>
-                {data.status === 'Declined' ? 'The escrow hold has been fully released.' : 'Held safely until session ends.'}
+                {data.status === 'Declined' ? t('escrow.released', 'The escrow hold has been fully released.') : t('escrow.held', 'Held safely until session ends.')}
               </Text>
             </View>
             <Text style={styles.paymentTotalValue}>{data.total}</Text>

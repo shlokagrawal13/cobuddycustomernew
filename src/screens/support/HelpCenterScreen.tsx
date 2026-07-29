@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,10 +11,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CATEGORIES = [
-  { id: '1', title: 'Bookings & Meetups', icon: 'calendar-check-outline' },
-  { id: '2', title: 'Payments & Refunds', icon: 'credit-card-outline' },
-  { id: '3', title: 'Trust & Safety', icon: 'shield-check-outline' },
-  { id: '4', title: 'Account Settings', icon: 'account-cog-outline' }
+  { id: '1', title: t('help.bookings', 'Bookings & Meetups'), icon: 'calendar-check-outline' },
+  { id: '2', title: t('help.payments', 'Payments & Refunds'), icon: 'credit-card-outline' },
+  { id: '3', title: t('help.trustSafety', 'Trust & Safety'), icon: 'shield-check-outline' },
+  { id: '4', title: t('help.account', 'Account Settings'), icon: 'account-cog-outline' }
 ];
 
 const FAQS = [
@@ -118,7 +119,7 @@ export const HelpCenterScreen = () => {
 
             {/* FAQs */}
             <Text style={[styles.sectionTitle, {marginTop: 24}]}>
-                {searchQuery ? 'SEARCH RESULTS' : (selectedCategory ? 'CATEGORY FAQS' : 'FREQUENTLY ASKED QUESTIONS')}
+                {searchQuery ? t('help.searchResults', 'SEARCH RESULTS') : (selectedCategory ? t('help.categoryFaqs', 'CATEGORY FAQS') : t('help.frequentlyAsked', 'FREQUENTLY ASKED QUESTIONS'))}
             </Text>
             
             <View style={styles.faqCard}>

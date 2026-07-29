@@ -61,7 +61,7 @@ export const SessionCompleteScreen = () => {
             </View>
 
             <Text style={styles.invoiceNote}>
-              <Icon name="email-check-outline" size={14} color={theme.colors.textSecondary} /> An official invoice has been sent to your registered email.
+              <Icon name="email-check-outline" size={14} color={theme.colors.textSecondary} /> {t('invoiceNotice', 'An official invoice has been sent to your registered email.')}
             </Text>
           </View>
         </View>

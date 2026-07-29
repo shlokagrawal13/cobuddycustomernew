@@ -87,7 +87,7 @@ export const ArrivalCheckInScreen = () => {
             </View>
 
             <Text style={styles.warningText}>
-              Never share this OTP over phone or chat. Only share it in person when you meet. 
+              {t('arrival.neverShareOtp', 'Never share this OTP over phone or chat. Only share it in person when you meet.')} 
               {"\n\n"}Sharing this code will instantly release Escrow funds and start the session timer.
             </Text>
           </View>

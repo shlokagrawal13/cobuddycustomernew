@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,10 +11,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const INCIDENT_TYPES = [
-  { id: 'harassment', label: 'Inappropriate Behavior or Harassment' },
-  { id: 'identity', label: 'Identity Mismatch (Fake Profile)' },
-  { id: 'noshow', label: 'Companion No-Show / Scam' },
-  { id: 'other', label: 'Other Safety Concern' }
+  { id: 'harassment', label: t('incident.inappropriateBehavior', 'Inappropriate Behavior or Harassment') },
+  { id: 'identity', label: t('incident.identityMismatch', 'Identity Mismatch (Fake Profile)') },
+  { id: 'noshow', label: t('incident.companionNoShow', 'Companion No-Show / Scam') },
+  { id: 'other', label: t('incident.otherSafetyConcern', 'Other Safety Concern') }
 ];
 
 export const IncidentReportScreen = () => { 

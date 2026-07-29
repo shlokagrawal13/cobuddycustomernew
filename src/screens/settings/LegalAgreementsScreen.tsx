@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,10 +11,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const LEGAL_DOCS = [
-    { id: 'tos', title: 'Terms of Service', sub: 'Last updated: June 2026', icon: 'file-document-outline' },
-    { id: 'privacy', title: 'Privacy Policy', sub: 'Last updated: June 2026', icon: 'shield-account-outline' },
-    { id: 'community', title: 'Community Guidelines', sub: 'Rules for a safe environment', icon: 'account-group-outline' },
-    { id: 'refund', title: 'Refund Policy', sub: 'Cancellation and escrow rules', icon: 'cash-refund' },
+    { id: 'tos', title: t('legal.terms', 'Terms of Service'), sub: t('legal.termsSub', 'Last updated: June 2026'), icon: 'file-document-outline' },
+    { id: 'privacy', title: t('legal.privacy', 'Privacy Policy'), sub: t('legal.privacySub', 'Last updated: June 2026'), icon: 'shield-account-outline' },
+    { id: 'community', title: t('legal.community', 'Community Guidelines'), sub: t('legal.communitySub', 'Rules for a safe environment'), icon: 'account-group-outline' },
+    { id: 'refund', title: t('legal.refund', 'Refund Policy'), sub: t('legal.refundSub', 'Cancellation and escrow rules'), icon: 'cash-refund' },
 ];
 
 export const LegalAgreementsScreen = () => { 

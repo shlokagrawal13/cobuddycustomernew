@@ -66,7 +66,7 @@ export const IncomingCallScreen = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.secureNotice}>
-          <Icon name="lock" size={12} color={theme.colors.textSecondary} /> Calls are secured and masked by CoBuddy.
+          <Icon name="lock" size={12} color={theme.colors.textSecondary} /> {t('secureCallNotice', 'Calls are secured and masked by CoBuddy.')}
         </Text>
       </View>
     </SafeAreaView>

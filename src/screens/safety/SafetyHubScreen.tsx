@@ -145,7 +145,7 @@ export const SafetyHubScreen = () => {
             </View>
             <View style={styles.cardTextContent}>
                 <Text style={styles.cardTitle}>{isSessionActive ? t('stopLiveSession', 'Stop Live Session') : t('startLiveSession', 'Start Live Session (Mock)')}</Text>
-                <Text style={styles.cardDesc}>Toggle background location service mocking.</Text>
+                <Text style={styles.cardDesc}>{t('safety.toggleLocationMock', 'Toggle background location service mocking.')}</Text>
             </View>
             <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
         </TouchableOpacity>

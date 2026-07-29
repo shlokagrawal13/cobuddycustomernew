@@ -74,7 +74,7 @@ export const SavedProfilesScreen = () => {
                     <Icon name="star" size={14} color={theme.colors.background} />
                     <Text style={styles.ratingText}>{item.rating}</Text>
                 </View>
-                <Text style={styles.reviewsText}>({item.reviews} reviews)</Text>
+                <Text style={styles.reviewsText}>({item.reviews} {t('reviews.count', 'reviews')})</Text>
                 <View style={styles.dot} />
                 <Icon name="map-marker" size={12} color={theme.colors.textSecondary} />
                 <Text style={styles.locationText} numberOfLines={1}>{item.location}</Text>

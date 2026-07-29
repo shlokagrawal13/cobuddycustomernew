@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import React from 'react';
 import { 
@@ -21,10 +22,10 @@ const WALLET_DATA = {
 };
 
 const TRANSACTIONS = [
-  { id: '1', type: 'add', title: 'Money Added', method: 'via UPI ending in 45', amount: '+ ₹1,000', date: 'Today, 2:30 PM', positive: true },
-  { id: '2', type: 'deduct', title: 'Session Payment', method: 'Booking #8294', amount: '- ₹450', date: 'Yesterday, 8:15 PM', positive: false },
-  { id: '3', type: 'refund', title: 'Refund Processed', method: 'Canceled Session #8290', amount: '+ ₹200', date: 'Oct 18, 10:00 AM', positive: true, isRefund: true },
-  { id: '4', type: 'add', title: 'Money Added', method: 'via Card ending in 4242', amount: '+ ₹2,000', date: 'Oct 10, 1:15 PM', positive: true },
+  { id: '1', type: 'add', title: t('txTypes.moneyAdded', 'Money Added'), method: 'via UPI ending in 45', amount: '+ ₹1,000', date: 'Today, 2:30 PM', positive: true },
+  { id: '2', type: 'deduct', title: t('txTypes.sessionPayment', 'Session Payment'), method: 'Booking #8294', amount: '- ₹450', date: 'Yesterday, 8:15 PM', positive: false },
+  { id: '3', type: 'refund', title: t('txTypes.refundProcessed', 'Refund Processed'), method: 'Canceled Session #8290', amount: '+ ₹200', date: 'Oct 18, 10:00 AM', positive: true, isRefund: true },
+  { id: '4', type: 'add', title: t('txTypes.moneyAdded', 'Money Added'), method: 'via Card ending in 4242', amount: '+ ₹2,000', date: 'Oct 10, 1:15 PM', positive: true },
 ];
 
 export const WalletScreen = () => { 
@@ -63,11 +64,11 @@ export const WalletScreen = () => {
           <View style={styles.statsContainer}>
             <View style={styles.statBadgeWarning}>
               <Icon name="clock-outline" size={14} color={theme.colors.warning} />
-              <Text style={styles.statBadgeWarningText}>Pending Refunds: ₹{WALLET_DATA.pendingRefund.toLocaleString()}</Text>
+              <Text style={styles.statBadgeWarningText}>{t('wallet.pendingRefunds', 'Pending Refunds: ₹')}{WALLET_DATA.pendingRefund.toLocaleString()}</Text>
             </View>
             <View style={styles.statBadgeNeutral}>
               <Icon name="shield-lock-outline" size={14} color={theme.colors.textSecondary} />
-              <Text style={styles.statBadgeNeutralText}>Held in Escrow: ₹{WALLET_DATA.escrowHeld.toLocaleString()}</Text>
+              <Text style={styles.statBadgeNeutralText}>{t('wallet.heldInEscrow', 'Held in Escrow: ₹')}{WALLET_DATA.escrowHeld.toLocaleString()}</Text>
             </View>
           </View>
 

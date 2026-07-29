@@ -97,7 +97,7 @@ export const EditProfileScreen = () => {
                 <View style={styles.inputBlock}>
                     <Text style={styles.inputLabel}>{t('shortBio', 'Short Bio')}</Text>
                     <TextInput style={[styles.input, styles.textArea]} value={form.bio} onChangeText={v => updateForm('bio', v)} placeholder={t('placeholder.SaySomethingAbo', 'Say something about yourself...')} placeholderTextColor={theme.colors.textSecondary} multiline maxLength={150} textAlignVertical="top" />
-                    <Text style={styles.helperText}>{form.bio.length}/150 characters</Text>
+                    <Text style={styles.helperText}>{form.bio.length}{t('profile.charactersLimit', '/150 characters')}</Text>
                 </View>
 
                 <View style={styles.inputBlock}>
@@ -105,7 +105,7 @@ export const EditProfileScreen = () => {
                     <TouchableOpacity 
                         style={[styles.iconInputWrap, {paddingVertical: 14, paddingRight: 16}]} 
                         activeOpacity={0.7}
-                        onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel={form.city || t('a11ySelectLocation', 'Select Location')}
+                        onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel={form.city || t('a11ySelectLocation', t('profile.selectLocation', 'Select Location'))}
                     >
                         <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} style={styles.inputIcon} />
                         <Text style={[styles.iconInput, {paddingVertical: 0, paddingRight: 0}]}>{form.city || 'Select Location'}</Text>
@@ -128,7 +128,7 @@ export const EditProfileScreen = () => {
                 <TouchableOpacity 
                     style={styles.clickableRow} 
                     activeOpacity={0.7}
-                    onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={form.languages.length > 0 ? form.languages.join(', ') : t('a11ySelectLanguages', 'Select Languages')}
+                    onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={form.languages.length > 0 ? form.languages.join(', ') : t('a11ySelectLanguages', t('profile.selectLanguages', 'Select Languages'))}
                 >
                     <Text style={styles.clickableRowText}>
                         {form.languages.length > 0 ? form.languages.join(', ') : 'Select Languages'}
@@ -187,7 +187,7 @@ export const EditProfileScreen = () => {
                         <Text style={styles.lockedLabel}>{t('age', 'Age')}</Text>
                         <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                             <Icon name="lock" size={14} color={theme.colors.textSecondary} />
-                            <Text style={styles.lockedValue}>{MOCK_PROFILE.age} yrs</Text>
+                            <Text style={styles.lockedValue}>{MOCK_PROFILE.age} {t('units.yrs', 'yrs')}</Text>
                         </View>
                     </View>
                 </View>

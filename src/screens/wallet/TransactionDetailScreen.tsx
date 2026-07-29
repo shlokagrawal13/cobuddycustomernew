@@ -68,10 +68,10 @@ export const TransactionDetailScreen = () => {
         <View style={styles.card}>
             <Text style={styles.sectionTitle}>{t('infoTitle', 'TRANSACTION INFO')}</Text>
             {[
-                { icon: 'calendar', label: 'Date', value: tx.date },
-                { icon: 'clock-outline', label: 'Time', value: tx.time },
-                { icon: 'tag-outline', label: 'Category', value: tx.category },
-                { icon: 'credit-card-outline', label: 'Payment Source', value: tx.paymentSource },
+                { icon: 'calendar', label: t('txDetail.date', 'Date'), value: tx.date },
+                { icon: 'clock-outline', label: t('txDetail.time', 'Time'), value: tx.time },
+                { icon: 'tag-outline', label: t('txDetail.category', 'Category'), value: tx.category },
+                { icon: 'credit-card-outline', label: t('txDetail.paymentSource', 'Payment Source'), value: tx.paymentSource },
             ].map((row, i, arr) => (
                 <View key={row.label} style={[styles.infoRow, i !== arr.length - 1 && styles.infoBorder]}>
                     <Icon name={row.icon} size={18} color={theme.colors.textSecondary} />

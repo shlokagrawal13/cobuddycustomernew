@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -39,10 +40,10 @@ const CustomSwitch = ({ value, onValueChange }: { value: boolean, onValueChange:
 };
 
 const TIMEOUT_OPTIONS = [
-    { id: 'immediate', label: 'Immediately' },
-    { id: '1min', label: 'After 1 minute' },
-    { id: '5min', label: 'After 5 minutes' },
-    { id: '15min', label: 'After 15 minutes' },
+    { id: 'immediate', label: t('timeout.immediately', 'Immediately') },
+    { id: '1min', label: t('timeout.after1min', 'After 1 minute') },
+    { id: '5min', label: t('timeout.after5min', 'After 5 minutes') },
+    { id: '15min', label: t('timeout.after15min', 'After 15 minutes') },
 ];
 
 export const AppLockScreen = () => { 

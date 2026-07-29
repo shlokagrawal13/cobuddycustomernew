@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Modal, Pressable, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -58,7 +59,7 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
     <View style={styles.sliderContainer}>
       <View style={styles.sliderLabelsRow}>
         <Text style={styles.sliderLabelMinMax}>{prefix}{min}{suffix}</Text>
-        <Text style={styles.sliderLabelValue}>Up to {prefix}{localVal}{suffix}</Text>
+        <Text style={styles.sliderLabelValue}>{t('discover.upTo', 'Up to ')}{prefix}{localVal}{suffix}</Text>
         <Text style={styles.sliderLabelMinMax}>{prefix}{max}{suffix}</Text>
       </View>
       <View 
@@ -251,7 +252,7 @@ export const DiscoverScreen = () => {
         </View>
         <View style={styles.infoBar}>
           <Text style={styles.infoBarText}>
-            Showing {filteredCompanions.length} companions
+            {t('discover.showing', 'Showing ')}{filteredCompanions.length} {t('discover.companions', 'companions')}
           </Text>
         </View>
       </View>
@@ -404,7 +405,7 @@ export const DiscoverScreen = () => {
                 min={1} 
                 max={50} 
                 step={1} 
-                suffix=" km"
+                suffix={t('units.kmSpace', ' km')}
               />
               <View style={styles.modalOptionsGrid}>
                 {DISTANCE_PILLS.map((d) => (
@@ -414,7 +415,7 @@ export const DiscoverScreen = () => {
                     onPress={() => setFilterDistance(d)} accessibilityRole="button" accessibilityLabel={t('a11yDKm', 'd km')}
                   >
                     <Text style={[styles.modalOptionText, filterDistance === d && styles.modalOptionTextActive]}>
-                      {d} km
+                      {d} {t('units.km', 'km')}
                     </Text>
                   </TouchableOpacity>
                 ))}

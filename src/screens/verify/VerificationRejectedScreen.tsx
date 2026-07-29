@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,10 +10,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const REVIEW_STEPS = [
-  {icon: 'check-circle',        label: 'Document Verification', status: 'Completed',    done: true},
-  {icon: 'check-circle',        label: 'Selfie & Liveness Check', status: 'Completed',    done: true},
-  {icon: 'close-circle',        label: 'Profile Review',        status: 'Action Required', done: false, error: true},
-  {icon: 'clock-outline',       label: 'Booking Authorization', status: 'Blocked',      done: false},
+  {icon: 'check-circle',        label: t('steps.documentVerification', 'Document Verification'), status: 'Completed',    done: true},
+  {icon: 'check-circle',        label: t('steps.selfieLiveness', 'Selfie & Liveness Check'), status: 'Completed',    done: true},
+  {icon: 'close-circle',        label: t('steps.profileReview', 'Profile Review'),        status: 'Action Required', done: false, error: true},
+  {icon: 'clock-outline',       label: t('steps.bookingAuthorization', 'Booking Authorization'), status: 'Blocked',      done: false},
 ];
 
 export const VerificationRejectedScreen = () => { 

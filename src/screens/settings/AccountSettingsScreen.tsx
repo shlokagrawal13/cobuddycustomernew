@@ -139,7 +139,7 @@ export const AccountSettingsScreen = () => {
                                 <Icon name="google" size={24} color="#DB4437" />
                                 <Text style={styles.linkedText}>{t('google', 'Google')}</Text>
                             </View>
-                            <Text style={[styles.linkStatus, {color: theme.colors.success}]}>{t('connected', 'Connected')}</Text>
+                            <Text style={[styles.linkStatus, {color: theme.colors.success}]}>{t('connected', t('actions.connected', 'Connected'))}</Text>
                         </View>
 
                         <View style={[styles.linkedRow, {borderBottomWidth: 0, paddingBottom: 0, marginTop: 16}]}>
@@ -147,7 +147,7 @@ export const AccountSettingsScreen = () => {
                                 <Icon name="apple" size={24} color={theme.colors.textPrimary} />
                                 <Text style={styles.linkedText}>{t('apple', 'Apple')}</Text>
                             </View>
-                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel={appleConnected ? 'Connected' : 'Connect'}>
+                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel={appleConnected ? 'Connected' : t('actions.connect', 'Connect')}>
                                 <Text style={[styles.linkStatus, {color: appleConnected ? theme.colors.success : theme.colors.primary}]}>
                                     {appleConnected ? 'Connected' : 'Connect'}
                                 </Text>

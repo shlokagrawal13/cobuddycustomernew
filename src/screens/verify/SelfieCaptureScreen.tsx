@@ -54,8 +54,8 @@ export const SelfieCaptureScreen = () => {
         <Text style={styles.title}>{t('selfieVerify', 'Selfie Verification')}</Text>
         <Text style={styles.subtitle}>
           {photoCaptured 
-            ? "Ensure your face is clearly visible and not blurry." 
-            : "Please remove any glasses or hats, and ensure you are in a well-lit area."}
+            ? t('selfie.faceVisible', "Ensure your face is clearly visible and not blurry.") 
+            : t('selfie.removeGlasses', "Please remove any glasses or hats, and ensure you are in a well-lit area.")}
         </Text>
 
         <View style={styles.cameraContainer}>

@@ -66,7 +66,7 @@ export const LivenessDetectionScreen = () => {
       <View style={styles.content}>
         <Text style={styles.title}>{t('livenessCheck', 'Liveness Check')}</Text>
         <Text style={styles.subtitle}>
-          {step === 0 ? "Please hold your phone still..." : "Now, blink your eyes slowly."}
+          {step === 0 ? t('liveness.holdStill', "Please hold your phone still...") : t('liveness.blinkEyes', 'Now, blink your eyes slowly.')}
         </Text>
 
         <View style={styles.cameraContainer}>
