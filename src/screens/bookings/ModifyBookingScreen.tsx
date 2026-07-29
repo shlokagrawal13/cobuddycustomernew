@@ -172,7 +172,7 @@ export const ModifyBookingScreen = () => {
           <TouchableOpacity style={styles.inputWrapper} activeOpacity={0.7} onPress={() => setVenueModalVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yNewvenueSearchSafePubli', 'newVenue || \'Search safe publi...')}>
             <Icon name="magnify" size={20} color={theme.colors.primary} style={styles.inputIcon} />
             <Text style={[styles.input, { color: newVenue ? theme.colors.textPrimary : theme.colors.textSecondary, alignSelf: 'center', flex: 1 }]}>
-              {newVenue || 'Search safe public venue...'}
+              {newVenue || t('searchVenuePlaceholder', 'Search safe public venue...')}
             </Text>
             <Icon name="chevron-right" size={24} color={theme.colors.textSecondary} />
           </TouchableOpacity>

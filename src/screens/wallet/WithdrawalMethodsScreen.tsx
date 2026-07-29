@@ -57,7 +57,7 @@ export const WithdrawalMethodsScreen = () => {
         id: 'wm_upi_' + Date.now(),
         type: 'upi',
         icon: 'qrcode',
-        title: 'UPI ID',
+        title: t('upi.title', 'UPI ID'),
         sub: newUpiId.toLowerCase(),
         isVerified: true
     };

@@ -16,5 +16,6 @@
   "a11yClose": "Close",
   "a11yAcceptNewOffer": "Accept New Offer",
   "a11yMessageBack": "Message Back",
-  "a11yDeclineBooking": "Decline Booking"
+  "a11yDeclineBooking": "Decline Booking",
+  "defaultMessage": "Hi! I have another engagement that runs late. Can we shift by 1 hour? Also due to weekend peak rates, I have slightly adjusted the price. Let me know if this works!"
 }

@@ -346,7 +346,9 @@ export const DiscoverScreen = () => {
                     <Text style={[
                       styles.modalOptionText,
                       filterGender === g && styles.modalOptionTextActive
-                    ]}>{g}</Text>
+                    ]}>
+                        {g === 'Any' ? t('filter.any', 'Any') : g === 'Male' ? t('filter.male', 'Male') : t('filter.female', 'Female')}
+                      </Text>
                   </TouchableOpacity>
                 ))}
               </View>

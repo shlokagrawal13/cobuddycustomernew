@@ -36,5 +36,10 @@
   "a11yDKm": "d km",
   "a11yClearAll": "Clear All",
   "a11yApplyFilters": "Apply Filters",
-  "a11ySelectFilter": "Filter by {{item}}"
+  "a11ySelectFilter": "Filter by {{item}}",
+  "filter": {
+    "any": "Any",
+    "male": "Male",
+    "female": "Female"
+  }
 }

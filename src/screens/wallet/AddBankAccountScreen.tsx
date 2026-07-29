@@ -36,8 +36,8 @@ export const AddBankAccountScreen = () => {
         id: 'wm_bank_' + Date.now(),
         type: 'bank',
         icon: 'bank',
-        title: 'Verified Bank',
-        sub: 'Account ending in ' + accNumber.slice(-4),
+        title: t('bank.verifiedTitle', 'Verified Bank'),
+        sub: t('bank.endingIn', 'Account ending in {{last4}}', { last4: accNumber.slice(-4) }),
         isVerified: true
     };
 

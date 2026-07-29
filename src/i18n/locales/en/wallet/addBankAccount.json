@@ -23,5 +23,9 @@
   },
   "a11yGoBack": "Go back",
   "a11yVerifySaveAccount": "Verify & Save Account",
-  "okBtn": "OK"
+  "okBtn": "OK",
+  "bank": {
+    "verifiedTitle": "Verified Bank",
+    "endingIn": "Account ending in {{last4}}"
+  }
 }

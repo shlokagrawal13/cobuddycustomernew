@@ -196,10 +196,10 @@ export const DocumentVerificationScreen = () => {
                   />
                   <View style={styles.uploadSlotMeta}>
                     <Text style={styles.uploadSlotTitle}>
-                      {backState === 'uploaded' ? t('doc.backUploaded', 'Back Side Uploaded') : backState === 'selected' ? 'Processing...' : t('doc.uploadBack', 'Upload Back Side')}
+                      {backState === 'uploaded' ? t('doc.backUploaded', 'Back Side Uploaded') : backState === 'selected' ? t('doc.processing', 'Processing...') : t('doc.uploadBack', 'Upload Back Side')}
                     </Text>
                     <Text style={styles.uploadSlotSub}>
-                      {backState === 'uploaded' ? 'Image accepted' : 'Tap to select image'}
+                      {backState === 'uploaded' ? t('doc.imageAccepted', 'Image accepted') : t('doc.tapToSelect', 'Tap to select image')}
                     </Text>
                   </View>
                   {backState === 'idle' && (

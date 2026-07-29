@@ -41,5 +41,9 @@
   "a11yCheckDecagram": "Check Decagram",
   "a11ySave": "Save",
   "a11yNext": "Next",
-  "a11yRequestDataDownload": "Request your data download"
+  "a11yRequestDataDownload": "Request your data download",
+  "actions": {
+    "connected": "Connected",
+    "connect": "Connect"
+  }
 }

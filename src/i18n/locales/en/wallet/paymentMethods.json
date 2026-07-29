@@ -23,5 +23,8 @@
   "a11yVerifyAdd": "Verify & Add",
   "cancelBtn": "Cancel",
   "removeBtn": "Remove",
-  "a11ySelectPaymentMethod": "Select {{method}}"
+  "a11ySelectPaymentMethod": "Select {{method}}",
+  "upi": {
+    "title": "UPI ID"
+  }
 }

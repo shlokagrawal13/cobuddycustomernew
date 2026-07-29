@@ -31,5 +31,6 @@
   "a11yClose": "Close",
   "a11yItem": "item",
   "a11yNewvenueSearchSafePubli": "New venue search - safe public place",
-  "a11ySelectVenueOption": "Select {{venue}}"
+  "a11ySelectVenueOption": "Select {{venue}}",
+  "searchVenuePlaceholder": "Search safe public venue..."
 }

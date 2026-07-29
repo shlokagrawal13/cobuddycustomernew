@@ -14,10 +14,10 @@ export const VerificationProcessingScreen = () => {
   const { t } = useTranslation('verify.processing');
 
   const STEPS = [
-  {id: 1, icon: 'file-document-check', label: t('steps.documentVerification', 'Document Verification'), status: t('processing.statusCompleted', 'COMPLETED')},
-  {id: 2, icon: 'face-recognition',    label: t('steps.selfieLiveness', 'Selfie & Liveness Check'),status: 'COMPLETED'},
-  {id: 3, icon: 'account-search',      label: t('steps.profileReview', 'Profile Review'),        status: t('processing.statusProcessing', 'PROCESSING')},
-  {id: 4, icon: 'check-decagram',      label: t('steps.bookingAuthorization', 'Booking Authorization'), status: t('processing.statusPending', 'PENDING')},
+  {id: 1, icon: 'file-document-check', label: t('steps.documentVerification', 'Document Verification'), status: t('processing.statusCompleted', t('status.completed', 'COMPLETED'))},
+  {id: 2, icon: 'face-recognition',    label: t('steps.selfieLiveness', 'Selfie & Liveness Check'),status: t('status.completed', 'COMPLETED')},
+  {id: 3, icon: 'account-search',      label: t('steps.profileReview', 'Profile Review'),        status: t('processing.statusProcessing', t('status.processing', 'PROCESSING'))},
+  {id: 4, icon: 'check-decagram',      label: t('steps.bookingAuthorization', 'Booking Authorization'), status: t('processing.statusPending', t('status.pending', 'PENDING'))},
 ];
 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -44,7 +44,7 @@ export const VerificationProcessingScreen = () => {
         /*
         if (response.data.status === 'APPROVED') {
           navigation.replace('VerificationSuccessScreen');
-        } else if (response.data.status === 'PENDING') {
+        } else if (response.data.status === t('status.pending', 'PENDING')) {
           navigation.replace('VerificationPendingScreen');
         } else {
           navigation.replace('VerificationRejectedScreen');
@@ -142,7 +142,7 @@ export const VerificationProcessingScreen = () => {
                     isDone && styles.statusTextDone,
                     isProcessing && styles.statusTextActive,
                   ]}>
-                    {isDone ? 'COMPLETED' : isProcessing ? 'PROCESSING' : 'PENDING'}
+                    {isDone ? t('status.completed', 'COMPLETED') : isProcessing ? t('status.processing', 'PROCESSING') : t('status.pending', 'PENDING')}
                   </Text>
                 </View>
               </View>

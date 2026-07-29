@@ -65,7 +65,7 @@ export const PaymentMethodsScreen = () => {
     const upiMethod = {
         id: 'pm_upi_' + Date.now(),
         icon: 'qrcode',
-        title: 'UPI ID',
+        title: t('upi.title', 'UPI ID'),
         sub: newUpiId.toLowerCase(),
         isDefault: true
     };

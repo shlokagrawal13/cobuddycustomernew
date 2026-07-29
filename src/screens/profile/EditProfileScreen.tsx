@@ -109,7 +109,7 @@ export const EditProfileScreen = () => {
                         onPress={() => navigation.navigate('LocationSelectionScreen')} accessibilityRole="button" accessibilityLabel={form.city || t('a11ySelectLocation', t('profile.selectLocation', 'Select Location'))}
                     >
                         <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} style={styles.inputIcon} />
-                        <Text style={[styles.iconInput, {paddingVertical: 0, paddingRight: 0}]}>{form.city || 'Select Location'}</Text>
+                        <Text style={[styles.iconInput, {paddingVertical: 0, paddingRight: 0}]}>{form.city || t('selectLocation', 'Select Location')}</Text>
                         <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                     </TouchableOpacity>
                 </View>
@@ -132,7 +132,7 @@ export const EditProfileScreen = () => {
                     onPress={() => navigation.navigate('SpokenLanguagesScreen', { initialLanguages: form.langIds })} accessibilityRole="button" accessibilityLabel={form.languages.length > 0 ? form.languages.join(', ') : t('a11ySelectLanguages', t('profile.selectLanguages', 'Select Languages'))}
                 >
                     <Text style={styles.clickableRowText}>
-                        {form.languages.length > 0 ? form.languages.join(', ') : 'Select Languages'}
+                        {form.languages.length > 0 ? form.languages.join(', ') : t('selectLanguages', 'Select Languages')}
                     </Text>
                     <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                 </TouchableOpacity>

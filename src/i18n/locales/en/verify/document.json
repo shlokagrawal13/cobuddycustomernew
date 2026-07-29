@@ -15,5 +15,7 @@
   "yourInformationIsEncryptedAnd": "Your information is encrypted and securely protected. Documents are used only for verification.",
   "a11yGoBack": "Go back",
   "a11yConfirm": "Confirm",
-  "a11yContinueVerification": "Continue Verification"
+  "a11yContinueVerification": "Continue Verification",
+  "imageAccepted": "Image accepted",
+  "tapToSelectImage": "Tap to select image"
 }

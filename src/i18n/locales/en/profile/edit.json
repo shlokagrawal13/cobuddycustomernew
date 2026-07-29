@@ -25,5 +25,7 @@
   "a11yGoBack": "Go back",
   "a11ySave": "Save",
   "a11yCamera": "Camera",
-  "a11yEdit": "Edit"
+  "a11yEdit": "Edit",
+  "selectLocation": "Select Location",
+  "selectLanguages": "Select Languages"
 }

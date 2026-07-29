@@ -149,7 +149,7 @@ export const AccountSettingsScreen = () => {
                             </View>
                             <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel={appleConnected ? 'Connected' : t('actions.connect', 'Connect')}>
                                 <Text style={[styles.linkStatus, {color: appleConnected ? theme.colors.success : theme.colors.primary}]}>
-                                    {appleConnected ? 'Connected' : 'Connect'}
+                                    {appleConnected ? t('actions.connected', 'Connected') : t('actions.connect', 'Connect')}
                                 </Text>
                             </TouchableOpacity>
                         </View>

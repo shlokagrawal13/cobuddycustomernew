@@ -4,5 +4,8 @@
   "a11yGoBack": "Go back",
   "a11yDownload": "Download",
   "a11yF": "f",
-  "a11yGoToTransactiondetail": "Go to TransactionDetail"
+  "a11yGoToTransactiondetail": "Go to TransactionDetail",
+  "txTypes": {
+    "refundCancelled": "Refund: Session Cancelled"
+  }
 }

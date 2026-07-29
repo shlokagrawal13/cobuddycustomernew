@@ -55,7 +55,7 @@ export const CancelBookingScreen = () => {
           <Text style={styles.summaryTitle}>{t('summaryTitle', 'Cancelling Booking: {{id}}', { id: bookingId })}</Text>
           <View style={styles.summaryRow}>
             <Icon name="account" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>{booking?.companionName || 'Companion'}</Text>
+            <Text style={styles.summaryText}>{booking?.companionName || t('fallbackCompanion', 'Companion')}</Text>
           </View>
           <View style={styles.summaryRow}>
             <Icon name="calendar-clock" size={16} color={theme.colors.textSecondary} />

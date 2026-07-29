@@ -23,5 +23,8 @@
   "a11yVerifySave": "Verify & Save",
   "cancelBtn": "Cancel",
   "removeBtn": "Remove",
-  "a11ySelectWithdrawalMethod": "Select {{method}}"
+  "a11ySelectWithdrawalMethod": "Select {{method}}",
+  "upi": {
+    "title": "UPI ID"
+  }
 }

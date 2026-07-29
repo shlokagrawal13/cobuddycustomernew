@@ -16,5 +16,6 @@
   "a11yGoBack": "Go back",
   "a11yReason": "reason",
   "a11yConfirmCancellation": "Confirm Cancellation",
-  "a11yNoKeepBooking": "No, Keep Booking"
+  "a11yNoKeepBooking": "No, Keep Booking",
+  "fallbackCompanion": "Companion"
 }
