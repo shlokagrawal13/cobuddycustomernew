@@ -35,5 +35,10 @@
   "a11yOpenSafetyHub": "Open Safety Hub",
   "a11yViewActiveSession": "View your active session",
   "a11yOpenItem": "Open {{label}}",
-  "a11yToggleSafetySetting": "Toggle {{title}}"
+  "a11yToggleSafetySetting": "Toggle {{title}}",
+  "actions": {
+    "showLess": "Show less",
+    "showMore": "Show more",
+    "readMore": "Read more"
+  }
 }

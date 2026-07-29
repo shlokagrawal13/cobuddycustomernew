@@ -147,7 +147,7 @@ export const AccountSettingsScreen = () => {
                                 <Icon name="apple" size={24} color={theme.colors.textPrimary} />
                                 <Text style={styles.linkedText}>{t('apple', 'Apple')}</Text>
                             </View>
-                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel={appleConnected ? 'Connected' : t('actions.connect', 'Connect')}>
+                            <TouchableOpacity onPress={toggleAppleConnect} accessibilityRole="button" accessibilityLabel={appleConnected ? t('actions.connected', 'Connected') : t('actions.connect', 'Connect')}>
                                 <Text style={[styles.linkStatus, {color: appleConnected ? theme.colors.success : theme.colors.primary}]}>
                                     {appleConnected ? t('actions.connected', 'Connected') : t('actions.connect', 'Connect')}
                                 </Text>

@@ -154,7 +154,7 @@ export const TrustedContactsScreen = () => {
 
         <BottomActionBar>
           <Button 
-            title={isFromSettings ? 'Save Contacts' : t('contacts.btn_complete')} 
+            title={isFromSettings ? t('contacts.saveContacts', 'Save Contacts') : t('contacts.btn_complete')} 
             disabled={!isValid}
             onPress={() => isFromSettings ? smartGoBack() : completeOnboarding()} 
           />

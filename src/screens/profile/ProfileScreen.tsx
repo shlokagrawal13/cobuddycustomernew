@@ -159,8 +159,8 @@ export const ProfileScreen = () => {
                 <Text style={styles.heroBio} numberOfLines={isBioExpanded ? undefined : 1}>
                   {user.bio}
                 </Text>
-                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel={isBioExpanded ? t('actions.showLess', 'Show less') : 'Show more'}>
-                  <Text style={styles.readMoreText}>{isBioExpanded ? 'Show less' : t('actions.readMore', 'Read more')}</Text>
+                <TouchableOpacity activeOpacity={0.7} onPress={() => setIsBioExpanded(!isBioExpanded)} accessibilityRole="button" accessibilityLabel={isBioExpanded ? t('actions.showLess', 'Show less') : t('actions.showMore', 'Show more')}>
+                  <Text style={styles.readMoreText}>{isBioExpanded ? t('actions.showLess', 'Show less') : t('actions.readMore', 'Read more')}</Text>
                 </TouchableOpacity>
               </View>
             </View>

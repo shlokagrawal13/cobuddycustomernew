@@ -123,7 +123,7 @@ export const SafetyHubScreen = () => {
                 >
                     <View style={[styles.sosButtonInner, isSOSActive && styles.sosButtonInnerActive]}>
                         <Icon name={isSOSActive ? "shield-check" : "shield-alert"} size={42} color={theme.colors.background} />
-                        <Text style={styles.sosButtonText}>{isSOSActive ? "SAFE" : t('sosBtn', 'SOS')}</Text>
+                        <Text style={styles.sosButtonText}>{isSOSActive ? t('sosBtnSafe', 'SAFE') : t('sosBtn', 'SOS')}</Text>
                     </View>
                 </TouchableOpacity>
             </View>

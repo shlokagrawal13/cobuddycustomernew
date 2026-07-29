@@ -34,5 +34,6 @@
   "a11yManageTrustedContacts": "Manage trusted contacts",
   "a11yReportIncident": "Report a safety incident",
   "a11yViewSafetyGuidelines": "View safety guidelines",
-  "a11yOpenHelpCenter": "Open help center"
+  "a11yOpenHelpCenter": "Open help center",
+  "sosBtnSafe": "SAFE"
 }

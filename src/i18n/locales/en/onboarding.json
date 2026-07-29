@@ -88,7 +88,8 @@
   },
   "contacts": {
     "headerTitle": "Emergency Contacts",
-    "": "Go back"
+    "": "Go back",
+    "saveContacts": "Save Contacts"
   },
   "features": {
     "verified": "Verified",
