@@ -29,5 +29,9 @@
   },
   "a11yGoBack": "Go back",
   "a11ySaveCardSecurely": "Save Card Securely",
-  "okBtn": "OK"
+  "okBtn": "OK",
+  "card": {
+    "endingIn": "Card ending in {{last4}}",
+    "expires": "Expires {{date}}"
+  }
 }

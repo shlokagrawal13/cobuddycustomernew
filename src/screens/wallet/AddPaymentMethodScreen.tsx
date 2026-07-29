@@ -47,8 +47,8 @@ export const AddPaymentMethodScreen = () => {
     const newCard = {
         id: 'pm_card_' + Date.now(),
         icon: 'credit-card-outline',
-        title: 'Card ending in ' + raw.slice(-4),
-        sub: 'Expires ' + (expiry || '12/29'),
+        title: t('card.endingIn', 'Card ending in {{last4}}', { last4: raw.slice(-4) }),
+    sub: t('card.expires', 'Expires {{date}}', { date: expiry || '12/29' }),
         isDefault: isDefault
     };
 

@@ -141,7 +141,7 @@ export const BasicProfileSetupScreen = () => {
                   avatarState !== 'none' && styles.photoCircleSelected,
                 ]}
                 onPress={() => setShowAvatarSheet(true)}
-                activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('profile.', 'Action')}>
+                activeOpacity={0.85} accessibilityRole="button" accessibilityLabel={t('profile.a11yEditPhoto', 'Upload or edit profile photo')}>
                 {avatarState === 'none' ? (
                   <>
                     <View style={{ opacity: 0.5 }}>
@@ -222,7 +222,7 @@ export const BasicProfileSetupScreen = () => {
                 <Text style={styles.fieldLabel}>{t('profile.label_gender')}</Text>
                 <TouchableOpacity
                   style={styles.underlineSelect}
-                  onPress={() => setShowGender(s => !s)} accessibilityRole="button" accessibilityLabel={t('profile.', 'chevron down')}>
+                  onPress={() => setShowGender(s => !s)} accessibilityRole="button" accessibilityLabel={t('profile.a11yGenderDropdown', 'Toggle gender dropdown')}>
                   <Text style={gender ? styles.selectValue : styles.selectPlaceholder}>
                     {gender || t('profile.placeholder_gender')}
                   </Text>
@@ -234,7 +234,7 @@ export const BasicProfileSetupScreen = () => {
                       <TouchableOpacity
                         key={g}
                         style={styles.dropdownItem}
-                        onPress={() => { setGender(g); setShowGender(false); }} accessibilityRole="button" accessibilityLabel={t('profile.', 'g')}>
+                        onPress={() => { setGender(g); setShowGender(false); }} accessibilityRole="button" accessibilityLabel={t('profile.a11ySelectGender', 'Select gender')}>
                         <Text style={[styles.dropdownText, g === gender && styles.dropdownTextActive]}>
                           {g}
                         </Text>
@@ -313,7 +313,7 @@ export const BasicProfileSetupScreen = () => {
             <TouchableOpacity
               style={picker.option}
               onPress={() => handleAvatarOption('photo')}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('profile.', 'Next')}>
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('profile.a11yChoosePhoto', 'Choose photo from gallery')}>
               <View style={picker.optionIcon}>
                 <Icon name="image-outline" size={22} color={theme.colors.primary} />
               </View>
@@ -330,7 +330,7 @@ export const BasicProfileSetupScreen = () => {
             <TouchableOpacity
               style={picker.option}
               onPress={() => handleAvatarOption('selfie')}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('profile.', 'Next')}>
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('profile.a11yTakeSelfie', 'Take a selfie')}>
               <View style={picker.optionIcon}>
                 <Icon name="camera-front-variant" size={22} color={theme.colors.primary} />
               </View>
@@ -347,7 +347,7 @@ export const BasicProfileSetupScreen = () => {
             <TouchableOpacity
               style={picker.option}
               onPress={() => handleAvatarOption('skip')}
-              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('profile.', 'Action')}>
+              activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('profile.a11ySkipAvatar', 'Skip adding a photo for now')}>
               <View style={[picker.optionIcon, picker.optionIconGhost]}>
                 <Icon name="skip-next-outline" size={22} color={theme.colors.textSecondary} />
               </View>

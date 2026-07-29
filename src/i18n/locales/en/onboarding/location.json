@@ -21,5 +21,8 @@
   "alertTitleLocationAccess": "Location Access",
   "alertMsgLocationpermissionwi": "Location permission will be requested on your device. This enables safety monitoring and venue discovery.",
   "cancelBtn": "Cancel",
-  "continueBtn": "Continue"
+  "continueBtn": "Continue",
+  "a11ySkip": "Skip location permission",
+  "a11yAllowLocation": "Allow current location",
+  "a11yNotNow": "Not now"
 }

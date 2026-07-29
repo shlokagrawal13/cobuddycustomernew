@@ -124,7 +124,7 @@ export const LegalConsentScreen = () => {
               <TouchableOpacity
                 style={styles.readLink}
                 activeOpacity={0.7}
-                onPress={() => setActiveDoc(doc)} accessibilityRole="button" accessibilityLabel={t('consent.', 'READ  →')}>
+                onPress={() => setActiveDoc(doc)} accessibilityRole="button" accessibilityLabel={t('consent.a11yReadDoc', 'Read document')}>
                 <Text style={styles.readText}>{t('consent.read', 'READ  →')}</Text>
               </TouchableOpacity>
             </View>

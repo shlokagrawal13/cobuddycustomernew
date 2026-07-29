@@ -73,7 +73,7 @@ export const TrustedContactsScreen = () => {
         
         {isFromSettings ? (
           <View style={styles.settingsHeader}>
-            <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.', 'Go back')}>
+            <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.a11yGoBack', 'Go back')}>
               <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
             </TouchableOpacity>
             <Text style={styles.settingsHeaderTitle}>{t('contacts.headerTitle', 'Emergency Contacts')}</Text>
@@ -91,7 +91,7 @@ export const TrustedContactsScreen = () => {
               <TouchableOpacity
                 onPress={() => completeOnboarding()}
                 hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.', 'Action')}>
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.a11yOptions', 'More options')}>
                 <Text style={styles.skipText}>{t('contacts.btn_skip')}</Text>
               </TouchableOpacity>
             }
@@ -126,7 +126,7 @@ export const TrustedContactsScreen = () => {
                     <Text style={styles.cardRel}>{contact.relationship}</Text>
                   </View>
                 </View>
-                <TouchableOpacity onPress={() => removeContact(index)} style={styles.removeBtn} accessibilityRole="button" accessibilityLabel={t('contacts.', 'Close')}>
+                <TouchableOpacity onPress={() => removeContact(index)} style={styles.removeBtn} accessibilityRole="button" accessibilityLabel={t('contacts.a11yRemoveContact', 'Remove contact')}>
                   <Icon name="close" size={16} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
               </View>
@@ -138,7 +138,7 @@ export const TrustedContactsScreen = () => {
           ))}
           
           {contacts.length < 3 && (
-            <TouchableOpacity onPress={() => setShowAddSheet(true)} style={styles.addButton} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.', 'Add')}>
+            <TouchableOpacity onPress={() => setShowAddSheet(true)} style={styles.addButton} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.a11yAddContact', 'Add new trusted contact')}>
               <Icon name="plus-circle-outline" size={20} color={theme.colors.primary} />
               <Text style={styles.addButtonText}>{t('contacts.btn_add')}</Text>
             </TouchableOpacity>
@@ -189,7 +189,7 @@ export const TrustedContactsScreen = () => {
                 <TouchableOpacity 
                   key={rel}
                   style={[sheet.relChip, newRel === rel && sheet.relChipActive]}
-                  onPress={() => setNewRel(rel)} accessibilityRole="button" accessibilityLabel={t('contacts.', 'Action')}>
+                  onPress={() => setNewRel(rel)} accessibilityRole="button" accessibilityLabel={t('contacts.a11ySelectRel', 'Select relationship')}>
                   <Text style={[sheet.relChipText, newRel === rel && sheet.relChipTextActive]}>{t(`rel_${rel.toLowerCase()}`, rel)}</Text>
                 </TouchableOpacity>
               ))}

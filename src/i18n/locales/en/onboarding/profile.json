@@ -36,5 +36,11 @@
   },
   "youMustBe18To": "You must be 18+ to use CoBuddy.",
   "youCanAddAPhoto": "You can add a photo later from your profile",
-  "photoWillOnlyBeVisible": "Photo will only be visible to verified members during active sessions."
+  "photoWillOnlyBeVisible": "Photo will only be visible to verified members during active sessions.",
+  "a11yEditPhoto": "Upload or edit profile photo",
+  "a11yGenderDropdown": "Toggle gender dropdown",
+  "a11ySelectGender": "Select gender",
+  "a11yChoosePhoto": "Choose photo from gallery",
+  "a11yTakeSelfie": "Take a selfie",
+  "a11ySkipAvatar": "Skip adding a photo for now"
 }

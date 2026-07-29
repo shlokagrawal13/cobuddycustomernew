@@ -14,5 +14,6 @@
     "SafetyAgreement": "Safety Agreement"
   },
   "read": "READ  →",
-  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences."
+  "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences.",
+  "a11yReadDoc": "Read document"
 }

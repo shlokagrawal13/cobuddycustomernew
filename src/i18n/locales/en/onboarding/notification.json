@@ -22,5 +22,8 @@
   "alertTitleEnableNotificat": "Enable Notifications",
   "alertMsgNotificationpermissi": "Notification permission will be requested on your device.",
   "cancelBtn": "Cancel",
-  "continueBtn": "Continue"
+  "continueBtn": "Continue",
+  "a11ySkip": "Skip notification permission",
+  "a11yEnable": "Enable notifications",
+  "a11yNotNow": "Not now"
 }

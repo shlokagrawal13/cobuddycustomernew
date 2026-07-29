@@ -33,5 +33,7 @@
     "verified_label": "PUBLIC DESTINATIONS",
     "verified_text": "We strictly enforce a public-places-only rule. Meetups must always happen in visible, high-traffic areas like cafes or malls to ensure everyone's comfort."
   },
-  "verifiedVenue": "VERIFIED VENUE"
+  "verifiedVenue": "VERIFIED VENUE",
+  "a11yNext": "Go to next step",
+  "a11yLearnMore": "Learn more about safety"
 }

@@ -16,5 +16,10 @@
   "error_name": "Please enter a valid name (min 2 chars).",
   "error_phone": "Please enter a valid phone number.",
   "headerTitle": "Emergency Contacts",
-  "placeholder": "Add Trusted Contact"
+  "placeholder": "Add Trusted Contact",
+  "a11yGoBack": "Go back",
+  "a11yOptions": "More options",
+  "a11yRemoveContact": "Remove contact",
+  "a11yAddContact": "Add new trusted contact",
+  "a11ySelectRel": "Select relationship"
 }
