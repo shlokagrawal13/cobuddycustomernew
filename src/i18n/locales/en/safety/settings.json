@@ -26,5 +26,8 @@
   "a11yOpenSafetyHub": "Open Safety Hub",
   "a11yIncognitoMode": "Toggle incognito mode",
   "a11ySafeChat": "Toggle safe chat mode",
-  "a11yTrustedContacts": "Manage trusted contacts"
+  "a11yTrustedContacts": "Manage trusted contacts",
+  "a11yVerifiedOnly": "Toggle Verified Users Only",
+  "a11yContactShare": "Toggle Trusted Contact Sharing",
+  "a11yLiveMonitor": "Toggle Live Safety Monitoring"
 }

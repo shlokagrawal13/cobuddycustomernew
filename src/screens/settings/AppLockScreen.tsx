@@ -57,7 +57,7 @@ export const AppLockScreen = () => {
   const [timeoutSelected, setTimeoutSelected] = useState('immediate');
 
   const biometricIcon = Platform.OS === 'ios' ? 'face-recognition' : 'fingerprint';
-  const biometricName = Platform.OS === 'ios' ? 'Face ID' : 'Biometric Lock';
+  const biometricName = Platform.OS === 'ios' ? 'Face ID' : t('biometricLockName', 'Biometric Lock');
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>

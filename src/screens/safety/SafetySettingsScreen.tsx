@@ -110,7 +110,7 @@ export const SafetySettingsScreen = () => {
                     <Text style={styles.settingTitle}>{t('verifiedUsers', 'Verified Users Only')}</Text>
                     <Text style={styles.settingDesc}>{t('verifiedUsersSub', 'Only allow users with KYC verified profiles to send you booking requests.')}</Text>
                 </View>
-                <CustomSwitch value={verifiedOnly} onValueChange={setVerifiedOnly} />
+                <CustomSwitch value={verifiedOnly} onValueChange={setVerifiedOnly} label={t('a11yVerifiedOnly', 'Toggle Verified Users Only')} />
             </View>
         </View>
 
@@ -144,7 +144,7 @@ export const SafetySettingsScreen = () => {
                     <Text style={styles.settingTitle}>{t('contactSharing', 'Trusted Contact Sharing')}</Text>
                     <Text style={styles.settingDesc}>{t('contactSharingSub', 'Automatically share your active session details and live location with your trusted contacts.')}</Text>
                 </View>
-                <CustomSwitch value={contactShare} onValueChange={setContactShare} />
+                <CustomSwitch value={contactShare} onValueChange={setContactShare} label={t('a11yContactShare', 'Toggle Trusted Contact Sharing')} />
             </View>
             
             <View style={styles.divider} />
@@ -157,7 +157,7 @@ export const SafetySettingsScreen = () => {
                     <Text style={styles.settingTitle}>{t('liveMonitoring', 'Live Safety Monitoring')}</Text>
                     <Text style={styles.settingDesc}>{t('liveMonitoringSub', 'Enable active tracking and anomaly detection during your meetup sessions.')}</Text>
                 </View>
-                <CustomSwitch value={liveMonitor} onValueChange={setLiveMonitor} />
+                <CustomSwitch value={liveMonitor} onValueChange={setLiveMonitor} label={t('a11yLiveMonitor', 'Toggle Live Safety Monitoring')} />
             </View>
         </View>
 

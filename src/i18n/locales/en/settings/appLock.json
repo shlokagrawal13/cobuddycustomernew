@@ -16,5 +16,6 @@
   "a11yGoBack": "Go back",
   "requireBiometric": "Require Biometric",
   "a11yAppLockToggle": "Toggle app lock",
-  "a11yHideScreenToggle": "Toggle hide screen in app switcher"
+  "a11yHideScreenToggle": "Toggle hide screen in app switcher",
+  "biometricLockName": "Biometric Lock"
 }
