@@ -357,9 +357,9 @@ export const ProfileScreen = () => {
         <View style={styles.infoCard}>
           <Text style={styles.cardTitle}>{t('prefsLegalTitle', 'Preferences & Legal')}</Text>
           {[
-            { id: 'settings', icon: 'cog-outline', label: 'Settings Hub', sub: 'Account, Notifications, Language', action: () => navigation.navigate('SettingsHubScreen') },
-            { id: 'support', icon: 'lifebuoy', label: 'Support Center', sub: 'Get help or report an issue', action: () => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' }) },
-            { id: 'legal', icon: 'file-document-outline', label: 'Legal Agreements', sub: 'Terms of Service & Privacy', action: () => navigation.navigate('LegalAgreementsScreen') },
+            { id: 'settings', icon: 'cog-outline', label: t('profile.settingsHub', 'Settings Hub'), sub: t('profile.settingsHubSub', 'Account, Notifications, Language'), action: () => navigation.navigate('SettingsHubScreen') },
+            { id: 'support', icon: 'lifebuoy', label: t('profile.supportCenter', 'Support Center'), sub: t('profile.supportCenterSub', 'Get help or report an issue'), action: () => navigation.navigate('SafetySupportStack', { screen: 'SupportCenterScreen' }) },
+            { id: 'legal', icon: 'file-document-outline', label: t('profile.legalAgreements', 'Legal Agreements'), sub: t('profile.legalAgreementsSub', 'Terms of Service & Privacy'), action: () => navigation.navigate('LegalAgreementsScreen') },
           ].map((item, i, arr) => (
             <TouchableOpacity key={item.id} style={[styles.linkRow, i < arr.length - 1 && styles.linkRowBorder]} onPress={item.action} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yNext', 'Next')}>
               <View style={styles.linkIconBox}>

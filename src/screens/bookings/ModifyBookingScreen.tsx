@@ -88,11 +88,11 @@ export const ModifyBookingScreen = () => {
         <View style={styles.detailsCard}>
           <View style={styles.detailRow}>
             <Icon name="calendar-month" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{booking?.date || 'Friday, 24 Oct 2026'}</Text>
+            <Text style={styles.detailText}>{booking?.date || t('fallback.date1', 'Friday, 24 Oct 2026')}</Text>
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="clock-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{booking?.time || '7:00 PM - 9:00 PM'}</Text>
+            <Text style={styles.detailText}>{booking?.time || t('fallback.time1', '7:00 PM - 9:00 PM')}</Text>
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} />

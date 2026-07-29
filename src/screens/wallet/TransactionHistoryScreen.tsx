@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';

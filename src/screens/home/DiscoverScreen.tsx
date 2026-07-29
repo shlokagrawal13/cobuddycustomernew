@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, TextInput, Modal, Pressable, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -16,12 +15,7 @@ import { selectInterests } from '../../store/selectors/userPreferencesSelectors'
 import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
-const MODAL_CATEGORIES = [
-  { id: 'coffee', label: 'Coffee Meetups' },
-  { id: 'movie', label: 'Movie Buffs' },
-  { id: 'study', label: 'Study Buddy' },
-  { id: 'city', label: 'City Walk' },
-];
+
 const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
 const RATING_PILLS = [4.0, 4.5, 5.0];
 const PRICE_PILLS = [500, 1000, 2000];
@@ -80,6 +74,14 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
 
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
+
+  const MODAL_CATEGORIES = [
+  { id: 'coffee', label: t('categories.coffeeMeetups', 'Coffee Meetups') },
+  { id: 'movie', label: t('categories.movieBuffs', 'Movie Buffs') },
+  { id: 'study', label: t('categories.studyBuddy', 'Study Buddy') },
+  { id: 'city', label: t('categories.cityWalk', 'City Walk') },
+];
+
   const selectedInterests = useUserPreferencesStore(selectInterests);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<RouteProp<RootStackParamList, 'DiscoverScreen'>>();

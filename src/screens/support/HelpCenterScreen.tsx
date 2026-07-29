@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,14 +9,21 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const CATEGORIES = [
+
+
+
+
+export const HelpCenterScreen = () => { 
+  const { t } = useTranslation('support.helpCenter');
+
+  const CATEGORIES = [
   { id: '1', title: t('help.bookings', 'Bookings & Meetups'), icon: 'calendar-check-outline' },
   { id: '2', title: t('help.payments', 'Payments & Refunds'), icon: 'credit-card-outline' },
   { id: '3', title: t('help.trustSafety', 'Trust & Safety'), icon: 'shield-check-outline' },
   { id: '4', title: t('help.account', 'Account Settings'), icon: 'account-cog-outline' }
 ];
 
-const FAQS = [
+  const FAQS = [
   // Bookings & Meetups
   { id: 'f1', categoryId: '1', question: 'How do I cancel a booking?', answer: 'Go to your booking details and tap "Cancel Booking". Cancellations made 24 hours prior are fully refunded.' },
   { id: 'f2', categoryId: '1', question: 'What if a companion doesn\'t show up?', answer: 'If a companion is a no-show, please report it immediately. You will receive a full refund, and the companion\'s profile will be penalized.' },
@@ -39,8 +45,6 @@ const FAQS = [
   { id: 'f12', categoryId: '4', question: 'How do I delete my account?', answer: 'You can delete your account from Profile > Settings Hub > Account Settings > Delete Account. Please note this action is permanent.' },
 ];
 
-export const HelpCenterScreen = () => { 
-  const { t } = useTranslation('support.helpCenter');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [searchQuery, setSearchQuery] = useState('');

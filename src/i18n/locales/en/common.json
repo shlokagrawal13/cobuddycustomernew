@@ -42,5 +42,241 @@
   "tabDiscover": "Discover",
   "tabBookings": "Bookings",
   "tabMessages": "Messages",
-  "tabProfile": "Profile"
+  "tabProfile": "Profile",
+  "otp": {
+    "": "Refresh"
+  },
+  "phone": {
+    "": "Action",
+    "titleSelectCountry": "Select Country"
+  },
+  "bookingDeclined": {
+    "body": "Unfortunately, {{name}} is unavailable for {{date}} at {{time}}. Don\\'t worry, there are many other great companions available!"
+  },
+  "bookingRequestSent": {
+    "body": "We\\'ve notified {{name}}. They have 24 hours to review your request, but companions usually respond within a few hours."
+  },
+  "a11yPrice": "Price: {{price}}",
+  "units": {
+    "hr": "hr",
+    "hrs": "hrs",
+    "kmSpace": " km",
+    "km": "km",
+    "yrs": "yrs"
+  },
+  "timeline": {
+    "requested": "Requested",
+    "accepted": "Accepted",
+    "meetup": "Meetup"
+  },
+  "escrow": {
+    "released": "The escrow hold has been fully released.",
+    "held": "Held safely until session ends."
+  },
+  "fallback": {
+    "companionName": "Companion",
+    "date2": "Fri, 24 Oct 2026",
+    "date1": "Friday, 24 Oct 2026",
+    "time1": "7:00 PM - 9:00 PM",
+    "venue": "Blue Tokai Coffee, CP"
+  },
+  "botMsg": {
+    "gotIt": "Got it, see you shortly!",
+    "hi": "Hi! I am the CoBuddy Support Bot. How can I help you today?",
+    "emergency": "If you have an emergency, please use the SOS button on the home screen or type your issue below.",
+    "assistShortly": "Our team will assist you shortly. Please hold on."
+  },
+  "sysMsg": {
+    "bookingAccepted": "Booking Accepted! You can now chat securely."
+  },
+  "quickAction": {
+    "cancelBooking": "Cancel Booking",
+    "refundStatus": "Refund Status",
+    "reportSafety": "Report Safety Issue",
+    "generalHelp": "General Help"
+  },
+  "secureCallNotice": "Calls are secured and masked by CoBuddy.",
+  "discover": {
+    "upTo": "Up to ",
+    "showing": "Showing ",
+    "companions": "companions"
+  },
+  "categories": {
+    "coffeeMeetups": "Coffee Meetups",
+    "movieBuffs": "Movie Buffs",
+    "studyBuddy": "Study Buddy",
+    "cityWalk": "City Walk"
+  },
+  "profile": {
+    "charactersLimit": "/150 characters",
+    "settingsHub": "Settings Hub",
+    "settingsHubSub": "Account, Notifications, Language",
+    "supportCenter": "Support Center",
+    "supportCenterSub": "Get help or report an issue",
+    "legalAgreements": "Legal Agreements",
+    "legalAgreementsSub": "Terms of Service & Privacy"
+  },
+  "a11ySelectLocation', t('profile": {
+    "selectLocation": "Select Location"
+  },
+  "a11ySelectLanguages', t('profile": {
+    "selectLanguages": "Select Languages"
+  },
+  "reviews": {
+    "basedOn": "Based on ",
+    "fromCompanions": "reviews from companions",
+    "count": "reviews"
+  },
+  "actions": {
+    "showLess": "Show less",
+    "readMore": "Read more",
+    "connect": "Connect",
+    "goBack": "Go Back",
+    "continue": "Continue",
+    "continueToApp": "Continue to App",
+    "startExploring": "Start Exploring"
+  },
+  "statusVerified": "Verified",
+  "kycAadhaarVerified": "Aadhaar Verified",
+  "kycPending": "Pending - Required for booking",
+  "kycBiometricMatched": "Biometric matched",
+  "a11yKycVerified": "KYC Verified",
+  "a11yKycUnverified": "Complete KYC verification",
+  "kycViewDetails": "View Identity Details",
+  "kycComplete": "Complete KYC Verification",
+  "stats": {
+    "myWallet": "My Wallet",
+    "myReviews": "My Reviews",
+    "savedChecklists": "Saved Checklists",
+    "savedChecklistsSub": "Your favorite companions",
+    "referAFriend": "Refer a Friend",
+    "referAFriendSub": "Invite trusted members"
+  },
+  "ratingsReceived": "{{count}} Ratings received",
+  "safety": {
+    "trustedContact": "Trusted Contact Sharing",
+    "trustedContactSub": "Auto-share session details.",
+    "liveSafety": "Live Safety Monitoring",
+    "liveSafetySub": "Active tracking during sessions.",
+    "toggleLocationMock": "Toggle background location service mocking."
+  },
+  "incident": {
+    "inappropriateBehavior": "Inappropriate Behavior or Harassment",
+    "identityMismatch": "Identity Mismatch (Fake Profile)",
+    "companionNoShow": "Companion No-Show / Scam",
+    "otherSafetyConcern": "Other Safety Concern"
+  },
+  "arrival": {
+    "neverShareOtp": "Never share this OTP over phone or chat. Only share it in person when you meet."
+  },
+  "down'); setSelectedTags([]); }} accessibilityRole=\"button\" accessibilityLabel={t('a11ySentimentDownThumbDownThumbDownOutline": "{sentiment === down ? thumb down : thumb down outline}",
+  "up'); setSelectedTags([]); }} accessibilityRole=\"button\" accessibilityLabel={t('a11ySentimentUpThumbUpThumbUpOutline": "{sentiment === up ? thumb up : thumb up outline}",
+  "invoiceNotice": "An official invoice has been sent to your registered email.",
+  "safetyTip": {
+    "public": "Meet in a public place with good lighting.",
+    "personal": "Do not share your personal address or last name.",
+    "phone": "Keep your phone charged and handy.",
+    "boundaries": "Respect boundaries and CoBuddy etiquette."
+  },
+  "connected', t('actions": {
+    "connected": "Connected"
+  },
+  "timeout": {
+    "immediately": "Immediately",
+    "after1min": "After 1 minute",
+    "after5min": "After 5 minutes",
+    "after15min": "After 15 minutes"
+  },
+  "confirmDeactivate": "Yes, Deactivate",
+  "confirmDelete": "Yes, Delete",
+  "legal": {
+    "terms": "Terms of Service",
+    "termsSub": "Last updated: June 2026",
+    "privacy": "Privacy Policy",
+    "privacySub": "Last updated: June 2026",
+    "community": "Community Guidelines",
+    "communitySub": "Rules for a safe environment",
+    "refund": "Refund Policy",
+    "refundSub": "Cancellation and escrow rules"
+  },
+  "ticket": {
+    "paymentRefunds": "Payment & Refunds",
+    "bookingIssue": "Booking Issue",
+    "safetyConcern": "Report a Safety Concern",
+    "techSupport": "Account & Tech Support",
+    "screenshotAttached": "Screenshot Attached (Tap to remove)",
+    "uploadScreenshot": "Upload Screenshot or Photo"
+  },
+  "help": {
+    "bookings": "Bookings & Meetups",
+    "payments": "Payments & Refunds",
+    "trustSafety": "Trust & Safety",
+    "account": "Account Settings",
+    "searchResults": "SEARCH RESULTS",
+    "categoryFaqs": "CATEGORY FAQS",
+    "frequentlyAsked": "FREQUENTLY ASKED QUESTIONS"
+  },
+  "docVerify": {
+    "clearLighting": "Use clear lighting",
+    "cornersVisible": "Keep all corners visible",
+    "noBlurry": "No blurry or cropped images"
+  },
+  "doc": {
+    "frontUploaded": "Front Side Uploaded",
+    "processing": "Processing...",
+    "uploadFront": "Upload Front Side",
+    "imageAccepted": "Image accepted",
+    "tapToSelect": "Tap to select image",
+    "backUploaded": "Back Side Uploaded",
+    "uploadBack": "Upload Back Side"
+  },
+  "dataSecureNotice": "Your data is securely encrypted and never shared.",
+  "liveness": {
+    "holdStill": "Please hold your phone still...",
+    "blinkEyes": "Now, blink your eyes slowly."
+  },
+  "selfie": {
+    "faceVisible": "Ensure your face is clearly visible and not blurry.",
+    "removeGlasses": "Please remove any glasses or hats, and ensure you are in a well-lit area."
+  },
+  "steps": {
+    "documentVerification": "Document Verification",
+    "selfieLiveness": "Selfie & Liveness Check",
+    "profileReview": "Profile Review",
+    "bookingAuthorization": "Booking Authorization"
+  },
+  "processing": {
+    "statusCompleted": "COMPLETED",
+    "statusProcessing": "PROCESSING",
+    "statusPending": "PENDING",
+    "profileTrusted": "Your profile is now trusted.",
+    "reviewingDetails": "Reviewing verification details..."
+  },
+  "card": {
+    "yourName": "YOUR NAME",
+    "mmYy": "MM/YY"
+  },
+  "payment": {
+    "selectMethod": "Select Payment Method",
+    "methods": "Payment Methods"
+  },
+  "txDetail": {
+    "date": "Date",
+    "time": "Time",
+    "category": "Category",
+    "paymentSource": "Payment Source"
+  },
+  "txTypes": {
+    "moneyAdded": "Money Added",
+    "sessionPayment": "Session Payment",
+    "refundProcessed": "Refund Processed"
+  },
+  "wallet": {
+    "pendingRefunds": "Pending Refunds: ₹",
+    "heldInEscrow": "Held in Escrow: ₹"
+  },
+  "withdraw": {
+    "upiNotice": "UPI transfers are usually instant, but can take up to 2 hours.",
+    "impsNotice": "Standard IMPS/NEFT transfer takes up to 2-3 business days."
+  }
 }

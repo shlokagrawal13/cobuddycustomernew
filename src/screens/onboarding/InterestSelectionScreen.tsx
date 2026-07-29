@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,7 +14,18 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
 import { selectInterests, selectSetInterests } from '../../store/selectors/userPreferencesSelectors';
 
-export const INTERESTS_DATA = [
+export 
+
+const MIN_SELECT = 3;
+const MAX_SELECT = 10;
+
+export const InterestSelectionScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { smartGoBack } = useSmartNavigation();
+  const route = useRoute<RouteProp<RootStackParamList, 'InterestSelectionScreen'>>();
+  const { t } = useTranslation(['onboarding']);
+
+  const INTERESTS_DATA = [
   { id: 'cafe', label: t('interests.cafeMeetup', 'Cafe Meetup'), icon: 'coffee-outline' },
   { id: 'movie', label: t('interests.movieCompanion', 'Movie Companion'), icon: 'movie-open-outline' },
   { id: 'tour', label: t('interests.localTour', 'Local Tour'), icon: 'map-marker-path' },
@@ -30,14 +40,6 @@ export const INTERESTS_DATA = [
   { id: 'music', label: t('interests.liveConcerts', 'Live Concerts'), icon: 'music-note-outline' },
 ];
 
-const MIN_SELECT = 3;
-const MAX_SELECT = 10;
-
-export const InterestSelectionScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { smartGoBack } = useSmartNavigation();
-  const route = useRoute<RouteProp<RootStackParamList, 'InterestSelectionScreen'>>();
-  const { t } = useTranslation(['onboarding']);
   
   const isEditMode = route.params?.isEditMode || false;
   const globalInterests = useUserPreferencesStore(selectInterests);

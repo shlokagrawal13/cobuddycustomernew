@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Animated, StatusBar, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,15 +8,18 @@ import { theme } from '../../theme';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const STEPS = [
+
+
+export const VerificationProcessingScreen = () => { 
+  const { t } = useTranslation('verify.processing');
+
+  const STEPS = [
   {id: 1, icon: 'file-document-check', label: t('steps.documentVerification', 'Document Verification'), status: t('processing.statusCompleted', 'COMPLETED')},
   {id: 2, icon: 'face-recognition',    label: t('steps.selfieLiveness', 'Selfie & Liveness Check'),status: 'COMPLETED'},
   {id: 3, icon: 'account-search',      label: t('steps.profileReview', 'Profile Review'),        status: t('processing.statusProcessing', 'PROCESSING')},
   {id: 4, icon: 'check-decagram',      label: t('steps.bookingAuthorization', 'Booking Authorization'), status: t('processing.statusPending', 'PENDING')},
 ];
 
-export const VerificationProcessingScreen = () => { 
-  const { t } = useTranslation('verify.processing');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const pulseAnim = useRef(new Animated.Value(1)).current;
   const [activeStep, setActiveStep] = useState(2); // 0=none, 1=doc, 2=selfie, 3=profile, 4=done

@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useRef, useEffect } from 'react';
 import {
   View,
@@ -20,15 +19,18 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const { height: SCREEN_H, width: SCREEN_W } = Dimensions.get('window');
 
-const TRUST_PILLARS = [
+
+
+export const WelcomeScreen = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const { t } = useTranslation(['onboarding']);
+
+  const TRUST_PILLARS = [
   { icon: 'shield-check-outline', label: t('features.verified', 'Verified') },
   { icon: 'lock-outline', label: t('features.secure', 'Secure') },
   { icon: 'account-heart-outline', label: t('features.respectful', 'Respectful') },
 ];
 
-export const WelcomeScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const { t } = useTranslation(['onboarding']);
   
   const heroOpacity = useRef(new Animated.Value(0)).current;
   const heroY = useRef(new Animated.Value(24)).current;

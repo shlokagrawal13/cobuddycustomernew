@@ -62,7 +62,7 @@ export const BookingRequestSentScreen = ({ route }: { route: any }) => {
 
         <Text style={styles.title}>{t('title', 'Request Sent!')}</Text>
         <Text style={styles.subtitle}>
-          {t('bookingReq.notifiedPrefix', 'We\'ve notified ')}{bookingData.companionName}{t('bookingReq.notifiedSuffix', '. They have 24 hours to review your request, but companions usually respond within a few hours.')}
+          {t('bookingRequestSent.body', 'We\'ve notified {{name}}. They have 24 hours to review your request, but companions usually respond within a few hours.', { name: bookingData.companionName })}
         </Text>
 
         <View style={styles.card}>

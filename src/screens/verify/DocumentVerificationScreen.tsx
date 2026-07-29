@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -10,12 +9,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const DOC_TYPES = [
-  {id: 'AADHAAR',  icon: 'card-account-details-outline', label: 'Aadhaar'},
-  {id: 'PAN',      icon: 'card-account-details',         label: 'PAN Card'},
-  {id: 'PASSPORT', icon: 'book-open-page-variant',       label: 'Passport'},
-  {id: 'DL',       icon: 'car',                          label: 'Driving License'},
-] as const;
+ as const;
 type DocType = typeof DOC_TYPES[number]['id'];
 
 const UPLOAD_TIPS = [
@@ -28,6 +22,14 @@ type UploadState = 'idle' | 'selected' | 'uploaded';
 
 export const DocumentVerificationScreen = () => { 
   const { t } = useTranslation('verify.document');
+
+  const DOC_TYPES = [
+  {id: 'AADHAAR',  icon: 'card-account-details-outline', label: 'Aadhaar'},
+  {id: 'PAN',      icon: 'card-account-details',         label: 'PAN Card'},
+  {id: 'PASSPORT', icon: 'book-open-page-variant',       label: 'Passport'},
+  {id: 'DL',       icon: 'car',                          label: 'Driving License'},
+]
+
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const [selectedDoc, setSelectedDoc] = useState<DocType>('AADHAAR');
