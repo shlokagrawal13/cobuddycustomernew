@@ -22,5 +22,8 @@
   "a11yMessage": "Message",
   "a11yMockCompanionEnteredOtp": "[MOCK] Companion entered OTP",
   "a11yCompanionDidntShowUp": "Companion didn't show up",
-  "a11yShareLocation": "Share live location"
+  "a11yShareLocation": "Share live location",
+  "arrival": {
+    "neverShareOtp": "Never share this OTP over phone or chat. Only share it in person when you meet."
+  }
 }

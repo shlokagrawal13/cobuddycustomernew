@@ -35,5 +35,11 @@
   "a11yGoToBookingstab": "Go to BookingsTab",
   "a11yGoToProfiletab": "Go to ProfileTab",
   "a11yViewAll": "View All",
-  "a11yViewFullItinerary": "View full itinerary"
+  "a11yViewFullItinerary": "View full itinerary",
+  "categories": {
+    "coffeeMeetups": "Coffee Meetups",
+    "movieBuffs": "Movie Buffs",
+    "cityWalk": "City Walk",
+    "studyBuddy": "Study Buddy"
+  }
 }

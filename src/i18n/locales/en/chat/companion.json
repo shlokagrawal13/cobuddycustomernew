@@ -19,5 +19,11 @@
   "a11yMuteNotifications": "Mute Notifications",
   "a11yClearChat": "Clear Chat",
   "a11yReportSafetyIssue": "Report Safety Issue",
-  "a11yCloseOptionsMenu": "Close options menu"
+  "a11yCloseOptionsMenu": "Close options menu",
+  "botMsg": {
+    "gotIt": "Got it, see you shortly!"
+  },
+  "sysMsg": {
+    "bookingAccepted": "Booking Accepted! You can now chat securely."
+  }
 }

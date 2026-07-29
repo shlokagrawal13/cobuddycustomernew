@@ -12,5 +12,11 @@
   "primaryBtnText": "Simulate Arrival at Venue",
   "a11yGoBack": "Go back",
   "a11yGetDirections": "Get Directions",
-  "a11ySimulateArrivalAtVenue": "Simulate Arrival at Venue"
+  "a11ySimulateArrivalAtVenue": "Simulate Arrival at Venue",
+  "safetyTip": {
+    "public": "Meet in a public place with good lighting.",
+    "personal": "Do not share your personal address or last name.",
+    "phone": "Keep your phone charged and handy.",
+    "boundaries": "Respect boundaries and CoBuddy etiquette."
+  }
 }

@@ -32,6 +32,8 @@
   "okBtn": "OK",
   "card": {
     "endingIn": "Card ending in {{last4}}",
-    "expires": "Expires {{date}}"
+    "expires": "Expires {{date}}",
+    "yourName": "YOUR NAME",
+    "mmYy": "MM/YY"
   }
 }

@@ -17,5 +17,25 @@
   "a11yConfirm": "Confirm",
   "a11yContinueVerification": "Continue Verification",
   "imageAccepted": "Image accepted",
-  "tapToSelectImage": "Tap to select image"
+  "tapToSelectImage": "Tap to select image",
+  "docType": {
+    "aadhaar": "Aadhaar",
+    "pan": "PAN Card",
+    "passport": "Passport",
+    "dl": "Driving License"
+  },
+  "docVerify": {
+    "clearLighting": "Use clear lighting",
+    "cornersVisible": "Keep all corners visible",
+    "noBlurry": "No blurry or cropped images"
+  },
+  "doc": {
+    "frontUploaded": "Front Side Uploaded",
+    "processing": "Processing...",
+    "uploadFront": "Upload Front Side",
+    "imageAccepted": "Image accepted",
+    "tapToSelect": "Tap to select image",
+    "backUploaded": "Back Side Uploaded",
+    "uploadBack": "Upload Back Side"
+  }
 }

@@ -8,5 +8,9 @@
   "a11yRetake": "Retake",
   "a11yConfirm": "Confirm",
   "a11yAction": "Action",
-  "a11yCaptureSelfie": "Capture selfie photo"
+  "a11yCaptureSelfie": "Capture selfie photo",
+  "selfie": {
+    "faceVisible": "Ensure your face is clearly visible and not blurry.",
+    "removeGlasses": "Please remove any glasses or hats, and ensure you are in a well-lit area."
+  }
 }

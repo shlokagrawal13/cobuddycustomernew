@@ -11,5 +11,14 @@
   },
   "a11yGoBack": "Go back",
   "a11yClose": "Close",
-  "a11yChatNow": "Chat Now"
+  "a11yChatNow": "Chat Now",
+  "help": {
+    "bookings": "Bookings & Meetups",
+    "payments": "Payments & Refunds",
+    "trustSafety": "Trust & Safety",
+    "account": "Account Settings",
+    "searchResults": "SEARCH RESULTS",
+    "categoryFaqs": "CATEGORY FAQS",
+    "frequentlyAsked": "FREQUENTLY ASKED QUESTIONS"
+  }
 }

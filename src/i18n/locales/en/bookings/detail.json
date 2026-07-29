@@ -41,5 +41,14 @@
   "a11yRaiseADispute": "Raise a Dispute",
   "a11yGoBack": "Go back",
   "a11ySos": "SOS",
-  "a11yGoToDiscovertab": "Go to DiscoverTab"
+  "a11yGoToDiscovertab": "Go to DiscoverTab",
+  "timeline": {
+    "requested": "Requested",
+    "accepted": "Accepted",
+    "meetup": "Meetup"
+  },
+  "escrow": {
+    "released": "The escrow hold has been fully released.",
+    "held": "Held safely until session ends."
+  }
 }

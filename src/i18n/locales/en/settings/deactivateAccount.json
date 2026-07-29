@@ -20,5 +20,6 @@
   "a11yGoBack": "Go back",
   "a11yDeactivateMyAccount": "Deactivate My Account",
   "cancelBtn": "Cancel",
-  "okBtn": "OK"
+  "okBtn": "OK",
+  "confirmDeactivate": "Yes, Deactivate"
 }

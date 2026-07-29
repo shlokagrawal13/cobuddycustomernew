@@ -22,5 +22,6 @@
   "a11yGoBack": "Go back",
   "a11yPermanentlyDeleteMyAccount": "Permanently Delete My Account",
   "cancelBtn": "Cancel",
-  "okBtn": "OK"
+  "okBtn": "OK",
+  "confirmDelete": "Yes, Delete"
 }

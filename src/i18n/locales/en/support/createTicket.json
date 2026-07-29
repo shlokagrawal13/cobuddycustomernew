@@ -15,5 +15,13 @@
   },
   "a11yGoBack": "Go back",
   "a11ySubmitTicket": "Submit Ticket",
-  "a11yHasattachmentScreenshotAt": "Has attachment: screenshot attached"
+  "a11yHasattachmentScreenshotAt": "Has attachment: screenshot attached",
+  "ticket": {
+    "paymentRefunds": "Payment & Refunds",
+    "bookingIssue": "Booking Issue",
+    "safetyConcern": "Report a Safety Concern",
+    "techSupport": "Account & Tech Support",
+    "screenshotAttached": "Screenshot Attached (Tap to remove)",
+    "uploadScreenshot": "Upload Screenshot or Photo"
+  }
 }

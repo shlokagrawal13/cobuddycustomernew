@@ -6,5 +6,15 @@
     "completed": "COMPLETED",
     "processing": "PROCESSING",
     "pending": "PENDING"
+  },
+  "steps": {
+    "documentVerification": "Document Verification",
+    "selfieLiveness": "Selfie & Liveness Check",
+    "profileReview": "Profile Review",
+    "bookingAuthorization": "Booking Authorization"
+  },
+  "processing": {
+    "profileTrusted": "Your profile is now trusted.",
+    "reviewingDetails": "Reviewing verification details..."
   }
 }

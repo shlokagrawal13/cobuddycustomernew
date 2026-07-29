@@ -2,5 +2,9 @@
   "verified": "You are Verified!",
   "trustedProfile": "Trusted Profile",
   "bookingAccess": "Booking Access",
-  "yourIdentityHasBeenSuccessfully": "Your identity has been successfully verified. You now have full access to CoBuddy and can start booking companions immediately."
+  "yourIdentityHasBeenSuccessfully": "Your identity has been successfully verified. You now have full access to CoBuddy and can start booking companions immediately.",
+  "actions": {
+    "continue": "Continue",
+    "startExploring": "Start Exploring"
+  }
 }

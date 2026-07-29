@@ -22,5 +22,9 @@
   "a11yAction": "Action",
   "a11yChange": "Change",
   "a11yWithdrawMax": "Withdraw maximum amount",
-  "a11yProceedWithdraw": "Proceed to withdraw"
+  "a11yProceedWithdraw": "Proceed to withdraw",
+  "withdraw": {
+    "upiNotice": "UPI transfers are usually instant, but can take up to 2 hours.",
+    "impsNotice": "Standard IMPS/NEFT transfer takes up to 2-3 business days."
+  }
 }

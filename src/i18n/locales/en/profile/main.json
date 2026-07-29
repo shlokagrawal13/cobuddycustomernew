@@ -40,5 +40,38 @@
     "showLess": "Show less",
     "showMore": "Show more",
     "readMore": "Read more"
+  },
+  "memberSince": "Member since",
+  "statusVerified": "Verified",
+  "kycAadhaarVerified": "Aadhaar Verified",
+  "kycPending": "Pending - Required for booking",
+  "kycBiometricMatched": "Biometric matched",
+  "a11yKycVerified": "KYC Verified",
+  "a11yKycUnverified": "Complete KYC verification",
+  "kycViewDetails": "View Identity Details",
+  "kycComplete": "Complete KYC Verification",
+  "stats": {
+    "myWallet": "My Wallet",
+    "myReviews": "My Reviews",
+    "savedChecklists": "Saved Checklists",
+    "savedChecklistsSub": "Your favorite companions",
+    "referAFriend": "Refer a Friend",
+    "referAFriendSub": "Invite trusted members"
+  },
+  "walletBalance": "Balance: {{balance}}",
+  "ratingsReceived": "{{count}} Ratings received",
+  "safety": {
+    "trustedContact": "Trusted Contact Sharing",
+    "trustedContactSub": "Auto-share session details.",
+    "liveSafety": "Live Safety Monitoring",
+    "liveSafetySub": "Active tracking during sessions."
+  },
+  "profile": {
+    "settingsHub": "Settings Hub",
+    "settingsHubSub": "Account, Notifications, Language",
+    "supportCenter": "Support Center",
+    "supportCenterSub": "Get help or report an issue",
+    "legalAgreements": "Legal Agreements",
+    "legalAgreementsSub": "Terms of Service & Privacy"
   }
 }

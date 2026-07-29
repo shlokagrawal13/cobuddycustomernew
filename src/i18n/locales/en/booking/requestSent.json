@@ -5,5 +5,8 @@
   "primaryBtnText": "View Request Details",
   "secondaryBtnText": "Return to Home",
   "a11yViewRequestDetails": "View Request Details",
-  "a11yReturnToHome": "Return to Home"
+  "a11yReturnToHome": "Return to Home",
+  "bookingRequestSent": {
+    "body": "We've notified {{name}}. They have 24 hours to review your request, but companions usually respond within a few hours."
+  }
 }

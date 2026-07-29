@@ -13,5 +13,11 @@
   "alertTitleDownloadReceipt": "Download Receipt",
   "alertMsgPDFreceipthasbeendow": "PDF receipt has been downloaded successfully.",
   "a11yGoBack": "Go back",
-  "a11yDownloadReceipt": "Download Receipt"
+  "a11yDownloadReceipt": "Download Receipt",
+  "txDetail": {
+    "date": "Date",
+    "time": "Time",
+    "category": "Category",
+    "paymentSource": "Payment Source"
+  }
 }

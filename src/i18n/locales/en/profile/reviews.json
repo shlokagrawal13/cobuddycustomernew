@@ -5,5 +5,9 @@
   "recentReviews": "RECENT REVIEWS",
   "emptyTitle": "No reviews yet",
   "emptySub": "Book a meetup with a companion. After your session, their review will appear here.",
-  "a11yGoBack": "Go back"
+  "a11yGoBack": "Go back",
+  "reviews": {
+    "basedOn": "Based on ",
+    "fromCompanions": "reviews from companions"
+  }
 }

@@ -13,5 +13,8 @@
   "a11yMoreOptions": "More options",
   "a11yGoBack": "Go back",
   "a11yViewFullProfile": "View Full Profile",
-  "a11yRemoveFromSaved": "Remove from Saved"
+  "a11yRemoveFromSaved": "Remove from Saved",
+  "reviews": {
+    "count": "reviews"
+  }
 }

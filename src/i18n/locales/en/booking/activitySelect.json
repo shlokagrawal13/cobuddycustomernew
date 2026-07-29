@@ -22,5 +22,6 @@
   },
   "continue": "Continue",
   "a11yGoBack": "Go back",
-  "a11yContinue": "Continue"
+  "a11yContinue": "Continue",
+  "a11yPrice": "Price: {{price}}"
 }

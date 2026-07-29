@@ -7,5 +7,6 @@
   "labelTaxes": "Taxes (18% GST)",
   "labelEscrow": "Escrow Released",
   "primaryBtnText": "Continue to Feedback",
-  "a11yContinueToFeedback": "Continue to Feedback"
+  "a11yContinueToFeedback": "Continue to Feedback",
+  "invoiceNotice": "An official invoice has been sent to your registered email."
 }

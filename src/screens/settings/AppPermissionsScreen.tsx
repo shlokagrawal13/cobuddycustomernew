@@ -126,7 +126,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="map-marker-outline"
             title={t('title.LocationAccess', 'Location Access')}
-            description="Used to find nearby buddies and track active sessions for safety."
+            description={t('desc.LocationAccess', 'Used to find nearby buddies and track active sessions for safety.')}
             isGranted={permissions.location}
             isRequired={true}
             onToggle={(val) => handleToggle('location', val)}

@@ -8,5 +8,16 @@
   "estimatedTimeUsuallyCompletedWithin": "Estimated Time: Usually completed within 24 hours.",
   "youCanContinueExploringThe": "You can continue exploring the app while verification is reviewed.",
   "allVerificationDataIsProtected": "All verification data is protected with end-to-end encryption and never shared without consent.",
-  "a11yClose": "Close"
+  "a11yClose": "Close",
+  "steps": {
+    "documentVerification": "Document Verification",
+    "selfieLiveness": "Selfie & Liveness Check",
+    "profileReview": "Profile Review",
+    "bookingAuthorization": "Booking Authorization"
+  },
+  "actions": {
+    "goBack": "Go Back",
+    "continue": "Continue",
+    "continueToApp": "Continue to App"
+  }
 }

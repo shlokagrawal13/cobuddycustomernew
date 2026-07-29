@@ -8,5 +8,9 @@
   "continue": "Continue",
   "a11yGoBack": "Go back",
   "a11yTime": "time",
-  "a11yContinue": "Continue"
+  "a11yContinue": "Continue",
+  "units": {
+    "hr": "hr",
+    "hrs": "hrs"
+  }
 }

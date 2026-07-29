@@ -2,5 +2,6 @@
   "incomingText": "CoBuddy Voice Call",
   "statusText": "Ringing...",
   "a11yPhoneHangup": "Phone Hangup",
-  "a11yCall": "Call"
+  "a11yCall": "Call",
+  "secureCallNotice": "Calls are secured and masked by CoBuddy."
 }

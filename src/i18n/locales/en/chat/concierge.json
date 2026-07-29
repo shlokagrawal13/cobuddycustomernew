@@ -5,5 +5,16 @@
   "a11yGoBack": "Go back",
   "a11yCall": "Call",
   "a11yAction": "action",
-  "a11ySendQuickAction": "Send: {{action}}"
+  "a11ySendQuickAction": "Send: {{action}}",
+  "quickAction": {
+    "cancelBooking": "Cancel Booking",
+    "refundStatus": "Refund Status",
+    "reportSafety": "Report Safety Issue",
+    "generalHelp": "General Help"
+  },
+  "botMsg": {
+    "hi": "Hi! I am the CoBuddy Support Bot. How can I help you today?",
+    "emergency": "If you have an emergency, please use the SOS button on the home screen or type your issue below.",
+    "assistShortly": "Our team will assist you shortly. Please hold on."
+  }
 }

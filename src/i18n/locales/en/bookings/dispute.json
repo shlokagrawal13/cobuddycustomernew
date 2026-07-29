@@ -14,5 +14,9 @@
   "a11yGoBack": "Go back",
   "a11yCategory": "category",
   "a11yTapToUploadScreenshotsOrP": "Tap to upload screenshots or p...",
-  "a11ySubmitDispute": "Submit Dispute"
+  "a11ySubmitDispute": "Submit Dispute",
+  "fallback": {
+    "companionName": "Companion",
+    "date2": "Fri, 24 Oct 2026"
+  }
 }

@@ -35,5 +35,8 @@
   "a11yReportIncident": "Report a safety incident",
   "a11yViewSafetyGuidelines": "View safety guidelines",
   "a11yOpenHelpCenter": "Open help center",
-  "sosBtnSafe": "SAFE"
+  "sosBtnSafe": "SAFE",
+  "safety": {
+    "toggleLocationMock": "Toggle background location service mocking."
+  }
 }

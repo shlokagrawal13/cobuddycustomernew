@@ -23,5 +23,11 @@
   "a11yHasevidenceEvidenceAttache": "hasEvidence ? Evidence Attache...",
   "a11ySubmitConfidentialReport": "Submit Confidential Report",
   "okBtn": "OK",
-  "a11ySelectIncidentType": "Select {{type}}"
+  "a11ySelectIncidentType": "Select {{type}}",
+  "incident": {
+    "inappropriateBehavior": "Inappropriate Behavior or Harassment",
+    "identityMismatch": "Identity Mismatch (Fake Profile)",
+    "companionNoShow": "Companion No-Show / Scam",
+    "otherSafetyConcern": "Other Safety Concern"
+  }
 }

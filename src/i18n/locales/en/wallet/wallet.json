@@ -30,5 +30,14 @@
   "a11yNext": "Next",
   "a11yDownloadStatement": "Download Statement",
   "a11yViewAll": "View All",
-  "a11yViewPaymentMethods": "View payment methods"
+  "a11yViewPaymentMethods": "View payment methods",
+  "txTypes": {
+    "moneyAdded": "Money Added",
+    "sessionPayment": "Session Payment",
+    "refundProcessed": "Refund Processed"
+  },
+  "wallet": {
+    "pendingRefunds": "Pending Refunds: ₹",
+    "heldInEscrow": "Held in Escrow: ₹"
+  }
 }

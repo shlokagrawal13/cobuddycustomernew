@@ -6,5 +6,8 @@
   "primaryBtnText": "Find Another Companion",
   "secondaryBtnText": "Return to Home",
   "a11yFindAnotherCompanion": "Find Another Companion",
-  "a11yReturnToHome": "Return to Home"
+  "a11yReturnToHome": "Return to Home",
+  "bookingDeclined": {
+    "body": "Unfortunately, {{name}} is unavailable for {{date}} at {{time}}. Don't worry, there are many other great companions available!"
+  }
 }

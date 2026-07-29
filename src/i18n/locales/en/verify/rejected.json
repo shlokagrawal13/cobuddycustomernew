@@ -10,5 +10,11 @@
   "ensureYourDocumentIsClearly": "Ensure your document is clearly visible, not expired, and matches your selfie exactly.",
   "needHelpContactOurConcierge": "Need help? Contact our Concierge Support for manual verification.",
   "a11yClose": "Close",
-  "a11yRetryVerification": "Retry Verification"
+  "a11yRetryVerification": "Retry Verification",
+  "steps": {
+    "documentVerification": "Document Verification",
+    "selfieLiveness": "Selfie & Liveness Check",
+    "profileReview": "Profile Review",
+    "bookingAuthorization": "Booking Authorization"
+  }
 }

@@ -6,6 +6,7 @@
   "a11yF": "f",
   "a11yGoToTransactiondetail": "Go to TransactionDetail",
   "txTypes": {
-    "refundCancelled": "Refund: Session Cancelled"
+    "refundCancelled": "Refund: Session Cancelled",
+    "moneyAdded": "Money Added"
   }
 }

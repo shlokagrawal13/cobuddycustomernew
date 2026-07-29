@@ -26,5 +26,9 @@
   "a11ySelectPaymentMethod": "Select {{method}}",
   "upi": {
     "title": "UPI ID"
+  },
+  "payment": {
+    "selectMethod": "Select Payment Method",
+    "methods": "Payment Methods"
   }
 }

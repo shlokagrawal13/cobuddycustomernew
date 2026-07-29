@@ -27,5 +27,15 @@
   "a11yCamera": "Camera",
   "a11yEdit": "Edit",
   "selectLocation": "Select Location",
-  "selectLanguages": "Select Languages"
+  "selectLanguages": "Select Languages",
+  "profile": {
+    "charactersLimit": "/150 characters",
+    "selectLocation": "Select Location",
+    "selectLanguages": "Select Languages"
+  },
+  "units": {
+    "yrs": "yrs"
+  },
+  "a11ySelectLocation": "Select Location",
+  "a11ySelectLanguages": "Select Languages"
 }

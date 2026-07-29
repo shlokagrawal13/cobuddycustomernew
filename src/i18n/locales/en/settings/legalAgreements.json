@@ -3,5 +3,15 @@
   "brandText": "CoBuddy Technologies",
   "copyrightText": "All rights reserved.",
   "a11yGoBack": "Go back",
-  "a11yOpenInNew": "Open In New"
+  "a11yOpenInNew": "Open In New",
+  "legal": {
+    "terms": "Terms of Service",
+    "termsSub": "Last updated: June 2026",
+    "privacy": "Privacy Policy",
+    "privacySub": "Last updated: June 2026",
+    "community": "Community Guidelines",
+    "communitySub": "Rules for a safe environment",
+    "refund": "Refund Policy",
+    "refundSub": "Cancellation and escrow rules"
+  }
 }

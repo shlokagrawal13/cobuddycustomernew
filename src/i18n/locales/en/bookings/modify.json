@@ -32,5 +32,10 @@
   "a11yItem": "item",
   "a11yNewvenueSearchSafePubli": "New venue search - safe public place",
   "a11ySelectVenueOption": "Select {{venue}}",
-  "searchVenuePlaceholder": "Search safe public venue..."
+  "searchVenuePlaceholder": "Search safe public venue...",
+  "fallback": {
+    "date1": "Friday, 24 Oct 2026",
+    "time1": "7:00 PM - 9:00 PM",
+    "venue": "Blue Tokai Coffee, CP"
+  }
 }
