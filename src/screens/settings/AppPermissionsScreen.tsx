@@ -135,7 +135,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="bell-outline"
             title={t('title.PushNotificatio', 'Push Notifications')}
-            description="Get instantly notified about booking requests and messages."
+            description={t('desc.PushNotificatio', 'Stay updated on booking requests, messages, and safety alerts.')}
             isGranted={permissions.notifications}
             isRequired={true}
             onToggle={(val) => handleToggle('notifications', val)}
@@ -146,7 +146,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="camera-outline"
             title={t('title.Camera', 'Camera')}
-            description="Required for KYC verification and taking profile pictures."
+            description={t('desc.Camera', 'Needed for live verification and capturing photos during sessions.')}
             isGranted={permissions.camera}
             onToggle={(val) => handleToggle('camera', val)}
         />
@@ -154,7 +154,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="image-outline"
             title={t('title.PhotoLibrary', 'Photo Library')}
-            description="Allows you to upload ID documents and send photos in chat."
+            description={t('desc.PhotoLibrary', 'Required to upload profile pictures and share photos in chat.')}
             isGranted={permissions.photos}
             onToggle={(val) => handleToggle('photos', val)}
         />
@@ -162,7 +162,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="microphone-outline"
             title={t('title.Microphone', 'Microphone')}
-            description="Used for voice calls and sending voice notes in chat."
+            description={t('desc.Microphone', 'Used for voice messages and in-app secure calls.')}
             isGranted={permissions.microphone}
             onToggle={(val) => handleToggle('microphone', val)}
         />
@@ -172,7 +172,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="calendar-sync-outline"
             title={t('title.CalendarSync', 'Calendar Sync')}
-            description="Automatically add your upcoming CoBuddy sessions to your calendar."
+            description={t('desc.CalendarSync', 'Automatically add upcoming bookings to your device calendar.')}
             isGranted={permissions.calendar}
             onToggle={(val) => handleToggle('calendar', val)}
         />
@@ -180,7 +180,7 @@ export const AppPermissionsScreen = () => {
         <PermissionItem 
             icon="contacts-outline"
             title={t('title.Contacts', 'Contacts')}
-            description="Find friends who are already using CoBuddy."
+            description={t('desc.Contacts', 'Easily invite friends or set up trusted contacts for safety.')}
             isGranted={permissions.contacts}
             onToggle={(val) => handleToggle('contacts', val)}
         />

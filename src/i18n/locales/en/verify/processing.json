@@ -15,6 +15,9 @@
   },
   "processing": {
     "profileTrusted": "Your profile is now trusted.",
-    "reviewingDetails": "Reviewing verification details..."
+    "reviewingDetails": "Reviewing verification details...",
+    "statusCompleted": "COMPLETED",
+    "statusProcessing": "PROCESSING",
+    "statusPending": "PENDING"
   }
 }
