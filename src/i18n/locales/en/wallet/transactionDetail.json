@@ -14,6 +14,7 @@
   "alertMsgPDFreceipthasbeendow": "PDF receipt has been downloaded successfully.",
   "a11yGoBack": "Go back",
   "a11yDownloadReceipt": "Download Receipt",
+  "emptyTextNotFound": "Transaction not found.",
   "txDetail": {
     "date": "Date",
     "time": "Time",
