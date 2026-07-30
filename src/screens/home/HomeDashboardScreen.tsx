@@ -257,7 +257,7 @@ export const HomeDashboardScreen = () => {
                     {...item}
                     onPress={(id) => navigation.navigate('DiscoverTab', {
                       screen: 'CompanionProfileScreen',
-                      params: { id }
+                      params: { companionId: id }
                     } as never)}
                   />
                 </View>

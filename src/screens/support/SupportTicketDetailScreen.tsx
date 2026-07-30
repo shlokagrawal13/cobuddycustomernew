@@ -6,7 +6,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-import { MOCK_THREAD } from '../../services/mock/support.mock';
+import { MOCK_TICKETS, MOCK_THREADS } from '../../services/mock/support.mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -16,9 +16,10 @@ export const SupportTicketDetailScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'SupportTicketDetailScreen'>>();
   const ticketId = route.params?.ticketId || 'TKT-8921';
+  const matchedTicket = MOCK_TICKETS.find((tk: any) => tk.id === ticketId);
   
   const [replyText, setReplyText] = useState('');
-  const [messages, setMessages] = useState(MOCK_THREAD);
+  const [messages, setMessages] = useState(MOCK_THREADS[ticketId] || MOCK_THREADS['TKT-8921']);
   const isClosed = false; // Mock status
 
   const handleSend = () => {
@@ -45,7 +46,7 @@ export const SupportTicketDetailScreen = () => {
           <Text style={styles.headerTitle}>{ticketId}</Text>
           <View style={styles.statusBadge}>
             <View style={styles.statusDot} />
-            <Text style={styles.statusText}>{t('statusOpen', 'Open')}</Text>
+            {matchedTicket?.status === 'Open' ? <Text style={styles.statusText}>{t('statusOpen', 'Open')}</Text> : matchedTicket?.status === 'Closed' ? <Text style={[styles.statusText, { color: theme.colors.textSecondary }]}>{t('statusClosed', 'Closed')}</Text> : <Text style={[styles.statusText, { color: theme.colors.primary }]}>{t('statusInProgress', 'In Progress')}</Text>}
           </View>
         </View>
         <View style={styles.backBtn} />
@@ -55,12 +56,12 @@ export const SupportTicketDetailScreen = () => {
         
         {/* Ticket Original Context */}
         <View style={styles.contextCard}>
-          <Text style={styles.contextLabel}>{t('contextLabel', 'Refund Request for Booking #4412')}</Text>
-          <Text style={styles.contextMeta}>{t('ticketMeta', 'Category: Payment • Created 2 hours ago')}</Text>
+          <Text style={styles.contextLabel}>{matchedTicket?.subject || t('contextLabel', 'Refund Request for Booking #4412')}</Text>
+          <Text style={styles.contextMeta}>{t('ticketMeta', `Category: ${matchedTicket?.category || 'Payment'} • Created ${matchedTicket?.date || '2 hours ago'}`)}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.chatScroll} showsVerticalScrollIndicator={false}>
-          {messages.map(msg => {
+          {messages.map((msg: any) => {
             const isUser = msg.sender === 'user';
             return (
               <View key={msg.id} style={[styles.messageWrapper, isUser ? styles.messageUser : styles.messageSupport]}>
