@@ -17,10 +17,10 @@ export interface BookingVenue {
 
 export interface BookingStackParamList {
   LocationSelectionScreen: undefined;
-  BookingActivitySelectScreen: undefined;
-  BookingVenueSelectScreen: { activity?: BookingActivity } | undefined;
-  BookingTimeSelectScreen: { activity?: BookingActivity; venue?: BookingVenue } | undefined;
-  BookingSummaryScreen: { activity?: BookingActivity; venue?: BookingVenue; date?: string; time?: string; duration?: number; bookingId?: string } | undefined;
+  BookingActivitySelectScreen: { companionId?: string; companionName?: string } | undefined;
+  BookingVenueSelectScreen: { activity?: BookingActivity; companionId?: string; companionName?: string } | undefined;
+  BookingTimeSelectScreen: { activity?: BookingActivity; venue?: BookingVenue; companionId?: string; companionName?: string } | undefined;
+  BookingSummaryScreen: { activity?: BookingActivity; venue?: BookingVenue; date?: string; time?: string; duration?: number; bookingId?: string; companionId?: string; companionName?: string; } | undefined;
   BookingSuccessScreen: undefined;
   BookingRequestSentScreen: undefined;
   BookingAcceptedScreen: undefined;

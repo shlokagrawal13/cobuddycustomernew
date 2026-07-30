@@ -386,7 +386,10 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
         
         <TouchableOpacity 
           style={styles.requestBtn}
-          onPress={() => navigation.navigate('BookingFlowStack')} accessibilityRole="button" accessibilityLabel={t('a11yRequestBooking', 'Request Booking')}
+          onPress={() => navigation.navigate('BookingFlowStack', {
+                screen: 'BookingActivitySelectScreen',
+                params: { companionId, companionName: profile.name },
+              })} accessibilityRole="button" accessibilityLabel={t('a11yRequestBooking', 'Request Booking')}
         >
           <Text style={styles.requestBtnText}>{t('btn_request', 'Request Booking')}</Text>
         </TouchableOpacity>

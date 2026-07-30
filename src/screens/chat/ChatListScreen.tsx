@@ -35,8 +35,8 @@ export const ChatListScreen = () => {
 
   const [showNewMessageModal, setShowNewMessageModal] = useState(false);
   const activeBookings = [
-    { id: 'CB-REQ-8830', name: 'Kabir Singh', role: 'Event Companion', online: true, companionId: 'c1' },
-    { id: 'CB-REQ-9912', name: 'Sneha Verma', role: 'Local Guide', online: false, companionId: 'c2' },
+    { id: 'CB-REQ-9401', name: 'Kabir Singh', role: 'Event Companion', online: true, companionId: 'c6' },
+    { id: 'CB-REQ-9402', name: 'Sneha Verma', role: 'Local Guide', online: false, companionId: 'c7' },
   ];
 
 

@@ -36,7 +36,7 @@ export const BookingVenueSelectScreen = () => {
   const setDraftBooking = useBookingStore(selectSetDraftBooking);
 
   
-  const { activity } = route.params || {};
+  const { activity, companionId, companionName } = route.params || {};
 
   const [selectedVenueId, setSelectedVenueId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -55,6 +55,8 @@ export const BookingVenueSelectScreen = () => {
     navigation.navigate('BookingTimeSelectScreen', {
       activity,
       venue: selectedVenue,
+      companionId,
+      companionName,
     });
   };
 

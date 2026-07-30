@@ -20,6 +20,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export const BookingActivitySelectScreen = () => { 
   const { t } = useTranslation('booking.activitySelect');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
   const { smartGoBack } = useSmartNavigation();
   const { setDraftBooking, clearDraftBooking } = useBookingStore();
 
@@ -37,6 +39,8 @@ export const BookingActivitySelectScreen = () => {
     
     navigation.navigate('BookingVenueSelectScreen', {
       activity: selectedActivity,
+      companionId,
+      companionName,
     });
   };
 

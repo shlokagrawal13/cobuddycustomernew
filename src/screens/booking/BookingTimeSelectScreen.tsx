@@ -52,7 +52,7 @@ export const BookingTimeSelectScreen = () => {
   const setDraftBooking = useBookingStore(selectSetDraftBooking);
 
   
-  const { activity, venue } = route.params || {};
+  const { activity, venue, companionId, companionName } = route.params || {};
 
   const [selectedDateId, setSelectedDateId] = useState<string>(DATES[0].id);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
@@ -75,6 +75,8 @@ export const BookingTimeSelectScreen = () => {
       date: selectedDate?.dateStr,
       time: selectedTime,
       duration,
+      companionId,
+      companionName,
     });
   };
 

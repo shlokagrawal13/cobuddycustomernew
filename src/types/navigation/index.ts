@@ -32,10 +32,10 @@ export type RootStackParamList = {
   NotificationPermissionScreen: undefined;
   BasicProfileSetupScreen: undefined;
   LocationSelectionScreen: undefined;
-  BookingActivitySelectScreen: undefined;
-  BookingVenueSelectScreen: { activity?: import('./booking.types').BookingActivity } | undefined;
-  BookingTimeSelectScreen: { activity?: import('./booking.types').BookingActivity; venue?: import('./booking.types').BookingVenue } | undefined;
-  BookingSummaryScreen: { activity?: import('./booking.types').BookingActivity; venue?: import('./booking.types').BookingVenue; date?: string; time?: string; duration?: number; bookingId?: string } | undefined;
+  BookingActivitySelectScreen: { companionId?: string; companionName?: string } | undefined;
+  BookingVenueSelectScreen: { activity?: import('./booking.types').BookingActivity; companionId?: string; companionName?: string } | undefined;
+  BookingTimeSelectScreen: { activity?: import('./booking.types').BookingActivity; venue?: import('./booking.types').BookingVenue; companionId?: string; companionName?: string } | undefined;
+  BookingSummaryScreen: { activity?: import('./booking.types').BookingActivity; venue?: import('./booking.types').BookingVenue; date?: string; time?: string; duration?: number; bookingId?: string; companionId?: string; companionName?: string; } | undefined;
   BookingSuccessScreen: undefined;
   BookingRequestSentScreen: undefined;
   BookingAcceptedScreen: undefined;
