@@ -26,9 +26,9 @@ export const WelcomeScreen = () => {
   const { t } = useTranslation(['onboarding']);
 
   const TRUST_PILLARS = [
-  { icon: 'shield-check-outline', label: t('features.verified', 'Verified') },
-  { icon: 'lock-outline', label: t('features.secure', 'Secure') },
-  { icon: 'account-heart-outline', label: t('features.respectful', 'Respectful') },
+  { icon: 'shield-check-outline', label: t('welcome.features.verified', 'Verified') },
+  { icon: 'lock-outline', label: t('welcome.features.secure', 'Secure') },
+  { icon: 'account-heart-outline', label: t('welcome.features.respectful', 'Respectful') },
 ];
 
   

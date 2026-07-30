@@ -22,7 +22,5 @@
   "a11yRemoveContact": "Remove contact",
   "a11yAddContact": "Add new trusted contact",
   "a11ySelectRel": "Select relationship",
-  "contacts": {
-    "saveContacts": "Save Contacts"
-  }
+  "saveContacts": "Save Contacts"
 }

@@ -45,5 +45,7 @@
   "actions": {
     "connected": "Connected",
     "connect": "Connect"
-  }
+  },
+  "alertTitleInvalidEmail": "Invalid Email",
+  "alertMsgPleaseEnterValidEmail": "Please enter a valid email address."
 }
