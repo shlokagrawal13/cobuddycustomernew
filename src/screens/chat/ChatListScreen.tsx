@@ -35,8 +35,8 @@ export const ChatListScreen = () => {
 
   const [showNewMessageModal, setShowNewMessageModal] = useState(false);
   const activeBookings = [
-    { id: 'CB-REQ-8830', name: 'Kabir Singh', role: 'Event Companion', online: true },
-    { id: 'CB-REQ-9912', name: 'Sneha Verma', role: 'Local Guide', online: false },
+    { id: 'CB-REQ-8830', name: 'Kabir Singh', role: 'Event Companion', online: true, companionId: 'c1' },
+    { id: 'CB-REQ-9912', name: 'Sneha Verma', role: 'Local Guide', online: false, companionId: 'c2' },
   ];
 
 
@@ -99,7 +99,7 @@ export const ChatListScreen = () => {
           <React.Fragment key={chat.id}>
             <TouchableOpacity
               style={styles.convoItem}
-              onPress={() => navigation.navigate('CompanionChatScreen', { companionName: chat.name, bookingId: chat.id })}
+              onPress={() => navigation.navigate('CompanionChatScreen', { companionName: chat.name, bookingId: chat.id, companionId: chat.companionId })}
               activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yGoToCompanionchat', 'Go to CompanionChat')}>
               
               <View style={styles.convoAvatar}>
@@ -179,7 +179,7 @@ export const ChatListScreen = () => {
                 activeOpacity={0.8}
                 onPress={() => {
                   setShowNewMessageModal(false);
-                  navigation.navigate('CompanionChatScreen', { companionName: bk.name, bookingId: bk.id });
+                  navigation.navigate('CompanionChatScreen', { companionName: bk.name, bookingId: bk.id, companionId: bk.companionId });
                 }} accessibilityRole="button" accessibilityLabel={t('a11yStartChatWith', 'Start chat with {{name}}', { name: bk.name })}
               >
                 <View style={styles.newChatAvatar}>

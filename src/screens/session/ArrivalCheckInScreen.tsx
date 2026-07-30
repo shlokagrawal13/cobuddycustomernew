@@ -18,6 +18,7 @@ export const ArrivalCheckInScreen = () => {
   const [isLocating, setIsLocating] = useState(false);
 
     const COMPANION_NAME = 'Elena Vasquez';
+  const COMPANION_ID = 'c1';
 
   const handleSimulateArrival = () => {
     setIsLocating(true);
@@ -107,7 +108,7 @@ export const ArrivalCheckInScreen = () => {
               const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void };
               nav.navigate('MainTabNavigator', {
                 screen: 'ChatTab',
-                params: { screen: 'CompanionChatScreen', params: { companionName: COMPANION_NAME } }
+                params: { screen: 'CompanionChatScreen', params: { companionName: COMPANION_NAME, companionId: COMPANION_ID } }
               });
             }} accessibilityRole="button" accessibilityLabel={t('a11yMessage', 'Message')}>
               <Icon name="chat" size={20} color={theme.colors.primary} />

@@ -11,6 +11,7 @@ export const MOCK_CHAT_LIST = [
       {
         id: 'CB-REQ-8829',
         name: 'Elena Vasquez',
+        companionId: 'c1',
         lastMessage: 'I have arrived at the cafe. See you soon!',
         time: '12:45 PM',
         unread: 1,
@@ -21,6 +22,7 @@ export const MOCK_CHAT_LIST = [
       {
         id: 'CB-REQ-7711',
         name: 'Priya Sharma',
+        companionId: 'c2',
         lastMessage: 'Thank you for the amazing session yesterday.',
         time: 'Yesterday',
         unread: 0,

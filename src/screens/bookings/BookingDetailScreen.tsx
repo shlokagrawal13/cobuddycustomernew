@@ -49,7 +49,7 @@ export const BookingDetailScreen = () => {
   const handleMessage = () => {
     navigation.navigate('ChatTab', { 
       screen: 'CompanionChatScreen', 
-      params: { companionName: data.companionName, bookingId: data.id } 
+      params: { companionName: data.companionName, bookingId: data.id, companionId: data.companionId } 
     });
   };
 

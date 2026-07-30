@@ -20,7 +20,7 @@ export const SupportTicketDetailScreen = () => {
   
   const [replyText, setReplyText] = useState('');
   const [messages, setMessages] = useState(MOCK_THREADS[ticketId] || MOCK_THREADS['TKT-8921']);
-  const isClosed = false; // Mock status
+  const isClosed = matchedTicket?.status === 'Closed';
 
   const handleSend = () => {
     if (!replyText.trim()) return;

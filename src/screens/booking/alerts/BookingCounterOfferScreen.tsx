@@ -44,7 +44,7 @@ export const BookingCounterOfferScreen = ({ route }: { route: any }) => {
   const handleMessageBack = () => {
     const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { 
       screen: 'ChatTab', 
-      params: { screen: 'CompanionChatScreen', params: { companionName: bookingData.companionName, bookingId: bookingData.bookingId } } 
+      params: { screen: 'CompanionChatScreen', params: { companionName: bookingData.companionName, bookingId: bookingData.bookingId, companionId: bookingData.companionId } } 
     });
   };
 

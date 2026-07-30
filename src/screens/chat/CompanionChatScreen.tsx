@@ -22,6 +22,7 @@ export const CompanionChatScreen = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'CompanionChatScreen'>>();
   const companionName = route.params?.companionName || 'Elena Vasquez';
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
+  const companionId = route.params?.companionId || 'c1';
   
   const [inputText, setInputText] = useState('');
   const [isOptionsMenuVisible, setOptionsMenuVisible] = useState(false);
@@ -80,7 +81,7 @@ export const CompanionChatScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity 
               style={styles.avatarBox}
-              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' })} accessibilityRole="button" accessibilityLabel={t('a11yGoToDiscovertab', 'Go to DiscoverTab')}
+              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId } })} accessibilityRole="button" accessibilityLabel={t('a11yGoToDiscovertab', 'Go to DiscoverTab')}
             >
               <Text style={styles.avatarInitials}>{companionName.charAt(0)}</Text>
               <View style={styles.onlineDot} />
@@ -167,7 +168,7 @@ export const CompanionChatScreen = () => {
                 style={styles.optionItem} 
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
-                  navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen' }); 
+                  navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId } }); 
                 }} accessibilityRole="button" accessibilityLabel={t('a11yViewProfile', 'View Profile')}
               >
                 <Icon name="account-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />

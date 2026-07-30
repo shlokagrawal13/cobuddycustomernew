@@ -46,7 +46,7 @@ export type RootStackParamList = {
   ModifyBookingScreen: { bookingId?: string } | undefined;
   DisputeRefundScreen: { bookingId?: string } | undefined;
   ChatListScreen: undefined;
-  CompanionChatScreen: { companionName?: string; bookingId?: string } | undefined;
+  CompanionChatScreen: { companionName?: string; bookingId?: string; companionId?: string } | undefined;
   ConciergeChatScreen: undefined;
   IncomingCallScreen: { callerName?: string } | undefined;
   VoiceCallScreen: { companionName?: string } | undefined;
