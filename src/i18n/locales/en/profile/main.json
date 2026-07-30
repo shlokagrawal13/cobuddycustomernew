@@ -73,5 +73,6 @@
     "supportCenterSub": "Get help or report an issue",
     "legalAgreements": "Legal Agreements",
     "legalAgreementsSub": "Terms of Service & Privacy"
-  }
+  },
+  "a11yEmail": "Email: {{email}}"
 }

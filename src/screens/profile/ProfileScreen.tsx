@@ -221,7 +221,7 @@ export const ProfileScreen = () => {
             <TouchableOpacity 
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
               onPress={() => navigation.navigate('EditProfileScreen')}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={`Email: ${user.email}`}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yEmail', 'Email: {{email}}', { email: user.email })}
             >
               <Text style={styles.contactEmailText}>{user.email}</Text>
               <Icon name="pencil" size={14} color={theme.colors.primary} />

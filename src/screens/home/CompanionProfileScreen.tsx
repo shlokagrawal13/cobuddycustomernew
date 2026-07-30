@@ -8,7 +8,7 @@ import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { SkeletonLoader } from '../../components/ui/SkeletonLoader';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
-import { DUMMY_PROFILE } from '../../services/mock';
+import { DUMMY_PROFILE, DUMMY_COMPANIONS, DUMMY_FEATURED } from '../../services/mock';
 
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -21,6 +21,24 @@ import { RootStackParamList } from '../../types/navigation';
 
 export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackParamList, 'CompanionProfileScreen'> }) => {
   const { companionId } = route?.params || {};
+  const matchedCompanion = [...DUMMY_COMPANIONS, ...DUMMY_FEATURED].find(c => c.id === companionId);
+
+  const profile = matchedCompanion
+    ? {
+        ...DUMMY_PROFILE,
+        name: matchedCompanion.name,
+        trustScore: matchedCompanion.trustScore,
+        distance: matchedCompanion.distance,
+        // rating/reviews count/rate/activities/gender only exist on the list item, not on
+        // DUMMY_PROFILE's shape today — map the ones DUMMY_PROFILE actually has slots for:
+        reviews: { ...DUMMY_PROFILE.reviews, count: matchedCompanion.reviews },
+        completedSessions: matchedCompanion.sessions,
+        // photos, bio, languages, personality, hobbies, pricing, travelPreference, schedule,
+        // rules, cancellationPolicy, memberSince, verifications, pronouns, lastActive, age:
+        // no per-companion mock data exists for these yet, so they stay as DUMMY_PROFILE's
+        // shared placeholder values until real companion profile data exists.
+      }
+    : DUMMY_PROFILE;
   const { t } = useTranslation(['companionProfile']);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
@@ -153,7 +171,7 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
             showsHorizontalScrollIndicator={false}
             onMomentumScrollEnd={onMomentumScrollEnd}
           >
-            {DUMMY_PROFILE.photos.map((photo, index) => (
+            {profile.photos.map((photo, index) => (
               <Image key={index} source={{ uri: photo }} style={styles.heroImage} />
             ))}
           </Animated.ScrollView>
@@ -162,27 +180,27 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
           <View style={styles.heroOverlay}>
             <View style={styles.heroDetails}>
               <View style={styles.nameRow}>
-                <Text style={styles.heroName}>{DUMMY_PROFILE.name}, {DUMMY_PROFILE.age}</Text>
+                <Text style={styles.heroName}>{profile.name}, {profile.age}</Text>
                 <View style={styles.trustBadge}>
                   <Icon name="shield-check" size={16} color={theme.colors.background} />
-                  <Text style={styles.trustScore}>{DUMMY_PROFILE.trustScore}</Text>
+                  <Text style={styles.trustScore}>{profile.trustScore}</Text>
                 </View>
               </View>
-              <Text style={styles.heroSubtitle}>{DUMMY_PROFILE.location} • {DUMMY_PROFILE.distance}</Text>
+              <Text style={styles.heroSubtitle}>{profile.location} • {profile.distance}</Text>
               
               <View style={styles.metaRow}>
-                <Text style={[styles.heroSubtitle, { fontSize: 14, opacity: 0.8 }]}>{DUMMY_PROFILE.pronouns}</Text>
+                <Text style={[styles.heroSubtitle, { fontSize: 14, opacity: 0.8 }]}>{profile.pronouns}</Text>
                 <View style={styles.dotSeparator} />
                 <View style={styles.activeStatusRow}>
                   <View style={styles.activeDot} />
-                  <Text style={styles.activeStatusText}>{DUMMY_PROFILE.lastActive}</Text>
+                  <Text style={styles.activeStatusText}>{profile.lastActive}</Text>
                 </View>
               </View>
             </View>
           </View>
 
           <View style={styles.paginationContainer}>
-            {DUMMY_PROFILE.photos.map((_, i) => (
+            {profile.photos.map((_, i) => (
               <View key={i} style={[styles.dot, activePhotoIndex === i && styles.paginationActiveDot]} />
             ))}
           </View>
@@ -195,42 +213,42 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
           <View style={styles.statsRow}>
             <View style={styles.statItem}>
               <Icon name="star" size={24} color={theme.colors.primary} />
-              <Text style={styles.statValue}>{DUMMY_PROFILE.reviews.average}</Text>
-              <Text style={styles.statLabel}>{DUMMY_PROFILE.reviews.count} {t('statReviews', 'Reviews')}</Text>
+              <Text style={styles.statValue}>{profile.reviews.average}</Text>
+              <Text style={styles.statLabel}>{profile.reviews.count} {t('statReviews', 'Reviews')}</Text>
             </View>
             <View style={styles.statDivider} />
             <View style={styles.statItem}>
               <Icon name="check-decagram" size={24} color={theme.colors.success} />
-              <Text style={styles.statValue}>{DUMMY_PROFILE.completedSessions}</Text>
+              <Text style={styles.statValue}>{profile.completedSessions}</Text>
               <Text style={styles.statLabel}>{t('statSessions', 'Sessions')}</Text>
             </View>
             <View style={styles.statDivider} />
             <View style={styles.statItem}>
               <Icon name="clock-fast" size={24} color={theme.colors.textSecondary} />
-              <Text style={styles.statValue}>{DUMMY_PROFILE.responseTime}</Text>
+              <Text style={styles.statValue}>{profile.responseTime}</Text>
               <Text style={styles.statLabel}>{t('statResponse', 'Response')}</Text>
             </View>
           </View>
 
           {/* About Card */}
           <View style={styles.card}>
-            <Text style={styles.cardTitle}>{t('aboutName', 'About {{name}}', { name: DUMMY_PROFILE.name })}</Text>
-            <Text style={styles.bioText}>{DUMMY_PROFILE.bio}</Text>
+            <Text style={styles.cardTitle}>{t('aboutName', 'About {{name}}', { name: profile.name })}</Text>
+            <Text style={styles.bioText}>{profile.bio}</Text>
             
             <View style={styles.tagsContainer}>
-              {DUMMY_PROFILE.languages.map(lang => (
+              {profile.languages.map(lang => (
                 <View key={lang} style={styles.tag}>
                   <Icon name="translate" size={14} color={theme.colors.textSecondary} />
                   <Text style={styles.tagText}>{lang}</Text>
                 </View>
               ))}
-              {DUMMY_PROFILE.hobbies.map(hobby => (
+              {profile.hobbies.map(hobby => (
                 <View key={hobby} style={styles.tag}>
                   <Icon name="heart-outline" size={14} color={theme.colors.textSecondary} />
                   <Text style={styles.tagText}>{hobby}</Text>
                 </View>
               ))}
-              {DUMMY_PROFILE.personality.map(trait => (
+              {profile.personality.map(trait => (
                 <View key={trait} style={styles.tag}>
                   <Icon name="account-star-outline" size={14} color={theme.colors.textSecondary} />
                   <Text style={styles.tagText}>{trait}</Text>
@@ -242,7 +260,7 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
           {/* Services & Pricing Card */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>{t('servicesPricing', 'Services & Pricing')}</Text>
-            {DUMMY_PROFILE.pricing.map((p, idx) => (
+            {profile.pricing.map((p, idx) => (
               <View key={idx} style={styles.pricingRow}>
                 <View style={styles.pricingLeft}>
                   <View style={styles.pricingIconBox}>
@@ -255,7 +273,7 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
             ))}
             <View style={styles.infoRow}>
               <Icon name="map-marker-distance" size={18} color={theme.colors.textSecondary} />
-              <Text style={styles.infoText}>{DUMMY_PROFILE.travelPreference}</Text>
+              <Text style={styles.infoText}>{profile.travelPreference}</Text>
             </View>
           </View>
 
@@ -265,11 +283,11 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
             <View style={[styles.infoRow, { marginBottom: 16 }]}>
               <Icon name="calendar-clock" size={20} color={theme.colors.textSecondary} />
               <Text style={[styles.infoText, { color: theme.colors.textPrimary, fontWeight: 'bold' }]}>
-                {DUMMY_PROFILE.schedule}
+                {profile.schedule}
               </Text>
             </View>
             
-            {DUMMY_PROFILE.rules.map((rule, idx) => (
+            {profile.rules.map((rule, idx) => (
               <View key={idx} style={styles.ruleRow}>
                 <Icon name="check-circle-outline" size={18} color={theme.colors.textSecondary} />
                 <Text style={styles.ruleText}>{rule}</Text>
@@ -278,16 +296,16 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
 
             <View style={[styles.ruleRow, { marginTop: 8 }]}>
               <Icon name="information-outline" size={18} color={theme.colors.error} />
-              <Text style={[styles.ruleText, { color: theme.colors.error }]}>{DUMMY_PROFILE.cancellationPolicy}</Text>
+              <Text style={[styles.ruleText, { color: theme.colors.error }]}>{profile.cancellationPolicy}</Text>
             </View>
           </View>
 
           {/* Verifications Card */}
           <View style={styles.card}>
             <Text style={styles.cardTitle}>{t('trustVerifications', 'Trust & Verifications')}</Text>
-            <Text style={styles.mutedText}>{t('memberSince', 'Member since')} {DUMMY_PROFILE.memberSince}</Text>
+            <Text style={styles.mutedText}>{t('memberSince', 'Member since')} {profile.memberSince}</Text>
             <View style={styles.verificationList}>
-              {DUMMY_PROFILE.verifications.map((v, idx) => (
+              {profile.verifications.map((v, idx) => (
                 <View key={idx} style={styles.verifyItem}>
                   <Icon name={v.icon} size={20} color={v.color} />
                   <Text style={styles.verifyLabel}>{v.label}</Text>
@@ -299,27 +317,27 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
           {/* Reviews Card */}
           <View style={styles.card}>
             <View style={styles.reviewHeader}>
-              <Text style={styles.cardTitle}>{t('reviewsCount', 'Reviews ({{count}})', { count: DUMMY_PROFILE.reviews.count })}</Text>
+              <Text style={styles.cardTitle}>{t('reviewsCount', 'Reviews ({{count}})', { count: profile.reviews.count })}</Text>
               <Text style={styles.reviewSeeAll}>{t('reviewSeeAll', 'See All')}</Text>
             </View>
             
             <View style={styles.reviewScoresGrid}>
               <View style={styles.reviewScoreItem}>
                 <Text style={styles.reviewScoreLabel}>{t('punctuality', 'Punctuality')}</Text>
-                <Text style={styles.reviewScoreValue}>{DUMMY_PROFILE.reviews.categories.punctuality}</Text>
+                <Text style={styles.reviewScoreValue}>{profile.reviews.categories.punctuality}</Text>
               </View>
               <View style={styles.reviewScoreItem}>
                 <Text style={styles.reviewScoreLabel}>{t('communication', 'Communication')}</Text>
-                <Text style={styles.reviewScoreValue}>{DUMMY_PROFILE.reviews.categories.communication}</Text>
+                <Text style={styles.reviewScoreValue}>{profile.reviews.categories.communication}</Text>
               </View>
               <View style={styles.reviewScoreItem}>
                 <Text style={styles.reviewScoreLabel}>{t('behavior', 'Behavior')}</Text>
-                <Text style={styles.reviewScoreValue}>{DUMMY_PROFILE.reviews.categories.behavior}</Text>
+                <Text style={styles.reviewScoreValue}>{profile.reviews.categories.behavior}</Text>
               </View>
             </View>
 
-            {DUMMY_PROFILE.reviews.items.map((rev, idx) => (
-              <View key={rev.id} style={[styles.reviewBox, idx === DUMMY_PROFILE.reviews.items.length - 1 && { borderBottomWidth: 0, paddingBottom: 0 }]}>
+            {profile.reviews.items.map((rev, idx) => (
+              <View key={rev.id} style={[styles.reviewBox, idx === profile.reviews.items.length - 1 && { borderBottomWidth: 0, paddingBottom: 0 }]}>
                 <View style={styles.reviewAuthorRow}>
                   <View style={styles.reviewAvatar}>
                     <Text style={styles.reviewAvatarText}>{rev.author.charAt(0)}</Text>
@@ -340,7 +358,7 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
 
       {/* Glassmorphism Sticky Header */}
       <Animated.View style={[styles.stickyHeader, { height: insets.top + 56, paddingTop: insets.top, opacity: headerOpacity }]}>
-        <Text style={styles.stickyHeaderTitle}>{DUMMY_PROFILE.name}</Text>
+        <Text style={styles.stickyHeaderTitle}>{profile.name}</Text>
       </Animated.View>
 
       {/* Floating Header Actions */}
@@ -388,11 +406,11 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
             <Text style={styles.sheetRowText}>{t('shareProfile', 'Share Profile')}</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel={t('a11yReportName', 'Report {{name}}', { name: DUMMY_PROFILE.name })}>
+          <TouchableOpacity style={styles.sheetRow} activeOpacity={0.7} onPress={() => setShowMenuSheet(false)} accessibilityRole="button" accessibilityLabel={t('a11yReportName', 'Report {{name}}', { name: profile.name })}>
             <View style={styles.sheetIconWrap}>
               <Icon name="flag-outline" size={20} color={theme.colors.textPrimary} />
             </View>
-            <Text style={styles.sheetRowText}>{t('reportName', 'Report {{name}}', { name: DUMMY_PROFILE.name })}</Text>
+            <Text style={styles.sheetRowText}>{t('reportName', 'Report {{name}}', { name: profile.name })}</Text>
           </TouchableOpacity>
 
           <View style={styles.sheetDivider} />
@@ -405,26 +423,26 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
               setTimeout(() => {
                   Alert.alert(
                     t('blockUserTitle', 'Block User'),
-                    t('blockUserConfirm', "Are you sure you want to block {{name}}? You won't be able to request bookings or send messages to them.", { name: DUMMY_PROFILE.name }),
+                    t('blockUserConfirm', "Are you sure you want to block {{name}}? You won't be able to request bookings or send messages to them.", { name: profile.name }),
                     [
                       { text: t('cancel', 'Cancel'), style: "cancel" },
                       { 
                         text: t('block', 'Block'), 
                         style: "destructive",
                         onPress: () => {
-                          Alert.alert(t('blockedTitle', 'Blocked'), t('blockedMessage', '{{name}} has been blocked.', { name: DUMMY_PROFILE.name }));
+                          Alert.alert(t('blockedTitle', 'Blocked'), t('blockedMessage', '{{name}} has been blocked.', { name: profile.name }));
                           smartGoBack('DiscoverTab');
                         }
                       }
                     ]
                   );
               }, 300);
-            }} accessibilityRole="button" accessibilityLabel={`Block ${DUMMY_PROFILE.name}`}
+            }} accessibilityRole="button" accessibilityLabel={t('a11yBlockName', 'Block {{name}}', { name: profile.name })}
           >
             <View style={[styles.sheetIconWrap, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
               <Icon name="block-helper" size={20} color={theme.colors.error} />
             </View>
-            <Text style={[styles.sheetRowText, { color: theme.colors.error }]}>{t('blockName', 'Block {{name}}', { name: DUMMY_PROFILE.name })}</Text>
+            <Text style={[styles.sheetRowText, { color: theme.colors.error }]}>{t('blockName', 'Block {{name}}', { name: profile.name })}</Text>
           </TouchableOpacity>
         </View>
       </AppBottomSheet>
