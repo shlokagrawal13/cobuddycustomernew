@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
@@ -12,6 +12,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export const TipGratuityScreen = () => { 
   const { t } = useTranslation('session.tip');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
   const { smartGoBack } = useSmartNavigation();
   const [selectedTip, setSelectedTip] = useState<number | null>(null);
   const [customTip, setCustomTip] = useState<string>('');
@@ -27,7 +29,7 @@ export const TipGratuityScreen = () => {
   }, [selectedTip]);
 
   const handlePayTip = () => {
-    navigation.navigate('CompanionReviewScreen');
+    navigation.navigate('CompanionReviewScreen', { ...(route.params || {}), companionId, companionName });
   };
 
   const getButtonLabel = () => {
@@ -50,7 +52,7 @@ export const TipGratuityScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Add a Tip')}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('CompanionReviewScreen')} accessibilityRole="button" accessibilityLabel={t('a11ySkip', 'Skip')}>
+        <TouchableOpacity onPress={() => navigation.navigate('CompanionReviewScreen', { ...(route.params || {}), companionId, companionName })} accessibilityRole="button" accessibilityLabel={t('a11ySkip', 'Skip')}>
           <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
@@ -63,7 +65,7 @@ export const TipGratuityScreen = () => {
           </View>
           
           <Text style={styles.title}>{t('title', 'Show your appreciation')}</Text>
-          <Text style={styles.subtitle}>{t('subtitle', 'Did Elena go above and beyond? A small tip can make their day.')}</Text>
+          <Text style={styles.subtitle}>{t('subtitle', 'Did {{name}} go above and beyond? A small tip can make their day.', { name: companionName || 'Elena' })}</Text>
 
           <View style={styles.tipGrid}>
             {TIPS.map(amount => (

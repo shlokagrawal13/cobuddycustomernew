@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { RootStackParamList } from '../../types/navigation';
@@ -11,6 +11,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export const SessionCompleteScreen = () => { 
   const { t } = useTranslation('session.complete');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
   const [fadeAnim] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -33,7 +35,7 @@ export const SessionCompleteScreen = () => {
           </View>
 
           <Text style={styles.title}>{t('title', 'Session Complete!')}</Text>
-          <Text style={styles.subtitle}>{t('subtitle', 'We hope you had a fantastic time with Elena.')}</Text>
+          <Text style={styles.subtitle}>{t('subtitle', 'We hope you had a fantastic time with {{name}}.', { name: companionName || 'Elena' })}</Text>
 
           <View style={styles.card}>
             <Text style={styles.cardTitle}>{t('cardTitle', 'FINAL RECEIPT')}</Text>
@@ -69,7 +71,7 @@ export const SessionCompleteScreen = () => {
         <View style={styles.footer}>
           <TouchableOpacity 
             style={styles.primaryBtn} 
-            onPress={() => navigation.navigate('PostSessionFeedbackScreen')} accessibilityRole="button" accessibilityLabel={t('a11yContinueToFeedback', 'Continue to Feedback')}
+            onPress={() => navigation.navigate('PostSessionFeedbackScreen', { companionId, companionName })} accessibilityRole="button" accessibilityLabel={t('a11yContinueToFeedback', 'Continue to Feedback')}
           >
             <Text style={styles.primaryBtnText}>{t('primaryBtnText', 'Continue to Feedback')}</Text>
           </TouchableOpacity>

@@ -1,6 +1,6 @@
 {
   "title": "Session Complete!",
-  "subtitle": "We hope you had a fantastic time with Elena.",
+  "subtitle": "We hope you had a fantastic time with {{name}}.",
   "cardTitle": "FINAL RECEIPT",
   "labelBase": "Base Session (2 Hrs)",
   "labelPlatform": "Platform Fee (5%)",

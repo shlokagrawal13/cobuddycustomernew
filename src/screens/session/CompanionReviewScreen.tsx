@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { RootStackParamList } from '../../types/navigation';
@@ -15,7 +15,8 @@ export const CompanionReviewScreen = () => {
   const [publicReview, setPublicReview] = useState('');
   const [privateFeedback, setPrivateFeedback] = useState('');
 
-  const COMPANION_NAME = 'Elena Vasquez';
+  const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
 
   const handleFinish = () => {
     // End of Live Session Flow. Reset stack to MainTabNavigator
@@ -44,9 +45,9 @@ export const CompanionReviewScreen = () => {
           {/* Rating Section */}
         <View style={styles.ratingSection}>
           <View style={styles.avatarPlaceholder}>
-            <Text style={styles.avatarInitials}>{COMPANION_NAME.charAt(0)}</Text>
+            <Text style={styles.avatarInitials}>{(companionName || 'Elena Vasquez').charAt(0)}</Text>
           </View>
-          <Text style={styles.question}>{t('questionRate', 'Rate your time with {{name}}', { name: COMPANION_NAME })}</Text>
+          <Text style={styles.question}>{t('questionRate', 'Rate your time with {{name}}', { name: (companionName || 'Elena Vasquez') })}</Text>
           
           <View style={styles.starsRow}>
             {[1, 2, 3, 4, 5].map(star => (
@@ -67,7 +68,7 @@ export const CompanionReviewScreen = () => {
             <Icon name="comment-text-outline" size={20} color={theme.colors.primary} />
             <Text style={styles.inputTitle}>{t('inputPublicTitle', 'Public Review')}</Text>
           </View>
-          <Text style={styles.inputDesc}>{t('inputPublicDesc', "This will appear on {{name}}'s profile.", { name: COMPANION_NAME })}</Text>
+          <Text style={styles.inputDesc}>{t('inputPublicDesc', "This will appear on {{name}}'s profile.", { name: (companionName || 'Elena Vasquez') })}</Text>
           <TextInput
             style={styles.textInput}
             placeholder={t('placeholder.WhatDidYouEnjoy', 'What did you enjoy the most?')}

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView, ActivityIndicator, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
@@ -17,8 +17,8 @@ export const ArrivalCheckInScreen = () => {
   const [hasArrived, setHasArrived] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
 
-    const COMPANION_NAME = 'Elena Vasquez';
-  const COMPANION_ID = 'c1';
+    const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
 
   const handleSimulateArrival = () => {
     setIsLocating(true);
@@ -77,7 +77,7 @@ export const ArrivalCheckInScreen = () => {
               <Icon name="shield-check" size={32} color={theme.colors.primary} />
             </View>
             <Text style={styles.otpTitle}>{t('otpTitle2', 'Escrow Unlock OTP')}</Text>
-            <Text style={styles.otpDesc}>{t('otpSharePrefix', 'Share this 4-digit code with ')}<Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{COMPANION_NAME}</Text>{t('otpShareSuffix', ' to start the session.')}</Text>
+            <Text style={styles.otpDesc}>{t('otpSharePrefix', 'Share this 4-digit code with ')}<Text style={{ color: theme.colors.textPrimary, fontWeight: 'bold' }}>{companionName}</Text>{t('otpShareSuffix', ' to start the session.')}</Text>
             
             <View style={styles.codeBox}>
               {MOCK_OTP.split('').map((digit, index) => (
@@ -108,7 +108,7 @@ export const ArrivalCheckInScreen = () => {
               const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void };
               nav.navigate('MainTabNavigator', {
                 screen: 'ChatTab',
-                params: { screen: 'CompanionChatScreen', params: { companionName: COMPANION_NAME, companionId: COMPANION_ID } }
+                params: { screen: 'CompanionChatScreen', params: { companionName: companionName, companionId: companionId } }
               });
             }} accessibilityRole="button" accessibilityLabel={t('a11yMessage', 'Message')}>
               <Icon name="chat" size={20} color={theme.colors.primary} />
@@ -120,7 +120,7 @@ export const ArrivalCheckInScreen = () => {
         {/* Safety Issue Link */}
         <TouchableOpacity 
           style={styles.reportBtn} 
-          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: COMPANION_NAME } })} accessibilityRole="button" accessibilityLabel={t('a11yCompanionDidntShowUp', "Companion didn't show up")}
+          onPress={() => navigation.navigate('SafetySupportStack', { screen: 'IncidentReportScreen', params: { companionName: companionName } })} accessibilityRole="button" accessibilityLabel={t('a11yCompanionDidntShowUp', "Companion didn't show up")}
         >
           <Icon name="alert-circle-outline" size={16} color={theme.colors.error} />
           <Text style={styles.reportText}>{t('reportText', "Companion didn't show up or looks different? Report Issue")}</Text>
@@ -132,7 +132,7 @@ export const ArrivalCheckInScreen = () => {
         <View style={styles.bottomBar}>
           <TouchableOpacity 
             style={styles.primaryBtn} 
-            onPress={() => navigation.navigate('ActiveSessionScreen')} accessibilityRole="button" accessibilityLabel={t('a11yMockCompanionEnteredOtp', '[MOCK] Companion entered OTP')}
+            onPress={() => navigation.navigate('ActiveSessionScreen', { companionId, companionName })} accessibilityRole="button" accessibilityLabel={t('a11yMockCompanionEnteredOtp', '[MOCK] Companion entered OTP')}
           >
             <Text style={styles.primaryBtnText}>{t('mockOtp', '[MOCK] Companion entered OTP')}</Text>
           </TouchableOpacity>

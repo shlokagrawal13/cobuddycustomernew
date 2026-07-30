@@ -1,7 +1,7 @@
 {
   "headerTitle": "Quick Feedback",
   "skipBtn": "Skip",
-  "questionRate": "How was your session with Elena?",
+  "questionRate": "How was your session with {{name}}?",
   "tagsTitle": "What stood out?",
   "continueBtn": "Continue",
   "a11yGoBack": "Go back",

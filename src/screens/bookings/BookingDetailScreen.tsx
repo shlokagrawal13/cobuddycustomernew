@@ -128,7 +128,10 @@ export const BookingDetailScreen = () => {
           <View>
             <TouchableOpacity 
               style={styles.primaryBtn} 
-              onPress={() => navigation.navigate('LiveSessionStack')} accessibilityRole="button" accessibilityLabel={t('a11yViewUpcomingMeetup', 'View Upcoming Meetup')}
+              onPress={() => navigation.navigate('LiveSessionStack', {
+       screen: 'ArrivalCheckInScreen',
+       params: { companionId: data.companionId, companionName: data.companionName },
+     })} accessibilityRole="button" accessibilityLabel={t('a11yViewUpcomingMeetup', 'View Upcoming Meetup')}
             >
               <Icon name="key" size={18} color={theme.colors.background} />
               <Text style={styles.primaryBtnText}>{t('viewUpcoming', 'View Upcoming Meetup')}</Text>
@@ -163,7 +166,10 @@ export const BookingDetailScreen = () => {
     if (data.status === 'Completed' || data.status === 'History') {
       return (
         <View style={styles.actionCol}>
-          <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('LiveSessionStack', { screen: 'CompanionReviewScreen', params: { bookingId: data.id } })} accessibilityRole="button" accessibilityLabel={t('a11yLeaveAReview', 'Leave a Review')}>
+          <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('LiveSessionStack', {
+       screen: 'CompanionReviewScreen',
+       params: { bookingId: data.id, companionId: data.companionId, companionName: data.companionName },
+     })} accessibilityRole="button" accessibilityLabel={t('a11yLeaveAReview', 'Leave a Review')}>
             <Text style={styles.primaryBtnText}>{t('leaveReview', 'Leave a Review')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.ghostBtn} onPress={() => navigation.navigate('DisputeRefundScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel={t('a11yRaiseADispute', 'Raise a Dispute')}>

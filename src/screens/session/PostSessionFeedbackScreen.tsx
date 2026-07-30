@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
@@ -12,6 +12,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export const PostSessionFeedbackScreen = () => { 
   const { t } = useTranslation('session.postFeedback');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
   const { smartGoBack } = useSmartNavigation();
   const [sentiment, setSentiment] = useState<'up' | 'down' | null>(null);
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
@@ -32,13 +34,13 @@ export const PostSessionFeedbackScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Quick Feedback')}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel={t('a11ySkip', 'Skip')}>
+        <TouchableOpacity onPress={() => navigation.navigate('TipGratuityScreen', { companionId, companionName })} accessibilityRole="button" accessibilityLabel={t('a11ySkip', 'Skip')}>
           <Text style={styles.skipBtn}>{t('skipBtn', 'Skip')}</Text>
         </TouchableOpacity>
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.question}>{t('questionRate', 'How was your session with Elena?')}</Text>
+        <Text style={styles.question}>{t('questionRate', 'How was your session with {{name}}?', { name: companionName || 'Elena' })}</Text>
         
         <View style={styles.sentimentRow}>
           <TouchableOpacity 
@@ -81,7 +83,7 @@ export const PostSessionFeedbackScreen = () => {
         <TouchableOpacity 
           style={[styles.primaryBtn, (!sentiment || selectedTags.length === 0) && { opacity: 0.5 }]} 
           disabled={!sentiment || selectedTags.length === 0}
-          onPress={() => navigation.navigate('TipGratuityScreen')} accessibilityRole="button" accessibilityLabel={t('a11yContinue', 'Continue')}
+          onPress={() => navigation.navigate('TipGratuityScreen', { companionId, companionName })} accessibilityRole="button" accessibilityLabel={t('a11yContinue', 'Continue')}
         >
           <Text style={styles.primaryBtnText}>{t('continueBtn', 'Continue')}</Text>
         </TouchableOpacity>

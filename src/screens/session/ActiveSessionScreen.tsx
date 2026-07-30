@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Animated, Modal, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { MOCK_COMPANION } from '../../services/mock';
@@ -14,6 +14,8 @@ const { width } = Dimensions.get('window');
 export const ActiveSessionScreen = () => { 
   const { t } = useTranslation('session.active');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const route = useRoute<any>();
+  const { companionId, companionName } = route.params || {};
   const [etiquetteVisible, setEtiquetteVisible] = useState(true);
   
   // Timer State (e.g. 2 hours = 7200 seconds)
@@ -58,7 +60,7 @@ export const ActiveSessionScreen = () => {
 
   const handleEndEarly = () => {
     setEndEarlyModalVisible(false);
-    navigation.navigate('SessionCompleteScreen');
+    navigation.navigate('SessionCompleteScreen', { companionId, companionName });
   };
 
   const handleConfirmExtension = () => {
@@ -119,10 +121,10 @@ export const ActiveSessionScreen = () => {
         {/* Companion Snapshot */}
         <View style={styles.companionCard}>
           <View style={styles.avatarPlaceholder}>
-            <Text style={styles.avatarInitials}>{MOCK_COMPANION.charAt(0)}</Text>
+            <Text style={styles.avatarInitials}>{(companionName || 'Elena Vasquez').charAt(0)}</Text>
           </View>
           <View style={{ flex: 1, paddingLeft: 12 }}>
-            <Text style={styles.companionName} numberOfLines={1}>{MOCK_COMPANION}</Text>
+            <Text style={styles.companionName} numberOfLines={1}>{companionName || 'Elena Vasquez'}</Text>
             <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginTop: 4 }} accessibilityRole="button" accessibilityLabel={t('a11yViewFullProfile', 'View Full Profile')}>
               <Text style={{ color: theme.colors.primary, fontSize: 13, fontWeight: 'bold' }}>{t('viewFullProfile', 'View Full Profile')}</Text>
               <Icon name="chevron-right" size={14} color={theme.colors.primary} />
@@ -284,7 +286,7 @@ export const ActiveSessionScreen = () => {
       <View style={styles.bottomBar}>
         <TouchableOpacity 
           style={styles.primaryBtn} 
-          onPress={() => navigation.navigate('SessionCompleteScreen')} accessibilityRole="button" accessibilityLabel={t('a11yMockTimesUpAutoEnd', "[MOCK] Time's Up / Auto End")}
+          onPress={() => navigation.navigate('SessionCompleteScreen', { companionId, companionName })} accessibilityRole="button" accessibilityLabel={t('a11yMockTimesUpAutoEnd', "[MOCK] Time's Up / Auto End")}
         >
           <Text style={styles.primaryBtnText}>{t('mockTimesUp', "[MOCK] Time's Up / Auto End")}</Text>
         </TouchableOpacity>
