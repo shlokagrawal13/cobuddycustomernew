@@ -15,5 +15,74 @@
   },
   "read": "READ  →",
   "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences.",
-  "a11yReadDoc": "Read document"
+  "a11yReadDoc": "Read document",
+  "consent": {
+    "docs": {
+      "terms": {
+        "title": "Terms & Conditions",
+        "desc": "Our legal framework for usage and liability.",
+        "s1": {
+          "h": "Eligibility",
+          "b": "You must be 18 years or older to use CoBuddy. By registering, you confirm you meet this requirement and have the legal capacity to enter into this agreement."
+        },
+        "s2": {
+          "h": "Permitted Use",
+          "b": "CoBuddy connects members for trusted public-only experiences including dining, cultural outings, networking, and wellness activities. The platform is strictly for platonic, professional companionship in verified public settings."
+        },
+        "s3": {
+          "h": "Account Responsibility",
+          "b": "You are responsible for all activity under your account. Do not share credentials. CoBuddy reserves the right to suspend accounts for any breach of these terms without prior notice."
+        },
+        "s4": {
+          "h": "Limitation of Liability",
+          "b": "CoBuddy acts as a connection platform only. We are not liable for conduct between members during or after sessions. Sessions are undertaken at your own discretion."
+        }
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "desc": "How we protect and manage your data.",
+        "s1": {
+          "h": "Data We Collect",
+          "b": "We collect identity verification data (government ID), contact information, location data during active sessions, and usage analytics to improve your experience."
+        },
+        "s2": {
+          "h": "How We Use Your Data",
+          "b": "Your data is used exclusively for identity verification, session matching, safety monitoring, and personalized recommendations. We never sell personal data to third parties."
+        },
+        "s3": {
+          "h": "Data Protection",
+          "b": "All data is encrypted in transit and at rest. We are compliant with applicable regional data protection regulations."
+        },
+        "s4": {
+          "h": "Your Rights",
+          "b": "You may request access to, correction of, or deletion of your personal data at any time through Settings."
+        }
+      },
+      "community": {
+        "title": "Community Guidelines",
+        "desc": "Behavioral standards for all members.",
+        "s1": {
+          "h": "Respect & Dignity",
+          "b": "All members must treat companions and fellow users with respect. Harassment, discrimination, or any form of disrespectful conduct will result in immediate account suspension."
+        },
+        "s2": {
+          "h": "Public Venues Only",
+          "b": "For safety, all first-time meetings must occur in CoBuddy-verified public venues. Never request a companion to meet in private or isolated settings."
+        },
+        "s3": {
+          "h": "Zero Tolerance Policy",
+          "b": "Any solicitation for services beyond our platform scope (romantic, sexual, or private arrangements) is strictly prohibited and will result in permanent banning and potential legal action."
+        },
+        "s4": {
+          "h": "Reporting",
+          "b": "If you experience any behavior that violates these guidelines, use the in-app report feature immediately."
+        }
+      }
+    },
+    "checkbox": {
+      "tos": "I agree to CoBuddy's Terms & Conditions",
+      "public": "I understand CoBuddy supports public-only meetups and verified experiences",
+      "safety": "I agree to follow community safety and respectful behavior guidelines"
+    }
+  }
 }

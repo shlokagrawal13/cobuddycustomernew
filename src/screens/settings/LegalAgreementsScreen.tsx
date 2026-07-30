@@ -9,8 +9,6 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-
-
 export const LegalAgreementsScreen = () => { 
   const { t } = useTranslation('settings.legalAgreements');
 
@@ -43,14 +41,14 @@ export const LegalAgreementsScreen = () => {
                 <TouchableOpacity 
                     key={doc.id} 
                     style={[styles.row, index !== LEGAL_DOCS.length - 1 && styles.borderBottom]}
-                    activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`docs.${doc.id}.title`, doc.title)}
+                    activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={doc.title}
                 >
                     <View style={styles.iconWrap}>
                         <Icon name={doc.icon} size={22} color={theme.colors.textSecondary} />
                     </View>
                     <View style={styles.meta}>
-                        <Text style={styles.title}>{t(`docs.${doc.id}.title`, doc.title)}</Text>
-                        <Text style={styles.sub}>{t(`docs.${doc.id}.sub`, doc.sub)}</Text>
+                        <Text style={styles.title}>{doc.title}</Text>
+                        <Text style={styles.sub}>{doc.sub}</Text>
                     </View>
                     <Icon name="open-in-new" size={20} color={theme.colors.primary} />
                 </TouchableOpacity>

@@ -40,5 +40,9 @@
   "cancel": "Cancel",
   "block": "Block",
   "reportName": "Report {{name}}",
-  "a11yBlockName": "Block {{name}}"
+  "a11yBlockName": "Block {{name}}",
+  "memberSince": "Member since",
+  "reviewsCount": "Reviews ({{count}})",
+  "statReviews": "Reviews",
+  "a11yReportName": "Report {{name}}"
 }

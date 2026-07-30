@@ -7,5 +7,6 @@
   "startVerify": "Start Verification",
   "toEnsureASafeAnd": "To ensure a safe and trustworthy community, all users must complete a quick verification before their first booking.",
   "a11yClose": "Close",
-  "a11yStartVerification": "Start Verification"
+  "a11yStartVerification": "Start Verification",
+  "dataSecureNotice": "Your data is encrypted and securely stored. It is used strictly for identity verification as required by local regulations. We never share your government ID with companions or third parties."
 }

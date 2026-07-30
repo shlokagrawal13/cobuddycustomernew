@@ -171,12 +171,12 @@ export const HomeDashboardScreen = () => {
                   onPress={() => navigation.navigate('DiscoverTab', { 
                     screen: 'DiscoverScreen', 
                     params: { category: cat.id } 
-                  })} accessibilityRole="button" accessibilityLabel={t(`categories.${cat.id}`, cat.title)}
+                  })} accessibilityRole="button" accessibilityLabel={cat.title}
                 >
                   <View style={[styles.exploreIconBox, { backgroundColor: `${cat.color}20` }]}>
                     <Icon name={cat.icon} size={28} color={cat.color} />
                   </View>
-                  <Text style={styles.exploreCardTitle}>{t(`categories.${cat.id}`, cat.title)}</Text>
+                  <Text style={styles.exploreCardTitle}>{cat.title}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>

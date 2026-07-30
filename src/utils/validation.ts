@@ -7,15 +7,15 @@ export const ValidationRules = {
   // Standard email validation
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   
-  // Name validation: Only letters and spaces, min 2 chars
-  NAME: /^[a-zA-Z\s]{2,50}$/,
+  // Name validation: Only letters, spaces, hyphens, and apostrophes, min 2 chars
+  NAME: /^[a-zA-Z\s'-]{2,50}$/,
 };
 
 export const validatePhone = (phone: string): boolean => {
   if (!phone) return false;
   const clean = phone.replace(/\D/g, '');
   // Basic fallback for 10-digit Indian numbers if no country code provided
-  if (clean.length === 10 && !phone.startsWith('+')) return true;
+  if (clean.length === 10 && !phone.startsWith('+') && /^[6-9]/.test(clean)) return true;
   try {
     return isValidPhoneNumber(phone);
   } catch (e) {
@@ -50,10 +50,11 @@ export const validateDOB = (dobInput: string): boolean => {
   const month = parseInt(parts[1], 10);
   const year = parseInt(parts[2], 10);
   if (isNaN(day) || isNaN(month) || isNaN(year)) return false;
-  if (month < 1 || month > 12) return false;
-  if (day < 1 || day > 31) return false;
-  
   const dob = new Date(year, month - 1, day);
+  if (dob.getFullYear() !== year || dob.getMonth() !== month - 1 || dob.getDate() !== day) {
+    return false;
+  }
+  
   const today = new Date();
   
   // Calculate age

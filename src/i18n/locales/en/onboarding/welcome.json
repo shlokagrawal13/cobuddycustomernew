@@ -6,5 +6,10 @@
   "terms": "Terms of Service",
   "and": " and ",
   "privacy": "Privacy Policy",
-  "overline": "COBUDDY CUSTOMER"
+  "overline": "COBUDDY CUSTOMER",
+  "features": {
+    "verified": "Verified",
+    "secure": "Secure",
+    "respectful": "Respectful"
+  }
 }

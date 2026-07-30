@@ -10,5 +10,7 @@ export const INTEREST_MAPPING: Record<string, { categoryId: string | null, activ
   network: { categoryId: 'study', activityLabels: ['Networking', 'Study Buddy'] },
   wellness: { categoryId: null, activityLabels: ['Wellness'] },
   language: { categoryId: 'study', activityLabels: ['Study Buddy', 'Networking'] },
-  music: { categoryId: 'movie', activityLabels: ['Art & Culture'] }
+  music: { categoryId: 'movie', activityLabels: ['Art & Culture'] },
+  photography: { categoryId: 'city', activityLabels: ['Art & Culture'] },
+  gaming: { categoryId: 'movie', activityLabels: [] }
 };

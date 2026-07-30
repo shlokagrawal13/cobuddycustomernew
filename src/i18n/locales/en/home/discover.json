@@ -41,5 +41,20 @@
     "any": "Any",
     "male": "Male",
     "female": "Female"
+  },
+  "categories": {
+    "coffeeMeetups": "Coffee Meetups",
+    "movieBuffs": "Movie Buffs",
+    "studyBuddy": "Study Buddy",
+    "cityWalk": "City Walk"
+  },
+  "discover": {
+    "showing": "Showing ",
+    "companions": "companions",
+    "upTo": "Up to "
+  },
+  "units": {
+    "km": "km",
+    "kmSpace": " km"
   }
 }

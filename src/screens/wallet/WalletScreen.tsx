@@ -149,7 +149,7 @@ export const WalletScreen = () => {
                 />
               </View>
               <View style={styles.txItemMeta}>
-                <Text style={styles.txItemTitle}>{t(`transactionType.${tx.type}`, tx.title)}</Text>
+                <Text style={styles.txItemTitle}>{tx.title}</Text>
                 <Text style={styles.txItemDate}>{tx.date} • {tx.method}</Text>
               </View>
               <Text style={[styles.txItemAmount, tx.positive ? styles.txAmountPos : styles.txAmountNeg, tx.isRefund && styles.txAmountRefund]}>

@@ -43,20 +43,7 @@ export const InterestSelectionScreen = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'InterestSelectionScreen'>>();
   const { t } = useTranslation(['onboarding']);
 
-  const INTERESTS_DATA = [
-  { id: 'cafe', label: t('interests.cafeMeetup', 'Cafe Meetup'), icon: 'coffee-outline' },
-  { id: 'movie', label: t('interests.movieCompanion', 'Movie Companion'), icon: 'movie-open-outline' },
-  { id: 'tour', label: t('interests.localTour', 'Local Tour'), icon: 'map-marker-path' },
-  { id: 'event', label: t('interests.eventPartner', 'Event Partner'), icon: 'ticket-confirmation-outline' },
-  { id: 'gym', label: t('interests.gymBuddy', 'Gym Buddy'), icon: 'weight-lifter' },
-  { id: 'shopping', label: t('interests.shoppingAssistant', 'Shopping Assistant'), icon: 'shopping-outline' },
-  { id: 'dining', label: t('interests.fineDining', 'Fine Dining'), icon: 'silverware-fork-knife' },
-  { id: 'art', label: t('interests.artGallery', 'Art Gallery'), icon: 'palette-outline' },
-  { id: 'network', label: t('interests.networking', 'Networking'), icon: 'handshake-outline' },
-  { id: 'wellness', label: t('interests.yogaWellness', 'Yoga & Wellness'), icon: 'yoga' },
-  { id: 'language', label: t('interests.languageExchange', 'Language Exchange'), icon: 'earth' },
-  { id: 'music', label: t('interests.liveConcerts', 'Live Concerts'), icon: 'music-note-outline' },
-];
+  const INTERESTS_DATA = useInterestsData();
 
   
   const isEditMode = route.params?.isEditMode || false;

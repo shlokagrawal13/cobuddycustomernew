@@ -4,6 +4,7 @@ export interface TrustedContact {
   id: string;
   name: string;
   phone: string;
+  relationship: string;
 }
 
 export interface SafetyState {
@@ -16,6 +17,7 @@ export interface SafetyState {
   resolveSOS: () => void;
   setSessionActive: (active: boolean) => void;
   addTrustedContact: (contact: TrustedContact) => void;
+  removeTrustedContact: (id: string) => void;
   updateLocation: (lat: number, lng: number) => void;
 }
 
@@ -28,5 +30,6 @@ export const useSafetyStore = create<SafetyState>((set) => ({
   resolveSOS: () => set({ isSOSActive: false }),
   setSessionActive: (active) => set({ isSessionActive: active }),
   addTrustedContact: (contact) => set((state) => ({ trustedContacts: [...state.trustedContacts, contact] })),
+  removeTrustedContact: (id) => set((state) => ({ trustedContacts: state.trustedContacts.filter(c => c.id !== id) })),
   updateLocation: (lat, lng) => set({ lastKnownLocation: { lat, lng } }),
 }));

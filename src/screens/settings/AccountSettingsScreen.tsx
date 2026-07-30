@@ -8,6 +8,8 @@ import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useAuthStore } from '../../store/slices/authStore';
+import { validateEmail } from '../../utils/validation';
 
 export const AccountSettingsScreen = () => { 
   const { t } = useTranslation('settings.accountSettings');
@@ -15,9 +17,13 @@ export const AccountSettingsScreen = () => {
   const { smartGoBack } = useSmartNavigation();
   const [email, setEmail] = useState('shlok.dev@example.com');
   const [appleConnected, setAppleConnected] = useState(false);
-  const isKycVerified = true;
+  const isKycVerified = useAuthStore(state => state.kycStatus === 'verified');
   
   const handleSaveEmail = () => {
+      if (!validateEmail(email)) {
+          Alert.alert(t('alertTitleInvalidEmail', 'Invalid Email'), t('alertMsgPleaseEnterValidEmail', 'Please enter a valid email address.'));
+          return;
+      }
       Alert.alert(t('alertTitleEmailUpdated', 'Email Updated'), t('alertMsgYouremailaddresshasb', 'Your email address has been successfully updated.'));
   };
 

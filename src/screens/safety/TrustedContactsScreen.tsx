@@ -17,6 +17,7 @@ import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { useAuthStore } from '../../store/slices/authStore';
+import { useSafetyStore } from '../../store/slices/safetyStore';
 import { selectCompleteOnboarding } from '../../store/selectors/authSelectors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -34,17 +35,15 @@ export const TrustedContactsScreen = () => {
   const { t } = useTranslation(['onboarding']);
   const completeOnboarding = useAuthStore(selectCompleteOnboarding);
   const isFromSettings = route.params?.fromSettings;
-  const [contacts, setContacts] = useState([{ name: 'Aman', phone: '9876543210', relationship: 'Family' }]);
+  const { trustedContacts, addTrustedContact, removeTrustedContact } = useSafetyStore();
   const [showAddSheet, setShowAddSheet] = useState(false);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
   const [newRel, setNewRel] = useState('Friend');
   const [errorMsg, setErrorMsg] = useState('');
 
-  const removeContact = (index: number) => {
-    const newContacts = [...contacts];
-    newContacts.splice(index, 1);
-    setContacts(newContacts);
+  const removeContact = (id: string) => {
+    removeTrustedContact(id);
   };
 
   const handleAddSubmit = () => {
@@ -58,14 +57,19 @@ export const TrustedContactsScreen = () => {
       return;
     }
 
-    setContacts([...contacts, { name: newName.trim(), phone: newPhone.replace(/\D/g, ''), relationship: newRel }]);
+    addTrustedContact({
+      id: Date.now().toString(),
+      name: newName.trim(),
+      phone: newPhone.replace(/\D/g, ''),
+      relationship: newRel
+    });
     setShowAddSheet(false);
     setNewName('');
     setNewPhone('');
     setNewRel('Friend');
   };
 
-  const isValid = contacts.length > 0;
+  const isValid = trustedContacts.length > 0;
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.flex}>
@@ -114,8 +118,8 @@ export const TrustedContactsScreen = () => {
           </View>
 
           {/* Contacts List */}
-          {contacts.map((contact, index) => (
-            <View key={index} style={styles.card}>
+          {trustedContacts.map((contact) => (
+            <View key={contact.id} style={styles.card}>
               <View style={styles.cardHeader}>
                 <View style={styles.cardHeaderLeft}>
                   <View style={styles.cardAvatar}>
@@ -126,7 +130,7 @@ export const TrustedContactsScreen = () => {
                     <Text style={styles.cardRel}>{contact.relationship}</Text>
                   </View>
                 </View>
-                <TouchableOpacity onPress={() => removeContact(index)} style={styles.removeBtn} accessibilityRole="button" accessibilityLabel={t('contacts.a11yRemoveContact', 'Remove contact')}>
+                <TouchableOpacity onPress={() => removeContact(contact.id)} style={styles.removeBtn} accessibilityRole="button" accessibilityLabel={t('contacts.a11yRemoveContact', 'Remove contact')}>
                   <Icon name="close" size={16} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
               </View>
@@ -137,7 +141,7 @@ export const TrustedContactsScreen = () => {
             </View>
           ))}
           
-          {contacts.length < 3 && (
+          {trustedContacts.length < 3 && (
             <TouchableOpacity onPress={() => setShowAddSheet(true)} style={styles.addButton} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('contacts.a11yAddContact', 'Add new trusted contact')}>
               <Icon name="plus-circle-outline" size={20} color={theme.colors.primary} />
               <Text style={styles.addButtonText}>{t('contacts.btn_add')}</Text>

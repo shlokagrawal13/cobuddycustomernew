@@ -110,12 +110,12 @@ export const HelpCenterScreen = () => {
                             onPress={() => {
                                 setSelectedCategory(isSelected ? null : cat.id);
                                 setExpandedFaq(null);
-                            }} accessibilityRole="button" accessibilityLabel={t(`categories.${cat.id}`, cat.title)}
+                            }} accessibilityRole="button" accessibilityLabel={cat.title}
                         >
                             <View style={[styles.iconCircle, isSelected && styles.iconCircleActive]}>
                                 <Icon name={cat.icon} size={24} color={isSelected ? theme.colors.background : theme.colors.primary} />
                             </View>
-                            <Text style={[styles.gridTitle, isSelected && styles.gridTitleActive]}>{t(`categories.${cat.id}`, cat.title)}</Text>
+                            <Text style={[styles.gridTitle, isSelected && styles.gridTitleActive]}>{cat.title}</Text>
                         </TouchableOpacity>
                     );
                 })}
