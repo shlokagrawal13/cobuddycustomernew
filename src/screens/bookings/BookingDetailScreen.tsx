@@ -18,8 +18,30 @@ export const BookingDetailScreen = () => {
   
   const bookingId = route.params?.bookingId;
   const matchedBooking = MOCK_BOOKINGS.find(b => b.id === bookingId);
+
+  const calculatePayment = (priceStr: string) => {
+    const base = parseInt(priceStr.replace(/[^0-9]/g, ''), 10) || 0;
+    const platformFee = Math.round(base * 0.05);
+    const taxes = Math.round(base * 0.018);
+    const total = base + platformFee + taxes;
+    const formatPrice = (num: number) => '₹' + num.toLocaleString('en-IN');
+    return {
+      sessionRate: priceStr,
+      platformFee: formatPrice(platformFee),
+      taxes: formatPrice(taxes),
+      total: formatPrice(total),
+    };
+  };
+
   const data = matchedBooking
-    ? { ...MOCK_DETAILS, ...matchedBooking, status: route.params?.status || matchedBooking.displayStatus }
+    ? { 
+        ...MOCK_DETAILS, 
+        ...matchedBooking, 
+        status: route.params?.status || matchedBooking.displayStatus,
+        companionRating: matchedBooking.rating,
+        ...calculatePayment(matchedBooking.price)
+        // companionId and companionReviews use static values from MOCK_DETAILS until per-companion data exists
+      }
     : { ...MOCK_DETAILS, id: bookingId || MOCK_DETAILS.id, status: route.params?.status || MOCK_DETAILS.status };
 
   const handleBack = () => smartGoBack('BookingsTab');
