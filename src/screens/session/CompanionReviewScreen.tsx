@@ -16,7 +16,8 @@ export const CompanionReviewScreen = () => {
   const [privateFeedback, setPrivateFeedback] = useState('');
 
   const route = useRoute<any>();
-  const { companionId, companionName } = route.params || {};
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { companionId: _companionId, companionName } = route.params || {};
 
   const handleFinish = () => {
     // End of Live Session Flow. Reset stack to MainTabNavigator
