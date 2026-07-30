@@ -21,7 +21,7 @@ export const MOCK_CHAT_LIST = [
       },
       {
         id: 'CB-REQ-7711',
-        name: 'Priya Sharma',
+        name: 'Aisha Sharma',
         companionId: 'c2',
         lastMessage: 'Thank you for the amazing session yesterday.',
         time: 'Yesterday',
