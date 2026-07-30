@@ -6,7 +6,7 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-import { MOCK_DETAILS } from '../../services/mock';
+import { MOCK_DETAILS, MOCK_BOOKINGS } from '../../services/mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -16,9 +16,11 @@ export const BookingDetailScreen = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'BookingDetailScreen'>>();
   const { smartGoBack } = useSmartNavigation();
   
-  const bookingId = route.params?.bookingId || MOCK_DETAILS.id;
-  const bookingStatus = route.params?.status || MOCK_DETAILS.status;
-  const data = { ...MOCK_DETAILS, id: bookingId, status: bookingStatus };
+  const bookingId = route.params?.bookingId;
+  const matchedBooking = MOCK_BOOKINGS.find(b => b.id === bookingId);
+  const data = matchedBooking
+    ? { ...MOCK_DETAILS, ...matchedBooking, status: route.params?.status || matchedBooking.displayStatus }
+    : { ...MOCK_DETAILS, id: bookingId || MOCK_DETAILS.id, status: route.params?.status || MOCK_DETAILS.status };
 
   const handleBack = () => smartGoBack('BookingsTab');
 

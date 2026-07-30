@@ -16,7 +16,26 @@ export const TransactionDetailScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'TransactionDetailScreen'>>();
-  const tx = MOCK_TRANSACTION_DETAILS[route.params?.transactionId || 'tx_002']; // Default fallback for dev
+  const tx = MOCK_TRANSACTION_DETAILS[route.params?.transactionId || 'tx_002'];
+
+  if (!tx) {
+    return (
+      <SafeAreaView style={styles.root} edges={['top']}>
+        <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backBtn} onPress={() => smartGoBack()} activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yGoBack', 'Go back')}>
+            <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>{t('headerTitle', 'Transaction Details')}</Text>
+          <View style={styles.backBtn} />
+        </View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+          <Icon name="receipt" size={48} color={theme.colors.textSecondary} />
+          <Text style={{ fontSize: 15, color: theme.colors.textSecondary }}>{t('emptyTextNotFound', 'Transaction not found.')}</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   const handleDownload = () => {
     Alert.alert(t('alertTitleDownloadReceipt', 'Download Receipt'), t('alertMsgPDFreceipthasbeendow', 'PDF receipt has been downloaded successfully.'));

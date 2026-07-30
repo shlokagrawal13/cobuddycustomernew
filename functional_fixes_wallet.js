@@ -1,25 +1,9 @@
-// MOCK: replace with API
+const fs = require('fs');
 
-export const MOCK_TRANSACTION_DETAILS: Record<string, any> = {
-  tx_001: {
-    id: 'tx_001', icon: 'wallet-plus', label: 'Money Added', category: 'Money Added',
-    date: 'Oct 24, 2023', time: '14:30 IST', amount: '+ ₹1,000', positive: true, status: 'Successful',
-    refId: '#CB-ADD-8829', paymentSource: 'UPI ending in 45',
-    breakdown: [{ label: 'Top-up Amount', value: '₹1,000' }],
-  },
-  tx_002: {
-    id: 'tx_002', icon: 'account-clock', label: 'Session with Maya', category: 'Spent',
-    date: 'Oct 23, 2023', time: '20:15 IST', amount: '- ₹450', positive: false, status: 'Successful',
-    refId: '#CB-SES-7741', paymentSource: 'CoBuddy Wallet',
-    companion: 'Maya Sharma',
-    duration: '60 mins',
-    breakdown: [
-      { label: 'Session Fee (Hourly)', value: '₹350' },
-      { label: 'Platform Fee', value: '₹50' },
-      { label: 'Taxes (GST 18%)', value: '₹50' },
-    ],
-  },
-  tx_003: {
+let walletMockFile = 'src/services/mock/wallet.mock.ts';
+let walletMockContent = fs.readFileSync(walletMockFile, 'utf8');
+
+const txMissing = `  tx_003: {
     id: 'tx_003', icon: 'arrow-u-left-top', label: 'Refund: Session Cancelled', category: 'Refunds',
     date: 'Oct 18, 2023', time: '10:00 IST', amount: '+ ₹1,200', positive: true, status: 'Refunded',
     refId: '#CB-REF-8813', paymentSource: 'CoBuddy Wallet',
@@ -42,5 +26,12 @@ export const MOCK_TRANSACTION_DETAILS: Record<string, any> = {
       { label: 'Platform Fee', value: '₹150' },
       { label: 'Taxes (GST 18%)', value: '₹100' },
     ],
-  }
-};
+  }`;
+
+walletMockContent = walletMockContent.replace(
+  /  }\r?\n};\r?\n?$/,
+  `  },\n${txMissing}\n};\n`
+);
+
+fs.writeFileSync(walletMockFile, walletMockContent);
+console.log('Updated wallet.mock.ts');
