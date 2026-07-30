@@ -1,5 +1,7 @@
 {
   "statusOpen": "Open",
+  "statusInProgress": "In Progress",
+  "statusClosed": "Closed",
   "contextLabel": "Refund Request for Booking #4412",
   "contextMeta": "Category: Payment  •  Created 2 hours ago",
   "closedText": "This ticket has been marked as closed.",
