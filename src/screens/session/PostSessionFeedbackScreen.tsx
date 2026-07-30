@@ -45,14 +45,14 @@ export const PostSessionFeedbackScreen = () => {
         <View style={styles.sentimentRow}>
           <TouchableOpacity 
             style={[styles.sentimentBtn, sentiment === 'down' && styles.sentimentBtnDown]}
-            onPress={() => { setSentiment('down'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel={t('a11ySentimentDownThumbDownThumbDownOutline', '{sentiment === down ? thumb down : thumb down outline}')}
+            onPress={() => { setSentiment('down'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel={sentiment === 'down' ? t('a11ySentimentDownSelected', 'Thumbs down, selected') : t('a11ySentimentDown', 'Thumbs down')}
           >
             <Icon name={sentiment === 'down' ? 'thumb-down' : 'thumb-down-outline'} size={40} color={sentiment === 'down' ? theme.colors.background : theme.colors.error} />
           </TouchableOpacity>
           
           <TouchableOpacity 
             style={[styles.sentimentBtn, sentiment === 'up' && styles.sentimentBtnUp]}
-            onPress={() => { setSentiment('up'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel={t('a11ySentimentUpThumbUpThumbUpOutline', '{sentiment === up ? thumb up : thumb up outline}')}
+            onPress={() => { setSentiment('up'); setSelectedTags([]); }} accessibilityRole="button" accessibilityLabel={sentiment === 'up' ? t('a11ySentimentUpSelected', 'Thumbs up, selected') : t('a11ySentimentUp', 'Thumbs up')}
           >
             <Icon name={sentiment === 'up' ? 'thumb-up' : 'thumb-up-outline'} size={40} color={sentiment === 'up' ? theme.colors.background : theme.colors.primary} />
           </TouchableOpacity>
