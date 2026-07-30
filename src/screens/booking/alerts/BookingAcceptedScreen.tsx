@@ -11,6 +11,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 const DEFAULT_MOCK_DATA = {
   bookingId: 'CB-REQ-8829',
   companionName: 'Natasha',
+  companionId: 'c4',
   activity: 'Fine Dining & Drinks',
   date: 'Friday, 24 Oct 2026',
   time: '7:00 PM - 9:00 PM',

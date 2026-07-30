@@ -17,6 +17,7 @@ export const BookingCounterOfferScreen = ({ route }: { route: any }) => {
   const DEFAULT_MOCK_DATA = {
     bookingId: 'CB-REQ-8830',
     companionName: 'Aisha Sharma',
+    companionId: 'c2',
     activity: 'Shopping Companion',
     venue: 'DLF Promenade, Vasant Kunj',
     date: 'Sun, 26 Oct 2026',

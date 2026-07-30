@@ -25,7 +25,7 @@ export interface BookingStackParamList {
   BookingRequestSentScreen: undefined;
   BookingAcceptedScreen: undefined;
   BookingDeclinedScreen: undefined;
-  BookingCounterOfferScreen: { bookingId?: string; companionName?: string } | undefined;
+  BookingCounterOfferScreen: { bookingId?: string; companionName?: string; companionId?: string } | undefined;
   BookingDetailScreen: { bookingId?: string; status?: string } | undefined;
   CancelBookingScreen: { bookingId?: string } | undefined;
   ModifyBookingScreen: { bookingId?: string } | undefined;

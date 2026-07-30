@@ -23,7 +23,7 @@ export const BookingsListScreen = () => {
     if (booking.displayStatus === 'Counter-Proposed') {
       navigation.navigate('BookingFlowStack', { 
         screen: 'BookingCounterOfferScreen', 
-        params: { bookingId: booking.id, companionName: booking.companionName } 
+        params: { bookingId: booking.id, companionName: booking.companionName, companionId: booking.companionId } 
       });
     } else {
       navigation.navigate('BookingDetailScreen', { 
