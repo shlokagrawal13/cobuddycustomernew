@@ -59,10 +59,10 @@
 - [x] src\screens\onboarding\InterestSelectionScreen.tsx - Verified
 - [x] src\screens\onboarding\LegalConsentScreen.tsx - Verified
 - [x] src\screens\onboarding\SafetyTutorialScreen.tsx (was WelcomeScreen) - Verified
-- [ ] src\screens\profile\EditProfileScreen.tsx
-- [ ] src\screens\profile\MyReviewsScreen.tsx
-- [ ] src\screens\profile\ProfileScreen.tsx
-- [ ] src\screens\profile\SavedProfilesScreen.tsx
+- [x] src\screens\profile\EditProfileScreen.tsx - Verified
+- [x] src\screens\profile\MyReviewsScreen.tsx - Verified
+- [x] src\screens\profile\ProfileScreen.tsx - Fixed hardcoded share message
+- [x] src\screens\profile\SavedProfilesScreen.tsx - Verified
 - [ ] src\screens\safety\IncidentReportScreen.tsx
 - [ ] src\screens\safety\SafetyGuidelinesScreen.tsx
 - [ ] src\screens\safety\SafetyHubScreen.tsx

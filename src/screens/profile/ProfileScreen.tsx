@@ -68,7 +68,7 @@ export const ProfileScreen = () => {
   const handleShareProfile = async () => {
     try {
       await Share.share({
-        message: `Check out ${user.name}'s profile on CoBuddy! A great companion from ${user.location}. Join CoBuddy today.`,
+        message: t('shareMessage', "Check out {{name}}'s profile on CoBuddy! A great companion from {{location}}. Join CoBuddy today.", { name: user.name, location: user.location }),
       });
     } catch (error: unknown) {
       Alert.alert(t('errorTitle', 'Error'), (error as Error).message);
