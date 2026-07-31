@@ -78,7 +78,7 @@ export const SpokenLanguagesScreen = () => {
         <View style={styles.infoBanner}>
             <Icon name="earth" size={24} color={theme.colors.primary} style={{marginBottom: 8}} />
             <Text style={styles.infoText}>{t('infoText', 'Select up to 5 languages you can fluently converse in during a meetup.')}</Text>
-            <Text style={styles.countText}>{selected.size}/5 selected</Text>
+            <Text style={styles.countText}>{t('countSelected', '{{count}}/5 selected', { count: selected.size })}</Text>
         </View>
 
         <View style={styles.grid}>

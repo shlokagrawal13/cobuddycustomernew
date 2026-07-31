@@ -186,7 +186,7 @@ export const DataCacheScreen = () => {
                     }} accessibilityRole="button" accessibilityLabel={t('a11yQuality', 'quality')}
                 >
                     <Text style={[styles.sheetRowText, uploadQuality === quality && { color: theme.colors.primary, fontWeight: 'bold' }]}>
-                        {quality}
+                        {t(`quality.${quality.replace(/\s+/g, '')}`, quality)}
                     </Text>
                     {uploadQuality === quality && <Icon name="check" size={20} color={theme.colors.primary} />}
                 </TouchableOpacity>

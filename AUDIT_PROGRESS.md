@@ -75,20 +75,20 @@
 - [x] src\screens\session\SessionCompleteScreen.tsx - Verified
 - [x] src\screens\session\SessionReminderScreen.tsx - Verified
 - [x] src\screens\session\TipGratuityScreen.tsx - Fixed hardcoded strings
-- [ ] src\screens\settings\AccountSettingsScreen.tsx
-- [ ] src\screens\settings\ActiveSessionsScreen.tsx
-- [ ] src\screens\settings\AppLockScreen.tsx
-- [ ] src\screens\settings\AppPermissionsScreen.tsx
-- [ ] src\screens\settings\BlockedUsersScreen.tsx
-- [ ] src\screens\settings\DataCacheScreen.tsx
-- [ ] src\screens\settings\DeactivateAccountScreen.tsx
-- [ ] src\screens\settings\DeleteAccountScreen.tsx
-- [ ] src\screens\settings\LanguageSelectionScreen.tsx
-- [ ] src\screens\settings\LegalAgreementsScreen.tsx
-- [ ] src\screens\settings\NotificationPreferencesScreen.tsx
-- [ ] src\screens\settings\ReferFriendScreen.tsx
-- [ ] src\screens\settings\SettingsHubScreen.tsx
-- [ ] src\screens\settings\SpokenLanguagesScreen.tsx
+- [x] src\screens\settings\AccountSettingsScreen.tsx - Verified
+- [x] src\screens\settings\ActiveSessionsScreen.tsx - Verified
+- [x] src\screens\settings\AppLockScreen.tsx - Verified
+- [x] src\screens\settings\AppPermissionsScreen.tsx - Verified
+- [x] src\screens\settings\BlockedUsersScreen.tsx - Verified
+- [x] src\screens\settings\DataCacheScreen.tsx - Fixed quality strings
+- [x] src\screens\settings\DeactivateAccountScreen.tsx - Verified
+- [x] src\screens\settings\DeleteAccountScreen.tsx - Verified
+- [x] src\screens\settings\LanguageSelectionScreen.tsx - Verified
+- [x] src\screens\settings\LegalAgreementsScreen.tsx - Verified
+- [x] src\screens\settings\NotificationPreferencesScreen.tsx - Verified
+- [x] src\screens\settings\ReferFriendScreen.tsx - Fixed hardcoded share message
+- [x] src\screens\settings\SettingsHubScreen.tsx - Verified
+- [x] src\screens\settings\SpokenLanguagesScreen.tsx - Fixed hardcoded string
 - [ ] src\screens\support\CreateSupportTicketScreen.tsx
 - [ ] src\screens\support\HelpCenterScreen.tsx
 - [ ] src\screens\support\SupportCenterScreen.tsx

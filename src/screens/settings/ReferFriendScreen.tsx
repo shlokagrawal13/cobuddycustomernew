@@ -17,7 +17,7 @@ export const ReferFriendScreen = () => {
   const handleShare = async () => {
     try {
       await Share.share({
-        message: `Join CoBuddy to find amazing local companions and guides! Download the app now at https://cobuddy.app`,
+        message: t('shareMessage', 'Join CoBuddy to find amazing local companions and guides! Download the app now at https://cobuddy.app'),
       });
     } catch (error) {
       console.error(error);
