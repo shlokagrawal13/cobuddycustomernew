@@ -33,12 +33,12 @@ export const TipGratuityScreen = () => {
   };
 
   const getButtonLabel = () => {
-    if (selectedTip === null) return 'Select a Tip Amount';
+    if (selectedTip === null) return t('btnSelectTip', 'Select a Tip Amount');
     if (selectedTip === -1) {
-      if (!customTip) return 'Enter Custom Amount';
-      return `Pay Tip (₹${customTip})`;
+      if (!customTip) return t('btnEnterCustom', 'Enter Custom Amount');
+      return t('btnPayTip', 'Pay Tip (₹{{amount}})', { amount: customTip });
     }
-    return `Pay Tip (₹${selectedTip})`;
+    return t('btnPayTip', 'Pay Tip (₹{{amount}})', { amount: selectedTip });
   };
 
   const isPayDisabled = selectedTip === null || (selectedTip === -1 && !customTip);

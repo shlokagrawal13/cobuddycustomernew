@@ -63,18 +63,18 @@
 - [x] src\screens\profile\MyReviewsScreen.tsx - Verified
 - [x] src\screens\profile\ProfileScreen.tsx - Fixed hardcoded share message
 - [x] src\screens\profile\SavedProfilesScreen.tsx - Verified
-- [ ] src\screens\safety\IncidentReportScreen.tsx
-- [ ] src\screens\safety\SafetyGuidelinesScreen.tsx
-- [ ] src\screens\safety\SafetyHubScreen.tsx
-- [ ] src\screens\safety\SafetySettingsScreen.tsx
-- [ ] src\screens\safety\TrustedContactsScreen.tsx
-- [ ] src\screens\session\ActiveSessionScreen.tsx
-- [ ] src\screens\session\ArrivalCheckInScreen.tsx
-- [ ] src\screens\session\CompanionReviewScreen.tsx
-- [ ] src\screens\session\PostSessionFeedbackScreen.tsx
-- [ ] src\screens\session\SessionCompleteScreen.tsx
-- [ ] src\screens\session\SessionReminderScreen.tsx
-- [ ] src\screens\session\TipGratuityScreen.tsx
+- [x] src\screens\safety\IncidentReportScreen.tsx - Verified
+- [x] src\screens\safety\SafetyGuidelinesScreen.tsx - Verified
+- [x] src\screens\safety\SafetyHubScreen.tsx - Verified
+- [x] src\screens\safety\SafetySettingsScreen.tsx - Verified
+- [x] src\screens\safety\TrustedContactsScreen.tsx - Verified
+- [x] src\screens\session\ActiveSessionScreen.tsx - Fixed hardcoded string
+- [x] src\screens\session\ArrivalCheckInScreen.tsx - Fixed hardcoded string
+- [x] src\screens\session\CompanionReviewScreen.tsx - Verified
+- [x] src\screens\session\PostSessionFeedbackScreen.tsx - Fixed tags hardcoded strings
+- [x] src\screens\session\SessionCompleteScreen.tsx - Verified
+- [x] src\screens\session\SessionReminderScreen.tsx - Verified
+- [x] src\screens\session\TipGratuityScreen.tsx - Fixed hardcoded strings
 - [ ] src\screens\settings\AccountSettingsScreen.tsx
 - [ ] src\screens\settings\ActiveSessionsScreen.tsx
 - [ ] src\screens\settings\AppLockScreen.tsx
