@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet, TextInputProps } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 
 interface Props extends TextInputProps {
@@ -8,13 +9,14 @@ interface Props extends TextInputProps {
 }
 
 export const Input = ({ label, error, ...props }: Props) => {
+  const { t } = useTranslation('common');
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput 
         style={[styles.input, error && styles.inputError]} 
         placeholderTextColor={theme.colors.textSecondary}
-        accessibilityLabel={props.accessibilityLabel || label || props.placeholder || 'Text input'}
+        accessibilityLabel={props.accessibilityLabel || label || props.placeholder || t('a11yTextInput', 'Text input')}
         accessibilityHint={error}
         {...props} 
       />

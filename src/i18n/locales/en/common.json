@@ -41,6 +41,7 @@
   "a11yEnterOtp": "Enter OTP",
   "a11yOtpCodeInput": "OTP Code Input",
   "a11yAction": "Action",
+  "a11yTextInput": "Text input",
   "stepCounter": "Step {{step}} of {{totalSteps}}",
   "tabHome": "Home",
   "tabDiscover": "Discover",

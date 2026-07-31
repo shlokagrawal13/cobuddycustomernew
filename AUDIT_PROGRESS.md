@@ -6,11 +6,11 @@
 - [x] src\components\onboarding\OnboardingHeader.tsx - Already fine
 - [x] src\components\ui\AppBottomSheet.tsx - Already fine
 - [x] src\components\ui\BottomActionBar.tsx - Already fine
-- [ ] src\components\ui\Button.tsx
-- [ ] src\components\ui\CompanionCard.tsx
-- [ ] src\components\ui\CompanionCardSkeleton.tsx
-- [ ] src\components\ui\GlassCard.tsx
-- [ ] src\components\ui\Input.tsx
+- [x] src\components\ui\Button.tsx - Already fine
+- [x] src\components\ui\CompanionCard.tsx - Already fine
+- [x] src\components\ui\CompanionCardSkeleton.tsx - Already fine
+- [x] src\components\ui\GlassCard.tsx - Already fine
+- [x] src\components\ui\Input.tsx - Fixed raw accessibilityLabel fallback
 - [ ] src\components\ui\OTPInput.tsx
 - [ ] src\components\ui\SkeletonLoader.tsx
 - [ ] src\components\ui\SmartHeader.tsx
