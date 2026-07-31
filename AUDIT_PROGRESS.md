@@ -1,8 +1,8 @@
 # CoBuddy Code Audit Progress
 
 ## undefined
-- [ ] src\components\booking\BookingHeader.tsx
-- [ ] src\components\common\ChatInputBar.tsx
+- [x] src\components\booking\BookingHeader.tsx - Already fine
+- [x] src\components\common\ChatInputBar.tsx - Fixed raw sentAttachment strings
 - [ ] src\components\onboarding\OnboardingHeader.tsx
 - [ ] src\components\ui\AppBottomSheet.tsx
 - [ ] src\components\ui\BottomActionBar.tsx

@@ -16,7 +16,11 @@
     "camera": "Camera",
     "photo": "Photo",
     "document": "Document",
-    "location": "Location"
+    "location": "Location",
+    "sentCamera": "📷 Sent a photo",
+    "sentPhoto": "🖼️ Sent an image",
+    "sentDocument": "📄 Sent a document",
+    "sentLocation": "📍 Shared a location"
   },
   "companionCard": {
     "statsMuted": "• {{reviews}} reviews • {{sessions}} sessions",
