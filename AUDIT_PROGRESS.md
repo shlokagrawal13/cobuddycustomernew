@@ -93,14 +93,14 @@
 - [x] src\screens\support\HelpCenterScreen.tsx - Localized FAQS
 - [x] src\screens\support\SupportCenterScreen.tsx - Verified
 - [x] src\screens\support\SupportTicketDetailScreen.tsx - Localized Just now and fixed template string
-- [ ] src\screens\system\AccountDeactivatedScreen.tsx
-- [ ] src\screens\system\AccountReactivationRequestScreen.tsx
-- [ ] src\screens\system\AccountSuspendedScreen.tsx
-- [ ] src\screens\system\AccountUnderManualReviewScreen.tsx
-- [ ] src\screens\system\ForceUpdateScreen.tsx
-- [ ] src\screens\system\MaintenanceModeScreen.tsx
-- [ ] src\screens\system\NetworkErrorScreen.tsx
-- [ ] src\screens\system\PolicyViolationNoticeScreen.tsx
+- [x] src\screens\system\AccountDeactivatedScreen.tsx - Verified
+- [x] src\screens\system\AccountReactivationRequestScreen.tsx - Verified
+- [x] src\screens\system\AccountSuspendedScreen.tsx - Verified
+- [x] src\screens\system\AccountUnderManualReviewScreen.tsx - Verified
+- [x] src\screens\system\ForceUpdateScreen.tsx - Verified
+- [x] src\screens\system\MaintenanceModeScreen.tsx - Verified
+- [x] src\screens\system\NetworkErrorScreen.tsx - Verified
+- [x] src\screens\system\PolicyViolationNoticeScreen.tsx - Verified
 - [ ] src\screens\verify\DocumentVerificationScreen.tsx
 - [ ] src\screens\verify\KYCIntroScreen.tsx
 - [ ] src\screens\verify\LivenessDetectionScreen.tsx
