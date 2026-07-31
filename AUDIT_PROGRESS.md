@@ -113,11 +113,11 @@
 - [x] src\screens\wallet\AddMoneyScreen.tsx - Verified
 - [x] src\screens\wallet\AddPaymentMethodScreen.tsx - Verified
 - [x] src\screens\wallet\PaymentMethodsScreen.tsx - Fixed hardcoded remove alert string
-- [ ] src\screens\wallet\TransactionDetailScreen.tsx
-- [ ] src\screens\wallet\TransactionHistoryScreen.tsx
-- [ ] src\screens\wallet\WalletScreen.tsx
-- [ ] src\screens\wallet\WithdrawalMethodsScreen.tsx
-- [ ] src\screens\wallet\WithdrawMoneyScreen.tsx
+- [x] src\screens\wallet\TransactionDetailScreen.tsx - Verified
+- [x] src\screens\wallet\TransactionHistoryScreen.tsx - Verified
+- [x] src\screens\wallet\WalletScreen.tsx - Verified
+- [x] src\screens\wallet\WithdrawMoneyScreen.tsx - Verified
+- [x] src\screens\wallet\WithdrawalMethodsScreen.tsx - Fixed hardcoded remove alert string
 - [ ] src\services\mock\activities.mock.ts
 - [ ] src\services\mock\bookings.mock.ts
 - [ ] src\services\mock\chat.mock.ts
