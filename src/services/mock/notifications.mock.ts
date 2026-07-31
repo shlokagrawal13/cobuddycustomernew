@@ -83,7 +83,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
     icon: 'headset',
     iconColor: '#3B82F6', // Blue for support
     route: 'SupportTicketDetailScreen',
-    stack: 'ProfileTab',
+    stack: 'SafetySupportStack',
   },
   {
     id: 'n6',
