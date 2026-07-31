@@ -11,11 +11,11 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const REASONS = [
-  'Change of plans / Schedule conflict',
-  'Found another companion',
-  'Booked by mistake',
-  'Personal emergency',
-  'Other'
+  { key: 'schedule', label: 'Change of plans / Schedule conflict' },
+  { key: 'found_another', label: 'Found another companion' },
+  { key: 'mistake', label: 'Booked by mistake' },
+  { key: 'emergency', label: 'Personal emergency' },
+  { key: 'other', label: 'Other' }
 ];
 
 export const CancelBookingScreen = () => { 
@@ -75,16 +75,16 @@ export const CancelBookingScreen = () => {
         <Text style={styles.sectionTitle}>{t('sectionTitle', 'WHY ARE YOU CANCELLING?')}</Text>
         
         <View style={styles.reasonsContainer}>
-          {REASONS.map((reason) => (
+          {REASONS.map((reasonObj) => (
             <TouchableOpacity 
-              key={reason} 
-              style={[styles.reasonRow, selectedReason === reason && styles.reasonRowActive]}
-              onPress={() => setSelectedReason(reason)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yReason', 'reason')}
+              key={reasonObj.key} 
+              style={[styles.reasonRow, selectedReason === reasonObj.key && styles.reasonRowActive]}
+              onPress={() => setSelectedReason(reasonObj.key)}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`reason.${reasonObj.key}`, reasonObj.label)}
             >
-              <Text style={[styles.reasonText, selectedReason === reason && styles.reasonTextActive]}>{reason}</Text>
-              <View style={[styles.radioCircle, selectedReason === reason && styles.radioCircleActive]}>
-                {selectedReason === reason && <View style={styles.radioInner} />}
+              <Text style={[styles.reasonText, selectedReason === reasonObj.key && styles.reasonTextActive]}>{t(`reason.${reasonObj.key}`, reasonObj.label)}</Text>
+              <View style={[styles.radioCircle, selectedReason === reasonObj.key && styles.radioCircleActive]}>
+                {selectedReason === reasonObj.key && <View style={styles.radioInner} />}
               </View>
             </TouchableOpacity>
           ))}

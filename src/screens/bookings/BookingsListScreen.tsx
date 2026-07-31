@@ -63,7 +63,7 @@ export const BookingsListScreen = () => {
     return (
       <View style={[styles.statusBadge, { backgroundColor: bgColor, borderColor: color }]}>
         <Icon name={icon} size={14} color={color} style={{ marginRight: 4 }} />
-        <Text style={[styles.statusText, { color }]}>{status}</Text>
+        <Text style={[styles.statusText, { color }]}>{t(`status.${status}`, status)}</Text>
       </View>
     );
   };
@@ -98,7 +98,7 @@ export const BookingsListScreen = () => {
               activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11ySwitchTab', 'Switch to {{tab}} tab', { tab })}
             >
               <Text style={[styles.tabText, activeTab === tab && styles.tabTextActive]}>
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {t(`tabs.${tab}`, tab.charAt(0).toUpperCase() + tab.slice(1))}
               </Text>
             </TouchableOpacity>
           ))}

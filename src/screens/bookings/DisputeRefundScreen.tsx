@@ -11,10 +11,10 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CATEGORIES = [
-  'Companion No-Show',
-  'Unprofessional Behavior',
-  'Different from Profile',
-  'Other'
+  { key: 'no_show', label: 'Companion No-Show' },
+  { key: 'unprofessional', label: 'Unprofessional Behavior' },
+  { key: 'different_profile', label: 'Different from Profile' },
+  { key: 'other', label: 'Other' }
 ];
 
 export const DisputeRefundScreen = () => { 
@@ -77,16 +77,16 @@ export const DisputeRefundScreen = () => {
         <Text style={styles.sectionTitle}>{t('sectionCategory', 'ISSUE CATEGORY')}</Text>
         
         <View style={styles.reasonsContainer}>
-          {CATEGORIES.map((category) => (
+          {CATEGORIES.map((categoryObj) => (
             <TouchableOpacity 
-              key={category} 
-              style={[styles.reasonRow, selectedCategory === category && styles.reasonRowActive]}
-              onPress={() => setSelectedCategory(category)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yCategory', 'category')}
+              key={categoryObj.key} 
+              style={[styles.reasonRow, selectedCategory === categoryObj.key && styles.reasonRowActive]}
+              onPress={() => setSelectedCategory(categoryObj.key)}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`category.${categoryObj.key}`, categoryObj.label)}
             >
-              <Text style={[styles.reasonText, selectedCategory === category && styles.reasonTextActive]}>{category}</Text>
-              <View style={[styles.radioCircle, selectedCategory === category && styles.radioCircleActive]}>
-                {selectedCategory === category && <View style={styles.radioInner} />}
+              <Text style={[styles.reasonText, selectedCategory === categoryObj.key && styles.reasonTextActive]}>{t(`category.${categoryObj.key}`, categoryObj.label)}</Text>
+              <View style={[styles.radioCircle, selectedCategory === categoryObj.key && styles.radioCircleActive]}>
+                {selectedCategory === categoryObj.key && <View style={styles.radioInner} />}
               </View>
             </TouchableOpacity>
           ))}

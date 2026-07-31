@@ -160,7 +160,7 @@ export const ModifyBookingScreen = () => {
             <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(-1)} accessibilityRole="button" accessibilityLabel={t('a11yMinus', 'minus')}>
               <Icon name="minus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>
-            <Text style={styles.durationText}>{t('durationText', '{{duration}} {{hourText}}', { duration, hourText: duration === 1 ? 'Hour' : 'Hours' })}</Text>
+            <Text style={styles.durationText}>{t('durationText', '{{duration}} {{hourText}}', { duration, hourText: duration === 1 ? t('units.Hour', 'Hour') : t('units.Hours', 'Hours') })}</Text>
             <TouchableOpacity style={styles.durationBtn} onPress={() => adjustDuration(1)} accessibilityRole="button" accessibilityLabel={t('a11yAdd', 'Add')}>
               <Icon name="plus" size={24} color={theme.colors.primary} />
             </TouchableOpacity>

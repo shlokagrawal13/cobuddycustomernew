@@ -41,11 +41,11 @@
 - [x] src\screens\booking\BookingTimeSelectScreen.tsx - Fixed Today/hr strings
 - [x] src\screens\booking\BookingVenueSelectScreen.tsx - Fixed hardcoded Custom Venue text
 - [x] src\screens\booking\LocationSelectionScreen.tsx - Already fine
-- [ ] src\screens\bookings\BookingDetailScreen.tsx
-- [ ] src\screens\bookings\BookingsListScreen.tsx
-- [ ] src\screens\bookings\CancelBookingScreen.tsx
-- [ ] src\screens\bookings\DisputeRefundScreen.tsx
-- [ ] src\screens\bookings\ModifyBookingScreen.tsx
+- [x] src\screens\bookings\BookingDetailScreen.tsx - Already fine
+- [x] src\screens\bookings\BookingsListScreen.tsx - Fixed tabs and status labels
+- [x] src\screens\bookings\CancelBookingScreen.tsx - Fixed hardcoded reasons
+- [x] src\screens\bookings\DisputeRefundScreen.tsx - Fixed hardcoded categories
+- [x] src\screens\bookings\ModifyBookingScreen.tsx - Fixed duration string
 - [ ] src\screens\chat\ChatListScreen.tsx
 - [ ] src\screens\chat\CompanionChatScreen.tsx
 - [ ] src\screens\chat\ConciergeChatScreen.tsx
