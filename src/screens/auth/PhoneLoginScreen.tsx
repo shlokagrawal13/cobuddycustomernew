@@ -27,13 +27,13 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const COUNTRY_CODES = [
-  { flag: '🇮🇳', code: '+91', country: 'India', maxLength: 10 },
-  { flag: '🇺🇸', code: '+1', country: 'United States', maxLength: 10 },
-  { flag: '🇬🇧', code: '+44', country: 'United Kingdom', maxLength: 10 },
-  { flag: '🇦🇪', code: '+971', country: 'UAE', maxLength: 9 },
-  { flag: '🇫🇷', code: '+33', country: 'France', maxLength: 9 },
-  { flag: '🇸🇬', code: '+65', country: 'Singapore', maxLength: 8 },
-  { flag: '🇦🇺', code: '+61', country: 'Australia', maxLength: 9 },
+  { flag: '🇮🇳', code: '+91', nameKey: 'india', defaultName: 'India', maxLength: 10 },
+  { flag: '🇺🇸', code: '+1', nameKey: 'us', defaultName: 'United States', maxLength: 10 },
+  { flag: '🇬🇧', code: '+44', nameKey: 'uk', defaultName: 'United Kingdom', maxLength: 10 },
+  { flag: '🇦🇪', code: '+971', nameKey: 'uae', defaultName: 'UAE', maxLength: 9 },
+  { flag: '🇫🇷', code: '+33', nameKey: 'france', defaultName: 'France', maxLength: 9 },
+  { flag: '🇸🇬', code: '+65', nameKey: 'singapore', defaultName: 'Singapore', maxLength: 8 },
+  { flag: '🇦🇺', code: '+61', nameKey: 'australia', defaultName: 'Australia', maxLength: 9 },
 ];
 
 export const PhoneLoginScreen = () => {
@@ -160,9 +160,9 @@ export const PhoneLoginScreen = () => {
               onPress={() => {
                 setCountryCode(item);
                 setPickerVisible(false);
-              }} accessibilityRole="button" accessibilityLabel={`${item.flag} ${item.country} ${item.code}`}>
+              }} accessibilityRole="button" accessibilityLabel={`${item.flag} ${t(`phone.countries.${item.nameKey}`, item.defaultName as string)} ${item.code}`}>
               <Text style={styles.pickerFlag}>{item.flag}</Text>
-              <Text style={styles.pickerCountry}>{item.country}</Text>
+              <Text style={styles.pickerCountry}>{t(`phone.countries.${item.nameKey}`, item.defaultName as string)}</Text>
               <Text style={styles.pickerCode}>{item.code}</Text>
               {item.code === countryCode.code && (
                 <Icon name="check" size={20} color={theme.colors.primary} />

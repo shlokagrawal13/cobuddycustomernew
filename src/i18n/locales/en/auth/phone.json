@@ -9,5 +9,14 @@
   "error_invalid": "Please enter a valid phone number for this country.",
   "header": "Secure Access",
   "overline": "IDENTITY VERIFICATION",
-  "a11yFocusInput": "Focus phone number input"
+  "a11yFocusInput": "Focus phone number input",
+  "countries": {
+    "india": "India",
+    "us": "United States",
+    "uk": "United Kingdom",
+    "uae": "UAE",
+    "france": "France",
+    "singapore": "Singapore",
+    "australia": "Australia"
+  }
 }

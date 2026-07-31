@@ -26,12 +26,12 @@
 - [x] src\navigation\RootNavigator.tsx - Already fine
 - [x] src\navigation\SafetySupportStack.tsx - Already fine
 - [x] src\navigation\SystemStateStack.tsx - Already fine
-- [ ] src\screens\auth\LocationPermissionScreen.tsx
-- [ ] src\screens\auth\NotificationPermissionScreen.tsx
-- [ ] src\screens\auth\OTPVerificationScreen.tsx
-- [ ] src\screens\auth\PhoneLoginScreen.tsx
-- [ ] src\screens\auth\SplashScreen.tsx
-- [ ] src\screens\auth\WelcomeScreen.tsx
+- [x] src\screens\auth\LocationPermissionScreen.tsx - Already fine
+- [x] src\screens\auth\NotificationPermissionScreen.tsx - Already fine
+- [x] src\screens\auth\OTPVerificationScreen.tsx - Already fine
+- [x] src\screens\auth\PhoneLoginScreen.tsx - Fixed hardcoded country names
+- [x] src\screens\auth\SplashScreen.tsx - Already fine
+- [x] src\screens\auth\WelcomeScreen.tsx - Already fine
 - [ ] src\screens\booking\alerts\BookingAcceptedScreen.tsx
 - [ ] src\screens\booking\alerts\BookingCounterOfferScreen.tsx
 - [ ] src\screens\booking\alerts\BookingDeclinedScreen.tsx
