@@ -11,12 +11,12 @@
 - [x] src\components\ui\CompanionCardSkeleton.tsx - Already fine
 - [x] src\components\ui\GlassCard.tsx - Already fine
 - [x] src\components\ui\Input.tsx - Fixed raw accessibilityLabel fallback
-- [ ] src\components\ui\OTPInput.tsx
-- [ ] src\components\ui\SkeletonLoader.tsx
-- [ ] src\components\ui\SmartHeader.tsx
-- [ ] src\config\featureFlags.ts
-- [ ] src\hooks\useSmartNavigation.ts
-- [ ] src\i18n\index.ts
+- [x] src\components\ui\OTPInput.tsx - Already fine
+- [x] src\components\ui\SkeletonLoader.tsx - Already fine
+- [x] src\components\ui\SmartHeader.tsx - Already fine
+- [x] src\config\featureFlags.ts - Already fine
+- [x] src\hooks\useSmartNavigation.ts - Already fine
+- [x] src\i18n\index.ts - Already fine
 - [ ] src\navigation\AuthStack.tsx
 - [ ] src\navigation\BookingFlowStack.tsx
 - [ ] src\navigation\KYCStack.tsx
