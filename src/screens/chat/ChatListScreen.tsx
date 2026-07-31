@@ -188,7 +188,7 @@ export const ChatListScreen = () => {
                 </View>
                 <View style={{ flex: 1 }}>
                   <Text style={styles.newChatName}>{bk.name}</Text>
-                  <Text style={styles.newChatRole}>{bk.role}</Text>
+                  <Text style={styles.newChatRole}>{t(`role.${bk.role.replace(' ', '')}`, bk.role)}</Text>
                 </View>
                 <Icon name="chevron-right" size={20} color={Colors.textSecondary} />
               </TouchableOpacity>

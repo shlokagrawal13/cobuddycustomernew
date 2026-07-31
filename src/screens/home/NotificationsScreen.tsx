@@ -96,7 +96,7 @@ export const NotificationsScreen = () => {
                   styles.categoryChipText,
                   isActive && styles.categoryChipTextActive
                 ]}>
-                  {category}
+                  {t(`category.${category.toLowerCase()}`, category)}
                 </Text>
               </TouchableOpacity>
             );

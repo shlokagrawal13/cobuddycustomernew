@@ -106,7 +106,7 @@ export const HomeDashboardScreen = () => {
                     </View>
                   </View>
                   <Text style={styles.activeMeetupTitle}>{t('upcoming.meetup_title')}</Text>
-                  <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · ID Verified</Text>
+                  <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · {t('upcoming.idVerified', 'ID Verified')}</Text>
                 </View>
                 <TouchableOpacity style={styles.arrowBtn} accessibilityRole="button" accessibilityLabel={t('a11yArrowRight', 'Arrow Right')}>
                   <Icon name="arrow-right" size={20} color={theme.colors.background} />

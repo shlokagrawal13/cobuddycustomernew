@@ -46,15 +46,15 @@
 - [x] src\screens\bookings\CancelBookingScreen.tsx - Fixed hardcoded reasons
 - [x] src\screens\bookings\DisputeRefundScreen.tsx - Fixed hardcoded categories
 - [x] src\screens\bookings\ModifyBookingScreen.tsx - Fixed duration string
-- [ ] src\screens\chat\ChatListScreen.tsx
-- [ ] src\screens\chat\CompanionChatScreen.tsx
-- [ ] src\screens\chat\ConciergeChatScreen.tsx
-- [ ] src\screens\chat\IncomingCallScreen.tsx
-- [ ] src\screens\chat\VoiceCallScreen.tsx
-- [ ] src\screens\home\CompanionProfileScreen.tsx
-- [ ] src\screens\home\DiscoverScreen.tsx
-- [ ] src\screens\home\HomeDashboardScreen.tsx
-- [ ] src\screens\home\NotificationsScreen.tsx
+- [x] src\screens\chat\ChatListScreen.tsx - Fixed mock roles translation
+- [x] src\screens\chat\CompanionChatScreen.tsx - Already fine
+- [x] src\screens\chat\ConciergeChatScreen.tsx - Already fine
+- [x] src\screens\chat\IncomingCallScreen.tsx - Already fine
+- [x] src\screens\chat\VoiceCallScreen.tsx - Already fine
+- [x] src\screens\home\CompanionProfileScreen.tsx - Fixed
+- [x] src\screens\home\DiscoverScreen.tsx - Fixed
+- [x] src\screens\home\HomeDashboardScreen.tsx - Fixed hardcoded verified text
+- [x] src\screens\home\NotificationsScreen.tsx - Fixed categories text
 - [ ] src\screens\onboarding\BasicProfileSetupScreen.tsx
 - [ ] src\screens\onboarding\InterestSelectionScreen.tsx
 - [ ] src\screens\onboarding\LegalConsentScreen.tsx
