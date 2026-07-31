@@ -55,10 +55,10 @@
 - [x] src\screens\home\DiscoverScreen.tsx - Fixed
 - [x] src\screens\home\HomeDashboardScreen.tsx - Fixed hardcoded verified text
 - [x] src\screens\home\NotificationsScreen.tsx - Fixed categories text
-- [ ] src\screens\onboarding\BasicProfileSetupScreen.tsx
-- [ ] src\screens\onboarding\InterestSelectionScreen.tsx
-- [ ] src\screens\onboarding\LegalConsentScreen.tsx
-- [ ] src\screens\onboarding\SafetyTutorialScreen.tsx
+- [x] src\screens\onboarding\BasicProfileSetupScreen.tsx - Fixed
+- [x] src\screens\onboarding\InterestSelectionScreen.tsx - Verified
+- [x] src\screens\onboarding\LegalConsentScreen.tsx - Verified
+- [x] src\screens\onboarding\SafetyTutorialScreen.tsx (was WelcomeScreen) - Verified
 - [ ] src\screens\profile\EditProfileScreen.tsx
 - [ ] src\screens\profile\MyReviewsScreen.tsx
 - [ ] src\screens\profile\ProfileScreen.tsx

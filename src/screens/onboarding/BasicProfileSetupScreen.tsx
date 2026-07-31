@@ -67,7 +67,7 @@ export const BasicProfileSetupScreen = () => {
       hasError = true;
     }
     if (!validateDOB(dob)) {
-      setDobError('Must be 18+ and format DD/MM/YYYY');
+      setDobError(t('profile.error_dob', 'Must be 18+ and format DD/MM/YYYY'));
       hasError = true;
     }
     if (city.trim().length < 3) {
