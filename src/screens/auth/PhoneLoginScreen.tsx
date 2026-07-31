@@ -18,7 +18,7 @@ import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useAuthStore } from '../../store/slices/authStore';
+
 import { validatePhone } from '../../utils/validation';
 
 import { useTranslation } from 'react-i18next';

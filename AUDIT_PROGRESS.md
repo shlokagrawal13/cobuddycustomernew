@@ -32,15 +32,15 @@
 - [x] src\screens\auth\PhoneLoginScreen.tsx - Fixed hardcoded country names
 - [x] src\screens\auth\SplashScreen.tsx - Already fine
 - [x] src\screens\auth\WelcomeScreen.tsx - Already fine
-- [ ] src\screens\booking\alerts\BookingAcceptedScreen.tsx
-- [ ] src\screens\booking\alerts\BookingCounterOfferScreen.tsx
-- [ ] src\screens\booking\alerts\BookingDeclinedScreen.tsx
-- [ ] src\screens\booking\alerts\BookingRequestSentScreen.tsx
-- [ ] src\screens\booking\BookingActivitySelectScreen.tsx
-- [ ] src\screens\booking\BookingSummaryScreen.tsx
-- [ ] src\screens\booking\BookingTimeSelectScreen.tsx
-- [ ] src\screens\booking\BookingVenueSelectScreen.tsx
-- [ ] src\screens\booking\LocationSelectionScreen.tsx
+- [x] src\screens\booking\alerts\BookingAcceptedScreen.tsx - Already fine
+- [x] src\screens\booking\alerts\BookingCounterOfferScreen.tsx - Already fine
+- [x] src\screens\booking\alerts\BookingDeclinedScreen.tsx - Already fine
+- [x] src\screens\booking\alerts\BookingRequestSentScreen.tsx - Already fine
+- [x] src\screens\booking\BookingActivitySelectScreen.tsx - Already fine
+- [x] src\screens\booking\BookingSummaryScreen.tsx - Fixed hardcoded duration text
+- [x] src\screens\booking\BookingTimeSelectScreen.tsx - Fixed Today/hr strings
+- [x] src\screens\booking\BookingVenueSelectScreen.tsx - Fixed hardcoded Custom Venue text
+- [x] src\screens\booking\LocationSelectionScreen.tsx - Already fine
 - [ ] src\screens\bookings\BookingDetailScreen.tsx
 - [ ] src\screens\bookings\BookingsListScreen.tsx
 - [ ] src\screens\bookings\CancelBookingScreen.tsx

@@ -49,7 +49,7 @@ export const BookingVenueSelectScreen = () => {
     const handleNext = () => {
     if (!selectedVenueId) return;
     
-    const selectedVenue = SAFE_VENUES.find(v => v.id === selectedVenueId) || { name: 'Custom Venue', address: searchQuery };
+    const selectedVenue = SAFE_VENUES.find(v => v.id === selectedVenueId) || { name: t('customVenue', 'Custom Venue'), address: searchQuery };
     setDraftBooking({ venue: selectedVenue.name });
     
     navigation.navigate('BookingTimeSelectScreen', {
@@ -76,7 +76,7 @@ export const BookingVenueSelectScreen = () => {
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.title}>{t('title', 'Where do you want to meet?')}</Text>
-        <Text style={styles.subtitle}>{t('subtitle', 'Select a safe public venue for {{activity}}.', { activity: activity?.defaultTitle || 'this session' })}</Text>
+        <Text style={styles.subtitle}>{t('subtitle', 'Select a safe public venue for {{activity}}.', { activity: activity?.defaultTitle || t('thisSession', 'this session') })}</Text>
 
         <View style={styles.searchContainer}>
           <Icon name="magnify" size={24} color={theme.colors.textSecondary} />

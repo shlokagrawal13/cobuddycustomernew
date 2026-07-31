@@ -111,7 +111,7 @@ export const BookingTimeSelectScreen = () => {
                   setSelectedTime(null); // Reset time when date changes
                 }} accessibilityRole="button" accessibilityLabel={`${d.dayName} ${d.dayNumber}`}
               >
-                <Text style={[styles.dayName, isSelected && styles.textSelected]}>{d.dayName}</Text>
+                <Text style={[styles.dayName, isSelected && styles.textSelected]}>{index === 0 ? t('today', 'Today') : d.dayName}</Text>
                 <Text style={[styles.dayNumber, isSelected && styles.textSelected]}>{d.dayNumber}</Text>
               </TouchableOpacity>
             );
@@ -145,7 +145,7 @@ export const BookingTimeSelectScreen = () => {
                 onPress={() => setDuration(hrs)} accessibilityRole="button" accessibilityLabel={hrs === 1 ? t('units.hr', 'hr') : t('units.hrs', 'hrs')}
               >
                 <Text style={[styles.durationText, isSelected && styles.textSelected]}>
-                  {hrs} {hrs === 1 ? 'hr' : 'hrs'}
+                  {hrs} {hrs === 1 ? t('units.hr', 'hr') : t('units.hrs', 'hrs')}
                 </Text>
               </TouchableOpacity>
             );

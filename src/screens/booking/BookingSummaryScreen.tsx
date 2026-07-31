@@ -114,7 +114,7 @@ export const BookingSummaryScreen = () => {
             <View style={styles.summaryContent}>
               <Text style={styles.summaryLabel}>{t('summaryLabelDate', 'Date & Time')}</Text>
               <Text style={styles.summaryValue}>{dayName}, {dayNumber}</Text>
-              <Text style={styles.summarySubValue}>{t('durationText', '{{time}} ({{duration}} {{hourText}})', { time, duration, hourText: duration === 1 ? 'hour' : 'hours' })}</Text>
+              <Text style={styles.summarySubValue}>{t('durationText', '{{time}} ({{duration}} {{hourText}})', { time, duration, hourText: duration === 1 ? t('units.hour', 'hour') : t('units.hours', 'hours') })}</Text>
             </View>
           </View>
         </View>
