@@ -10,6 +10,12 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const FILTERS = ['All', 'Money Added', 'Spent', 'Refunds'];
+const FILTER_KEYS: Record<string, string> = {
+  'All': 'filterChips.all',
+  'Money Added': 'filterChips.moneyAdded',
+  'Spent': 'filterChips.spent',
+  'Refunds': 'filterChips.refunds',
+};
 
 export const TransactionHistoryScreen = () => { 
   const { t } = useTranslation('wallet.transactionHistory');
@@ -51,7 +57,7 @@ export const TransactionHistoryScreen = () => {
               onPress={() => setActiveFilter(f)}
               activeOpacity={0.8} accessibilityRole="button" accessibilityLabel={t('a11yF', 'f')}
             >
-              <Text style={[styles.filterText, activeFilter === f && styles.filterTextActive]}>{f}</Text>
+              <Text style={[styles.filterText, activeFilter === f && styles.filterTextActive]}>{t(FILTER_KEYS[f], f)}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>

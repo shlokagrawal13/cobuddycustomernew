@@ -15,6 +15,12 @@ import { selectInterests } from '../../store/selectors/userPreferencesSelectors'
 import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
+const FILTER_STATUS_KEYS: Record<string, string> = {
+  'All': 'quickFilters.all',
+  'Available Today': 'quickFilters.availableToday',
+  'Top Rated': 'quickFilters.topRated',
+  'Nearby': 'quickFilters.nearby',
+};
 
 const GENDER_OPTIONS = ['Any', 'Male', 'Female'];
 const RATING_PILLS = [4.0, 4.5, 5.0];
@@ -247,7 +253,7 @@ export const DiscoverScreen = () => {
                     activeStatus === item && styles.filterPillTextActive
                   ]}
                 >
-                  {item}
+                  {t(FILTER_STATUS_KEYS[item], item)}
                 </Text>
               </TouchableOpacity>
             )}

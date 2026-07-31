@@ -8,6 +8,12 @@
     "top_rated": "Top Rated",
     "nearby": "Nearby"
   },
+  "quickFilters": {
+    "all": "All",
+    "availableToday": "Available Today",
+    "topRated": "Top Rated",
+    "nearby": "Nearby"
+  },
   "list_info": "Filter: {{filter}} | Showing: {{count}} of {{total}}",
   "empty_state": {
     "title": "No Matches Found",

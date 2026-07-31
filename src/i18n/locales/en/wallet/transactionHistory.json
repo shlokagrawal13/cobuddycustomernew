@@ -8,5 +8,11 @@
   "txTypes": {
     "refundCancelled": "Refund: Session Cancelled",
     "moneyAdded": "Money Added"
+  },
+  "filterChips": {
+    "all": "All",
+    "moneyAdded": "Money Added",
+    "spent": "Spent",
+    "refunds": "Refunds"
   }
 }

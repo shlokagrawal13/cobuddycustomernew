@@ -25,6 +25,12 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const GENDER_OPTIONS = ['Man', 'Woman', 'Non-binary', 'Prefer not to say'];
+const GENDER_OPTION_KEYS: Record<string, string> = {
+  'Man': 'profile.genderOptions.man',
+  'Woman': 'profile.genderOptions.woman',
+  'Non-binary': 'profile.genderOptions.nonBinary',
+  'Prefer not to say': 'profile.genderOptions.preferNotToSay',
+};
 
 type AvatarState = 'none' | 'photo' | 'selfie';
 const AVATAR_COLORS: Record<AvatarState, string> = {
@@ -236,7 +242,7 @@ export const BasicProfileSetupScreen = () => {
                         style={styles.dropdownItem}
                         onPress={() => { setGender(g); setShowGender(false); }} accessibilityRole="button" accessibilityLabel={t('profile.a11ySelectGender', 'Select gender')}>
                         <Text style={[styles.dropdownText, g === gender && styles.dropdownTextActive]}>
-                          {g}
+                          {t(GENDER_OPTION_KEYS[g], g)}
                         </Text>
                       </TouchableOpacity>
                     ))}

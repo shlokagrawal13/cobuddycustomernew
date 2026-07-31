@@ -14,6 +14,12 @@
   "placeholder_age": "Age",
   "label_gender": "Gender",
   "placeholder_gender": "Select Gender",
+  "genderOptions": {
+    "man": "Man",
+    "woman": "Woman",
+    "nonBinary": "Non-binary",
+    "preferNotToSay": "Prefer not to say"
+  },
   "hint_age": "Must be 18 or older to join CoBuddy.",
   "label_city": "City",
   "placeholder_city": "City",
