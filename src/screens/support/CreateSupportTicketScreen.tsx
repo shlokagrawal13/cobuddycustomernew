@@ -113,7 +113,7 @@ export const CreateSupportTicketScreen = () => {
             <TouchableOpacity 
               style={[styles.attachmentBtn, hasAttachment && styles.attachmentBtnActive]}
               onPress={() => setHasAttachment(!hasAttachment)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yHasattachmentScreenshotAt', 'hasAttachment ? \'Screenshot At...')}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={hasAttachment ? t('a11yScreenshotAttached', 'Screenshot Attached') : t('a11yUploadScreenshot', 'Upload Screenshot')}
             >
               <Icon 
                 name={hasAttachment ? "image-check" : "camera-plus"} 

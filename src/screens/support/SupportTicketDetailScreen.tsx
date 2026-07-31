@@ -28,7 +28,7 @@ export const SupportTicketDetailScreen = () => {
       id: Date.now().toString(),
       sender: 'user',
       text: replyText.trim(),
-      time: 'Just now'
+      time: t('justNow', 'Just now')
     };
     setMessages([...messages, newMsg]);
     setReplyText('');
@@ -57,7 +57,7 @@ export const SupportTicketDetailScreen = () => {
         {/* Ticket Original Context */}
         <View style={styles.contextCard}>
           <Text style={styles.contextLabel}>{matchedTicket?.subject || t('contextLabel', 'Refund Request for Booking #4412')}</Text>
-          <Text style={styles.contextMeta}>{t('ticketMeta', `Category: ${matchedTicket?.category || 'Payment'} • Created ${matchedTicket?.date || '2 hours ago'}`)}</Text>
+          <Text style={styles.contextMeta}>{t('ticketMeta', 'Category: {{category}} • Created {{date}}', { category: matchedTicket?.category || 'Payment', date: matchedTicket?.date || '2 hours ago' })}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.chatScroll} showsVerticalScrollIndicator={false}>

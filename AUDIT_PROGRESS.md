@@ -89,10 +89,10 @@
 - [x] src\screens\settings\ReferFriendScreen.tsx - Fixed hardcoded share message
 - [x] src\screens\settings\SettingsHubScreen.tsx - Verified
 - [x] src\screens\settings\SpokenLanguagesScreen.tsx - Fixed hardcoded string
-- [ ] src\screens\support\CreateSupportTicketScreen.tsx
-- [ ] src\screens\support\HelpCenterScreen.tsx
-- [ ] src\screens\support\SupportCenterScreen.tsx
-- [ ] src\screens\support\SupportTicketDetailScreen.tsx
+- [x] src\screens\support\CreateSupportTicketScreen.tsx - Fixed accessibility label
+- [x] src\screens\support\HelpCenterScreen.tsx - Localized FAQS
+- [x] src\screens\support\SupportCenterScreen.tsx - Verified
+- [x] src\screens\support\SupportTicketDetailScreen.tsx - Localized Just now and fixed template string
 - [ ] src\screens\system\AccountDeactivatedScreen.tsx
 - [ ] src\screens\system\AccountReactivationRequestScreen.tsx
 - [ ] src\screens\system\AccountSuspendedScreen.tsx
