@@ -118,44 +118,44 @@
 - [x] src\screens\wallet\WalletScreen.tsx - Verified
 - [x] src\screens\wallet\WithdrawMoneyScreen.tsx - Verified
 - [x] src\screens\wallet\WithdrawalMethodsScreen.tsx - Fixed hardcoded remove alert string
-- [ ] src\services\mock\activities.mock.ts
-- [ ] src\services\mock\bookings.mock.ts
-- [ ] src\services\mock\chat.mock.ts
-- [ ] src\services\mock\companions.mock.ts
-- [ ] src\services\mock\index.ts
-- [ ] src\services\mock\interestMapping.ts
-- [ ] src\services\mock\notifications.mock.ts
-- [ ] src\services\mock\onboarding.mock.ts
-- [ ] src\services\mock\profile.mock.ts
-- [ ] src\services\mock\reviews.mock.ts
-- [ ] src\services\mock\safety.mock.ts
-- [ ] src\services\mock\session.mock.ts
-- [ ] src\services\mock\support.mock.ts
-- [ ] src\services\mock\wallet.mock.ts
-- [ ] src\store\selectors\authSelectors.ts
-- [ ] src\store\selectors\bookingSelectors.ts
-- [ ] src\store\selectors\safetySelectors.ts
-- [ ] src\store\selectors\userPreferencesSelectors.ts
-- [ ] src\store\slices\authStore.ts
-- [ ] src\store\slices\bookingStore.ts
-- [ ] src\store\slices\safetyStore.ts
-- [ ] src\store\slices\userPreferencesStore.ts
-- [ ] src\theme\borders.ts
-- [ ] src\theme\colors.ts
-- [ ] src\theme\index.ts
-- [ ] src\theme\spacing.ts
-- [ ] src\theme\typography.ts
-- [ ] src\types\navigation\auth.types.ts
-- [ ] src\types\navigation\booking.types.ts
-- [ ] src\types\navigation\chat.types.ts
-- [ ] src\types\navigation\home.types.ts
-- [ ] src\types\navigation\index.ts
-- [ ] src\types\navigation\profile.types.ts
-- [ ] src\types\navigation\safety.types.ts
-- [ ] src\types\navigation\session.types.ts
-- [ ] src\types\navigation\settings.types.ts
-- [ ] src\types\navigation\support.types.ts
-- [ ] src\types\navigation\system.types.ts
-- [ ] src\types\navigation\verify.types.ts
-- [ ] src\utils\validation.ts
+- [x] src\services\mock\activities.mock.ts
+- [x] src\services\mock\bookings.mock.ts
+- [x] src\services\mock\chat.mock.ts
+- [x] src\services\mock\companions.mock.ts
+- [x] src\services\mock\index.ts
+- [x] src\services\mock\interestMapping.ts
+- [x] src\services\mock\notifications.mock.ts
+- [x] src\services\mock\onboarding.mock.ts
+- [x] src\services\mock\profile.mock.ts
+- [x] src\services\mock\reviews.mock.ts
+- [x] src\services\mock\safety.mock.ts
+- [x] src\services\mock\session.mock.ts
+- [x] src\services\mock\support.mock.ts
+- [x] src\services\mock\wallet.mock.ts
+- [x] src\store\selectors\authSelectors.ts
+- [x] src\store\selectors\bookingSelectors.ts
+- [x] src\store\selectors\safetySelectors.ts
+- [x] src\store\selectors\userPreferencesSelectors.ts
+- [x] src\store\slices\authStore.ts
+- [x] src\store\slices\bookingStore.ts
+- [x] src\store\slices\safetyStore.ts
+- [x] src\store\slices\userPreferencesStore.ts
+- [x] src\theme\borders.ts
+- [x] src\theme\colors.ts
+- [x] src\theme\index.ts
+- [x] src\theme\spacing.ts
+- [x] src\theme\typography.ts
+- [x] src\types\navigation\auth.types.ts
+- [x] src\types\navigation\booking.types.ts
+- [x] src\types\navigation\chat.types.ts
+- [x] src\types\navigation\home.types.ts
+- [x] src\types\navigation\index.ts
+- [x] src\types\navigation\profile.types.ts
+- [x] src\types\navigation\safety.types.ts
+- [x] src\types\navigation\session.types.ts
+- [x] src\types\navigation\settings.types.ts
+- [x] src\types\navigation\support.types.ts
+- [x] src\types\navigation\system.types.ts
+- [x] src\types\navigation\verify.types.ts
+- [x] src\utils\validation.ts
 
