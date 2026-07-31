@@ -17,15 +17,15 @@
 - [x] src\config\featureFlags.ts - Already fine
 - [x] src\hooks\useSmartNavigation.ts - Already fine
 - [x] src\i18n\index.ts - Already fine
-- [ ] src\navigation\AuthStack.tsx
-- [ ] src\navigation\BookingFlowStack.tsx
-- [ ] src\navigation\KYCStack.tsx
-- [ ] src\navigation\LiveSessionStack.tsx
-- [ ] src\navigation\MainTabNavigator.tsx
-- [ ] src\navigation\OnboardingStack.tsx
-- [ ] src\navigation\RootNavigator.tsx
-- [ ] src\navigation\SafetySupportStack.tsx
-- [ ] src\navigation\SystemStateStack.tsx
+- [x] src\navigation\AuthStack.tsx - Already fine
+- [x] src\navigation\BookingFlowStack.tsx - Already fine
+- [x] src\navigation\KYCStack.tsx - Already fine
+- [x] src\navigation\LiveSessionStack.tsx - Already fine
+- [x] src\navigation\MainTabNavigator.tsx - Already fine
+- [x] src\navigation\OnboardingStack.tsx - Already fine
+- [x] src\navigation\RootNavigator.tsx - Already fine
+- [x] src\navigation\SafetySupportStack.tsx - Already fine
+- [x] src\navigation\SystemStateStack.tsx - Already fine
 - [ ] src\screens\auth\LocationPermissionScreen.tsx
 - [ ] src\screens\auth\NotificationPermissionScreen.tsx
 - [ ] src\screens\auth\OTPVerificationScreen.tsx
