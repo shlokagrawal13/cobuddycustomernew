@@ -255,7 +255,7 @@ export const DiscoverScreen = () => {
         </View>
         <View style={styles.infoBar}>
           <Text style={styles.infoBarText}>
-            {t('discover.showing', 'Showing ')}{filteredCompanions.length} {t('discover.companions', 'companions')}
+            {t('showing', 'Showing ')}{filteredCompanions.length} {t('companions', 'companions')}
           </Text>
         </View>
       </View>

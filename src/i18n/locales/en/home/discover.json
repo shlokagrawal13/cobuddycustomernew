@@ -48,13 +48,11 @@
     "studyBuddy": "Study Buddy",
     "cityWalk": "City Walk"
   },
-  "discover": {
-    "showing": "Showing ",
-    "companions": "companions",
-    "upTo": "Up to "
-  },
   "units": {
     "km": "km",
     "kmSpace": " km"
-  }
+  },
+  "showing": "Showing ",
+  "companions": "companions",
+  "upTo": "Up to "
 }
