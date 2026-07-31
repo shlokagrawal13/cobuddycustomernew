@@ -50,7 +50,7 @@ export const PaymentMethodsScreen = () => {
   };
 
   const handleDelete = (id: string, title: string) => {
-    Alert.alert(t('alertTitleRemovePaymentMe', 'Remove Payment Method'), t('alertMsgAreyousureyouwanttor', 'Are you sure you want to remove ') + title + ' from your saved methods?',
+    Alert.alert(t('alertTitleRemovePaymentMe', 'Remove Payment Method'), t('alertMsgRemoveConfirm', 'Are you sure you want to remove {{title}} from your saved methods?', { title }),
         [
             { text: t('cancelBtn', 'Cancel'), style: 'cancel' },
             { text: t('removeBtn', 'Remove'), style: 'destructive', onPress: () => {

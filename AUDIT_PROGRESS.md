@@ -109,10 +109,10 @@
 - [ ] src\screens\verify\VerificationProcessingScreen.tsx
 - [ ] src\screens\verify\VerificationRejectedScreen.tsx
 - [ ] src\screens\verify\VerificationSuccessScreen.tsx
-- [ ] src\screens\wallet\AddBankAccountScreen.tsx
-- [ ] src\screens\wallet\AddMoneyScreen.tsx
-- [ ] src\screens\wallet\AddPaymentMethodScreen.tsx
-- [ ] src\screens\wallet\PaymentMethodsScreen.tsx
+- [x] src\screens\wallet\AddBankAccountScreen.tsx - Verified
+- [x] src\screens\wallet\AddMoneyScreen.tsx - Verified
+- [x] src\screens\wallet\AddPaymentMethodScreen.tsx - Verified
+- [x] src\screens\wallet\PaymentMethodsScreen.tsx - Fixed hardcoded remove alert string
 - [ ] src\screens\wallet\TransactionDetailScreen.tsx
 - [ ] src\screens\wallet\TransactionHistoryScreen.tsx
 - [ ] src\screens\wallet\WalletScreen.tsx
