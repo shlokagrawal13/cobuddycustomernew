@@ -11,10 +11,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export const VerificationPendingScreen = () => { 
   const { t } = useTranslation('verify.pending');
   const REVIEW_STEPS = [
-    {icon: 'check-circle',        label: t('steps.documentVerification', 'Document Verification'), status: 'Completed',    done: true},
-    {icon: 'check-circle',        label: t('steps.selfieLiveness', 'Selfie & Liveness Check'), status: 'Completed',    done: true},
-    {icon: 'timer-sand',          label: t('steps.profileReview', 'Profile Review'),        status: 'Under Review', done: false},
-    {icon: 'clock-outline',       label: t('steps.bookingAuthorization', 'Booking Authorization'), status: 'Pending',      done: false},
+    {icon: 'check-circle',        label: t('steps.documentVerification', 'Document Verification'), status: t('status.completed', 'Completed'),    done: true},
+    {icon: 'check-circle',        label: t('steps.selfieLiveness', 'Selfie & Liveness Check'), status: t('status.completed', 'Completed'),    done: true},
+    {icon: 'timer-sand',          label: t('steps.profileReview', 'Profile Review'),        status: t('status.underReview', 'Under Review'), done: false},
+    {icon: 'clock-outline',       label: t('steps.bookingAuthorization', 'Booking Authorization'), status: t('status.pending', 'Pending'),      done: false},
   ];
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 

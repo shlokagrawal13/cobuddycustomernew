@@ -11,10 +11,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export const VerificationRejectedScreen = () => { 
   const { t } = useTranslation('verify.rejected');
   const REVIEW_STEPS = [
-    {icon: 'check-circle',        label: t('steps.documentVerification', 'Document Verification'), status: 'Completed',    done: true},
-    {icon: 'check-circle',        label: t('steps.selfieLiveness', 'Selfie & Liveness Check'), status: 'Completed',    done: true},
-    {icon: 'close-circle',        label: t('steps.profileReview', 'Profile Review'),        status: 'Action Required', done: false, error: true},
-    {icon: 'clock-outline',       label: t('steps.bookingAuthorization', 'Booking Authorization'), status: 'Blocked',      done: false},
+    {icon: 'check-circle',        label: t('steps.documentVerification', 'Document Verification'), status: t('status.completed', 'Completed'),    done: true},
+    {icon: 'check-circle',        label: t('steps.selfieLiveness', 'Selfie & Liveness Check'), status: t('status.completed', 'Completed'),    done: true},
+    {icon: 'close-circle',        label: t('steps.profileReview', 'Profile Review'),        status: t('status.actionRequired', 'Action Required'), done: false, error: true},
+    {icon: 'clock-outline',       label: t('steps.bookingAuthorization', 'Booking Authorization'), status: t('status.blocked', 'Blocked'),      done: false},
   ];
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 

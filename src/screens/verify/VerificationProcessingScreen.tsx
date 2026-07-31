@@ -91,7 +91,7 @@ export const VerificationProcessingScreen = () => {
         </Animated.View>
 
         <Text style={styles.heroTitle}>
-          {activeStep >= 4 ? `Verification\nComplete` : `Securely Verifying\nYour Identity`}
+          {activeStep >= 4 ? t('heroTitleComplete', 'Verification\nComplete') : t('heroTitleVerifying', 'Securely Verifying\nYour Identity')}
         </Text>
         <Text style={styles.heroSub}>
           {activeStep >= 4 ? t('processing.profileTrusted', 'Your profile is now trusted.') : t('processing.reviewingDetails', 'Reviewing verification details...')}

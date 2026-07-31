@@ -101,14 +101,14 @@
 - [x] src\screens\system\MaintenanceModeScreen.tsx - Verified
 - [x] src\screens\system\NetworkErrorScreen.tsx - Verified
 - [x] src\screens\system\PolicyViolationNoticeScreen.tsx - Verified
-- [ ] src\screens\verify\DocumentVerificationScreen.tsx
-- [ ] src\screens\verify\KYCIntroScreen.tsx
-- [ ] src\screens\verify\LivenessDetectionScreen.tsx
-- [ ] src\screens\verify\SelfieCaptureScreen.tsx
-- [ ] src\screens\verify\VerificationPendingScreen.tsx
-- [ ] src\screens\verify\VerificationProcessingScreen.tsx
-- [ ] src\screens\verify\VerificationRejectedScreen.tsx
-- [ ] src\screens\verify\VerificationSuccessScreen.tsx
+- [x] src\screens\verify\DocumentVerificationScreen.tsx - Verified
+- [x] src\screens\verify\KYCIntroScreen.tsx - Verified
+- [x] src\screens\verify\LivenessDetectionScreen.tsx - Verified
+- [x] src\screens\verify\SelfieCaptureScreen.tsx - Verified
+- [x] src\screens\verify\VerificationPendingScreen.tsx - Localized statuses
+- [x] src\screens\verify\VerificationProcessingScreen.tsx - Localized dynamic text
+- [x] src\screens\verify\VerificationRejectedScreen.tsx - Localized statuses
+- [x] src\screens\verify\VerificationSuccessScreen.tsx - Verified
 - [x] src\screens\wallet\AddBankAccountScreen.tsx - Verified
 - [x] src\screens\wallet\AddMoneyScreen.tsx - Verified
 - [x] src\screens\wallet\AddPaymentMethodScreen.tsx - Verified
