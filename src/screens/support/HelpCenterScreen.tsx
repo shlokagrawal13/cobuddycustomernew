@@ -165,7 +165,7 @@ export const HelpCenterScreen = () => {
                 <TouchableOpacity 
                     style={styles.chatBtn}
                     activeOpacity={0.8}
-                    onPress={() => { const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { screen: 'ChatTab', params: { screen: 'ConciergeChatScreen' } }); }} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
+                    onPress={() => { const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { screen: 'ChatTab', params: { screen: 'ConciergeChatScreen', initial: false } }); }} accessibilityRole="button" accessibilityLabel={t('a11yChatNow', 'Chat Now')}
                 >
                     <Icon name="message-text-outline" size={20} color={theme.colors.background} />
                     <Text style={styles.chatBtnText}>{t('chatNow', 'Chat Now')}</Text>

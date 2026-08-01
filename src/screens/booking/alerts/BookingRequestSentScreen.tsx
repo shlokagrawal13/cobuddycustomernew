@@ -44,6 +44,7 @@ export const BookingRequestSentScreen = ({ route }: { route: any }) => {
       screen: 'BookingsTab',
       params: {
         screen: 'BookingDetailScreen',
+        initial: false,
         params: { bookingId: bookingData.bookingId }
       }
     });

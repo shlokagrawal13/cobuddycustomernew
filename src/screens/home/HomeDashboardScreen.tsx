@@ -172,6 +172,7 @@ export const HomeDashboardScreen = () => {
                   style={styles.exploreCard}
                   onPress={() => navigation.navigate('DiscoverTab', { 
                     screen: 'DiscoverScreen', 
+                    initial: false,
                     params: { category: cat.id } 
                   })} accessibilityRole="button" accessibilityLabel={cat.title}
                 >
@@ -257,9 +258,8 @@ export const HomeDashboardScreen = () => {
                 <View key={item.id} style={styles.featuredCardWrapper}>
                   <CompanionCard
                     {...item}
-                    onPress={(id) => navigation.navigate('DiscoverTab', {
-                      screen: 'CompanionProfileScreen',
-                      params: { companionId: id }
+                    onPress={(id) => navigation.navigate('CompanionProfileScreen', {
+                      companionId: id
                     } as never)}
                   />
                 </View>

@@ -108,7 +108,7 @@ export const ArrivalCheckInScreen = () => {
               const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void };
               nav.navigate('MainTabNavigator', {
                 screen: 'ChatTab',
-                params: { screen: 'CompanionChatScreen', params: { companionName: companionName, companionId: companionId } }
+                params: { screen: 'CompanionChatScreen', initial: false, params: { companionName: companionName, companionId: companionId } }
               });
             }} accessibilityRole="button" accessibilityLabel={t('a11yMessage', 'Message')}>
               <Icon name="chat" size={20} color={theme.colors.primary} />

@@ -37,6 +37,7 @@ export const BookingAcceptedScreen = ({ route }: { route: any }) => {
       screen: 'ChatTab',
       params: {
         screen: 'CompanionChatScreen',
+        initial: false,
         params: { companionName: bookingData.companionName, bookingId: bookingData.bookingId, companionId: bookingData.companionId }
       }
     });
@@ -47,6 +48,7 @@ export const BookingAcceptedScreen = ({ route }: { route: any }) => {
       screen: 'BookingsTab',
       params: {
         screen: 'BookingDetailScreen',
+        initial: false,
         params: { bookingId: bookingData.bookingId }
       }
     });

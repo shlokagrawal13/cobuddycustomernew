@@ -62,6 +62,16 @@ const HomeTabStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeDashboardScreen" component={HomeDashboardScreen} />
       <Stack.Screen name="NotificationsScreen" component={NotificationsScreen} />
+
+      {/*
+        NOTE: CompanionProfileScreen is intentionally dual-registered here (same pattern as
+        OTPVerificationScreen below in ProfileTabStack). It has no single "home" tab — it can be
+        opened from Home, Chat, Bookings, SavedProfiles and Discover itself. Registering it locally
+        in every tab that can open it lets it push onto the CURRENT tab's stack instead of jumping
+        to DiscoverTab. Callers should navigate('CompanionProfileScreen', { companionId }) directly,
+        never navigate('DiscoverTab', { screen: 'CompanionProfileScreen', ... }).
+      */}
+      <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
   </Stack.Navigator>
 );
 
@@ -79,6 +89,9 @@ const BookingsTabStack = () => (
       <Stack.Screen name="CancelBookingScreen" component={CancelBookingScreen} />
       <Stack.Screen name="ModifyBookingScreen" component={ModifyBookingScreen} />
       <Stack.Screen name="DisputeRefundScreen" component={DisputeRefundScreen} />
+
+      {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
+      <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
   </Stack.Navigator>
 );
 
@@ -89,6 +102,9 @@ const ChatTabStack = () => (
       <Stack.Screen name="CompanionChatScreen" component={CompanionChatScreen} />
       <Stack.Screen name="VoiceCallScreen" component={VoiceCallScreen} />
       <Stack.Screen name="IncomingCallScreen" component={IncomingCallScreen} />
+
+      {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
+      <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
   </Stack.Navigator>
 );
 
@@ -133,6 +149,9 @@ const ProfileTabStack = () => (
       <Stack.Screen name="ActiveSessionsScreen" component={ActiveSessionsScreen} />
       <Stack.Screen name="SavedProfilesScreen" component={SavedProfilesScreen} />
       <Stack.Screen name="ReferFriendScreen" component={ReferFriendScreen} />
+
+      {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
+      <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
   </Stack.Navigator>
 );
 

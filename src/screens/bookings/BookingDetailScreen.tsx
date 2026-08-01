@@ -49,6 +49,7 @@ export const BookingDetailScreen = () => {
   const handleMessage = () => {
     navigation.navigate('ChatTab', { 
       screen: 'CompanionChatScreen', 
+      initial: false,
       params: { companionName: data.companionName, bookingId: data.id, companionId: data.companionId } 
     });
   };
@@ -209,7 +210,7 @@ export const BookingDetailScreen = () => {
         <TouchableOpacity 
           style={styles.companionCard}
           activeOpacity={0.9}
-          onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId: data.companionId } })} accessibilityRole="button" accessibilityLabel={t('a11yGoToDiscovertab', 'Go to DiscoverTab')}
+          onPress={() => navigation.navigate('CompanionProfileScreen', { companionId: data.companionId })} accessibilityRole="button" accessibilityLabel={t('a11yGoToDiscovertab', 'Go to DiscoverTab')}
         >
           <View style={styles.profileRow}>
             <View style={styles.avatarPlaceholder}>

@@ -79,14 +79,14 @@ export const CompanionChatScreen = () => {
             </TouchableOpacity>
             <TouchableOpacity 
               style={styles.avatarBox}
-              onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId } })} accessibilityRole="button" accessibilityLabel={t('a11yGoToDiscovertab', 'Go to DiscoverTab')}
+              onPress={() => navigation.navigate('CompanionProfileScreen', { companionId })} accessibilityRole="button" accessibilityLabel={t('a11yGoToDiscovertab', 'Go to DiscoverTab')}
             >
               <Text style={styles.avatarInitials}>{companionName.charAt(0)}</Text>
               <View style={styles.onlineDot} />
             </TouchableOpacity>
             <View style={{ marginLeft: 12, flexShrink: 1 }}>
               <Text style={styles.headerTitle} numberOfLines={1}>{companionName}</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', params: { bookingId } })} accessibilityRole="button" accessibilityLabel={t('a11yViewBooking', 'View Booking')}>
+              <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', initial: false, params: { bookingId } })} accessibilityRole="button" accessibilityLabel={t('a11yViewBooking', 'View Booking')}>
                 <Text style={styles.viewBookingText}>{t('viewBookingText', 'View Booking')}</Text>
               </TouchableOpacity>
             </View>
@@ -166,7 +166,7 @@ export const CompanionChatScreen = () => {
                 style={styles.optionItem} 
                 onPress={() => { 
                   setOptionsMenuVisible(false); 
-                  navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId } }); 
+                  navigation.navigate('CompanionProfileScreen', { companionId }); 
                 }} accessibilityRole="button" accessibilityLabel={t('a11yViewProfile', 'View Profile')}
               >
                 <Icon name="account-outline" size={24} color={theme.colors.textPrimary} style={styles.optionIcon} />

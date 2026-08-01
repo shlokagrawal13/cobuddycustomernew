@@ -68,7 +68,7 @@ export const SafetyHubScreen = () => {
           <Icon name="arrow-left" size={24} color={theme.colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('headerTitle', 'Safety Hub')}</Text>
-        <TouchableOpacity style={styles.backBtn} onPress={() => { const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { screen: 'ProfileTab', params: { screen: 'SafetySettingsScreen' } }); }} accessibilityRole="button" accessibilityLabel={t('a11ySettings', 'Settings')}>
+        <TouchableOpacity style={styles.backBtn} onPress={() => { const nav = navigation as unknown as { navigate: (route: string, params?: unknown) => void }; nav.navigate('MainTabNavigator', { screen: 'ProfileTab', params: { screen: 'SafetySettingsScreen', initial: false } }); }} accessibilityRole="button" accessibilityLabel={t('a11ySettings', 'Settings')}>
           <Icon name="cog-outline" size={24} color={theme.colors.textSecondary} />
         </TouchableOpacity>
       </View>

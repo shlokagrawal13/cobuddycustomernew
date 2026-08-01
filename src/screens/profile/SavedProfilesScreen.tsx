@@ -50,7 +50,7 @@ export const SavedProfilesScreen = () => {
     <TouchableOpacity 
         style={styles.card} 
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId: item.id } })} accessibilityRole="button" accessibilityLabel={t('a11yGoToCompanionprofile', 'Go to CompanionProfile')}
+        onPress={() => navigation.navigate('CompanionProfileScreen', { companionId: item.id })} accessibilityRole="button" accessibilityLabel={t('a11yGoToCompanionprofile', 'Go to CompanionProfile')}
     >
         <View style={styles.imagePlaceholder}>
             <Icon name="account" size={40} color="rgba(255,255,255,0.1)" />
@@ -123,7 +123,7 @@ export const SavedProfilesScreen = () => {
                 activeOpacity={0.7}
                 onPress={() => {
                     setShowSheet(false);
-                    navigation.navigate('DiscoverTab', { screen: 'CompanionProfileScreen', params: { companionId: selectedProfile?.id } });
+                    navigation.navigate('CompanionProfileScreen', { companionId: selectedProfile?.id });
                 }} accessibilityRole="button" accessibilityLabel={t('a11yViewFullProfile', 'View Full Profile')}
             >
                 <View style={styles.sheetIconBox}>
