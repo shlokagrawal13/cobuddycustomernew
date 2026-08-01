@@ -187,7 +187,7 @@ export const MainTabNavigator = () => {
 
   return (
     <Tab.Navigator
-      backBehavior="initialRoute"
+      backBehavior="history"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarStyle: getTabBarStyle(route),
