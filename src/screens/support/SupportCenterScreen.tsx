@@ -93,7 +93,7 @@ export const SupportCenterScreen = () => {
                   </View>
                   <View style={[styles.statusBadge, { backgroundColor: `${getStatusColor(ticket.status)}15` }]}>
                     <View style={[styles.statusDot, { backgroundColor: getStatusColor(ticket.status) }]} />
-                    <Text style={[styles.statusText, { color: getStatusColor(ticket.status) }]}>{ticket.status}</Text>
+                    <Text style={[styles.statusText, { color: getStatusColor(ticket.status) }]}>{t(`status.${ticket.status}`, ticket.status)}</Text>
                   </View>
                 </View>
 

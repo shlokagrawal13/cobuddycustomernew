@@ -11,5 +11,10 @@
   },
   "a11yGoBack": "Go back",
   "a11yAttachFile": "Attach file",
-  "a11ySend": "Send"
+  "a11ySend": "Send",
+  "category": {
+    "Payment": "Payment",
+    "Safety": "Safety",
+    "Account": "Account"
+  }
 }

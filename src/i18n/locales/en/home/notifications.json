@@ -8,5 +8,39 @@
   "a11yMarkAllRead": "Mark all read",
   "a11yCategory": "category",
   "a11yAction": "Action",
-  "a11yOpenNotification": "Open notification"
+  "a11yOpenNotification": "Open notification",
+  "items": {
+    "n1": {
+      "title": "Booking Confirmed!",
+      "description": "Your evening walk with Priya has been confirmed for tomorrow at 6 PM."
+    },
+    "n1_declined": {
+      "title": "Booking Declined",
+      "description": "Natasha is unavailable for Friday evening. Please check other companions."
+    },
+    "n1_counter": {
+      "title": "New Counter Offer",
+      "description": "Rahul has proposed a different time and price for your coffee meetup."
+    },
+    "n2": {
+      "title": "Refund Processed",
+      "description": "₹1,500 has been successfully refunded to your CoBuddy Wallet."
+    },
+    "n3": {
+      "title": "New Login Detected",
+      "description": "We detected a new login from an iPhone 14 Pro in New Delhi."
+    },
+    "n4": {
+      "title": "Upcoming Meetup Reminder",
+      "description": "Don't forget! Your coffee meetup with Rahul starts in 2 hours."
+    },
+    "n5": {
+      "title": "Support Ticket Updated",
+      "description": "Our Concierge team has responded to your ticket #402."
+    },
+    "n6": {
+      "title": "KYC Verified successfully",
+      "description": "Your Identity verification is complete. You now have the verified badge!"
+    }
+  }
 }

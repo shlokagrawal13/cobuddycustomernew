@@ -171,4 +171,9 @@
  
  # #   F i n a l   V e r i f i c a t i o n  
  -   [ x ]   R a n   c o d e b a s e - w i d e   a u t o m a t e d   s e a r c h   f o r   E n g l i s h   v a l u e s   o f   a l l   ' o r p h a n e d '   k e y s .   V e r i f i e d   t h a t   a n y   m a t c h i n g   s t r i n g s   a r e   e i t h e r   d y n a m i c a l l y   m a p p e d   o r   s u p e r s e d e d   b y   n e w   t r a n s l a t i o n   k e y s .   Z e r o   r e m a i n i n g   m i s s i n g   w i r i n g   b u g s .  
+  
+ # #   P o s t - A u d i t   H i d d e n   B u g s   F i x e d  
+ -   N o t i f i c a t i o n s S c r e e n . t s x :   r a w   n o t i f . t i t l e / n o t i f . d e s c r i p t i o n   f i x e d  
+ -   S u p p o r t C e n t e r S c r e e n . t s x   &   S u p p o r t T i c k e t D e t a i l S c r e e n . t s x :   r a w   t i c k e t . s t a t u s   a n d   c a t e g o r y   i n t e r p o l a t i o n   f i x e d  
+ -   T r a n s a c t i o n D e t a i l S c r e e n . t s x :   r a w   t x . s t a t u s   a n d   b r e a k d o w n   i t e m s   f i x e d  
  

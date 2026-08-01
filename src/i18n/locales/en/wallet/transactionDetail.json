@@ -20,5 +20,17 @@
     "time": "Time",
     "category": "Category",
     "paymentSource": "Payment Source"
+  },
+  "status": {
+    "Successful": "Successful",
+    "Refunded": "Refunded",
+    "Pending": "Pending"
+  },
+  "breakdownLabels": {
+    "Top-up Amount": "Top-up Amount",
+    "Platform Fee": "Platform Fee",
+    "Refund Amount": "Refund Amount",
+    "Session Fee (Hourly)": "Session Fee (Hourly)",
+    "Taxes (GST 18%)": "Taxes (GST 18%)"
   }
 }

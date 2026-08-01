@@ -139,12 +139,12 @@ export const NotificationsScreen = () => {
               <View style={styles.notifContent}>
                 <View style={styles.notifHeader}>
                   <Text style={[styles.notifTitle, !notif.isRead && styles.notifTitleUnread]} numberOfLines={1}>
-                    {notif.title}
+                    {t(`items.${notif.id}.title`, notif.title)}
                   </Text>
                   <Text style={styles.notifTime}>{notif.time}</Text>
                 </View>
                 <Text style={styles.notifDesc} numberOfLines={2}>
-                  {notif.description}
+                  {t(`items.${notif.id}.description`, notif.description)}
                 </Text>
               </View>
             </TouchableOpacity>

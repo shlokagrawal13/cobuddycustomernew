@@ -10,5 +10,10 @@
   "a11yClosed": "Closed",
   "a11yGoToSupportticketdetail": "Go to SupportTicketDetail",
   "a11yNewTicket": "New Ticket",
-  "noTickets": "No Tickets Found"
+  "noTickets": "No Tickets Found",
+  "status": {
+    "Open": "Open",
+    "In Progress": "In Progress",
+    "Closed": "Closed"
+  }
 }
