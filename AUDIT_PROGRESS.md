@@ -1,6 +1,15 @@
 # CoBuddy Code Audit Progress
 
-## undefined
+## Module Audit Progress
+- [x] **`chat`** - DONE
+- [x] **`home`** - DONE
+- [x] **`safety`** - DONE
+- [x] **`session`** - DONE
+- [x] **`system`** - DONE
+- [x] **`verify`** - DONE
+- [x] **`wallet`** - DONE
+
+## Detailed Screen Status
 - [x] src\components\booking\BookingHeader.tsx - Already fine
 - [x] src\components\common\ChatInputBar.tsx - Fixed raw sentAttachment strings
 - [x] src\components\onboarding\OnboardingHeader.tsx - Already fine

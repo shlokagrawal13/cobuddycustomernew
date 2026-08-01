@@ -222,16 +222,20 @@ export const ModifyBookingScreen = () => {
             <FlatList
               data={MOCK_VENUES}
               keyExtractor={(item) => item}
-              renderItem={({ item }) => (
+              renderItem={({ item }) => {
+                const isKeepOriginal = item === 'Keep Original Venue';
+                const displayLabel = isKeepOriginal ? t('keepOriginalVenueLabel', 'Keep Original Venue') : item;
+                return (
                 <TouchableOpacity style={styles.sheetOption} onPress={() => {
-                  setNewVenue(item === 'Keep Original Venue' ? '' : item);
+                  setNewVenue(isKeepOriginal ? '' : item);
                   setVenueModalVisible(false);
-                }} accessibilityRole="button" accessibilityLabel={t('a11ySelectVenueOption', 'Select {{venue}}', { venue: item })}>
-                  <Icon name={item === 'Keep Original Venue' ? 'restore' : 'map-marker-outline'} size={20} color={theme.colors.primary} style={{ marginRight: 12 }} />
-                  <Text style={[styles.sheetOptionText, { flex: 1 }]}>{item}</Text>
+                }} accessibilityRole="button" accessibilityLabel={t('a11ySelectVenueOption', 'Select {{venue}}', { venue: displayLabel })}>
+                  <Icon name={isKeepOriginal ? 'restore' : 'map-marker-outline'} size={20} color={theme.colors.primary} style={{ marginRight: 12 }} />
+                  <Text style={[styles.sheetOptionText, { flex: 1 }]}>{displayLabel}</Text>
                   <Icon name="chevron-right" size={20} color={theme.colors.textSecondary} />
                 </TouchableOpacity>
-              )}
+                );
+              }}
             />
           </View>
         </View>

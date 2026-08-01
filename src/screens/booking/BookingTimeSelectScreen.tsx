@@ -100,7 +100,7 @@ export const BookingTimeSelectScreen = () => {
 
         <Text style={styles.sectionTitle}>{t('sectionTitleDate', 'Select Date')}</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.dateList}>
-          {DATES.map((d) => {
+          {DATES.map((d, index) => {
             const isSelected = selectedDateId === d.id;
             return (
               <TouchableOpacity

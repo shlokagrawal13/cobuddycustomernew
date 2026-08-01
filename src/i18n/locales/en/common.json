@@ -56,10 +56,10 @@
     "titleSelectCountry": "Select Country"
   },
   "bookingDeclined": {
-    "body": "Unfortunately, {{name}} is unavailable for {{date}} at {{time}}. Don\\'t worry, there are many other great companions available!"
+    "body": "Unfortunately, {{name}} is unavailable for {{date}} at {{time}}. Don't worry, there are many other great companions available!"
   },
   "bookingRequestSent": {
-    "body": "We\\'ve notified {{name}}. They have 24 hours to review your request, but companions usually respond within a few hours."
+    "body": "We've notified {{name}}. They have 24 hours to review your request, but companions usually respond within a few hours."
   },
   "a11yPrice": "Price: {{price}}",
   "units": {

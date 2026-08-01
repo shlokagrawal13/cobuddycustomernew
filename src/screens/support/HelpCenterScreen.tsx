@@ -26,7 +26,7 @@ export const HelpCenterScreen = () => {
   const FAQS = [
   // Bookings & Meetups
   { id: 'f1', categoryId: '1', question: t('faq.f1.q', 'How do I cancel a booking?'), answer: t('faq.f1.a', 'Go to your booking details and tap "Cancel Booking". Cancellations made 24 hours prior are fully refunded.') },
-  { id: 'f2', categoryId: '1', question: t('faq.f2.q', 'What if a companion doesn\\'t show up?'), answer: t('faq.f2.a', 'If a companion is a no-show, please report it immediately. You will receive a full refund, and the companion\\'s profile will be penalized.') },
+  { id: 'f2', categoryId: '1', question: t('faq.f2.q', "What if a companion doesn't show up?"), answer: t('faq.f2.a', "If a companion is a no-show, please report it immediately. You will receive a full refund, and the companion's profile will be penalized.") },
   { id: 'f3', categoryId: '1', question: t('faq.f3.q', 'Can I reschedule my meetup?'), answer: t('faq.f3.a', 'Yes, you can modify your booking time up to 12 hours before the meetup, provided the companion accepts the new schedule.') },
   { id: 'f4', categoryId: '1', question: t('faq.f4.q', 'Are there extra charges for overtime?'), answer: t('faq.f4.a', 'Yes, if your session exceeds the booked time, you can negotiate an extension directly in the app and pay the difference.') },
 
