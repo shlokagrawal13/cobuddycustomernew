@@ -13,7 +13,7 @@
       "title": "Session Reminders",
       "sub": "Never miss a booking or pre-session briefing"
     },
-    "safety": {
+    "alerts": {
       "title": "Safety Pings",
       "sub": "Emergency alerts and safety check-ins during sessions"
     }

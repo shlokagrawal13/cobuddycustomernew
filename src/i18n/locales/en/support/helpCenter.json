@@ -20,5 +20,55 @@
     "searchResults": "SEARCH RESULTS",
     "categoryFaqs": "CATEGORY FAQS",
     "frequentlyAsked": "FREQUENTLY ASKED QUESTIONS"
+  },
+  "faq": {
+    "f1": {
+      "q": "How do I cancel a booking?",
+      "a": "Go to your booking details and tap \"Cancel Booking\". Cancellations made 24 hours prior are fully refunded."
+    },
+    "f2": {
+      "q": "What if a companion doesn't show up?",
+      "a": "If a companion is a no-show, please report it immediately. You will receive a full refund, and the companion's profile will be penalized."
+    },
+    "f3": {
+      "q": "Can I reschedule my meetup?",
+      "a": "Yes, you can modify your booking time up to 12 hours before the meetup, provided the companion accepts the new schedule."
+    },
+    "f4": {
+      "q": "Are there extra charges for overtime?",
+      "a": "Yes, if your session exceeds the booked time, you can negotiate an extension directly in the app and pay the difference."
+    },
+    "f5": {
+      "q": "How is my payment secured?",
+      "a": "We use bank-level AES-256 encryption. Your money is held securely in escrow until the session is successfully completed."
+    },
+    "f6": {
+      "q": "When will I get my refund?",
+      "a": "Refunds are processed immediately by our system but may take 3-5 business days to reflect in your bank account depending on your bank."
+    },
+    "f7": {
+      "q": "What payment methods do you accept?",
+      "a": "We accept all major Credit/Debit Cards, UPI, Net Banking, and popular mobile wallets."
+    },
+    "f8": {
+      "q": "How does the SOS feature work?",
+      "a": "Tapping SOS immediately alerts your Trusted Contacts with your live location and notifies our 24/7 internal security team."
+    },
+    "f9": {
+      "q": "Are the companions identity-verified?",
+      "a": "Yes! Look for the blue tick badge. This means they have completed a strict KYC process including Govt ID verification."
+    },
+    "f10": {
+      "q": "Can I hide my profile?",
+      "a": "Yes, go to Safety Settings and enable \"Incognito Mode\". Your profile will only be visible to people you message."
+    },
+    "f11": {
+      "q": "How do I change my phone number?",
+      "a": "Go to Profile > Settings Hub > Account Settings to update your registered phone number."
+    },
+    "f12": {
+      "q": "How do I delete my account?",
+      "a": "You can delete your account from Profile > Settings Hub > Account Settings > Delete Account. Please note this action is permanent."
+    }
   }
 }

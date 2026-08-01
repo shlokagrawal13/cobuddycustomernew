@@ -49,11 +49,32 @@
   "tabMessages": "Messages",
   "tabProfile": "Profile",
   "otp": {
-    "": "Refresh"
+    "": "Refresh",
+    "error_invalid": "error_invalid",
+    "header": "header",
+    "overline": "overline",
+    "title": "title",
+    "subtitle": "subtitle",
+    "resend_in": "resend_in",
+    "resend_active": "resend_active",
+    "resend_btn": "resend_btn",
+    "dev_hint": "dev_hint",
+    "trust_note": "trust_note",
+    "btn_verify": "btn_verify",
+    "btn_change": "btn_change"
   },
   "phone": {
     "": "Action",
-    "titleSelectCountry": "Select Country"
+    "titleSelectCountry": "Select Country",
+    "error_invalid": "error_invalid",
+    "header": "header",
+    "overline": "overline",
+    "title": "title",
+    "subtitle": "subtitle",
+    "label_mobile": "label_mobile",
+    "placeholder": "placeholder",
+    "trust_note": "trust_note",
+    "btn_send": "btn_send"
   },
   "bookingDeclined": {
     "body": "Unfortunately, {{name}} is unavailable for {{date}} at {{time}}. Don't worry, there are many other great companions available!"
@@ -119,7 +140,42 @@
     "supportCenter": "Support Center",
     "supportCenterSub": "Get help or report an issue",
     "legalAgreements": "Legal Agreements",
-    "legalAgreementsSub": "Terms of Service & Privacy"
+    "legalAgreementsSub": "Terms of Service & Privacy",
+    "error_name": "Invalid name",
+    "error_dob": "Must be 18+ and format DD/MM/YYYY",
+    "error_city": "error_city",
+    "error_bio": "error_bio",
+    "header": "header",
+    "step": "step",
+    "title": "title",
+    "subtitle": "subtitle",
+    "photo_add": "photo_add",
+    "photo_added": "photo_added",
+    "photo_hint_none": "photo_hint_none",
+    "photo_hint_added": "photo_hint_added",
+    "label_name": "label_name",
+    "placeholder_name": "placeholder_name",
+    "dobLabel": "Date of Birth",
+    "placeholder": {
+      "DDMMYYYY": "DD/MM/YYYY"
+    },
+    "label_gender": "label_gender",
+    "placeholder_gender": "placeholder_gender",
+    "youMustBe18To": "You must be 18+ to use CoBuddy.",
+    "label_city": "label_city",
+    "placeholder_city": "placeholder_city",
+    "label_bio": "label_bio",
+    "placeholder_bio": "placeholder_bio",
+    "trust_note": "trust_note",
+    "btn_continue": "btn_continue",
+    "titleProfilePhoto": "Profile Photo",
+    "uploadPhoto": "Upload Photo",
+    "uploadPhotoDesc": "Choose from your photo library",
+    "takeSelfie": "Take Selfie",
+    "takeSelfieDesc": "Use your front camera",
+    "skipForNow": "Skip For Now",
+    "youCanAddAPhoto": "You can add a photo later from your profile",
+    "photoWillOnlyBeVisible": "Photo will only be visible to verified members during active sessions."
   },
   "a11ySelectLocation', t('profile": {
     "selectLocation": "Select Location"
@@ -163,7 +219,17 @@
     "trustedContactSub": "Auto-share session details.",
     "liveSafety": "Live Safety Monitoring",
     "liveSafetySub": "Active tracking during sessions.",
-    "toggleLocationMock": "Toggle background location service mocking."
+    "toggleLocationMock": "Toggle background location service mocking.",
+    "verifiedVenue": "VERIFIED VENUE",
+    "header": "header",
+    "btn_skip": "btn_skip",
+    "btn_finish": "btn_finish",
+    "btn_next": "btn_next",
+    "btn_learn_more": "btn_learn_more",
+    "modal": {
+      "title": "title",
+      "btn_understood": "btn_understood"
+    }
   },
   "incident": {
     "inappropriateBehavior": "Inappropriate Behavior or Harassment",
@@ -283,5 +349,213 @@
   "withdraw": {
     "upiNotice": "UPI transfers are usually instant, but can take up to 2 hours.",
     "impsNotice": "Standard IMPS/NEFT transfer takes up to 2-3 business days."
+  },
+  "location": {
+    "btn_skip": "btn_skip",
+    "title": "title",
+    "subtitle": "subtitle",
+    "trust_note": "trust_note",
+    "alertTitleLocationAccess": "Location Access",
+    "alertMsgLocationpermissionwi": "Location permission will be requested on your device. This enables safety monitoring and venue discovery.",
+    "cancelBtn": "Cancel",
+    "continueBtn": "Continue",
+    "btn_allow": "btn_allow"
+  },
+  "notification": {
+    "btn_skip": "btn_skip",
+    "bookingConfirmed": "Booking Confirmed!",
+    "title": "title",
+    "subtitle": "subtitle",
+    "trust_note": "trust_note",
+    "alertTitleEnableNotificat": "Enable Notifications",
+    "alertMsgNotificationpermissi": "Notification permission will be requested on your device.",
+    "cancelBtn": "Cancel",
+    "continueBtn": "Continue",
+    "btn_allow": "btn_allow"
+  },
+  "welcome": {
+    "features": {
+      "verified": "Verified",
+      "secure": "Secure",
+      "respectful": "Respectful"
+    },
+    "overline": "overline",
+    "title": "title",
+    "subtitle": "subtitle",
+    "get_started": "get_started",
+    "disclaimer_part1": "disclaimer_part1",
+    "terms": "terms",
+    "and": "and",
+    "privacy": "privacy"
+  },
+  "statReviews": "Reviews",
+  "statSessions": "Sessions",
+  "statResponse": "Response",
+  "aboutName": "About {{name}}",
+  "servicesPricing": "Services & Pricing",
+  "availabilityRules": "Availability & Rules",
+  "trustVerifications": "Trust & Verifications",
+  "memberSince": "Member since",
+  "reviewsCount": "Reviews ({{count}})",
+  "reviewSeeAll": "See All",
+  "punctuality": "Punctuality",
+  "communication": "Communication",
+  "behavior": "Behavior",
+  "starts_from": "Starts from",
+  "hr": "/ hr",
+  "btn_request": "Request Booking",
+  "title": {
+    "Options": "Options"
+  },
+  "shareProfile": "Share Profile",
+  "reportName": "Report {{name}}",
+  "blockUserTitle": "Block User",
+  "blockUserConfirm": "Are you sure you want to block {{name}}? You won't be able to request bookings or send messages to them.",
+  "cancel": "Cancel",
+  "block": "Block",
+  "blockedTitle": "Blocked",
+  "blockedMessage": "{{name}} has been blocked.",
+  "blockName": "Block {{name}}",
+  "search_placeholder": "search_placeholder",
+  "showing": "Showing ",
+  "companions": "companions",
+  "noCompanions": "No companions found",
+  "clearFilters": "Clear Filters",
+  "filtersTitle": "Filters",
+  "filterActivityType": "Activity Type",
+  "filterGender": "Gender",
+  "filter": {
+    "any": "Any",
+    "male": "Male",
+    "female": "Female"
+  },
+  "filterMaxHourlyRate": "Maximum Hourly Rate",
+  "filterMinRating": "Minimum Rating",
+  "filterMaxDistance": "Maximum Distance",
+  "clearAll": "Clear All",
+  "applyFilters": "Apply Filters",
+  "interests": {
+    "cafeMeetup": "Cafe Meetup",
+    "movieCompanion": "Movie Companion",
+    "localTour": "Local Tour",
+    "eventPartner": "Event Partner",
+    "gymBuddy": "Gym Buddy",
+    "shoppingAssistant": "Shopping Assistant",
+    "fineDining": "Fine Dining",
+    "artGallery": "Art Gallery",
+    "networking": "Networking",
+    "yogaWellness": "Yoga & Wellness",
+    "languageExchange": "Language Exchange",
+    "liveConcerts": "Live Concerts",
+    "photography": "Photography",
+    "gaming": "Gaming",
+    "limitReachedTitle": "Limit Reached",
+    "limitReachedMessage": "You can select up to {{max}} interests.",
+    "edit_header": "Edit Interests",
+    "header": "header",
+    "edit_title": "Update Your Interests",
+    "title": "title",
+    "subtitle": "subtitle",
+    "footer_info": "footer_info",
+    "footer_max": "footer_max",
+    "edit_btn_save": "Save Interests",
+    "btn_continue": "btn_continue"
+  },
+  "consent": {
+    "docs": {
+      "terms": {
+        "title": "Terms & Conditions",
+        "desc": "Our legal framework for usage and liability.",
+        "s1": {
+          "h": "Eligibility",
+          "b": "You must be 18 years or older to use CoBuddy. By registering, you confirm you meet this requirement and have the legal capacity to enter into this agreement."
+        },
+        "s2": {
+          "h": "Permitted Use",
+          "b": "CoBuddy connects members for trusted public-only experiences including dining, cultural outings, networking, and wellness activities. The platform is strictly for platonic, professional companionship in verified public settings."
+        },
+        "s3": {
+          "h": "Account Responsibility",
+          "b": "You are responsible for all activity under your account. Do not share credentials. CoBuddy reserves the right to suspend accounts for any breach of these terms without prior notice."
+        },
+        "s4": {
+          "h": "Limitation of Liability",
+          "b": "CoBuddy acts as a connection platform only. We are not liable for conduct between members during or after sessions. Sessions are undertaken at your own discretion."
+        }
+      },
+      "privacy": {
+        "title": "Privacy Policy",
+        "desc": "How we protect and manage your data.",
+        "s1": {
+          "h": "Data We Collect",
+          "b": "We collect identity verification data (government ID), contact information, location data during active sessions, and usage analytics to improve your experience."
+        },
+        "s2": {
+          "h": "How We Use Your Data",
+          "b": "Your data is used exclusively for identity verification, session matching, safety monitoring, and personalized recommendations. We never sell personal data to third parties."
+        },
+        "s3": {
+          "h": "Data Protection",
+          "b": "All data is encrypted in transit and at rest. We are compliant with applicable regional data protection regulations."
+        },
+        "s4": {
+          "h": "Your Rights",
+          "b": "You may request access to, correction of, or deletion of your personal data at any time through Settings."
+        }
+      },
+      "community": {
+        "title": "Community Guidelines",
+        "desc": "Behavioral standards for all members.",
+        "s1": {
+          "h": "Respect & Dignity",
+          "b": "All members must treat companions and fellow users with respect. Harassment, discrimination, or any form of disrespectful conduct will result in immediate account suspension."
+        },
+        "s2": {
+          "h": "Public Venues Only",
+          "b": "For safety, all first-time meetings must occur in CoBuddy-verified public venues. Never request a companion to meet in private or isolated settings."
+        },
+        "s3": {
+          "h": "Zero Tolerance Policy",
+          "b": "Any solicitation for services beyond our platform scope (romantic, sexual, or private arrangements) is strictly prohibited and will result in permanent banning and potential legal action."
+        },
+        "s4": {
+          "h": "Reporting",
+          "b": "If you experience any behavior that violates these guidelines, use the in-app report feature immediately."
+        }
+      }
+    },
+    "checkbox": {
+      "tos": "I agree to CoBuddy's Terms & Conditions",
+      "public": "I understand CoBuddy supports public-only meetups and verified experiences",
+      "safety": "I agree to follow community safety and respectful behavior guidelines"
+    },
+    "centerLabel": {
+      "SafetyAgreement": "Safety Agreement"
+    },
+    "title": "title",
+    "subtitle": "subtitle",
+    "read": "READ  →",
+    "cobuddyIsDesignedAroundTrust": "CoBuddy is designed around trust, verification, and safety-first public experiences.",
+    "btn_agree": "btn_agree"
+  },
+  "contacts": {
+    "error_name": "error_name",
+    "error_phone": "error_phone",
+    "headerTitle": "Emergency Contacts",
+    "header": "header",
+    "btn_skip": "btn_skip",
+    "title": "title",
+    "subtitle": "subtitle",
+    "btn_add": "btn_add",
+    "privacy": "privacy",
+    "saveContacts": "Save Contacts",
+    "btn_complete": "btn_complete",
+    "sheet_title": "sheet_title",
+    "label_name": "label_name",
+    "placeholder_name": "placeholder_name",
+    "label_phone": "label_phone",
+    "placeholder_phone": "placeholder_phone",
+    "label_rel": "label_rel",
+    "btn_save": "btn_save"
   }
 }

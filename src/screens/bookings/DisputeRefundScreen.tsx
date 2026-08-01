@@ -57,11 +57,11 @@ export const DisputeRefundScreen = () => {
           <Text style={styles.summaryTitle}>{t('summaryTitle', 'Disputing Booking: {{id}}', { id: bookingId })}</Text>
           <View style={styles.summaryRow}>
             <Icon name="account" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>Companion: {booking?.companionName || t('fallback.companionName', 'Companion')}</Text>
+            <Text style={styles.summaryText}>{t('labelCompanion', 'Companion:')} {booking?.companionName || t('fallback.companionName', 'Companion')}</Text>
           </View>
           <View style={styles.summaryRow}>
             <Icon name="calendar-check" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>Session Date: {booking?.date || t('fallback.date2', 'Fri, 24 Oct 2026')}</Text>
+            <Text style={styles.summaryText}>{t('labelSessionDate', 'Session Date:')} {booking?.date || t('fallback.date2', 'Fri, 24 Oct 2026')}</Text>
           </View>
         </View>
 

@@ -13,5 +13,8 @@
   "a11yAmount": "₹ amount",
   "a11yAction": "Action",
   "a11yCustomTip": "Enter custom tip",
-  "a11yPayTip": "Pay tip amount"
+  "a11yPayTip": "Pay tip amount",
+  "btnSelectTip": "Select a Tip Amount",
+  "btnEnterCustom": "Enter Custom Amount",
+  "btnPayTip": "Pay Tip (₹{{amount}})"
 }

@@ -6,7 +6,8 @@
     "title": "ACTIVE MEETUP",
     "meetup_title": "Coffee with Sarah",
     "time": "Starts in 2 hours",
-    "status": "Verified Booking"
+    "status": "Verified Booking",
+    "idVerified": "ID Verified"
   },
   "itinerary": {
     "title": "Today's Itinerary",

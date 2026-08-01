@@ -16,5 +16,10 @@
     "selfieLiveness": "Selfie & Liveness Check",
     "profileReview": "Profile Review",
     "bookingAuthorization": "Booking Authorization"
+  },
+  "status": {
+    "completed": "Completed",
+    "actionRequired": "Action Required",
+    "blocked": "Blocked"
   }
 }

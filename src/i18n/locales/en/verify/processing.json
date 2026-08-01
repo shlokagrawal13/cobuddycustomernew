@@ -19,5 +19,7 @@
     "statusCompleted": "COMPLETED",
     "statusProcessing": "PROCESSING",
     "statusPending": "PENDING"
-  }
+  },
+  "heroTitleComplete": "Verification\\nComplete",
+  "heroTitleVerifying": "Securely Verifying\\nYour Identity"
 }

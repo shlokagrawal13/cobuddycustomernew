@@ -10,5 +10,7 @@
   "a11yGoBack": "Go back",
   "a11yAction": "Action",
   "a11yContinue": "Continue",
-  "a11ySelectVenue": "Select {{venue}}"
+  "a11ySelectVenue": "Select {{venue}}",
+  "customVenue": "Custom Venue",
+  "thisSession": "this session"
 }

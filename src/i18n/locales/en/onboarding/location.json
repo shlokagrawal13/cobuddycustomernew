@@ -9,11 +9,11 @@
       "title": "Safety Monitoring",
       "sub": "Real-time location shared with trusted contacts during sessions"
     },
-    "venue": {
+    "discovery": {
       "title": "Venue Discovery",
       "sub": "Find safe public places and popular venues near you"
     },
-    "routes": {
+    "transit": {
       "title": "Protected Routes",
       "sub": "Secure navigation and safe transit options"
     }

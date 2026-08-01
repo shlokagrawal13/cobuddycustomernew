@@ -24,6 +24,7 @@
   "a11yCompanionDidntShowUp": "Companion didn't show up",
   "a11yShareLocation": "Share live location",
   "arrival": {
-    "neverShareOtp": "Never share this OTP over phone or chat. Only share it in person when you meet."
+    "neverShareOtp": "Never share this OTP over phone or chat. Only share it in person when you meet.",
+    "shareCodeWarning": "Sharing this code will instantly release Escrow funds and start the session timer."
   }
 }

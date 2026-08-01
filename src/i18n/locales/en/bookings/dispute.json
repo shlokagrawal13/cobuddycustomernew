@@ -6,6 +6,8 @@
   "sectionCategory": "ISSUE CATEGORY",
   "sectionDesc": "DETAILED DESCRIPTION",
   "sectionProof": "UPLOAD PROOF (OPTIONAL)",
+  "labelCompanion": "Companion:",
+  "labelSessionDate": "Session Date:",
   "uploadText": "Tap to upload screenshots or photos",
   "submitBtn": "Submit Dispute",
   "placeholder": {

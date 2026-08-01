@@ -74,5 +74,6 @@
     "legalAgreements": "Legal Agreements",
     "legalAgreementsSub": "Terms of Service & Privacy"
   },
-  "a11yEmail": "Email: {{email}}"
+  "a11yEmail": "Email: {{email}}",
+  "shareMessage": "Check out {{name}}'s profile on CoBuddy! A great companion from {{location}}. Join CoBuddy today."
 }

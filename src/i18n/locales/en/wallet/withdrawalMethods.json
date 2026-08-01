@@ -26,5 +26,6 @@
   "a11ySelectWithdrawalMethod": "Select {{method}}",
   "upi": {
     "title": "UPI ID"
-  }
+  },
+  "alertMsgRemoveConfirm": "Are you sure you want to remove {{title}}?"
 }

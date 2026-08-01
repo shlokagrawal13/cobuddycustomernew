@@ -25,5 +25,6 @@
   "lang_fr": "French",
   "lang_es": "Spanish",
   "lang_de": "German",
-  "lang_ja": "Japanese"
+  "lang_ja": "Japanese",
+  "countSelected": "{{count}}/5 selected"
 }

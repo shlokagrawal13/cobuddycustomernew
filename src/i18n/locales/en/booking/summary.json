@@ -25,5 +25,9 @@
   "devDesc": "If FALSE, pressing \"Send Request\" will trigger the KYC interceptor.",
   "a11yGoBack": "Go back",
   "a11yIAgreeToMeetInAPublicPl": "I agree to meet in a public pl...",
-  "a11ySendRequest": "Send Request"
+  "a11ySendRequest": "Send Request",
+  "units": {
+    "hour": "hour",
+    "hours": "hours"
+  }
 }

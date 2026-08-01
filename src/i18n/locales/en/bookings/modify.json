@@ -38,5 +38,9 @@
     "time1": "7:00 PM - 9:00 PM",
     "venue": "Blue Tokai Coffee, CP"
   },
-  "keepOriginalVenueLabel": "Keep Original Venue"
+  "keepOriginalVenueLabel": "Keep Original Venue",
+  "units": {
+    "Hour": "Hour",
+    "Hours": "Hours"
+  }
 }

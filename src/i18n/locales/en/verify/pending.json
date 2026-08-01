@@ -19,5 +19,10 @@
     "goBack": "Go Back",
     "continue": "Continue",
     "continueToApp": "Continue to App"
+  },
+  "status": {
+    "completed": "Completed",
+    "underReview": "Under Review",
+    "pending": "Pending"
   }
 }

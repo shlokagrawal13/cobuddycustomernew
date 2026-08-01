@@ -52,5 +52,6 @@
   "a11yKeepSessionActive": "Keep Session Active",
   "a11yBackToSession": "Back to Session",
   "a11yMockTimesUpAutoEnd": "[MOCK] Time's Up / Auto End",
-  "a11yConfirmExtension": "Confirm session extension"
+  "a11yConfirmExtension": "Confirm session extension",
+  "confirmExtensionPrice": "Confirm Extension (₹{{amount}})"
 }

@@ -194,7 +194,7 @@ export const TrustedContactsScreen = () => {
                   key={rel}
                   style={[sheet.relChip, newRel === rel && sheet.relChipActive]}
                   onPress={() => setNewRel(rel)} accessibilityRole="button" accessibilityLabel={t('contacts.a11ySelectRel', 'Select relationship')}>
-                  <Text style={[sheet.relChipText, newRel === rel && sheet.relChipTextActive]}>{t(`rel_${rel.toLowerCase()}`, rel)}</Text>
+                  <Text style={[sheet.relChipText, newRel === rel && sheet.relChipTextActive]}>{t(`contacts.rel_${rel.toLowerCase()}`, rel)}</Text>
                 </TouchableOpacity>
               ))}
             </View>
