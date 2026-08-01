@@ -58,6 +58,8 @@ export const DUMMY_COMPANIONS = [
   { id: 'c3', name: 'Marcus Chen', initials: 'MC', title: 'Art historian & cultural explorer', activities: ['Art & Culture', 'Architecture', 'Wellness'], trustScore: 96, rating: 4.8, reviews: 89, sessions: 205, rate: '₹450 /hr', distance: '4.0 km away', isOnline: true, category: 'movie', gender: 'Male' },
   { id: 'c4', name: 'Natasha', initials: 'N', title: 'Chill hangout & cafe conversations', activities: ['Cafe Hopping', 'Coffee', 'Conversation'], trustScore: 95, rating: 4.9, reviews: 60, sessions: 140, rate: '₹350 /hr', distance: '2.0 km away', isOnline: false, category: 'coffee', gender: 'Female' },
   { id: 'c5', name: 'Sophia Patel', initials: 'SP', title: 'Film buff & entertainment companion', activities: ['Movies', 'Entertainment', 'Networking'], trustScore: 99, rating: 4.7, reviews: 210, sessions: 512, rate: '₹600 /hr', distance: '1.2 km away', isOnline: false, category: 'coffee', gender: 'Female' },
+  { id: 'c6', name: 'Kabir Singh', initials: 'KS', title: 'Event companion & networking partner', activities: ['Events', 'Networking', 'Fine Dining'], trustScore: 97, rating: 4.85, reviews: 68, sessions: 132, rate: '₹550 /hr', distance: '3.2 km away', isOnline: true, category: 'conversation', gender: 'Male' },
+  { id: 'c7', name: 'Sneha Verma', initials: 'SV', title: 'Local guide & city exploration expert', activities: ['City Tour', 'Local Experiences', 'Coffee'], trustScore: 96, rating: 4.9, reviews: 91, sessions: 178, rate: '₹450 /hr', distance: '2.8 km away', isOnline: false, category: 'movie', gender: 'Female' },
 ];
 
 

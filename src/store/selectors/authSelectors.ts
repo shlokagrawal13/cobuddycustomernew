@@ -1,4 +1,3 @@
-import { useAuthStore } from '../slices/authStore';
 import type { AuthState } from '../slices/authStore';
 
 export const selectUser = (state: AuthState) => state.user;

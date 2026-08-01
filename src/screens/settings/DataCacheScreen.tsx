@@ -2,17 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Reusable Custom Switch
 const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean, label?: string }) => {
-    const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
     useEffect(() => {
         Animated.timing(translateX, {
@@ -20,7 +16,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value
             duration: 200,
             useNativeDriver: true,
         }).start();
-    }, [value]);
+    }, [value, translateX]);
     return (
         <TouchableOpacity 
             activeOpacity={disabled ? 1 : 0.8}
@@ -37,7 +33,6 @@ const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value
 
 export const DataCacheScreen = () => { 
   const { t } = useTranslation('settings.dataCache');
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   
   const [cacheSize, setCacheSize] = useState('45.2 MB');

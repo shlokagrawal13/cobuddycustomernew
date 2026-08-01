@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, Animated, DimensionValue, ViewStyle } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { StyleSheet, Animated, DimensionValue, ViewStyle } from 'react-native';
 import { theme } from '../../theme';
 
 interface SkeletonLoaderProps {
@@ -15,7 +15,7 @@ export const SkeletonLoader = ({
   style,
   borderRadius = 8,
 }: SkeletonLoaderProps) => {
-  const animatedValue = new Animated.Value(0);
+  const animatedValue = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const animation = Animated.loop(
@@ -35,7 +35,7 @@ export const SkeletonLoader = ({
     animation.start();
 
     return () => animation.stop();
-  }, []);
+  }, [animatedValue]);
 
   const backgroundColor = animatedValue.interpolate({
     inputRange: [0, 1],

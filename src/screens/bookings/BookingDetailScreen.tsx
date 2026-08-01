@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -82,7 +82,6 @@ export const BookingDetailScreen = () => {
         {steps.map((step, index) => {
           const isActive = index <= activeIndex;
           const isCurrent = index === activeIndex;
-          const isLast = index === steps.length - 1;
           
           return (
             <View key={step.label} style={styles.stepWrapper}>

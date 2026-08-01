@@ -20,7 +20,6 @@ const DEFAULT_MOCK_DATA = {
   amount: '₹3,000'
 };
 
-import { RouteProp } from '@react-navigation/native';
 
 export const BookingAcceptedScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.accepted');

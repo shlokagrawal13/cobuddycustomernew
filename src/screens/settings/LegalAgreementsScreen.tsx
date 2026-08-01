@@ -2,12 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const LegalAgreementsScreen = () => { 
   const { t } = useTranslation('settings.legalAgreements');
@@ -19,7 +16,6 @@ export const LegalAgreementsScreen = () => {
     { id: 'refund', title: t('legal.refund', 'Refund Policy'), sub: t('legal.refundSub', 'Cancellation and escrow rules'), icon: 'cash-refund' },
 ];
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
 
   return (

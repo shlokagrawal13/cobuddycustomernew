@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Easing, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ export const LivenessDetectionScreen = () => {
   const [step, setStep] = useState(0);
   
   // Animation for scanning line
-  const scanAnim = new Animated.Value(0);
+  const scanAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.loop(
@@ -46,7 +46,7 @@ export const LivenessDetectionScreen = () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
     };
-  }, []);
+  }, [scanAnim, navigation]);
 
   const translateY = scanAnim.interpolate({
     inputRange: [0, 1],

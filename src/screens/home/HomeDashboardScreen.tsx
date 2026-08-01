@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
@@ -19,12 +19,12 @@ import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
 export const HomeDashboardScreen = () => {
   const { t } = useTranslation('home.dashboard');
 
-  const EXPLORE_CATEGORIES = [
+  const EXPLORE_CATEGORIES = React.useMemo(() => [
   { id: 'coffee', title: t('categories.coffeeMeetups', 'Coffee Meetups'), icon: 'coffee', color: '#D4AF37' },
   { id: 'movie', title: t('categories.movieBuffs', 'Movie Buffs'), icon: 'movie', color: '#E11D48' },
   { id: 'city', title: t('categories.cityWalk', 'City Walk'), icon: 'map-marker', color: '#10B981' },
   { id: 'study', title: t('categories.studyBuddy', 'Study Buddy'), icon: 'book', color: '#3B82F6' },
-];
+], [t]);
 
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [loading, setLoading] = useState(true);
@@ -48,7 +48,7 @@ export const HomeDashboardScreen = () => {
       if (!aMatches && bMatches) return 1;
       return 0;
     });
-  }, [selectedInterests]);
+  }, [selectedInterests, EXPLORE_CATEGORIES]);
 
   // In real app, this comes from global state or API
   const [hasActiveBooking, setHasActiveBooking] = useState(false);

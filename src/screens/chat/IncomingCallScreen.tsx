@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -9,7 +9,6 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const { width } = Dimensions.get('window');
 
 export const IncomingCallScreen = () => { 
   const { t } = useTranslation('chat.incomingCall');
@@ -28,7 +27,7 @@ export const IncomingCallScreen = () => {
         Animated.timing(pulseAnim, { toValue: 1, duration: 1000, useNativeDriver: true })
       ])
     ).start();
-  }, []);
+  }, [pulseAnim]);
 
   const handleAccept = () => {
     navigation.replace('VoiceCallScreen', { companionName: callerName });

@@ -2,15 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value: boolean, onValueChange?: (val: boolean) => void, disabled?: boolean, label?: string }) => {
-    const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
     useEffect(() => {
@@ -19,7 +15,7 @@ const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value
             duration: 200,
             useNativeDriver: true,
         }).start();
-    }, [value]);
+    }, [value, translateX]);
 
     return (
         <TouchableOpacity 
@@ -40,7 +36,6 @@ const CustomSwitch = ({ value, onValueChange, disabled = false, label }: { value
 
 export const NotificationPreferencesScreen = () => { 
   const { t } = useTranslation('settings.notificationPreferences');
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   
   const [prefs, setPrefs] = useState({

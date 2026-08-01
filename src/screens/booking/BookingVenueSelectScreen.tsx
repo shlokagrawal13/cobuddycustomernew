@@ -12,7 +12,6 @@ import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
-import { BookingHeader } from '../../components/booking/BookingHeader';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { useBookingStore } from '../../store/slices/bookingStore';
 import { selectSetDraftBooking } from '../../store/selectors/bookingSelectors';

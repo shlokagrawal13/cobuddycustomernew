@@ -33,7 +33,7 @@ export const WithdrawMoneyScreen = () => {
         setSelectedMethod(route.params.selectedMethod);
         navigation.setParams({ selectedMethod: undefined });
     }
-  }, [route.params?.selectedMethod]);
+  }, [route.params?.selectedMethod, navigation]);
 
   const handleWithdraw = () => {
     const val = parseInt(amount);

@@ -26,7 +26,7 @@ export const BookingSummaryScreen = () => {
   const { draftBooking, requestBooking } = useBookingStore();
 
   
-  const { activity, venue, date, time, duration = 1, companionId, companionName } = route.params || {};
+  const { activity, venue, date, time, duration = 1, companionId } = route.params || {};
 
   const parsedDate = date ? new Date(date) : new Date();
   const dayName = parsedDate.toLocaleDateString('en-US', { weekday: 'short' });

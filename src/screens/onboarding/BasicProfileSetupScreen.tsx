@@ -17,7 +17,6 @@ import { BottomActionBar } from '../../components/ui/BottomActionBar';
 import { AppBottomSheet } from '../../components/ui/AppBottomSheet';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useAuthStore } from '../../store/slices/authStore';
 import { validateName, validateDOB } from '../../utils/validation';
 import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';

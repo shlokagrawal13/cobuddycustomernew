@@ -56,7 +56,7 @@ export const VerificationProcessingScreen = () => {
         const randomOutcome = outcomes[Math.floor(Math.random() * outcomes.length)];
         navigation.replace(randomOutcome);
         
-      } catch (error) {
+      } catch {
         // If API fails (e.g. no internet), show rejected or error screen
         navigation.replace('VerificationRejectedScreen');
       }

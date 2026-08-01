@@ -46,7 +46,7 @@ export const EditProfileScreen = () => {
               langIds: (route.params?.updatedLangIds as string[]) || prev.langIds 
           }));
       }
-  }, [route.params]);
+  }, [route.params, INTERESTS_DATA]);
 
   const updateForm = (key: string, value: string) => {
       setForm(prev => ({ ...prev, [key]: value }));

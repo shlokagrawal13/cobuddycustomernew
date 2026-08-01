@@ -2,16 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
-import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export const ReferFriendScreen = () => { 
   const { t } = useTranslation('settings.referFriend');
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
 
   const handleShare = async () => {

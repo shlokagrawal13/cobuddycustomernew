@@ -18,7 +18,7 @@ export const validatePhone = (phone: string): boolean => {
   if (clean.length === 10 && !phone.startsWith('+') && /^[6-9]/.test(clean)) return true;
   try {
     return isValidPhoneNumber(phone);
-  } catch (e) {
+  } catch {
     return false;
   }
 };

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import { useRoute, RouteProp } from '@react-navigation/native';
 import { theme } from '../../theme';
 import { OnboardingHeader } from '../../components/onboarding/OnboardingHeader';
 import { BottomActionBar } from '../../components/ui/BottomActionBar';
@@ -14,12 +14,10 @@ import { validateOTP } from '../../utils/validation';
 import { useTranslation } from 'react-i18next';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const OTP_EXPIRY = 30;
 
 export const OTPVerificationScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const route = useRoute<RouteProp<RootStackParamList, 'OTPVerificationScreen'>>();
   const { t } = useTranslation(['auth']);
@@ -39,20 +37,16 @@ export const OTPVerificationScreen = () => {
     return () => clearInterval(t);
   }, [countdown]);
 
-  useEffect(() => {
-    if (validateOTP(otp)) { handleVerify(); }
-  }, [otp]);
-
-  const shake = () => {
+  const shake = useCallback(() => {
     Animated.sequence([
       Animated.timing(shakeAnim, { toValue: 10, duration: 60, useNativeDriver: true }),
       Animated.timing(shakeAnim, { toValue: -10, duration: 60, useNativeDriver: true }),
       Animated.timing(shakeAnim, { toValue: 6, duration: 60, useNativeDriver: true }),
       Animated.timing(shakeAnim, { toValue: 0, duration: 60, useNativeDriver: true }),
     ]).start();
-  };
+  }, [shakeAnim]);
 
-  const handleVerify = () => {
+  const handleVerify = useCallback(() => {
     if (!validateOTP(otp)) return;
     
     // Hardcoded logic for invalid OTP (testing)
@@ -64,7 +58,11 @@ export const OTPVerificationScreen = () => {
     }
 
     login('dummy-token', { id: 'user_123', phone });
-  };
+  }, [otp, t, login, phone, shake]);
+
+  useEffect(() => {
+    if (validateOTP(otp)) { handleVerify(); }
+  }, [otp, handleVerify]);
 
   const handleResend = () => {
     setResending(true);

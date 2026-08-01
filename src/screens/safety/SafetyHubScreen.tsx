@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Easing, Dimensions, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Easing, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
@@ -12,7 +12,6 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useSafetyStore } from '../../store/slices/safetyStore';
 import { selectIsSOSActive, selectTriggerSOS, selectResolveSOS, selectIsSessionActive, selectLastKnownLocation } from '../../store/selectors/safetySelectors';
 
-const { width } = Dimensions.get('window');
 
 export const SafetyHubScreen = () => { 
   const { t } = useTranslation('safety.hub');

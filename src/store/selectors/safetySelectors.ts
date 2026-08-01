@@ -1,4 +1,3 @@
-import { useSafetyStore } from '../slices/safetyStore';
 import type { SafetyState } from '../slices/safetyStore';
 
 export const selectIsSOSActive = (state: SafetyState) => state.isSOSActive;

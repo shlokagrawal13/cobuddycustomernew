@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
@@ -19,7 +19,7 @@ const MAX_SELECT = 10;
 
 export const useInterestsData = () => {
   const { t } = useTranslation(['onboarding']);
-  return [
+  return React.useMemo(() => [
   { id: 'cafe', label: t('interests.cafeMeetup', 'Cafe Meetup'), icon: 'coffee-outline' },
   { id: 'movie', label: t('interests.movieCompanion', 'Movie Companion'), icon: 'movie-open-outline' },
   { id: 'tour', label: t('interests.localTour', 'Local Tour'), icon: 'map-marker-path' },
@@ -34,7 +34,7 @@ export const useInterestsData = () => {
   { id: 'music', label: t('interests.liveConcerts', 'Live Concerts'), icon: 'music-note-outline' },
   { id: 'photography', label: t('interests.photography', 'Photography'), icon: 'camera-outline' },
   { id: 'gaming', label: t('interests.gaming', 'Gaming'), icon: 'gamepad-variant-outline' },
-  ];
+  ], [t]);
 };
 
 export const InterestSelectionScreen = () => {

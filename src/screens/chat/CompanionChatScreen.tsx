@@ -24,7 +24,6 @@ export const CompanionChatScreen = () => {
   const bookingId = route.params?.bookingId || 'CB-REQ-8829';
   const companionId = route.params?.companionId || 'c1';
   
-  const [inputText, setInputText] = useState('');
   const [isOptionsMenuVisible, setOptionsMenuVisible] = useState(false);
   const scrollRef = useRef<ScrollView>(null);
 
@@ -42,7 +41,6 @@ export const CompanionChatScreen = () => {
     };
     
     setMessages(prev => [...prev, newMsg]);
-    setInputText('');
     
     // Auto-scroll to bottom
     setTimeout(() => scrollRef.current?.scrollToEnd({ animated: true }), 100);

@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Animated,
-  TouchableOpacity,
   Dimensions,
   StatusBar,
 } from 'react-native';

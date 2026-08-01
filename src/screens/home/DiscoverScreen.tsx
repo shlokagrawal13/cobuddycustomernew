@@ -82,12 +82,12 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
 
-  const MODAL_CATEGORIES = [
+  const MODAL_CATEGORIES = React.useMemo(() => [
   { id: 'coffee', label: t('categories.coffeeMeetups', 'Coffee Meetups') },
   { id: 'movie', label: t('categories.movieBuffs', 'Movie Buffs') },
   { id: 'study', label: t('categories.studyBuddy', 'Study Buddy') },
   { id: 'city', label: t('categories.cityWalk', 'City Walk') },
-];
+], [t]);
 
   const selectedInterests = useUserPreferencesStore(selectInterests);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -119,7 +119,7 @@ export const DiscoverScreen = () => {
         // Clear params so it doesn't get stuck if user clears search and re-focuses
         navigation.setParams({ category: undefined });
       }
-    }, [route.params?.category])
+    }, [route.params?.category, MODAL_CATEGORIES, navigation])
   );
 
   useEffect(() => {
@@ -185,7 +185,7 @@ export const DiscoverScreen = () => {
     return filtered;
   }, [
     searchQuery, activeStatus, filterGender, filterRating, 
-    filterMaxPrice, filterDistance, selectedInterests
+    filterMaxPrice, filterDistance, selectedInterests, MODAL_CATEGORIES
   ]);
 
   const clearAllFilters = () => {

@@ -38,7 +38,7 @@ export const SafetyGuidelinesScreen = () => {
         </View>
 
         <View style={styles.listContainer}>
-          {GUIDELINES.map((item, index) => (
+          {GUIDELINES.map((item) => (
             <View key={item.id} style={styles.ruleCard}>
                 <View style={styles.ruleHeader}>
                   <View style={styles.ruleIconBox}>

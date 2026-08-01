@@ -9,7 +9,6 @@ import { useSmartNavigation } from '../../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { RouteProp } from '@react-navigation/native';
 
 export const BookingCounterOfferScreen = ({ route }: { route: any }) => { 
   const { t } = useTranslation('booking.counterOffer');

@@ -50,21 +50,6 @@ export const ProfileScreen = () => {
     setToggles(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const handleLogout = () => {
-    Alert.alert(
-      t('logoutTitle', 'Log Out'),
-      t('logoutMessage', 'Are you sure you want to log out of CoBuddy?'),
-      [
-        { text: t('logoutCancel', 'Cancel'), style: 'cancel' },
-        { 
-          text: t('logoutConfirm', 'Log Out'), 
-          style: 'destructive',
-          onPress: () => navigation.reset({ index: 0, routes: [{ name: 'AuthStack' }] }) 
-        }
-      ]
-    );
-  };
-
   const handleShareProfile = async () => {
     try {
       await Share.share({

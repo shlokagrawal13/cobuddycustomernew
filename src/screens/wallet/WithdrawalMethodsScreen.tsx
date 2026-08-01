@@ -28,12 +28,10 @@ export const WithdrawalMethodsScreen = () => {
   useEffect(() => {
     if (route.params?.newMethod) {
       const newMethod = route.params.newMethod;
-      let updatedMethods = [...methods];
-      updatedMethods.unshift(newMethod as any);
-      setMethods(updatedMethods);
+      setMethods(prevMethods => [newMethod as any, ...prevMethods]);
       navigation.setParams({ newMethod: undefined });
     }
-  }, [route.params?.newMethod]);
+  }, [route.params?.newMethod, navigation]);
 
   const handleMethodPress = (method: any) => {
     // Return selected method to WithdrawMoneyScreen

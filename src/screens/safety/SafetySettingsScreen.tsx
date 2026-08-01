@@ -10,7 +10,6 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const CustomSwitch = ({ value, onValueChange, label }: { value: boolean, onValueChange: (val: boolean) => void, label?: string }) => {
-    const { t } = useTranslation();
     const translateX = useRef(new Animated.Value(value ? 20 : 0)).current;
 
     useEffect(() => {
@@ -19,7 +18,7 @@ const CustomSwitch = ({ value, onValueChange, label }: { value: boolean, onValue
             duration: 200,
             useNativeDriver: true,
         }).start();
-    }, [value]);
+    }, [value, translateX]);
 
     return (
         <TouchableOpacity 

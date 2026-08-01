@@ -1,4 +1,3 @@
-import { useBookingStore } from '../slices/bookingStore';
 import type { BookingState } from '../slices/bookingStore';
 
 export const selectActiveBooking = (state: BookingState) => state.activeBooking;

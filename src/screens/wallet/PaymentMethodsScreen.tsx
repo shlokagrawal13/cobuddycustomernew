@@ -28,15 +28,17 @@ export const PaymentMethodsScreen = () => {
   useEffect(() => {
     if (route.params?.newMethod) {
       const newMethod = route.params.newMethod;
-      let updatedMethods = [...methods];
-      if (newMethod.isDefault) {
-        updatedMethods = updatedMethods.map(m => ({ ...m, isDefault: false }));
-      }
-      updatedMethods.unshift(newMethod as any);
-      setMethods(updatedMethods);
+      setMethods(prevMethods => {
+        let updatedMethods = [...prevMethods];
+        if (newMethod.isDefault) {
+          updatedMethods = updatedMethods.map(m => ({ ...m, isDefault: false }));
+        }
+        updatedMethods.unshift(newMethod as any);
+        return updatedMethods;
+      });
       navigation.setParams({ newMethod: undefined });
     }
-  }, [route.params?.newMethod]);
+  }, [route.params?.newMethod, navigation]);
 
   const handleMethodPress = (method: any) => {
     if (isSelectionMode) {

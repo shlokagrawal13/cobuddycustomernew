@@ -26,7 +26,7 @@ export const AddMoneyScreen = () => {
         setSelectedMethod(route.params.selectedMethod);
         navigation.setParams({ selectedMethod: undefined });
     }
-  }, [route.params?.selectedMethod]);
+  }, [route.params?.selectedMethod, navigation]);
 
   const handleProceed = () => {
     if (!amount || parseInt(amount) < 100) return;
