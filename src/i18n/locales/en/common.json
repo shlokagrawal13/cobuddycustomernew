@@ -36,9 +36,5 @@
   "a11yClose": "Close",
   "a11yEnterOtp": "Enter OTP",
   "a11yOtpCodeInput": "OTP Code Input",
-  "a11yAction": "Action",
-  "a11yTextInput": "Text input",
-  "a11yPrice": "Price: {{price}}",
-  "a11yKycVerified": "KYC Verified",
-  "a11yKycUnverified": "Complete KYC verification"
+  "a11yTextInput": "Text input"
 }
