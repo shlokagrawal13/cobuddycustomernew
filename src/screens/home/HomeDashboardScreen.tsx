@@ -13,7 +13,8 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
 import { selectInterests } from '../../store/selectors/userPreferencesSelectors';
 import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
-
+import { useBookingStore } from '../../store/slices/bookingStore';
+import { selectActiveBooking } from '../../store/selectors/bookingSelectors';
 
 
 export const HomeDashboardScreen = () => {
@@ -51,7 +52,8 @@ export const HomeDashboardScreen = () => {
   }, [selectedInterests, EXPLORE_CATEGORIES]);
 
   // In real app, this comes from global state or API
-  const [hasActiveBooking, setHasActiveBooking] = useState(false);
+  const activeBooking = useBookingStore(selectActiveBooking);
+  const hasActiveBooking = !!activeBooking;
 
   useEffect(() => {
     // Simulate data loading
@@ -105,8 +107,8 @@ export const HomeDashboardScreen = () => {
                       <Text style={styles.badgeSolidText}>{t('upcoming.status')}</Text>
                     </View>
                   </View>
-                  <Text style={styles.activeMeetupTitle}>{t('upcoming.meetup_title')}</Text>
-                  <Text style={styles.activeMeetupTime}>{t('upcoming.time')} · {t('upcoming.idVerified', 'ID Verified')}</Text>
+                  <Text style={styles.activeMeetupTitle}>{activeBooking?.activity}</Text>
+                  <Text style={styles.activeMeetupTime}>{activeBooking?.time} · {activeBooking?.venue} · {t('upcoming.idVerified', 'ID Verified')}</Text>
                 </View>
                 <TouchableOpacity style={styles.arrowBtn} accessibilityRole="button" accessibilityLabel={t('a11yArrowRight', 'Arrow Right')}>
                   <Icon name="arrow-right" size={20} color={theme.colors.background} />
