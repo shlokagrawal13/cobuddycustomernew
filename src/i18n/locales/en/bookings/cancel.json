@@ -17,5 +17,12 @@
   "a11yReason": "reason",
   "a11yConfirmCancellation": "Confirm Cancellation",
   "a11yNoKeepBooking": "No, Keep Booking",
-  "fallbackCompanion": "Companion"
+  "fallbackCompanion": "Companion",
+  "reason": {
+    "schedule": "Change of plans / Schedule conflict",
+    "found_another": "Found another companion",
+    "mistake": "Booked by mistake",
+    "emergency": "Personal emergency",
+    "other": "Other"
+  }
 }

@@ -10,5 +10,17 @@
   "a11yAction": "Action",
   "a11yDiscoverCompanions": "Discover Companions",
   "a11ySwitchTab": "Switch to {{tab}} tab",
-  "a11yViewBookingDetails": "View booking details"
+  "a11yViewBookingDetails": "View booking details",
+  "status": {
+    "Accepted": "Accepted",
+    "Counter-Proposed": "Counter-Proposed",
+    "Awaiting Reply": "Awaiting Reply",
+    "Completed": "Completed",
+    "Declined": "Declined"
+  },
+  "tabs": {
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "history": "History"
+  }
 }

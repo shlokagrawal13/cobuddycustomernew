@@ -23,7 +23,7 @@
   "uploadQualitySub": "Adjust quality for profile & chat uploads",
   "qualityHelper": "High Quality uses more mobile data and storage.",
   "alertTitleClearCache": "Clear Cache",
-  "alertMsgClearCache": "This will clear temporary files and speed up the app. You won",
+  "alertMsgClearCache": "This will clear temporary files and speed up the app. You won't be logged out.",
   "alertTitleClearMedia": "Clear Media",
   "alertMsgClearMedia": "This will delete downloaded companion photos and chat media from your device to save space. They will redownload when you view them again.",
   "title": {
@@ -38,5 +38,10 @@
   "clearBtn": "Clear",
   "clearMediaBtn": "Clear Media",
   "a11yAutoDownloadToggle": "Toggle auto-download media on Wi-Fi",
-  "a11yPhotoUploadQuality": "Change photo upload quality"
+  "a11yPhotoUploadQuality": "Change photo upload quality",
+  "quality": {
+    "DataSaver": "Data Saver",
+    "Standard": "Standard",
+    "HighQuality": "High Quality"
+  }
 }

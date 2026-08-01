@@ -89,7 +89,7 @@ export const TransactionDetailScreen = () => {
             {[
                 { icon: 'calendar', label: t('txDetail.date', 'Date'), value: tx.date },
                 { icon: 'clock-outline', label: t('txDetail.time', 'Time'), value: tx.time },
-                { icon: 'tag-outline', label: t('txDetail.category', 'Category'), value: tx.category },
+                { icon: 'tag-outline', label: t('txDetail.category', 'Category'), value: t(`categoryValues.${tx.category}`, String(tx.category)) },
                 { icon: 'credit-card-outline', label: t('txDetail.paymentSource', 'Payment Source'), value: tx.paymentSource },
             ].map((row, i, arr) => (
                 <View key={row.label} style={[styles.infoRow, i !== arr.length - 1 && styles.infoBorder]}>

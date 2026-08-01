@@ -18,5 +18,11 @@
   "fallback": {
     "companionName": "Companion",
     "date2": "Fri, 24 Oct 2026"
+  },
+  "category": {
+    "no_show": "Companion No-Show",
+    "unprofessional": "Unprofessional Behavior",
+    "different_profile": "Different from Profile",
+    "other": "Other"
   }
 }

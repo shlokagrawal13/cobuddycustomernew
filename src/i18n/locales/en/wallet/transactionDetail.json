@@ -32,5 +32,10 @@
     "Refund Amount": "Refund Amount",
     "Session Fee (Hourly)": "Session Fee (Hourly)",
     "Taxes (GST 18%)": "Taxes (GST 18%)"
+  },
+  "categoryValues": {
+    "Money Added": "Money Added",
+    "Spent": "Spent",
+    "Refunds": "Refunds"
   }
 }

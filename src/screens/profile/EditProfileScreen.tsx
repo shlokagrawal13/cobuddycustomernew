@@ -24,7 +24,7 @@ export const EditProfileScreen = () => {
       city: MOCK_PROFILE.city,
       languages: MOCK_PROFILE.languages,
       langIds: MOCK_PROFILE.langIds,
-      interests: MOCK_PROFILE.interests,
+      interests: MOCK_PROFILE.interests.map((i) => INTERESTS_DATA.find((d) => d.id === i.id) || i),
   });
 
   // Handle incoming params from sub-screens (Location, Interests, Languages)

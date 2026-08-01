@@ -16,5 +16,9 @@
   "a11yAction": "Action",
   "a11yNext": "Next",
   "a11yCloseNewMessageDialog": "Close new message dialog",
-  "a11yStartChatWith": "Start chat with {{name}}"
+  "a11yStartChatWith": "Start chat with {{name}}",
+  "role": {
+    "EventCompanion": "Event Companion",
+    "LocalGuide": "Local Guide"
+  }
 }

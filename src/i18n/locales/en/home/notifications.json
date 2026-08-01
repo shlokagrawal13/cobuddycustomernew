@@ -9,6 +9,13 @@
   "a11yCategory": "category",
   "a11yAction": "Action",
   "a11yOpenNotification": "Open notification",
+  "category": {
+    "all": "All",
+    "bookings": "Bookings",
+    "wallet": "Wallet",
+    "security": "Security",
+    "support": "Support"
+  },
   "items": {
     "n1": {
       "title": "Booking Confirmed!",

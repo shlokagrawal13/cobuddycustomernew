@@ -11,5 +11,18 @@
   "a11ySentimentUp": "Thumbs up",
   "a11ySentimentUpSelected": "Thumbs up, selected",
   "a11yTag": "tag",
-  "a11yContinue": "Continue"
+  "a11yContinue": "Continue",
+  "tags": {
+    "GreatListener": "Great Listener",
+    "Punctual": "Punctual",
+    "FunEnergetic": "Fun & Energetic",
+    "DressedWell": "Dressed Well",
+    "Polite": "Polite",
+    "SafeComforting": "Safe & Comforting",
+    "Late": "Late",
+    "RudeUnprofessional": "Rude/Unprofessional",
+    "CatfishedFakeProfile": "Catfished/Fake Profile",
+    "Mademeuncomfortable": "Made me uncomfortable",
+    "Boring": "Boring"
+  }
 }
