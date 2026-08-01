@@ -60,7 +60,7 @@
 - [x] src\screens\chat\ConciergeChatScreen.tsx - Already fine
 - [x] src\screens\chat\IncomingCallScreen.tsx - Already fine
 - [x] src\screens\chat\VoiceCallScreen.tsx - Already fine
-- [x] src\screens\home\CompanionProfileScreen.tsx - Fixed
+- [x] src\screens\home\CompanionProfileScreen.tsx - Fixed (RE-VERIFIED 2026-08-01: the "orphaned key" claim for badges.id_verified/background_checked in companionProfile.json was WRONG — profile.verifications.map() renders v.label raw from mock data (companions.mock.ts), completely bypassing t(). Real bug, not noise. Fixed via VERIFICATION_LABEL_KEYS map; also added missing badges.phone_verified key.)
 - [x] src\screens\home\DiscoverScreen.tsx - Fixed
 - [x] src\screens\home\HomeDashboardScreen.tsx - Fixed hardcoded verified text
 - [x] src\screens\home\NotificationsScreen.tsx - Fixed categories text

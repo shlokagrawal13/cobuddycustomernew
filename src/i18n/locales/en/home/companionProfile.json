@@ -6,6 +6,7 @@
   },
   "badges": {
     "id_verified": "ID Verified",
+    "phone_verified": "Phone Verified",
     "background_checked": "Background Checked"
   },
   "trust_score": "Trust Score",

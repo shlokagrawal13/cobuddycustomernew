@@ -15,6 +15,12 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 const { width, height } = Dimensions.get('window');
 const HERO_HEIGHT = height * 0.55; 
 
+const VERIFICATION_LABEL_KEYS: Record<string, string> = {
+  'ID Verified': 'badges.id_verified',
+  'Phone Verified': 'badges.phone_verified',
+  'Background Checked': 'badges.background_checked',
+};
+
 // Dummy data enhanced with details
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../types/navigation';
@@ -308,7 +314,7 @@ export const CompanionProfileScreen = ({ route }: { route: RouteProp<RootStackPa
               {profile.verifications.map((v, idx) => (
                 <View key={idx} style={styles.verifyItem}>
                   <Icon name={v.icon} size={20} color={v.color} />
-                  <Text style={styles.verifyLabel}>{v.label}</Text>
+                  <Text style={styles.verifyLabel}>{t(VERIFICATION_LABEL_KEYS[v.label] || v.label, v.label)}</Text>
                 </View>
               ))}
             </View>
