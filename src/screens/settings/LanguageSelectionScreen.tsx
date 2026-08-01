@@ -1,10 +1,11 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import i18n from '../../i18n';
 
 const LANGUAGES = [
     { id: 'en', name: 'English', sub: 'US & UK' },
@@ -17,7 +18,12 @@ const LANGUAGES = [
 export const LanguageSelectionScreen = () => { 
   const { t } = useTranslation('settings.languageSelection');
   const { smartGoBack } = useSmartNavigation();
-  const [selectedLang, setSelectedLang] = useState('en');
+  const [selectedLang, setSelectedLang] = useState(i18n.language || 'en');
+
+  const handleSelectLanguage = (langId: string) => {
+    setSelectedLang(langId);
+    i18n.changeLanguage(langId);
+  };
 
   return (
     <SafeAreaView style={styles.root} edges={['top']}>
@@ -46,7 +52,7 @@ export const LanguageSelectionScreen = () => {
                         key={lang.id} 
                         style={[styles.row, index !== LANGUAGES.length - 1 && styles.borderBottom]}
                         activeOpacity={0.7}
-                        onPress={() => setSelectedLang(lang.id)} accessibilityRole="button" accessibilityLabel={t('a11ySelectLanguage', 'Select {{lang}}', { lang: lang.name })}
+                        onPress={() => handleSelectLanguage(lang.id)} accessibilityRole="button" accessibilityLabel={t('a11ySelectLanguage', 'Select {{lang}}', { lang: lang.name })}
                     >
                         <View style={styles.meta}>
                             <Text style={styles.title}>{lang.name}</Text>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../../theme';
 import { RootStackParamList } from '../../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useBookingStore } from '../../../store/slices/bookingStore';
+import { selectClearActiveBooking } from '../../../store/selectors/bookingSelectors';
 
 const DEFAULT_MOCK_DATA = {
   companionName: 'Natasha',
@@ -21,6 +23,11 @@ export const BookingDeclinedScreen = ({ route }: { route: any }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   
   const bookingData = route?.params || DEFAULT_MOCK_DATA;
+  const clearActiveBooking = useBookingStore(selectClearActiveBooking);
+
+  useEffect(() => {
+    clearActiveBooking();
+  }, [clearActiveBooking]);
 
   const handleFindAnother = () => {
     navigation.reset({ index: 0, routes: [{ name: 'MainTabNavigator' }] });

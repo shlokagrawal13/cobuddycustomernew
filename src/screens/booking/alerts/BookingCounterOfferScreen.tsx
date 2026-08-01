@@ -8,6 +8,8 @@ import { theme } from '../../../theme';
 import { useSmartNavigation } from '../../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useBookingStore } from '../../../store/slices/bookingStore';
+import { selectClearActiveBooking } from '../../../store/selectors/bookingSelectors';
 
 
 export const BookingCounterOfferScreen = ({ route }: { route: any }) => { 
@@ -32,12 +34,14 @@ export const BookingCounterOfferScreen = ({ route }: { route: any }) => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { smartGoBack } = useSmartNavigation();
   const bookingData = { ...DEFAULT_MOCK_DATA, ...(route?.params || {}) };
+  const clearActiveBooking = useBookingStore(selectClearActiveBooking);
 
   const handleAccept = () => {
     navigation.reset({ index: 0, routes: [{ name: 'MainTabNavigator' }] });
   };
 
   const handleDecline = () => {
+    clearActiveBooking();
     navigation.reset({ index: 0, routes: [{ name: 'MainTabNavigator' }] });
   };
 

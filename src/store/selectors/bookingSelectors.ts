@@ -5,3 +5,5 @@ export const selectDraftBooking = (state: BookingState) => state.draftBooking;
 export const selectBookingHistory = (state: BookingState) => state.bookingHistory;
 export const selectIsLoadingBooking = (state: BookingState) => state.isLoading;
 export const selectSetDraftBooking = (state: BookingState) => state.setDraftBooking;
+export const selectClearActiveBooking = (state: BookingState) => state.clearActiveBooking;
+export const selectCancelBooking = (state: BookingState) => state.cancelBooking;

@@ -9,6 +9,8 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { MOCK_BOOKINGS } from '../../services/mock/bookings.mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useBookingStore } from '../../store/slices/bookingStore';
+import { selectCancelBooking } from '../../store/selectors/bookingSelectors';
 
 const REASONS = [
   { key: 'schedule', label: 'Change of plans / Schedule conflict' },
@@ -27,11 +29,13 @@ export const CancelBookingScreen = () => {
   const booking = MOCK_BOOKINGS.find(b => b.id === bookingId) || MOCK_BOOKINGS[0];
   
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
+  const cancelBooking = useBookingStore(selectCancelBooking);
 
   const handleBack = () => smartGoBack();
   
   const handleConfirmCancel = () => {
     // In a real app, this would call an API, then go back to the root tab
+    cancelBooking(bookingId);
     navigation.navigate('MainTabNavigator', { screen: 'BookingsTab' });
   };
 

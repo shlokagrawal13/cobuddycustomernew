@@ -20,6 +20,7 @@ export interface BookingState {
   clearDraftBooking: () => void;
   requestBooking: (booking: Omit<Booking, 'id' | 'status'>) => void;
   cancelBooking: (id: string) => void;
+  clearActiveBooking: () => void;
 }
 
 export const useBookingStore = create<BookingState>((set) => ({
@@ -39,4 +40,5 @@ export const useBookingStore = create<BookingState>((set) => ({
     activeBooking: state.activeBooking?.id === id ? null : state.activeBooking,
     bookingHistory: state.bookingHistory.map(b => b.id === id ? { ...b, status: 'cancelled' } : b)
   })),
+  clearActiveBooking: () => set({ activeBooking: null }),
 }));
