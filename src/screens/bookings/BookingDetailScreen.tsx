@@ -47,11 +47,7 @@ export const BookingDetailScreen = () => {
   const handleBack = () => smartGoBack('BookingsTab');
 
   const handleMessage = () => {
-    navigation.navigate('ChatTab', { 
-      screen: 'CompanionChatScreen', 
-      initial: false,
-      params: { companionName: data.companionName, bookingId: data.id, companionId: data.companionId } 
-    });
+    navigation.navigate('CompanionChatScreen', { companionName: data.companionName, bookingId: data.id, companionId: data.companionId });
   };
 
   const renderStepper = () => {

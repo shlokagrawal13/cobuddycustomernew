@@ -92,6 +92,15 @@ const BookingsTabStack = () => (
 
       {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
+
+      {/*
+        NOTE: CompanionChatScreen is dual-registered here too. "Message" on BookingDetailScreen
+        used to jump to ChatTab (backBehavior history meant 2 back-presses were needed to return
+        here). Registering it locally lets it push in the CURRENT tab (Bookings) instead — one
+        back press returns straight to BookingDetailScreen. Caller uses a flat
+        navigate('CompanionChatScreen', {...}), no ChatTab wrapper.
+      */}
+      <Stack.Screen name="CompanionChatScreen" component={CompanionChatScreen} />
   </Stack.Navigator>
 );
 
@@ -105,6 +114,14 @@ const ChatTabStack = () => (
 
       {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
+
+      {/*
+        NOTE: BookingDetailScreen is dual-registered here too. "View Booking" on CompanionChatScreen
+        used to jump to BookingsTab. Registering it locally lets it push in the CURRENT tab (Chat)
+        instead — one back press returns straight to the chat. Caller uses a flat
+        navigate('BookingDetailScreen', { bookingId }), no BookingsTab wrapper.
+      */}
+      <Stack.Screen name="BookingDetailScreen" component={BookingDetailScreen} />
   </Stack.Navigator>
 );
 
@@ -152,6 +169,14 @@ const ProfileTabStack = () => (
 
       {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
+
+      {/*
+        NOTE: ConciergeChatScreen is dual-registered here too. "Contact Support" on SettingsHubScreen
+        used to jump to ChatTab. Registering it locally lets it push in the CURRENT tab (Profile)
+        instead — one back press returns straight to Settings. Caller uses a flat
+        navigate('ConciergeChatScreen'), no ChatTab wrapper.
+      */}
+      <Stack.Screen name="ConciergeChatScreen" component={ConciergeChatScreen} />
   </Stack.Navigator>
 );
 

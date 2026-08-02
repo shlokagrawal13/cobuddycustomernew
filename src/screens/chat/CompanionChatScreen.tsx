@@ -86,7 +86,7 @@ export const CompanionChatScreen = () => {
             </TouchableOpacity>
             <View style={{ marginLeft: 12, flexShrink: 1 }}>
               <Text style={styles.headerTitle} numberOfLines={1}>{companionName}</Text>
-              <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', initial: false, params: { bookingId } })} accessibilityRole="button" accessibilityLabel={t('a11yViewBooking', 'View Booking')}>
+              <TouchableOpacity onPress={() => navigation.navigate('BookingDetailScreen', { bookingId })} accessibilityRole="button" accessibilityLabel={t('a11yViewBooking', 'View Booking')}>
                 <Text style={styles.viewBookingText}>{t('viewBookingText', 'View Booking')}</Text>
               </TouchableOpacity>
             </View>

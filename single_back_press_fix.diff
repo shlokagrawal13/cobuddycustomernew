@@ -1,0 +1,93 @@
+diff --git a/src/navigation/MainTabNavigator.tsx b/src/navigation/MainTabNavigator.tsx
+index b6561d8..8e8b825 100644
+--- a/src/navigation/MainTabNavigator.tsx
++++ b/src/navigation/MainTabNavigator.tsx
+@@ -92,6 +92,15 @@ const BookingsTabStack = () => (
+ 
+       {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
+       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
++
++      {/*
++        NOTE: CompanionChatScreen is dual-registered here too. "Message" on BookingDetailScreen
++        used to jump to ChatTab (backBehavior history meant 2 back-presses were needed to return
++        here). Registering it locally lets it push in the CURRENT tab (Bookings) instead — one
++        back press returns straight to BookingDetailScreen. Caller uses a flat
++        navigate('CompanionChatScreen', {...}), no ChatTab wrapper.
++      */}
++      <Stack.Screen name="CompanionChatScreen" component={CompanionChatScreen} />
+   </Stack.Navigator>
+ );
+ 
+@@ -105,6 +114,14 @@ const ChatTabStack = () => (
+ 
+       {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
+       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
++
++      {/*
++        NOTE: BookingDetailScreen is dual-registered here too. "View Booking" on CompanionChatScreen
++        used to jump to BookingsTab. Registering it locally lets it push in the CURRENT tab (Chat)
++        instead — one back press returns straight to the chat. Caller uses a flat
++        navigate('BookingDetailScreen', { bookingId }), no BookingsTab wrapper.
++      */}
++      <Stack.Screen name="BookingDetailScreen" component={BookingDetailScreen} />
+   </Stack.Navigator>
+ );
+ 
+@@ -152,6 +169,14 @@ const ProfileTabStack = () => (
+ 
+       {/* See note in HomeTabStack — CompanionProfileScreen dual-registration pattern. */}
+       <Stack.Screen name="CompanionProfileScreen" component={CompanionProfileScreen} />
++
++      {/*
++        NOTE: ConciergeChatScreen is dual-registered here too. "Contact Support" on SettingsHubScreen
++        used to jump to ChatTab. Registering it locally lets it push in the CURRENT tab (Profile)
++        instead — one back press returns straight to Settings. Caller uses a flat
++        navigate('ConciergeChatScreen'), no ChatTab wrapper.
++      */}
++      <Stack.Screen name="ConciergeChatScreen" component={ConciergeChatScreen} />
+   </Stack.Navigator>
+ );
+ 
+diff --git a/src/screens/bookings/BookingDetailScreen.tsx b/src/screens/bookings/BookingDetailScreen.tsx
+index 0eaed3d..bfb5a8b 100644
+--- a/src/screens/bookings/BookingDetailScreen.tsx
++++ b/src/screens/bookings/BookingDetailScreen.tsx
+@@ -47,11 +47,7 @@ export const BookingDetailScreen = () => {
+   const handleBack = () => smartGoBack('BookingsTab');
+ 
+   const handleMessage = () => {
+-    navigation.navigate('ChatTab', { 
+-      screen: 'CompanionChatScreen', 
+-      initial: false,
+-      params: { companionName: data.companionName, bookingId: data.id, companionId: data.companionId } 
+-    });
++    navigation.navigate('CompanionChatScreen', { companionName: data.companionName, bookingId: data.id, companionId: data.companionId });
+   };
+ 
+   const renderStepper = () => {
+diff --git a/src/screens/chat/CompanionChatScreen.tsx b/src/screens/chat/CompanionChatScreen.tsx
+index b04ea80..74f2060 100644
+--- a/src/screens/chat/CompanionChatScreen.tsx
++++ b/src/screens/chat/CompanionChatScreen.tsx
+@@ -86,7 +86,7 @@ export const CompanionChatScreen = () => {
+             </TouchableOpacity>
+             <View style={{ marginLeft: 12, flexShrink: 1 }}>
+               <Text style={styles.headerTitle} numberOfLines={1}>{companionName}</Text>
+-              <TouchableOpacity onPress={() => navigation.navigate('BookingsTab', { screen: 'BookingDetailScreen', initial: false, params: { bookingId } })} accessibilityRole="button" accessibilityLabel={t('a11yViewBooking', 'View Booking')}>
++              <TouchableOpacity onPress={() => navigation.navigate('BookingDetailScreen', { bookingId })} accessibilityRole="button" accessibilityLabel={t('a11yViewBooking', 'View Booking')}>
+                 <Text style={styles.viewBookingText}>{t('viewBookingText', 'View Booking')}</Text>
+               </TouchableOpacity>
+             </View>
+diff --git a/src/screens/settings/SettingsHubScreen.tsx b/src/screens/settings/SettingsHubScreen.tsx
+index 1d16c47..dedadbb 100644
+--- a/src/screens/settings/SettingsHubScreen.tsx
++++ b/src/screens/settings/SettingsHubScreen.tsx
+@@ -62,7 +62,7 @@ export const SettingsHubScreen = () => {
+       title: t('sections.support', 'SUPPORT'),
+       items: [
+         { id: 'help', icon: 'help-circle-outline', title: t('items.help.title', 'Help Center'), sub: t('items.help.sub', 'FAQs & Guides'), action: () => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' }) },
+-        { id: 'contact', icon: 'headset', title: t('items.contact.title', 'Contact Support'), sub: t('items.contact.sub', '24/7 Concierge Chat'), action: () => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen', initial: false }) },
++        { id: 'contact', icon: 'headset', title: t('items.contact.title', 'Contact Support'), sub: t('items.contact.sub', '24/7 Concierge Chat'), action: () => navigation.navigate('ConciergeChatScreen') },
+         { id: 'report', icon: 'alert-circle-outline', title: t('items.report.title', 'Report a Problem'), sub: t('items.report.sub', 'Flag an issue or bug'), action: () => navigation.navigate('SafetySupportStack', { screen: 'CreateSupportTicketScreen' }) },
+       ]
+     },

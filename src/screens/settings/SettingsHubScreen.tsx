@@ -62,7 +62,7 @@ export const SettingsHubScreen = () => {
       title: t('sections.support', 'SUPPORT'),
       items: [
         { id: 'help', icon: 'help-circle-outline', title: t('items.help.title', 'Help Center'), sub: t('items.help.sub', 'FAQs & Guides'), action: () => navigation.navigate('SafetySupportStack', { screen: 'HelpCenterScreen' }) },
-        { id: 'contact', icon: 'headset', title: t('items.contact.title', 'Contact Support'), sub: t('items.contact.sub', '24/7 Concierge Chat'), action: () => navigation.navigate('ChatTab', { screen: 'ConciergeChatScreen', initial: false }) },
+        { id: 'contact', icon: 'headset', title: t('items.contact.title', 'Contact Support'), sub: t('items.contact.sub', '24/7 Concierge Chat'), action: () => navigation.navigate('ConciergeChatScreen') },
         { id: 'report', icon: 'alert-circle-outline', title: t('items.report.title', 'Report a Problem'), sub: t('items.report.sub', 'Flag an issue or bug'), action: () => navigation.navigate('SafetySupportStack', { screen: 'CreateSupportTicketScreen' }) },
       ]
     },
