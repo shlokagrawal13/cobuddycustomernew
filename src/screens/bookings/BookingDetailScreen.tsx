@@ -37,12 +37,13 @@ export const BookingDetailScreen = () => {
     ? { 
         ...MOCK_DETAILS, 
         ...matchedBooking, 
-        status: route.params?.status || matchedBooking.displayStatus,
+        requestStatus: matchedBooking.requestStatus,
+        sessionStatus: matchedBooking.sessionStatus,
         companionRating: matchedBooking.rating,
         ...calculatePayment(matchedBooking.price)
         // companionId and companionReviews use static values from MOCK_DETAILS until per-companion data exists
       }
-    : { ...MOCK_DETAILS, id: bookingId || MOCK_DETAILS.id, status: route.params?.status || MOCK_DETAILS.status };
+    : { ...MOCK_DETAILS, id: bookingId || MOCK_DETAILS.id };
 
   const handleBack = () => smartGoBack('BookingsTab');
 
@@ -51,7 +52,7 @@ export const BookingDetailScreen = () => {
   };
 
   const renderStepper = () => {
-    if (data.status === 'Declined') {
+    if (data.requestStatus === 'declined') {
       return (
         <View style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: 16, borderRadius: 12, borderWidth: 1, borderColor: theme.colors.error, marginTop: 10 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8, gap: 8 }}>
@@ -67,12 +68,12 @@ export const BookingDetailScreen = () => {
 
     const steps = [
       { label: t('timeline.requested', 'Requested'), time: data.createdAt },
-      { label: t('timeline.accepted', 'Accepted'), time: data.status === 'Accepted' || data.status === 'Completed' ? 'Oct 23, 11:30 AM' : '--' },
-      { label: t('timeline.meetup', 'Meetup'), time: data.status === 'Completed' ? 'Oct 24, 7:00 PM' : '--' }
+      { label: t('timeline.accepted', 'Accepted'), time: data.requestStatus === 'accepted' ? 'Oct 23, 11:30 AM' : '--' },
+      { label: t('timeline.meetup', 'Meetup'), time: data.sessionStatus === 'completed' ? 'Oct 24, 7:00 PM' : '--' }
     ];
     let activeIndex = 0;
-    if (data.status === 'Accepted') activeIndex = 1;
-    if (data.status === 'Completed' || data.status === 'History') activeIndex = 2;
+    if (data.requestStatus === 'accepted') activeIndex = 1;
+    if (data.sessionStatus === 'completed') activeIndex = 2;
 
     return (
       <View style={styles.stepperContainer}>
@@ -104,7 +105,7 @@ export const BookingDetailScreen = () => {
   };
 
   const renderActionButtons = () => {
-    if (data.status === 'Awaiting Reply' || data.status === 'Pending') {
+    if (data.requestStatus === 'pending' || data.requestStatus === 'counter_proposed') {
       return (
         <View style={styles.actionRow}>
           <TouchableOpacity style={[styles.secondaryBtn, { flex: 1 }]} onPress={() => navigation.navigate('CancelBookingScreen', { bookingId: data.id })} accessibilityRole="button" accessibilityLabel={t('a11yCancelRequest', 'Cancel Request')}>
@@ -117,7 +118,7 @@ export const BookingDetailScreen = () => {
       );
     }
     
-    if (data.status === 'Accepted') {
+    if (data.requestStatus === 'accepted' && (!data.sessionStatus || (data.sessionStatus !== 'completed' && data.sessionStatus !== 'cancelled' && data.sessionStatus !== 'no_show' && data.sessionStatus !== 'disputed'))) {
       return (
         <View style={styles.actionCol}>
           {/* Active OTP Button for Meetup Day */}
@@ -150,7 +151,7 @@ export const BookingDetailScreen = () => {
       );
     }
 
-    if (data.status === 'Declined') {
+    if (data.requestStatus === 'declined' || data.requestStatus === 'expired' || data.requestStatus === 'cancelled' || data.sessionStatus === 'cancelled' || data.sessionStatus === 'no_show' || data.sessionStatus === 'disputed') {
       return (
         <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('DiscoverTab')} accessibilityRole="button" accessibilityLabel={t('a11yFindAnotherCompanion', 'Find Another Companion')}>
           <Icon name="account-search" size={20} color={theme.colors.background} />
@@ -159,7 +160,7 @@ export const BookingDetailScreen = () => {
       );
     }
 
-    if (data.status === 'Completed' || data.status === 'History') {
+    if (data.sessionStatus === 'completed') {
       return (
         <View style={styles.actionCol}>
           <TouchableOpacity style={styles.primaryBtn} onPress={() => navigation.navigate('LiveSessionStack', {
@@ -283,7 +284,7 @@ export const BookingDetailScreen = () => {
         <View style={styles.sectionCard}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
             <Text style={[styles.sectionTitle, { marginBottom: 0 }]}>{t('paymentSummary', 'PAYMENT SUMMARY')}</Text>
-            {data.status === 'Declined' ? (
+            {data.requestStatus === 'declined' || data.requestStatus === 'cancelled' || data.sessionStatus === 'cancelled' ? (
                <Text style={[styles.escrowBadge, { backgroundColor: 'rgba(239, 68, 68, 0.15)', color: theme.colors.error }]}>{t('refunded', 'Refunded')}</Text>
             ) : (
                <Text style={styles.escrowBadge}>{t('protectedByEscrow', 'Protected by Escrow')}</Text>
@@ -307,9 +308,9 @@ export const BookingDetailScreen = () => {
           
           <View style={styles.paymentTotalBox}>
             <View style={{ flex: 1, paddingRight: 12 }}>
-              <Text style={styles.paymentTotalLabel}>{data.status === 'Declined' ? t('totalReleased', 'Total Released') : t('totalSecured', 'Total Secured')}</Text>
+              <Text style={styles.paymentTotalLabel}>{(data.requestStatus === 'declined' || data.requestStatus === 'cancelled' || data.sessionStatus === 'cancelled') ? t('totalReleased', 'Total Released') : t('totalSecured', 'Total Secured')}</Text>
               <Text style={styles.paymentSubtext}>
-                {data.status === 'Declined' ? t('escrow.released', 'The escrow hold has been fully released.') : t('escrow.held', 'Held safely until session ends.')}
+                {(data.requestStatus === 'declined' || data.requestStatus === 'cancelled' || data.sessionStatus === 'cancelled') ? t('escrow.released', 'The escrow hold has been fully released.') : t('escrow.held', 'Held safely until session ends.')}
               </Text>
             </View>
             <Text style={styles.paymentTotalValue}>{data.total}</Text>
@@ -326,7 +327,7 @@ export const BookingDetailScreen = () => {
         </View>
 
         {/* Action Buttons for Inactive States */}
-        {(data.status === 'Declined' || data.status === 'Completed' || data.status === 'History') && (
+        {(data.requestStatus === 'declined' || data.requestStatus === 'expired' || data.requestStatus === 'cancelled' || data.sessionStatus === 'completed' || data.sessionStatus === 'cancelled' || data.sessionStatus === 'no_show' || data.sessionStatus === 'disputed') && (
           <View style={styles.actionContainer}>
             {renderActionButtons()}
           </View>
@@ -335,7 +336,7 @@ export const BookingDetailScreen = () => {
       </ScrollView>
 
       {/* Fixed Sticky Footer for Active States */}
-      {(data.status === 'Pending' || data.status === 'Awaiting Reply' || data.status === 'Accepted') && (
+      {(data.requestStatus === 'pending' || data.requestStatus === 'counter_proposed' || (data.requestStatus === 'accepted' && (!data.sessionStatus || (data.sessionStatus !== 'completed' && data.sessionStatus !== 'cancelled' && data.sessionStatus !== 'no_show' && data.sessionStatus !== 'disputed')))) && (
         <View style={styles.bottomBar}>
           <View style={styles.bottomBarHandle} />
           {renderActionButtons()}

@@ -16,10 +16,20 @@ export const BookingsListScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [activeTab, setActiveTab] = useState<TabType>('pending');
 
-  const filteredBookings = MOCK_BOOKINGS.filter(b => b.type === activeTab);
+  const filteredBookings = MOCK_BOOKINGS.filter(b => {
+    if (activeTab === 'pending') {
+      return b.requestStatus === 'pending' || b.requestStatus === 'counter_proposed';
+    } else if (activeTab === 'accepted') {
+      return b.requestStatus === 'accepted' && 
+        (b.sessionStatus === 'upcoming' || b.sessionStatus === 'pre_arrival' || b.sessionStatus === 'checked_in' || b.sessionStatus === 'active' || b.sessionStatus === 'extending');
+    } else {
+      return b.requestStatus === 'declined' || b.requestStatus === 'expired' || b.requestStatus === 'cancelled' || 
+        (b.requestStatus === 'accepted' && (b.sessionStatus === 'completed' || b.sessionStatus === 'cancelled' || b.sessionStatus === 'no_show' || b.sessionStatus === 'disputed'));
+    }
+  });
 
   const handlePressCard = (booking: typeof MOCK_BOOKINGS[0]) => {
-    if (booking.displayStatus === 'Counter-Proposed') {
+    if (booking.requestStatus === 'counter_proposed') {
       navigation.navigate('BookingFlowStack', { 
         screen: 'BookingCounterOfferScreen', 
         params: { bookingId: booking.id, companionName: booking.companionName, companionId: booking.companionId } 
@@ -27,42 +37,58 @@ export const BookingsListScreen = () => {
     } else {
       navigation.navigate('BookingDetailScreen', { 
         bookingId: booking.id,
-        status: booking.displayStatus
+        // Passing derived displayStatus for backwards compatibility in params for now, 
+        // though BookingDetailScreen should re-fetch by ID. 
+        // For type safety, we can just pass the ID and let the next screen figure it out.
+        status: booking.sessionStatus || booking.requestStatus
       });
     }
   };
 
-  const renderStatusBadge = (status: string) => {
+  const renderStatusBadge = (requestStatus: string, sessionStatus?: string) => {
     let color = theme.colors.textSecondary;
     let bgColor = theme.colors.surface;
     let icon = 'clock-outline';
+    let label = 'Unknown';
 
-    if (status === 'Accepted') {
-      color = theme.colors.success;
-      bgColor = 'rgba(16, 185, 129, 0.15)';
-      icon = 'check-decagram-outline';
-    } else if (status === 'Counter-Proposed') {
-      color = theme.colors.warning;
-      bgColor = 'rgba(245, 158, 11, 0.15)';
-      icon = 'swap-horizontal';
-    } else if (status === 'Awaiting Reply') {
+    if (requestStatus === 'pending') {
       color = theme.colors.primary;
       bgColor = 'rgba(212, 175, 55, 0.15)';
       icon = 'timer-sand';
-    } else if (status === 'Completed') {
-      color = theme.colors.textSecondary;
-      bgColor = theme.colors.border;
-      icon = 'check-all';
-    } else if (status === 'Declined') {
+      label = t('status.awaiting_reply', 'Awaiting Reply');
+    } else if (requestStatus === 'counter_proposed') {
+      color = theme.colors.warning;
+      bgColor = 'rgba(245, 158, 11, 0.15)';
+      icon = 'swap-horizontal';
+      label = t('status.counter_proposed', 'Counter-Proposed');
+    } else if (requestStatus === 'declined' || requestStatus === 'expired' || requestStatus === 'cancelled') {
       color = theme.colors.error;
       bgColor = 'rgba(239, 68, 68, 0.15)';
       icon = 'cancel';
+      label = t(`status.${requestStatus}`, requestStatus.charAt(0).toUpperCase() + requestStatus.slice(1));
+    } else if (requestStatus === 'accepted') {
+      if (sessionStatus === 'completed') {
+        color = theme.colors.textSecondary;
+        bgColor = theme.colors.border;
+        icon = 'check-all';
+        label = t('status.completed', 'Completed');
+      } else if (sessionStatus === 'cancelled' || sessionStatus === 'no_show' || sessionStatus === 'disputed') {
+        color = theme.colors.error;
+        bgColor = 'rgba(239, 68, 68, 0.15)';
+        icon = 'alert-circle-outline';
+        label = t(`status.${sessionStatus}`, sessionStatus.charAt(0).toUpperCase() + sessionStatus.slice(1).replace('_', ' '));
+      } else {
+        color = theme.colors.success;
+        bgColor = 'rgba(16, 185, 129, 0.15)';
+        icon = 'check-decagram-outline';
+        label = t('status.accepted', 'Accepted');
+      }
     }
 
     return (
       <View style={[styles.statusBadge, { backgroundColor: bgColor, borderColor: color }]}>
         <Icon name={icon} size={14} color={color} style={{ marginRight: 4 }} />
-        <Text style={[styles.statusText, { color }]}>{t(`status.${status}`, status)}</Text>
+        <Text style={[styles.statusText, { color }]}>{label}</Text>
       </View>
     );
   };
@@ -129,7 +155,7 @@ export const BookingsListScreen = () => {
               {/* Top Section: ID & Status */}
               <View style={styles.cardTopRow}>
                 <Text style={styles.bookingId}>{booking.id}</Text>
-                {renderStatusBadge(booking.displayStatus)}
+                {renderStatusBadge(booking.requestStatus, booking.sessionStatus)}
               </View>
 
               {/* Profile & Activity Section */}

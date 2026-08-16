@@ -3,8 +3,7 @@
 export const MOCK_BOOKINGS = [
   { 
     id: 'CB-REQ-8829', 
-    type: 'pending', 
-    displayStatus: 'Awaiting Reply', 
+    requestStatus: 'pending', 
     companionName: 'Elena Vasquez',
     companionId: 'c1', 
     rating: '4.9',
@@ -17,8 +16,7 @@ export const MOCK_BOOKINGS = [
   },
   { 
     id: 'CB-REQ-8830', 
-    type: 'pending', 
-    displayStatus: 'Counter-Proposed', 
+    requestStatus: 'counter_proposed', 
     companionName: 'Aisha Sharma',
     companionId: 'c2',
     rating: '5.0', 
@@ -31,8 +29,8 @@ export const MOCK_BOOKINGS = [
   },
   { 
     id: 'CB-ACC-1102', 
-    type: 'accepted', 
-    displayStatus: 'Accepted', 
+    requestStatus: 'accepted',
+    sessionStatus: 'upcoming', 
     companionName: 'Marcus Chen',
     companionId: 'c3', 
     rating: '4.8',
@@ -45,8 +43,8 @@ export const MOCK_BOOKINGS = [
   },
   { 
     id: 'CB-HIS-9921', 
-    type: 'history', 
-    displayStatus: 'Completed', 
+    requestStatus: 'accepted',
+    sessionStatus: 'completed', 
     companionName: 'Natasha',
     companionId: 'c4', 
     rating: '4.9',
@@ -59,8 +57,7 @@ export const MOCK_BOOKINGS = [
   },
   { 
     id: 'CB-DEC-5510', 
-    type: 'history', 
-    displayStatus: 'Declined', 
+    requestStatus: 'declined', 
     companionName: 'Sophia Patel',
     companionId: 'c5', 
     rating: '4.7',
@@ -81,7 +78,8 @@ export const MOCK_VENUES = ['Blue Tokai Coffee, CP', 'Starbucks, Hauz Khas', 'DL
 
 export const MOCK_DETAILS = {
   id: 'CB-REQ-8829',
-  status: 'Accepted', // 'Awaiting Reply', 'Accepted', 'Counter-Proposed', 'Completed'
+  requestStatus: 'accepted',
+  sessionStatus: 'upcoming', // Matches previous 'Accepted' state
   createdAt: 'Oct 23, 10:15 AM',
   companionName: 'Elena Vasquez',
   companionId: 'c1',
@@ -100,6 +98,3 @@ export const MOCK_DETAILS = {
   notes: 'I prefer sitting near the window. Please wear smart casuals.',
   declineReason: 'I am so sorry, but I just got booked for a full-day event on this date.',
 };
-
-
-
