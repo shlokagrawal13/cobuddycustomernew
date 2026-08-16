@@ -55,8 +55,16 @@ export const BookingSummaryScreen = () => {
       requestBooking({
         companionId: companionId || 'c1', // Mock companion ID
         activity: draftBooking?.activity || activity?.defaultTitle || 'Unknown Activity',
-        venue: draftBooking?.venue || venue?.name || 'Unknown Venue',
-        time: draftBooking?.time || time || 'Unknown Time'
+        venue: draftBooking?.venue || {
+          venueId: venue?.id || 'v-unknown',
+          area: 'Unknown',
+          city: 'Unknown',
+          isApproved: true,
+          meetingPoint: venue?.name || 'Unknown Venue'
+        },
+        scheduledStart: draftBooking?.scheduledStart || time || 'Unknown Time',
+        scheduledEnd: draftBooking?.scheduledEnd || time || 'Unknown Time',
+        sessionPassCode: '1234'
       });
       navigation.navigate('BookingRequestSentScreen');
     }

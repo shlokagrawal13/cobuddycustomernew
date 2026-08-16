@@ -63,7 +63,7 @@ export const CancelBookingScreen = () => {
           </View>
           <View style={styles.summaryRow}>
             <Icon name="calendar-clock" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>{booking?.date} • {booking?.time}</Text>
+            <Text style={styles.summaryText}>{booking ? `${booking.scheduledStart} - ${booking.scheduledEnd}` : 'N/A'}</Text>
           </View>
         </View>
 

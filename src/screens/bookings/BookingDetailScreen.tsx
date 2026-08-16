@@ -252,7 +252,7 @@ export const BookingDetailScreen = () => {
             <View style={styles.detailTextContent}>
               <Text style={styles.detailLabel}>{t('dateTimeDuration', 'Date & Time ({{duration}})', { duration: data.duration })}</Text>
               <Text style={styles.detailValue}>{data.date}</Text>
-              <Text style={styles.detailSubValue}>{data.time}</Text>
+              <Text style={styles.detailSubValue}>{data ? `${data.scheduledStart} - ${data.scheduledEnd}` : 'N/A'}</Text>
             </View>
           </View>
           
@@ -262,7 +262,7 @@ export const BookingDetailScreen = () => {
             </View>
             <View style={styles.detailTextContent}>
               <Text style={styles.detailLabel}>{t('meetingVenue', 'Meeting Venue')}</Text>
-              <Text style={styles.detailValue}>{data.venue}</Text>
+              <Text style={styles.detailValue}>{data?.venue?.meetingPoint || 'N/A'}</Text>
               <Text style={styles.detailSubValue}>{data.address}</Text>
             </View>
           </View>

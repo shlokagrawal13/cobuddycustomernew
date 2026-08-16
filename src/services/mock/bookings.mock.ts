@@ -9,10 +9,21 @@ export const MOCK_BOOKINGS = [
     rating: '4.9',
     activity: 'Fine Dining & Drinks',
     date: 'Fri, 24 Oct 2026', 
-    time: '7:00 PM - 9:00 PM', 
+    scheduledStart: '7:00 PM',
+    scheduledEnd: '9:00 PM',
+    sessionPassCode: '1234',
+    matchScore: 92,
+    safetyTimerActive: false,
+    earningsBreakdown: { base: 2800, tip: 200, total: 3000 },
     duration: '2 Hours',
     price: '₹3,000',
-    venue: 'Blue Tokai Coffee, CP'
+    venue: {
+      venueId: 'v1',
+      area: 'CP',
+      city: 'New Delhi',
+      isApproved: true,
+      meetingPoint: 'Blue Tokai Coffee, CP'
+    }
   },
   { 
     id: 'CB-REQ-8830', 
@@ -22,10 +33,21 @@ export const MOCK_BOOKINGS = [
     rating: '5.0', 
     activity: 'Shopping Companion',
     date: 'Sun, 26 Oct 2026', 
-    time: '5:00 PM - 8:00 PM',
+    scheduledStart: '5:00 PM',
+    scheduledEnd: '8:00 PM',
+    sessionPassCode: '5678',
+    matchScore: 88,
+    safetyTimerActive: false,
+    earningsBreakdown: { base: 4500, tip: 0, total: 4500 },
     duration: '3 Hours', 
     price: '₹4,500',
-    venue: 'DLF Promenade'
+    venue: {
+      venueId: 'v2',
+      area: 'Vasant Kunj',
+      city: 'New Delhi',
+      isApproved: true,
+      meetingPoint: 'DLF Promenade'
+    }
   },
   { 
     id: 'CB-ACC-1102', 
@@ -36,10 +58,21 @@ export const MOCK_BOOKINGS = [
     rating: '4.8',
     activity: 'Art Exhibition Tour',
     date: 'Sat, 25 Oct 2026', 
-    time: '2:00 PM - 4:00 PM', 
+    scheduledStart: '2:00 PM',
+    scheduledEnd: '4:00 PM',
+    sessionPassCode: '1122',
+    matchScore: 95,
+    safetyTimerActive: true,
+    earningsBreakdown: { base: 2500, tip: 0, total: 2500 },
     duration: '2 Hours',
     price: '₹2,500',
-    venue: 'National Gallery of Modern Art'
+    venue: {
+      venueId: 'v3',
+      area: 'India Gate',
+      city: 'New Delhi',
+      isApproved: true,
+      meetingPoint: 'National Gallery of Modern Art'
+    }
   },
   { 
     id: 'CB-HIS-9921', 
@@ -50,10 +83,21 @@ export const MOCK_BOOKINGS = [
     rating: '4.9',
     activity: 'Cafe Hopping',
     date: 'Wed, 10 Oct 2026', 
-    time: '1:00 PM - 3:00 PM',
+    scheduledStart: '1:00 PM',
+    scheduledEnd: '3:00 PM',
+    sessionPassCode: '9988',
+    matchScore: 80,
+    safetyTimerActive: false,
+    earningsBreakdown: { base: 2000, tip: 0, total: 2000 },
     duration: '2 Hours', 
     price: '₹2,000',
-    venue: 'Cyber Hub, Gurugram'
+    venue: {
+      venueId: 'v4',
+      area: 'Cyber Hub',
+      city: 'Gurugram',
+      isApproved: true,
+      meetingPoint: 'Cyber Hub, Gurugram'
+    }
   },
   { 
     id: 'CB-DEC-5510', 
@@ -63,16 +107,31 @@ export const MOCK_BOOKINGS = [
     rating: '4.7',
     activity: 'Movie Premiere',
     date: 'Mon, 12 Oct 2026', 
-    time: '8:00 PM - 11:00 PM',
+    scheduledStart: '8:00 PM',
+    scheduledEnd: '11:00 PM',
+    sessionPassCode: '0000',
+    matchScore: 75,
+    safetyTimerActive: false,
+    earningsBreakdown: { base: 5000, tip: 0, total: 5000 },
     duration: '3 Hours', 
     price: '₹5,000',
-    venue: 'PVR Director Cut'
+    venue: {
+      venueId: 'v5',
+      area: 'Vasant Kunj',
+      city: 'New Delhi',
+      isApproved: true,
+      meetingPoint: 'PVR Director Cut'
+    }
   },
 ];
 
 
 
-export const MOCK_VENUES = ['Blue Tokai Coffee, CP', 'Starbucks, Hauz Khas', 'DLF Promenade Mall', 'Keep Original Venue'];
+export const MOCK_VENUES = [
+  { venueId: 'v1', area: 'CP', city: 'New Delhi', isApproved: true, meetingPoint: 'Blue Tokai Coffee, CP' },
+  { venueId: 'v2', area: 'Hauz Khas', city: 'New Delhi', isApproved: true, meetingPoint: 'Starbucks, Hauz Khas' },
+  { venueId: 'v3', area: 'Vasant Kunj', city: 'New Delhi', isApproved: true, meetingPoint: 'DLF Promenade Mall' }
+];
 
 
 
@@ -87,9 +146,20 @@ export const MOCK_DETAILS = {
   companionReviews: '128',
   activity: 'Fine Dining & Drinks',
   date: 'Friday, 24 Oct 2026',
-  time: '7:00 PM - 9:00 PM',
+  scheduledStart: '7:00 PM',
+  scheduledEnd: '9:00 PM',
+  sessionPassCode: '1234',
+  matchScore: 92,
+  safetyTimerActive: false,
+  earningsBreakdown: { base: 2800, tip: 200, total: 3000 },
   duration: '2 Hours',
-  venue: 'Blue Tokai Coffee',
+  venue: {
+    venueId: 'v1',
+    area: 'CP',
+    city: 'New Delhi',
+    isApproved: true,
+    meetingPoint: 'Blue Tokai Coffee'
+  },
   address: 'Connaught Place, Inner Circle, New Delhi, 110001',
   sessionRate: '₹3,000',
   platformFee: '₹150',

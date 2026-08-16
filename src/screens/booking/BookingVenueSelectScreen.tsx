@@ -48,12 +48,22 @@ export const BookingVenueSelectScreen = () => {
     const handleNext = () => {
     if (!selectedVenueId) return;
     
-    const selectedVenue = SAFE_VENUES.find(v => v.id === selectedVenueId) || { name: t('customVenue', 'Custom Venue'), address: searchQuery };
-    setDraftBooking({ venue: selectedVenue.name });
+    const venue = SAFE_VENUES.find(v => v.id === selectedVenueId);
+    if (!venue) return;
+
+    setDraftBooking({
+      venue: {
+        venueId: venue.id,
+        area: (venue as any).area || 'Unknown',
+        city: (venue as any).city || 'Unknown',
+        isApproved: true,
+        meetingPoint: venue.name
+      }
+    });
     
     navigation.navigate('BookingTimeSelectScreen', {
       activity,
-      venue: selectedVenue,
+      venue: venue,
       companionId,
       companionName,
     });

@@ -92,11 +92,11 @@ export const ModifyBookingScreen = () => {
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="clock-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{booking?.time || t('fallback.time1', '7:00 PM - 9:00 PM')}</Text>
+            <Text style={styles.detailText}>{booking ? `${booking.scheduledStart} - ${booking.scheduledEnd}` : t('fallback.time1', '7:00 PM - 9:00 PM')}</Text>
           </View>
           <View style={[styles.detailRow, { marginTop: 12 }]}>
             <Icon name="map-marker-outline" size={20} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{booking?.venue || t('fallback.venue', 'Blue Tokai Coffee, CP')}</Text>
+            <Text style={styles.detailText}>{booking?.venue?.meetingPoint || t('fallback.venue', 'Blue Tokai Coffee, CP')}</Text>
           </View>
         </View>
 
@@ -220,14 +220,14 @@ export const ModifyBookingScreen = () => {
             </View>
             
             <FlatList
-              data={MOCK_VENUES}
-              keyExtractor={(item) => item}
+              data={[...MOCK_VENUES, { meetingPoint: 'Keep Original Venue' }]}
+              keyExtractor={(item: any) => item.venueId || item.meetingPoint || item}
               renderItem={({ item }) => {
-                const isKeepOriginal = item === 'Keep Original Venue';
-                const displayLabel = isKeepOriginal ? t('keepOriginalVenueLabel', 'Keep Original Venue') : item;
+                const isKeepOriginal = item.meetingPoint === 'Keep Original Venue';
+                const displayLabel = isKeepOriginal ? t('keepOriginalVenueLabel', 'Keep Original Venue') : item.meetingPoint;
                 return (
                 <TouchableOpacity style={styles.sheetOption} onPress={() => {
-                  setNewVenue(isKeepOriginal ? '' : item);
+                  setNewVenue(isKeepOriginal ? '' : item.meetingPoint);
                   setVenueModalVisible(false);
                 }} accessibilityRole="button" accessibilityLabel={t('a11ySelectVenueOption', 'Select {{venue}}', { venue: displayLabel })}>
                   <Icon name={isKeepOriginal ? 'restore' : 'map-marker-outline'} size={20} color={theme.colors.primary} style={{ marginRight: 12 }} />

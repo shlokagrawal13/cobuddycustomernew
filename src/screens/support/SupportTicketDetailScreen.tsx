@@ -70,7 +70,7 @@ export const SupportTicketDetailScreen = () => {
                 )}
                 <View style={[styles.bubble, isUser ? styles.bubbleUser : styles.bubbleSupport]}>
                   <Text style={styles.bubbleText}>{msg.text}</Text>
-                  <Text style={[styles.bubbleTime, isUser && { color: 'rgba(255,255,255,0.7)' }]}>{msg.time}</Text>
+                  <Text style={[styles.bubbleTime, isUser && { color: 'rgba(255,255,255,0.7)' }]}>{msg.scheduledStart} - {msg.scheduledEnd}</Text>
                 </View>
               </View>
             );

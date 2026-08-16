@@ -77,11 +77,11 @@ export const BookingRequestSentScreen = ({ route }: { route: any }) => {
           </View>
           <View style={styles.detailRow}>
             <Icon name="clock-outline" size={18} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{bookingData.time}</Text>
+            <Text style={styles.detailText}>{bookingData.scheduledStart} - {bookingData.scheduledEnd}</Text>
           </View>
           <View style={styles.detailRow}>
             <Icon name="map-marker-outline" size={18} color={theme.colors.textSecondary} />
-            <Text style={styles.detailText}>{bookingData.venue}</Text>
+            <Text style={styles.detailText}>{bookingData.venue.meetingPoint}</Text>
           </View>
           
           <View style={styles.divider} />

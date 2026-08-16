@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, StatusBar, Animat
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { useBookingStore } from '../../store/slices/bookingStore';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { RootStackParamList } from '../../types/navigation';
@@ -13,6 +14,8 @@ export const ActiveSessionScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const route = useRoute<any>();
   const { companionId, companionName } = route.params || {};
+  const { activeBooking, updateSessionStatus } = useBookingStore();
+  const isExtending = activeBooking?.sessionStatus === 'extending';
   const [etiquetteVisible, setEtiquetteVisible] = useState(true);
   
   // Timer State (e.g. 2 hours = 7200 seconds)
@@ -62,8 +65,9 @@ export const ActiveSessionScreen = () => {
   };
 
   const handleConfirmExtension = () => {
-    // Add time to the timer
-    setTimeLeft(prev => prev + (selectedExtension * 60));
+    if (activeBooking) {
+      updateSessionStatus(activeBooking.id, 'extending');
+    }
     setExtendModalVisible(false);
   };
 
@@ -147,11 +151,19 @@ export const ActiveSessionScreen = () => {
 
         {/* Action Controls */}
         <View style={styles.actionGrid}>
-          <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yAdd', 'Add')}>
-            <Icon name="clock-plus-outline" size={24} color={theme.colors.background} />
-            <Text style={styles.actionBtnPrimaryText}>{t('extendSession', 'Extend Session')}</Text>
-            <Text style={styles.actionBtnPrimarySub}>{t('addMoreTime', 'Add more time')}</Text>
-          </TouchableOpacity>
+          {isExtending ? (
+            <View style={[styles.actionBtnPrimary, { backgroundColor: theme.colors.warning }]}>
+              <Icon name="clock-fast" size={24} color={theme.colors.background} />
+              <Text style={styles.actionBtnPrimaryText}>{t('pendingExtension', 'Pending Approval')}</Text>
+              <Text style={styles.actionBtnPrimarySub}>{t('waitingForCompanion', 'Waiting for companion')}</Text>
+            </View>
+          ) : (
+            <TouchableOpacity style={styles.actionBtnPrimary} onPress={() => setExtendModalVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yAdd', 'Add')}>
+              <Icon name="clock-plus-outline" size={24} color={theme.colors.background} />
+              <Text style={styles.actionBtnPrimaryText}>{t('extendSession', 'Extend Session')}</Text>
+              <Text style={styles.actionBtnPrimarySub}>{t('addMoreTime', 'Add more time')}</Text>
+            </TouchableOpacity>
+          )}
           
           <TouchableOpacity style={styles.actionBtnSecondary} onPress={() => setEndEarlyModalVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yClockRemoveOutline', 'clock remove outline')}>
             <Icon name="clock-remove-outline" size={24} color={theme.colors.error} />

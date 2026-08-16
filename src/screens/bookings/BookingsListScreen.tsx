@@ -190,7 +190,7 @@ export const BookingsListScreen = () => {
                   <Icon name="clock-outline" size={18} color={theme.colors.primary} style={styles.gridIcon} />
                   <View>
                     <Text style={styles.gridLabel}>{t('gridLabelTime', 'Time ({{duration}})', { duration: booking.duration })}</Text>
-                    <Text style={styles.gridValue}>{booking.time.split(' - ')[0]}</Text>
+                    <Text style={styles.gridValue}>{`${booking.scheduledStart} - ${booking.scheduledEnd}`.split(' - ')[0]}</Text>
                   </View>
                 </View>
               </View>
@@ -199,7 +199,7 @@ export const BookingsListScreen = () => {
               <View style={styles.cardFooter}>
                 <View style={styles.venueContainer}>
                   <Icon name="map-marker-outline" size={16} color={theme.colors.textSecondary} />
-                  <Text style={styles.venueText} numberOfLines={1}>{booking.venue}</Text>
+                  <Text style={styles.venueText} numberOfLines={1}>{booking.venue.meetingPoint}</Text>
                 </View>
                 <View style={styles.priceContainer}>
                   <Text style={styles.priceValue}>{booking.price}</Text>

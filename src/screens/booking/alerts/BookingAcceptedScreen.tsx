@@ -92,7 +92,7 @@ export const BookingAcceptedScreen = ({ route }: { route: any }) => {
             <View>
               <Text style={styles.detailLabel}>{t('detailLabelDate', 'Date & Time')}</Text>
               <Text style={styles.detailText}>{bookingData.date}</Text>
-              <Text style={styles.subText}>{bookingData.time}</Text>
+              <Text style={styles.subText}>{bookingData.scheduledStart} - {bookingData.scheduledEnd}</Text>
             </View>
           </View>
           
@@ -102,7 +102,7 @@ export const BookingAcceptedScreen = ({ route }: { route: any }) => {
             </View>
             <View>
               <Text style={styles.detailLabel}>{t('detailLabelVenue', 'Venue')}</Text>
-              <Text style={styles.detailText}>{bookingData.venue}</Text>
+              <Text style={styles.detailText}>{bookingData.venue.meetingPoint}</Text>
               <Text style={styles.subText}>{bookingData.address}</Text>
             </View>
           </View>

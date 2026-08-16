@@ -20,6 +20,7 @@ export const SafetyHubScreen = () => {
   
   // Animation for the SOS pulse rings
   const pulseAnim = useRef(new Animated.Value(0)).current;
+  const holdProgressAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.loop(
@@ -96,30 +97,55 @@ export const SafetyHubScreen = () => {
                 {/* Main SOS Button */}
                 <TouchableOpacity 
                     style={[styles.sosButton, isSOSActive && styles.sosButtonActive]} 
-                    activeOpacity={0.9}
+                    activeOpacity={1}
                     onPress={() => {
                         if (isSOSActive) {
                             Alert.alert(t('alertTitleCancelSOS', 'Cancel SOS'), t('alertMsgAreYouSureYouWantToCancel', 'Are you sure you want to cancel the SOS?'), [
                                 { text: t('no', 'No'), style: 'cancel' },
                                 { text: t('yesSafe', 'Yes, I am safe'), onPress: () => resolveSOS() }
                             ]);
-                        } else {
-                            Alert.alert(t('alertTitleEMERGENCYSOS', '🚨 EMERGENCY SOS'), t('alertMsgAreyouindangerThiswi', 'Are you in danger? This will instantly share your live location with your trusted contacts and alert the CoBuddy Safety Team.'),
-                              [
-                                { text: t('cancel', 'Cancel'), style: 'cancel' },
-                                { 
-                                  text: t('activateSOS', 'ACTIVATE SOS'), 
-                                  style: 'destructive',
-                                  onPress: () => {
-                                    triggerSOS();
-                                    Alert.alert(t('alertTitleSOSActivated', 'SOS Activated'), t('alertMsgHelpisonthewayYourli', 'Help is on the way. Your live location is now being shared.'));
-                                  }
-                                }
-                              ]
-                            );
                         }
-                    }} accessibilityRole="button" accessibilityLabel={t('a11yActivateSOS', 'Activate SOS emergency alert')}
+                    }}
+                    onPressIn={() => {
+                        if (!isSOSActive) {
+                            Animated.timing(holdProgressAnim, {
+                                toValue: 1,
+                                duration: 3000,
+                                useNativeDriver: false
+                            }).start();
+                        }
+                    }}
+                    onPressOut={() => {
+                        if (!isSOSActive) {
+                            Animated.timing(holdProgressAnim, {
+                                toValue: 0,
+                                duration: 300,
+                                useNativeDriver: false
+                            }).start();
+                        }
+                    }}
+                    onLongPress={() => {
+                        if (!isSOSActive) {
+                            triggerSOS();
+                            Alert.alert(t('alertTitleSOSActivated', 'SOS Activated'), t('alertMsgHelpisonthewayYourli', 'Help is on the way. Your live location is now being shared.'));
+                            holdProgressAnim.setValue(0);
+                        }
+                    }}
+                    delayLongPress={3000}
+                    accessibilityRole="button" 
+                    accessibilityLabel={t('a11yActivateSOS', 'Activate SOS emergency alert')}
                 >
+                    <Animated.View style={[StyleSheet.absoluteFill, {
+                        backgroundColor: 'rgba(255,255,255,0.3)',
+                        borderRadius: 70,
+                        transform: [{
+                            scale: holdProgressAnim.interpolate({
+                                inputRange: [0, 1],
+                                outputRange: [0, 1]
+                            })
+                        }],
+                        opacity: holdProgressAnim
+                    }]} />
                     <View style={[styles.sosButtonInner, isSOSActive && styles.sosButtonInnerActive]}>
                         <Icon name={isSOSActive ? "shield-check" : "shield-alert"} size={42} color={theme.colors.background} />
                         <Text style={styles.sosButtonText}>{isSOSActive ? t('sosBtnSafe', 'SAFE') : t('sosBtn', 'SOS')}</Text>

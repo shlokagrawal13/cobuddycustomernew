@@ -8,6 +8,7 @@ import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { adminValues } from '../../config/adminValues';
 
 
 const DEFAULT_PAYOUT = {
@@ -26,7 +27,7 @@ export const WithdrawMoneyScreen = () => {
   const [amount, setAmount] = useState('');
   const [selectedMethod, setSelectedMethod] = useState<any>(DEFAULT_PAYOUT);
   
-  const MAX_WITHDRAWABLE = 4500;
+  const MAX_WITHDRAWABLE = adminValues.walletBalanceLimits.nonKycMax;
 
   useEffect(() => {
     if (route.params?.selectedMethod) {
@@ -72,7 +73,7 @@ export const WithdrawMoneyScreen = () => {
             
             <View style={styles.balanceInfoBox}>
                 <Text style={styles.balanceInfoLabel}>{t('balanceLabel', 'WITHDRAWABLE BALANCE')}</Text>
-                <Text style={styles.balanceInfoValue}>₹4,500</Text>
+                <Text style={styles.balanceInfoValue}>₹{MAX_WITHDRAWABLE.toLocaleString('en-IN')}</Text>
             </View>
 
             <View style={styles.inputContainer}>
