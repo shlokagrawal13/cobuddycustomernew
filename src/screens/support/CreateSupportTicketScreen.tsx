@@ -12,12 +12,16 @@ import { adminValues } from '../../config/adminValues';
 export const CreateSupportTicketScreen = () => { 
   const { t } = useTranslation('support.createTicket');
 
-  const CATEGORIES = [
-  { id: 'payment', label: t('ticket.paymentRefunds', 'Payment & Refunds'), icon: 'credit-card-outline' },
-  { id: 'booking', label: t('ticket.bookingIssue', 'Booking Issue'), icon: 'calendar-check-outline' },
-  { id: 'safety', label: t('ticket.safetyConcern', 'Report a Safety Concern'), icon: 'shield-alert-outline' },
-  { id: 'account', label: t('ticket.techSupport', 'Account & Tech Support'), icon: 'account-cog-outline' }
-];
+  const CATEGORIES = adminValues.ticketCategories.map(cat => {
+    let icon = 'alert-circle-outline';
+    if (cat.id.includes('payment') || cat.id.includes('payout')) icon = 'credit-card-outline';
+    else if (cat.id.includes('booking') || cat.id.includes('session')) icon = 'calendar-check-outline';
+    else if (cat.id.includes('safety') || cat.id.includes('incident')) icon = 'shield-alert-outline';
+    else if (cat.id.includes('verification')) icon = 'shield-check-outline';
+    else if (cat.id.includes('account') || cat.id.includes('access')) icon = 'account-cog-outline';
+    else if (cat.id.includes('dispute')) icon = 'gavel';
+    return { ...cat, icon };
+  });
 
   const { smartGoBack } = useSmartNavigation();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);

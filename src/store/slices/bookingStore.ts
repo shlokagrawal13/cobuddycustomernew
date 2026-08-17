@@ -55,23 +55,14 @@ export const useBookingStore = create<BookingState>((set) => ({
   },
   cancelBooking: (id) => set((state) => {
     const isMatched = state.activeBooking?.id === id;
-    let newStatusObj: Partial<Booking> = { requestStatus: 'cancelled' };
-    // If it was already accepted, then it's a session cancellation
-    if (state.activeBooking?.requestStatus === 'accepted') {
-       newStatusObj = { requestStatus: 'accepted', sessionStatus: 'cancelled' };
-    }
+    const getNewStatusObj = (status: RequestStatus) => 
+      status === 'accepted' ? { sessionStatus: 'cancelled' as const } : { requestStatus: 'cancelled' as const };
     
     return {
-      activeBooking: isMatched ? null : state.activeBooking,
-      bookingHistory: state.bookingHistory.map(b => {
-        if (b.id === id) {
-          if (b.requestStatus === 'accepted') {
-            return { ...b, requestStatus: 'accepted', sessionStatus: 'cancelled' };
-          }
-          return { ...b, requestStatus: 'cancelled' };
-        }
-        return b;
-      })
+      activeBooking: isMatched ? { ...state.activeBooking!, ...getNewStatusObj(state.activeBooking!.requestStatus) } : state.activeBooking,
+      bookingHistory: state.bookingHistory.map(b => 
+        b.id === id ? { ...b, ...getNewStatusObj(b.requestStatus) } : b
+      )
     };
   }),
   clearActiveBooking: () => set({ activeBooking: null }),

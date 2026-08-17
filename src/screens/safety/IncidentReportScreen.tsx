@@ -14,12 +14,7 @@ import { RootStackParamList } from '../../types/navigation';
 export const IncidentReportScreen = () => { 
   const { t } = useTranslation('safety.report');
 
-  const INCIDENT_TYPES = [
-  { id: 'harassment', label: t('incident.inappropriateBehavior', 'Inappropriate Behavior or Harassment') },
-  { id: 'identity', label: t('incident.identityMismatch', 'Identity Mismatch (Fake Profile)') },
-  { id: 'noshow', label: t('incident.companionNoShow', 'Companion No-Show / Scam') },
-  { id: 'other', label: t('incident.otherSafetyConcern', 'Other Safety Concern') }
-];
+  const INCIDENT_TYPES = adminValues.incidentTypes;
 
   const route = useRoute<RouteProp<RootStackParamList, 'IncidentReportScreen'>>();
   const { smartGoBack } = useSmartNavigation();
@@ -31,7 +26,7 @@ export const IncidentReportScreen = () => {
 
   const handleAddEvidence = () => {
     // Simulate image selection without real API call
-    setEvidenceUris([...evidenceUris, `https://picsum.photos/200?random=\${Date.now()}`]);
+    setEvidenceUris([...evidenceUris, `https://picsum.photos/200?random=`]);
   };
 
   const handleRemoveEvidence = (index: number) => {

@@ -83,12 +83,7 @@ const CustomSlider = ({ value, onValueChange, min, max, step, prefix = '', suffi
 export const DiscoverScreen = () => {
   const { t } = useTranslation(['discover']);
 
-  const MODAL_CATEGORIES = React.useMemo(() => [
-  { id: 'coffee', label: t('categories.coffeeMeetups', 'Coffee Meetups') },
-  { id: 'movie', label: t('categories.movieBuffs', 'Movie Buffs') },
-  { id: 'study', label: t('categories.studyBuddy', 'Study Buddy') },
-  { id: 'city', label: t('categories.cityWalk', 'City Walk') },
-], [t]);
+  const MODAL_CATEGORIES = adminValues.activityCategories;
 
   const selectedInterests = useUserPreferencesStore(selectInterests);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -293,7 +288,7 @@ export const DiscoverScreen = () => {
               onPress={(id) => navigation.navigate('CompanionProfileScreen', { companionId: id })}
             />
           )}
-          ListEmptyComponent={() => (
+          ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <Icon name="account-search-outline" size={48} color={theme.colors.border} />
               <Text style={styles.emptyText}>{t('noCompanions', 'No companions found')}</Text>
@@ -301,7 +296,7 @@ export const DiscoverScreen = () => {
                 <Text style={styles.clearAllBtnText}>{t('clearFilters', 'Clear Filters')}</Text>
               </TouchableOpacity>
             </View>
-          )}
+          }
         />
       )}
 

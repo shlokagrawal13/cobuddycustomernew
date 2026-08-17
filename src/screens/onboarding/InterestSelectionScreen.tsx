@@ -44,14 +44,14 @@ export const InterestSelectionScreen = () => {
   const route = useRoute<RouteProp<RootStackParamList, 'InterestSelectionScreen'>>();
   const { t } = useTranslation(['onboarding']);
 
-  const INTERESTS_DATA = useInterestsData();
+  const INTERESTS_DATA = adminValues.activityCategories;
 
   
   const isEditMode = route.params?.isEditMode || false;
   const globalInterests = useUserPreferencesStore(selectInterests);
   const setGlobalInterests = useUserPreferencesStore(selectSetInterests);
 
-  const initialInterests = route.params?.initialInterests || (globalInterests.length > 0 ? globalInterests : ['cafe', 'art', 'wellness']);
+  const initialInterests = route.params?.initialInterests || (globalInterests.length > 0 ? globalInterests : ['INT-3', 'INT-9', 'INT-10']);
 
   const [selected, setSelected] = useState<Set<string>>(new Set(initialInterests));
 

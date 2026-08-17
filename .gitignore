@@ -83,3 +83,6 @@ fix_*.py
 patch_*.py
 patch_*.js
 
+
+scratch/
+
