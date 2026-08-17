@@ -1,9 +1,9 @@
-export interface BookingActivity {
+﻿export interface BookingActivity {
   id: string;
   titleKey: string;
   defaultTitle: string;
   icon: string;
-  price: string;
+  multiplier: number;
   descKey: string;
   defaultDesc: string;
 }

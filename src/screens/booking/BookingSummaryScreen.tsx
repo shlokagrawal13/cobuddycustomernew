@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -15,6 +15,8 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { useBookingStore } from '../../store/slices/bookingStore';
+import { DUMMY_COMPANIONS, DUMMY_PROFILE } from '../../services/mock';
+import { adminValues } from '../../config/adminValues';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -40,9 +42,11 @@ export const BookingSummaryScreen = () => {
   const [agreedToSafety, setAgreedToSafety] = useState(false);
 
   // Pricing calculations (MOCK parsing)
-  const baseRate = parseInt(activity?.price?.replace(/[^0-9]/g, '') || '500', 10);
+  const companion = companionId === 'c1' ? DUMMY_PROFILE : DUMMY_COMPANIONS.find(c => c.id === companionId);
+  const hourlyRate = (companion as any)?.hourlyRate || 500;
+  const baseRate = Math.round(hourlyRate * (activity?.multiplier || 1.0));
   const baseTotal = baseRate * duration;
-  const serviceFee = 50;
+  const serviceFee = adminValues.commission.serviceFee;
   const totalAmount = baseTotal + serviceFee;
 
   const handleSendRequest = () => {
@@ -97,7 +101,7 @@ export const BookingSummaryScreen = () => {
               <Text style={styles.summaryLabel}>{t('summaryLabelActivity', 'Activity')}</Text>
               <Text style={styles.summaryValue}>{activity?.defaultTitle || t('defaultActivity', 'Coffee Meetup')}</Text>
             </View>
-            <Text style={styles.priceValue}>{activity?.price || t('defaultPrice', '₹500/hr')}</Text>
+            <Text style={styles.priceValue}>{`₹${baseRate}/hr`}</Text>
           </View>
 
           <View style={styles.divider} />
@@ -141,17 +145,17 @@ export const BookingSummaryScreen = () => {
         <Text style={[styles.sectionTitle, { marginTop: 24 }]}>{t('paymentSummary', 'Payment Summary')}</Text>
         <View style={styles.pricingBox}>
           <View style={styles.priceRow}>
-            <Text style={styles.priceLabel}>{t('baseFare', 'Base Fare (₹{{baseRate}} x {{duration}} hr)', { baseRate, duration })}</Text>
-            <Text style={styles.priceAmount}>₹{baseTotal}</Text>
+            <Text style={styles.priceLabel}>{t('baseFare', 'Base Fare (â‚¹{{baseRate}} x {{duration}} hr)', { baseRate, duration })}</Text>
+            <Text style={styles.priceAmount}>â‚¹{baseTotal}</Text>
           </View>
           <View style={styles.priceRow}>
             <Text style={styles.priceLabel}>{t('serviceFee', 'Safety & Service Fee')}</Text>
-            <Text style={styles.priceAmount}>₹{serviceFee}</Text>
+            <Text style={styles.priceAmount}>â‚¹{serviceFee}</Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.priceRow}>
             <Text style={styles.totalLabel}>{t('estimatedTotal', 'Estimated Total')}</Text>
-            <Text style={styles.totalValue}>₹{totalAmount}</Text>
+            <Text style={styles.totalValue}>â‚¹{totalAmount}</Text>
           </View>
         </View>
         <Text style={styles.totalDisclaimer}>{t('totalDisclaimer', 'Payment is processed only after the companion accepts.')}</Text>

@@ -6,6 +6,7 @@ import { useRoute, RouteProp } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { adminValues } from '../../config/adminValues';
 import { RootStackParamList } from '../../types/navigation';
 
 

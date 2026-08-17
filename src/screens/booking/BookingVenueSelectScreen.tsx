@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { useBookingStore } from '../../store/slices/bookingStore';
+import { adminValues } from '../../config/adminValues';
 import { selectSetDraftBooking } from '../../store/selectors/bookingSelectors';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -39,6 +40,7 @@ export const BookingVenueSelectScreen = () => {
 
   const [selectedVenueId, setSelectedVenueId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedPlaceType, setSelectedPlaceType] = useState<string | null>(null);
 
   const handleBack = () => {
       clearDraftBooking();
@@ -96,6 +98,34 @@ export const BookingVenueSelectScreen = () => {
             value={searchQuery}
             onChangeText={setSearchQuery}
           />
+        </View>
+
+        
+        {/* DEV MOCK: Place Type Filter Dropdown */}
+        <View style={{ marginBottom: 24 }}>
+          <Text style={styles.sectionTitle}>{t('placeTypeTitle', 'Filter by Place Type')}</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }}>
+            <TouchableOpacity
+              style={[styles.chip, !selectedPlaceType && styles.chipSelected]}
+              onPress={() => setSelectedPlaceType(null)}
+            >
+              <Text style={[styles.chipText, !selectedPlaceType && styles.chipTextSelected]}>All</Text>
+            </TouchableOpacity>
+            {adminValues.venue.allowedPlaceTypes.map(type => (
+              <TouchableOpacity
+                key={type}
+                style={[styles.chip, selectedPlaceType === type && styles.chipSelected]}
+                onPress={() => setSelectedPlaceType(type)}
+              >
+                <Text style={[styles.chipText, selectedPlaceType === type && styles.chipTextSelected]}>
+                  {type.replace('_', ' ').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+          <Text style={{ fontSize: 12, color: theme.colors.textSecondary, marginTop: 8 }}>
+            * This is a temporary manual dropdown for place type selection.
+          </Text>
         </View>
 
         <Text style={styles.sectionTitle}>{t('sectionTitle', 'Curated Safe Venues')}</Text>
@@ -221,6 +251,7 @@ const styles = StyleSheet.create({
     color: theme.colors.textPrimary,
     fontSize: 16,
   },
+
   sectionTitle: {
     fontSize: 14,
     fontWeight: 'bold',
@@ -229,6 +260,10 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     marginBottom: 16,
   },
+  chip: { paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20, borderWidth: 1, borderColor: theme.colors.border, backgroundColor: theme.colors.surface },
+  chipSelected: { backgroundColor: theme.colors.primary, borderColor: theme.colors.primary },
+  chipText: { color: theme.colors.textPrimary, fontSize: 13, fontWeight: '500' },
+  chipTextSelected: { color: theme.colors.background, fontWeight: 'bold' },
   listContainer: {
     gap: 12,
   },

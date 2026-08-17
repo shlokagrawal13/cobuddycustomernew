@@ -7,17 +7,26 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { adminValues } from '../../config/adminValues';
 
 export const CompanionReviewScreen = () => { 
   const { t } = useTranslation('session.companionReview');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [rating, setRating] = useState(0);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [publicReview, setPublicReview] = useState('');
   const [privateFeedback, setPrivateFeedback] = useState('');
 
   const route = useRoute<any>();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { companionId: _companionId, companionName } = route.params || {};
+
+  
+  const toggleTag = (id: string) => {
+    setSelectedTags(prev => 
+      prev.includes(id) ? prev.filter(t => t !== id) : [...prev, id]
+    );
+  };
 
   const handleFinish = () => {
     // End of Live Session Flow. Reset stack to MainTabNavigator
@@ -60,6 +69,44 @@ export const CompanionReviewScreen = () => {
                 />
               </TouchableOpacity>
             ))}
+          </View>
+        </View>
+
+        
+        {/* Review Tags */}
+        <View style={styles.tagsSection}>
+          <Text style={styles.tagsHeader}>{t('tagsPraiseHeader', 'Praise')}</Text>
+          <View style={styles.tagsContainer}>
+            {adminValues.reviewTags.praise.map(tag => {
+              const isSelected = selectedTags.includes(tag.id);
+              return (
+                <TouchableOpacity 
+                  key={tag.id} 
+                  style={[styles.tagBadge, isSelected && styles.tagBadgeSelectedPraise]}
+                  onPress={() => toggleTag(tag.id)}
+                  activeOpacity={0.7}
+                >
+                  <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{tag.label}</Text>
+                </TouchableOpacity>
+              )
+            })}
+          </View>
+
+          <Text style={styles.tagsHeader}>{t('tagsConcernHeader', 'Concerns')}</Text>
+          <View style={styles.tagsContainer}>
+            {adminValues.reviewTags.concern.map(tag => {
+              const isSelected = selectedTags.includes(tag.id);
+              return (
+                <TouchableOpacity 
+                  key={tag.id} 
+                  style={[styles.tagBadge, isSelected && styles.tagBadgeSelectedConcern]}
+                  onPress={() => toggleTag(tag.id)}
+                  activeOpacity={0.7}
+                >
+                  <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{tag.label}</Text>
+                </TouchableOpacity>
+              )
+            })}
           </View>
         </View>
 
@@ -131,6 +178,16 @@ const styles = StyleSheet.create({
   question: { fontSize: 20, fontWeight: 'bold', color: theme.colors.textPrimary, marginBottom: 24, textAlign: 'center' },
   starsRow: { flexDirection: 'row', gap: 8 },
   starBtn: { padding: 4 },
+
+
+  tagsSection: { marginBottom: 24 },
+  tagsHeader: { fontSize: 13, fontWeight: 'bold', color: theme.colors.textSecondary, textTransform: 'uppercase', marginBottom: 12, letterSpacing: 1 },
+  tagsContainer: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginBottom: 24 },
+  tagBadge: { paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20, borderWidth: 1, borderColor: theme.colors.border, backgroundColor: theme.colors.surface },
+  tagBadgeSelectedPraise: { backgroundColor: theme.colors.success, borderColor: theme.colors.success },
+  tagBadgeSelectedConcern: { backgroundColor: theme.colors.error, borderColor: theme.colors.error },
+  tagText: { color: theme.colors.textPrimary, fontSize: 14 },
+  tagTextSelected: { color: theme.colors.background, fontWeight: 'bold' },
 
   inputCard: { backgroundColor: theme.colors.surface, padding: 20, borderRadius: 16, borderWidth: 1, borderColor: theme.colors.border, marginBottom: 24 },
   inputHeader: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 },

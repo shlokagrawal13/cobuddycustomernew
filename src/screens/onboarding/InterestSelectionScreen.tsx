@@ -12,6 +12,7 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
+import { adminValues } from '../../config/adminValues';
 import { selectInterests, selectSetInterests } from '../../store/selectors/userPreferencesSelectors';
 
 const MIN_SELECT = 3;

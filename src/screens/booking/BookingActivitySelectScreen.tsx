@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { useBookingStore } from '../../store/slices/bookingStore';
-import { ACTIVITIES } from '../../services/mock';
+import { ACTIVITIES, DUMMY_COMPANIONS, DUMMY_PROFILE } from '../../services/mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -43,6 +43,9 @@ export const BookingActivitySelectScreen = () => {
       companionName,
     });
   };
+  const companion = companionId === 'c1' ? DUMMY_PROFILE : DUMMY_COMPANIONS.find(c => c.id === companionId);
+  const hourlyRate = (companion as any)?.hourlyRate || 500; // fallback
+
 
   return (
     <SafeAreaView style={styles.root} edges={['top', 'bottom']}>
@@ -68,12 +71,13 @@ export const BookingActivitySelectScreen = () => {
         <View style={styles.listContainer}>
           {ACTIVITIES.map((activity) => {
             const isSelected = selectedActivityId === activity.id;
+            const price = '₹${Math.round(hourlyRate * activity.multiplier)}/hr';
             return (
               <TouchableOpacity
                 key={activity.id}
                 style={[styles.card, isSelected && styles.cardSelected]}
                 onPress={() => setSelectedActivityId(activity.id)}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yPrice', 'Price: {{price}}', { price: activity.price })}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yPrice', 'Price: {{price}}', { price })}
               >
                 <View style={[styles.iconWrap, isSelected && styles.iconWrapSelected]}>
                   <Icon 
@@ -93,7 +97,7 @@ export const BookingActivitySelectScreen = () => {
                 </View>
                 
                 <Text style={[styles.cardPrice, isSelected && styles.cardPriceSelected]}>
-                  {activity.price}
+                  {price}
                 </Text>
               </TouchableOpacity>
             );
@@ -252,3 +256,4 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,0.4)',
   },
 });
+

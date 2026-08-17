@@ -11,6 +11,7 @@ import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useBookingStore } from '../../store/slices/bookingStore';
 import { selectCancelBooking } from '../../store/selectors/bookingSelectors';
+import { adminValues } from '../../config/adminValues';
 
 const REASONS = [
   { key: 'schedule', label: 'Change of plans / Schedule conflict' },
@@ -30,6 +31,25 @@ export const CancelBookingScreen = () => {
   
   const [selectedReason, setSelectedReason] = useState<string | null>(null);
   const cancelBooking = useBookingStore(selectCancelBooking);
+
+  // Calculate dynamic refund
+  const parsedDate = new Date(`${booking?.date} ${booking?.scheduledStart}`);
+  const hoursUntilSession = isNaN(parsedDate.getTime()) ? 48 : (parsedDate.getTime() - Date.now()) / (1000 * 60 * 60);
+
+  const { tier1, tier2, tier3 } = adminValues.cancellationRefundTiers;
+  let refundPercent = 100;
+  let refundText = 'Since you are cancelling more than 48 hours in advance, you will receive a ';
+
+  if (hoursUntilSession >= tier1.minHours) {
+    refundPercent = tier1.refundPercent;
+    refundText = 'Since you are cancelling more than 48 hours in advance, you will receive a ';
+  } else if (hoursUntilSession >= tier2.minHours) {
+    refundPercent = tier2.refundPercent;
+    refundText = 'Since you are cancelling between 24 and 48 hours in advance, you will receive a ';
+  } else {
+    refundPercent = tier3.refundPercent;
+    refundText = 'Since you are cancelling less than 24 hours in advance, you will receive a ';
+  }
 
   const handleBack = () => smartGoBack();
   
@@ -72,7 +92,7 @@ export const CancelBookingScreen = () => {
           <Icon name="alert-circle-outline" size={24} color={theme.colors.error} />
           <View style={{ flex: 1, marginLeft: 12 }}>
             <Text style={styles.warningTitle}>{t('warningTitle', 'Cancellation Policy')}</Text>
-            <Text style={styles.warningDesc}>{t('warningDesc1', 'Since you are cancelling more than 48 hours in advance, you will receive a ')}<Text style={{fontWeight: 'bold', color: theme.colors.error}}>{t('warningDesc2', '100% full refund')}</Text>{t('warningDesc3', '. The escrow hold will be released immediately.')}</Text>
+            <Text style={styles.warningDesc}>{t('warningDesc1', refundText)}<Text style={{fontWeight: 'bold', color: theme.colors.error}}>{t('warningDesc2', `${refundPercent}% refund`)}</Text>{t('warningDesc3', '. The escrow hold will be adjusted immediately.')}</Text>
           </View>
         </View>
 
