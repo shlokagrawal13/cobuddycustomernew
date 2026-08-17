@@ -10,7 +10,9 @@ import { MOCK_NOTIFICATIONS } from '../../services/mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-type NotificationCategory = 'All' | 'Bookings' | 'Wallet' | 'Security' | 'Support';
+export type NotificationCategory = 'request' | 'session' | 'safety' | 'payout' | 'support' | 'policy' | 'training' | 'system' | 'wallet' | 'promotion' | 'reminder';
+
+type NotificationFilter = 'All' | NotificationCategory;
 
 interface NotificationItem {
   id: string;
@@ -26,13 +28,13 @@ interface NotificationItem {
   routeParams?: Record<string, unknown>;
 }
 
-const CATEGORIES: NotificationCategory[] = ['All', 'Bookings', 'Wallet', 'Security', 'Support'];
+const CATEGORIES: NotificationFilter[] = ['All', 'request', 'session', 'safety', 'payout', 'support', 'policy', 'training', 'system', 'wallet', 'promotion', 'reminder'];
 
 
 export const NotificationsScreen = () => { 
   const { t } = useTranslation('home.notifications');
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const [activeCategory, setActiveCategory] = useState<NotificationCategory>('All');
+  const [activeCategory, setActiveCategory] = useState<NotificationFilter>('All');
   const [notifications, setNotifications] = useState<NotificationItem[]>(MOCK_NOTIFICATIONS as unknown as NotificationItem[]);
 
   const filteredNotifications = notifications.filter(n => activeCategory === 'All' || n.category === activeCategory);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, StatusBar, KeyboardAvoidingView, Platform, Alert, Image, ScrollView as RNScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useRoute, RouteProp } from '@react-navigation/native';
@@ -27,7 +27,16 @@ export const IncidentReportScreen = () => {
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [bookingRef, setBookingRef] = useState(route.params?.companionName || '');
   const [description, setDescription] = useState('');
-  const [hasEvidence, setHasEvidence] = useState(false);
+  const [evidenceUris, setEvidenceUris] = useState<string[]>([]);
+
+  const handleAddEvidence = () => {
+    // Simulate image selection without real API call
+    setEvidenceUris([...evidenceUris, `https://picsum.photos/200?random=\${Date.now()}`]);
+  };
+
+  const handleRemoveEvidence = (index: number) => {
+    setEvidenceUris(evidenceUris.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = () => {
     if (!selectedType || !description.trim()) {
@@ -111,18 +120,37 @@ export const IncidentReportScreen = () => {
 
           <View style={styles.formGroup}>
             <Text style={styles.inputLabel}>{t('evidenceLabel', 'EVIDENCE (OPTIONAL)')}</Text>
+            
+            {evidenceUris.length > 0 && (
+              <RNScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 12 }}>
+                {evidenceUris.map((uri, index) => (
+                  <View key={index} style={styles.thumbnailContainer}>
+                    <Image source={{ uri }} style={styles.thumbnail} />
+                    <TouchableOpacity 
+                      style={styles.removeThumbnailBtn} 
+                      onPress={() => handleRemoveEvidence(index)}
+                      accessibilityRole="button" 
+                      accessibilityLabel={t('a11yRemoveEvidence', 'Remove evidence')}
+                    >
+                      <Icon name="close" size={12} color={theme.colors.background} />
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </RNScrollView>
+            )}
+
             <TouchableOpacity 
-              style={[styles.attachmentBtn, hasEvidence && styles.attachmentBtnActive]}
-              onPress={() => setHasEvidence(!hasEvidence)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yHasevidenceEvidenceAttache', 'hasEvidence ? Evidence Attache...')}
+              style={styles.attachmentBtn}
+              onPress={handleAddEvidence}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t('a11yUploadEvidence', 'Upload Evidence')}
             >
               <Icon 
-                name={hasEvidence ? "check-circle" : "camera-plus"} 
+                name="camera-plus" 
                 size={24} 
-                color={hasEvidence ? theme.colors.primary : theme.colors.textSecondary} 
+                color={theme.colors.textSecondary} 
               />
-              <Text style={[styles.attachmentText, hasEvidence && { color: theme.colors.primary }]}>
-                {hasEvidence ? t('evidenceAttached', 'Evidence Attached (Tap to remove)') : t('uploadScreenshots', 'Upload Screenshots or Audio')}
+              <Text style={styles.attachmentText}>
+                {t('uploadScreenshots', 'Upload Screenshots or Audio')}
               </Text>
             </TouchableOpacity>
             <Text style={styles.helperText}>{t('maxFile', 'Max file size: 10MB')}</Text>
@@ -178,6 +206,9 @@ const styles = StyleSheet.create({
   attachmentBtn: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: theme.colors.surface, borderRadius: 12, padding: 16, borderWidth: 1, borderColor: theme.colors.border, borderStyle: 'dashed', gap: 12 },
   attachmentBtnActive: { borderColor: theme.colors.primary, backgroundColor: 'rgba(212, 175, 55, 0.05)', borderStyle: 'solid' },
   attachmentText: { fontSize: 14, fontWeight: '500', color: theme.colors.textSecondary },
+  thumbnailContainer: { marginRight: 12, position: 'relative' },
+  thumbnail: { width: 80, height: 80, borderRadius: 8 },
+  removeThumbnailBtn: { position: 'absolute', top: -6, right: -6, backgroundColor: theme.colors.error, width: 20, height: 20, borderRadius: 10, justifyContent: 'center', alignItems: 'center' },
   helperText: { fontSize: 12, color: theme.colors.textSecondary, marginTop: 8, marginLeft: 4 },
 
   footer: { padding: 20, paddingBottom: 32, borderTopWidth: 1, borderTopColor: theme.colors.border, backgroundColor: theme.colors.background },

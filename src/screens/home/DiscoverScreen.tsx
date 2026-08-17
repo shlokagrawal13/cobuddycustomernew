@@ -13,6 +13,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useUserPreferencesStore } from '../../store/slices/userPreferencesStore';
 import { selectInterests } from '../../store/selectors/userPreferencesSelectors';
 import { INTEREST_MAPPING } from '../../services/mock/interestMapping';
+import { adminValues } from '../../config/adminValues';
 
 const FILTER_STATUS = ['All', 'Available Today', 'Top Rated', 'Nearby'];
 const FILTER_STATUS_KEYS: Record<string, string> = {
@@ -99,6 +100,7 @@ export const DiscoverScreen = () => {
   // Advanced Filters State
   const [isFilterVisible, setIsFilterVisible] = useState(false);
   const [filterGender, setFilterGender] = useState('Any');
+  const [filterLanguage, setFilterLanguage] = useState('Any');
   const [filterRating, setFilterRating] = useState(4.0);
   const [filterMaxPrice, setFilterMaxPrice] = useState(2000);
   const [filterDistance, setFilterDistance] = useState(50);
@@ -128,7 +130,7 @@ export const DiscoverScreen = () => {
       setLoading(false);
     }, 800);
     return () => clearTimeout(timer);
-  }, [activeStatus, searchQuery, filterGender, filterRating, filterMaxPrice, filterDistance]);
+  }, [activeStatus, searchQuery, filterGender, filterRating, filterMaxPrice, filterDistance, filterLanguage]);
 
   const filteredCompanions = React.useMemo(() => {
     // 1. Gather all activity labels from user's selected interests
@@ -159,6 +161,11 @@ export const DiscoverScreen = () => {
       let matchesGender = true;
       if (filterGender !== 'Any') matchesGender = c.gender === filterGender;
       
+      let matchesLanguage = true;
+      if (filterLanguage !== 'Any') {
+        matchesLanguage = (c as any).languages ? (c as any).languages.some((l: string) => l.toLowerCase().includes(filterLanguage.toLowerCase())) : true;
+      }
+      
       let matchesRating = true;
       matchesRating = c.rating >= filterRating;
 
@@ -170,7 +177,7 @@ export const DiscoverScreen = () => {
       const distValue = parseFloat(c.distance);
       matchesDistance = distValue <= filterDistance;
       
-      return matchesSearch && matchesStatus && matchesGender && matchesRating && matchesPrice && matchesDistance;
+      return matchesSearch && matchesStatus && matchesGender && matchesLanguage && matchesRating && matchesPrice && matchesDistance;
     });
 
     // 3. Sort companions to boost matches based on selected interests
@@ -185,12 +192,13 @@ export const DiscoverScreen = () => {
     return filtered;
   }, [
     searchQuery, activeStatus, filterGender, filterRating, 
-    filterMaxPrice, filterDistance, selectedInterests, MODAL_CATEGORIES
+    filterMaxPrice, filterDistance, filterLanguage, selectedInterests, MODAL_CATEGORIES
   ]);
 
   const clearAllFilters = () => {
     setSearchQuery('');
     setFilterGender('Any');
+    setFilterLanguage('Any');
     setFilterRating(3.0);
     setFilterMaxPrice(2000);
     setFilterDistance(50);
@@ -208,7 +216,7 @@ export const DiscoverScreen = () => {
           <TouchableOpacity style={styles.filterBtn} onPress={() => setIsFilterVisible(true)} accessibilityRole="button" accessibilityLabel={t('a11yFilter', 'Filter')}>
             <Icon name="tune-variant" size={24} color={theme.colors.textSecondary} />
             {/* Show badge if advanced filters are active */}
-            {(filterGender !== 'Any' || filterRating > 4.0 || filterMaxPrice < 2000 || filterDistance < 50) && (
+            {(filterGender !== 'Any' || filterLanguage !== 'Any' || filterRating > 4.0 || filterMaxPrice < 2000 || filterDistance < 50) && (
               <View style={styles.filterBadge} />
             )}
           </TouchableOpacity>
@@ -333,6 +341,46 @@ export const DiscoverScreen = () => {
                       styles.modalOptionText,
                       searchQuery === cat.label && styles.modalOptionTextActive
                     ]}>{cat.label}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+
+              
+              {/* Language */}
+              <Text style={styles.modalSectionTitle}>{t('filterLanguage', 'Language')}</Text>
+              <View style={styles.modalOptionsGrid}>
+                {[
+  { code: 'Any', labelKey: 'lang.any', defaultLabel: 'Any' },
+  { code: 'HI', labelKey: 'lang.hi', defaultLabel: 'Hindi' },
+  { code: 'EN', labelKey: 'lang.en', defaultLabel: 'English' },
+  { code: 'HING', labelKey: 'lang.hing', defaultLabel: 'Hinglish' },
+  { code: 'BN', labelKey: 'lang.bn', defaultLabel: 'Bengali' },
+  { code: 'MR', labelKey: 'lang.mr', defaultLabel: 'Marathi' },
+  { code: 'TE', labelKey: 'lang.te', defaultLabel: 'Telugu' },
+  { code: 'TA', labelKey: 'lang.ta', defaultLabel: 'Tamil' },
+  { code: 'GU', labelKey: 'lang.gu', defaultLabel: 'Gujarati' },
+  { code: 'UR', labelKey: 'lang.ur', defaultLabel: 'Urdu' },
+  { code: 'KN', labelKey: 'lang.kn', defaultLabel: 'Kannada' },
+  { code: 'OR', labelKey: 'lang.or', defaultLabel: 'Odia' },
+  { code: 'ML', labelKey: 'lang.ml', defaultLabel: 'Malayalam' },
+  { code: 'PA', labelKey: 'lang.pa', defaultLabel: 'Punjabi' },
+  { code: 'FR', labelKey: 'lang.fr', defaultLabel: 'French' },
+  { code: 'ES', labelKey: 'lang.es', defaultLabel: 'Spanish' }
+].map((lang) => (
+                  <TouchableOpacity 
+                    key={lang.code} 
+                    style={[
+                      styles.modalOptionBtn,
+                      filterLanguage === lang.defaultLabel && styles.modalOptionBtnActive
+                    ]}
+                    onPress={() => setFilterLanguage(lang.defaultLabel)}
+                    accessibilityRole="button"
+                    accessibilityLabel={t(lang.labelKey, lang.defaultLabel)}
+                  >
+                    <Text style={[
+                      styles.modalOptionText,
+                      filterLanguage === lang.defaultLabel && styles.modalOptionTextActive
+                    ]}>{t(lang.labelKey, lang.defaultLabel)}</Text>
                   </TouchableOpacity>
                 ))}
               </View>

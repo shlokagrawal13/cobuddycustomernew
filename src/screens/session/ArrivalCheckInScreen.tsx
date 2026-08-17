@@ -98,6 +98,7 @@ export const ArrivalCheckInScreen = () => {
         <View style={styles.commCard}>
           <Text style={styles.commTitle}>{t('commTitle', 'Can\'t find your companion?')}</Text>
           <View style={styles.commRow}>
+            {/* TODO: Pending third-party telephony vendor decision for secure calls (e.g., Twilio, Exotel). */}
             <TouchableOpacity style={styles.commBtn} onPress={() => {
               Alert.alert(t('secureCallTitle', 'Secure Call'), t('secureCallMsg', 'This feature requires a telephony backend integration (e.g., Twilio/Exotel) to mask numbers, which is not yet implemented.'));
             }} accessibilityRole="button" accessibilityLabel={t('a11yCallSecurely', 'Call Securely')}>

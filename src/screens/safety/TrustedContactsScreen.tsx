@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
+  Switch,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -35,7 +36,7 @@ export const TrustedContactsScreen = () => {
   const { t } = useTranslation(['onboarding']);
   const completeOnboarding = useAuthStore(selectCompleteOnboarding);
   const isFromSettings = route.params?.fromSettings;
-  const { trustedContacts, addTrustedContact, removeTrustedContact } = useSafetyStore();
+  const { trustedContacts, addTrustedContact, removeTrustedContact, updateTrustedContact } = useSafetyStore();
   const [showAddSheet, setShowAddSheet] = useState(false);
   const [newName, setNewName] = useState('');
   const [newPhone, setNewPhone] = useState('');
@@ -60,7 +61,8 @@ export const TrustedContactsScreen = () => {
     addTrustedContact({
       id: Date.now().toString(),
       name: newName.trim(),
-      phone: newPhone.replace(/\D/g, ''),
+      maskedPhone: '******' + newPhone.replace(/\D/g, '').slice(-4),
+      shareLocation: false,
       relationship: newRel
     });
     setShowAddSheet(false);
@@ -136,7 +138,16 @@ export const TrustedContactsScreen = () => {
               </View>
               <View style={styles.cardBody}>
                 <Icon name="phone-outline" size={16} color={theme.colors.textSecondary} />
-                <Text style={styles.cardPhone}>{contact.phone}</Text>
+                <Text style={styles.cardPhone}>{contact.maskedPhone}</Text>
+              </View>
+              <View style={styles.toggleRow}>
+                <Text style={styles.toggleText}>{t('contacts.toggleLocation', 'Let this contact see my live-location during SOS.')}</Text>
+                <Switch 
+                  value={contact.shareLocation}
+                  onValueChange={(val) => updateTrustedContact(contact.id, { shareLocation: val })}
+                  trackColor={{ false: theme.colors.border, true: theme.colors.primary }}
+                  thumbColor={theme.colors.surface}
+                />
               </View>
             </View>
           ))}
@@ -263,6 +274,8 @@ const styles = StyleSheet.create({
   removeBtn: { padding: 4 },
   cardBody: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingLeft: 56 },
   cardPhone: { fontSize: 14, color: theme.colors.textSecondary },
+  toggleRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 12, paddingTop: 12, borderTopWidth: 1, borderTopColor: theme.colors.border },
+  toggleText: { fontSize: 13, color: theme.colors.textPrimary, flex: 1, marginRight: 12 },
 
   addButton: {
     flexDirection: 'row',

@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';type DocType = 'AADHAAR' | 'PAN' | 'PASSPORT' | 'DL';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';type DocType = 'AADHAAR' | 'PAN' | 'PASSPORT' | 'DL' | 'VOTER_ID';
 
 type UploadState = 'idle' | 'selected' | 'uploaded';
 
@@ -19,6 +19,7 @@ export const DocumentVerificationScreen = () => {
     {id: 'PAN',      icon: 'card-account-details',         label: t('docType.pan', 'PAN Card')},
     {id: 'PASSPORT', icon: 'book-open-page-variant',       label: t('docType.passport', 'Passport')},
     {id: 'DL',       icon: 'car',                          label: t('docType.dl', 'Driving License')},
+    {id: 'VOTER_ID', icon: 'card-account-details-star-outline', label: t('docType.voterId', 'Voter ID')},
   ] as const;
 
   const UPLOAD_TIPS = [
@@ -43,6 +44,7 @@ export const DocumentVerificationScreen = () => {
       return cleaned; // Fallback while typing
     }
     if (type === 'PAN') return val.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
+    if (type === 'VOTER_ID') return val.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 10);
     return val.toUpperCase();
   };
 
@@ -50,6 +52,7 @@ export const DocumentVerificationScreen = () => {
     switch (selectedDoc) {
       case 'AADHAAR': return 14; 
       case 'PAN': return 10;
+      case 'VOTER_ID': return 10;
       default: return 20;
     }
   };
@@ -60,14 +63,16 @@ export const DocumentVerificationScreen = () => {
       case 'PAN': return 'ABCDE1234F';
       case 'DL': return 'DL-1420110012345';
       case 'PASSPORT': return 'A1234567';
+      case 'VOTER_ID': return 'ABC1234567';
     }
   };
 
   const canSubmit = () => {
     if (frontState !== 'uploaded') return false;
-    if (selectedDoc !== 'PAN' && selectedDoc !== 'PASSPORT' && backState !== 'uploaded') return false;
+    if (selectedDoc !== 'PAN' && selectedDoc !== 'PASSPORT' && selectedDoc !== 'VOTER_ID' && backState !== 'uploaded') return false;
     if (selectedDoc === 'AADHAAR' && docNumber.length < 14) return false;
     if (selectedDoc === 'PAN' && docNumber.length < 10) return false;
+    if (selectedDoc === 'VOTER_ID' && docNumber.length < 10) return false;
     if (docNumber.length < 5) return false;
     if (legalName.trim().length < 3) return false;
     return true;

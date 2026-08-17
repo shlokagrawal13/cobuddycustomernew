@@ -64,6 +64,7 @@ export type RootStackParamList = {
   SpokenLanguagesScreen: { initialLanguages?: string[] } | undefined;
   SettingsHubScreen: undefined;
   AccountSettingsScreen: undefined;
+  ChangeMobileNumberScreen: undefined;
   SafetyHubScreen: undefined;
   SafetyGuidelinesScreen: undefined;
   IncidentReportScreen: { companionName?: string; bookingId?: string; companionId?: string } | undefined;

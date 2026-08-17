@@ -3,7 +3,7 @@
 export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   {
     id: 'n1',
-    category: 'Bookings',
+    category: 'request',
     title: 'Booking Confirmed!',
     description: 'Your evening walk with Priya has been confirmed for tomorrow at 6 PM.',
     time: '2m ago',
@@ -15,7 +15,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n1_declined',
-    category: 'Bookings',
+    category: 'request',
     title: 'Booking Declined',
     description: 'Natasha is unavailable for Friday evening. Please check other companions.',
     time: '15m ago',
@@ -27,7 +27,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n1_counter',
-    category: 'Bookings',
+    category: 'request',
     title: 'New Counter Offer',
     description: 'Rahul has proposed a different time and price for your coffee meetup.',
     time: '30m ago',
@@ -39,7 +39,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n2',
-    category: 'Wallet',
+    category: 'wallet',
     title: 'Refund Processed',
     description: '₹1,500 has been successfully refunded to your CoBuddy Wallet.',
     time: '1h ago',
@@ -51,7 +51,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n3',
-    category: 'Security',
+    category: 'safety',
     title: 'New Login Detected',
     description: 'We detected a new login from an iPhone 14 Pro in New Delhi.',
     time: '3h ago',
@@ -63,7 +63,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n4',
-    category: 'Bookings',
+    category: 'reminder',
     title: 'Upcoming Meetup Reminder',
     description: "Don't forget! Your coffee meetup with Rahul starts in 2 hours.",
     time: '5h ago',
@@ -75,7 +75,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n5',
-    category: 'Support',
+    category: 'support',
     title: 'Support Ticket Updated',
     description: 'Our Concierge team has responded to your ticket #402.',
     time: '1d ago',
@@ -87,7 +87,7 @@ export const MOCK_NOTIFICATIONS: Record<string, unknown>[] = [
   },
   {
     id: 'n6',
-    category: 'Security',
+    category: 'system',
     title: 'KYC Verified successfully',
     description: 'Your Identity verification is complete. You now have the verified badge!',
     time: '2d ago',
