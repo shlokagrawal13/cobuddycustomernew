@@ -71,7 +71,7 @@ export const BookingActivitySelectScreen = () => {
         <View style={styles.listContainer}>
           {ACTIVITIES.map((activity) => {
             const isSelected = selectedActivityId === activity.id;
-            const price = '₹${Math.round(hourlyRate * activity.multiplier)}/hr';
+            const price = `₹${Math.round(hourlyRate * activity.multiplier)}/hr`;
             return (
               <TouchableOpacity
                 key={activity.id}

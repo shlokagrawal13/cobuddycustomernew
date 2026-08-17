@@ -109,7 +109,7 @@ export const BookingVenueSelectScreen = () => {
               style={[styles.chip, !selectedPlaceType && styles.chipSelected]}
               onPress={() => setSelectedPlaceType(null)}
             >
-              <Text style={[styles.chipText, !selectedPlaceType && styles.chipTextSelected]}>All</Text>
+              <Text style={[styles.chipText, !selectedPlaceType && styles.chipTextSelected]}>{t('placeType.all', 'All')}</Text>
             </TouchableOpacity>
             {adminValues.venue.allowedPlaceTypes.map(type => (
               <TouchableOpacity
@@ -118,7 +118,7 @@ export const BookingVenueSelectScreen = () => {
                 onPress={() => setSelectedPlaceType(type)}
               >
                 <Text style={[styles.chipText, selectedPlaceType === type && styles.chipTextSelected]}>
-                  {type.replace('_', ' ').toUpperCase()}
+                  {t(`placeType.${type}`, type.replace('_', ' ').toUpperCase())}
                 </Text>
               </TouchableOpacity>
             ))}

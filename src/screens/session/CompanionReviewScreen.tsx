@@ -86,7 +86,7 @@ export const CompanionReviewScreen = () => {
                   onPress={() => toggleTag(tag.id)}
                   activeOpacity={0.7}
                 >
-                  <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{tag.label}</Text>
+                  <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{t(`tag.${tag.id}`, tag.label)}</Text>
                 </TouchableOpacity>
               )
             })}
@@ -103,7 +103,7 @@ export const CompanionReviewScreen = () => {
                   onPress={() => toggleTag(tag.id)}
                   activeOpacity={0.7}
                 >
-                  <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{tag.label}</Text>
+                  <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{t(`tag.${tag.id}`, tag.label)}</Text>
                 </TouchableOpacity>
               )
             })}

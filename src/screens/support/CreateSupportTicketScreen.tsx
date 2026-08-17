@@ -58,7 +58,7 @@ export const CreateSupportTicketScreen = () => {
                 key={cat.id} 
                 style={[styles.categoryCard, selectedCategory === cat.id && styles.categoryCardActive]}
                 onPress={() => setSelectedCategory(cat.id)}
-                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={cat.label}
+                activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`ticket.${cat.id}`, cat.label)}
               >
                 <Icon 
                   name={cat.icon} 
@@ -66,7 +66,7 @@ export const CreateSupportTicketScreen = () => {
                   color={selectedCategory === cat.id ? theme.colors.primary : theme.colors.textSecondary} 
                 />
                 <Text style={[styles.categoryLabel, selectedCategory === cat.id && styles.categoryLabelActive]}>
-                  {cat.label}
+                  {t(`ticket.${cat.id}`, cat.label)}
                 </Text>
                 {selectedCategory === cat.id && (
                   <View style={styles.checkBadge}>
