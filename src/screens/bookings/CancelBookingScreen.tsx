@@ -38,17 +38,17 @@ export const CancelBookingScreen = () => {
 
   const { tier1, tier2, tier3 } = adminValues.cancellationRefundTiers;
   let refundPercent = 100;
-  let refundText = 'Since you are cancelling more than 48 hours in advance, you will receive a ';
+  let refundText = t('refundText.tier1', 'Since you are cancelling more than 48 hours in advance, you will receive a ');
 
   if (hoursUntilSession >= tier1.minHours) {
     refundPercent = tier1.refundPercent;
-    refundText = 'Since you are cancelling more than 48 hours in advance, you will receive a ';
+    refundText = t('refundText.tier1', 'Since you are cancelling more than 48 hours in advance, you will receive a ');
   } else if (hoursUntilSession >= tier2.minHours) {
     refundPercent = tier2.refundPercent;
-    refundText = 'Since you are cancelling between 24 and 48 hours in advance, you will receive a ';
+    refundText = t('refundText.tier2', 'Since you are cancelling between 24 and 48 hours in advance, you will receive a ');
   } else {
     refundPercent = tier3.refundPercent;
-    refundText = 'Since you are cancelling less than 24 hours in advance, you will receive a ';
+    refundText = t('refundText.tier3', 'Since you are cancelling less than 24 hours in advance, you will receive a ');
   }
 
   const handleBack = () => smartGoBack();
@@ -83,7 +83,7 @@ export const CancelBookingScreen = () => {
           </View>
           <View style={styles.summaryRow}>
             <Icon name="calendar-clock" size={16} color={theme.colors.textSecondary} />
-            <Text style={styles.summaryText}>{booking ? `${booking.scheduledStart} - ${booking.scheduledEnd}` : 'N/A'}</Text>
+            <Text style={styles.summaryText}>{booking ? `${booking.scheduledStart} - ${booking.scheduledEnd}` : t('na', 'N/A')}</Text>
           </View>
         </View>
 
