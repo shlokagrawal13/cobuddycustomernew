@@ -71,11 +71,18 @@ export const adminValues = {
     { id: 'other', label: 'Other' }
   ],
   activityCategories: [
-    { id: 'conversation', label: 'Conversation' },
-    { id: 'dining', label: 'Dining' },
-    { id: 'events', label: 'Events' },
-    { id: 'movies', label: 'Movies' },
-    { id: 'outdoor', label: 'Outdoor' },
-    { id: 'shopping', label: 'Shopping' }
+    { id: 'INT-1', label: 'Italian Cuisine', type: 'CUISINE', multiplier: 1.0, icon: 'pizza' },
+    { id: 'INT-2', label: 'Museums', type: 'ACTIVITY', multiplier: 1.2, icon: 'bank' },
+    { id: 'INT-3', label: 'Cafe Hopping', type: 'ACTIVITY', multiplier: 1.0, icon: 'coffee' },
+    { id: 'INT-4', label: 'Movies', type: 'ACTIVITY', multiplier: 1.0, icon: 'popcorn' },
+    { id: 'INT-5', label: 'Concerts', type: 'ACTIVITY', multiplier: 1.5, icon: 'ticket-confirmation' },
+    { id: 'INT-6', label: 'Parks', type: 'ACTIVITY', multiplier: 1.0, icon: 'tree' },
+    { id: 'INT-7', label: 'Sightseeing', type: 'ACTIVITY', multiplier: 1.2, icon: 'camera' },
+    { id: 'INT-8', label: 'Clubbing', type: 'ACTIVITY', multiplier: 1.5, icon: 'glass-cocktail' },
+    { id: 'INT-9', label: 'Art Galleries', type: 'ACTIVITY', multiplier: 1.2, icon: 'palette' },
+    { id: 'INT-10', label: 'Hiking', type: 'ACTIVITY', multiplier: 1.5, icon: 'hiking' },
+    { id: 'INT-11', label: 'Board Games', type: 'ACTIVITY', multiplier: 1.0, icon: 'dice-multiple' },
+    { id: 'INT-12', label: 'Karaoke', type: 'ACTIVITY', multiplier: 1.2, icon: 'microphone' },
+    { id: 'INT-13', label: 'Gaming', type: 'ACTIVITY', multiplier: 1.0, icon: 'controller-classic' }
   ]
 };
