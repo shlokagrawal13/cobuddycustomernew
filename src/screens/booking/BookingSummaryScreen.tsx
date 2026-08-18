@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -61,10 +61,13 @@ export const BookingSummaryScreen = () => {
         activity: draftBooking?.activity || activity?.defaultTitle || 'Unknown Activity',
         venue: draftBooking?.venue || {
           venueId: venue?.id || 'v-unknown',
+          name: venue?.name || 'Unknown Venue',
           area: 'Unknown',
           city: 'Unknown',
           isApproved: true,
-          meetingPoint: venue?.name || 'Unknown Venue'
+          venueType: 'cafe',
+          meetingPoint: venue?.name || 'Unknown Venue',
+          landmark: 'Unknown Landmark'
         },
         scheduledStart: draftBooking?.scheduledStart || time || 'Unknown Time',
         scheduledEnd: draftBooking?.scheduledEnd || time || 'Unknown Time',

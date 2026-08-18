@@ -10,7 +10,7 @@ export const adminValues = {
     nonKycMax: 10000,
   },
   commission: {
-    minimumWithdrawalAmount: 100,
+    minimumWithdrawalAmount: 1000,
     serviceFee: 50,
   },
   pricing: {

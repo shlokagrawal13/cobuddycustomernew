@@ -115,22 +115,16 @@ export const MOCK_BOOKINGS = [
     earningsBreakdown: { base: 5000, tip: 0, total: 5000 },
     duration: '3 Hours', 
     price: '₹5,000',
-    venue: {
-      venueId: 'v5',
-      area: 'Vasant Kunj',
-      city: 'New Delhi',
-      isApproved: true,
-      meetingPoint: 'PVR Director Cut'
-    }
+    venue: { venueId: 'v5', name: 'Promenade PVR', area: 'Vasant Kunj', city: 'New Delhi', isApproved: true, venueType: 'movie_theater', meetingPoint: 'PVR Director Cut', landmark: 'Food Court' }
   },
 ];
 
 
 
 export const MOCK_VENUES = [
-  { venueId: 'v1', area: 'CP', city: 'New Delhi', isApproved: true, meetingPoint: 'Blue Tokai Coffee, CP' },
-  { venueId: 'v2', area: 'Hauz Khas', city: 'New Delhi', isApproved: true, meetingPoint: 'Starbucks, Hauz Khas' },
-  { venueId: 'v3', area: 'Vasant Kunj', city: 'New Delhi', isApproved: true, meetingPoint: 'DLF Promenade Mall' }
+  { venueId: 'v1', name: 'Blue Tokai', area: 'CP', city: 'New Delhi', isApproved: true, venueType: 'cafe', meetingPoint: 'Blue Tokai Coffee, CP', landmark: 'Inner Circle' },
+  { venueId: 'v2', name: 'HKV Starbucks', area: 'Hauz Khas', city: 'New Delhi', isApproved: true, venueType: 'cafe', meetingPoint: 'Starbucks, Hauz Khas', landmark: 'Near Deer Park' },
+  { venueId: 'v3', name: 'Promenade Mall', area: 'Vasant Kunj', city: 'New Delhi', isApproved: true, venueType: 'shopping_mall', meetingPoint: 'DLF Promenade Mall', landmark: 'Main Gate' }
 ];
 
 

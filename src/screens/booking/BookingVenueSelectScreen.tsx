@@ -55,11 +55,7 @@ export const BookingVenueSelectScreen = () => {
 
     setDraftBooking({
       venue: {
-        venueId: venue.id,
-        area: (venue as any).area || 'Unknown',
-        city: (venue as any).city || 'Unknown',
-        isApproved: true,
-        meetingPoint: venue.name
+        venueId: venue.id, name: venue.name, area: (venue as any).area || 'Unknown', city: (venue as any).city || 'Unknown', isApproved: true, venueType: 'cafe', meetingPoint: venue.name, landmark: 'Unknown Landmark'
       }
     });
     

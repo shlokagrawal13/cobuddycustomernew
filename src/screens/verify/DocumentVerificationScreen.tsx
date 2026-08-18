@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';type DocType = 'AADHAAR' | 'PAN' | 'PASSPORT' | 'DL' | 'VOTER_ID';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';type DocType = 'AADHAAR' | 'PAN' | 'PASSPORT' | 'DRIVING_LICENSE' | 'VOTER_ID';
 
 type UploadState = 'idle' | 'selected' | 'uploaded';
 
@@ -18,7 +18,7 @@ export const DocumentVerificationScreen = () => {
     {id: 'AADHAAR',  icon: 'card-account-details-outline', label: t('docType.aadhaar', 'Aadhaar')},
     {id: 'PAN',      icon: 'card-account-details',         label: t('docType.pan', 'PAN Card')},
     {id: 'PASSPORT', icon: 'book-open-page-variant',       label: t('docType.passport', 'Passport')},
-    {id: 'DL',       icon: 'car',                          label: t('docType.dl', 'Driving License')},
+    {id: 'DRIVING_LICENSE',       icon: 'car',                          label: t('docType.dl', 'Driving License')},
     {id: 'VOTER_ID', icon: 'card-account-details-star-outline', label: t('docType.voterId', 'Voter ID')},
   ] as const;
 
@@ -61,7 +61,7 @@ export const DocumentVerificationScreen = () => {
     switch (selectedDoc) {
       case 'AADHAAR': return '0000 0000 0000';
       case 'PAN': return 'ABCDE1234F';
-      case 'DL': return 'DL-1420110012345';
+      case 'DRIVING_LICENSE': return 'DL-1420110012345';
       case 'PASSPORT': return 'A1234567';
       case 'VOTER_ID': return 'ABC1234567';
     }
@@ -187,7 +187,7 @@ export const DocumentVerificationScreen = () => {
               )}
             </TouchableOpacity>
 
-            {(selectedDoc === 'AADHAAR' || selectedDoc === 'DL') && (
+            {(selectedDoc === 'AADHAAR' || selectedDoc === 'DRIVING_LICENSE') && (
               <>
                 <View style={styles.uploadDivider} />
                 <TouchableOpacity

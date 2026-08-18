@@ -5,11 +5,13 @@ export type SessionStatus = 'upcoming' | 'pre_arrival' | 'checked_in' | 'active'
 
 export interface Venue {
   venueId: string;
+  name: string;
   area: string;
   city: string;
   isApproved: boolean;
+  venueType: string;
   meetingPoint: string;
-  landmark?: string;
+  landmark: string;
 }
 
 export interface Booking {
