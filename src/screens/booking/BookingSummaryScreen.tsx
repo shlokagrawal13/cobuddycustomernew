@@ -65,7 +65,7 @@ export const BookingSummaryScreen = () => {
           area: 'Unknown',
           city: 'Unknown',
           isApproved: true,
-          venueType: 'cafe',
+          venueType: venue?.type || 'cafe',
           meetingPoint: venue?.name || 'Unknown Venue',
           landmark: 'Unknown Landmark'
         },

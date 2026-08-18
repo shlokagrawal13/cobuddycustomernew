@@ -1,4 +1,4 @@
-﻿export interface BookingActivity {
+export interface BookingActivity {
   id: string;
   titleKey: string;
   defaultTitle: string;
@@ -13,6 +13,7 @@ export interface BookingVenue {
   name: string;
   address: string;
   icon?: string;
+  type?: string;
 }
 
 export interface BookingStackParamList {

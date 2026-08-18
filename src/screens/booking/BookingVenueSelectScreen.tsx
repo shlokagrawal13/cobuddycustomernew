@@ -21,10 +21,10 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // MOCK: Replace with API response from Safe Venues database
 const SAFE_VENUES = [
-  { id: 'v1', name: 'Starbucks Reserve', address: '123 Fort, Downtown', icon: 'coffee' },
-  { id: 'v2', name: 'Third Wave Coffee', address: 'Bandra West', icon: 'coffee' },
-  { id: 'v3', name: 'Phoenix Palladium', address: 'Lower Parel', icon: 'shopping' },
-  { id: 'v4', name: 'PVR Cinemas', address: 'Juhu', icon: 'popcorn' },
+  { id: 'v1', name: 'Starbucks Reserve', address: '123 Fort, Downtown', icon: 'coffee', type: 'cafe' },
+  { id: 'v2', name: 'Third Wave Coffee', address: 'Bandra West', icon: 'coffee', type: 'cafe' },
+  { id: 'v3', name: 'Phoenix Palladium', address: 'Lower Parel', icon: 'shopping', type: 'shopping_mall' },
+  { id: 'v4', name: 'PVR Cinemas', address: 'Juhu', icon: 'popcorn', type: 'movie_theater' },
 ];
 
 export const BookingVenueSelectScreen = () => { 
@@ -55,7 +55,7 @@ export const BookingVenueSelectScreen = () => {
 
     setDraftBooking({
       venue: {
-        venueId: venue.id, name: venue.name, area: (venue as any).area || 'Unknown', city: (venue as any).city || 'Unknown', isApproved: true, venueType: 'cafe', meetingPoint: venue.name, landmark: 'Unknown Landmark'
+        venueId: venue.id, name: venue.name, area: (venue as any).area || 'Unknown', city: (venue as any).city || 'Unknown', isApproved: true, venueType: venue.type, meetingPoint: venue.name, landmark: 'Unknown Landmark'
       }
     });
     
@@ -127,7 +127,11 @@ export const BookingVenueSelectScreen = () => {
         <Text style={styles.sectionTitle}>{t('sectionTitle', 'Curated Safe Venues')}</Text>
 
         <View style={styles.listContainer}>
-          {SAFE_VENUES.map((venue) => {
+          {SAFE_VENUES.filter(venue => {
+             const matchesType = !selectedPlaceType || venue.type === selectedPlaceType;
+             const matchesSearch = !searchQuery || venue.name.toLowerCase().includes(searchQuery.toLowerCase()) || venue.address.toLowerCase().includes(searchQuery.toLowerCase());
+             return matchesType && matchesSearch;
+          }).map((venue) => {
             const isSelected = selectedVenueId === venue.id;
             return (
               <TouchableOpacity
