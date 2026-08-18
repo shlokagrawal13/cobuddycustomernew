@@ -26,7 +26,7 @@ export const IncidentReportScreen = () => {
 
   const handleAddEvidence = () => {
     // Simulate image selection without real API call
-    setEvidenceUris([...evidenceUris, `https://picsum.photos/200?random=`]);
+    setEvidenceUris([...evidenceUris, `https://picsum.photos/200?random=${Date.now()}`]);
   };
 
   const handleRemoveEvidence = (index: number) => {
