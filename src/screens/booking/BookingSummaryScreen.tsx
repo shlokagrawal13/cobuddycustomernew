@@ -148,17 +148,17 @@ export const BookingSummaryScreen = () => {
         <Text style={[styles.sectionTitle, { marginTop: 24 }]}>{t('paymentSummary', 'Payment Summary')}</Text>
         <View style={styles.pricingBox}>
           <View style={styles.priceRow}>
-            <Text style={styles.priceLabel}>{t('baseFare', 'Base Fare (â‚¹{{baseRate}} x {{duration}} hr)', { baseRate, duration })}</Text>
-            <Text style={styles.priceAmount}>â‚¹{baseTotal}</Text>
+            <Text style={styles.priceLabel}>{t('baseFare', 'Base Fare (₹{{baseRate}} x {{duration}} hr)', { baseRate, duration })}</Text>
+            <Text style={styles.priceAmount}>₹{baseTotal}</Text>
           </View>
           <View style={styles.priceRow}>
             <Text style={styles.priceLabel}>{t('serviceFee', 'Safety & Service Fee')}</Text>
-            <Text style={styles.priceAmount}>â‚¹{serviceFee}</Text>
+            <Text style={styles.priceAmount}>₹{serviceFee}</Text>
           </View>
           <View style={styles.divider} />
           <View style={styles.priceRow}>
             <Text style={styles.totalLabel}>{t('estimatedTotal', 'Estimated Total')}</Text>
-            <Text style={styles.totalValue}>â‚¹{totalAmount}</Text>
+            <Text style={styles.totalValue}>₹{totalAmount}</Text>
           </View>
         </View>
         <Text style={styles.totalDisclaimer}>{t('totalDisclaimer', 'Payment is processed only after the companion accepts.')}</Text>

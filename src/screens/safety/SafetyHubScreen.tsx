@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, StatusBar, Animated, Easing, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +21,8 @@ export const SafetyHubScreen = () => {
   // Animation for the SOS pulse rings
   const pulseAnim = useRef(new Animated.Value(0)).current;
   const holdProgressAnim = useRef(new Animated.Value(0)).current;
+  const [countdown, setCountdown] = useState<number | null>(null);
+  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     Animated.loop(
@@ -108,6 +110,8 @@ export const SafetyHubScreen = () => {
                     }}
                     onPressIn={() => {
                         if (!isSOSActive) {
+                            setCountdown(3);
+                            countdownIntervalRef.current = setInterval(() => setCountdown(c => (c && c > 1) ? c - 1 : c), 1000);
                             Animated.timing(holdProgressAnim, {
                                 toValue: 1,
                                 duration: 3000,
@@ -117,6 +121,8 @@ export const SafetyHubScreen = () => {
                     }}
                     onPressOut={() => {
                         if (!isSOSActive) {
+                            if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+                            setCountdown(null);
                             Animated.timing(holdProgressAnim, {
                                 toValue: 0,
                                 duration: 300,
@@ -126,6 +132,8 @@ export const SafetyHubScreen = () => {
                     }}
                     onLongPress={() => {
                         if (!isSOSActive) {
+                            if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+                            setCountdown(null);
                             triggerSOS();
                             Alert.alert(t('alertTitleSOSActivated', 'SOS Activated'), t('alertMsgHelpisonthewayYourli', 'Help is on the way. Your live location is now being shared.'));
                             holdProgressAnim.setValue(0);
@@ -148,7 +156,7 @@ export const SafetyHubScreen = () => {
                     }]} />
                     <View style={[styles.sosButtonInner, isSOSActive && styles.sosButtonInnerActive]}>
                         <Icon name={isSOSActive ? "shield-check" : "shield-alert"} size={42} color={theme.colors.background} />
-                        <Text style={styles.sosButtonText}>{isSOSActive ? t('sosBtnSafe', 'SAFE') : t('sosBtn', 'SOS')}</Text>
+                        <Text style={styles.sosButtonText}>{isSOSActive ? t('sosBtnSafe', 'SAFE') : (countdown !== null ? countdown.toString() : t('sosBtn', 'SOS'))}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
