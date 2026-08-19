@@ -23,7 +23,7 @@ export const PostSessionFeedbackScreen = () => {
   const negativeTags = ['Late', 'Rude/Unprofessional', 'Catfished/Fake Profile', 'Made me uncomfortable', 'Boring'];
 
   const handleTagToggle = (tag: string) => {
-    setSelectedTags(prev => prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]);
+    setSelectedTags(prev => prev.includes(tag) ? prev.filter(existingTag => existingTag !== tag) : [...prev, tag]);
   };
 
   return (
