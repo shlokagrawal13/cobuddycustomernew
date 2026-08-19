@@ -23,10 +23,10 @@ import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const GENDER_OPTIONS = ['Man', 'Woman', 'Non-binary', 'Prefer not to say'];
+const GENDER_OPTIONS = ['Male', 'Female', 'Non-binary', 'Prefer not to say'];
 const GENDER_OPTION_KEYS: Record<string, string> = {
-  'Man': 'profile.genderOptions.man',
-  'Woman': 'profile.genderOptions.woman',
+  'Male': 'profile.genderOptions.man',
+  'Female': 'profile.genderOptions.woman',
   'Non-binary': 'profile.genderOptions.nonBinary',
   'Prefer not to say': 'profile.genderOptions.preferNotToSay',
 };

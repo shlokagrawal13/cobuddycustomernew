@@ -21,6 +21,8 @@ const SPOKEN_LANGUAGES = [
     { id: 'ml', label: 'Malayalam', native: 'മലയാളം' },
     { id: 'pa', label: 'Punjabi', native: 'ਪੰਜਾਬੀ' },
     { id: 'ur', label: 'Urdu', native: 'اردو' },
+    { id: 'or', label: 'Odia', native: 'ଓଡ଼ିଆ' },
+    { id: 'hinglish', label: 'Hinglish', native: 'Hinglish' },
     { id: 'fr', label: 'French', native: 'Français' },
     { id: 'es', label: 'Spanish', native: 'Español' },
 ];
