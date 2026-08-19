@@ -13,13 +13,7 @@ import { useBookingStore } from '../../store/slices/bookingStore';
 import { selectCancelBooking } from '../../store/selectors/bookingSelectors';
 import { adminValues } from '../../config/adminValues';
 
-const REASONS = [
-  { key: 'schedule', label: 'Change of plans / Schedule conflict' },
-  { key: 'found_another', label: 'Found another companion' },
-  { key: 'mistake', label: 'Booked by mistake' },
-  { key: 'emergency', label: 'Personal emergency' },
-  { key: 'other', label: 'Other' }
-];
+
 
 export const CancelBookingScreen = () => { 
   const { t } = useTranslation('bookings.cancel');
@@ -99,16 +93,18 @@ export const CancelBookingScreen = () => {
         <Text style={styles.sectionTitle}>{t('sectionTitle', 'WHY ARE YOU CANCELLING?')}</Text>
         
         <View style={styles.reasonsContainer}>
-          {REASONS.map((reasonObj) => (
+          {adminValues.cancellationReasons.map((reasonKey) => (
             <TouchableOpacity 
-              key={reasonObj.key} 
-              style={[styles.reasonRow, selectedReason === reasonObj.key && styles.reasonRowActive]}
-              onPress={() => setSelectedReason(reasonObj.key)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`reason.${reasonObj.key}`, reasonObj.label)}
+              key={reasonKey} 
+              style={[styles.reasonRow, selectedReason === reasonKey && styles.reasonRowActive]}
+              onPress={() => setSelectedReason(reasonKey)}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`reason.${reasonKey}`, reasonKey.replace(/_/g, ' '))}
             >
-              <Text style={[styles.reasonText, selectedReason === reasonObj.key && styles.reasonTextActive]}>{t(`reason.${reasonObj.key}`, reasonObj.label)}</Text>
-              <View style={[styles.radioCircle, selectedReason === reasonObj.key && styles.radioCircleActive]}>
-                {selectedReason === reasonObj.key && <View style={styles.radioInner} />}
+              <Text style={[styles.reasonText, selectedReason === reasonKey && styles.reasonTextActive]}>
+                {t(`reason.${reasonKey}`, reasonKey.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}
+              </Text>
+              <View style={[styles.radioCircle, selectedReason === reasonKey && styles.radioCircleActive]}>
+                {selectedReason === reasonKey && <View style={styles.radioInner} />}
               </View>
             </TouchableOpacity>
           ))}

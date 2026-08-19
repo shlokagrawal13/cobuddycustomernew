@@ -6,6 +6,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
+import { adminValues } from '../../config/adminValues';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -62,7 +63,8 @@ export const PostSessionFeedbackScreen = () => {
           <View style={styles.tagsSection}>
             <Text style={styles.tagsTitle}>{t('tagsTitle', 'What stood out?')}</Text>
             <View style={styles.tagsContainer}>
-              {(sentiment === 'up' ? positiveTags : negativeTags).map(tag => {
+              {(sentiment === 'up' ? adminValues.reviewTags.praise : adminValues.reviewTags.concern).map(tagObj => {
+                const tag = tagObj.id;
                 const isSelected = selectedTags.includes(tag);
                 return (
                   <TouchableOpacity 

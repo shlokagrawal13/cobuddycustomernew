@@ -70,6 +70,13 @@ export const adminValues = {
     { id: 'identity_mismatch', label: 'Identity Mismatch' },
     { id: 'other', label: 'Other' }
   ],
+  cancellationReasons: [
+    'found_another_companion',
+    'booked_by_mistake',
+    'changed_mind',
+    'personal_emergency',
+    'unresponsive'
+  ],
   disputeReasons: [
     'payment_not_received',
     'unfair_cancellation',
