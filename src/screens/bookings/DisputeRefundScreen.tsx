@@ -10,12 +10,7 @@ import { MOCK_BOOKINGS } from '../../services/mock/bookings.mock';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-const CATEGORIES = [
-  { key: 'no_show', label: 'Companion No-Show' },
-  { key: 'unprofessional', label: 'Unprofessional Behavior' },
-  { key: 'different_profile', label: 'Different from Profile' },
-  { key: 'other', label: 'Other' }
-];
+import { adminValues } from '../../config/adminValues';
 
 export const DisputeRefundScreen = () => { 
   const { t } = useTranslation('bookings.dispute');
@@ -77,16 +72,18 @@ export const DisputeRefundScreen = () => {
         <Text style={styles.sectionTitle}>{t('sectionCategory', 'ISSUE CATEGORY')}</Text>
         
         <View style={styles.reasonsContainer}>
-          {CATEGORIES.map((categoryObj) => (
+          {adminValues.disputeReasons.map((reasonKey) => (
             <TouchableOpacity 
-              key={categoryObj.key} 
-              style={[styles.reasonRow, selectedCategory === categoryObj.key && styles.reasonRowActive]}
-              onPress={() => setSelectedCategory(categoryObj.key)}
-              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`category.${categoryObj.key}`, categoryObj.label)}
+              key={reasonKey} 
+              style={[styles.reasonRow, selectedCategory === reasonKey && styles.reasonRowActive]}
+              onPress={() => setSelectedCategory(reasonKey)}
+              activeOpacity={0.7} accessibilityRole="button" accessibilityLabel={t(`category.${reasonKey}`, reasonKey.replace(/_/g, ' '))}
             >
-              <Text style={[styles.reasonText, selectedCategory === categoryObj.key && styles.reasonTextActive]}>{t(`category.${categoryObj.key}`, categoryObj.label)}</Text>
-              <View style={[styles.radioCircle, selectedCategory === categoryObj.key && styles.radioCircleActive]}>
-                {selectedCategory === categoryObj.key && <View style={styles.radioInner} />}
+              <Text style={[styles.reasonText, selectedCategory === reasonKey && styles.reasonTextActive]}>
+                {t(`category.${reasonKey}`, reasonKey.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}
+              </Text>
+              <View style={[styles.radioCircle, selectedCategory === reasonKey && styles.radioCircleActive]}>
+                {selectedCategory === reasonKey && <View style={styles.radioInner} />}
               </View>
             </TouchableOpacity>
           ))}

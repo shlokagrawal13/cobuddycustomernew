@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Admin Values Config
  * This file centralizes hardcoded values that will eventually be fetched from the Admin API.
  * Currently, it serves as a single source of truth for these values during the interim backend-less phase.
@@ -69,6 +69,19 @@ export const adminValues = {
     { id: 'no_show_customer', label: 'No Show (Customer)' },
     { id: 'identity_mismatch', label: 'Identity Mismatch' },
     { id: 'other', label: 'Other' }
+  ],
+  disputeReasons: [
+    'payment_not_received',
+    'unfair_cancellation',
+    'false_review',
+    'no_show',
+    'service_quality',
+    'different_profile',
+    'early_end',
+    'companion_late',
+    'customer_late',
+    'safety_concern',
+    'other'
   ],
   activityCategories: [
     { id: 'INT-1', label: 'Italian Cuisine', type: 'CUISINE', multiplier: 1.0, icon: 'pizza' },
