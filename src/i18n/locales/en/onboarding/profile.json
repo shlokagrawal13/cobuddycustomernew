@@ -15,8 +15,8 @@
   "label_gender": "Gender",
   "placeholder_gender": "Select Gender",
   "genderOptions": {
-    "man": "Man",
-    "woman": "Woman",
+    "man": "Male",
+    "woman": "Female",
     "nonBinary": "Non-binary",
     "preferNotToSay": "Prefer not to say"
   },
