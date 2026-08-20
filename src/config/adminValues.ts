@@ -12,6 +12,8 @@ export const adminValues = {
   commission: {
     minimumWithdrawalAmount: 1000,
     serviceFee: 50,
+    platformFeePercentage: 15,
+    taxPercentage: 18,
   },
   pricing: {
     cancellationFeePercentage: 10,

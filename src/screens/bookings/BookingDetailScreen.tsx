@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { theme } from '../../theme';
 import { useSmartNavigation } from '../../hooks/useSmartNavigation';
 import { MOCK_DETAILS, MOCK_BOOKINGS } from '../../services/mock';
+import { adminValues } from '../../config/adminValues';
 import { RootStackParamList } from '../../types/navigation';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -21,8 +22,8 @@ export const BookingDetailScreen = () => {
 
   const calculatePayment = (priceStr: string) => {
     const base = parseInt(priceStr.replace(/[^0-9]/g, ''), 10) || 0;
-    const platformFee = Math.round(base * 0.05);
-    const taxes = Math.round(base * 0.018);
+    const platformFee = Math.round(base * (adminValues.commission.platformFeePercentage / 100));
+    const taxes = Math.round(base * (adminValues.commission.taxPercentage / 100));
     const total = base + platformFee + taxes;
     const formatPrice = (num: number) => '₹' + num.toLocaleString('en-IN');
     return {
