@@ -35,6 +35,12 @@ export const SafetyHubScreen = () => {
     ).start();
   }, [pulseAnim]);
 
+  useEffect(() => {
+    return () => {
+      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+    };
+  }, []);
+
   const ring1Scale = pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.8, 1.8] });
   const ring1Opacity = pulseAnim.interpolate({ inputRange: [0, 1], outputRange: [0.6, 0] });
   

@@ -70,7 +70,7 @@ export const PostSessionFeedbackScreen = () => {
                     style={[styles.tagBadge, isSelected && styles.tagBadgeSelected]}
                     onPress={() => handleTagToggle(tag)} accessibilityRole="button" accessibilityLabel={t('a11yTag', 'tag')}
                   >
-                    <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{t(`tags.${tag.replace(/[^a-zA-Z0-9]/g, '')}`, tag)}</Text>
+                    <Text style={[styles.tagText, isSelected && styles.tagTextSelected]}>{t(`tags.${tag.replace(/[^a-zA-Z0-9]/g, '')}`, tagObj.label)}</Text>
                   </TouchableOpacity>
                 );
               })}
